@@ -10,7 +10,7 @@ public class MainAdapterExample {
 		 // Create an instance of the OldSystem
         OldSystem oldSystem = new OldSystem();
 
-        NewSystem newSystemFromOld = new NewSystemFromOld(oldSystem);
+        /* avec_compat */ NewSystem newSystemFromOld = new NewSystemFromOld(oldSystem);
 
         // Call the newMethod
         newSystemFromOld.newMethod();
