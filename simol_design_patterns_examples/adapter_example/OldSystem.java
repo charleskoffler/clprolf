@@ -1,6 +1,6 @@
-package org.losim.examples.design_patterns;
+package org.simol.examples.design_patterns;
 
-//public simu_lapo OldSystem
+//public simu_alfoc OldSystem
 //Existing class
 public class OldSystem {
  public void oldMethod() {

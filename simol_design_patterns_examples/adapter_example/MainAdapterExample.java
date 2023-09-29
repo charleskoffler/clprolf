@@ -1,9 +1,9 @@
-package org.losim.examples.design_patterns;
+package org.simol.examples.design_patterns;
 
-/* Example of adapter design pattern in losim. 2023/09/21
+/* Example of adapter design pattern in simol. 2023/09/21
  * (c) Sabri Koffler MIT License */
 
-//public simu_lapo MainAdapterExample
+//public simu_alfoc MainAdapterExample
 public class MainAdapterExample {
 
 	public static void main(String[] args) {

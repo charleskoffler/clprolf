@@ -1,7 +1,7 @@
-package org.losim.examples.design_patterns;
+package org.simol.examples.design_patterns;
 
 //Adapter class of the design pattern, that adapts OldSystem to NewSystem interface
-//public simu_lapo NewSystemFromOld contrats NewSystem
+//public simu_alfoc NewSystemFromOld contracts NewSystem
 public class NewSystemFromOld implements NewSystem {
  private OldSystem oldSystem;
 

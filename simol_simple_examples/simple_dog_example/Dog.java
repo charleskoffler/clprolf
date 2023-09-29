@@ -1,6 +1,6 @@
-package losim_simple_examples;
+package simol_simple_examples;
 
-// public simu_or
+// public simu_rewo
 public class Dog {
 	String name;
     int age;

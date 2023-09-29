@@ -1,9 +1,9 @@
-package losim_simple_examples;
+package simol_simple_examples;
 
 /*
- * A first simple example of losim. It's simulate a dog, using a simu_or class.
+ * A first simple example of losim. It's simulate a dog, using a simu_rewo class.
  */
-// public simu_lapo DogQuickExample
+// public simu_alfoc DogQuickExample
 public class DogQuickExample {
 
 	public static void main(String[] args) {
