@@ -1,7 +1,7 @@
 # losim-language
 Repository about my own programming language losim
 
-I've created a new programming language called losim, since 2019, and now it's stable. It is rather a specialized language for simulation contexts. It is a superset of Java, and easy and fast to learn.
+I've created a new programming language called losim, since 2019, and now it's stable. I needed it for my own purposes and work. It is rather a specialized language for simulation contexts. It is a superset of Java, and easy and fast to learn.
 I want to share it and get support and feedbacks, and hope it can help to code. I'll put code examples, and discussions on the losim code are welcome. I will not write losim tools myself, but we can write if you want, in this repository. I'm much interested in losim examples you could create, even small. This could be a way to give feedback to losim, and could open interesting discussions.
 The compilation is straightforward, simply by adding losim comments in java, so we can take advantage of java tools , community and libraries.
 
