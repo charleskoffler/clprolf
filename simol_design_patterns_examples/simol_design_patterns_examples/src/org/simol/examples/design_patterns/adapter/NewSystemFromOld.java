@@ -1,4 +1,4 @@
-package org.simol.examples.design_patterns;
+package org.simol.examples.design_patterns.adapter;
 
 //Adapter class of the design pattern, that adapts OldSystem to NewSystem interface
 //public simu_alfoc NewSystemFromOld contracts NewSystem

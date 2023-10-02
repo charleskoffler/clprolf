@@ -1,4 +1,4 @@
-package org.simol.examples.design_patterns;
+package org.simol.examples.design_patterns.adapter;
 
 //public simu_alfoc OldSystem
 //Existing class

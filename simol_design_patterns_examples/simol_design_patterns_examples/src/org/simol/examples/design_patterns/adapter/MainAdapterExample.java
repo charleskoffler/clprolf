@@ -1,4 +1,4 @@
-package org.simol.examples.design_patterns;
+package org.simol.examples.design_patterns.adapter;
 
 /* Example of adapter design pattern in simol. 2023/09/21
  * (c) Sabri Koffler MIT License */

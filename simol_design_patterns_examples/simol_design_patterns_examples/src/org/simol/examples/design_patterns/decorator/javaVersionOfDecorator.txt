@@ -1,0 +1,90 @@
+/* Here is an example of the Decorator pattern, in java */
+
+// Step 1: Define the Coffee interface (Component)
+interface Coffee {
+    double getCost();
+    String getDescription();
+}
+
+// Step 2: Create a concrete Coffee class (ConcreteComponent)
+class SimpleCoffee implements Coffee {
+    @Override
+    public double getCost() {
+        return 2.0; // Base cost of simple coffee
+    }
+
+    @Override
+    public String getDescription() {
+        return "Simple Coffee";
+    }
+}
+
+// Step 3: Create Decorator classes (ConcreteDecorators)
+abstract class CoffeeDecorator implements Coffee {
+    private final Coffee decoratedCoffee;
+
+    public CoffeeDecorator(Coffee decoratedCoffee) {
+        this.decoratedCoffee = decoratedCoffee;
+    }
+
+    @Override
+    public double getCost() {
+        return decoratedCoffee.getCost();
+    }
+
+    @Override
+    public String getDescription() {
+        return decoratedCoffee.getDescription();
+    }
+}
+
+class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee decoratedCoffee) {
+        super(decoratedCoffee);
+    }
+
+    @Override
+    public double getCost() {
+        return super.getCost() + 0.5; // Add cost of milk
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", with Milk";
+    }
+}
+
+class SugarDecorator extends CoffeeDecorator {
+    public SugarDecorator(Coffee decoratedCoffee) {
+        super(decoratedCoffee);
+    }
+
+    @Override
+    public double getCost() {
+        return super.getCost() + 0.2; // Add cost of sugar
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", with Sugar";
+    }
+}
+
+public class CoffeeShop {
+    public static void main(String[] args) {
+        // Order a simple coffee
+        Coffee coffee = new SimpleCoffee();
+        System.out.println("Cost: $" + coffee.getCost());
+        System.out.println("Description: " + coffee.getDescription());
+
+        // Decorate it with Milk
+        coffee = new MilkDecorator(coffee);
+        System.out.println("Cost: $" + coffee.getCost());
+        System.out.println("Description: " + coffee.getDescription());
+
+        // Decorate it with Sugar
+        coffee = new SugarDecorator(coffee);
+        System.out.println("Cost: $" + coffee.getCost());
+        System.out.println("Description: " + coffee.getDescription());
+    }
+}
