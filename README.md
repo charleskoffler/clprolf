@@ -121,5 +121,22 @@ The translation of simol into java is very easy to do, in java, and we write the
 "contracts" => replace with "implements"
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
+COMPATIBLE WITH EXISTING CONCEPTS
+Some simol concepts used can be compared finally with some existing concepts, like the concept of business logic.
+
+* Near from business logic idea:
+
+Here is the definition of business logic, in Wikipedia:
+"In computer software, business logic or domain logic is the part of the program that encodes the real-world business rules that determine how data can be created, stored, and changed. It is contrasted with the remainder of the software that might be concerned with lower-level details of managing a database or displaying the user interface, system infrastructure, or generally connecting various parts of the program.".
+
+The idea of separating business logic code and low level code which handles managing a database, and so on, looks like the simu_rewo and simu_afoc. It would be a simu_rewo which would simulate an human expert work, and simu_afoc would manager low-level details.
+Simol goes further while considering simulation code, like business logic for this real-world object. But the reasoning can be compared.
+
+* Adheres naturally to SRP
+Single Responsability Principle(SRP): simol encourages naturally the SRP, with the kind of class separation, and also with the "nature" keyword.
+
+* About interface inheritance:
+For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
+
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
