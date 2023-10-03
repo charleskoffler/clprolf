@@ -135,6 +135,8 @@ Simol goes further while considering simulation code, like business logic for th
 * Adheres naturally to SRP
 Single Responsability Principle(SRP): simol encourages naturally the SRP, with the kind of class separation, and also with the "nature" keyword.
 
+* Simol is natively well adapted with the MVC pattern, with his simulation focus, well made for the controller(simu_rewo), the model(simu_alfoc), and the view(simu_alfoc). But simol let programmers free to the point of views choosing the kind of class he prefers.
+
 * Adheres closely to the DAO Design Pattern. simu_alfoc, and compat_interf_version suits closely for implementing the DAO pattern in simol.
 
 * About interface inheritance:
