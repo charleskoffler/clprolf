@@ -1,0 +1,13 @@
+package org.simol.examples.design_patterns.dao;
+
+import java.util.List;
+
+// a version compatiblity interface suits perfectly here! Because it's goal is to propose multiple implementations of the same purpose class.
+// public compat_interf_version UserDao
+public interface UserDao {
+	public User findById(int id);
+	public List<User> findAll();
+	public void save(User user);
+	public void update(User user);
+	public void delete(int id);
+}

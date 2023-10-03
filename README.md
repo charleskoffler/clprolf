@@ -135,6 +135,8 @@ Simol goes further while considering simulation code, like business logic for th
 * Adheres naturally to SRP
 Single Responsability Principle(SRP): simol encourages naturally the SRP, with the kind of class separation, and also with the "nature" keyword.
 
+* Adheres closely to the DAO Design Pattern. simu_alfoc, and compat_interf_version suits closely for implementing the DAO pattern in simol.
+
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
 

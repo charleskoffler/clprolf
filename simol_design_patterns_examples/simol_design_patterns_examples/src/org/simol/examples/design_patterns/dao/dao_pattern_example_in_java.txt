@@ -1,0 +1,98 @@
+/* java DAO example, as a starting point of the simol version. */
+
+// Step 1: Create a Data Transfer Object (DTO) representing your data entity.
+public class User {
+    private int id;
+    private String username;
+    private String email;
+    
+    // Constructors, getters, and setters
+}
+
+// Step 2: Create a DAO Interface defining the CRUD operations.
+public interface UserDao {
+    User findById(int id);
+    List<User> findAll();
+    void save(User user);
+    void update(User user);
+    void delete(int id);
+}
+
+// Step 3: Implement the DAO Interface with a concrete class.
+public class UserDaoImpl implements UserDao {
+    // You would typically have a database connection or data source here.
+    // For this example, we'll use a List as a simple in-memory storage.
+
+    private List<User> users = new ArrayList<>();
+
+    @Override
+    public User findById(int id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return users;
+    }
+
+    @Override
+    public void save(User user) {
+        users.add(user);
+    }
+
+    @Override
+    public void update(User user) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == user.getId()) {
+                users.set(i, user);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+        users.removeIf(user -> user.getId() == id);
+    }
+}
+
+// Step 4: Use the DAO in your application.
+public class Main {
+    public static void main(String[] args) {
+        UserDao userDao = new UserDaoImpl();
+
+        // Create and save a new user
+        User newUser = new User(1, "john_doe", "john@example.com");
+        userDao.save(newUser);
+
+        // Retrieve and print all users
+        List<User> users = userDao.findAll();
+        for (User user : users) {
+            System.out.println("User: " + user.getUsername() + ", Email: " + user.getEmail());
+        }
+
+        // Update user information
+        User updatedUser = new User(1, "new_username", "new_email@example.com");
+        userDao.update(updatedUser);
+
+        // Retrieve and print the updated user
+        User retrievedUser = userDao.findById(1);
+        if (retrievedUser != null) {
+            System.out.println("Updated User: " + retrievedUser.getUsername() + ", Email: " + retrievedUser.getEmail());
+        }
+
+        // Delete the user
+        userDao.delete(1);
+
+        // Verify that the user has been deleted
+        User deletedUser = userDao.findById(1);
+        if (deletedUser == null) {
+            System.out.println("User with ID 1 has been deleted.");
+        }
+    }
+}
