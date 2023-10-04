@@ -81,6 +81,7 @@ THE INTERFACES IN simol
 In simol, there are two types of interfaces, and only these two types. simol interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
+It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use an compat_interf_version too, to indicate that the intent is to forecast a change of implementation and not depend to a concrete class.
 
 "compat_interf_capacity": the purpose of the interface is to guarantee that a class has a certain capability (to sort, etc.), no matter what the implementation.
 
@@ -138,6 +139,8 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 * Simol is natively well adapted with the MVC pattern, with his simulation focus, well made for the controller(simu_rewo), the model(simu_alfoc), and the view(simu_alfoc). But simol let programmers free to the point of views choosing the kind of class he prefers.
 
 * Adheres closely to the DAO Design Pattern. simu_alfoc, and compat_interf_version suits closely for implementing the DAO pattern in simol.
+
+* Compatible with loose coupling principle, bridge pattern, "program to an interface not an implementation" principle, with the compat_interf_version interfaces.
 
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
