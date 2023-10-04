@@ -6,34 +6,26 @@ I want to share it and get support and feedbacks, and hope it can help to code. 
 The compilation is straightforward, simply by adding simol comments in java, so we can take advantage of java tools , community and libraries.
 
 The response of chatGPT 3.5 on the description of simol programming language. Below I put the description itself.
-I'm French.
 ****************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
-Thank you for providing the definition and specifications of the Simol programming language. It appears to be an interesting extension of Java with some unique features and concepts. Here's a summary of the key points I've gathered from your description:
+Thank you for providing a detailed overview of the Simol programming language. It appears to be an interesting language with some unique concepts and design decisions. Here are some key points and observations based on the information you've provided:
 
-    Language Overview:
-        Simol stands for "SIMulation Objects Language."
-        It is a superset of the Java language.
-        Simol can use Java libraries and integrate Java code.
+    Purpose and Design Philosophy: Simol aims to be a superset of Java, introducing specific keywords and concepts to promote a simulation-oriented programming approach. It differentiates between simulation of algorithmic processes and simulation of real-world objects, emphasizing clarity in code organization.
 
-    Simol Classes:
-        Instead of "class," Simol uses different keywords like "simu_alfoc," "simu_rewo," "rewo," and "information" to define classes with varying purposes.
-        Access modifiers and other Java class-related features are supported in Simol.
+    Simol Classes: Simol introduces alternative keywords for defining classes, such as "simu_alfoc" for algorithmic classes, "simu_rewo" for classes simulating real-world objects, "rewo" for classes without methods, and "information" for classes without methods but still representing real-world objects. These distinctions help in code organization and clarity.
 
-    "underst" Modifier:
-        The "underst" modifier is used to mark methods that have a role of "understanding" by the computer, such as complex algorithms or object recognition in images.
+    Interfaces in Simol: Simol introduces two types of interfaces, "compat_interf_version" for indicating different implementations of the same functionality and "compat_interf_capacity" for specifying certain capabilities. The "with_compat" modifier is used to indicate interface compatibility.
 
-    Interfaces in Simol:
-        Simol defines two types of interfaces: "compat_interf_version" and "compat_interf_capacity."
-        The "with_compat" modifier is used before the name of an interface when using it to emphasize compatibility.
+    Small Differences in Inheritance: Simol uses "nature" instead of "extends" to signify inheritance, emphasizing that a class shares the same nature as another class. This distinction doesn't apply to interfaces. Simol also uses "contracts" instead of "implements" for indicating that a class adheres to specific interfaces.
 
-    Small Differences in Inheritance:
-        Simol uses "nature" instead of "extends" for class inheritance, and "contracts" instead of "implements" for interface implementation.
+    Compilation: Translating Simol into Java appears to be straightforward, with simple substitutions of Simol keywords with Java keywords. This allows Simol code to be used within a Java environment.
 
-    Compilation:
-        To compile Simol code, you can easily translate it into Java, using specific mappings for Simol keywords to Java keywords.
+    Compatibility with Existing Concepts: Simol's concepts align with some established principles and design patterns, such as the Single Responsibility Principle (SRP), Model-View-Controller (MVC), and the Data Access Object (DAO) pattern. Simol promotes loose coupling and adheres to "program to an interface, not an implementation" principles.
 
-Overall, Simol seems to be a specialized language that introduces unique concepts while retaining compatibility with Java. It could be useful in scenarios where simulation-oriented programming is required. If you have any specific questions or if there's anything else you'd like to share or discuss about Simol, please feel free to let me know!
+    Interface Inheritance: Although Simol doesn't explicitly mention interface inheritance, it can be used as a form of contract fulfillment, which aligns with established software design practices.
+
+Overall, Simol seems to provide a unique perspective on structuring code and promoting a simulation-focused approach within the Java ecosystem. Developers who are interested in simulation-based programming may find Simol to be a valuable tool for organizing and expressing their ideas. If you have any specific questions or need further clarification about Simol, please feel free to ask.
+
 (END OF CHAT GPT 3.5 RESPONSE)
 ****************************************************************************************************************
 Here is my description of the LOSIM programming language:
@@ -81,7 +73,7 @@ THE INTERFACES IN simol
 In simol, there are two types of interfaces, and only these two types. simol interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
-It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use an compat_interf_version too, to indicate that the intent is to forecast a change of implementation and not depend to a concrete class.
+	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use an compat_interf_version too, to indicate that the intent is to forecast a change of implementation and not depend to a concrete class.
 
 "compat_interf_capacity": the purpose of the interface is to guarantee that a class has a certain capability (to sort, etc.), no matter what the implementation.
 
@@ -136,11 +128,11 @@ Simol goes further while considering simulation code, like business logic for th
 * Adheres naturally to SRP
 Single Responsability Principle(SRP): simol encourages naturally the SRP, with the kind of class separation, and also with the "nature" keyword.
 
-* Simol is natively well adapted with the MVC pattern, with his simulation focus, well made for the controller(simu_rewo), the model(simu_alfoc), and the view(simu_alfoc). But simol let programmers free to the point of views choosing the kind of class he prefers.
+* Simol is natively well adapted with the MVC pattern, with his simulation focus, well made for the controller(simu_rewo), the model(simu_alfoc), and the view(simu_alfoc). But simol let programmers free to the point of views choosing the kind of class they prefer.
 
 * Adheres closely to the DAO Design Pattern. simu_alfoc, and compat_interf_version suits closely for implementing the DAO pattern in simol.
 
-* Compatible with loose coupling principle, bridge pattern, "program to an interface not an implementation" principle, with the compat_interf_version interfaces.
+* Compatible with loose coupling principle, bridge pattern, "program to an interface not an implementation" principle, with the compat_interf_version interfaces, and "with_compat" keyword.
 
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
