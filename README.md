@@ -1,11 +1,11 @@
 # simol-language
-Repository about my own programming language simol
+Repository about my own programming language simol, a Domain Specific Language about simulation. I'm looking for people who could be interested in. The definition of simol stands on one page, and it's fast to get an overview.
 
 I've created a new programming language called simol, since 2019, and now it's stable. I needed it for my own purposes and work. It is rather a specialized language for simulation contexts. It is a superset of Java, and easy and fast to learn.
 I want to share it and get support and feedbacks, and hope it can help to code. I'll put code examples, and discussions on the simol code are welcome. I will not write simol tools myself, but we can write if you want, in this repository. I'm much interested in simol examples you could create, even small. This could be a way to give feedback to simol, and could open interesting discussions.
 The compilation is straightforward, simply by adding simol comments in java, so we can take advantage of java tools , community and libraries.
 
-The response of chatGPT 3.5 on the description of simol programming language. Below I put the description itself.
+The response and overview of chatGPT 3.5 on the description of simol programming language. Below I put the description itself.
 ****************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
 Thank you for providing a detailed overview of the Simol programming language. It appears to be an interesting language with some unique concepts and design decisions. Here are some key points and observations based on the information you've provided:
