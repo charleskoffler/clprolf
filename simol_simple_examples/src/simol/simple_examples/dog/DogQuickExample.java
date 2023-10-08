@@ -1,4 +1,4 @@
-package simol.simple_examples;
+package simol.simple_examples.dog;
 
 /*
  * A first simple example of simol. It's simulate a dog, using a simu_rewo class

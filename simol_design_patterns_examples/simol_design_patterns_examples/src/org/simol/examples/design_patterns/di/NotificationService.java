@@ -8,7 +8,7 @@ public class NotificationService {
 
  // Constructor-based dependency injection
  //We prefere asking instanciation from outdoor, to keep loose coupling in the entirely class!
- public NotificationService(MessageService messageService) {
+ public NotificationService(/*with_compat*/ MessageService messageService) {
      this.messageService = messageService;
  }
 

@@ -1,0 +1,52 @@
+//Java version of the Dependency Injection pattern
+
+// Interface representing a messaging service
+interface MessageService {
+    void sendMessage(String message);
+}
+
+// Concrete implementation of the MessageService interface
+class EmailService implements MessageService {
+    @Override
+    public void sendMessage(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+
+// Another concrete implementation of the MessageService interface
+class SMSService implements MessageService {
+    @Override
+    public void sendMessage(String message) {
+        System.out.println("Sending SMS: " + message);
+    }
+}
+
+// A class that depends on a messaging service and uses dependency injection
+class NotificationService {
+    private final MessageService messageService;
+
+    // Constructor-based dependency injection
+    public NotificationService(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    public void sendNotification(String message) {
+        messageService.sendMessage(message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of messaging services
+        MessageService emailService = new EmailService();
+        MessageService smsService = new SMSService();
+
+        // Inject the email service and send a notification
+        NotificationService emailNotification = new NotificationService(emailService);
+        emailNotification.sendNotification("Hello, this is an email notification.");
+
+        // Inject the SMS service and send a notification
+        NotificationService smsNotification = new NotificationService(smsService);
+        smsNotification.sendNotification("Hello, this is an SMS notification.");
+    }
+}
