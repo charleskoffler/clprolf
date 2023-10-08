@@ -1,7 +1,8 @@
 # simol-language
-Repository about my own programming language simol, a Domain Specific Language about simulation. I'm looking for people who could be interested in. The definition of simol stands on one page, and it's fast to get an overview.
+Repository about my own programming language simol, a Domain Specific Language about simulation, which is a superset of Java. I'm looking for people who could be interested in. The definition of simol stands on one page, and it's fast to get an overview.
+Simol is a programming language designed for clarity, simplicity, and ease of use. It empowers a diverse range of users, including scientists, mathematicians, and practical application developers, to harness the power of computer programming without sacrificing performance. Simol's intuitive syntax and simulation-oriented approach make it an excellent choice for understanding and applying programming concepts efficiently.
 
-I've created a new programming language called simol, since 2019, and now it's stable. I needed it for my own purposes and work. It is rather a specialized language for simulation contexts. It is a superset of Java, and easy and fast to learn.
+So it's a new programming language called simol, since 2019, and now it's stable. I needed it for my own purposes and work. It is rather a specialized language for simulation contexts. It is a superset of Java, and easy and fast to learn.
 I want to share it and get support and feedbacks, and hope it can help to code. I'll put code examples, and discussions on the simol code are welcome. I will not write simol tools myself, but we can write if you want, in this repository. I'm much interested in simol examples you could create, even small. This could be a way to give feedback to simol, and could open interesting discussions.
 The compilation is straightforward, simply by adding simol comments in java, so we can take advantage of java tools , community and libraries.
 
