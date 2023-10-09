@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.simol.snake_game.Food.FoodType;
 
+//public simu_rewo FoodExpert
 public class FoodExpert {
 	public static int FOOD_COUNT = 40;
 	

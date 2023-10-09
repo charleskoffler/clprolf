@@ -64,8 +64,8 @@ public class SnakeGameLifeScene implements Runnable {
 	
 	public SnakeGameLifeScene()  {
 		//Create simu_rewo objects before the window.
-		this.snake = new Snake(this, 0, "bleue");
-		this.snake_two = new Snake(this, 19, "grise");
+		this.snake = new Snake(this, 0, "blue");
+		this.snake_two = new Snake(this, 19, "grey");
 		
 		//Positionning the food
 		this.foodExpert = new FoodExpert(this);

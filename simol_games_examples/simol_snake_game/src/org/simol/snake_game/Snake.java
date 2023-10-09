@@ -30,6 +30,7 @@ public class Snake implements Runnable {
 		LEFT_DIRECTION,
 		RIGHT_DIRECTION
 	}
+	// public rewo SnakeLink
 	public class SnakeLink {
 		public int x;
 		public int y;
@@ -116,7 +117,7 @@ public class Snake implements Runnable {
 		}
 	}
 	
-	private Snake trouverAutreChenille() {
+	private Snake findOtherSnake() {
 		Snake autreChenille=null;
 		
 		if (this==this.lifeScene.getSnake()) {
@@ -145,7 +146,7 @@ public class Snake implements Runnable {
 		Food existingFood = null;
 		
 		//Snake distinction
-		otherSnake = this.trouverAutreChenille();
+		otherSnake = this.findOtherSnake();
 		
 		//Sauvegarde valeurs maillon tete
 		ancHeadLink = new SnakeLink();
@@ -243,7 +244,7 @@ public class Snake implements Runnable {
 		Snake otherSnake;
 		ArrayList<SnakeGameLifeScene.Place> listOfFreePlaces = new ArrayList<SnakeGameLifeScene.Place>();
 		
-		otherSnake = this.trouverAutreChenille();
+		otherSnake = this.findOtherSnake();
 		lastLink = this.links.get(this.links.size()-1);
 		
 		//FOr directions analysis, and we keep free places.
