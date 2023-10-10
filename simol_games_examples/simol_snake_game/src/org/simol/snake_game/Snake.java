@@ -418,7 +418,7 @@ public class Snake implements Runnable {
 			if (!reponse) {
 				String msg = new String("The "+this.color+" snake is loosing!");
 				java.awt.Toolkit.getDefaultToolkit().beep();
-				this.lifeScene.getWindow().getGlobalPanel().lblVictory.setText(msg);
+				this.lifeScene.getRealiz().getWindow().getGlobalPanel().getLblVictory().setText(msg);
 				this.lifeScene.getSnake().blnHalt = true;
 				this.lifeScene.getSnake_two().blnHalt = true;
 			}

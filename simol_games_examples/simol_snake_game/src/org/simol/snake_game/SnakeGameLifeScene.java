@@ -1,20 +1,15 @@
 package org.simol.snake_game;
 
-//Could be seen as a simu_rewo, a queue of real-world event of a physical machine tool.
-import java.awt.EventQueue;
 
-// public simu_rewo SnakeGameLifeScene contracts Runnable
-public class SnakeGameLifeScene implements Runnable {
+// public simu_rewo SnakeGameLifeScene
+public class SnakeGameLifeScene {
 	// In public visibility, for Snake, etc., accesses to the window, if needed(display).
 	
 	// Accessors
-	private SnakeWindow window;
-	public SnakeWindow getWindow() {
-		return window;
-	}
-
-	public void setWindow(SnakeWindow window) {
-		this.window = window;
+	private SnakeGameLifeSceneRealiz realiz;
+	//Only a getter.
+	public SnakeGameLifeSceneRealiz getRealiz() {
+		return realiz;
 	}
 
 	private Snake snake;
@@ -45,8 +40,8 @@ public class SnakeGameLifeScene implements Runnable {
 	}
 	//
 
-	Thread snailOneWorker;
-	Thread snailTwoWorker;
+	Thread snakeOneWorker;
+	Thread snakeTwoWorker;
 	
 	public static int SCENE_ROWS_COUNT = 20;
 	public static int SCENE_COLUMNS_COUNT = 40;
@@ -72,21 +67,16 @@ public class SnakeGameLifeScene implements Runnable {
 		this.foodExpert.positionFood();
 		//
 		
-		snailOneWorker = new Thread(this.snake);
-		snailOneWorker.start();
+		snakeOneWorker = new Thread(this.snake);
+		snakeOneWorker.start(); //Let the snake live.
 		
-		snailTwoWorker = new Thread(this.snake_two);
-		snailTwoWorker.start();
+		snakeTwoWorker = new Thread(this.snake_two);
+		snakeTwoWorker.start();
 		
-		EventQueue.invokeLater(this);
+		//Begin the display. Can be considered as a view.
+		this.realiz = new SnakeGameLifeSceneRealiz(this);
 	}
 	
-	// Just for the EventQueue.invokeLater().
-	public void run() {
-		// Creation of the window using the dispatch thread.
-		window = new SnakeWindow(this);
-	}
-
 	public boolean checkIfInSceneFrame(int x, int y) {
 		return x>=0 && x<SnakeGameLifeScene.SCENE_COLUMNS_COUNT && y>=0 && y<SnakeGameLifeScene.SCENE_ROWS_COUNT;
 	}

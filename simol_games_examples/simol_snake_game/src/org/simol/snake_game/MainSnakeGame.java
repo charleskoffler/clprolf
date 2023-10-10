@@ -4,9 +4,9 @@ package org.simol.snake_game;
  * Snake game initially written in simol. It's a simple 2D snake game, with two players and two snakes.
  * The display is with Swing, in a JFrame.
  * 
- * V3.0(20231009).
- *
- * English translation. Refactoring and added simol comments.
+ * V3.1(20231010).
+ * Added a realization simu_alfoc class, showing typical using of realization class in simol.
+ * It acts much like a view of MVC. This simplify our present case, which was not so simple.
  * 
  * possible evolves:
  * Count score, and display it, but the winner is the one who don't loose, except if all food is eaten.

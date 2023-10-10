@@ -7,18 +7,19 @@ import java.awt.event.KeyListener;
 // simu_rewo of a physical machine tool, for example.
 import javax.swing.JFrame;
 
-// public simu_rewo SnakeWindow nature JFrame contracts Runnable, KeyListener {
+// public simu_rewo SnakeWindow nature JFrame contracts KeyListener {
 public class SnakeWindow extends JFrame implements Runnable, KeyListener {
-	// Accessors
-	private SnakeGameLifeScene lifeScene;
+	private Thread worker;
 	
-	public SnakeGameLifeScene getLifeScene() {
-		return lifeScene;
+	// Accessors
+	// A way to access to simu_rewo big brother object.
+	// Only a getter.
+	private SnakeGameLifeSceneRealiz real;
+	
+	public SnakeGameLifeSceneRealiz getReal() {
+		return real;
 	}
 
-	public void setLifeScene(SnakeGameLifeScene lifeScene) {
-		this.lifeScene = lifeScene;
-	}
 	//public, for example, for Snake access.
 	private SnakeGlobalPanel globalPanel;
 		
@@ -35,8 +36,8 @@ public class SnakeWindow extends JFrame implements Runnable, KeyListener {
 	
 	private boolean blnContinue;
 	
-	public SnakeWindow(SnakeGameLifeScene sceneVie) {
-		this.lifeScene = sceneVie;
+	public SnakeWindow(SnakeGameLifeSceneRealiz real) {
+		this.real = real;
 		
 		this.createComponents();
 		
@@ -50,8 +51,8 @@ public class SnakeWindow extends JFrame implements Runnable, KeyListener {
 		//
 		//Regularly refresh the display.
 		this.blnContinue = true;
-		Thread timer = new Thread(this);
-		timer.start();
+		worker = new Thread(this);
+		worker.start();
 	}
 	
 	private void createComponents() {
@@ -82,28 +83,28 @@ public class SnakeWindow extends JFrame implements Runnable, KeyListener {
 		/* MOVES MANAGEMENT */
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
-				this.lifeScene.getSnake().changeDirection(Snake.DirectionEnum.LEFT_DIRECTION);
+				this.real.getLifeScene().getSnake().changeDirection(Snake.DirectionEnum.LEFT_DIRECTION);
 				break;
 			case KeyEvent.VK_RIGHT:
-				this.lifeScene.getSnake().changeDirection(Snake.DirectionEnum.RIGHT_DIRECTION);
+				this.real.getLifeScene().getSnake().changeDirection(Snake.DirectionEnum.RIGHT_DIRECTION);
 				break;
 			case KeyEvent.VK_UP:
-				this.lifeScene.getSnake().changeDirection(Snake.DirectionEnum.UP_DIRECTION);
+				this.real.getLifeScene().getSnake().changeDirection(Snake.DirectionEnum.UP_DIRECTION);
 				break;
 			case KeyEvent.VK_DOWN:
-				this.lifeScene.getSnake().changeDirection(Snake.DirectionEnum.DOWN_DIRECTION);
+				this.real.getLifeScene().getSnake().changeDirection(Snake.DirectionEnum.DOWN_DIRECTION);
 				break;
 			case KeyEvent.VK_Q:
-				this.lifeScene.getSnake_two().changeDirection(Snake.DirectionEnum.LEFT_DIRECTION);
+				this.real.getLifeScene().getSnake_two().changeDirection(Snake.DirectionEnum.LEFT_DIRECTION);
 				break;
 			case KeyEvent.VK_S:
-				this.lifeScene.getSnake_two().changeDirection(Snake.DirectionEnum.RIGHT_DIRECTION);
+				this.real.getLifeScene().getSnake_two().changeDirection(Snake.DirectionEnum.RIGHT_DIRECTION);
 				break;
 			case KeyEvent.VK_Z:
-				this.lifeScene.getSnake_two().changeDirection(Snake.DirectionEnum.UP_DIRECTION);
+				this.real.getLifeScene().getSnake_two().changeDirection(Snake.DirectionEnum.UP_DIRECTION);
 				break;
 			case KeyEvent.VK_W:
-				this.lifeScene.getSnake_two().changeDirection(Snake.DirectionEnum.DOWN_DIRECTION);
+				this.real.getLifeScene().getSnake_two().changeDirection(Snake.DirectionEnum.DOWN_DIRECTION);
 				break;
 				
 			default:

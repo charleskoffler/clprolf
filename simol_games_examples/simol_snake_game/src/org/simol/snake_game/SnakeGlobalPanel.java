@@ -15,9 +15,16 @@ import org.simol.snake_game.Snake.SnakeLink;
 
 //public simu_rewo SnakeGlobalPanel nature JPanel
 public class SnakeGlobalPanel extends JPanel {
+	//Accessors
 	private SnakeWindow gameWindow;
-	public JLabel lblVictory;
+	private JLabel lblVictory;
 	
+	public JLabel getLblVictory() {
+		return this.lblVictory;
+	}
+
+	//
+
 	public SnakeGlobalPanel(SnakeWindow fenetreJeu) {
 		this.gameWindow = fenetreJeu;
 		this.initializeComponents();
@@ -53,10 +60,10 @@ public class SnakeGlobalPanel extends JPanel {
 		Snake snake;
 		
 		if (snakeNumber==0) {
-			snake = this.gameWindow.getLifeScene().getSnake();
+			snake = this.gameWindow.getReal().getLifeScene().getSnake();
 		}
 		else {
-			snake = this.gameWindow.getLifeScene().getSnake_two();
+			snake = this.gameWindow.getReal().getLifeScene().getSnake_two();
 		}
 		
 		//No foreach, for no ConcurrentModificationException.
@@ -110,9 +117,9 @@ public class SnakeGlobalPanel extends JPanel {
 	private void displayFood(Graphics g) {
 		//No foreach, for no ConcurrentModificationException.
 		//No matter if they lacks a food during display l'affichage, it will be refresh on the next display.
-		for (int indexNourri = 0;indexNourri< this.gameWindow.getLifeScene().getFoodExpert().getFoodList().size();indexNourri++) {
+		for (int indexNourri = 0;indexNourri< this.gameWindow.getReal().getLifeScene().getFoodExpert().getFoodList().size();indexNourri++) {
 			Food food;
-			food = this.gameWindow.getLifeScene().getFoodExpert().getFoodList().get(indexNourri);
+			food = this.gameWindow.getReal().getLifeScene().getFoodExpert().getFoodList().get(indexNourri);
 			switch(food.getType()) {
 			case ORANGE_FRUIT:
 				g.setColor(Color.ORANGE);
