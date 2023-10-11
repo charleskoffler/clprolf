@@ -157,6 +157,45 @@ simol prefer not to use "with_compat" for the interfaces list implemented in a s
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
 it focuses on the implementation, not the idea of a contract is respected.
 
+SIMOL GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
+
+NormalClassDeclaration: 
+    SimolRole Identifier [TypeParameters]
+                                [nature Type] [contracts TypeList] ClassBody
+
+SimolRole:
+	simu_rewo
+	simu_alfoc
+	rewo
+	information
+	
+NormalInterfaceDeclaration: 
+    SimolInterfaceRole Identifier [TypeParameters] [extends TypeList] InterfaceBody
+
+SimolInterfaceRole:
+	compat_interf_version
+	compat_interf_capacity
+	
+Modifier: 
+    Annotation
+    public
+    protected
+    private
+    static 
+    abstract
+    final
+    native
+    synchronized
+    transient
+    volatile
+    strictfp
+    underst
+    
+VariableModifier:
+    final
+    Annotation
+    with_compat
+
 TO COMPILE
 
 The translation of simol into java is very easy to do, in java, and we write the simol code as a comment(except in case we want to the source to be shorter).
