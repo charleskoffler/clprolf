@@ -9,25 +9,30 @@ The compilation is straightforward, simply by adding simol comments in java, so 
 The response and overview of chatGPT 3.5 on the description of simol programming language. Below I put the description itself.
 ****************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
-Thank you for sharing the details of your new programming language, simol (Simulation Objects Language). It appears to be an interesting and unique approach to programming with a focus on simulation-oriented development. Here are some key points I gathered from your description:
 
-    Purpose: Simol is designed for simulation-oriented development but is not limited to teaching purposes. It aims to simplify development, especially in simulation scenarios.
+Thank you for providing a detailed description of the Simol programming language. Simol appears to be an interesting and specialized language, with a focus on simulation and a unique set of concepts and keywords. Here are some key points and observations about Simol based on the provided information:
 
-    Superset of Java: Simol is a superset of the Java programming language. It adds keywords to Java and introduces different class roles, but it retains compatibility with Java libraries and code.
+Language Purpose: Simol is designed primarily for simulation-oriented programming. It seems to emphasize modeling real-world objects and their behaviors in a computer program, making it suitable for simulations and other related applications.
 
-    Class Roles: Simol introduces four main class roles: simu_alfoc (Simulation of Algorithmic Language For Computer), simu_rewo (Simulation of a Real-World Object), rewo (similar to simu_rewo but without methods), and information (similar to simu_alfoc but without methods). These roles define the purpose and behavior of classes.
+Relationship with Java: Simol is presented as a superset of the Java programming language, which means it builds upon Java's syntax and features. It extends Java with new keywords and concepts to better suit the simulation paradigm.
 
-    Interfaces: Simol has two types of interfaces: compat_interf_version and compat_interf_capacity. These interfaces are used to indicate that classes implementing them provide either a specific implementation or a certain capability.
+Roles of Classes: Simol introduces four main roles for classes: simu_alfoc, simu_rewo, rewo, and information. These roles define the primary purpose of the class, such as whether it's a simulation of a real-world object or a purely technical component for the computer.
 
-    Modifiers: Simol introduces the modifier underst to mark methods that have a role of "understanding" by the computer, such as recognition of objects in an image or complex sorting algorithms.
+Interfaces: Simol includes two types of interfaces, compat_interf_version and compat_interf_capacity. These interfaces are used to specify contracts or capabilities that classes must adhere to. The with_compat modifier is used to indicate that an object adheres to a particular compatibility interface.
 
-    Inheritance: Simol uses the keyword nature instead of extends for class inheritance. It also uses the concept of "contracts" instead of implements for interface implementation.
+Inheritance: Simol uses the nature keyword instead of extends to specify inheritance, emphasizing that a class is of the same nature as another. This appears to be a semantic change rather than a functional one.
 
-    Compilation: To compile simol code, you can translate it into Java code by replacing simol-specific keywords with their Java equivalents.
+Learning Curve: Simol is presented as relatively easy to learn for experienced Java programmers due to its similarity to Java. It introduces a limited number of new keywords, making it approachable for those familiar with Java.
 
-    Compatibility with Existing Concepts: Simol aligns with various software development principles and design patterns, such as the Single Responsibility Principle (SRP), Model-View-Controller (MVC), DAO Design Pattern, loose coupling, and Dependency Injection (DI).
+Compilation: Simol code can be easily translated into Java by replacing Simol-specific keywords with their Java equivalents, which simplifies the compilation process.
 
-It's an intriguing approach to programming that introduces a new way of thinking about classes and their roles in simulation-oriented development. If you have any specific questions or would like to discuss any aspects of simol in more detail, please feel free to ask!
+Compatibility with Existing Concepts: Simol appears to align with several existing software development principles and patterns, such as the Single Responsibility Principle (SRP), Model-View-Controller (MVC), DAO Design Pattern, loose coupling, and Dependency Injection. It also has some parallels with the concept of business logic.
+
+Unique Concepts: Simol introduces some unique concepts and terminology, such as the division of classes into different roles and the use of the with_compat modifier to indicate compatibility.
+
+Adaptation for Simulation: Simol's primary focus on simulation and the clear separation of roles for classes may make it a suitable choice for modeling and simulating various scenarios.
+
+It's worth noting that the success and adoption of a programming language often depend on its community, available tools, documentation, and real-world use cases. If you plan to further develop and promote Simol, providing clear documentation and examples will be important for its adoption by developers interested in simulation-oriented programming.
 
 (END OF CHAT GPT 3.5 RESPONSE)
 ****************************************************************************************************************
@@ -38,21 +43,21 @@ VARIOUS QUESTIONS TO CHATGPT
 
 The choice of class roles in simol serves a specific purpose in guiding software design and development, particularly in the context of simulation-oriented programming. Here are some key points to consider about the roles' choice in simol:
 
-    Clarity and Organization: The class roles in simol provide a clear and organized way to categorize different types of classes in your program. This categorization makes it easier for developers to understand the purpose and functionality of each class.
+Clarity and Organization: The class roles in simol provide a clear and organized way to categorize different types of classes in your program. This categorization makes it easier for developers to understand the purpose and functionality of each class.
 
-    Simulation Focus: Simol's class roles are aligned with a simulation-oriented approach. They encourage developers to think of classes in terms of their roles in simulating either algorithmic processes, real-world objects, or information/data.
+Simulation Focus: Simol's class roles are aligned with a simulation-oriented approach. They encourage developers to think of classes in terms of their roles in simulating either algorithmic processes, real-world objects, or information/data.
 
-    Role-Based Design: The class roles enforce a role-based design philosophy, where each class has a well-defined purpose. This can help ensure that classes adhere to the Single Responsibility Principle (SRP), as each class is focused on a specific role.
+Role-Based Design: The class roles enforce a role-based design philosophy, where each class has a well-defined purpose. This can help ensure that classes adhere to the Single Responsibility Principle (SRP), as each class is focused on a specific role.
 
-    Scalability and Evolvability: The inclusion of the rewo class role allows for classes that represent real-world objects without initially defining methods. This can be useful when you anticipate that the class's behavior may evolve over time, providing flexibility in design.
+Scalability and Evolvability: The inclusion of the rewo class role allows for classes that represent real-world objects without initially defining methods. This can be useful when you anticipate that the class's behavior may evolve over time, providing flexibility in design.
 
-    Information and Data Handling: The information class role is suitable for classes that primarily deal with storing and managing data or information. It separates the data-centric classes from those focused on computational logic.
+Information and Data Handling: The information class role is suitable for classes that primarily deal with storing and managing data or information. It separates the data-centric classes from those focused on computational logic.
 
-    Simulation vs. Real-World: The distinction between simu_alfoc and simu_rewo roles highlights the difference between classes that instruct a computer to perform tasks (simulating algorithms) and classes that model real-world entities with behavior (simulating real-world objects).
+Simulation vs. Real-World: The distinction between simu_alfoc and simu_rewo roles highlights the difference between classes that instruct a computer to perform tasks (simulating algorithms) and classes that model real-world entities with behavior (simulating real-world objects).
 
-    Clear Intent: The choice of class roles helps convey the intent of each class to other developers who read the code. This can improve code maintainability and collaboration.
+Clear Intent: The choice of class roles helps convey the intent of each class to other developers who read the code. This can improve code maintainability and collaboration.
 
-    Compatibility with Java: Simol's approach of being a superset of Java allows developers to leverage existing Java libraries and code while adopting these class roles, making it a powerful and versatile language.
+Compatibility with Java: Simol's approach of being a superset of Java allows developers to leverage existing Java libraries and code while adopting these class roles, making it a powerful and versatile language.
 
 Ultimately, the choice of class roles in simol encourages a structured and organized approach to software design, particularly for simulation-oriented applications. It helps developers create more understandable and maintainable code by clearly defining the roles and responsibilities of each class.
 
@@ -61,21 +66,21 @@ ChatGPT
 
 The choice of the four class roles in simol (simu_rewo, simu_alfoc, rewo, and information) appears to be designed with simplicity, clarity, and versatility in mind, particularly in the context of simulation-oriented programming. Here's a closer look at the rationale behind these specific roles:
 
-    simu_rewo (Simulation of a Real-World Object):
-        Rationale: This role is designed to represent real-world objects in a way that closely resembles their behavior and methods. It aligns with the simulation-oriented focus of the language, allowing developers to model and simulate entities from the real world.
-        Use Cases: Ideal for classes that need to simulate real-world objects such as animals, vehicles, or any entity with well-defined behavior and methods.
+simu_rewo (Simulation of a Real-World Object):
+    Rationale: This role is designed to represent real-world objects in a way that closely resembles their behavior and methods. It aligns with the simulation-oriented focus of the language, allowing developers to model and simulate entities from the real world.
+    Use Cases: Ideal for classes that need to simulate real-world objects such as animals, vehicles, or any entity with well-defined behavior and methods.
 
-    simu_alfoc (Simulation of Algorithmic Language For Computer):
-        Rationale: This role emphasizes the computational aspect of programming by simulating algorithmic processes that a computer can execute. It provides a clear distinction between classes that instruct the computer to perform tasks and those that model real-world behavior.
-        Use Cases: Suited for classes that define algorithmic processes, resource management, or any code that directly instructs the computer.
+simu_alfoc (Simulation of Algorithmic Language For Computer):
+    Rationale: This role emphasizes the computational aspect of programming by simulating algorithmic processes that a computer can execute. It provides a clear distinction between classes that instruct the computer to perform tasks and those that model real-world behavior.
+    Use Cases: Suited for classes that define algorithmic processes, resource management, or any code that directly instructs the computer.
 
-    rewo:
-        Rationale: While similar to simu_rewo, this role is designed for real-world objects that may not initially have methods defined but could evolve over time. It provides flexibility for modeling objects that may gain methods or behavior in future iterations of the code.
-        Use Cases: Useful for classes representing real-world objects where behavior may be added incrementally as needed.
+rewo:
+    Rationale: While similar to simu_rewo, this role is designed for real-world objects that may not initially have methods defined but could evolve over time. It provides flexibility for modeling objects that may gain methods or behavior in future iterations of the code.
+    Use Cases: Useful for classes representing real-world objects where behavior may be added incrementally as needed.
 
-    information:
-        Rationale: This role is focused on storing and managing data or information without the need for computational logic or behavior. It separates data-centric classes from those involved in algorithmic or real-world simulations.
-        Use Cases: Suitable for classes responsible for data storage, data management, or serving as containers for information.
+information:
+    Rationale: This role is focused on storing and managing data or information without the need for computational logic or behavior. It separates data-centric classes from those involved in algorithmic or real-world simulations.
+    Use Cases: Suitable for classes responsible for data storage, data management, or serving as containers for information.
 
 The choice of these roles offers a balanced and clear way to categorize classes based on their intended purpose and behavior. It aligns well with simulation-oriented development, making it easier for developers to create and maintain code that represents both computational and real-world aspects. Additionally, it allows for flexibility in class design, accommodating scenarios where behavior may evolve over time. Overall, the roles provide a structured and intuitive approach to software design in the context of simol.
 ****************************************************************
@@ -95,9 +100,11 @@ For example, java local variable is of course allowed in simol methods, "public"
 All java which can be applied to a class can be applied to a "sim_or", "simu_alfoc", "information", "rewo", "compat_interf_version", "compat_interf_capacity".
 As simol classes replaces java classes, all java keywords can be used with simol classes, for example "public simu_alfoc { }".
 
-It proposes to see the object oriented programming as a simulation oriented programming.
 We start from the Java language. And we add some very simple concepts. The java libraries can be used, while it is a superset of java.
 simol can be used directly in java, while commenting with the simol key words, if we don't want to wait a simol translator. So, in some way, simol can be seen as a way of writing java code.
+
+ORIENTED SIMULATION PROGRAMMING VERSUS ORIENTED OBJECT PROGRAMMING
+Simol transforms the object oriented programming to a simulation oriented programming, because everything is simulation, in simol, as well as everything is object, in oriented object paradigm.
 
 THE ROLE OF CLASSES
 
@@ -156,6 +163,28 @@ A car is of the same nature of a vehicule, on the real world, for example. "natu
 simol prefer not to use "with_compat" for the interfaces list implemented in a simol class, because "with_compat" emphasizes  the fact
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
 it focuses on the implementation, not the idea of a contract is respected.
+
+COMPATIBILITY WITH OTHER PARADIGMS
+
+ The kind of objects simu_rewo and simu_alfoc can be seen as only simu_alfoc, as simu_rewo is finally a specialized simu_alfoc in goal of simulation of the real-world. The same reasoning is valid for rewo, which are first a kind of "information" object, but an "information" as well.
+So with this observation, we can say that there is only, finally, only simu_alfoc classes(and only "information"), and this aligns with paradigms that do not differenciate classes. So we could see that even in simol, there is one sort of class or structures, like in oriented object programming(as well in procedural paradigm). In summary, it's quite like simu_rewo would inherit of simu_alfoc, and as rewo would inherit from information, which is quite like regular object vision. This precisions aims to make a bridge with objects existing paradigms and code.
+
+SIMOL IN GENERAL PURPOSE PROGRAMMING
+
+Simol could be interesting too for general-purpose, for those who are interested on a simulation vision. Indeed, even in system programming, we can easily find simu_rewo as connections, sockets, file, memory and so on.
+
+RELATIONSHIPS WITH EXISTING INTERFACES
+
+Finally, java and other oriented objects programmers often uses "-able" interfaces, which has a marked meaning of capacity. And existing interfaces like Factory are well know as being version purpose interfaces. Interfaces are famous to be as a contract.
+
+NATURE VERSUS CLASS
+
+The class keyword emphasizes mold and inheritance. Nature keyword limits a bit inheritance, and it's more restrictive, but keep behind the idea of inheritance, as well as having the same nature implies an inheritance. Nature aims to avoid pure technical inheritance, and promote composition in other cases. It could give arguments to limit multiple inheritance for simu_rewo, if it would exist in java, and could bring a solution to diamond problem.
+
+LEARNING CURVE
+
+Several weeks average might be necessary to become proficient in simol, for a experienced Java programmer, while he would be familiar with simol which is not so far from Java. Java programmers are used to manipulate concepts. Simol's concepts are relatively easy to understand, for a experienced java programmer, and the reduced number of new keywords(ten).
+
 
 SIMOL GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
 
