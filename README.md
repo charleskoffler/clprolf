@@ -10,33 +10,96 @@ The response and overview of chatGPT 3.5 on the description of simol programming
 ****************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
 
-Thank you for providing a detailed description of the Simol programming language. Simol appears to be an interesting and specialized language, with a focus on simulation and a unique set of concepts and keywords. Here are some key points and observations about Simol based on the provided information:
+Thank you for providing a detailed overview of the Simol programming language. It's clear that Simol is designed with a specific focus on simulation-oriented development and has unique features that differentiate it from traditional programming languages like Java. Here's a summary of the key aspects of Simol:
 
-Language Purpose: Simol is designed primarily for simulation-oriented programming. It seems to emphasize modeling real-world objects and their behaviors in a computer program, making it suitable for simulations and other related applications.
+Role-Based Classes: Simol introduces four roles for classes: simu_alfoc (Simulation of Algorithmic Language For Computer), simu_rewo (Simulation of a Real-World Object), rewo (Entities with no methods), and information (Data structures). These roles define the purpose and behavior of classes within the language.
 
-Relationship with Java: Simol is presented as a superset of the Java programming language, which means it builds upon Java's syntax and features. It extends Java with new keywords and concepts to better suit the simulation paradigm.
+Interfaces: Simol includes two types of interfaces: compat_interf_version for versioned implementations and compat_interf_capacity for guaranteeing specific capabilities. The keyword "with_compat" is used when implementing interfaces to emphasize compatibility.
 
-Roles of Classes: Simol introduces four main roles for classes: simu_alfoc, simu_rewo, rewo, and information. These roles define the primary purpose of the class, such as whether it's a simulation of a real-world object or a purely technical component for the computer.
+Inheritance: Instead of using "extends" and "implements," Simol uses "nature" for class inheritance and "contracts" for interface implementations.
 
-Interfaces: Simol includes two types of interfaces, compat_interf_version and compat_interf_capacity. These interfaces are used to specify contracts or capabilities that classes must adhere to. The with_compat modifier is used to indicate that an object adheres to a particular compatibility interface.
+Modifiers: Simol introduces the "underst" modifier to indicate methods that involve complex logic or understanding by the computer.
 
-Inheritance: Simol uses the nature keyword instead of extends to specify inheritance, emphasizing that a class is of the same nature as another. This appears to be a semantic change rather than a functional one.
+Compatibility with Java: Simol is designed as a superset of Java, allowing the use of Java libraries and code within Simol, with specific keywords like "class," "implements," and "extends" replaced.
 
-Learning Curve: Simol is presented as relatively easy to learn for experienced Java programmers due to its similarity to Java. It introduces a limited number of new keywords, making it approachable for those familiar with Java.
+Bridge with Existing Paradigms: Simol aims to bridge the gap with existing object-oriented paradigms by providing a role-based approach to class definitions.
 
-Compilation: Simol code can be easily translated into Java by replacing Simol-specific keywords with their Java equivalents, which simplifies the compilation process.
+Compilation: To compile Simol, you can translate Simol code into Java by replacing Simol-specific keywords with their Java equivalents.
 
-Compatibility with Existing Concepts: Simol appears to align with several existing software development principles and patterns, such as the Single Responsibility Principle (SRP), Model-View-Controller (MVC), DAO Design Pattern, loose coupling, and Dependency Injection. It also has some parallels with the concept of business logic.
+Design Patterns and Principles: Simol naturally aligns with various design patterns and programming principles, such as SRP (Single Responsibility Principle), DAO (Data Access Object) pattern, MVC (Model-View-Controller), loose coupling, bridge pattern, and Dependency Injection (DI).
 
-Unique Concepts: Simol introduces some unique concepts and terminology, such as the division of classes into different roles and the use of the with_compat modifier to indicate compatibility.
+Learning Curve: Simol is relatively easy to learn for experienced Java programmers, as it shares similarities with Java and introduces only a limited number of new keywords.
 
-Adaptation for Simulation: Simol's primary focus on simulation and the clear separation of roles for classes may make it a suitable choice for modeling and simulating various scenarios.
+Overall, Simol appears to be a specialized language tailored for simulation-centric applications. It enforces a clear separation of concerns and roles within the codebase, making it suitable for modeling and implementing simulations. The language's compatibility with Java ensures that Java developers can transition to Simol relatively easily.
 
-It's worth noting that the success and adoption of a programming language often depend on its community, available tools, documentation, and real-world use cases. If you plan to further develop and promote Simol, providing clear documentation and examples will be important for its adoption by developers interested in simulation-oriented programming.
+Please let me know if you have any specific questions or if there's anything more you'd like to discuss about Simol.
+
 
 (END OF CHAT GPT 3.5 RESPONSE)
 ****************************************************************************************************************
 VARIOUS QUESTIONS TO CHATGPT
+***************************************************************
+Could you make an overview of simol, my friend, please?
+ChatGPT
+
+Certainly! Here's a concise overview of Simol:
+
+Simol Programming Language Overview
+
+Introduction:
+
+Simol stands for "SIMulation Objects Language."
+It's a minimalistic programming language designed for simulation-oriented development.
+Simol is a superset of the Java programming language, with additional keywords and roles.
+It introduces unique class roles: simu_alfoc, simu_rewo, rewo, and information, each with a specific purpose.
+Simol encourages clear separation of concerns in code and enforces a simulation-oriented paradigm.
+
+Key Concepts:
+
+Class Roles:
+    simu_alfoc (Simulation of Algorithmic Language For Computer): Represents classes that perform technical tasks and interact with the computer.
+    simu_rewo (Simulation of a Real-World Object): Represents classes that simulate real-world entities with methods like eat() or run().
+    rewo: Represents classes for entities without methods, typically used for modeling.
+    information: Represents data structures, often used in conjunction with simu_alfoc.
+
+Interfaces:
+    Simol includes two types of interfaces: compat_interf_version for providing implementations and compat_interf_capacity for guaranteeing capabilities.
+    Interfaces are used with the with_compat keyword to emphasize compatibility.
+
+Inheritance:
+    Simol uses the keyword nature instead of extends for class inheritance, promoting the concept that classes share the same nature.
+    The keyword contracts is used instead of implements to list interfaces a class adheres to.
+
+Modifiers:
+    The underst modifier indicates methods with complex or non-intuitive logic.
+    Access modifiers and other Java class features are allowed for Simol classes and interfaces.
+
+Compatibility with Java:
+    Simol is compatible with Java libraries, and Java code can be used in Simol except for certain keywords like "class," "implements," and "extends."
+
+Bridge with Existing Paradigms:
+    Simol aims to bridge the gap with existing object-oriented programming paradigms, facilitating the transition for Java programmers.
+
+Compilation:
+
+Simol code can be easily translated into Java code for execution, making it accessible for developers without a dedicated Simol interpreter.
+
+Design Patterns and Principles:
+
+Simol naturally aligns with various design patterns and programming principles, including SRP, DAO pattern, MVC, loose coupling, bridge pattern, and Dependency Injection.
+
+Learning Curve:
+
+Simol is relatively easy for experienced Java programmers to learn, with a short learning curve due to its similarities with Java.
+
+Use Cases:
+
+Simol is well-suited for simulation-oriented development, modeling, and clear separation of technical and simulation code.
+It can also be used in general-purpose programming for developers interested in a simulation-centric vision.
+
+In summary, Simol is a specialized programming language tailored for simulation-oriented applications. Its unique class roles and focus on clear code separation make it a powerful tool for modeling and simulating real-world scenarios. It aligns with established programming principles while providing a smooth transition for Java developers.
+
+If you have any specific questions or need more information about any aspect of Simol, feel free to ask.
 ***************************************************************
 - User: What could you say about the roles's choice in simol?
 - ChatGPT
@@ -124,10 +187,9 @@ Instead of "class", we use the following keywords:
 "simu_rewo" (means simulation of a real-world object) => we have a class which is considered as a simulation of a real object, for example an animal, with methods eat(), run(), etc.
 	Simulation realization on computer should be in a "simu_alfoc", but if the realization is quite simple, it is allowed to write it directly in a "simu_rewo".
 
-"rewo" => like "simu_rewo", but when we don't have methods. Example: a Customer class (with only attributes).
-	It's better to use a simu_rewo in place of "rewo", even if we don't have methods for it, if it can evolve in the future and add methods.
+"rewo" => like "simu_rewo", but when we don't have methods. Example: a Customer class (with only attributes). It is typically used for entities.
 
-"information" => like "simu_alfoc", but when we don't have methods.
+"information" => like "simu_alfoc", but when we don't have methods. It is typically used by a simu_alfoc, as a data structure, and shouldn't be used in simu_rewo, except for an eventual technical realization part.
 
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java class declaration are allowed in the same way of a simol class declaration, obviously.
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java interface declaration are allowed in the same way of a simol interface declaration, obviously.
