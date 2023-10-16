@@ -1,11 +1,6 @@
 Simol compiler versions
 
-THIS MAVEN PROJECT IS USED ESPECIALLY TO GENERATE SIMOL COMPILER WITH ANTLR4.
-THE ECLIPSE PROJECT "SIMOL_COMPILER_EXAMPLES" CONTAINS A COPY OF GENERATED SIMOL COMPILER WITH CUSTOM CLASSES.
 
-YOU CAN USE ECLIPSE (JAVA EDITOR ON .SIMO) OR NOTEPAD++ TO EDIT .simo code(CHOOSE Langage->Java, for code coloration),
-FOR EXAMPLE.
+1.0 2023/10/16	First release. Simol compiler compiles in java a simol file passed in argument. Maven project. The grammar is based on a java 8 grammar(antlr4-grammars). The parser is generated from antlr4.
 
-1.0 2023/10/14	Syntaxic analysis works, the simol code is in a string. Display the errors in the console. Simol's grammar added to java grammar's of antlr4(java 8).
-	Compilation with windows batchs, by hand, because maven compile didn't work correctly for me. mvn antrl4:antrl4 to compile the grammar.
 		

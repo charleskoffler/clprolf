@@ -1,4 +1,4 @@
-Simol compiler.  2023/10/16
+Simol compiler. 2023/10/16
 Author Charles Koffler, M.I.T License
 https://github.com/charleskoffler/simol-language
 
