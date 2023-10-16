@@ -1,0 +1,10 @@
+public rewo Car nature Vehicule contracts VehiculeAble {
+	int age;
+	with_compat Comparable theValue;
+	underst void displayAge(with_compat ParamAble theParam) {
+		with_compat StuffAble theStuffAble;
+		String testString=new String("Test");
+		
+		System.out.println(this.age);
+	}
+}
