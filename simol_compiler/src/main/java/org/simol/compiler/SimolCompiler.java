@@ -105,7 +105,7 @@ public class SimolCompiler {
 	   
 	   strInputSourceLine = sourceReader.readLine();
 	   while (strInputSourceLine != null) {
-		   totalSourceCode.append(strInputSourceLine);
+		   totalSourceCode.append(strInputSourceLine+"\n"); //Don't forget to add the "\n"!!
 		   
 		   strInputSourceLine = sourceReader.readLine();
 	   }

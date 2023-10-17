@@ -10,7 +10,7 @@ package org.simol.compiler;
 	Author Charles Koffler, M.I.T License. 2023/10/16
 	https://github.com/charleskoffler/simol-language
 
-	v1.0 2023/10/16 Simol compiler compiles in java a simol file passed in argument. Maven project. The grammar is based on a java 8 grammar(antlr4-grammars). The parser is generated from antlr4.
+	1.1.0 2023/10/17	Bug end of line correction. Added dao example, and compiled with simol compiler, then javac compiler.
 	
 */
  

@@ -1,6 +1,6 @@
 Simol compiler versions
 
 
-1.0 2023/10/16	First release. Simol compiler compiles in java a simol file passed in argument. Maven project. The grammar is based on a java 8 grammar(antlr4-grammars). The parser is generated from antlr4.
-
+1.0.0 2023/10/16	First release. Simol compiler compiles in java a simol file passed in argument. Maven project. The grammar is based on a java 8 grammar(antlr4-grammars). The parser is generated from antlr4.
+1.1.0 2023/10/17	Bug end of line correction. Added dao example, and compiled with simol compiler, then javac compiler.
 		
