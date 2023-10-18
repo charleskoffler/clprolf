@@ -328,6 +328,9 @@ SIMOL CODE EDITORS
 simol sources can be open with Eclipse and choosing open with java editor, or with notepad+++->java language, and so on.
 You can format the generated java code with Eclipse, for example, right clic on the java generated file, source, format.
 
+SIMOL AND JAVA LIBRARIES
+In order to help users which would want to use existing java libraries as simol, documents contening a classification proposal of java usual language libraries exist and will grow.
+For example, "simu_rewo JPanel nature JComponent contracts java.awt.ImageObserver, java.awt.MenuContainer", or "compat_interf_capacity (java.awt.)MenuContainer". These documents are not intended to be complete.
 
 COMPATIBLE WITH EXISTING CONCEPTS
 Some simol concepts used can be compared finally with some existing concepts, like the concept of business logic.

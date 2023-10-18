@@ -5,25 +5,70 @@ CLASSES
 
 - java.awt
 
-simu_rewo Component nature java.lang.Object
-simu_rewo Container nature Component
+simu_rewo Component nature java.lang.Object contracts ImageObserver, MenuContainer, Serializable
+simu_rewo Container nature Component contracts ImageObserver, MenuContainer, Serializable
+simu_rewo Frame nature Window contracts ImageObserver, MenuContainer, Serializable, Accessible
+simu_rewo Window nature Container contracts ImageObserver, MenuContainer, Serializable, Accessible
+simu_rewo BorderLayout nature java.lang.Object contracts LayoutManager, LayoutManager2, Serializable
+
+- java.awt.event
+
+simu_rewo ActionEvent nature (java.awt.)AWTEvent contracts Serializable
+simu_rewo AWTEvent nature (java.util.)EventObject contracts Serializable
+
+
+- java.util
+
+simu_rewo EventObject nature (java.lang.)Object contracts Serializable
 
 - javax.swing
 
-simu_rewo JComponent nature java.awt.Container
+simu_rewo JComponent nature java.awt.Container contracts ImageObserver, MenuContainer, Serializable
 simu_rewo JPanel nature JComponent contracts java.awt.ImageObserver, java.awt.MenuContainer
+simu_rewo JButton nature AbstractButton contracts ImageObserver, ItemSelectable, MenuContainer, Serializable, Accessible, SwingConstants
+simu_rewo AbstractButton nature JComponent contracts ImageObserver, ItemSelectable, MenuContainer, Serializable, SwingConstants
+simu_rewo JFrame nature (java.awt.)Frame contracts ImageObserver, MenuContainer, Serializable, Accessible, RootPaneContainer, WindowConstants
+simu_rewo JLabel nature JComponent contracts ImageObserver, MenuContainer, Serializable, Accessible, SwingConstants
+simu_rewo JTextField nature (javax.swing.text.)JTextComponent contracts ImageObserver, MenuContainer, Serializable, Accessible, Scrollable, SwingConstants
+simu_rewo JTextArea nature (javax.swing.text.)JTextComponent contracts ImageObserver, MenuContainer, Serializable, Accessible, Scrollable
+simu_rewo JScrollPane nature Jcomponent contracts ImageObserver, MenuContainer, Serializable, Accessible, ScrollPaneConstants
+
+
+- javax.swing.text
+simu_rewo JTextComponent nature (javax.swing.)JComponent contracts ImageObserver, MenuContainer, Serializable, Accessible, Scrollable
+
 
 INTERFACES
 
 - java.awt
 
-compat_interf_capacity ImageObserver : method imageUpdate
-compat_interf_capacity MenuContainer few methods
+compat_interf_capacity ImageObserver
+compat_interf_capacity MenuContainer
+compat_interf_capacity ItemSelectable
+compat_interf_capacity LayoutManager
+compat_interf_capacity LayoutManager2 extends LayoutManager
+
+- java.awt.event
+
+compat_interf_capacity ActionListener extends (java.util.)EventListener
 
 - java.io
 
 compat_interf_capacity Serializable
 
+- java.util
+
+compat_interf_capacity EventListener
+
 - javax.accessibility
 
 compat_interf_capacity Accessible
+
+- javax.swing
+
+compat_interf_capacity SwingConstants
+compat_interf_capacity RootPaneContainer
+compat_interf_capacity WindowConstants
+compat_interf_capacity Scrollable
+compat_interf_capacity ScrollPaneConstants
+
