@@ -1,0 +1,13 @@
+package org.simol.examples.design_patterns.mvc;
+
+/* 2023/10/23 A simol example of MVC design pattern implementation, from a MVC example in the text file. */
+
+// Just an app launcher.
+public simu_alfoc WeatherApp {
+
+	public static void main(String[] args) {
+		//Just the simulation to instanciate, and it will displayed too, by the MeteoRealiz.
+        WeatherExpert controller = new WeatherExpert();
+	}
+
+}

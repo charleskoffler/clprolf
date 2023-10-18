@@ -1,0 +1,29 @@
+Simol proposals for java SE 8 libraries
+=======================================
+
+CLASSES
+
+- java.awt
+
+simu_rewo Component nature java.lang.Object
+simu_rewo Container nature Component
+
+- javax.swing
+
+simu_rewo JComponent nature java.awt.Container
+simu_rewo JPanel nature JComponent contracts java.awt.ImageObserver, java.awt.MenuContainer
+
+INTERFACES
+
+- java.awt
+
+compat_interf_capacity ImageObserver : method imageUpdate
+compat_interf_capacity MenuContainer few methods
+
+- java.io
+
+compat_interf_capacity Serializable
+
+- javax.accessibility
+
+compat_interf_capacity Accessible
