@@ -1,0 +1,30 @@
+package org.simol.examples.design_patterns.composite;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+// Composite class
+simu_rewo Folder contracts FileComponent {
+    private String name;
+    private List<FileComponent> children = new ArrayList<>();
+
+    public Folder(String name) {
+        this.name = name;
+    }
+
+    public void add(with_compat FileComponent component) {
+        children.add(component);
+    }
+
+    public void remove(with_compat FileComponent component) {
+        children.remove(component);
+    }
+
+    public void display() {
+        System.out.println("Folder: " + name);
+        for (with_compat FileComponent component : children) {
+            component.display();
+        }
+    }
+}
