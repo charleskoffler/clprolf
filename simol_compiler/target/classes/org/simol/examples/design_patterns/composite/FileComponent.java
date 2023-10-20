@@ -1,1 +1,0 @@
-package org.simol.examples.design_patterns.composite;public interface FileComponent{void display();}
