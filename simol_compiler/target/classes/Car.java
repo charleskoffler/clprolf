@@ -1,0 +1,1 @@
+public class Car extends Vehicule implements VehiculeAble{int age;Comparable theValue;void displayAge(ParamAble theParam){StuffAble theStuffAble;String testString=new String("Test");System.out.println(this.age);}}

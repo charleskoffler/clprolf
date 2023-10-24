@@ -1,4 +1,4 @@
-public rewo Car nature Vehicule contracts VehiculeAble {
+public simu_real_world_obj Car nature Vehicule contracts VehiculeAble {
 	int age;
 	with_compat Comparable theValue;
 	underst void displayAge(with_compat ParamAble theParam) {

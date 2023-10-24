@@ -50,9 +50,9 @@ null
 'void'
 'volatile'
 'while'
-'simu_rewo'
-'simu_alfoc'
-'rewo'
+'simu_real_world_obj'
+'simu_comp_worker'
+'real_world_obj'
 'information'
 'nature'
 'contracts'
@@ -170,9 +170,9 @@ TRY
 VOID
 VOLATILE
 WHILE
-SIMU_REWO
-SIMU_ALFOC
-REWO
+SIMU_REAL_WORLD_OBJ
+SIMU_COMP_WORKER
+REAL_WORLD_OBJ
 INFORMATION
 NATURE
 CONTRACTS

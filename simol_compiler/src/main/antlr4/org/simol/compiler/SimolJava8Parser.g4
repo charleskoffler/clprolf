@@ -281,9 +281,9 @@ normalClassDeclaration
 	;
 	
 simolRole
-	: 'simu_rewo'
-	| 'simu_alfoc'
-	| 'rewo'
+	: 'simu_real_world_obj'
+	| 'simu_comp_worker'
+	| 'real_world_obj'
 	| 'information'
 	;
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 
 // Composite class
-simu_rewo Folder contracts FileSystemComponent {
+simu_real_world_obj Folder contracts FileSystemComponent {
     private String name;
     private List<FileSystemComponent> children = new ArrayList<>();
 
@@ -28,7 +28,7 @@ simu_rewo Folder contracts FileSystemComponent {
         }
     }
 
-    //Technical realization of the simulation. Should be placed in a simu_alfoc, but so simple to put here!
+    //Technical realization of the simulation. Should be placed in a simu_comp_worker, but so simple to put here!
     private void display() {
         System.out.println("Folder: " + name);
     }

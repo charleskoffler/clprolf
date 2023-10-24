@@ -24,18 +24,18 @@ public class SimolJava8Parser extends Parser {
 		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
 		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
 		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
-		WHILE=50, SIMU_REWO=51, SIMU_ALFOC=52, REWO=53, INFORMATION=54, NATURE=55, 
-		CONTRACTS=56, COMPAT_INTERF_VERSION=57, COMPAT_INTERF_CAPACITY=58, WITH_COMPAT=59, 
-		UNDERST=60, IntegerLiteral=61, FloatingPointLiteral=62, BooleanLiteral=63, 
-		CharacterLiteral=64, StringLiteral=65, NullLiteral=66, LPAREN=67, RPAREN=68, 
-		LBRACE=69, RBRACE=70, LBRACK=71, RBRACK=72, SEMI=73, COMMA=74, DOT=75, 
-		ASSIGN=76, GT=77, LT=78, BANG=79, TILDE=80, QUESTION=81, COLON=82, EQUAL=83, 
-		LE=84, GE=85, NOTEQUAL=86, AND=87, OR=88, INC=89, DEC=90, ADD=91, SUB=92, 
-		MUL=93, DIV=94, BITAND=95, BITOR=96, CARET=97, MOD=98, ARROW=99, COLONCOLON=100, 
-		ADD_ASSIGN=101, SUB_ASSIGN=102, MUL_ASSIGN=103, DIV_ASSIGN=104, AND_ASSIGN=105, 
-		OR_ASSIGN=106, XOR_ASSIGN=107, MOD_ASSIGN=108, LSHIFT_ASSIGN=109, RSHIFT_ASSIGN=110, 
-		URSHIFT_ASSIGN=111, Identifier=112, AT=113, ELLIPSIS=114, WS=115, COMMENT=116, 
-		LINE_COMMENT=117;
+		WHILE=50, SIMU_REAL_WORLD_OBJ=51, SIMU_COMP_WORKER=52, REAL_WORLD_OBJ=53, 
+		INFORMATION=54, NATURE=55, CONTRACTS=56, COMPAT_INTERF_VERSION=57, COMPAT_INTERF_CAPACITY=58, 
+		WITH_COMPAT=59, UNDERST=60, IntegerLiteral=61, FloatingPointLiteral=62, 
+		BooleanLiteral=63, CharacterLiteral=64, StringLiteral=65, NullLiteral=66, 
+		LPAREN=67, RPAREN=68, LBRACE=69, RBRACE=70, LBRACK=71, RBRACK=72, SEMI=73, 
+		COMMA=74, DOT=75, ASSIGN=76, GT=77, LT=78, BANG=79, TILDE=80, QUESTION=81, 
+		COLON=82, EQUAL=83, LE=84, GE=85, NOTEQUAL=86, AND=87, OR=88, INC=89, 
+		DEC=90, ADD=91, SUB=92, MUL=93, DIV=94, BITAND=95, BITOR=96, CARET=97, 
+		MOD=98, ARROW=99, COLONCOLON=100, ADD_ASSIGN=101, SUB_ASSIGN=102, MUL_ASSIGN=103, 
+		DIV_ASSIGN=104, AND_ASSIGN=105, OR_ASSIGN=106, XOR_ASSIGN=107, MOD_ASSIGN=108, 
+		LSHIFT_ASSIGN=109, RSHIFT_ASSIGN=110, URSHIFT_ASSIGN=111, Identifier=112, 
+		AT=113, ELLIPSIS=114, WS=115, COMMENT=116, LINE_COMMENT=117;
 	public static final int
 		RULE_literal = 0, RULE_primitiveType = 1, RULE_numericType = 2, RULE_integralType = 3, 
 		RULE_floatingPointType = 4, RULE_referenceType = 5, RULE_classOrInterfaceType = 6, 
@@ -206,15 +206,15 @@ public class SimolJava8Parser extends Parser {
 			"'int'", "'interface'", "'long'", "'native'", "'new'", "'package'", "'private'", 
 			"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
 			"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
-			"'transient'", "'try'", "'void'", "'volatile'", "'while'", "'simu_rewo'", 
-			"'simu_alfoc'", "'rewo'", "'information'", "'nature'", "'contracts'", 
-			"'compat_interf_version'", "'compat_interf_capacity'", "'with_compat'", 
-			"'underst'", null, null, null, null, null, "'null'", "'('", "')'", "'{'", 
-			"'}'", "'['", "']'", "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", 
-			"'~'", "'?'", "':'", "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", 
-			"'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", 
-			"'->'", "'::'", "'+='", "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", 
-			"'%='", "'<<='", "'>>='", "'>>>='", null, "'@'", "'...'"
+			"'transient'", "'try'", "'void'", "'volatile'", "'while'", "'simu_real_world_obj'", 
+			"'simu_comp_worker'", "'real_world_obj'", "'information'", "'nature'", 
+			"'contracts'", "'compat_interf_version'", "'compat_interf_capacity'", 
+			"'with_compat'", "'underst'", null, null, null, null, null, "'null'", 
+			"'('", "')'", "'{'", "'}'", "'['", "']'", "';'", "','", "'.'", "'='", 
+			"'>'", "'<'", "'!'", "'~'", "'?'", "':'", "'=='", "'<='", "'>='", "'!='", 
+			"'&&'", "'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", 
+			"'^'", "'%'", "'->'", "'::'", "'+='", "'-='", "'*='", "'/='", "'&='", 
+			"'|='", "'^='", "'%='", "'<<='", "'>>='", "'>>>='", null, "'@'", "'...'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -226,18 +226,18 @@ public class SimolJava8Parser extends Parser {
 			"IMPLEMENTS", "IMPORT", "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE", 
 			"NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", 
 			"STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", 
-			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "SIMU_REWO", 
-			"SIMU_ALFOC", "REWO", "INFORMATION", "NATURE", "CONTRACTS", "COMPAT_INTERF_VERSION", 
-			"COMPAT_INTERF_CAPACITY", "WITH_COMPAT", "UNDERST", "IntegerLiteral", 
-			"FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", "StringLiteral", 
-			"NullLiteral", "LPAREN", "RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", 
-			"SEMI", "COMMA", "DOT", "ASSIGN", "GT", "LT", "BANG", "TILDE", "QUESTION", 
-			"COLON", "EQUAL", "LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", 
-			"ADD", "SUB", "MUL", "DIV", "BITAND", "BITOR", "CARET", "MOD", "ARROW", 
-			"COLONCOLON", "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
-			"AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN", "LSHIFT_ASSIGN", 
-			"RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "Identifier", "AT", "ELLIPSIS", "WS", 
-			"COMMENT", "LINE_COMMENT"
+			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "SIMU_REAL_WORLD_OBJ", 
+			"SIMU_COMP_WORKER", "REAL_WORLD_OBJ", "INFORMATION", "NATURE", "CONTRACTS", 
+			"COMPAT_INTERF_VERSION", "COMPAT_INTERF_CAPACITY", "WITH_COMPAT", "UNDERST", 
+			"IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", 
+			"StringLiteral", "NullLiteral", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
+			"LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "ASSIGN", "GT", "LT", "BANG", 
+			"TILDE", "QUESTION", "COLON", "EQUAL", "LE", "GE", "NOTEQUAL", "AND", 
+			"OR", "INC", "DEC", "ADD", "SUB", "MUL", "DIV", "BITAND", "BITOR", "CARET", 
+			"MOD", "ARROW", "COLONCOLON", "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", 
+			"DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN", 
+			"LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "Identifier", "AT", 
+			"ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -3226,9 +3226,9 @@ public class SimolJava8Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class SimolRoleContext extends ParserRuleContext {
-		public TerminalNode SIMU_REWO() { return getToken(SimolJava8Parser.SIMU_REWO, 0); }
-		public TerminalNode SIMU_ALFOC() { return getToken(SimolJava8Parser.SIMU_ALFOC, 0); }
-		public TerminalNode REWO() { return getToken(SimolJava8Parser.REWO, 0); }
+		public TerminalNode SIMU_REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.SIMU_REAL_WORLD_OBJ, 0); }
+		public TerminalNode SIMU_COMP_WORKER() { return getToken(SimolJava8Parser.SIMU_COMP_WORKER, 0); }
+		public TerminalNode REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.REAL_WORLD_OBJ, 0); }
 		public TerminalNode INFORMATION() { return getToken(SimolJava8Parser.INFORMATION, 0); }
 		public SimolRoleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);

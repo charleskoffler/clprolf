@@ -109,9 +109,9 @@ VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
 //simol tokens
-SIMU_REWO : 'simu_rewo';
-SIMU_ALFOC : 'simu_alfoc';
-REWO : 'rewo';
+SIMU_REAL_WORLD_OBJ : 'simu_real_world_obj';
+SIMU_COMP_WORKER : 'simu_comp_worker';
+REAL_WORLD_OBJ : 'real_world_obj';
 INFORMATION : 'information';
 NATURE : 'nature';
 CONTRACTS : 'contracts';

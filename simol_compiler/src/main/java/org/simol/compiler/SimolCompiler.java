@@ -21,16 +21,16 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 /*
  * 
  *  */
-// public simu_rewo SimolCompiler
+// public simu_real_world_obj SimolCompiler
 public class SimolCompiler {
 	public void compile(String fileName) throws URISyntaxException, IOException {
 		String totalSourceCode;
-		//simu_rewo
+		//simu_real_world_obj
 		ByteArrayOutputStream errorStream;
-		//simu_rewo
+		//simu_real_world_obj
         PrintStream originalErrorStream ;
 		
-		//simu_rewo
+		//simu_real_world_obj
 		totalSourceCode = this.readSimolSourceAsString(fileName);
 	   
 	    SimolJava8Lexer lexer = new SimolJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
@@ -82,12 +82,12 @@ public class SimolCompiler {
 	 */
 	private String readSimolSourceAsString(String simolResourceName) throws IOException, URISyntaxException {
 		String strInputSourceLine;
-		//simu_rewo of a string, with more capacities
+		//simu_real_world_obj of a string, with more capacities
 		StringBuffer totalSourceCode = new StringBuffer();
 		
-		//simu_rewo
+		//simu_real_world_obj
 	   File inputFile;
-	   //simu_rewo of a reader
+	   //simu_real_world_obj of a reader
 	   BufferedReader sourceReader;
 	   
 		/*String input = "public compat_interf_capacity ClientDAOFile {"
@@ -115,9 +115,9 @@ public class SimolCompiler {
 	}
 	
 	private void writeSimolAsStringToSourceFile(String simolResourceName, String totalSimolSourceString) throws URISyntaxException, IOException {
-		//simu_rewo
+		//simu_real_world_obj
 		File outputFile;
-		//simu_rewo
+		//simu_real_world_obj
 		BufferedWriter writer;
 		String path, newPath;
 		
