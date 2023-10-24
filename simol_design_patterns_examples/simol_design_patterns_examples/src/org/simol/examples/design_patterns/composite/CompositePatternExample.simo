@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.composite;
 
-public simu_alfoc CompositePatternExample {
+public simu_comp_worker CompositePatternExample {
     public static void main(String[] args) {
         Folder root = new Folder("Root");
         Folder documents = new Folder("Documents");

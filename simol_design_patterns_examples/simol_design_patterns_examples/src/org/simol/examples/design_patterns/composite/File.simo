@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.composite;
 
 // Leaf class
-simu_rewo File contracts FileComponent {
+simu_real_world_obj File contracts FileComponent {
     private String name;
 
     public File(String name) {

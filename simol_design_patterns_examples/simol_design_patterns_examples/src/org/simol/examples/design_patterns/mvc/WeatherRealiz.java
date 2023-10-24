@@ -15,9 +15,9 @@ import javax.swing.JLabel;;
 //View: WeatherRealiz displays the weather information
 //WeatherRealiz realizes the simulation of the human expert(for example), the controller, on a computer.
 //Here, it's only display and inputs.
-//public simu_alfoc WeatherRealiz
+//public simu_comp_worker WeatherRealiz
 public class WeatherRealiz {
-//Graphical components, in simol, could be viewed as simu_rewo, of real buttons, of a real machine.
+//Graphical components, in simol, could be viewed as simu_real_world_obj, of real buttons, of a real machine.
  private JFrame frame;
  private JTextField locationField;
  private JTextArea forecastArea;
@@ -25,7 +25,7 @@ public class WeatherRealiz {
  private WeatherExpert expert;	
 
  // It should be part of the graphicalComponent, by an inheritance.
- //public simu_rewo TextFieldFetchListener contracts ActionListener
+ //public simu_real_world_obj TextFieldFetchListener contracts ActionListener
  class TextFieldFetchListener implements ActionListener {
 	WeatherRealiz realiz;
 	
@@ -42,7 +42,7 @@ public class WeatherRealiz {
  public WeatherRealiz(WeatherExpert expert) {
 	 this.expert = expert;
 	 
-	 //instantiate the simu_rewo JFrame
+	 //instantiate the simu_real_world_obj JFrame
      frame = new JFrame("Weather Forecast");
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      frame.setSize(400, 200);

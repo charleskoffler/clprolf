@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.decorator;
 
-//public simu_rewo SimpleCoffee contracts Coffee
+//public simu_real_world_obj SimpleCoffee contracts Coffee
 public class SimpleCoffee implements Coffee {
     @Override
     public double getCost() {

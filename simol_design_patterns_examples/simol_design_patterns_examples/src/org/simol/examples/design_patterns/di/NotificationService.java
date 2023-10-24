@@ -2,7 +2,7 @@ package org.simol.examples.design_patterns.di;
 
 //A class that depends on a messaging service and uses dependency injection
 //NotificationService could be a simulation of a notification human worker.
-//public simu_rewo NotificationService
+//public simu_real_world_obj NotificationService
 public class NotificationService {
  private final /*with_contract*/ MessageService messageService; //Loose coupling is seen immediately.
 

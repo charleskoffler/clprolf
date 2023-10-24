@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.adapter;
 
 //Adapter class of the design pattern, that adapts OldSystem to NewSystem interface
-//public simu_alfoc NewSystemFromOld contracts NewSystem
+//public simu_comp_worker NewSystemFromOld contracts NewSystem
 public class NewSystemFromOld implements NewSystem {
  private OldSystem oldSystem;
 

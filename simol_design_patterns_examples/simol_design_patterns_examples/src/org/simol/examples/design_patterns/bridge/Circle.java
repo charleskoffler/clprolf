@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.bridge;
 
 //Concrete implementation for Circle
-/* public simu_rewo Circle nature Shape */
+/* public simu_real_world_obj Circle nature Shape */
 public class Circle extends Shape {
 	private int radius;
 

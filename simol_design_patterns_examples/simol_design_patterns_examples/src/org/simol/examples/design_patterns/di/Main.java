@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.di;
 
-//public simu_alfoc Main
+//public simu_comp_worker Main
 public class Main {
   public static void main(String[] args) {
       // Create instances of messaging services

@@ -3,7 +3,7 @@ package org.simol.examples.design_patterns.bridge;
 /* Example of simol bridge from java bridge pattern example. Illustrates a case where a compat_interf_version
  * cas used for loose compling. */
 
-//public simu_alfoc Main
+//public simu_comp_worker Main
 public class Main {
 
 	public static void main(String[] args) {

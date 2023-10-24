@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.decorator;
 
 //2023/10/02 Example of CoffeShopMaker in simol. I started from the java example in the text file
-//public simu_alfoc CoffeeShopMaker
+//public simu_comp_worker CoffeeShopMaker
 public class CoffeeShopMaker {
 
     public static void main(String[] args) {

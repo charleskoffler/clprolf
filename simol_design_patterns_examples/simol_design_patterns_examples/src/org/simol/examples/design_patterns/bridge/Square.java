@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.bridge;
 
 //Concrete implementation for Square
-// public simu_rewo Square nature Shape
+// public simu_real_world_obj Square nature Shape
 public class Square extends Shape {
 	private int sideLength;
 

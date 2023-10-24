@@ -5,7 +5,7 @@ import java.util.List;
 
 
 // Composite class
-simu_rewo Folder contracts FileComponent {
+simu_real_world_obj Folder contracts FileComponent {
     private String name;
     private List<FileComponent> children = new ArrayList<>();
 

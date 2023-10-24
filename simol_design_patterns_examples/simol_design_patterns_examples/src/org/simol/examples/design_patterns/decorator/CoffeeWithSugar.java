@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.decorator;
 
-// public simu_rewo CoffeeWithSugar nature CoffeeWithAdditional
+// public simu_real_world_obj CoffeeWithSugar nature CoffeeWithAdditional
 public class CoffeeWithSugar extends CoffeeWithAdditional {
 	    public CoffeeWithSugar(/* with_compat*/Coffee parentCoffee) {
 	        super(parentCoffee);

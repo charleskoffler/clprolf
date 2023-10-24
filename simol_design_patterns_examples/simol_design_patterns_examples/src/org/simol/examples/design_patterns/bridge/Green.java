@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.bridge;
 
-// public simu_rewo Green contracts Color
+// public simu_real_world_obj Green contracts Color
 public class Green implements Color {
 	@Override
     public void applyColor() {
