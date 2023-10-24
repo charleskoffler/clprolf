@@ -1,19 +1,19 @@
 package org.simol.snake_game;
 
-// simu_rewo
+// simu_real_world_obj
 import java.awt.Color;
-// simu_rewo
+// simu_real_world_obj
 import java.awt.Graphics;
-//simu_rewo
+//simu_real_world_obj
 import javax.swing.JLabel;
-//simu_rewo
+//simu_real_world_obj
 import javax.swing.JPanel;
 
 import org.simol.snake_game.Snake.SnakeLink;
 
 /* The real drawing container. */
 
-//public simu_rewo SnakeGlobalPanel nature JPanel
+//public simu_real_world_obj SnakeGlobalPanel nature JPanel
 public class SnakeGlobalPanel extends JPanel {
 	//Accessors
 	private SnakeWindow gameWindow;

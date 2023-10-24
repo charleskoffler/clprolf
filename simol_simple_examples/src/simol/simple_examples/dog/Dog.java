@@ -1,6 +1,6 @@
 package simol.simple_examples.dog;
 
-// public simu_rewo
+// public simu_real_world_obj
 public class Dog {
 	private String name;
 	private int age;

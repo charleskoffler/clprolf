@@ -1,6 +1,6 @@
 package org.simol.snake_game;
 
-// public rewo Food
+// public real_world_obj Food
 public class Food {
 	public enum FoodType {
 		APPLE_FRUIT, ORANGE_FRUIT

@@ -1,7 +1,7 @@
 package org.simol.snake_game;
 
 
-// public simu_rewo SnakeGameLifeScene
+// public simu_real_world_obj SnakeGameLifeScene
 public class SnakeGameLifeScene {
 	// In public visibility, for Snake, etc., accesses to the window, if needed(display).
 	
@@ -47,7 +47,7 @@ public class SnakeGameLifeScene {
 	public static int SCENE_COLUMNS_COUNT = 40;
 	
 	//A simple class representing a location a the life scene
-	// public rewo Place
+	// public real_world_obj Place
 	public static class Place {
 		int x;
 		int y;
@@ -58,7 +58,7 @@ public class SnakeGameLifeScene {
 	}
 	
 	public SnakeGameLifeScene()  {
-		//Create simu_rewo objects before the window.
+		//Create simu_real_world_obj objects before the window.
 		this.snake = new Snake(this, 0, "blue");
 		this.snake_two = new Snake(this, 19, "grey");
 		

@@ -1,11 +1,11 @@
 package org.simol.snake_game;
 
-/* could be seen as a simu_rewo of a mathematical set object. */
+/* could be seen as a simu_real_world_obj of a mathematical set object. */
 import java.util.ArrayList;
-/* could be seen as a simu_rewo of an expert. */
+/* could be seen as a simu_real_world_obj of an expert. */
 import java.util.Random;
 
-//public simu_rewo Snake contracts Runnable
+//public simu_real_world_obj Snake contracts Runnable
 public class Snake implements Runnable {
 	public static int LINKS_NUMBER = 20;
 	public static int SPEED = 100;
@@ -30,7 +30,7 @@ public class Snake implements Runnable {
 		LEFT_DIRECTION,
 		RIGHT_DIRECTION
 	}
-	// public rewo SnakeLink
+	// public real_world_obj SnakeLink
 	public class SnakeLink {
 		public int x;
 		public int y;
@@ -309,7 +309,7 @@ public class Snake implements Runnable {
 		
 		this.links.add(newLink);
 		//The snake make a noise while growing.
-		// This technical stuff was not placed in a simu_alfoc, because so simple!
+		// This technical stuff was not placed in a simu_comp_worker, because so simple!
 		java.awt.Toolkit.getDefaultToolkit().beep();
 		
 		return true; //We achieved the snake extension

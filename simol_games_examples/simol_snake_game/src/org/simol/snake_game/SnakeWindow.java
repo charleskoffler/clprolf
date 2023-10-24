@@ -1,18 +1,18 @@
 package org.simol.snake_game;
 
-//could be seen as a simu_rewo of a real key event.
+//could be seen as a simu_real_world_obj of a real key event.
 import java.awt.event.KeyEvent;
-//could be seen as a simu_rewo.
+//could be seen as a simu_real_world_obj.
 import java.awt.event.KeyListener;
-// simu_rewo of a physical machine tool, for example.
+// simu_real_world_obj of a physical machine tool, for example.
 import javax.swing.JFrame;
 
-// public simu_rewo SnakeWindow nature JFrame contracts KeyListener {
+// public simu_real_world_obj SnakeWindow nature JFrame contracts KeyListener {
 public class SnakeWindow extends JFrame implements Runnable, KeyListener {
 	private Thread worker;
 	
 	// Accessors
-	// A way to access to simu_rewo big brother object.
+	// A way to access to simu_real_world_obj big brother object.
 	// Only a getter.
 	private SnakeGameLifeSceneRealiz real;
 	
@@ -76,7 +76,7 @@ public class SnakeWindow extends JFrame implements Runnable, KeyListener {
 	}
 	
 	/* *************************** EVENT MANAGEMENT ******************* */
-	/* We're just calling the correct method of the simu_rewo. */
+	/* We're just calling the correct method of the simu_real_world_obj. */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		

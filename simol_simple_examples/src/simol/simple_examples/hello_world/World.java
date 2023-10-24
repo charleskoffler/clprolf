@@ -1,6 +1,6 @@
 package simol.simple_examples.hello_world;
 
-//public simu_rewo World
+//public simu_real_world_obj World
 public class World {
 	private String name;
 	

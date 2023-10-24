@@ -1,13 +1,13 @@
 package org.simol.snake_game;
 
-// simu_rewo of a mathemetical set
+// simu_real_world_obj of a mathemetical set
 import java.util.ArrayList;
-// simu_rewo of a random expert
+// simu_real_world_obj of a random expert
 import java.util.Random;
 
 import org.simol.snake_game.Food.FoodType;
 
-//public simu_rewo FoodExpert
+//public simu_real_world_obj FoodExpert
 public class FoodExpert {
 	public static int FOOD_COUNT = 40;
 	

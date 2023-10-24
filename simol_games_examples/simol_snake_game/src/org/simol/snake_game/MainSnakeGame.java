@@ -5,7 +5,7 @@ package org.simol.snake_game;
  * The display is with Swing, in a JFrame.
  * 
  * V3.1(20231010).
- * Added a realization simu_alfoc class, showing typical using of realization class in simol.
+ * Added a realization simu_comp_worker class, showing typical using of realization class in simol.
  * It acts much like a view of MVC. This simplify our present case, which was not so simple.
  * 
  * possible evolves:
@@ -16,7 +16,7 @@ package org.simol.snake_game;
  * @author Charles Koffler for simol language GitHub Repository
  *
  */
-//public simu_alfoc MainSnakeGame
+//public simu_comp_worker MainSnakeGame
 public class MainSnakeGame {
 	public static void main(String[] args) {
 		//Just create a life scene, and the simulation will be displayed.
