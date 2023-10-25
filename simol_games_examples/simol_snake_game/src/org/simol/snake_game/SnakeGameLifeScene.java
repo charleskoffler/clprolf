@@ -1,7 +1,9 @@
 package org.simol.snake_game;
 
+import org.simol.simolframework.java.Simu_real_world_obj;
 
 // public simu_real_world_obj SnakeGameLifeScene
+@Simu_real_world_obj
 public class SnakeGameLifeScene {
 	// In public visibility, for Snake, etc., accesses to the window, if needed(display).
 	

@@ -1,5 +1,7 @@
 package org.simol.snake_game;
 
+import org.simol.simolframework.java.Simu_comp_worker;
+
 /**
  * Snake game initially written in simol. It's a simple 2D snake game, with two players and two snakes.
  * The display is with Swing, in a JFrame.
@@ -17,6 +19,7 @@ package org.simol.snake_game;
  *
  */
 //public simu_comp_worker MainSnakeGame
+@Simu_comp_worker
 public class MainSnakeGame {
 	public static void main(String[] args) {
 		//Just create a life scene, and the simulation will be displayed.

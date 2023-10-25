@@ -5,9 +5,11 @@ import java.util.ArrayList;
 // simu_real_world_obj of a random expert
 import java.util.Random;
 
+import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.snake_game.Food.FoodType;
 
 //public simu_real_world_obj FoodExpert
+@Simu_real_world_obj
 public class FoodExpert {
 	public static int FOOD_COUNT = 40;
 	

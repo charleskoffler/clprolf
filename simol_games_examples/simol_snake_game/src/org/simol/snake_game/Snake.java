@@ -5,7 +5,12 @@ import java.util.ArrayList;
 /* could be seen as a simu_real_world_obj of an expert. */
 import java.util.Random;
 
+import org.simol.simolframework.java.Real_world_obj;
+import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.Underst;
+
 //public simu_real_world_obj Snake contracts Runnable
+@Simu_real_world_obj
 public class Snake implements Runnable {
 	public static int LINKS_NUMBER = 20;
 	public static int SPEED = 100;
@@ -31,10 +36,11 @@ public class Snake implements Runnable {
 		RIGHT_DIRECTION
 	}
 	// public real_world_obj SnakeLink
-	public class SnakeLink {
+	@Real_world_obj
+	public static class SnakeLink {
 		public int x;
 		public int y;
-		public LinkTypeEnum typeMaillon;
+		public LinkTypeEnum typeLink;
 	}
 	// Accessors
 	private ArrayList<SnakeLink> links;
@@ -104,14 +110,14 @@ public class Snake implements Runnable {
 			if (i!=0) {
 				randomForLink = rand.nextInt(2);
 				if (randomForLink==0) {
-					link.typeMaillon = LinkTypeEnum.FIRST_LINK;
+					link.typeLink = LinkTypeEnum.FIRST_LINK;
 				}
 				else {
-					link.typeMaillon = LinkTypeEnum.SECOND_LINK;
+					link.typeLink = LinkTypeEnum.SECOND_LINK;
 				}
 			}
 			else {
-				link.typeMaillon = LinkTypeEnum.HEAD_LINK;
+				link.typeLink = LinkTypeEnum.HEAD_LINK;
 			}
 			this.links.add(link);
 		}
@@ -137,6 +143,7 @@ public class Snake implements Runnable {
 	 */
 	//we used a 'underst', because it seems hard coding this.
 	//public boolean underst makeSliding
+	@Underst
 	public boolean makeSliding(SlidingType slidingType) {
 		SnakeLink headLink = this.links.get(0);
 		SnakeLink ancHeadLink, presentLink;
@@ -301,10 +308,10 @@ public class Snake implements Runnable {
 		randomNumber = randomExpert.nextInt(2);
 		
 		if (randomNumber==0) {
-			newLink.typeMaillon = LinkTypeEnum.FIRST_LINK;
+			newLink.typeLink = LinkTypeEnum.FIRST_LINK;
 		}
 		else {
-			newLink.typeMaillon = LinkTypeEnum.SECOND_LINK;
+			newLink.typeLink = LinkTypeEnum.SECOND_LINK;
 		}
 		
 		this.links.add(newLink);

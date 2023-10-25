@@ -9,11 +9,13 @@ import javax.swing.JLabel;
 //simu_real_world_obj
 import javax.swing.JPanel;
 
+import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.snake_game.Snake.SnakeLink;
 
 /* The real drawing container. */
 
 //public simu_real_world_obj SnakeGlobalPanel nature JPanel
+@Simu_real_world_obj
 public class SnakeGlobalPanel extends JPanel {
 	//Accessors
 	private SnakeWindow gameWindow;
@@ -72,7 +74,7 @@ public class SnakeGlobalPanel extends JPanel {
 			SnakeLink link = snake.getLinks().get(linkNumber);
 			
 			//Display of the link.
-			switch (link.typeMaillon) {
+			switch (link.typeLink) {
 				case HEAD_LINK:
 					if (snakeNumber==0) {
 						g.setColor(Color.RED);

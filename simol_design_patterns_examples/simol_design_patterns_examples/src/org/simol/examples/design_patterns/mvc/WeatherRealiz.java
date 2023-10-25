@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;;
@@ -16,6 +19,7 @@ import javax.swing.JLabel;;
 //WeatherRealiz realizes the simulation of the human expert(for example), the controller, on a computer.
 //Here, it's only display and inputs.
 //public simu_comp_worker WeatherRealiz
+@Simu_comp_worker
 public class WeatherRealiz {
 //Graphical components, in simol, could be viewed as simu_real_world_obj, of real buttons, of a real machine.
  private JFrame frame;

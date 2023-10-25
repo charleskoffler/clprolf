@@ -1,6 +1,9 @@
 package org.simol.snake_game;
 
+import org.simol.simolframework.java.Real_world_obj;
+
 // public real_world_obj Food
+@Real_world_obj
 public class Food {
 	public enum FoodType {
 		APPLE_FRUIT, ORANGE_FRUIT

@@ -1,6 +1,9 @@
 package simol.simple_examples.dog;
 
+import org.simol.simolframework.java.Simu_real_world_obj;
+
 // public simu_real_world_obj
+@Simu_real_world_obj
 public class Dog {
 	private String name;
 	private int age;
