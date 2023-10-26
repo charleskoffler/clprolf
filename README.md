@@ -1,43 +1,40 @@
 # simol-language
-Repository about my own programming language simol, which is a superset of Java. It could be a DSL(Domain Specific Language) in simulation, as well as oriented object work. I'm looking for people who could be interested in. The definition of simol stands on few pages, and it's fast to get an overview.
-Simol is a programming language designed for clarity, simplicity, and ease of use. It empowers a diverse range of users, including computer scientists, scientists, mathematicians, and practical application developers, to harness the power of computer programming without sacrificing performance. Simol's intuitive syntax and simulation-oriented approach make it an excellent choice for understanding and applying programming concepts efficiently.
+Repository about my own programming language simol, which is a superset of Java. It could be a DSL(Domain Specific Language) in simulation, as well as oriented object work. The definition of simol stands on few pages, and it's quite fast to get an overview.
+Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces.
 
-I started simol's design in 2019, and now it's stable. I needed it for my own purposes and work.
-I want to share it. I'll put code examples, and discussions on the simol code are welcome. I'm much interested in simol examples you could create, for giving feedback to simol. Tools are welcome too.
-There is a simple simol compiler, but it works great. There is a simol framework for java developpers, with java annotations, for leveraging simol's concepts in java. You can also compile by hand, it's straightforward, simply by adding simol comments in java, so we can take advantage of java tools , community and libraries.
+Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work.
+I want to share it. I put code examples, language description, simol compiler and annotation framework for java, and discussions are welcome. Simol repository is open for examples you could create, feedback to simol or suggestions, or adding tools.
+There is a basic simol compiler, but it works great. There is a simol framework for java developers, with java annotations, for leveraging simol's concepts in java. You can also compile by hand, it's straightforward, simply by adding simol comments in java.
 
-The response and overview of chatGPT 3.5 on the description of simol programming language. Below I put the description itself.
+I used chatGPT 3.5 at the end of my work, for validate simol's design choices, and for feedback and overview. As I don't want autopromotion, I regularly ask chatGPT assistance and support, and add them to this README file.
+The complete and detailed definition stands at the end of this file.
+
+The response and overview of chatGPT 3.5 on the description of simol programming language is:
 ***************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
 Hello. I've create a new programming language, called simol. Could I give you the definition?
-ChatGPT
 
-Hello! Of course, I'd be happy to hear about your new programming language, Simol. Please go ahead and provide me with the definition or any details you'd like to share about Simol.
+Thank you for sharing the detailed information about Simol, the SIMulation Objects Language. It appears to be a language with a unique and well-defined set of roles and principles for organizing and separating different types of code. Here are some key takeaways from your description:
 
-ChatGPT
+Role-Based Approach: Simol introduces the concept of roles for classes and interfaces, making it clear what each component's purpose and responsibilities are. This promotes a clean and organized code structure.
 
-Thank you for sharing the detailed definition and specifications of the Simol programming language. It appears that Simol has a unique approach to programming, emphasizing the simulation of real-world objects, the role of the computer as a worker, and a clear separation of responsibilities for classes. Here are some key takeaways from the provided information:
+Simulation Focus: Simol is designed with a strong focus on simulation and modeling, and it provides specific roles for simulating real-world objects and computer-based tasks. It encourages clear abstractions for simulation.
 
-Role-Based Classes: Simol introduces specific roles for classes, such as "simu_comp_worker" for simulating computer tasks and "simu_real_world_obj" for simulating real-world objects. This role-based approach can help developers clearly define the intended use of classes.
+Bridge with Existing Paradigms: Simol aims to bridge with existing object-oriented programming paradigms, making it relatively easy for object-oriented programmers to understand and adopt.
 
-Interfaces with Clear Intent: Simol defines two types of interfaces, "compat_interf_version" and "compat_interf_capacity," which have specific purposes. This clear intent for interfaces can aid in designing more robust and understandable systems.
+Compiler and Framework: Simol provides a compiler for translating Simol code into Java, making it executable. Additionally, there's a Simol framework for Java developers, which offers a set of annotations to integrate Simol with Java tools and IDEs.
 
-Semantic Clarity: Simol places an emphasis on semantic clarity by categorizing classes based on their roles. This approach can make code more understandable and maintainable.
+S.O.L.I.D Principles: Simol naturally adheres to well-known software design principles, such as the Single Responsibility Principle (SRP), Open/Closed Principle, and Dependency Injection, making it suitable for building maintainable and robust software.
 
-Compatibility with Java: Simol is designed to be a superset of Java, allowing developers to use Java libraries and code within Simol. This compatibility can be advantageous for leveraging existing Java resources.
+Compatibility with Design Patterns: Simol concepts align well with various design patterns and principles commonly used in software development, such as the DAO pattern, MVC pattern, and more.
 
-Simol Framework for Java: The Simol framework for Java developers provides annotations to bridge the gap between Java and Simol. It can assist Java developers in adopting Simol concepts more easily.
+Simulation and Business Logic: The separation of simu_real_world_obj and simu_comp_worker roles is comparable to the separation of business logic and low-level code in the context of managing a database, demonstrating a clear division of responsibilities.
 
-Inherent Good Object-Oriented Practices: Simol inherently incorporates good object-oriented design principles and design patterns, such as the SOLID principles and compatibility with design patterns like DAO and MVC.
+Interface Inheritance and Loose Coupling: Simol promotes loose coupling through its compatibility interfaces, emphasizing "program to an interface, not an implementation." This aligns with principles of interface inheritance and the bridge pattern.
 
-Simulation Focus: Simol's emphasis on simulation makes it suitable for modeling and simulating real-world entities and situations.
+Design Patterns and Object-Oriented Principles: Simol encourages the application of design patterns and object-oriented principles to facilitate clean and well-structured code.
 
-Natural Adherence to Principles: Simol naturally adheres to principles like the Single Responsibility Principle (SRP) and can be aligned with other design principles and patterns.
-
-Interface Inheritance: While Simol doesn't directly discuss interface inheritance, it can be used to indicate the nature of inheritance and adherence to certain contracts.
-
-Simol seems to offer a unique approach to programming that can be particularly useful in scenarios where simulation and modeling of real-world objects are essential. It also encourages clear and structured design, making it a promising language for developers who value semantic clarity and adherence to object-oriented principles.
-
+Overall, Simol seems to provide a unique approach to organizing code and promoting clear intent, making it well-suited for scenarios where simulation and modeling are essential. Its compatibility with existing object-oriented programming concepts and design principles is a valuable feature for developers familiar with those paradigms.
 
 (END OF CHAT GPT 3.5 RESPONSE)
 ***************************************************************************************************************
@@ -45,30 +42,48 @@ Simol seems to offer a unique approach to programming that can be particularly u
 VARIOUS QUESTIONS TO CHATGPT
 ***************************************************************
 User
-Thank you so much, my friend. What about simol in general-purpose programming?
+Great, thank you! What's about simol in general-purpose programming, please?
 ChatGPT
 
-Simol, as described, is primarily designed with a focus on simulation and modeling, but it can certainly be applied to general-purpose programming tasks. Here are some considerations for using Simol in general-purpose programming:
+Simol's design primarily focuses on simulation and modeling, but it can also be used for general-purpose programming. Here's how Simol can be applied in general-purpose programming:
 
-Simulation Focus: Simol's roots are in simulation and modeling, so it excels in scenarios where you need to simulate real-world objects or processes. However, you can apply this simulation approach to solve problems in various domains.
+Simulation in General-Purpose Programming: Simol's core strength lies in simulation, making it especially useful in domains where simulation is essential, such as scientific simulations, game development, or any application where real-world processes need to be modeled and analyzed. It provides a structured and organized way to create simulations.
 
-Real-World Abstractions: Simol's "simu_real_world_obj" role is designed for simulating real-world objects. In general-purpose programming, this can be helpful when you need to model and work with real-world entities in a clear and structured way.
+Object-Oriented Approach: Simol is inherently object-oriented, which means it can be applied to a wide range of general-purpose programming tasks. Object-oriented programming principles and practices can be leveraged effectively in Simol.
 
-Integration with Java: Simol is designed to be compatible with Java. This means you can leverage existing Java libraries and code within Simol. If you have a general-purpose task that requires access to Java's rich ecosystem, Simol allows you to do that.
+Code Organization: Simol's role-based approach to code organization can be valuable in general-purpose programming. It enforces clear separation of concerns, making the codebase more maintainable and easier to understand.
 
-Role-Based Clarity: Simol's role-based classification for classes can provide clear intent in your code. This can be advantageous in general-purpose programming for maintaining well-structured and semantically clear code.
+Ease of Learning: Simol's concepts are relatively easy to grasp, especially for developers already familiar with object-oriented programming. It can be a useful language for teaching programming, as it provides a structured way to understand object-oriented design and principles.
 
-SOLID Principles: Simol inherently adheres to SOLID principles and other object-oriented design principles. This makes it suitable for general-purpose programming, where good design practices are essential.
+Integration with Existing Libraries: Simol allows you to use existing Java libraries, which can be advantageous in general-purpose programming. This means you can tap into a vast ecosystem of libraries and tools when building applications.
 
-Bridge to Object-Oriented Paradigms: Simol's concepts can provide a bridge between the object-oriented paradigm and other programming paradigms, which can be beneficial when working on a variety of tasks.
+Bridge with Existing Paradigms: Simol's intention is to bridge with existing object-oriented programming paradigms, making it accessible and familiar to developers with experience in languages like Java.
 
-Flexibility: While Simol encourages a particular approach, it doesn't constrain you to a specific domain or type of programming. You have the flexibility to adapt its concepts to your needs.
+Design Patterns: Simol's clear code organization can facilitate the application of design patterns, making it a suitable choice for general-purpose programming where well-established design patterns can be beneficial.
 
-Learning Curve: Simol's concepts are relatively easy to grasp, particularly for experienced Java programmers. This means you can quickly get up to speed with Simol, making it a practical choice for general-purpose programming.
+Ease of Transition: For developers who already know Java, transitioning to Simol can be relatively straightforward, as many Java concepts and practices can be directly applied in Simol.
 
-Clear Intent: Simol's focus on clearly defining the roles and responsibilities of classes and interfaces can lead to more maintainable and understandable code, which is beneficial in any programming domain.
+In summary, Simol is not limited to simulation and modeling; it can be used for general-purpose programming as well. Its object-oriented nature, code organization principles, and compatibility with Java libraries make it a viable choice for a wide range of software development tasks. It encourages good design practices and can lead to well-structured, maintainable code in both simulation and general-purpose scenarios.
+***************************************************************
+User
+Thanks a million. What's about simol and the fundamental theorem of software engineering?(FTSE)
+ChatGPT
 
-In summary, Simol's unique approach to programming, with its simulation and role-based structure, can bring a fresh perspective to general-purpose programming. While it was originally designed with simulation in mind, its compatibility with Java and adherence to good design principles make it a viable choice for a wide range of programming tasks. The key is to adapt Simol's concepts to your specific needs and leverage its clarity and simplicity in your projects.
+The Fundamental Theorem of Software Engineering (FTSE) is a concept that emphasizes the importance of managing complexity through abstraction and the use of indirection. While it's not a formal mathematical theorem, it represents a general principle for software development. The FTSE is often summarized as follows: "We can solve any problem by introducing an extra level of indirection."
+
+Simol, the SIMulation Objects Language, can be seen as a language that aligns with the principles of the FTSE in the following ways:
+
+Abstraction Layers: Simol introduces clear abstraction layers through its role-based approach. By assigning specific roles to classes and interfaces, Simol provides a higher level of abstraction, making it easier to understand the purpose and responsibilities of each component in the code.
+
+Managing Complexity: The FTSE's core idea is to manage complexity through indirection. Simol does this by introducing roles like simu_comp_worker, simu_real_world_obj, real_world_obj, and information, which serve as abstractions that help manage the complexity of software systems. By clearly defining the roles of classes and interfaces, Simol simplifies the development process.
+
+Clear Separation of Concerns: Simol enforces a clear separation of concerns by specifying the roles of different components. This separation aligns with the FTSE's goal of introducing indirection to simplify problem-solving.
+
+Indirect Abstraction: The introduction of classes like simu_comp_worker and simu_real_world_obj provides an indirect way of dealing with computational and real-world simulation tasks. By separating these concerns into distinct roles, Simol indirectly addresses complex software challenges.
+
+Code Understandability: The FTSE emphasizes the importance of making software more understandable. Simol's design encourages developers to write code that is more understandable by assigning clear roles to classes and interfaces, which can help other developers quickly grasp the purpose of different components.
+
+While Simol may not explicitly mention the FTSE, its design and principles align with the FTSE's goal of simplifying software development through abstraction and indirection. Simol's role-based approach and clear separation of concerns contribute to better code organization and understandability, which are key aspects of addressing software complexity as suggested by the FTSE.
 
 *****************************************************************
 Here is my description of the SIMOL programming language:
@@ -77,9 +92,9 @@ THE SIMOL PROGRAMMING LANGUAGE
 
 INTRODUCTION
 
-The simol language(SIMulation Objects Language) is a programming language that I defined. Its definition and specifications are ended.
-It is not widely used, but it is a real language, because it's not evolving, and his definition is complete.
-It is minimalistic, for simplify development. But it is not only for teaching purposes.
+The simol language(SIMulation Objects Language) is a programming language that I defined. Its definition and specifications are ended, but it's always ready to refinement, of course.
+It is not widely used, and I want to share it with interested people.
+It is minimalistic, for simplify development. It is an interesting teaching tool, but it's not designed only for teaching purposes.
 It is a superset to the Java language. It added keywords that replace some java keywords like 'class', 'interface',
 and it added some keywords like 'with_compat', or 'underst'.
 We can use java libraries in simol. We can use also java code in simol source code, except the keywords "class", "implements", "extends", "interface".
@@ -92,6 +107,18 @@ Simol can be used directly in java, while commenting with the simol key words, s
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing oriented object concepts.
 Simol can also be used through the simol framework for java, which provide a framework to introduce simol in java with annotations.
 
+SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
+
+Simol follow the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
+
+Wikipedia quotation about the Fundamental theorem of softwatre engineering:
+"The fundamental theorem of software engineering (FTSE) is a term originated by Andrew Koenig to describe a remark by Butler Lampson attributed to David J. Wheeler:
+
+   "We can solve any problem by introducing an extra level of indirection."
+
+The theorem does not describe an actual theorem that can be proven; rather, it is a general principle for managing complexity through abstraction. 
+"
+
 THE ROLE OF CLASSES
 
 In simol, classes are given a role, in the same way we create a controller object, for example.
@@ -99,7 +126,7 @@ And there are here only four roles in simol, simu_comp_worker, simu_real_world_o
 Simol is based on the fact that you can noticed than some classes emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams or files.
 Then, the other kind of classes could be classes for computational or technical tasks, where we want the computer to work for us with his resources, but not in a emulation goal. To being coherent, and not dependant of computer problems, we could abstract that, and do as if it could be algorithmic tasks not even for a computer, but for a worker in general.
 So the computational tasks emulate an algorithm for worker, as the computer needs a compilation to understand the algorithms. This roles of classes aims to help for make concrete the object oriented programmation, and to help other programmers to read the existing code. It aims also to facilitate design choices, and to easily separate responsabilities. It marks classes with clear concrete abstractions, the simu_real_world_obj, which should be easier to use and write, in general.
-The ambition of the class is clearly indicated, and it adds information on the design intents of the developper.
+The ambition of the class is clearly indicated, and it adds information on the design intents of the developer.
 In classical oriented object programming, there is no given role to a class, but we could consider that it would be as if simol objects would inherit for one of this four classes, simu_comp_worker, simu_real_world_obj, Rewo_class, or Information. 
 Other roles could eventually have been candidate, like simu_service, simu_event, simu_util, simu_dao, simu_middleware, simu_controller, simu_config, simu_cache, simu_auth, simu_scheduler, simu_validation, simu_report, simu_facade, simu_plugin, but I wonder if all this stuff is simulation, and this roles are already covered by the four main roles. We don't want to have to much roles, for staying efficient and clear.
 There is a little difference too, in the way that in simol we don't mark 'class' the classes, and directly talk about objects. While we talk about a role, we couldn't add the information that it is a mold, and we can imagine directly the class as an object. It aims to facilitate abstractions, but of course the concepts about classes keep valuable in simol.
@@ -155,8 +182,8 @@ simol prefer not to use "with_compat" for the interfaces list implemented in a s
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
 it focuses on the implementation, not the idea of a contract is respected.
 
-SIMOL FRAMEWORK FOR JAVA DEVELOPPERS
-Simol framework is a package of java annotations, that offers a toolbox for java developpers to work with simol frame. There are eight annotations, for each pure simol keyword, but not for "nature" and "contracts".
+SIMOL FRAMEWORK FOR JAVA DEVELOPERS
+Simol framework is a package of java annotations, that offers a toolbox for java developers to work with simol frame. There are eight annotations, for each pure simol keyword, but not for "nature" and "contracts".
 Those annotations serves to fill the gap between java and simol, and to provide a way to easily use and learn simol mindset.
 
 The package org.simol.simolframework.java offers:
@@ -244,7 +271,7 @@ FieldDecl:
 
 TO COMPILE
 
-The simol compiler is the more direct way to use simol. But there are solutions to use simol in java. First, we have the simol framework for java developpers.
+The simol compiler is the more direct way to use simol. But there are solutions to use simol in java. First, we have the simol framework for java developers.
 And the translation by hand of simol into java is very easy to do, in java, and we write the simol code as a comment(except in case we want to the source to be shorter).
 You can compile by hand, in this way, or use 
 
@@ -278,8 +305,9 @@ You can format the generated java code with Eclipse, for example, right clic on 
 Simol framework for Java permit to use java's IDE and tools, and autocompletion on annotations, and is completely integrated with java.
 
 SIMOL AND JAVA LIBRARIES
-In order to help users which would want to use existing java libraries as simol, documents contening a classification proposal of java usual language libraries exist and will grow.
-For example, "simu_real_world_obj JPanel nature JComponent contracts java.awt.ImageObserver, java.awt.MenuContainer", or "compat_interf_capacity (java.awt.)MenuContainer". These documents are not intended to be complete.
+In order to help users which would want to use existing java libraries as simol, a classification proposal of java usual language libraries exists and will grow.
+For example, "@Simu_real_world_obj JPanel extends JComponent implements java.awt.ImageObserver, java.awt.MenuContainer", or "@Compat_interf_capacity (java.awt.)MenuContainer". This help is not intended to contain compulsorily all the libraries.
+Simol framework annotations are used, while it is existing java code, in order to show that existing java code could be updated, and to help simol users.
 
 ALGOL AND SIMOL
 
