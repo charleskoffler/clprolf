@@ -1,10 +1,11 @@
 package org.simol.examples.design_patterns.mvc;
 
+import org.simol.simolframework.java.Role;
 import org.simol.simolframework.java.Simu_real_world_obj;
 
 //Controller: we could imagine a real weather expert, which would be simulated by the controller.
-//public simu_real_world_obj WeatherExpert
-@Simu_real_world_obj
+//Example for the use of role annotations.
+@Simu_real_world_obj(Role.HUMAN_EXPERT)
 public class WeatherExpert {
     private WeatherModel model;
     private WeatherRealiz view;

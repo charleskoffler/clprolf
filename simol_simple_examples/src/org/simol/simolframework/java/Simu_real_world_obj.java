@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Simu_real_world_obj {
-
+	Role value() default Role.UNDEFINED;
 }
