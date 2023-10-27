@@ -1,1 +1,0 @@
-package org.simol.examples.design_patterns.dao;import java.util.List;public interface UserDao{public User findById(int id);public List<User>findAll();public void save(User user);public void update(User user);public void delete(int id);}
