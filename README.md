@@ -3,7 +3,8 @@ Repository about my own programming language simol, which is a superset of Java.
 Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces.
 
 Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work.
-I want to share it. I put code examples, language description, simol compiler and annotation framework for java, and discussions are welcome. Simol repository is open for examples you could create, feedback to simol or suggestions, or adding tools.
+I want to share it and build a community around it. I put code examples, language description, simol compiler and annotation framework for java, and discussions are welcome. Simol repository is open to create a community around it and share examples, discussions, suggestions, tools. Self-promote a language to gather people is often forbidden, for example by Stackoverflow or Reddit, so I don't success to meet interested people in the topic. It's hard for me to build a community even small, I don't know why. I have in general no feedback at all at the moment, even negative. I hope the community will grow, and that we could share about simol. I can support myself other repositories while it's about programming languages subject, because I much work on simol language and programming languages topic, or perhaps if I could program in simol framework for Java.
+
 There is a basic simol compiler, but it works great. There is a simol framework for java developers, with java annotations, for leveraging simol's concepts in java. You can also compile by hand, it's straightforward, simply by adding simol comments in java.
 
 I used chatGPT 3.5 at the end of my work, for validate simol's design choices, and for feedback and overview. As I don't want autopromotion, I regularly ask chatGPT assistance and support, and add them to this README file.
@@ -172,8 +173,8 @@ public simu_real_world_obj MeteoExpert { (...) }
 public simu_real_world_obj Window { (...) }
 
 In the simol framework for java, as annotations are already used, the role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
-@Simu_real_world_obj(Role.DESIGN)
-The roles are Role.DESIGN, Role.GUI, Role.HUMAN_EXPERT, and Role.MACHINE_TOOL
+@Simu_real_world_obj(Role.DESIGN_ROLE)
+The roles are Role.DESIGN_ROLE, Role.GUI_ROLE, Role.HUMAN_EXPERT, and Role.MACHINE_TOOL
 
 THE INTERFACES IN simol
 In simol, there are two types of interfaces, and only these two types. simol interfaces are called compatibility interfaces.
