@@ -1,0 +1,17 @@
+package org.simol.simolframework.java;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+/* @Long_action to replace the simol method modifie "long_action", but for the @Long_action simol annotation on
+ * fields too. */
+
+@Retention(RUNTIME)
+@Target(value= {METHOD, FIELD})
+public @interface Long_action {
+
+}
