@@ -119,6 +119,8 @@ COMPAT_INTERF_VERSION : 'compat_interf_version';
 COMPAT_INTERF_CAPACITY : 'compat_interf_capacity';
 WITH_COMPAT : 'with_compat';
 UNDERST : 'underst';
+LONG_ACTION : 'long_action';
+PREVENT_MISSING_COLLISION : 'prevent_missing_collision';
 
 // §3.10.1 Integer Literals
 

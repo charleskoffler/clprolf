@@ -446,10 +446,12 @@ methodModifier
 	|	'native'
 	|	'strictfp'
 	|	'underst'
+	|	'long_action'
+	|	'prevent_missing_collision'
 	;
 
 methodHeader
-	:	'underst'? result methodDeclarator throws_?
+	:	result methodDeclarator throws_?
 	|	typeParameters annotation* result methodDeclarator throws_?
 	;
 
