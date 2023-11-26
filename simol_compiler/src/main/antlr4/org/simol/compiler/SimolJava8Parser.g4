@@ -351,6 +351,8 @@ fieldModifier
 	|	'transient'
 	|	'volatile'
 	|	'with_compat'
+	|	'tour_monitor'
+	|	'for_every_thread'
 	;
 
 variableDeclaratorList
@@ -448,6 +450,7 @@ methodModifier
 	|	'underst'
 	|	'long_action'
 	|	'prevent_missing_collision'
+	|	'one_at_a_time'
 	;
 
 methodHeader

@@ -121,6 +121,9 @@ WITH_COMPAT : 'with_compat';
 UNDERST : 'underst';
 LONG_ACTION : 'long_action';
 PREVENT_MISSING_COLLISION : 'prevent_missing_collision';
+ONE_AT_A_TIME: 'one_at_a_time';
+TOUR_MONITOR: 'tour_monitor';
+FOR_EVERY_THREAD: 'for_every_thread';
 
 // §3.10.1 Integer Literals
 

@@ -1,4 +1,4 @@
-package org.simol.simolframework.java;
+package org.simol.language.annotations;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.FIELD;
