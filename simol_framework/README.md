@@ -7,3 +7,4 @@ The sources of the simol annotation framework for java, are placed in the simol 
 History of the versions
 
 1.0	20231128	Added @Nature and @Contracts.
+1.1 20231130	Correction on @Prevent_missing_collision.
