@@ -8,12 +8,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Replace the prevent_missing_collision method modifier of simol, and the @Prevent_missing_collision on attributes.
+ * Replace the prevent_missing_collision method modifier of simol.
  * @author
  *
  */
 @Retention(RUNTIME)
-@Target(value= {METHOD, FIELD})
+@Target(value= {METHOD})
 public @interface Prevent_missing_collision {
 
 }
