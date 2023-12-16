@@ -8,3 +8,4 @@ History of the versions
 
 1.0	20231128	Added @Nature and @Contracts.
 1.1 20231130	Correction on @Prevent_missing_collision.
+1.2 20231216  Added @One_at_a_time, @Turn_monitor, and @For_every_thread
