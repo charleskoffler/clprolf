@@ -1,4 +1,5 @@
-#Simol Programming Language And Simol Java Framework
+Simol Programming Language And Simol Java Framework
+
 Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework.
  The language could be a DSL(Domain Specific Language) in simulation, as well as oriented object work. The definition of simol stands on few pages, and it's quite fast to get an overview.
 Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces.
