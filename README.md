@@ -16,43 +16,41 @@ The response and overview of chatGPT 3.5 on the description of simol programming
 ***************************************************************************************************************
 (CHAT GPT 3.5 RESPONSE)
 Hello. I've created a programming language called simol, and a java framework which is an equivalent in java with annotations. Could I give you a definition, my friend, please?
-
 ChatGPT
 
-Thank you for sharing detailed information about Simol and the Simol Framework for Java. It's evident that you've put a lot of thought into designing the language and the framework. Simol seems to bring a unique perspective to programming, emphasizing simulation, clear abstractions, and role-based design.
+Certainly! I'd be happy to learn more about your programming language, Simol, and its Java equivalent framework. Please go ahead and provide the definition or any details you'd like to share.
+ChatGPT
 
-Here are some observations and potential points of feedback:
+Thank you for providing such a detailed overview of the Simol programming language and the Simol Java framework. It's clear that you've put a lot of thought into the design and principles behind Simol. Here are some key points that stand out:
 
-   Role-Based Design: The concept of roles for classes (e.g., simu_comp_worker, simu_real_world_obj) is an interesting approach to provide a clear understanding of the purpose and responsibilities of each class. This aligns with principles like the Single Responsibility Principle (SRP) and helps in building a clear mental model of the system.
+   Simulation Focus: Simol is designed with a strong emphasis on simulation, providing specific roles for simulating real-world objects and computational tasks.
 
-   Simulation Focus: Emphasizing simulation as a core aspect of the language is a unique feature. It could be particularly useful in domains where simulation is a key aspect, such as game development, scientific modeling, or system simulations.
+   Roles for Clarity: The introduction of roles such as simu_comp_worker, simu_real_world_obj, real_world_obj, and information helps clarify the purpose and responsibility of each class, aligning with principles like the Single Responsibility Principle (SRP).
 
-   Interface Types: The introduction of compatibility interfaces (compat_interf_version, compat_interf_capacity) is a distinctive approach. It provides a way to specify contracts without delving into the specifics of implementation, which aligns with the Dependency Inversion Principle.
+   Interfaces for Compatibility: The use of compatibility interfaces (compat_interf_version and compat_interf_capacity) provides a way to express and enforce contracts, promoting loose coupling and adhering to good design principles.
 
-   Role Annotations: The addition of role annotations (@Design_role, @GUI_role, @Human_expert, @Machine_tool) for simu_real_world_obj in the Simol Framework for Java is a good way to provide additional context and understanding. This can aid developers in quickly grasping the intended purpose of each class.
+   Annotations for Role Clarification: The Simol Java framework introduces annotations like @Simu_real_world_obj and @Compat_interf_capacity to bridge the gap between Simol and Java, providing a clear way for Java developers to work with Simol concepts.
 
-   Parallelism and Concurrency: The inclusion of modifiers and annotations for managing parallelism and concurrency (e.g., prevent_missing_collision, one_at_a_time) is a practical addition, especially in scenarios involving real-time simulations or game development.
+   Simulation of Computer Worker: The concept of simu_comp_worker, simulating the computer as a worker, aligns with ALGOL 60's vision of the computer as a tool for executing algorithms.
 
-   Learning Curve and Teaching: The language's focus on simplicity and minimalism could make it more approachable for learners. The potential use of Simol or the Simol Framework for teaching programming to children is an intriguing idea.
+   Role Annotations for Simu_real_world_obj: The introduction of role annotations like @Design_role, @GUI_role, @Human_expert_role, and @Machine_tool helps provide additional context and interpretation for simu_real_world_obj, promoting a more nuanced understanding of their roles.
 
-   Compatibility with Existing Concepts: The alignment with well-established principles such as SOLID and design patterns is a positive aspect. It allows developers familiar with these concepts to leverage their knowledge seamlessly.
+   Compatibility with SOLID Principles: Simol naturally aligns with SOLID principles, such as the Single Responsibility Principle (SRP) and the Interface Segregation Principle (ISP).
 
-   Machine Tools and Human Expert Roles: The metaphor of simu_real_world_obj as machine tools or human experts adds a layer of abstraction that could be beneficial in certain applications.
+   Educational Potential: Simol could be a potential tool for teaching programming or Java to children, thanks to its clear roles and metaphors like human-expert and machine tools.
 
-   Interface Inheritance: While Simol does not directly mention interface inheritance, the compatibility interfaces can be seen as a form of interface inheritance, contributing to loose coupling and flexibility.
+   Compatibility with Existing Concepts: Simol is designed to be compatible with existing concepts, such as business logic, MVC pattern, DAO design pattern, loose coupling principles, and various design patterns.
 
-   Machine Tool and Human Expert Perspectives: The introduction of these perspectives provides a way to interpret and understand classes in a manner that aligns with real-world scenarios.
+   Simulation and Real-World Modeling: Simol's focus on simulating real-world objects and its alignment with ALGOL's simulation vision make it a unique language with potential applications in various domains.
 
-   Simol Compiler and Editors: The availability of a Simol compiler and compatibility with Java IDEs and tools is essential for the practical use of the language.
-
-Overall, Simol appears to be a language designed with specific goals in mind, emphasizing simulation, clarity, and role-based design. It's well-aligned with certain programming principles and provides a unique perspective on how programming tasks can be approached. I appreciate the comprehensive overview you provided. If you have specific questions or areas where you'd like feedback, feel free to ask!
+Your effort in providing a grammar comparison, compiler details, and compatibility with existing concepts adds depth to the understanding of Simol. It's apparent that Simol aims to provide a clear, minimalistic, and simulation-oriented approach to programming. If you have any specific questions or if there's anything specific you'd like feedback on, feel free to let me know!
 
 (END OF CHAT GPT 3.5 RESPONSE)
 *********************************************************************************
 *****************************************************************
 Here is my description of simol:
 
-SIMOL PROGRAMMING LANGUAGE AND SIMOL FRAMEWORK FOR JAVA
+SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK
 
 INTRODUCTION
 
@@ -147,7 +145,7 @@ it focuses on the implementation, not the idea of a contract is respected.
 
 SIMOL FRAMEWORK FOR JAVA DEVELOPERS
 Simol framework is a package of java annotations, that offers a toolbox for java developers to work with simol frame. There are annotations, for each simol keyword or annotation.
-Those annotations serves to fill the gap between java and simol, and easily use and learn simol mindset.
+Those annotations serves to fill the gap between java and simol, and easily use and learn simol mindset. The difference with the simol language is that the programmer could use only a part of these, if he prefers use only some concepts.
 
 The package org.simol.simolframework.java offers:
 @Simu_real_world_obj, @Simu_comp_worker, @Real_world_obj, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Nature, @Contracts. They are placed in the same locations as pure simol, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
@@ -383,7 +381,6 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
-
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
