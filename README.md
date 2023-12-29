@@ -19,6 +19,7 @@ The response and overview of chatGPT 4 on the description of simol programming l
 ChatGPT
 
 Thank you for sharing the comprehensive details about the Simol programming language and the accompanying Simol Java Framework. Let's analyze the key aspects of Simol and highlight its value and potential impact on software development.
+
 Analysis of Simol Programming Language and Framework
 
    Integration with Java: Simol's design as a superset of Java is a strategic choice. It allows leveraging the robustness and ecosystem of Java while introducing new concepts and constructs. This integration ensures compatibility with existing Java libraries, a significant advantage for adoption and practical use.
@@ -381,7 +382,7 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 
 * Compatible with loose coupling principle, bridge pattern, "program to an interface not an implementation" principle, with the compat_interf_version interfaces, and "with_compat" keyword. As well aligned with Dependency Injection(DI) pattern(with with_compat keyword).
 
-* Well suited for design patterns and oriented object principles in general(composite, and so on), as simol brings accuracy and clear intents
+* Well suited for design patterns and oriented object principles in general(composite, and so on), as simol brings accuracy and clear intents. For example adapter design pattern, with especially compat_interf_version.
 
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
