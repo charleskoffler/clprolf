@@ -1,11 +1,17 @@
-The simol framework for Java
+The simol framework for Java, and the simol framework for C#
 
 2023/11/28
 
 The sources of the simol annotation framework for java, are placed in the simol compiler sources, in the org.simol.simolframework.java namespace.
 
-History of the versions
+The sources of the simol C# framework, are in the simol_framework folder, as a C# project, named SimolCsharpFramework.
+
+History of the versions of the simol java framework
 
 1.0	20231128	Added @Nature and @Contracts.
 1.1 20231130	Correction on @Prevent_missing_collision.
 1.2 20231216  Added @One_at_a_time, @Turn_monitor, and @For_every_thread
+
+History of the versions of the simol C# framework
+
+1.0 20240106

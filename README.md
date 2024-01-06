@@ -20,35 +20,29 @@ Hello my friend. I've made a programming language, simol, which has an equivalen
 
 ChatGPT
 
-It's remarkable to hear about your creation of the Simol programming language and its corresponding Java framework. From your detailed description, Simol seems to be a thoughtfully designed language, focusing on simplification, abstraction, and clarity in object-oriented programming. Your approach to extend Java, one of the most widely used programming languages, by adding specific constructs to aid in simulation and clarity of purpose, is innovative.
+Thank you for sharing the comprehensive details about the Simol programming language and its accompanying Java framework. It's clear that a lot of thought and effort has gone into designing Simol with specific goals and principles in mind. Here are my thoughts on several aspects of Simol:
 
-A few aspects of Simol stand out:
+   Educational Value: Simol's design appears to be very educational, especially for those learning object-oriented programming. The explicit roles assigned to classes (like simu_comp_worker, simu_real_world_obj, etc.) make it easier for beginners to understand the purpose and functionality of different components in a software system.
 
-   Minimalism and Teaching Tool: The minimalist approach, which makes it an interesting tool for teaching, is particularly compelling. Simplifying programming concepts while maintaining power and flexibility can make learning more accessible and engaging.
+   Integration with Java: The idea of creating a language as a superset of Java and maintaining compatibility with Java libraries and code is a smart move. This ensures that users of Simol can leverage the vast ecosystem of Java, making the language more accessible and practical.
 
-   Superset of Java: Being a superset of Java, it allows leveraging existing Java libraries and infrastructure, which is a significant advantage for adoption and practical application.
+   Focus on Abstraction and Simplicity: Simol’s adherence to the Fundamental Theorem of Software Engineering, with its emphasis on managing complexity through abstraction, is commendable. This approach can lead to cleaner, more maintainable code.
 
-   Conceptual Clarity and Role Definitions: The idea of explicitly defining roles like simu_real_world_obj, simu_comp_worker, etc., provides a clear semantic framework which can be particularly useful in large-scale software development where understanding the role and purpose of each component is crucial.
+   Role-based Class Design: The concept of defining classes based on their roles (like real_world_obj, information, etc.) is intriguing. It encourages developers to think more about the role and responsibility of a class in the system, which is a good practice in object-oriented design.
 
-   Compatibility with Java: The compatibility with Java, both in terms of using Java libraries and the ability to integrate Java code, is a strategic choice that could potentially lower the barrier to entry for existing Java developers.
+   Framework Annotations: The use of annotations in the Simol framework for Java to introduce Simol concepts is a practical way to integrate these ideas into existing Java codebases. This can facilitate a smoother transition for Java developers interested in adopting Simol.
 
-   Adherence to Software Engineering Principles: Your mention of the Fundamental theorem of software engineering and how Simol adheres to these principles, including the S.O.L.I.D principles, shows a deep understanding of software design philosophies.
+   Compatibility with Other Paradigms: Your effort to align Simol with other programming paradigms and existing object-oriented principles (like the SOLID principles) is beneficial. This compatibility suggests that Simol can be integrated into a variety of software development environments and methodologies.
 
-   Annotations and Framework for Java Developers: The provision of a framework with annotations for Java developers to work with Simol concepts is a practical way to bridge the gap between Simol and Java, allowing developers to gradually adopt Simol concepts.
+   Learning Curve and Accessibility: While Simol introduces new concepts and keywords, the learning curve seems reasonable for someone with Java experience. Its educational focus could make it an excellent tool for teaching advanced programming concepts.
 
-   Educational Potential: The potential of Simol as a teaching tool, especially for object-oriented programming concepts, seems promising.
+   Potential for Simulation and Modeling: Given its focus on simulation and modeling (as its name suggests), Simol could be particularly useful in domains where these activities are prevalent, such as in scientific computing, game development, and system simulation.
 
-However, there are a few challenges and considerations as well:
+   Unique Features for Concurrency and Parallelism: Features like long_action, prevent_missing_collision, and the various method and attribute modifiers for parallelism are quite innovative. They show a thoughtful approach to addressing common challenges in concurrent and parallel programming.
 
-   Learning Curve and Adoption: While Simol adds valuable constructs, there's an inherent learning curve associated with any new language. Its adoption would depend on how effectively it can be integrated into existing workflows and how well it's received by the developer community.
+   Mathematical-like Proof of Simol's Interest: The AI-based refinement provides a logical and structured argument for the usefulness of Simol. It effectively ties Simol's design to established software engineering principles, thereby highlighting its practical value.
 
-   Community and Ecosystem Development: For any new programming language to thrive, it needs a strong community and ecosystem. This includes comprehensive documentation, a range of libraries and tools, active forums for discussion, and support from the industry.
-
-   Performance and Scalability: As with any language that extends another, there might be questions about performance and scalability, especially in large and complex applications.
-
-   Niche Versus General Use: Simol seems to have a specific focus on simulation and clear role definitions. It would be interesting to see how it performs in general-purpose programming and how adaptable it is to various domains.
-
-In summary, Simol presents an intriguing approach to object-oriented programming, emphasizing clarity, simplicity, and explicit role definitions. Its success would largely depend on how it's received by the developer community, the robustness of its ecosystem, and its adaptability to various programming needs. Congratulations on this innovative endeavor, and I wish you the best in its continued development and adoption!
+In summary, Simol presents a unique and thoughtful approach to programming language design, particularly in its focus on role-based class definition and its integration with Java. Its educational value, combined with its practical features for managing complexity, concurrency, and parallelism, make it a potentially valuable tool for both learning and software development. The thorough documentation and clear design intentions are also commendable. As with any new language or framework, widespread adoption and community support will be key to its long-term success and impact.
 
 (END OF CHAT GPT 4 RESPONSE)
 *********************************************************************************
@@ -390,6 +384,9 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
+
+SIMOL FRAMEWORK FOR C# DEVELOPPERS
+As C# is closer to Java, a simol C# framework provide attributes like the java annotations, despite Java is the main language in simol. It permits to leverage simol in C# too, for the C# users. It acts as the java annotations, except for some details. The interface and class attributes are more precise by targetting a class or an interface. But there is no 'Nature' or 'Contracts', nor 'With_compat' on a local variable, due to C# attributes limitations. It is not very important the lack of 'Nature' and 'Contracts', because of the existing ":" in C#, and once the users knows the philosophy of simol about this. For the "With_compat", the most important is about field and parameters, not about local variables.
 
 TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
 
