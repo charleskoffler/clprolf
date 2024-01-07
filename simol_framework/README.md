@@ -15,3 +15,4 @@ History of the versions of the simol java framework
 History of the versions of the simol C# framework
 
 1.0 20240106
+1.1 20240107 Minor correction

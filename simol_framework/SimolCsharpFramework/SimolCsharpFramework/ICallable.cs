@@ -10,7 +10,7 @@ namespace TestAttrsAvecConsole
 {
     /* An example! */
     [Compat_interf_capacity]
-    interface Callable
+    interface ICallable
     {
         void call();
     }
