@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.0, 20240106.
+ * Simol C# Framework, v1.1, 20240107.
  * Limitations of C# framework for simol:
  * 
  * No 'nature' or 'contracts' attributes, nor possibility to have 'With_compat' on a local variable. All this is due
