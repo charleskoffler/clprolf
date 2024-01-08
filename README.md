@@ -16,34 +16,44 @@ The response and overview of chatGPT 4 on the description of simol programming l
 ***************************************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-User
 Hello my friend. I've made a programming language, simol, which has an equivalent java framework too. Could you please say, my friend, what do you think about it?
-
+Here is the definition:"(...)"
 ChatGPT
 
-The Simol programming language and its Java framework counterpart present a unique and innovative approach to software development, focusing on simplicity, clarity, and a novel way of interpreting class roles and interfaces. Here are some thoughts and observations:
+The Simol programming language and its corresponding Java framework you've developed present an innovative approach to software development, especially in the realm of object-oriented programming. Here are some thoughts on the various aspects of Simol:
+Design Philosophy and Goals
 
-   Minimalistic Design: Simol's minimalistic approach is commendable, as it can simplify development and make the language more accessible, especially for educational purposes. The idea of reducing complexity through a limited set of keywords and concepts aligns well with modern software design principles.
+   Abstraction and Simplification: Your language aims to simplify development by adding an abstraction layer on top of Java, which is a significant strength. This could make it easier for developers to manage complexity, a key challenge in software engineering.
+   Educational Tool: Its design as a teaching tool, while not limited to educational purposes, suggests it could be a valuable resource for introducing programming concepts, particularly in object-oriented programming.
 
-   Superset of Java: Being a superset of Java, Simol offers familiarity and compatibility to Java developers, which is a significant advantage. The ability to use Java libraries and code within Simol potentially eases the learning curve and integration with existing Java projects.
+Unique Features
 
-   Unique Class and Interface Roles: The introduction of specific roles for classes (simu_comp_worker, simu_real_world_obj, etc.) and interfaces (compat_interf_version, compat_interf_capacity) is an intriguing concept. It enforces a clear semantic understanding of each component's purpose in the overall architecture, which can be particularly beneficial for large-scale and complex projects.
+   Role-Based Class Designation: The use of specific keywords for classes like "simu_real_world_obj" and "simu_comp_worker" is an interesting concept. It introduces a new way to think about classes and their roles, potentially improving code readability and maintainability.
+   Compatibility with Java: Maintaining compatibility with Java libraries and code is a significant advantage. It allows developers to leverage existing Java ecosystems while utilizing Simol's features.
+   Minimalistic Approach: By focusing on a limited set of concepts and roles, Simol aims to keep things straightforward, which is admirable in a domain often bogged down by complexity.
 
-   Focus on Simulation and Abstraction: Simol's emphasis on simulation and adding an abstraction layer on top of classes and interfaces is aligned with the fundamental theorem of software engineering. This approach can lead to more manageable and maintainable code by abstracting complex systems into simpler, more understandable components.
+Potential Challenges
 
-   Enhanced Readability and Maintenance: The introduction of roles and specific keywords can make code more readable and maintainable. It provides additional context and understanding about the purpose and function of each class or interface, which can be particularly useful for new team members or when revisiting old code.
+   Adoption and Learning Curve: Given that Simol is not widely used, there might be a steep learning curve and resistance from developers accustomed to more traditional Java development.
+   Balancing Abstraction and Performance: While abstraction is useful for managing complexity, it's important to ensure that it doesn't come at the cost of performance or control, which are sometimes critical in software projects.
 
-   Compatibility with Java Paradigms: The fact that Simol is compatible with existing Java paradigms and can be integrated with the Java framework makes it a versatile tool. It can serve as a bridge for Java developers to experiment with new concepts without completely abandoning the familiar Java ecosystem.
+Integration with Software Engineering Principles
 
-   Potential in Various Domains: Simol’s approach, particularly its emphasis on simulation, can be advantageous in various domains like system programming, where abstractions like connections, streams, files, and threads are commonplace.
+   Fundamental Theorem of Software Engineering: Your approach to solving problems by introducing an extra level of indirection is in line with this theorem. It's an interesting application of a well-known principle in software engineering.
+   SOLID Principles: Simol's adherence to these principles, especially in promoting single responsibility and open/closed principle through its class role system, is commendable.
 
-   Teaching Tool: Simol's clear distinction of roles and minimalistic design could make it an excellent teaching tool for object-oriented programming concepts.
+Comparison with Other Languages
 
-   Learning Curve and Adoption: The success of Simol will significantly depend on the learning curve and how well it is adopted by the programming community. While it aligns closely with Java, the new concepts and paradigms might require some adjustment for existing Java developers.
+   Similarity to ALGOL: Your reference to ALGOL is apt, considering both languages' emphasis on algorithmic clarity.
+   Object-Oriented Concepts: Simol's approach to object-oriented programming, particularly in defining roles for classes and interfaces, shows an evolution of ideas introduced by languages like Simula.
 
-   Future Developments and Community Involvement: The evolution of Simol would benefit from an active community of developers contributing to its development, providing feedback, and creating a robust ecosystem of tools and documentation.
+Overall Assessment
 
-In summary, Simol presents an interesting and potentially impactful approach to software development, particularly in its effort to simplify and clarify object-oriented programming. Its success will depend on how well it is received and adopted by the programming community, and how effectively it can integrate with and enhance existing Java projects.
+   Innovative and Educational: Simol is a fresh take on object-oriented programming, potentially making it easier for new learners to grasp complex concepts.
+   Practicality and Application: Its practicality, especially in scenarios that benefit from clear abstractions (like simulations and teaching), is clear. However, its effectiveness in large-scale or performance-critical systems remains to be seen.
+   Community and Ecosystem Development: For Simol to gain traction, it would be crucial to build a community around it, including comprehensive documentation, user guides, and real-world use cases.
+
+In summary, Simol is an intriguing and innovative language with potential benefits in teaching and simplifying object-oriented programming. Its success would likely depend on its adoption by the developer community and the balance it strikes between abstraction and practical utility in software development.
 
 (END OF CHAT GPT 4 RESPONSE)
 *********************************************************************************
@@ -298,12 +308,12 @@ TO COMPILE
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
 "simu_comp_worker", "simu_real_world_obj", "real_world_obj", "information" => replace with "class"
-"underst", "with_compat", "long_action", "prevent_missing_collision", "forced_inh", "forced_int_inh" => replace with ""(empty string)
+"underst", "with_compat", "long_action", "prevent_missing_collision" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity" => replace with "interface"
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
 
-simol annotations are ignored(@Human_expert, @Design_role, @Machine_tool, @GUI_role, @LongAction)
+simol annotations are ignored(@Human_expert, @Design_role, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh)
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
 THE SIMOL COMPILER
@@ -389,7 +399,7 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
 
 RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
-Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "forced_inh" and "forced_int_inh" keywords(or @Forced_inh, @Forced_int_inh in the java framework).
+Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" annotations(in simol language as well as in the java framework).
 
 * Summary of the semantic rules for inheritance
 In order for the users to easily learn and master the rules, it's quite easy to explain their intent in few words.
@@ -404,7 +414,7 @@ A synopsis of the semantic inheritance rule could be that we must sort out the s
 	A compat_interf_version can herit from a compat_interf_capacity, but not of another version (by single or multilevel inheritance). And a compat_interf_capacity can not inherit from a version(single or multilevel inheritance). A compat_interf_version should not be defined by another compat_interf_version, it's not clear. The sole goal to a version is to be his own version interface of a unique thing. And a capacity should not be based from a version, because it has no meaning.
 
 * Ignoring inheritance checking
-These checks can be ignored, by using "forced_inh" and "forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. forced_inh means "forced inheritance", and is for class inheritance. "forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# framework, there are only "forced" attributes upon the class or the interface, because of C# attributes limitations.
+These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# framework, there are only "forced" attributes upon the class or the interface, because of C# attributes limitations.
 
 In the simol framework:
 
