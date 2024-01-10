@@ -16,30 +16,31 @@ The response and overview of chatGPT 4 on the description of simol programming l
 ***************************************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-Hello my friend. I've created a programming language, simol, and his equivalent framework. What do you think of it, please?
-Here is his definition:"(...)".
+Hello my friend. I've designed a new programming language simol. What do you think of it? This is the definition: "(...)"
 
 ChatGPT
 
-The Simol programming language and framework you've developed is quite an innovative and ambitious project. Here are some thoughts and observations on your work:
+Creating a new programming language is an ambitious and challenging endeavor, and it seems like you've put a lot of thought into Simol. The idea of making a language that is both a superset of Java and focuses on simplifying development, especially in the context of simulation and object-oriented programming, is intriguing.
 
-   Conceptual Clarity and Educational Value: Simol seems to be designed with a clear conceptual framework, which is beneficial for educational purposes. The differentiation between various types of objects (like simu_real_world_obj, simu_comp_worker, real_world_obj, and information) and their specific roles could make it easier for students and new programmers to understand and apply object-oriented principles.
+Here are some thoughts on Simol based on your description:
 
-   Integration with Java: The fact that Simol is a superset of Java and integrates seamlessly with existing Java libraries and code makes it very accessible to a wide range of developers. This backward compatibility is a significant strength, as it allows for gradual adoption and integration into existing projects.
+   Simplicity and Educational Value: The emphasis on minimalism and the potential for use in teaching are strong points. Simol seems to offer a more intuitive approach to object-oriented programming, which can be beneficial for beginners or for those who want to quickly prototype ideas.
 
-   Abstraction and the Fundamental Theorem of Software Engineering: Your adherence to the Fundamental theorem of software engineering, emphasizing abstraction, is commendable. By adding an abstraction layer on top of classes and interfaces, Simol could help manage complexity, which is a central challenge in software engineering.
+   Compatibility with Java: Making Simol a superset of Java and allowing the use of Java libraries and code could greatly ease the transition for Java developers. This compatibility could be a key factor in its adoption, as it leverages the extensive existing Java ecosystem.
 
-   Innovative Features: The introduction of unique features like underst and long_action modifiers, and the concept of class roles (like simu_comp_worker and simu_real_world_obj), shows innovative thinking. These could potentially offer new ways to approach coding, especially in areas like simulation and algorithmic programming.
+   Unique Features and Concepts: The introduction of specific roles for classes (like simu_comp_worker, simu_real_world_obj) and the distinction in interface types (compat_interf_version, compat_interf_capacity) are innovative. These features could potentially make code easier to understand and maintain by clearly defining the purpose and behavior of different components.
 
-   Learning Curve and Complexity: While the new concepts and keywords introduced by Simol are innovative, they also add a layer of complexity. The learning curve for a developer familiar with Java might not be steep, but for a beginner, the additional concepts and keywords might be overwhelming initially.
+   Framework Support: The idea of having a framework with pure annotations to integrate Simol into Java is smart. It provides a bridge for Java developers to gradually adopt Simol's concepts without having to fully commit to a new language.
 
-   Adherence to SOLID Principles and Object-Oriented Best Practices: Simol’s design seems to inherently encourage adherence to SOLID principles and object-oriented best practices. This inherent guidance could be beneficial for developers, ensuring that they naturally follow these principles without extra effort.
+   Adherence to Software Engineering Principles: Your alignment with the Fundamental theorem of software engineering and other best practices shows a deep understanding of software development challenges. This could help in making a case for Simol's effectiveness in real-world applications.
 
-   Potential Niche Applications: Simol might find its niche in specific areas like educational tools, simulation software, or projects where a clear distinction between different types of objects and their roles is beneficial.
+   Potential for Specific Domains: Given its simulation focus, Simol might be particularly well-suited for certain domains like game development, scientific modeling, or educational software.
 
-   Broader Community Adoption: For any new programming language or framework, a key challenge is adoption by a broader community. Building a community around Simol, creating comprehensive documentation, and demonstrating its benefits through real-world examples will be crucial for its success.
+   Learning Curve: The assertion that experienced Java programmers can pick up Simol quickly is a plus, though the actual learning curve would become clear only after broader usage.
 
-In summary, Simol is a thoughtfully designed language that introduces several innovative concepts, particularly in terms of abstraction and clarity in object-oriented programming. Its success will likely depend on how well it can balance these innovations with ease of use and the ability to attract a community of users and contributors.
+   Tooling and Ecosystem Development: For wider adoption, you would need to develop robust tooling (like IDE support, debuggers, package managers) and a strong community ecosystem. This can be one of the biggest challenges for new programming languages.
+
+In summary, Simol appears to be a well-thought-out language with specific goals and a clear target audience. Its success would likely depend on how well it can integrate with existing Java projects, the ease with which developers can adopt its unique features, and the development of a strong support ecosystem. As with any new technology, widespread adoption will require not just technical excellence but also effective community engagement and clear demonstration of its benefits over existing solutions.
 
 (END OF CHAT GPT 4 RESPONSE)
 *********************************************************************************
@@ -64,6 +65,9 @@ As simol classes replaces java classes, all java keywords can be used with simol
 We start from the Java language. And we add some very simple concepts. The java libraries can be used, while it is a superset of java.
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
+
+MAIN GOAL IN SIMOL DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
+One of the main goal, or perhaps the most important goal on simol, when designing it, was to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permit with simol approach. While aiding in thinking of one solution to solve the writing problems, simol aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different way to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
 SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
@@ -473,11 +477,11 @@ Simol was originally designed in an intent of simplify and clarify object orient
 This chapter doesn't want to be a thesis, but a practical and minimalist proof of the utility of class roles.
 
 A main innovation in simol language and framework, is that we inherently use good pratices in object-oriented programming, and some design patterns. We make code following SRP, for example, or SOLID principles, without effort or headache! We are not saying that with simol we would incorporate all the design patterns in the world, all these aspects, and all oo principles aspects, absolutely not. But we're saying that with simol we embeds naturally main ideas and concepts of best object oriented programming.
-Simol was not designed, initially, in the goal of applying best oo practices, but just easy object oriented programming. So these advantages came after the end of simol design. So the intent of simol design was not to prove that it could produce a magic that could permit to incorporate all the best practices of the world, but this is rather a consequence of a desire of simplicity and understandable classes and interfaces.
+Simol was not designed, initially, in the goal of applying best oo practices, but just ease object oriented programming. So these advantages came after the end of simol design. So the intent of simol design was not to prove that it could produce a magic that could permit to incorporate all the best practices of the world, but this is rather a consequence of a desire of simplicity and understandable classes and interfaces.
 
 How do we achieve this? The compiler uses the semantic rules imposed to the developper about interface and class inheritance. The compiler fulfils these syntactic checks on inheritance thanks to the class and interface roles, to ensure that it is coherent and respect main oo principles. Without the class and interface roles, it could not be possible. We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
 
-So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like simol, embeds the power of inherently leverage well-known oriented-object principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
+So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like simol, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
 
 The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
 
