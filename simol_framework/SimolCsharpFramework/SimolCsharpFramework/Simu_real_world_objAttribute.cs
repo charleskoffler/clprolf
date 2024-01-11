@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.2, 20240108.
+ * Simol C# Framework, v1.3, 20240111.
  * 
- * Added "Forced" attributes.
+ * 1.3 Simol framework for beginners
  * 
  * Limitations of C# framework for simol:
  * 
