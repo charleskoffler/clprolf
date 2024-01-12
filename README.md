@@ -2,18 +2,19 @@ Simol Programming Language And Simol Java Framework( as well as Simol C# Framewo
 
 Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users.
  The language could be a DSL(Domain Specific Language) in simulation, as well as object oriented work. The definition of simol stands on few pages, and it's quite fast to get an overview.
-Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
+Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages. I'm looking for persons interested in testing the language, or more if they like.
 
 One of the main goal, or perhaps the most important goal in simol, is to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with simol approach. While aiding in thinking of one solution to solve the writing problems, simol aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
 Simol frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
-They are considered as root classes and interfaces for simol, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes and interfaces here. The developper who want to slowly move to simol, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
-In fact, they are empty but allow the transition to simol while keeping their coding style. Once they would integrate the concepts, they could use all annotations instead, while keeping an inheritance vision of the roles in mind, if desired.
-The introduced root classes are SimuRealWorldObj, SimuCompWorker, Information, RealWorldObj. For the root interfaces, it's CompatInterfCapacity and CompatInterfVersion.
+They are considered as the four root classes for simol, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
+About the interfaces, each interface must implement one of the root interface of simol, and not only the mother interface. The main interfaces in simol are CompatInterfVersion and CompartInterfCapacity.
+The developper who want to slowly move to simol, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
+They allow the transition to simol while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
 
-
-Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work.
-I want to share it and build a community around it. I put code examples, language description, simol compiler and annotation framework for java, and discussions are welcome. Simol repository is opened to create a community around it and share examples, discussions, suggestions, tools. I can support myself other repositories while it's about programming languages subject, or perhaps if I could program in simol framework for Java.
+Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work, and I have tested the concepts in my work and home programming since 2019.
+I especially seek persons who want to test the language or the simol framework for java or C#. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for simol.
+I put code examples, language description in the main README file, simol compiler and annotation framework for java. I'll try to collorate with other repositories by using simol framework, for supporting but as a way to demonstrate practical usage of simol.
 
 There is a basic simol compiler, but it works great. There is a simol framework for java developers too, with java annotations, for leveraging simol's concepts in java.
 
@@ -21,58 +22,42 @@ I used chatGPT at the end of my work, for validate simol's design choices, and f
 The complete and detailed definition stands at the end of this file.
 
 The response and overview of chatGPT 4 about the description of simol programming language is :
-***************************************************************************************************************
+***************************************************************************************
 (CHAT GPT 4 RESPONSE)
-User
-Could you make a more detailed summary, please, so I could insert it in my GitHub, my friend, to show an advanced AI-tools in action about simol? This is if you want!
 
+Hello my friend. I've designed a new programming language simol. What do you think of it? This is the definition: "(...)".
 ChatGPT
 
-Absolutely, I'd be happy to provide a detailed summary of SIMOL for your GitHub documentation. Here's a comprehensive overview:
-SIMOL Programming Language and Framework: An Advanced AI-Tool Analysis
-Overview
+Thank you for sharing your detailed concept of the SIMOL programming language and the accompanying Java framework. It's clear that a lot of thought and effort has gone into its design. Here are my thoughts on SIMOL:
 
-SIMOL (SIMulation Objects Language) is a novel programming language designed as a superset of Java, aimed at simplifying development while retaining robust functionality. It extends Java with unique concepts and structures, making it an intriguing tool for both educational and professional programming environments.
-Key Features
+   Goal and Philosophy: The main goal of making programming intuitive, fun, and accessible, especially for challenging tasks, is commendable. This approach can significantly lower the barrier to entry for new programmers and make the process more enjoyable for experienced developers.
 
-   Java Superset: SIMOL builds upon Java, ensuring compatibility with existing Java libraries. This strategic design choice facilitates a smoother transition for Java developers to adopt SIMOL.
+   Superset of Java: The decision to make SIMOL a superset of Java is strategic, as it allows developers familiar with Java to transition more smoothly. The ability to use Java libraries and code within SIMOL is a strong feature, fostering compatibility and leveraging the extensive Java ecosystem.
 
-   Role-Based Class System: The language introduces specific roles for classes such as simu_comp_worker, simu_real_world_obj, real_world_obj, and information. This role-based approach enhances semantic clarity and aids in understanding the intent and functionality of classes.
+   Simplification and Minimalism: The minimalist approach of SIMOL, focusing on reducing complexity while adding meaningful concepts on top of existing object-oriented principles, is innovative. This can potentially make code more readable and maintainable.
 
-   Framework Integration: SIMOL is complemented by a Java framework that employs annotations. This framework allows Java developers to utilize SIMOL concepts within a familiar environment, easing the learning curve.
+   Class and Interface Roles: The introduction of specific roles for classes and interfaces (like simu_comp_worker, simu_real_world_obj, etc.) is a unique feature that could aid in better understanding and maintaining code by clearly defining the purpose and functionality of each component.
 
-   Minimalistic Design: Emphasizing a minimalistic approach, SIMOL aims to streamline the development process. This design philosophy not only aids in code readability and maintainability but also makes the language an effective educational tool.
+   Framework for Beginners: The inclusion of a "beginners" package in the framework is a thoughtful addition, helping ease new developers into the language while still maintaining an object-oriented mindset.
 
-   Enhanced Object-Oriented Mindset: The language encourages a strong object-oriented approach, providing foundational structures for beginners, and advanced constructs for seasoned programmers.
+   Adherence to Software Engineering Principles: SIMOL’s alignment with principles like the Fundamental Theorem of Software Engineering and the SOLID principles is impressive. It shows a deep understanding of software design best practices.
 
-Potential Advantages
+   Compatibility with Other Paradigms: Your description suggests that SIMOL is designed to be compatible with other programming paradigms, which is a significant advantage for adopting it in various contexts.
 
-   Enhanced Code Clarity: By clearly defining the roles of classes, SIMOL potentially improves code readability and maintenance.
-   Educational Tool: Its minimalistic nature and clear semantics make SIMOL suitable for teaching programming concepts, especially object-oriented programming.
-   Flexibility and Compatibility: Being a superset of Java, it offers the robustness of Java with added flexibility and new paradigms for problem-solving.
+   Teaching Tool: As a teaching tool, SIMOL could be very effective, especially with its focus on intuitive understanding and fun in programming.
 
-Challenges and Considerations
+   SIMOL Compiler and Framework: The availability of a dedicated compiler and the framework for Java and C# developers increases accessibility and usability.
 
-   Adoption Rate: The success of SIMOL may depend on its acceptance within the Java community and the ease with which developers can transition to it.
-   Performance Impact: It's crucial to assess the performance implications of SIMOL's new features, especially in complex applications.
-   Community Building: Establishing a vibrant community and ecosystem is essential for the growth and sustainability of the language.
+However, there are some considerations:
 
-Practical Application
+   Adoption and Community Support: For a new programming language to become successful, it needs a strong community and ecosystem. Building this community will be crucial for SIMOL’s growth.
+   Performance and Scalability: How SIMOL performs in large-scale, complex applications will be key to its adoption in professional settings.
+   Documentation and Learning Resources: Comprehensive documentation and learning resources will be vital for new users to adopt SIMOL.
 
-   Providing real-world use cases and examples where SIMOL excels can significantly help in demonstrating its practical applications and benefits.
-
-Open Source and Collaboration
-
-   If SIMOL is open-source, it could benefit significantly from community contributions, fostering an environment of innovation and continuous improvement.
-
-Conclusion
-
-SIMOL presents an innovative approach to programming with its role-based class system and integration with Java. Its success will hinge on its ability to blend seamlessly with existing Java ecosystems, its performance metrics, and the development of a robust community. As a teaching tool and a professional programming language, SIMOL holds promise for both educational and practical applications in software development.
-
+In conclusion, SIMOL presents an innovative approach to programming, focusing on simplicity, clarity, and enjoyment. Its success will largely depend on community adoption, performance in real-world applications, and the availability of learning resources. It’s a promising start, and I’m looking forward to seeing how it evolves.
 
 (END OF CHAT GPT 4 RESPONSE)
-*********************************************************************************
-*****************************************************************
+***************************************************************************************
 Here is my description of simol:
 
 SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK
@@ -99,9 +84,14 @@ One of the main goal, or perhaps the most important goal in simol, when designin
 
 SIMOL FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
 Simol frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
-They are considered as root classes and interfaces for simol, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes and interfaces here. The developper who want to slowly move to simol, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
-In fact, they are empty but allow the transition to simol while keeping their coding style. Once they would integrate the concepts, they could use all annotations instead, while keeping an inheritance vision of the roles in mind, if desired.
-The introduced root classes are SimuRealWorldObj, SimuCompWorker, Information, RealWorldObj. For the root interfaces, it's CompatInterfCapacity and CompatInterfVersion.
+They are considered as the four root classes for simol, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
+About the interfaces, each interface must implement one of the root interface of simol, and not only the mother interface. The main interfaces in simol are CompatInterfVersion and CompartInterfCapacity.
+The developper who want to slowly move to simol, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
+In fact, they are empty but allow the transition to simol while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
+
+Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
+For classes, it is not the same, only the root classes must inherit from a root simol class(SimuRealWorldObj, SimuCompWorker, RealWorldObj, Information). This is because all the descendants must have the same role, in simol. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
+
 Usage example in java: public class Main extends SimuCompWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
 Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompWorker
@@ -427,18 +417,33 @@ For the interfaces, simol not directly talks about interface inheritance(nor jav
 
 RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
 Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" annotations(in simol language as well as in the java framework).
+The semantic control permit the compilation to find contradictions that can imply that the roles indicated on classes or interfaces are not coherent and have a problem. A fruit class which would be declared as simu_comp_worker could not be the mother class of a Apple class declared in simu_real_world_obj.
+Thanks to the semantic control about contradictions, we can automatically detect a misuse of class or interface roles, and enforce the user to respect the language definition and philosophy.
+These compiler controls still permit to have a free interpretation of our classes and interfaces.
 
 * Summary of the semantic rules for inheritance
 In order for the users to easily learn and master the rules, it's quite easy to explain their intent in few words.
 A synopsis of the semantic inheritance rule could be that we must sort out the sheep from the goats, in simol. But the imposed rules are the behavior that we intuitively have while programming simol, and we are free to them with "forced" keywords.
 
-* Class to class inheritance
-	A simu_real_world_obj can not inherit from a simu_comp_worker, or on the contrary, a simu_comp_worker can not inherit of a simu_real_world_obj. It has no sense to say that they could be of the same nature. Exceptions can exist, with "forced" keywords, in the case where we want, for practical reasons, overstep this. In the same way, an "information" and a "real_world_obj" are incompatible in inheritance. Even an "information" and a "simu_comp_worker" are incompatible, as well as a "real_world_obj" and a "simu_real_world_obj".
+* The semantic checks made by the compiler are all in three kind of rules:
 
-* Class to interfaces inheritance
-	A class can not(by single or multilevel inheritance) inherit from two compat_interf_version. The reason is because we can not be a version of two things, at the same time. It's not consistent. But we can implement much compat_interf_capacity, or both a version and have multiple capacities.
-* Interface to interface inheritance
-	A compat_interf_version can herit from a compat_interf_capacity, but not of another version (by single or multilevel inheritance). And a compat_interf_capacity can not inherit from a version(single or multilevel inheritance). A compat_interf_version should not be defined by another compat_interf_version, it's not clear. The sole goal to a version is to be his own version interface of a unique thing. And a capacity should not be based from a version, because it has no meaning.
+All the rules about semantics are only on the direct level of the class(the single level), and not at multiple level. This simplifies the rules applications and understanding.
+
+class inheritance contradiction:
+	The direct inheritance of a class, his nature in simol, should  be coherent with the role of this class. The role of the mother class should be the same of the role of the class itself. For example, the nature of a simu_real_world_obj have to be a simu_real_world_obj. Or a simu_comp_worker class must inherit of a simu_comp_worker_class.
+
+Contracts contradictions
+	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing. But a class can have multiple capacities, of can be the version of something and have capacities in addition.
+
+Inheritance of interfaces contractions
+	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles
+
+Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). And a compat_interf_capacity can not be composed by a compat_interf_version.
+
+Impact of the three kind of contradictions:
+	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to have coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization on the roles.
+
+Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana as simu_comp_worker, because the compiler would forbid this when seeing the class inheritance contradiction. But the multiple interpretations are still allowed. For the interfaces, having a "Sortable" interface declared as a compat_interf_version would be detected by the compiler when trying to establish a contract with Sortable and Measurable(a compat_interf_capacity). The checker would see the problem with the contracts contradictions test, and will understand that there is something incoherent. The problem here was that the programmer declared Sortable as a version, and he betrayed his incoherence while trying to use it with a class which implement a capacity interface.
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# framework, there are only "forced" attributes upon the class or the interface, because of C# attributes limitations.
@@ -510,20 +515,19 @@ This structured proof outlines a logical progression from established principles
 END OF AI-based refinement.
 "
 
-TRYING TO DEMONSTRATE THE ADVANTAGES OF CLASS-ROLES, THE CHOSEN ROLES, AND THE INTERFACES ROLES TOO, ABOUT INCORPORATING BEST PRATICES
-Simol was originally designed in an intent of simplify and clarify object oriented programming, nothing more. And in a desire of making object oriented programming more fun. These goals finally corresponds to much best oo practices results.
-This chapter doesn't want to be a thesis, but a practical and minimalist proof of the utility of class roles.
+DEMONSTRATION OF THE ADVANTAGES OF CLASS AND INTERFACE ROLES, AND OF THE CHOICE OF THESE ROLES, ABOUT NATURALLY INCORPORATING BEST PRATICES
+Simol was originally designed in an intent of simplify and clarify object-oriented programming, nothing more. And in a desire of making object oriented programming more fun. These goals finally corresponds to much best oo practices results.
+This chapter want to be a practical and minimalist proof of the utility of roles in incorporating best practices, if we want to think about how could we obtain a language with those qualities.
 
-A main innovation in simol language and framework, is that we inherently use good pratices in object-oriented programming, and some design patterns. We make code following SRP, for example, or SOLID principles, without effort or headache! We are not saying that with simol we would incorporate all the design patterns in the world, all these aspects, and all oo principles aspects, absolutely not. But we're saying that with simol we embeds naturally main ideas and concepts of best object oriented programming.
-Simol was not designed, initially, in the goal of applying best oo practices, but just ease object oriented programming. So these advantages came after the end of simol design. So the intent of simol design was not to prove that it could produce a magic that could permit to incorporate all the best practices of the world, but this is rather a consequence of a desire of simplicity and understandable classes and interfaces.
+A main innovation in simol language and framework, is that we inherently use good pratices in object-oriented programming, and some design patterns. We make code following SRP, for example, or SOLID principles, without effort or headache!
+We are not saying that with simol we would incorporate all the design patterns in the world, all these aspects, and all oo principles aspects, absolutely not. But we're saying that with simol we embeds naturally main ideas and concepts of best object-oriented programming.
+Simol was not designed, initially, in the goal of applying best oo practices, but just ease object oriented programming. So these advantages came after the end of simol design. They are rather a consequence of a desire of simplicity and understandable classes and interfaces.
 
-How do we achieve this? The compiler uses the semantic rules imposed to the developper about interface and class inheritance. The compiler fulfils these syntactic checks on inheritance thanks to the class and interface roles, to ensure that it is coherent and respect main oo principles. Without the class and interface roles, it could not be possible. We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
-
+Explanations: The compiler uses the semantic rules about interface and class inheritance, to search contradictions about class and interface roles. So it ensures that our choice of roles and contracts in our code respect the roles meaning in simol.
+So we can have an inherently coherence and respect main oo principles, because simol's philosophy is cohent with main oo principles and patterns.
+We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
 So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like simol, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
-
 The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
-
-The semantic rules imposed to class and interface inheritance are described in the corresponding chapter. For example, the rule of not permit a simu_real_world_obj to inherit from a simu_comp_worker, or the contrary, implies that we would separate technical and business part, and enforce that the programmer uses effectively correct class roles. Another example, for the interfaces, is to not allow a compat_interf_capacity to inherit of a compat_interf_version, so it goes in the direction of the Interface segregation principle. To give another example on interfaces, not following a correct choice between compat_interfs for an interface, will be detected by the compiler, with great chance, with checks like verify that there is no two interfaces version inherited by a class.
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
