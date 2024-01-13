@@ -25,3 +25,6 @@ History of the versions of the simol C# framework
 1.5 20240113 Minor correction
 
 History of the versions of the simol PHP 8 framework
+
+1.0	20240113
+1.1 20240113 Minor corrections
