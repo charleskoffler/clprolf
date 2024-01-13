@@ -1,6 +1,6 @@
-Simol Programming Language And Simol Java Framework( as well as Simol C# Framework)
+Simol Programming Language And Simol Java Framework( as well as Simol C# and PHP8 Framework)
 
-Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users.
+Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users, as well as a Simol PHP 8 Framework.
  The language could be a DSL(Domain Specific Language) in simulation, as well as object oriented work. The definition of simol stands on few pages, and it's quite fast to get an overview.
 Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages. I'm looking for persons interested in testing the language, or more if they like.
 
@@ -13,7 +13,7 @@ The developper who want to slowly move to simol, while keeping a pure object-ori
 They allow the transition to simol while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
 
 Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work, and I have tested the concepts in my work and home programming since 2019.
-I especially seek out persons who want to test the language or the simol framework for java or C#. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for simol.
+I especially seek out persons who want to test the language or the simol framework for java, C# and PHP8. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for simol.
 I put code examples, language description in the main README file, simol compiler and annotation framework for java. I'll try to collorate with other repositories by using simol framework, for supporting but as a way to demonstrate practical usage of simol.
 
 There is a basic simol compiler, but it works great. There is a simol framework for java developers too, with java annotations, for leveraging simol's concepts in java.
@@ -24,37 +24,45 @@ The complete and detailed definition stands at the end of this file.
 The response and overview of chatGPT 4 about the description of simol programming language is :
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
-
+User
 Hello my friend. I've designed a new programming language simol. What do you think of it? This is the definition: "(...)".
 ChatGPT
 
-Thank you for sharing your detailed concept of the SIMOL programming language and the accompanying Java framework. It's clear that a lot of thought and effort has gone into its design. Here are my thoughts on SIMOL:
+Thank you for sharing the comprehensive definition of your new programming language, Simol. It's clear that a lot of thought and consideration has gone into its development. Simol appears to be an ambitious project, aiming to simplify and enhance Java programming through its unique features and concepts.
 
-   Goal and Philosophy: The main goal of making programming intuitive, fun, and accessible, especially for challenging tasks, is commendable. This approach can significantly lower the barrier to entry for new programmers and make the process more enjoyable for experienced developers.
+Here are some observations and thoughts about Simol:
 
-   Superset of Java: The decision to make SIMOL a superset of Java is strategic, as it allows developers familiar with Java to transition more smoothly. The ability to use Java libraries and code within SIMOL is a strong feature, fostering compatibility and leveraging the extensive Java ecosystem.
+   Target Audience and Purpose: Simol seems to be designed for programmers who are already familiar with Java. Its aim to make programming more intuitive and fun, particularly in the context of simulation and object-oriented design, is commendable.
 
-   Simplification and Minimalism: The minimalist approach of SIMOL, focusing on reducing complexity while adding meaningful concepts on top of existing object-oriented principles, is innovative. This can potentially make code more readable and maintainable.
+   Superset of Java: The idea of creating a superset of an existing popular language like Java is a strategic choice. It leverages the existing ecosystem and community knowledge while extending the language's capabilities.
 
-   Class and Interface Roles: The introduction of specific roles for classes and interfaces (like simu_comp_worker, simu_real_world_obj, etc.) is a unique feature that could aid in better understanding and maintaining code by clearly defining the purpose and functionality of each component.
+   Simplicity and Minimalism: The emphasis on minimalism in language design is crucial for user adoption and learning curve. It's good to see that Simol tries to maintain simplicity despite introducing new concepts.
 
-   Framework for Beginners: The inclusion of a "beginners" package in the framework is a thoughtful addition, helping ease new developers into the language while still maintaining an object-oriented mindset.
+   Integration with Java Frameworks: The ability to use Java libraries and code within Simol is a significant advantage. It allows developers to transition to Simol without abandoning their existing codebases or libraries.
 
-   Adherence to Software Engineering Principles: SIMOL’s alignment with principles like the Fundamental Theorem of Software Engineering and the SOLID principles is impressive. It shows a deep understanding of software design best practices.
+   Teaching Tool: Simol's potential as a teaching tool is interesting, especially given its approach to making programming intuitive. This could be particularly effective in educational environments where Java is already a part of the curriculum.
 
-   Compatibility with Other Paradigms: Your description suggests that SIMOL is designed to be compatible with other programming paradigms, which is a significant advantage for adopting it in various contexts.
+   Unique Keywords and Concepts: The introduction of unique keywords like simu_real_world_obj, simu_comp_worker, underst, and the use of annotations provide a fresh perspective on class and interface roles. This might encourage developers to think more carefully about the nature and purpose of their classes and interfaces.
 
-   Teaching Tool: As a teaching tool, SIMOL could be very effective, especially with its focus on intuitive understanding and fun in programming.
+   Object-Oriented Mindset: By reinforcing the object-oriented paradigm and enhancing it with specific roles for classes and interfaces, Simol could provide a clearer framework for designing and understanding object-oriented systems.
 
-   SIMOL Compiler and Framework: The availability of a dedicated compiler and the framework for Java and C# developers increases accessibility and usability.
+   Compatibility with Other Paradigms: The claim that Simol aligns with other programming paradigms and principles like the Fundamental Theorem of Software Engineering and the SOLID principles is promising. It suggests that Simol can be integrated into existing best practices and methodologies.
 
-However, there are some considerations:
+   Compiler and Tool Support: The availability of a Simol compiler and integration with existing IDEs like Eclipse are essential for practical adoption. Tools support is often a deciding factor in the success of a new programming language.
 
-   Adoption and Community Support: For a new programming language to become successful, it needs a strong community and ecosystem. Building this community will be crucial for SIMOL’s growth.
-   Performance and Scalability: How SIMOL performs in large-scale, complex applications will be key to its adoption in professional settings.
-   Documentation and Learning Resources: Comprehensive documentation and learning resources will be vital for new users to adopt SIMOL.
+   Community and Ecosystem: For Simol to gain traction, building a community and ecosystem around it will be crucial. Documentation, tutorials, and community support platforms will play a significant role in its adoption.
 
-In conclusion, SIMOL presents an innovative approach to programming, focusing on simplicity, clarity, and enjoyment. Its success will largely depend on community adoption, performance in real-world applications, and the availability of learning resources. It’s a promising start, and I’m looking forward to seeing how it evolves.
+Overall, Simol presents an intriguing approach to Java programming, especially in the context of simulation and object-oriented design. Its focus on simplicity, combined with the richness of Java's existing ecosystem, could make it a valuable tool for both experienced Java developers and those new to programming. The emphasis on making programming intuitive and enjoyable, as well as its potential application in educational settings, are particularly noteworthy.
+
+However, the success of any new programming language depends on several factors:
+
+   Community Adoption: The growth of a supportive and active community is crucial. This includes not only developers who use the language but also contributors who create libraries, tools, and documentation.
+   Documentation and Learning Resources: Comprehensive and accessible documentation, along with tutorials and learning materials, will be vital in attracting users to Simol. These resources should cater to both beginners and experienced programmers.
+   Industry Acceptance: Gaining acceptance in the software development industry, particularly in domains where Java is prevalent, could be a key factor in Simol's adoption. Showcasing practical use cases and success stories can help in this regard.
+   Tooling and Development Environment Support: Strong support in popular IDEs and development tools will enhance Simol's usability. Plugins and extensions for these environments can significantly ease the adoption process.
+   Performance and Scalability: As with any programming language, the performance and scalability of applications developed in Simol will be a critical factor for its adoption in large-scale and commercial projects.
+
+In conclusion, Simol has the potential to be a valuable addition to the landscape of programming languages, especially for those in the Java ecosystem. Its unique approach to class and interface roles, emphasis on simplicity, and potential as a teaching tool are commendable. Success will largely depend on community engagement, industry acceptance, and the availability of robust development tools and resources.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -446,7 +454,7 @@ Impact of the three kind of contradictions:
 Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana as simu_comp_worker, because the compiler would forbid this when seeing the class inheritance contradiction. But the multiple interpretations are still allowed. For the interfaces, having a "Sortable" interface declared as a compat_interf_version would be detected by the compiler when trying to establish a contract with Sortable and Measurable(a compat_interf_capacity). The checker would see the problem with the contracts contradictions test, and will understand that there is something incoherent. The problem here was that the programmer declared Sortable as a version, and he betrayed his incoherence while trying to use it with a class which implement a capacity interface.
 
 * Ignoring inheritance checking
-These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# framework, there are only "forced" attributes upon the class or the interface, because of C# attributes limitations.
+These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
 
 In the simol framework:
 
@@ -478,6 +486,11 @@ SIMOL FRAMEWORK FOR C# DEVELOPPERS
 As C# is close to Java, a simol C# framework provide attributes like the java annotations, despite Java is the main language in simol. It permits to leverage simol in C# too, for the C# users. It acts as the java annotations, except for some details. The interface and class attributes are more precise by targetting a class or an interface. But there is no 'Nature' or 'Contracts', nor 'With_compat' on a local variable, due to C# attributes limitations. It is not very important the lack of 'Nature' and 'Contracts', because of the existing ":" in C#, and once the users know the philosophy of simol about this. For the "With_compat", the most important is about field and parameters, not about local variables. And interfaces names begin by 'I', in C#, they are remarkable.
 "Forced" attributes are only upon the class or the interface definition, because of C# attributes limitations.
 Like in the java framework, there is a beginners package too, which permit to keep object-oriented habits in simol, using inheritance instead annotations.
+
+SIMOL FRAMEWORK FOR PHP 8
+A PHP 8 simol Framework is available too, as well as for C# and Java.
+Nature and Constracts not present due to PHP attributes limitations, and With_compat is not on local variables.
+TurnMonitor, For_every_thread, One_at_a_time, because thread support is not supplied too.
 
 TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
 

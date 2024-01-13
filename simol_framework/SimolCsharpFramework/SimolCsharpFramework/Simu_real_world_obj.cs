@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.4, 20240113.
+ * Simol C# Framework, v1.5, 20240113.
  * 
- * 1.4 Corrections on class and files names. Beginners package in a directory.
+ * 1.5 Minor corrections
  * 
  * 
  * Limitations of C# framework for simol:

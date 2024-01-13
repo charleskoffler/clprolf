@@ -1,10 +1,11 @@
-The simol framework for Java, and the simol framework for C#
+The simol framework for Java, and the simol framework for C# and PHP 8
 
 2023/11/28
 
 The sources of the simol annotation framework for java, are placed in the simol compiler sources, in the org.simol.simolframework.java namespace.
 
 The sources of the simol C# framework, are in the simol_framework folder, as a C# project, named SimolCsharpFramework.
+For the Simol PHP 8 Framework, it's in the simol_framework folder too, as an Eclipse project.
 
 History of the versions of the simol java framework
 
@@ -21,3 +22,6 @@ History of the versions of the simol C# framework
 1.2 20240108 Added Forced_inh and fForced_int_inh
 1.3 20240111 Simol framework for beginners
 1.4 20240113 Corrections on class and files names. Beginners package in a directory.
+1.5 20240113 Minor correction
+
+History of the versions of the simol PHP 8 framework
