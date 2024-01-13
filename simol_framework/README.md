@@ -20,3 +20,4 @@ History of the versions of the simol C# framework
 1.1 20240107 Minor correction
 1.2 20240108 Added Forced_inh and fForced_int_inh
 1.3 20240111 Simol framework for beginners
+1.4 20240113 Corrections on class and files names. Beginners package in a directory.

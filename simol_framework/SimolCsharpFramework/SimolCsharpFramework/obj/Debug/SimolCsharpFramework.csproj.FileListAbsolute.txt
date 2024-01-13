@@ -1,0 +1,7 @@
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.exe.config
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.exe
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.pdb
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\SimolCsharpFramework.csproj.AssemblyReference.cache
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\SimolCsharpFramework.csproj.CoreCompileInputs.cache
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\TestAttrsAvecConsole.exe
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\TestAttrsAvecConsole.pdb

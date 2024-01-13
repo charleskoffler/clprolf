@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Callable.cs" />
+    <Compile Include="ICompatInterfCapacity.cs" />
+    <Compile Include="ICompatInterfVersion.cs" />
+    <Compile Include="Forced_int_inh.cs" />
+    <Compile Include="Forced_inh.cs" />
+    <Compile Include="ICallable.cs" />
     <Compile Include="Compat_interf_capacityAttribute.cs" />
     <Compile Include="Compat_interf_versionAttribute.cs" />
     <Compile Include="For_every_threadAttribute.cs" />
@@ -54,6 +58,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Real_world_objAttribute.cs" />
+    <Compile Include="SimuCompWorker.cs" />
+    <Compile Include="Information.cs" />
+    <Compile Include="RealWorldObj.cs" />
+    <Compile Include="SimuRealWorldObj.cs" />
     <Compile Include="Simu_comp_workerAttribute.cs" />
     <Compile Include="Simu_real_world_objAttribute.cs" />
     <Compile Include="TurnMonitorAttribute.cs" />

@@ -13,7 +13,7 @@ The developper who want to slowly move to simol, while keeping a pure object-ori
 They allow the transition to simol while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
 
 Simol's design started in 2019, and now it's quite stable. I needed it for my own purposes and work, and I have tested the concepts in my work and home programming since 2019.
-I especially seek persons who want to test the language or the simol framework for java or C#. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for simol.
+I especially seek out persons who want to test the language or the simol framework for java or C#. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for simol.
 I put code examples, language description in the main README file, simol compiler and annotation framework for java. I'll try to collorate with other repositories by using simol framework, for supporting but as a way to demonstrate practical usage of simol.
 
 There is a basic simol compiler, but it works great. There is a simol framework for java developers too, with java annotations, for leveraging simol's concepts in java.
@@ -433,7 +433,7 @@ class inheritance contradiction:
 	The direct inheritance of a class, his nature in simol, should  be coherent with the role of this class. The role of the mother class should be the same of the role of the class itself. For example, the nature of a simu_real_world_obj have to be a simu_real_world_obj. Or a simu_comp_worker class must inherit of a simu_comp_worker_class.
 
 Contracts contradictions
-	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing. But a class can have multiple capacities, of can be the version of something and have capacities in addition.
+	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing. But a class can have multiple capacities, or can be the version of something and have capacities in addition.
 
 Inheritance of interfaces contractions
 	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles
@@ -441,7 +441,7 @@ Inheritance of interfaces contractions
 Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). And a compat_interf_capacity can not be composed by a compat_interf_version.
 
 Impact of the three kind of contradictions:
-	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to have coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization on the roles.
+	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to have coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization of the roles.
 
 Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana as simu_comp_worker, because the compiler would forbid this when seeing the class inheritance contradiction. But the multiple interpretations are still allowed. For the interfaces, having a "Sortable" interface declared as a compat_interf_version would be detected by the compiler when trying to establish a contract with Sortable and Measurable(a compat_interf_capacity). The checker would see the problem with the contracts contradictions test, and will understand that there is something incoherent. The problem here was that the programmer declared Sortable as a version, and he betrayed his incoherence while trying to use it with a class which implement a capacity interface.
 

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Org.Simol.Framework.Csharp
+namespace Org.Simol.Framework.Csharp.Beginners
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    class InformationAttribute : Attribute
+    class Information
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Org.Simol.Framework.Csharp
 {
     [AttributeUsage(AttributeTargets.Class)]
-    class Forced_inh: Attribute
+    class Forced_inhAttribute: Attribute
     {
     }
 }

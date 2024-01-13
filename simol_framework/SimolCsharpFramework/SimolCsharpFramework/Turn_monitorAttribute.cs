@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TestAttrsAvecConsole
 {
     [AttributeUsage(AttributeTargets.Field)]
-    class TurnMonitorAttribute: Attribute
+    class Turn_monitorAttribute: Attribute
     {
     }
 }
