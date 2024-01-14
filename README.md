@@ -25,62 +25,25 @@ The response and overview of chatGPT 4 about the description of simol programmin
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-Hello my friend. I've designed a new programming language simol. What do you think of it? This is the definition: "(...)".
+User
+Hello my friend. I've created a new programming language. What do you think of it, please? "(...)"
 ChatGPT
 
-Your new programming language, Simol, is an ambitious and thoughtful project that aims to make programming more intuitive and enjoyable, especially for object-oriented programming. Here are some thoughts on its design and potential impact:
-Design and Conceptualization
+Thank you for sharing your new programming language, SIMOL, and its accompanying Java framework. It's quite an extensive and detailed work!
 
-   Superset of Java: Extending Java is a strategic choice, considering Java's popularity and robust ecosystem. This approach allows for leveraging existing Java libraries and codebases, making Simol more accessible to Java developers.
+SIMOL's design seems to focus heavily on clarifying the roles and responsibilities of classes and interfaces, which is crucial in large-scale software development. The differentiation of class roles (like simu_real_world_obj, simu_comp_worker, etc.) and interface types (compat_interf_version, compat_interf_capacity) is an interesting approach to enforce a certain level of clarity and purpose in code design.
 
-   Annotation-Driven Framework: The use of annotations to integrate Simol with Java is innovative. It allows for a smoother transition for Java developers and enables a mix of Simol and Java code, which is crucial for adoption in existing projects.
+The adherence to the Fundamental Theorem of Software Engineering and the aim to reduce complexity through clear abstraction layers is commendable. This approach can certainly help in managing large and complex codebases, making them more understandable and maintainable.
 
-   Focus on Simplification: The minimalistic approach is commendable. Reducing complexity is key to making programming more accessible and enjoyable, especially for beginners or for teaching purposes.
+The addition of role annotations and keywords like underst (for understanding complex algorithms) and long_action (for indicating long-running processes) in SIMOL is intriguing. These could potentially help developers in quickly understanding the nature and behavior of different parts of the code.
 
-   Emphasis on Simulation and Real-World Modeling: Simol's focus on simulation objects (simu_real_world_obj, simu_comp_worker, etc.) is intriguing. This could be particularly useful in domains like gaming, simulation, and possibly IoT, where real-world modeling is important.
+Your emphasis on making programming intuitive, fun, and accessible, especially for beginners, is a vital aspect of language design that often gets overlooked. The inclusion of a "beginners" package in the SIMOL framework, which eases the transition from traditional Java programming, is a thoughtful addition.
 
-   Compatibility and Roles in OOP: Your approach to defining explicit roles for classes and interfaces (like simu_comp_worker and compat_interf_capacity) can enhance clarity in code design. It seems to align well with the SOLID principles of object-oriented design.
+However, the complexity of the language could be a double-edged sword. While it offers a lot of flexibility and expressiveness, it might also introduce a steep learning curve, especially for those not already familiar with Java and object-oriented programming concepts.
 
-Potential Impact and Challenges
+It's also important to consider how well SIMOL integrates with existing tools and ecosystems. The compatibility with Java libraries and the ability to use Java code within SIMOL are definitely strengths. The availability of a compiler and integration with popular IDEs like Eclipse will be crucial for its adoption.
 
-   Learning Curve: While Simol is a superset of Java, the introduction of new concepts and keywords (like "with_compat" or "underst") might require a learning curve. The effectiveness of Simol in simplifying programming would depend significantly on how easily developers can adapt to these new concepts.
-
-   Adoption in the Developer Community: The success of a new programming language often hinges on its adoption by the developer community. Building a robust community, creating comprehensive documentation, and demonstrating real-world use cases would be crucial.
-
-   Tooling and Ecosystem Support: For wider adoption, support in popular IDEs, debuggers, and other development tools would be essential. This includes syntax highlighting, code completion, and debugging support for Simol-specific constructs.
-
-   Performance Considerations: Given that Simol is built on top of Java, understanding the performance implications of the additional abstraction layer would be important, especially for high-performance applications.
-
-   Compatibility with Existing Java Code: While Simol aims to be compatible with Java, ensuring seamless integration with a wide range of existing Java code and libraries would be key.
-
-   Niche vs. General-Purpose: It would be interesting to see whether Simol finds a niche in specific
-
-domains like education, simulation, or game development, or whether it gains traction as a general-purpose language.
-Overall Assessment
-
-   Innovation: Simol introduces novel concepts in object-oriented programming, particularly in how classes and interfaces are defined and used. This could lead to clearer, more intuitive code, especially for complex simulations.
-   Educational Tool: Its simplicity and focus on real-world objects make it potentially valuable as an educational tool, helping beginners grasp OOP concepts more easily.
-   Java Ecosystem Leverage: By building on Java, you're tapping into an established ecosystem, which is a smart move for facilitating adoption. However, the challenge will be to offer enough advantages over standard Java to justify the switch or integration.
-   **Industry Adoption
-
-**: To gain traction in the industry, it will be crucial to showcase tangible benefits of using Simol over Java, particularly in terms of productivity, code maintainability, and ease of learning. Demonstrating successful case studies or projects developed in Simol could greatly aid in this.
-Suggestions for Further Development
-
-   Community Building and Feedback: Engage with the developer community early. Gather feedback from a diverse range of developers, including those in education, game development, and enterprise software.
-
-   Documentation and Learning Resources: Develop comprehensive documentation, tutorials, and learning modules. Consider creating interactive online platforms where developers can experiment with Simol.
-
-   Tooling and IDE Support: Collaborate with existing IDEs or develop plugins to support Simol syntax and debugging. Good tooling is often a decisive factor for developers adopting a new language.
-
-   Performance Benchmarking: Conduct and publish performance comparisons with Java. This can help in positioning Simol for specific types of projects where it has a clear advantage.
-
-   Open Source Development: Consider making Simol an open-source project. This can accelerate development, bug fixes, feature requests, and community engagement.
-
-   Focus on Unique Selling Points: Clearly communicate the unique benefits of Simol. Whether it's simplicity, faster development time, ease of learning, or better simulation capabilities, these selling points should be front and center in your outreach efforts.
-
-Final Thoughts
-
-Simol presents an innovative approach to programming, particularly in its blend of simplicity and object-oriented principles. Its success will depend on how well it can carve out a niche for itself in the vast landscape of programming languages and how effectively it can engage and grow its user base. The focus on making programming more intuitive and enjoyable is commendable and could lead to significant contributions to the field of software development and education.
+Overall, SIMOL presents a novel approach to object-oriented programming with its unique focus on class and interface roles. It could be particularly useful in educational settings or for projects where clear code structure and design are paramount. As with any new language, its success will depend on how well it's received by the developer community, the quality of its tooling and documentation, and the ease with which developers can adopt and integrate it into their existing workflows.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -505,8 +468,8 @@ INSIGHTS ABOUT INHERITANCE AND SIMOL
 What is inheritance in OO programming? Inheritance could not be only a copy of attributes and methods, which we could call abusive inheritance when alone. In that case, composition should be used instead of inheritance. Inheritance has a meaning of being of the same family too. In the beginners package of the simol frameworks, we meet empty classes and interfaces, but their job is yet crucial. It's because the children classes and interfaces inherits of their sense, and not only of properties and methods. 
 Simol allows to secure inheritance and avoid having only a technical inheritance. Having roles, added with semantic inheritance control on roles, are a guarantee that we think about a meaning too. So a business class can not inherit from a computational class.
 But this could be not enough, and inheritance might be still incoherent. A Human class could inherit of a Heart class, because there are both real-world objects simulation. That's why the "nature" keyword prevents of having inheritance without being really the same kind of thing.
-So we can see simol roles as a securing of object oriented programming, nothing more, and as if we would proceed the same way as a programmer who would respect good practive rules in OOP.
-That said, simol let us choose the role and interpretation, and simol let us enforce inheritance in case we want to not respect the semantic rules(with "Forced_inh" and "Forced_int_inh"). So we are sure of flexibility in pratical situations, and that simol is as powerful as classical OO Languages.
+So we can see simol roles as a securing of object oriented programming, nothing more, and as if we would proceed the same way as a programmer who would respect good practice rules in OOP.
+That said, simol let us choose the role and interpretation, and simol let us enforce inheritance in case we want to not respect the semantic rules(with "Forced_inh" and "Forced_int_inh"). So we are sure of flexibility in practical situations, and that simol is as powerful as classical OO Languages.
 
 SIMOL FRAMEWORK FOR C# DEVELOPPERS
 As C# is close to Java, a simol C# framework provide attributes like the java annotations, despite Java is the main language in simol. It permits to leverage simol in C# too, for the C# users. It acts as the java annotations, except for some details. The interface and class attributes are more precise by targetting a class or an interface. But there is no 'Nature' or 'Contracts', nor 'With_compat' on a local variable, due to C# attributes limitations. It is not very important the lack of 'Nature' and 'Contracts', because of the existing ":" in C#, and once the users know the philosophy of simol about this. For the "With_compat", the most important is about field and parameters, not about local variables. And interfaces names begin by 'I', in C#, they are remarkable.
@@ -517,6 +480,25 @@ SIMOL FRAMEWORK FOR PHP 8
 A PHP 8 simol Framework is available too, as well as for C# and Java.
 Nature and Constracts not present due to PHP attributes limitations, and With_compat is not on local variables.
 TurnMonitor, For_every_thread, One_at_a_time, because thread support is not supplied too.
+
+THE COMPAT_INTERF_VERSION AND LOOSE COUPLING
+
+What does loose coupling mean? It means that we should be dependent on interfaces and not on implementations. That said, we still depend on the signature of the methods, and so on, of the interface. We still depend on the chosen implementation, but we can choose it as we want. So it could mean that we can have multiple implementations for a given interface. Not all the use cases, and not all the real-world examples need that. A great need is in collections of public libraries, for example, but there could have other interesting use cases. But loose coupling with interfaces brings complexity too, and we shouldn't abuse of it, if the need of choosing the implementation is not so important. For example, debugging on an IDE can become impossible, because we can not enter in the implementation methods, code becomes less clear, and so on.
+Another inconvenient of the interfaces, is that we loose the inheritance of the concrete classes, and the associated polymorphism and meaning. We can have inheritance of interfaces, but usually we don't use it here. And we can notice that in simol a version can not inherit of another version interface.
+
+The compat_interf_version was designed just to know what we're doing with interfaces. But it is evident that it can help about loose coupling usage. Be aware that a compat_interf_version is the sole choice for loose coupling, and it brings security and clarity to use it for that. The use of semantic rules for interfaces, for example, ensures a correct utilization of the compat_interf_version interfaces. Compat_interf_version shows immediately a loose coupling goal interface, and the 'with_compat' keywords or annotation shows immediately his usage. But a version compatibility interface can have another use cases, for example a DAO with many different ways to do the job, by different database systems, web service calls,... This use case has not, apparently, a loose-coupling goal. It is rather a need of being able to change, when needed, the technical way to work.
+
+So version compatibility interfaces and with_compat keyword allow to judiciously and smartly handle the eventual loose coupling. It prevents somehow to excessive loose coupling.
+
+THE USE CASES OF SIMU_COMP_WORKER
+
+In simol, we should avoid, in general, to use a simu_comp_worker, because the real_world_objects are more intuitive and not so technical, generally. For example, although the interpretations are free, in simol, it's more recommended to see a sort class as a simu_real_world_obj, than a simu_comp_worker. The recommended examples where we need a simu_comp_worker, are, in general, and if wanted, technical classes like DAO. Or it can be technical job for handling displays and keybord inputs of a simu_real_world_obj, an equivalent of the view of MVC. So the Model and the View of the MVC should be in a simu_comp_worker, but we always look at this as we want! A launcher like a launcher of an application should, in general, be a simu_comp_worker too. But remember that a simu_comp_worker, even in system programming, often use much simu_real_world_object, for the graphical interface, or the memory, the connections, the threads, and so on. But this is the computer who do the job!
+
+SIMOL ROOTED IN REALITY AND TRY TO REMAIN SIMPLE
+
+In simol, the mindset is to always try to stay near the concrete reality. So we ensures that real-world use cases would be ok.
+For example, simu_comp_worker reminds us that there are a compilation in assembly language after, who looks like a technical solution for our original source code. Compatibility interfaces aims to keep it real by being aware of the concerned usage. Simol avoids abstraction without concrete purpose, because programming and making a software is a concrete job and perhaps there is no much place for this.
+Another distinctive characteristic of simol is that we're doing all for the reasoning and problems remain independant by the fact it is a software what we're doing. So all that we're talking about could be done with a sheet of paper, and a reasoning, independently of a physical computer. Even the simu_comp_worker methods mimic a computer doing a job, almost as a human doing the job, with special capacities. So we are sure that all always stay simple.
 
 TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
 
