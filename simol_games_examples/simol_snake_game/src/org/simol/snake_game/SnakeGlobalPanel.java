@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 //simu_real_world_obj
 import javax.swing.JPanel;
 
+import org.simol.simolframework.java.Nature;
 import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.snake_game.Snake.SnakeLink;
 
@@ -16,7 +17,7 @@ import org.simol.snake_game.Snake.SnakeLink;
 
 //public simu_real_world_obj SnakeGlobalPanel nature JPanel
 @Simu_real_world_obj
-public class SnakeGlobalPanel extends JPanel {
+public class SnakeGlobalPanel extends @Nature JPanel {
 	//Accessors
 	private SnakeWindow gameWindow;
 	private JLabel lblVictory;

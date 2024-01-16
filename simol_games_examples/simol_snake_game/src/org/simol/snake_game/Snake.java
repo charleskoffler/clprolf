@@ -5,13 +5,14 @@ import java.util.ArrayList;
 /* could be seen as a simu_real_world_obj of an expert. */
 import java.util.Random;
 
+import org.simol.simolframework.java.Contracts;
 import org.simol.simolframework.java.Real_world_obj;
 import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.simolframework.java.Underst;
 
 //public simu_real_world_obj Snake contracts Runnable
 @Simu_real_world_obj
-public class Snake implements Runnable {
+public class Snake implements @Contracts Runnable {
 	public static int LINKS_NUMBER = 20;
 	public static int SPEED = 100;
 	

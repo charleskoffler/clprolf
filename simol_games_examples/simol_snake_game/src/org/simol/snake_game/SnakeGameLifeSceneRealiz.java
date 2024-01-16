@@ -3,6 +3,7 @@ package org.simol.snake_game;
 //Could be seen as a simu_real_world_obj, a queue of real-world event of a physical machine tool.
 import java.awt.EventQueue;
 
+import org.simol.simolframework.java.Contracts;
 import org.simol.simolframework.java.Simu_comp_worker;
 
 // A class for the technical realization of the life scene simu_real_world_obj. Typically it is used for display and sound
@@ -12,7 +13,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
 
 /* public simu_comp_worker SnakeGameLifeSceneRealiz contracts Runnable */
 @Simu_comp_worker
-public class SnakeGameLifeSceneRealiz implements Runnable {
+public class SnakeGameLifeSceneRealiz implements @Contracts Runnable {
 	
 	// Accessors
 	// A realization stuff may have kept his simu big brother

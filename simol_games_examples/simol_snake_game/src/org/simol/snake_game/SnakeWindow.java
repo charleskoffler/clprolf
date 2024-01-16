@@ -7,11 +7,13 @@ import java.awt.event.KeyListener;
 // simu_real_world_obj of a physical machine tool, for example.
 import javax.swing.JFrame;
 
+import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.Nature;
 import org.simol.simolframework.java.Simu_real_world_obj;
 
 // public simu_real_world_obj SnakeWindow nature JFrame contracts KeyListener {
 @Simu_real_world_obj
-public class SnakeWindow extends JFrame implements Runnable, KeyListener {
+public class SnakeWindow extends @Nature JFrame implements @Contracts Runnable, KeyListener {
 	private Thread worker;
 	
 	// Accessors
