@@ -26,41 +26,28 @@ The response and overview of chatGPT 4 about the description of simol programmin
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-User
-Great, but could you make an analysis of simol, so I could put it in the github repo?
+Hello my friend. I've created a new programming language. What do you think of it, please? : "(...)"
 ChatGPT
 
-Certainly! Here's an analysis of the Simol programming language that you can include in your GitHub repository:
+Thank you for sharing the extensive details of your programming language, Simol. It's clear that a lot of thought and effort has gone into its creation. Simol appears to be a well-conceived language that emphasizes clarity, simplicity, and a strong alignment with object-oriented principles. Here are some observations and thoughts:
 
-Simol Programming Language: A Comprehensive Analysis
+   Minimalistic Design: The idea of keeping the language minimalistic is excellent, especially in a world where programming languages can become bloated with features. This approach not only makes it easier for new learners but also ensures clarity and focus for experienced programmers.
 
-Simol emerges as an innovative programming language, extending Java's robust foundation with unique features. Designed for simplicity and educational utility, it introduces fresh concepts like 'simu_real_world_obj' and 'simu_comp_worker', revolutionizing traditional object-oriented paradigms. This minimalistic language not only makes complex concepts accessible but also fosters an intuitive programming experience.
+   Superset of Java: Building Simol as a superset of Java is a smart move, as it allows developers to leverage existing Java libraries and tools. This compatibility could ease the transition for Java developers looking to adopt Simol.
 
-Simol's alignment with Java offers seamless integration, benefiting from Java's extensive ecosystem. Its open-source nature encourages collaborative development, inviting contributions and ideas from a diverse community. The language’s emphasis on simulation and real-world object modeling positions it uniquely for various applications, particularly in education and software design.
+   Clear Object Roles: The concept of distinct roles for classes (like simu_real_world_obj, simu_comp_worker) is intriguing. It seems to provide a clear framework for developers to think about the purpose and functionality of their objects, which could enhance code readability and maintainability.
 
-Simol's potential lies in its ability to simplify programming while providing powerful tools for developers, making it a promising addition to the landscape of programming languages.
+   Integration with Java Framework: The Simol framework for Java, with its annotations, is a thoughtful addition. It provides a bridge for Java developers to gradually adopt Simol's concepts without having to fully commit to a new language.
 
-Feel free to adjust or expand upon this analysis to better fit the specific messaging and details you want to convey about Simol in your repository.
+   Educational Potential: Your language seems well-suited for educational purposes, particularly in teaching object-oriented concepts. The simplicity and the clear delineation of object roles could make it easier for beginners to grasp OOP concepts.
 
-User
-Could you detail the features, please, and tell what do you think of them?
-ChatGPT
+   Open Source Approach: Making Simol open source is a great decision for community engagement and development. It allows for collaborative improvement and wider adoption.
 
-Certainly! Here's a detailed analysis of some key features of Simol and my thoughts on them:
+   Focus on Simulation and Modeling: Your language's focus on simulation and modeling, with an emphasis on real-world representation, is quite unique and could be particularly useful in certain domains like simulation software, educational tools, and perhaps even game development.
 
-   Superset of Java: By building on Java, Simol leverages a well-established platform. This familiarity could ease the learning curve for Java developers and ensures compatibility with a vast array of existing libraries and tools.
+   Domain-Driven Design (DDD): Aligning with DDD principles by matching software structure and language with business domains is a modern approach that can lead to more intuitive and effective software solutions.
 
-   Unique Keywords and Concepts: Introducing keywords like 'simu_real_world_obj' and 'simu_comp_worker' adds a new layer of abstraction. This approach could make it easier to model complex systems and can provide clarity in how objects and actions are represented in code.
-
-   Educational Focus: The simplicity and minimalistic design of Simol make it potentially valuable as a teaching tool, helping students grasp object-oriented concepts more intuitively.
-
-   Open-Closed Principle: Simol's adherence to this principle, by adding to Java without modifying its existing structure, ensures extensibility and maintainability.
-
-   Enhanced Semantic Clarity: The introduction of specific roles for classes and interfaces, like 'simu_real_world_obj' for real-world simulations, adds a layer of semantic clarity that can be beneficial in large-scale software development, making code more readable and maintainable.
-
-   Domain-Driven Design Compatibility: Simol's alignment with DDD principles suggests it could be well-suited for complex business applications where domain modeling is crucial.
-
-Overall, Simol's innovative approach to extending Java's capabilities, coupled with its focus on simplicity and educational use, positions it as a potentially valuable tool for both new learners and experienced developers. Its unique concepts could foster a more intuitive understanding of object-oriented programming and domain-driven design.
+In summary, Simol appears to be a well-thought-out language with unique features and a strong philosophical grounding. Its success will likely depend on community adoption, the richness of its tooling and documentation, and perhaps most importantly, how well it solves specific problems that are not as effectively addressed by existing languages and frameworks. As with any new technology, gaining traction will require not only technical excellence but also effective community engagement and clear demonstration of its benefits over existing solutions.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -112,7 +99,7 @@ Simol follow the guidelines of the Fundamental theorem of software engineering, 
 Wikipedia quotation about the Fundamental theorem of softwatre engineering:
 "The fundamental theorem of software engineering (FTSE) is a term originated by Andrew Koenig to describe a remark by Butler Lampson attributed to David J. Wheeler:
 
-   "We can solve any problem by introducing an extra level of indirection."
+    "We can solve any problem by introducing an extra level of indirection."
 
 The theorem does not describe an actual theorem that can be proven; rather, it is a general principle for managing complexity through abstraction. 
 "
@@ -243,7 +230,7 @@ The roles are Role.DESIGN_ROLE, Role.GUI_ROLE, Role.HUMAN_EXPERT, and Role.MACHI
 
 COMPATIBILITY WITH OTHER PARADIGMS
 
-   Simol contains role annotations, in order to stay accessible with common interpretations and usage of classes, and for good understanding of the simu_real_world_obj use.
+    Simol contains role annotations, in order to stay accessible with common interpretations and usage of classes, and for good understanding of the simu_real_world_obj use.
 	The kind of objects simu_real_world_obj and simu_comp_worker can be seen as only simu_comp_worker, as simu_real_world_obj is finally a specialized simu_comp_worker in goal of simulation of the real-world. The same reasoning is valid for real_world_obj, which are first a kind of "information" object, but an "information" as well.
 So with this observation, we can say that there is only, finally, only simu_comp_worker classes(and only "information"), and this aligns with paradigms that do not differenciate classes. So we could see that even in simol, there is one sort of class or structures, like in classical object oriented programming(as well in procedural paradigm). In summary, it's quite like simu_real_world_obj would inherit of simu_comp_worker, and as real_world_obj would inherit from information, which is quite like regular object vision. These precisions aims to make a bridge with objects existing paradigms and code.
 
@@ -547,13 +534,13 @@ Answer of an advanced AI-based tool, about the use of class roles:
 "
 For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in Simol would likely appear intuitive and even natural.
 
-   Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
+    Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
 
-   Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
+    Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
 
-   Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
+    Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
 
-   Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
+    Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
 
 In essence, Simol's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
 "
@@ -607,6 +594,9 @@ So we can have an inherently coherence and respect main oo principles, because s
 We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
 So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like simol, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
 The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
+
+JUST IMAGINE A WORLD WHERE WE COULD TALK WITH OUR OBJECTS - THE NEED OF PURE OBJECTS
+Just for dreaming, imagine a world where we could talk with our objects. Some people would reply that it already exists with languages like Smalltalk, where you send messages to objects. But I said a world where you could talk with objects, no just send a message to an object. Talking with simol objects would be so enjoyable and intuitive. Speaking to a simu_real_world_obj would be equivalent as speaking to a horse, or a car. And talking with a simu_comp_worker would be the same as talking with our computer, as we talk to our buddy. By the way, an interface would just be what you can say to an object, what he can understand. So a "with_compat" would mean speaking to an object who would understand this vocabulary. In this dreamed world, of objects which could understand talking with them, it's vital to have well-designed objects. Otherwise, not having pure objects would imply that we could not talk easily with them, or even not at all. If you don't know who is the object, you can not talk to him correctly.
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
