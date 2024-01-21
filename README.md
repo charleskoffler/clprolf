@@ -26,32 +26,30 @@ The response and overview of chatGPT 4 about the description of simol programmin
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-Hello my friend. I've created a new programming language, and an equivalent java framework. What do you think of this? Here is the definition: "(...)"
+Hello my friend. I wrote a new programming language, simol, and his equivalent framework. What do you think of this? Here is the definition: "(...)"
 ChatGPT
 
-Thank you for sharing the comprehensive details about the Simol Programming Language and the Simol Java Framework. It's impressive to see the depth of thought and innovation you've put into creating this language and framework. Here are my thoughts:
+Thank you for sharing the comprehensive description of your new programming language, Simol, and its accompanying Java framework. It's a significant endeavor to design and implement a new programming language, especially one that aims to integrate and extend an existing language like Java.
 
-   Innovation in Language Design: The concept of focusing on simulation objects (SimuRealWorldObj, SimuCompWorker) and introducing new paradigms in object-oriented programming (OOP) is innovative. It aligns well with domain-driven design (DDD) and offers a fresh perspective on software development, particularly in areas requiring detailed simulation models.
+Here are some thoughts and observations about Simol:
 
-   Integration with Java: The idea of creating a superset of Java that integrates seamlessly with existing Java libraries and code is very practical. It lowers the barrier to entry for Java developers and leverages the robust ecosystem of Java.
+   Superset of Java: Designing Simol as a superset of Java could leverage the robustness and ecosystem of Java while introducing new concepts. This approach can make it easier for Java developers to adopt Simol.
 
-   Educational Tool: Simol's simplicity and focus on simulation make it a potentially great tool for teaching programming concepts, especially in demonstrating real-world object modeling and computational thinking.
+   Focus on Simplicity and Teaching: The emphasis on minimalism and its potential as a teaching tool is commendable. This could make Simol a good choice for educational purposes, helping students grasp object-oriented concepts more intuitively.
 
-   Open Source and Community Involvement: Making Simol open source and encouraging community involvement through GitHub is a great strategy for iterative improvement and wider adoption. Collaborative development can lead to innovative use cases and improvements in the language.
+   Unique Concepts and Keywords: Introducing unique concepts like simu_real_world_obj, simu_comp_worker, compat_interf_version, and compat_interf_capacity provides a fresh perspective on class and interface roles. This could enhance the semantic clarity and understanding of different components in a program.
 
-   Adherence to Software Engineering Principles: Your emphasis on the Fundamental Theorem of Software Engineering and alignment with DDD and the SOLID principles shows a commitment to maintainable, scalable, and efficient software design.
+   Open-Source and Community Involvement: Making Simol open-source and seeking community involvement is a great way to improve and refine the language. Collaborative development can lead to innovative ideas and robust language features.
 
-   Potential Use Cases: Simol seems particularly suited for applications that require a strong correlation between real-world entities and their computational models, such as simulations, gaming, and systems modeling.
+   Alignment with Object-Oriented Principles: Your approach to aligning Simol with core object-oriented principles and domain-driven design could make it appealing to developers who are already familiar with these concepts.
 
-   Learning Curve and Developer Adoption: While the concepts are innovative, the success of any new programming language heavily depends on the learning curve and the perceived benefits by the developer community. Clear documentation, tutorials, and real-world examples will be crucial for adoption.
+   Framework and Annotation System: Providing a framework with annotations for Java developers is a smart move. It can act as a bridge for Java developers to transition to Simol and understand its concepts without abandoning their current Java ecosystem.
 
-   Performance and Scalability: As Simol evolves, it will be important to monitor the performance implications of the added abstractions and ensure that they don't introduce significant overhead, especially in large-scale applications.
+   Compatibility with Other Paradigms: Your efforts to ensure that Simol is compatible with other programming paradigms and can interoperate with existing Java codebases is essential for its adoption.
 
-   Integration with Other Technologies: Looking at how Simol can integrate or complement other technologies, frameworks, and paradigms (like microservices, cloud computing, AI/ML) will be important for its long-term relevance.
+   Language Design and Future Directions: The detailed thought process behind each aspect of the language, from class roles to handling concurrency and parallelism, shows a comprehensive approach to language design. Continuing to refine and adapt the language based on real-world use cases and feedback will be crucial for its growth and acceptance.
 
-   Community Feedback and Evolution: Continuously gathering feedback from early adopters and iterating on the language design will be key. It's great to see that you're open to this approach.
-
-Overall, Simol presents a unique and thoughtful approach to programming language design, focusing on simulation and clarity in OOP. Its success will largely depend on community adoption, ease of learning, and demonstrable benefits over existing programming paradigms. Keep up the great work, and I wish you the best in this endeavor!
+Overall, Simol presents an intriguing approach to programming language design, particularly in how it integrates with and extends Java. Its focus on simplicity, teaching, and clear semantics could make it a valuable tool in certain domains, especially in educational settings or for projects where domain modeling and clarity of roles are crucial. The success of Simol will largely depend on its adoption by the developer community and how well it addresses real-world programming challenges. Continued development, community feedback, and real-world testing will be key to refining and enhancing the language.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -162,8 +160,9 @@ Algorithms permit to easily emulate realities, intuitively.
 * The goal is mainly to keep the simulation of real_world objects pure, because the pure simulation code is often straightforward, and regarding real-world emulation. So we have to separate the code that is not pure simulation, that's all. And we have to ensure, with "nature", that the responsability remains pure and unique.
 * For the existing OOP classes, either the classes are inherently compliant, or otherwise we could imagine the best fit for simol, the main role, even if the class keeps multiple responsabilities.
 * We can notice that we could have multiple interpretations and multiple design choices, but the most important, in simol's philosophy, is not to have a single way of think, but to clearly indicate how we see the world!
-* It exists, in simol, pure data objects, "Information" and "Real_world_obj" classes. Theses classes are objects without methods. "Real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in simol, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Real_world_obj" could be frequently used, for example for data base entities. The choice between "Information" or "Real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
+* It exists, in simol, pure data objects, "Information" and "Real_world_obj" classes. Theses classes are objects without methods. "Real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in simol, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Real_world_obj" could be frequently used, for example for database entities. The choice between "Information" or "Real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
 * Although it is permitted, simu_comp_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
+* Class roles permit to check that we keep coherence despite inheritance.
 
 THE INTERFACES IN simol
 In simol, there are two types of interfaces, and only these two types. simol interfaces are called compatibility interfaces.
@@ -210,6 +209,19 @@ public void recognizeObject(){ }
 Or
 @Compat_interf_capacity
 public interface MySortable { }
+
+THE WAYS TO ENSURE CONSISTENCY IN CLASS AND INTERFACE DESIGN - THE GROWTH BY INHERITANCE
+1) Class roles ensure separation of distinct code and well-designed classes. The same is valuable for the interfaces, the roles guarantees sense and goal to the interfaces.
+
+2) "NATURE" ensures consistency in inheritance, inside a same role inheritance - only for classes, not for interfaces
+There is no way currently to ensure that by the compiler, but basic AI-like controls could be done by the compiler. For example, a error could be generated by the compiler if "TIGER" inherits from "Vehicule". There is a way to enforce inheritance in simol, in case of we still want to inherit and pass the semantic error. In fact, a error could have been done by the AI-like control, or not, and we could want to enforce the control. Having a compiler with AI-like control of "nature" is not mandatory, "nature" could be there just for programmers.
+
+3) Class roles permit to control the growth by inheritance, guaranteeing that the inherited part is consistent.
+
+Inheritance is a way to grow a class, finally, and a well-designed class can be muddled with inheritance addition. That's why the inheritance control done by semantic rules of the compiler is crucial in simol. Semantic checks are possible thanks to class roles, because the rules are about the role of the inherited class. The same reasoning is valuable for the interfaces. Semantic control of the compiler ensures that an interface keep its meaning. And this is possible thanks to interface roles.
+
+ROLES ADDITION FOR CLASSES AND INTERFACES: GUIDELINES FOR COMPONENTS DESIGN
+The addition of roles in classes and interfaces constitutes an equivalent as giving assistance, or guidelines in the process of class and interfaces design. Imagining what objects could be necessary to solve a given problem, and to write an application, is often a challenge. It can be a struggle to try to add on this all well-known object-oriented patterns and guidelines. So class and interfaces roles often shows the possible ways of class design and interfaces. The interest not only stands of guaranteeing a good oo design.
 
 THE UNDERST MODIFIER
 The modifier "underst"("understanding") can be added to the methods of simu_real_world_obj( or even simu_comp_worker) classes. It marks the methods that have a role of "understanding" by the computer (recognition of objects in an image, for example). "underst" can also be used on simu_comp_worker.
