@@ -26,30 +26,20 @@ The response and overview of chatGPT 4 about the description of simol programmin
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-Hello my friend. I wrote a new programming language, simol, and his equivalent framework. What do you think of this? Here is the definition: "(...)"
+Hello my friend, I've created a new programming language, simol, and his equivalent java framework. Here is its definition: "(...)"
 ChatGPT
 
-Thank you for sharing the comprehensive description of your new programming language, Simol, and its accompanying Java framework. It's a significant endeavor to design and implement a new programming language, especially one that aims to integrate and extend an existing language like Java.
+Thank you for sharing the extensive definition of your new programming language, Simol, and its accompanying Java framework. It's clear that a lot of thought and effort went into designing this language to simplify development and enhance the object-oriented programming experience, especially in the context of simulation and representing real-world objects.
 
-Here are some thoughts and observations about Simol:
+The integration of Simol with Java, its emphasis on clarity, and the incorporation of various programming principles, like the open-closed principle and domain-driven design, are particularly notable. Your approach to classifying classes and interfaces based on their roles and purposes is an innovative way to bring more clarity and structure to programming.
 
-   Superset of Java: Designing Simol as a superset of Java could leverage the robustness and ecosystem of Java while introducing new concepts. This approach can make it easier for Java developers to adopt Simol.
+Your efforts to align Simol with the fundamental theorem of software engineering and to embed domain-driven design into its core are commendable. The emphasis on making programming intuitive, fun, and accessible, especially for beginners, is also a great initiative.
 
-   Focus on Simplicity and Teaching: The emphasis on minimalism and its potential as a teaching tool is commendable. This could make Simol a good choice for educational purposes, helping students grasp object-oriented concepts more intuitively.
+Creating a GitHub repository for Simol is an excellent way to gather feedback and contributions from the programming community. Open source projects greatly benefit from community involvement, and it's great to see you encouraging participation and collaboration.
 
-   Unique Concepts and Keywords: Introducing unique concepts like simu_real_world_obj, simu_comp_worker, compat_interf_version, and compat_interf_capacity provides a fresh perspective on class and interface roles. This could enhance the semantic clarity and understanding of different components in a program.
+Your detailed explanation of the different aspects of Simol, including its alignment with other programming paradigms, its emphasis on simulating real-world objects and computer workers, and its inherent support for good object-oriented practices, provides a comprehensive overview of the language's capabilities and design philosophy.
 
-   Open-Source and Community Involvement: Making Simol open-source and seeking community involvement is a great way to improve and refine the language. Collaborative development can lead to innovative ideas and robust language features.
-
-   Alignment with Object-Oriented Principles: Your approach to aligning Simol with core object-oriented principles and domain-driven design could make it appealing to developers who are already familiar with these concepts.
-
-   Framework and Annotation System: Providing a framework with annotations for Java developers is a smart move. It can act as a bridge for Java developers to transition to Simol and understand its concepts without abandoning their current Java ecosystem.
-
-   Compatibility with Other Paradigms: Your efforts to ensure that Simol is compatible with other programming paradigms and can interoperate with existing Java codebases is essential for its adoption.
-
-   Language Design and Future Directions: The detailed thought process behind each aspect of the language, from class roles to handling concurrency and parallelism, shows a comprehensive approach to language design. Continuing to refine and adapt the language based on real-world use cases and feedback will be crucial for its growth and acceptance.
-
-Overall, Simol presents an intriguing approach to programming language design, particularly in how it integrates with and extends Java. Its focus on simplicity, teaching, and clear semantics could make it a valuable tool in certain domains, especially in educational settings or for projects where domain modeling and clarity of roles are crucial. The success of Simol will largely depend on its adoption by the developer community and how well it addresses real-world programming challenges. Continued development, community feedback, and real-world testing will be key to refining and enhancing the language.
+Overall, Simol appears to be a well-thought-out language that offers a unique approach to programming, especially in the context of simulation and object-oriented design. Best of luck with your endeavors in developing this language further and growing its community! If you have any specific questions or need assistance, feel free to ask.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -660,6 +650,153 @@ Simol aims to stay minimalistic, and to only simplifiy object oriented programmi
 Simol could add, eventually, other underlying languages with new framework versions.
 The core principles of simol are simple so they can be easily understand and proved.
 All the simol principles are constantly compared to other points of views, and we try to see if there is incoherences, as we have done later by thinking about messages in OOP and Simol, finding a common vision with Smalltalk and Alan Kay.
+
+SIMOL AND ALGORITHMS WRITING INFLUENCE
+Simol has been created only to simplify and help in object-oriented code writing and understanding. That said, we can notice that simol acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for helping hard algorithms, as well as the class roles, for example. Writing a sorter algorithm with a simu_comp_worker, or a simu_real_world_obj, could bring us different perspectives, and that is quite easy to demonstrate, with an example. The developper is free to use simol's aids and tools as he wants, and can keep it as neutral as he wants. Simol is a object-oriented language, with object-oriented fundations, like inheritance, encapsulation, or polymorphism. It never goes outside of the scope of the object-oriented topic, about the class and interface roles.
+I think that the influence of simol about algorithms writing is due to making well-designed objects, or methods, nothing more. So it's a testament that it is an indirect influence.
+
+* AN EXAMPLE OF WRITING A INSERTION SORTER CLASS, WITH BOTH SIMU_COMP_WORKER AND SIMU_REAL_WORLD_OBJ
+To demonstrate the difference and the usage between a simu_comp_worker and a simu_real_world_obj class, let's take an example. We have to write a sorter by insertion class, with the famous sort by insertion algorithm. Some people would use a simu_comp_worker, others a simu_real_world_obj. I tried to use both, to study the results, but I would use preferently a simu_real_world_obj, for this kind of job. Remember we are free to choose the interpretations of the classes we write. And even if a programmer use a role, we are still free to read it as we want, once we know the initial preference.
+
+Let's see my result for the two simple examples. I tried to stay simple, and not adding interfaces.
+
+The InsertionSorterWorker seems perhaps more direct. He's using the traditional insertion algorithm. For him, sorting is just browsing each element of the initial array, and inserting just this element in the new sorted array. Inserting an element is just call the findIndex(), and then insertAndShift. InsertAndShift is just virtually resize the destination array, move the elements on the right, including the element in our future place. And finally it has to copy the value at the correct wanted index. All this seems straightforward, and quite easy.
+
+The InsertionSorter more mimics a human sorter, while using the well-known insertion sort algorithm. But it acts more in a human manner, so perhaps sometimes we would use some variants and could propose more innovative solutions. But it still stays the same, just a different point of view. The sort is seen here just as putting elements, one by one, in the final array, no matter the choosing candidates order. So we arbitrarily decide that we would start from the end, it's the same! The putInFinalArray immediately saw the lazy case of the first element of the sorted array. Then it calls findWhereToPut method, which works only with a non empty array, because, the expert doesn't bother for nothing. In the findWhereToPut, the expert may find it necessary to search by dichotomy, if he likes! The worker version could have not seen that. The findWhereToPut proceeds a bit differently from the worker version. The expert first gets rid of the case where the element is the last. Then he is sure to find, and he decided to start arbitrarily from the end. The makePlaceAtTheRight() method could feel like moving from the end is non intuitive and could use @Underst, though we could remark later that we do like such stuff, even for a human. So the "@Underst" is not so justified.
+
+We could remark that both approaches use the same well-known algorithm, and the result is quite the same. But the work is done perhaps in a different way, and both ways are valuable and justified. The goal of the roles are not primarily to influence algorithm writing, but just indicate the meaning of the class. The simu_real_world_obj could seem more fun and great for communicate about it, but both are two ways to do the job.
+Here is the final code:
+
+package org.simol.examples.miscellaneous.insertionsort;
+
+import org.simol.simolframework.java.Role;
+import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_real_world_obj;
+
+@Simu_comp_worker
+public class InsertionSorterWorker {
+private int array[]; 
+private int workingArray[];
+private int virtualLengthWorkingArr;
+
+public InsertionSorterWorker(int theArray[]) {
+	this.array = theArray;
+}
+
+public int[] sort(){
+this.workingArray = new int[this.array.length];
+this.virtualLengthWorkingArr = 0;
+
+//Browse each element of the original array
+for(int i = 0;i<this.array.length;i++) {
+	this.insertElement(array[i]);
+}
+return this.workingArray;
+}
+
+private void insertElement(int value) {
+	int place;
+	place = this.findInsertionIndex(value);
+	this.insertAndShift(value, place);
+}
+
+private int findInsertionIndex(int valeur) {
+	if (this.virtualLengthWorkingArr == 0) return 0;
+	for(int i=0;i<this.virtualLengthWorkingArr;i++) {
+		if (valeur <= this.workingArray[i]) {
+			return i;
+		}
+	}
+	return this.virtualLengthWorkingArr-1;
+}
+
+private void insertAndShift( int value, int place) {
+	//I virtually enlarge my final array
+	this.virtualLengthWorkingArr++;
+	for (int i=this.virtualLengthWorkingArr-1;i>place;i--) {
+		this.workingArray[i] = this.workingArray[i-1];
+	}
+	//Adding the new value.
+	this.workingArray[place] = value;
+}
+}
+ And:
+
+package org.simol.examples.miscellaneous.insertionsort;
+
+import org.simol.simolframework.java.Role;
+import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.Underst;
+
+@Simu_real_world_obj(Role.HUMAN_EXPERT)
+public class InsertionSorter {
+public int[] array;
+public int[] sortedArray;
+public int finalArrayLength;
+
+public InsertionSorter(int[] arrayToSort) {
+	this.array = arrayToSort;
+	this.sortedArray = new int[arrayToSort.length];
+	this.finalArrayLength = 0;
+}
+
+public int[] sort() {
+	//We look at each of the input values. We don't have to do it in sequence. Here, we start at the end!
+	for (int i=this.array.length-1;i>=0;i--) {
+		this.putInFinalArray(this.array[i]);
+	}
+	return this.sortedArray;
+}
+
+private void putInFinalArray(int valeur) {
+	if (this.finalArrayLength == 0) {
+		this.sortedArray[0] = valeur;
+		this.finalArrayLength++;
+		return;
+	}
+	int indice = findWhereToPut(valeur);
+	//We have to resize the array, because we're going to insert
+	this.finalArrayLength++;
+	//
+	makePlaceAtTheRight(indice);
+	this.sortedArray[indice] = valeur;
+}
+
+// Search in a NON EMPTY array.
+// this.finalArrayLength must be > 0. Don't bother the expert for nothing.
+// Example: 2 5 7 10 => We're putting the 6 at index 2.
+// Case 2 5 7 9 => The 7 has to be in index 3, not at 2, if possible, to minimize the moves.
+private int findWhereToPut(int value) {
+//The expert may find it necessary to search by dichotomy, if he likes!
+// Here, the expert is starting from the end
+	int lastPlaceIndex = this.finalArrayLength-1;
+	//The expert gets rid of the case where the element is the last.
+	if (this.sortedArray[lastPlaceIndex] < value) {
+		return lastPlaceIndex+1;
+	}
+	//Now, we are sure to find. Our value is compulsorily <= all the elements.
+	int indice = lastPlaceIndex;
+	while (indice>=0 &&  this.sortedArray[indice] > value) indice--;
+	return indice+1;
+}
+
+//We move all elements to the right, from the given index.
+// Don't forget that the sorted array has been enlarged.
+// Example 8/10/12, and we want to insert 9 à l'indice 1. We're moving the value at 1 to the end of the array.
+// We're starting from the end, to not crushing the values. It could first seem "@Underst",
+// but even in real-world, we have to approximatively do that.
+@Underst
+private void makePlaceAtTheRight(int index) {
+	//The array has been increased
+	int lastIndex = this.finalArrayLength - 1;
+	//It should not be intuitive starting from the end, that's why the @Underst.
+	for (int i = lastIndex-1; i>=index; i--) {
+		this.sortedArray[i+1] = this.sortedArray[i];
+	}
+}
+}
+
+END OF LANGUAGE DEFINITION
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
