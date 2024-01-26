@@ -1,11 +1,12 @@
 package org.simol.examples.design_patterns.decorator;
 
+import org.simol.simolframework.java.Contracts;
 import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.simolframework.java.With_compat;
 
 //public abstract simu_real_world_obj CoffeeWithAdditional contracts Coffee
 @Simu_real_world_obj
-public abstract class CoffeeWithAdditional implements Coffee {
+public abstract class CoffeeWithAdditional implements @Contracts Coffee {
     private final @With_compat Coffee parentCoffee;
 
     public CoffeeWithAdditional(@With_compat Coffee decoratedCoffee) {

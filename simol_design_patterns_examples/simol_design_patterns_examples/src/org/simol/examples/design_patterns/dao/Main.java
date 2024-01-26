@@ -21,7 +21,7 @@ public class Main {
         userDao.save(newUser);
 
         // Retrieve and print all users
-        List<User> users = userDao.findAll();
+        @With_compat List<User> users = userDao.findAll();
         for (User user : users) {
             System.out.println("User: " + user.getUsername() + ", Email: " + user.getEmail());
         }

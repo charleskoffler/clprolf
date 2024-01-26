@@ -1,6 +1,9 @@
 package simol.simple_examples.hello_world;
 
+import org.simol.simolframework.java.Simu_real_world_obj;
+
 //public simu_real_world_obj World
+@Simu_real_world_obj
 public class World {
 	private String name;
 	

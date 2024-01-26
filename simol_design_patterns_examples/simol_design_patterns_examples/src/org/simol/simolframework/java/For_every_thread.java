@@ -1,19 +1,16 @@
 package org.simol.simolframework.java;
 
-import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-/**
- * Replace the prevent_missing_collision method modifier of simol.
- * @author
- *
- */
+/* @Long_action to replace the simol method modifie "long_action", but for the @Long_action simol annotation on
+ * fields too. */
+
 @Retention(RUNTIME)
-@Target(value= {METHOD})
-public @interface Prevent_missing_collision {
+@Target(value= {FIELD})
+public @interface For_every_thread {
 
 }
