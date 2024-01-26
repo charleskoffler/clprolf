@@ -124,14 +124,6 @@ Classically, it should be used rather by a simu_comp_worker, it is quite made fo
 An Information could be used, for example, to return many different objects, but perhaps we'd rather create an Response object instead!
 "Information" should be rarely used, except perhaps some kind of programs, like system programming.
 
-So it is only that, simol? Is it useful that I add all that stuff to my Java code?
-
-Yeah, I would say you'd gain a lot. Much reasons could be given. First, it a guarantee to stay with well-designed and clear objects. Remember yourself reading the java code of something else, it's often tricky to understand what are the precise goals of a class.
-Then it allows to think to many different interpretations, and to stay compatible with much design principles, like SRP(Single Responsability Principle). The MVC is also not far.
-And we will then ensure, by compiler, that our classes are staying always great, verifying that a new inherited class, is compatible with our role. A Simu_comp_worker class can not inherit of a simu_real_world_obj, that is not possible in simol, except if you really want to do that.
-There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_worker, to stay compatible with legacy code, then you can do that.
-But it is not recommended by the language, and you have to explicitly ask it. So it is a conscious thing done, marked by the annotation.
-
 ```java
 public information myInformation {
 	Socket theConnection; //A simu_real_world_obj, it is allowed.
@@ -146,6 +138,14 @@ public class myInformation {
 	int myMysteriousNumberForMyWorker;
 }
 ```
+
+So it is only that, simol? Is it useful that I add all that stuff to my Java code?
+
+Yeah, I would say you'd gain a lot. Much reasons could be given. First, it a guarantee to stay with well-designed and clear objects. Remember yourself reading the java code of something else, it's often tricky to understand what are the precise goals of a class.
+Then it allows to think to many different interpretations, and to stay compatible with much design principles, like SRP(Single Responsability Principle). The MVC is also not far.
+And we will then ensure, by compiler, that our classes are staying always great, verifying that a new inherited class, is compatible with our role. A Simu_comp_worker class can not inherit of a simu_real_world_obj, that is not possible in simol, except if you really want to do that.
+There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_worker, to stay compatible with legacy code, then you can do that.
+But it is not recommended by the language, and you have to explicitly ask it. So it is a conscious thing done, marked by the annotation.
 
 What is the meaning of "nature"?
 
