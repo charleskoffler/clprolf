@@ -8,7 +8,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Replace the prevent_missing_collision method modifier of simol.
+ * Replace the prevent_missing_collision method modifier of simol, and the @Prevent_missing_collision on attributes.
  * @author
  *
  */
