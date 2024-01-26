@@ -44,7 +44,7 @@ We notice that there is only pure emulation code. It is the code to describe the
 In other words, pure technical code, which is often more complex, for handle a technical aspect regarding the computer itself, is not here.
 Why are we doing that? First, such pure simulation code is often straightforward. It's quite the "business" code, in other more classical words. And we don't want to mix two concerns, two responsabilities.
 
-Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in simol, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the class, for the programmer, but for the other readers two.
+Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in simol, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the class, for the programmer, but for the other readers too.
 
 What is a simulation of a computer worker?
 
@@ -79,7 +79,7 @@ public class Launcher {
 
 In this example, we need an object to execute the application, and the simulation of a human.
 A class with a static method is quite like an singleton object, isn't it? The static attributes and methods are unique for a given class.
-So this class, in simol, in a simu_comp_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, as this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not the human.
+So this class, in simol, in a simu_comp_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, and this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not a real-world object.
 So we will often have a simu_comp_worker as a launcher of the application.
 A great use case of the simu_comp_worker can be to put the code for display on screen, or playing animations or sounds, to realize technically a simulation of real-world object on the computer! If you have only a simu_real_world_obj, without technical reflection on screen , keyboard, music, and so on, the simulation would be only a memory simulation! So it seems great to separate this code which is frequently technical, and computer-dependent. In this kind of code, we have to know the computer libraries, for example.
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
