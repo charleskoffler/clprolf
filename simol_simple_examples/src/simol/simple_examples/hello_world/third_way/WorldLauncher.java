@@ -1,6 +1,8 @@
-package simol.simple_examples.hello_world;
+package simol.simple_examples.hello_world.third_way;
 
 import org.simol.simolframework.java.Simu_comp_worker;
+
+//Another way to do an hello 
 
 //Simple launch job for the computer!
 //public simu_comp_worker WorldLauncher
