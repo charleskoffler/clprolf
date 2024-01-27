@@ -3,6 +3,7 @@ Differences between simol and java or any usual object-oriented language - The c
 The classes
 
 First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the real-world objects, and the information objects. Let's talk about them later.
+In object-oriented programming, we have to create objects. A difficulty is to choose the objects to create. In simol, we create either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
 
 What is a simulation of a real-world object?
 
@@ -85,6 +86,7 @@ So this class, in simol, in a simu_comp_worker. The object is more a computer jo
 So we will often have a simu_comp_worker as a launcher of the application.
 A great use case of the simu_comp_worker can be to put the code for display on screen, or playing animations or sounds, to realize technically a simulation of real-world object on the computer! If you have only a simu_real_world_obj, without technical reflection on screen , keyboard, music, and so on, the simulation would be only a memory simulation! So it seems great to separate this code which is frequently technical, and computer-dependent. In this kind of code, we have to know the computer libraries, for example.
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
+When we talk about a computer worker, we talk about a worker who is just able to obey, and do the job we've entrusted to it. We are not talking about an AI worker, who could take initiatives and have creativity.
 
 What is a "real-world_obj"?
 
@@ -202,3 +204,107 @@ public class Dog extends @Nature Animal {
 } 
 
 ```
+
+What are the roles for a simu_real_world_obj?
+
+Specifying the role of the simu_real_world_obj classes is absolutely not mandatory. The roles can be, currently, @Human_expert, @Machine_tool, @GUI_role, @Design_role, in the simol language. For the framework, we indicate it as @Simu_real_world_obj(Role.HUMAN_EXPERT), or @Simu_real_world_obj(Role.Design_role), for example, a value of the Role enumeration.
+A human expert specifies that we emulate a real-world human expert. This could remind us the expert systems, except that all the expert rules are given by an algorithm. For example, we could see a controller as a business expert, in his speciality.
+
+```java
+@Human_expert
+public simu_real_world_obj WeatherForecastController {
+
+	public void getForecasts() { //The meteorologist is doing his job!
+	}
+
+}
+
+```
+
+In the framework:
+
+```java
+@Simu_real_world_obj(Role.HUMAN_EXPERT)
+public class WeatherForecastController {
+
+	public void getForecasts() { //The meteorologist is doing his job!
+	}
+
+}
+
+```
+
+The @Design_role(or Role.DESIGN_ROLE) annotation, can be used instead of @Human_expert, if we prefer the more traditional vision in term of role in the design of the application. A controller, a service, and so on, are considered design roles in simol. So we can use the same example, with another vision:
+
+```java
+@Design_role
+public simu_real_world_obj WeatherForecastController {
+
+	public void getForecasts() { //This time, the controller is doing his job!
+	}
+
+}
+
+```
+
+In the framework:
+
+```java
+@Simu_real_world_obj(Role.HUMAN_EXPERT)
+public class WeatherForecastController {
+
+	public void getForecasts() { //This time, the controller is doing his job!
+	}
+
+}
+
+```
+
+But what is a machine tool and a GUI_role ?
+
+These are compensation in term of GUI, of such different visions. The GUI_role is the more classical view, of a graphical interface. A button is a component, or a control, of a window, and the whole is a graphical interface. Yeah. But some people could see that it is quite an emulation of a real-world machine- tool, with buttons, displays, and so on. So the window is viewed like a real-world machine tool, nothing more. So the abstraction becomes more direct and imaginative. When we execute a graphical application, it is just as if we had obtained a specialized machine tool, to do a particular work. Notice that much metaphors used in graphical interfaces, like buttons, or window, suit well to this vision.
+
+Remember that indicating the roles are not mandatory in simol. We could just specify the class role, "simu_real_world_obj", and nothing more. It's enough, if we want.
+
+In simol language:
+
+```java
+@Machine_tool
+public simu_real_world_obj MyBeautifulButton nature JButton {
+
+
+}
+```
+
+The same in the simol java framework:
+
+```java
+@Simu_real_world_obj(Role.MACHINE_TOOL)
+public class MyBeautifulButton nature JButton {
+
+
+}
+```
+
+Another example, with GUI_Role, this time:
+
+```java
+@GUI_role
+public simu_real_world_obj MyBeautifulButton nature JButton {
+
+
+}
+```
+
+The same in the simol java framework:
+
+```java
+@Simu_real_world_obj(Role.GUI_ROLE)
+public class MyBeautifulButton nature JButton {
+
+
+}
+```
+
+
+Remember that an equivalent framework exists in C# and PHP 8. The PHP 8 version doesn't currently support the parallelism aids.
