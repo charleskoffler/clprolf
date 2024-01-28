@@ -119,7 +119,7 @@ The choice between a version or capacity compatibility interface is always free.
 Is it really useful?
 
 I think so. We should know that the compiler will ensure, by semantic stage checks, that the interface role would be coherent despite the interface can inherit by another interface. So a growing of interface will still remain clean and meaningful. And the compiler will check if the contracts of a class are coherent.
-In rare and particular use cases where we want to overstep these rules, we can use "@Forced_int_inh" annotation in both language and framework. This forcing can be done about an "extends" of an interface, or "contracts" of an interface.
+In rare and particular use cases where we want to overstep these rules, we can use "@Forced_int_inh" annotation in both language and framework. This forcing can be done about an "extends" of an interface, or "contracts" of a class.
 
 ```java
 
