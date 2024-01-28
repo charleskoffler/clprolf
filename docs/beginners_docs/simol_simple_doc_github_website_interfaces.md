@@ -2,7 +2,8 @@ Differences between simol and java or any usual object-oriented language - The i
 
 What are the differences between Java-like languages and simol?
 
-In Java, there is one keyword for interfaces, "interface". An interface is quite a set of method signatures, grouped to constitute a type. An interface can not contain instance fields. And an interface can not have protected methods or members. By inheriting of an interface, a class inherits only of a signature, not of an implementation. So the class have to write it. So in simol, interfaces are considered as a contract. In the oracle website, on java interface concept: "Interfaces form a contract between the class and the outside world, and this contract is enforced at build time by the compiler.".
+In Java, there is one keyword for interfaces, "interface". An interface is quite a set of method signatures, grouped to constitute a type. An interface can not contain instance fields. And an interface can not have protected methods or members. By inheriting of an interface, a class inherits only of a signature, not of an implementation.
+So the class have to write it. So in simol, interfaces are considered as a contract. In the oracle website, about java interface concept: "Interfaces form a contract between the class and the outside world, and this contract is enforced at build time by the compiler.".
 That's why in simol, we talk rather of "compatibility interfaces", instead of pure "interfaces". It remains interfaces, because simol is compatible with object-oriented concepts. But interfaces are viewed for a compatibility goal, for a variable, field, or parameter to reach out a class type respecting a given interface.
 
 What is a capacity compatibility interface ?
@@ -118,16 +119,23 @@ The choice between a version or capacity compatibility interface is always free.
 Is it really useful?
 
 I think so. We should know that the compiler will ensure, by semantic stage checks, that the interface role would be coherent despite the interface can inherit by another interface. So a growing of interface will still remain clean and meaningful. And the compiler will check if the contracts of a class are coherent.
+In rare and particular use cases where we want to overstep these rules, we can use "@Forced_int_inh" annotation in both language and framework. This forcing can be done about an "extends" of an interface, or "contracts" of an interface.
 
 ```java
 
-public compat_interf_version CityDao extends cityDAO {
+public compat_interf_version CityDao {
 	public City getCityById(int id);
 	//(...)
 }
 
 // THIS IS NOT PERMITTED BY THE COMPILER, BECAUSE A VERSION CAN NOT INHERIT OF ANOTHER VERSION
-public compat_interf_version ClientDao extends cityDAO {
+public compat_interf_version ClientDao extends CityDAO { //Notice that there is no "nature" keyword about the "extends" between interfaces!
+	public Client getClientById(int id);
+	//(...)
+}
+
+// Here, we enforce the classical rules of simol for interface inheritance.
+public compat_interf_version ClientDao extends @Forced_int_inh CityDAO {
 	public Client getClientById(int id);
 	//(...)
 }
@@ -139,7 +147,7 @@ In the framework:
 ```java
 
 @Compat_interf_version
-public interface CityDao extends cityDAO { //Notice that there is no "nature" keyword about the "extends" between interfaces!
+public interface CityDao {
 	public City getCityById(int id);
 	//(...)
 }
@@ -147,7 +155,13 @@ public interface CityDao extends cityDAO { //Notice that there is no "nature" ke
 // THIS IS NOT PERMITTED BY THE COMPILER, BECAUSE A VERSION CAN NOT INHERIT OF ANOTHER VERSION
 
 @Compat_interf_version
-public interface ClientDao extends CityDAO {
+public interface ClientDao extends CityDAO { //Notice that there is no "nature" keyword about the "extends" between interfaces!
+	public Client getClientById(int id);
+	//(...)
+}
+
+// Here, we enforce the classical rules of simol for interface inheritance.
+public compat_interf_version ClientDao extends @Forced_int_inh CityDAO {
 	public Client getClientById(int id);
 	//(...)
 }
@@ -175,7 +189,7 @@ public class ClientMysqlDao implements @Contracts ClientDAO, CityDAO { //THIS IS
 
 What is the "with_compat" stuff, is it really useful?
 
-"with_compat" is just a keyword to add when interface type use. It precedes a variable, field, or parameter declaration. It means "with compatibility", so we accept, for these variables, any objects with a class type compatible with our required interface. We do not use "with compat" on a return type. It keeps our vision of interfaces, while permitting to remind that the requested object is still a object with a class. Actually, an interface is not really a type, by a requirement about a class type. And the weakly coupled variables are quickly visible, as well as the dependency injection(needed or done).
+"with_compat" is just a keyword to add when interface type is used. It precedes a variable, field, or parameter declaration. It means "with compatibility", so we accept, for these variables, any objects with a class type compatible with our required interface. We do not use "with compat" on a return type. It keeps our vision of interfaces, while permitting to remind that the requested object is still an object with a class. Actually, an interface is not really a type, by a requirement about a class type. And the weakly coupled variables are quickly visible, as well as the dependency injection(needed or done).
 
 ```java
 
