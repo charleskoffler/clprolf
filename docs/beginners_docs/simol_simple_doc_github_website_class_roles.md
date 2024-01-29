@@ -1,5 +1,9 @@
 Differences between simol and java or any usual object-oriented language - The classes
 
+Introduction
+
+Simol introduces a new way of thinking, about object-oriented. But it is not crazy, and we should gain naturally our bearings.
+
 The classes
 
 First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the real-world objects, and the information objects. Let's talk about them later.
@@ -262,7 +266,7 @@ public class WeatherForecastController {
 
 But what is a machine tool and a GUI_role ?
 
-These are compensation in term of GUI, of such different visions. The GUI_role is the more classical view, of a graphical interface. A button is a component, or a control, of a window, and the whole is a graphical interface. Yeah. But some people could see that it is quite an emulation of a real-world machine- tool, with buttons, displays, and so on. So the window is viewed like a real-world machine tool, nothing more. So the abstraction becomes more direct and imaginative. When we execute a graphical application, it is just as if we had obtained a specialized machine tool, to do a particular work. Notice that much metaphors used in graphical interfaces, like buttons, or window, suit well to this vision.
+These are compensation in term of GUI, of such different visions. The GUI_role is the more classical view, of a graphical interface. A button is a component, or a control, of a window, and the whole is a graphical interface. Yeah. But some people could see that it is quite an emulation of a real-world machine tool, with buttons, displays, and so on. So the window is viewed like a real-world machine tool, nothing more. So the abstraction becomes more direct and imaginative. When we execute a graphical application, it is just as if we had obtained a specialized machine tool, to do a particular work. Notice that much metaphors used in graphical interfaces, like buttons, or window, suit well to this vision.
 
 Remember that indicating the roles are not mandatory in simol. We could just specify the class role, "simu_real_world_obj", and nothing more. It's enough, if we want.
 
