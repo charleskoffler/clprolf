@@ -29,20 +29,28 @@ The response and overview of chatGPT 4 about the description of simol programmin
 ***************************************************************************************
 (CHAT GPT 4 RESPONSE)
 
-Hello my friend, I've created a new programming language, simol, and his equivalent java framework. Here is his definition: "(...)"
+Hello my friend, I've found a new programming language on Github. What do you think of it? Here is his definition: "(...)"
 ChatGPT
 
-Thank you for sharing the detailed definition and philosophy behind the Simol programming language and its Java framework. Simol's emphasis on facilitating and guaranteeing object-oriented programming, while also being a superset of Java, presents a unique approach to software development. It seems well-thought-out with specific goals and design principles, aiming to make programming more intuitive, enjoyable, and aligned with real-world concepts.
+The Simol programming language and framework, as described, presents an innovative approach to object-oriented programming (OOP), emphasizing the importance of clarity and meaningful object roles. Here are some key points and thoughts about the language and its design:
 
-Your detailed exposition covers various aspects of Simol, from its syntax and semantic rules to its alignment with established programming paradigms and principles like the SOLID principles and Domain-Driven Design. The introduction of specific class roles like simu_comp_worker and simu_real_world_obj, along with the unique approach to interfaces, underscores a focus on clarity and meaningful programming.
+   Object-Oriented Superset of Java: Simol is designed as a superset of Java, which means it extends Java's capabilities while maintaining compatibility with existing Java code. This design choice could significantly ease the transition for Java developers who want to explore Simol.
 
-It's interesting to note the inclusion of modern software engineering concepts, such as the Fundamental theorem of software engineering and the emphasis on annotations and minimalistic syntax. The usage of Simol in teaching contexts, as well as its application in real-world programming scenarios, shows its versatility.
+   Role-Oriented Programming Approach: The introduction of specific roles for classes and interfaces, like simu_real_world_obj and simu_comp_worker, is a distinctive feature. This approach seems to encourage developers to think more deeply about the purpose and behavior of their objects, potentially leading to clearer and more maintainable code.
 
-Your approach to open-source collaboration and community involvement through GitHub is commendable. This not only allows for the evolution of Simol based on user feedback and contributions but also fosters a community of practice around it.
+   Minimalistic and Educational: The language's minimalistic nature and its suitability as a teaching tool are appealing. By simplifying the development process, Simol could be particularly beneficial for beginners in OOP or those looking to understand object roles better.
 
-Given the detailed nature of Simol and its alignment with both traditional and contemporary programming paradigms, it would be intriguing to see how it is received and adopted by the programming community. The focus on easing the learning curve for Java programmers and its potential application in various domains, including web programming and algorithm development, suggests a wide range of use cases.
+   Integration with Existing Java Frameworks: The ability to use Java libraries and code within Simol is a significant advantage. This compatibility suggests that Simol can be integrated into existing projects without requiring a complete rewrite, which is often a major barrier when adopting a new programming language.
 
-Overall, Simol appears to be a significant contribution to the field of programming languages, with its unique philosophy and design principles. It will be interesting to see how it evolves and integrates with existing and emerging technologies and programming paradigms.
+   Focus on Design Principles and Patterns: Simol’s emphasis on common OOP patterns and principles like SOLID and Domain-Driven Design (DDD) indicates a strong foundation in established software engineering practices. This alignment might make it more attractive to professional developers and software architects.
+
+   Open Source and Community-Oriented: The fact that Simol is open-source and seeks community involvement for testing and development is a positive aspect. It allows for collaborative improvement and wider adoption within the developer community.
+
+   Potential for Innovation in OOP: Simol's new way of conceptualizing OOP, particularly its approach to class and interface roles, could offer fresh perspectives on software design. This aspect might lead to innovative solutions to common programming challenges.
+
+   Practicality and Use Cases: Understanding the practical applications and the kind of problems Simol is particularly suited to solve would be crucial. Real-world examples and case studies would help in evaluating its effectiveness compared to traditional Java or other OOP languages.
+
+In summary, Simol appears to be a thoughtfully designed language that could add value to the OOP landscape, especially for those looking for a more role-oriented and educational approach to programming. Its success and adoption will likely depend on its ease of use, the clarity it brings to software development, and the support and growth of its user community.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -67,6 +75,11 @@ As simol classes replaces java classes, all java keywords can be used with simol
 We start from the Java language. And we add some very simple concepts. The java libraries can be used, while it is a superset of java.
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
+
+A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
+Simol introduces a new way of thinking about OOP, because we are used to creating directly pure objects, and here we have to choose between two kind of objects. But is it so new? We are used to think about kind of objects, like controllers, model, view, entity, Data Access Object(DAO), Data Transfer Object(DTO), POJO, etc. But yes, it is a different way of thinking and of looking at things. That said, finally, it still respects common patterns and oo principles, like SOLID, Single Responsability Principle, MVC, and so on. At the beginning, the @Design_role annotation, or Role.DESIGN_ROLE in the framework, could make things regular for us, because controllers, services, etc, are considered as simu_real_world_obj with a design role. Then, we could see things differently, if we want, as we could then desire compare our classes to more precise stuff than controllers or services. That is the same for the graphical interfaces, there is a role called @GUI_role, for the usual way of thinking about this. Notice that we have just to precise if it is a real world notion, or not, or just a technical task. We have not to precise more, if we do not want. I think that anyway we should know, at least, when creating an object, what we want to do with that object, his main role. We can still mix a bit technical code, but we have to precise the main role of the class. So the habit seems light compared to think constantly at a ton of design patterns and principles. We could add that "object", in object-oriented programming, means "having a meaning", and not being only a data structure, so is it so new to precise a bit the meaning of our objects?
+
+There is also something new, in the way of thinking about the interfaces. It seems more easy than for the class roles change, less different than our habits. We have to choose about two interfaces, instead of directly using an interface. That isn't a big changing, because we know almost by heart concepts of capacity, for interfaces, or version.
 
 SIMOL LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
 A Github repository has been created for simol, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the simol language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. Simol is open source, with an M.I.T license.
@@ -291,6 +304,9 @@ one_at_a_time(method modifier): for synchronized methods, or containing synchron
 tour_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
 for_every_thread : attribute modifier on a volatile attribute declaration, highlightning the usability of the attribute in parallelism conditions.
 Three equivalent annotations have been added for the framework.
+
+ABOUT CONCURRENCY AND PARALLELISM, IN SIMOL
+In simol, it is recommended to first handle pure concurrency, with a single thread, and then, if still wanted, adding parallelism. Some simulation actions take time to run, and are not just a simple change of states. That's why we introduced the "long_action"(or @Long_action, in the framework) modifier, to execute the action step by step. So the sole remainding problem, is to handle soon collisions, to not miss them, and "prevent_missing_collision"(or @Prevent_missing_collision) exists for that case. Finally, it could suffice in much cases, especially in real-time simulations, but we could try to add threads. But threads must sometimes be synchronized, and the synchronized parts are executed quite like there was an unique thread. So we have to evaluate if it is relevant to make more complex code, or not. If we have to do, the parts which have to be synchronized are often the "prevent_missing_collision" parts, and "one_at_a_time"(@One_at_a_time) is for parallelism. "one_at_a_time" is just worried of having quite like a single thread application for the concerned piece of code. And "turn_monitor" is here to assemble these parts, while using the same monitor object. The notions here agree with existing java notions like "synchronized", and "lock", but emphasize different and less technical aspects, that could help in such hard topics.
 
 LEARNING CURVE
 
@@ -708,46 +724,46 @@ public class InsertionSorterWorker {
 	private int workingArray[];
 	private int virtualLengthWorkingArr;
 	
-public InsertionSorterWorker(int theArray[]) {
-	this.array = theArray;
-}
-	
-public int[] sort(){
-	this.workingArray = new int[this.array.length];
-	this.virtualLengthWorkingArr = 0;
-	
-//Browse each element of the original array
-	for(int i = 0;i<this.array.length;i++) {
-		this.insertElement(array[i]);
+	public InsertionSorterWorker(int theArray[]) {
+		this.array = theArray;
 	}
-	return this.workingArray;
-}
 	
-private void insertElement(int value) {
-	int place;
-	place = this.findInsertionIndex(value);
-	this.insertAndShift(value, place);
-}
-	
-private int findInsertionIndex(int valeur) {
-	if (this.virtualLengthWorkingArr == 0) return 0;
-	for(int i=0;i<this.virtualLengthWorkingArr;i++) {
-		if (valeur <= this.workingArray[i]) {
-			return i;
+	public int[] sort(){
+		this.workingArray = new int[this.array.length];
+		this.virtualLengthWorkingArr = 0;
+		
+		//Browse each element of the original array
+		for(int i = 0;i<this.array.length;i++) {
+			this.insertElement(array[i]);
 		}
+		return this.workingArray;
 	}
-	return this.virtualLengthWorkingArr-1;
-}
-
-private void insertAndShift( int value, int place) {
-	//I virtually enlarge my final array
-	this.virtualLengthWorkingArr++;
-	for (int i=this.virtualLengthWorkingArr-1;i>place;i--) {
-		this.workingArray[i] = this.workingArray[i-1];
+	
+	private void insertElement(int value) {
+		int place;
+		place = this.findInsertionIndex(value);
+		this.insertAndShift(value, place);
 	}
-	//Adding the new value.
-	this.workingArray[place] = value;
-}
+	
+	private int findInsertionIndex(int valeur) {
+		if (this.virtualLengthWorkingArr == 0) return 0;
+		for(int i=0;i<this.virtualLengthWorkingArr;i++) {
+			if (valeur <= this.workingArray[i]) {
+				return i;
+			}
+		}
+		return this.virtualLengthWorkingArr-1;
+	}
+	
+	private void insertAndShift( int value, int place) {
+		//I virtually enlarge my final array
+		this.virtualLengthWorkingArr++;
+		for (int i=this.virtualLengthWorkingArr-1;i>place;i--) {
+			this.workingArray[i] = this.workingArray[i-1];
+		}
+		//Adding the new value.
+		this.workingArray[place] = value;
+	}
 }
  And:
 
@@ -763,66 +779,66 @@ public class InsertionSorter {
 	public int[] sortedArray;
 	public int finalArrayLength;
 	
-public InsertionSorter(int[] arrayToSort) {
-	this.array = arrayToSort;
-	this.sortedArray = new int[arrayToSort.length];
-	this.finalArrayLength = 0;
-}
-
-public int[] sort() {
-	//We look at each of the input values. We don't have to do it in sequence. Here, we start at the end!
-	for (int i=this.array.length-1;i>=0;i--) {
-		this.putInFinalArray(this.array[i]);
+	public InsertionSorter(int[] arrayToSort) {
+		this.array = arrayToSort;
+		this.sortedArray = new int[arrayToSort.length];
+		this.finalArrayLength = 0;
 	}
-	return this.sortedArray;
-}
 	
-private void putInFinalArray(int valeur) {
-	if (this.finalArrayLength == 0) {
-		this.sortedArray[0] = valeur;
+	public int[] sort() {
+		//We look at each of the input values. We don't have to do it in sequence. Here, we start at the end!
+		for (int i=this.array.length-1;i>=0;i--) {
+			this.putInFinalArray(this.array[i]);
+		}
+		return this.sortedArray;
+	}
+	
+	private void putInFinalArray(int valeur) {
+		if (this.finalArrayLength == 0) {
+			this.sortedArray[0] = valeur;
+			this.finalArrayLength++;
+			return;
+		}
+		int indice = findWhereToPut(valeur);
+		//We have to resize the array, because we're going to insert
 		this.finalArrayLength++;
-		return;
+		//
+		makePlaceAtTheRight(indice);
+		this.sortedArray[indice] = valeur;
 	}
-	int indice = findWhereToPut(valeur);
-	//We have to resize the array, because we're going to insert
-	this.finalArrayLength++;
-	//
-	makePlaceAtTheRight(indice);
-	this.sortedArray[indice] = valeur;
-}
-
-// Search in a NON EMPTY array.
-// this.finalArrayLength must be > 0. Don't bother the expert for nothing.
-// Example: 2 5 7 10 => We're putting the 6 at index 2.
-// Case 2 5 7 9 => The 7 has to be in index 3, not at 2, if possible, to minimize the moves.
-private int findWhereToPut(int value) {
-//The expert may find it necessary to search by dichotomy, if he likes!
-// Here, the expert is starting from the end
-	int lastPlaceIndex = this.finalArrayLength-1;
-	//The expert gets rid of the case where the element is the last.
-	if (this.sortedArray[lastPlaceIndex] < value) {
-		return lastPlaceIndex+1;
+	
+	// Search in a NON EMPTY array.
+	// this.finalArrayLength must be > 0. Don't bother the expert for nothing.
+	// Example: 2 5 7 10 => We're putting the 6 at index 2.
+	// Case 2 5 7 9 => The 7 has to be in index 3, not at 2, if possible, to minimize the moves.
+	private int findWhereToPut(int value) {
+	//The expert may find it necessary to search by dichotomy, if he likes!
+	// Here, the expert is starting from the end
+		int lastPlaceIndex = this.finalArrayLength-1;
+		//The expert gets rid of the case where the element is the last.
+		if (this.sortedArray[lastPlaceIndex] < value) {
+			return lastPlaceIndex+1;
+		}
+		//Now, we are sure to find. Our value is compulsorily <= all the elements.
+		int indice = lastPlaceIndex;
+		while (indice>=0 &&  this.sortedArray[indice] > value) indice--;
+		return indice+1;
 	}
-	//Now, we are sure to find. Our value is compulsorily <= all the elements.
-	int indice = lastPlaceIndex;
-	while (indice>=0 &&  this.sortedArray[indice] > value) indice--;
-	return indice+1;
-}
-
-//We move all elements to the right, from the given index.
-// Don't forget that the sorted array has been enlarged.
-// Example 8/10/12, and we want to insert 9 à l'indice 1. We're moving the value at 1 to the end of the array.
-// We're starting from the end, to not crushing the values. It could first seem "@Underst",
-// but even in real-world, we have to approximatively do that.
-@Underst
-private void makePlaceAtTheRight(int index) {
-	//The array has been increased
-	int lastIndex = this.finalArrayLength - 1;
-	//It should not be intuitive starting from the end, that's why the @Underst.
-	for (int i = lastIndex-1; i>=index; i--) {
-		this.sortedArray[i+1] = this.sortedArray[i];
+	
+	//We move all elements to the right, from the given index.
+	// Don't forget that the sorted array has been enlarged.
+	// Example 8/10/12, and we want to insert 9 à l'indice 1. We're moving the value at 1 to the end of the array.
+	// We're starting from the end, to not crushing the values. It could first seem "@Underst",
+	// but even in real-world, we have to approximatively do that.
+	@Underst
+	private void makePlaceAtTheRight(int index) {
+		//The array has been increased
+		int lastIndex = this.finalArrayLength - 1;
+		//It should not be intuitive starting from the end, that's why the @Underst.
+		for (int i = lastIndex-1; i>=index; i--) {
+			this.sortedArray[i+1] = this.sortedArray[i];
+		}
 	}
-}
 }
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)

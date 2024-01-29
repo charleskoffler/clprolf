@@ -161,7 +161,8 @@ public interface ClientDao extends CityDAO { //Notice that there is no "nature" 
 }
 
 // Here, we enforce the classical rules of simol for interface inheritance.
-public compat_interf_version ClientDao extends @Forced_int_inh CityDAO {
+@Compat_interf_version
+public interface ClientDao extends @Forced_int_inh CityDAO {
 	public Client getClientById(int id);
 	//(...)
 }
