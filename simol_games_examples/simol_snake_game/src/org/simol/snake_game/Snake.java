@@ -42,13 +42,6 @@ public class Snake  {
 		RIGHT_SLIDING,
 		STOPPED
 	}
-	public static enum DirectionEnum{
-		HALT_DIRECTION, /* For the beginning of the game. */
-		UP_DIRECTION,
-		DOWN_DIRECTION,
-		LEFT_DIRECTION,
-		RIGHT_DIRECTION
-	}
 	
 	// public real_world_obj SnakeLink
 	@Real_world_obj
@@ -65,16 +58,6 @@ public class Snake  {
 
 	public void setLinks(ArrayList<SnakeLink> links) {
 		this.links = links;
-	}
-
-	private DirectionEnum currentDirection;
-	
-	public DirectionEnum getCurrentDirection() {
-		return currentDirection;
-	}
-
-	public void setCurrentDirection(DirectionEnum currentDirection) {
-		this.currentDirection = currentDirection;
 	}
 
 	private String color;
@@ -108,7 +91,6 @@ public class Snake  {
 		this.speed = 10;
 		links = new ArrayList<SnakeLink>();
 		constructSnakeLinks(startY);
-		this.currentDirection = DirectionEnum.HALT_DIRECTION;
 		this.lastSlidingType = SlidingType.STOPPED;
 		this.color = color;
 	}
@@ -343,7 +325,7 @@ public class Snake  {
 		return null;
 	}
 	
-	public void changeDirection(DirectionEnum direction) {
+	/*public void changeDirection(DirectionEnum direction) {
 		SnakeLink presentLink, headLink;
 		boolean blnBiteFirstLink = false;
 		
@@ -404,7 +386,7 @@ public class Snake  {
 		if (!blnBiteFirstLink) {
 			this.currentDirection = direction;
 		}
-	}
+	} */
 
 	public void increaseSpeed() {
 		if (this.speed > SPEED_STEP) { //Not >= because this could not be 0.

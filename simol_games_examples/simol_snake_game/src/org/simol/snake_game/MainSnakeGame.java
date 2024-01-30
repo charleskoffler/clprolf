@@ -10,7 +10,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Keys: Snake one: arrows, and comma/space for speed gear changes.
  * Snake two: z/w up/down, q/s left/right, a/x for speed gear changes.
  * 
- * V4(20240130).
+ * V4.1(20240130).
  * Remove of threads. Adding speed gears for players.
  * 
  * possible evolves:
