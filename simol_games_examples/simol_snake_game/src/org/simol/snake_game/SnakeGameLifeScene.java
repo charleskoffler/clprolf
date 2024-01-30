@@ -42,9 +42,6 @@ public class SnakeGameLifeScene {
 	}
 	//
 
-	Thread snakeOneWorker;
-	Thread snakeTwoWorker;
-	
 	public static int SCENE_ROWS_COUNT = 20;
 	public static int SCENE_COLUMNS_COUNT = 40;
 	
@@ -68,12 +65,6 @@ public class SnakeGameLifeScene {
 		this.foodExpert = new FoodExpert(this);
 		this.foodExpert.positionFood();
 		//
-		
-		snakeOneWorker = new Thread(this.snake);
-		snakeOneWorker.start(); //Let the snake live.
-		
-		snakeTwoWorker = new Thread(this.snake_two);
-		snakeTwoWorker.start();
 		
 		//Begin the display. Can be considered as a view.
 		this.realiz = new SnakeGameLifeSceneRealiz(this);

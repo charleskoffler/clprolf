@@ -43,4 +43,20 @@ public class SnakeGameLifeSceneRealiz implements @Contracts Runnable {
 			// The window will refresh itself his display, many times per seconds.
 			window = new SnakeWindow(this);
 	}
+
+	/**
+	 * Effects on game over!
+	 * @param reponse
+	 * @param concernedSnake
+	 */
+	public void reactToGameOver(Snake concernedSnake) {
+		this.window.setBlnContinue(false);
+		String msg = new String("The " + concernedSnake.getColor() + " snake is loosing!");
+		java.awt.Toolkit.getDefaultToolkit().beep();
+		this.getWindow().getGlobalPanel().getLblVictory().setText(msg);
+	}
+	
+	public void doChangeSpeedGearEffect() {
+		java.awt.Toolkit.getDefaultToolkit().beep();
+	}
 }

@@ -3,11 +3,15 @@ package org.simol.snake_game;
 import org.simol.simolframework.java.Simu_comp_worker;
 
 /**
- * Snake game initially written in simol. It's a simple 2D snake game, with two players and two snakes.
+ * It's a simple 2D snake game, with two players and two snakes.
  * The display is with Swing, in a JFrame.
  * 
- * V3.2(EN COURS).
- * Last version of the simol framework.
+ * There are 4 speed gears.
+ * Keys: Snake one: arrows, and comma/space for speed gear changes.
+ * Snake two: z/w up/down, q/s left/right, a/x for speed gear changes.
+ * 
+ * V4(20240130).
+ * Remove of threads. Adding speed gears for players.
  * 
  * possible evolves:
  * Count score, and display it, but the winner is the one who don't loose, except if all food is eaten.

@@ -5,37 +5,51 @@ import java.util.ArrayList;
 /* could be seen as a simu_real_world_obj of an expert. */
 import java.util.Random;
 
-import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.Prevent_missing_collision;
 import org.simol.simolframework.java.Real_world_obj;
 import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.simolframework.java.Underst;
 
-//public simu_real_world_obj Snake contracts Runnable
+
 @Simu_real_world_obj
-public class Snake implements @Contracts Runnable {
+public class Snake  {
 	public static int LINKS_NUMBER = 20;
-	public static int SPEED = 100;
+	public static int SPEED_STEP = 4; /* Three speed-gears with step of 4. */
+	public static int NB_SPEED_GEARS = 4;
+
+	protected int speed;
 	
+	public int getSpeed() {
+		return speed;
+	}
+
 	protected SnakeGameLifeScene lifeScene;
+	protected SlidingType lastSlidingType;
 	
-	public enum LinkTypeEnum {
+	public void setLastSlidingType(SlidingType lastSlidingType) {
+		this.lastSlidingType = lastSlidingType;
+	}
+
+	public static enum LinkTypeEnum {
 		HEAD_LINK,
 		FIRST_LINK,
 		SECOND_LINK
 	}
-	public enum SlidingType {
+	public static enum SlidingType {
 		UP_SLIDING,
 		DOWN_SLIDING,
 		LEFT_SLIDING,
-		RIGHT_SLIDING
+		RIGHT_SLIDING,
+		STOPPED
 	}
-	public enum DirectionEnum{
+	public static enum DirectionEnum{
 		HALT_DIRECTION, /* For the beginning of the game. */
 		UP_DIRECTION,
 		DOWN_DIRECTION,
 		LEFT_DIRECTION,
 		RIGHT_DIRECTION
 	}
+	
 	// public real_world_obj SnakeLink
 	@Real_world_obj
 	public static class SnakeLink {
@@ -91,9 +105,11 @@ public class Snake implements @Contracts Runnable {
 	public Snake(SnakeGameLifeScene lifeScene, int startY, String color) {
 		this.lifeScene = lifeScene;
 		this.blnHalt = false;
+		this.speed = 10;
 		links = new ArrayList<SnakeLink>();
 		constructSnakeLinks(startY);
 		this.currentDirection = DirectionEnum.HALT_DIRECTION;
+		this.lastSlidingType = SlidingType.STOPPED;
 		this.color = color;
 	}
 	
@@ -136,86 +152,74 @@ public class Snake implements @Contracts Runnable {
 		return autreChenille;
 	}
 	
+	
+	
 	/**
 	 * Make slide the snake if we can(no wall, or no meet of our self body). Return true, except if
 	 * there's a collision with another snake.
 	 * @param slidingType
 	 * @return true if the sliding was made, or if we bit ourselves. False if we bit another snake.
 	 */
-	//we used a 'underst', because it seems hard coding this.
-	//public boolean underst makeSliding
+	//we used an 'underst', because it seems hard coding this.
+	//Not a long action, because there is only one step!
 	@Underst
-	public boolean makeSliding(SlidingType slidingType) {
-		SnakeLink headLink = this.links.get(0);
-		SnakeLink ancHeadLink, presentLink;
+	@Prevent_missing_collision
+	public void makeSliding() {
+		if (this.lastSlidingType == SlidingType.STOPPED) return; //We're doing nothing in that case!
+		SnakeLink newHeadLink = new SnakeLink(), presentHead = this.links.get(0);
+		SnakeLink presentLink;
 		Snake otherSnake=null;
 		//When we bit ourselves, we can not bit our first link, because it is detected before.
-		boolean blnBitesOther=false, blnBiteOurselv=false, blnWall=false;
 		Food existingFood = null;
 		
 		//Snake distinction
 		otherSnake = this.findOtherSnake();
 		
-		//Sauvegarde valeurs maillon tete
-		ancHeadLink = new SnakeLink();
-		ancHeadLink.x = headLink.x;
-		ancHeadLink.y = headLink.y;
-		
 		//Head moving
-		switch (slidingType) {
+		switch (lastSlidingType) {
 			case UP_SLIDING:
-				blnBitesOther = existingLink(headLink.x, headLink.y-1, otherSnake) != null;
-				presentLink = existingLink(headLink.x, headLink.y-1, this);
-				blnBiteOurselv = (presentLink != null);
-				
-				existingFood = this.lifeScene.getFoodExpert().checkFoodExistence(headLink.x, headLink.y-1);
-				blnWall = headLink.y<=0;
-				if (!blnWall && !blnBiteOurselv && !blnBitesOther) {
-					headLink.y--;
-				}
+				newHeadLink.x = presentHead.x;
+				newHeadLink.y = presentHead.y - 1;
+			
 				break;
 			case DOWN_SLIDING:
-				blnBitesOther = existingLink(headLink.x, headLink.y+1, otherSnake) != null;
-				presentLink = existingLink(headLink.x, headLink.y+1, this);
-				blnBiteOurselv = (presentLink != null);
+				newHeadLink.x = presentHead.x;
+				newHeadLink.y = presentHead.y + 1;
 				
-				existingFood = this.lifeScene.getFoodExpert().checkFoodExistence(headLink.x, headLink.y+1);
-				blnWall = headLink.y>=SnakeGameLifeScene.SCENE_ROWS_COUNT-1;
-				if (!blnWall && !blnBiteOurselv && !blnBitesOther) {
-					headLink.y++;
-				}
 				break;
 			case LEFT_SLIDING:
-				blnBitesOther = existingLink(headLink.x-1, headLink.y, otherSnake) != null;
-				presentLink = existingLink(headLink.x-1, headLink.y, this);
-				blnBiteOurselv = (presentLink != null);
+				newHeadLink.x = presentHead.x - 1;
+				newHeadLink.y = presentHead.y;
 				
-				existingFood = this.lifeScene.getFoodExpert().checkFoodExistence(headLink.x-1, headLink.y);
-				blnWall = headLink.x<=0;
-				if (!blnWall && !blnBiteOurselv && !blnBitesOther) {
-					headLink.x--;
-				}
 				break;
 			case RIGHT_SLIDING:
-				blnBitesOther = existingLink(headLink.x+1, headLink.y, otherSnake) != null;
-				presentLink = existingLink(headLink.x+1, headLink.y, this);
-				blnBiteOurselv = (presentLink != null);
+				newHeadLink.x = presentHead.x + 1;
+				newHeadLink.y = presentHead.y;
 				
-				existingFood = this.lifeScene.getFoodExpert().checkFoodExistence(headLink.x+1, headLink.y);
-				blnWall = headLink.x>=SnakeGameLifeScene.SCENE_COLUMNS_COUNT-1;
-				if (!blnWall && !blnBiteOurselv && !blnBitesOther) {
-					headLink.x++;
-				}
 				break;
 		}
-		if (blnBitesOther || blnBiteOurselv || blnWall) { // On ne fait rien, et on retourne false.
-			return false;
-		}
-	
-		//We can slide.
+		//Snake otherSnake=null;
 		
+		//When we bit ourselves, we can not bit our first link, because it is detected before.
+		boolean blnBitesOther=false, blnBiteOurselv=false, blnWall=false;
+		
+		//Snake distinction
+		otherSnake = this.findOtherSnake();
+		
+		blnBitesOther = existingLink(newHeadLink.x, newHeadLink.y, otherSnake) != null;
+		presentLink = existingLink(newHeadLink.x, newHeadLink.y, this);
+		blnBiteOurselv = (presentLink != null);
+		
+		existingFood = this.lifeScene.getFoodExpert().checkFoodExistence(newHeadLink.x, newHeadLink.y);
+		blnWall = newHeadLink.y<0 || newHeadLink.y>SnakeGameLifeScene.SCENE_ROWS_COUNT-1
+		|| newHeadLink.x<0 || newHeadLink.x>SnakeGameLifeScene.SCENE_COLUMNS_COUNT-1;
+		if (blnWall || blnBiteOurselv || blnBitesOther) {
+			this.lifeScene.getRealiz().reactToGameOver(this);
+		}
+		
+		//We can slide.
 		//Rest of body moving, when sliding
-		for (int i=this.links.size()-1; i>1; i--) {
+		for (int i=this.links.size()-1; i>=1; i--) {
 			SnakeLink currentLink, previousLink;
 			currentLink = this.links.get(i);
 			previousLink = this.links.get(i-1);
@@ -223,19 +227,19 @@ public class Snake implements @Contracts Runnable {
 			currentLink.y = previousLink.y;
 			currentLink.x = previousLink.x;
 		}
-		//Moving of the second link
-		// To put after the loop of the others links
-		this.links.get(1).y = ancHeadLink.y;
-		this.links.get(1).x = ancHeadLink.x;
+		
+		//The head is moving
+		presentHead.x = newHeadLink.x;
+		presentHead.y = newHeadLink.y;
+		
 		//
 		// potentiel extension of the tail. Do here, with the same worker thread, for no synchronizing problems.
 		// We moved, we ate food while moving, so we grew.
 		if (existingFood!=null) {
-			this.makeGrowSnake();
 			this.lifeScene.getFoodExpert().getFoodList().remove(existingFood);
+			this.makeGrowSnake();
 		}
 		
-		return true;
 	}
 	
 	/**
@@ -402,40 +406,18 @@ public class Snake implements @Contracts Runnable {
 		}
 	}
 
-	/* The run method here is not for displaying. */
-	@Override
-	public void run() {
-		boolean reponse=true;
-		
-		while (!this.blnHalt) {
-			switch(this.currentDirection) {
-			case UP_DIRECTION:
-				reponse = this.makeSliding(SlidingType.UP_SLIDING);
-				break;
-			case DOWN_DIRECTION:
-				reponse = this.makeSliding(SlidingType.DOWN_SLIDING);
-				break;
-			case LEFT_DIRECTION:
-				reponse = this.makeSliding(SlidingType.LEFT_SLIDING);
-				break;
-			case RIGHT_DIRECTION:
-				reponse = this.makeSliding(SlidingType.RIGHT_SLIDING);
-			default:
-				break;
-			}
-			if (!reponse) {
-				String msg = new String("The "+this.color+" snake is loosing!");
-				java.awt.Toolkit.getDefaultToolkit().beep();
-				this.lifeScene.getRealiz().getWindow().getGlobalPanel().getLblVictory().setText(msg);
-				this.lifeScene.getSnake().blnHalt = true;
-				this.lifeScene.getSnake_two().blnHalt = true;
-			}
-			try {
-				Thread.sleep(Snake.SPEED);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	public void increaseSpeed() {
+		if (this.speed > SPEED_STEP) { //Not >= because this could not be 0.
+			this.lifeScene.getRealiz().doChangeSpeedGearEffect();
+			this.speed -= SPEED_STEP;
 		}
 	}
+
+	public void decreaseSpeed() {
+		if (this.speed <= (NB_SPEED_GEARS-1) * SPEED_STEP) {
+			this.lifeScene.getRealiz().doChangeSpeedGearEffect();
+			this.speed += SPEED_STEP;
+		}
+	}
+
 }
