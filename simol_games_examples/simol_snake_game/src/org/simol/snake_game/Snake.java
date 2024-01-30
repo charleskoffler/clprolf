@@ -325,69 +325,6 @@ public class Snake  {
 		return null;
 	}
 	
-	/*public void changeDirection(DirectionEnum direction) {
-		SnakeLink presentLink, headLink;
-		boolean blnBiteFirstLink = false;
-		
-		headLink = this.links.get(0);
-		
-		switch (direction) {
-		case UP_DIRECTION:
-			presentLink = existingLink(headLink.x, headLink.y-1, this);
-			if (presentLink != null) {
-				if (presentLink != this.links.get(1)) {
-					blnBiteFirstLink = false;
-				}
-				else {
-					blnBiteFirstLink = true;
-				}
-			}
-			
-			break;
-		case DOWN_DIRECTION:
-			presentLink = existingLink(headLink.x, headLink.y+1, this);
-			if (presentLink != null) {
-				if (presentLink != this.links.get(1)) {
-					blnBiteFirstLink = false;
-				}
-				else {
-					blnBiteFirstLink = true;
-				}
-			}
-			
-			break;
-		case LEFT_DIRECTION:
-			presentLink = existingLink(headLink.x-1, headLink.y, this);
-			if (presentLink != null) {
-				if (presentLink != this.links.get(1)) {
-					blnBiteFirstLink = false;
-				}
-				else {
-					blnBiteFirstLink = true;
-				}
-			}
-			
-			break;
-		case RIGHT_DIRECTION:
-			presentLink = existingLink(headLink.x+1, headLink.y, this);
-			if (presentLink != null) {
-				if (presentLink != this.links.get(1)) {
-					blnBiteFirstLink = false;
-				}
-				else {
-					blnBiteFirstLink = true;
-				}
-			}
-			
-			break;
-		default:
-			break;
-		}//End of switch.
-		if (!blnBiteFirstLink) {
-			this.currentDirection = direction;
-		}
-	} */
-
 	public void increaseSpeed() {
 		if (this.speed > SPEED_STEP) { //Not >= because this could not be 0.
 			this.lifeScene.getRealiz().doChangeSpeedGearEffect();
