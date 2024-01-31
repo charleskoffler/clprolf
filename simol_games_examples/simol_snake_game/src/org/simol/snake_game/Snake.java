@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /* could be seen as a simu_real_world_obj of an expert. */
 import java.util.Random;
 
+import org.simol.simolframework.java.Long_action;
 import org.simol.simolframework.java.Prevent_missing_collision;
 import org.simol.simolframework.java.Real_world_obj;
 import org.simol.simolframework.java.Simu_real_world_obj;
@@ -134,7 +135,22 @@ public class Snake  {
 		return autreChenille;
 	}
 	
-	
+	/**
+	 * Never called in our case!!!
+	 */
+	@Long_action
+	public void makeSliding() {
+		//We do not need makeSliding() in this game, because the snake is always sliding!
+		//
+		//Example for a falling() long action: it's the trigger of the long action,
+		//which would call continueFalling(), for example, and setting the isFalling boolean to true before.
+		// There would be a @Long_action boolean associated attribute "isFalling",
+		//, checked by continueFalling(), and initialized to true at the trigger by falling().
+		//Later, at regular interval of time, the programmer just have to call endLongActions()
+		//method of the class, which call all the continue() methods of the class, during the
+		//correct chosen intervals of time, until the duration is passed. Then the isFalling
+		//boolean would be set to false!
+	}
 	
 	/**
 	 * Make slide the snake if we can(no wall, or no meet of our self body). Return true, except if
@@ -143,10 +159,19 @@ public class Snake  {
 	 * @return true if the sliding was made, or if we bit ourselves. False if we bit another snake.
 	 */
 	//we used an 'underst', because it seems hard coding this.
-	//Not a long action, because there is only one step!
+	//There is only one step for a whole sliding of the snake. The "Long action" is here because the snakes
+	// are continuously sliding!
+	//The method is not directly called. It is called either by makeSliding() at the trigger of the action,
+	//either by endLongActions().
+	//
+	//"@Prevent_missing_collision" is here to indicate that we check, for example, here, a collision
+	//with the other snake, before accepting the move. If we don't do this here, but later, we could
+	//miss a collision, if a snake cross paths with the other snake. This could theoretically happen,
+	//but perhaps not in the case of two snakes!
 	@Underst
+	@Long_action
 	@Prevent_missing_collision
-	public void makeSliding() {
+	protected void continueMakeSliding() {
 		if (this.lastSlidingType == SlidingType.STOPPED) return; //We're doing nothing in that case!
 		SnakeLink newHeadLink = new SnakeLink(), presentHead = this.links.get(0);
 		SnakeLink presentLink;
@@ -177,7 +202,9 @@ public class Snake  {
 			case RIGHT_SLIDING:
 				newHeadLink.x = presentHead.x + 1;
 				newHeadLink.y = presentHead.y;
-				
+			case STOPPED:	
+				break;
+			default:
 				break;
 		}
 		//Snake otherSnake=null;
@@ -215,8 +242,7 @@ public class Snake  {
 		presentHead.y = newHeadLink.y;
 		
 		//
-		// potentiel extension of the tail. Do here, with the same worker thread, for no synchronizing problems.
-		// We moved, we ate food while moving, so we grew.
+		// potential extension of the tail.
 		if (existingFood!=null) {
 			this.lifeScene.getFoodExpert().getFoodList().remove(existingFood);
 			this.makeGrowSnake();
@@ -339,4 +365,14 @@ public class Snake  {
 		}
 	}
 
+	@Long_action
+	public void endLongActions() {
+		//Here we have a particular case of endLongActions() because the sliding long action
+		//never ends. In much cases, we're "waiting", and then we pass the associated boolean
+		//to false, for example isFalling(), to stop the action!
+	
+		if (this.lifeScene.getRealiz().getWindow().timePassed(this.getSpeed())) {
+			this.continueMakeSliding();
+		}
+	}
 }

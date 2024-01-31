@@ -52,6 +52,12 @@ public class SnakeGlobalPanel extends @Nature JPanel {
 		this.drawSnake(g, 0);
 		this.drawSnake(g, 1);
 		this.displayFood(g);
+		
+		//
+		//End the started long actions of the concerned class, for example continueFalling().
+		//Here the snakes continue a step of a whole body sliding, and the long action never ends.
+		this.gameWindow.getReal().getLifeScene().getSnake().endLongActions();
+		this.gameWindow.getReal().getLifeScene().getSnake_two().endLongActions();
 	}
 
 	private void drawWall(Graphics g) {

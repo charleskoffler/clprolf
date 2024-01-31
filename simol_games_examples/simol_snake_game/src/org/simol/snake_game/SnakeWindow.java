@@ -15,7 +15,8 @@ import org.simol.snake_game.Snake.SlidingType;
 // public simu_real_world_obj SnakeWindow nature JFrame contracts KeyListener {
 @Simu_real_world_obj
 public class SnakeWindow extends @Nature JFrame implements @Contracts Runnable, KeyListener {
-	private Thread worker;
+	//We can see it as a simu_real_world_obj, the Thread.
+	private Thread cyclesThread;
 	private long paintCounter;
 	
 	// Accessors
@@ -61,10 +62,12 @@ public class SnakeWindow extends @Nature JFrame implements @Contracts Runnable, 
 		this.addKeyListener(this);
 		this.setVisible(true);
 		//
-		//Regularly refresh the display.
+		//Just a thread to count cycles and send repaint event, to regularly refresh the display
+		//by the AWT-EventQueue Thread.
+		//Created another thread, because the SnakeWindow uses the AWT-EventQueue Thread.
 		this.blnContinue = true;
-		worker = new Thread(this);
-		worker.start();
+		cyclesThread = new Thread(this);
+		cyclesThread.start();
 	}
 	
 	private void createComponents() {
@@ -73,21 +76,14 @@ public class SnakeWindow extends @Nature JFrame implements @Contracts Runnable, 
 		this.setContentPane(globalPanel);
 	}
 	
-	/* Refresh of the scene */
+	/* Just count cycles, and send repaint to refresh of the scene. All the rest is done in
+	 * the paint method, to avoir useless synchronizing problems. */
 	@Override
 	public void run() {
 		// An infinite loop, refreshing the displaying panel each 20 milliseconds.
 		while (blnContinue) {
 			this.paintCounter++;
 			this.globalPanel.repaint();
-			Snake snakeOne = this.real.getLifeScene().getSnake();
-			if (this.timePassed(snakeOne.getSpeed())) {
-				snakeOne.makeSliding();
-			}
-			Snake snakeTwo = this.real.getLifeScene().getSnake_two();
-			if (this.timePassed(snakeTwo.getSpeed())) {
-				snakeTwo.makeSliding();
-			}
 			
 			try {
 				Thread.sleep(20); /* 10ms = 100 times per secondes. */
@@ -105,7 +101,6 @@ public class SnakeWindow extends @Nature JFrame implements @Contracts Runnable, 
 	/* We're just calling the correct method of the simu_real_world_obj. */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		boolean reponse;
 		Snake concernedSnake = null;
 		
 		/* MOVES MANAGEMENT */
