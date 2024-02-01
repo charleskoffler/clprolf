@@ -1,4 +1,4 @@
-An Hello world example, the simple way to do this:
+### An Hello world example, the simple way to do this:
 
 ```java
 //Launch an application is a computer worker job!
@@ -24,7 +24,7 @@ public class Main {
 }
 ```
 
-Another way to do this, perhaps a bit more elegant, in simol:
+### Another way to do this, perhaps a bit more elegant, in simol:
 
 ```java
 //Another way
@@ -52,7 +52,7 @@ public simu_comp_worker SimolWorldTechnRealiz {
 	public void display(String message){
 		//(...) A complicated display here.
 		// But I do it simple for the example
-		System.out.println(message);
+		System.out.println(message);  //System could represent the operating system, so it's the computer worker who play this job!
 	}
 }
 

@@ -1,12 +1,12 @@
-Differences between simol and java or any usual object-oriented language - The interfaces
+# Differences between simol and java or any usual object-oriented language - The interfaces
 
-What are the differences between Java-like languages and simol?
+## What are the differences between Java-like languages and simol?
 
 In Java, there is one keyword for interfaces, "interface". An interface is quite a set of method signatures, grouped to constitute a type. An interface can not contain instance fields. And an interface can not have protected methods or members. By inheriting of an interface, a class inherits only of a signature, not of an implementation.
 So the class have to write it. So in simol, interfaces are considered as a contract. In the oracle website, about java interface concept: "Interfaces form a contract between the class and the outside world, and this contract is enforced at build time by the compiler.".
 That's why in simol, we talk rather of "compatibility interfaces", instead of pure "interfaces". It remains interfaces, because simol is compatible with object-oriented concepts. But interfaces are viewed for a compatibility goal, for a variable, field, or parameter to reach out a class type respecting a given interface.
 
-What is a capacity compatibility interface ?
+### What is a capacity compatibility interface ?
 
 So then, in simol, we distinguishes two types of interfaces, the version interfaces, and the capacity interfaces.
 Capacity interfaces exist for a long time in Java, with the "able" suffix in their type name. For example, the "java.lang.Runnable" interface in java, which ensures the capacity te be run. So this is the "compat_interf_capacity" in simol language.
@@ -59,7 +59,7 @@ But what is the "contracts" keyword?
 
 The "contracts" keyword, or "@Contracts" in the simol framework, is just a word for "implements". It means "Here are the contracts of the class". So it precedes the list of interface types a class implements. That's not more than that. In simol, we emphasizes the compatibility side of the interfaces, so it remains coherent.
 
-What are the version compatibility interfaces in simol?
+### What are the version compatibility interfaces in simol?
 
 The other sort of interfaces, in simol, is the version interface. A version interface aims to provide a whole version of a class, when used. It is not only a set of methods asked, but the interface aims to guarantee to have a whole implementation version of a class.
 It is rather easy to understand for a experienced object oriented programmer, because interfaces are often used for weak coupling. In this case, we create an interface, to obtain later a variable of a type of class which is an implementation version.
@@ -116,7 +116,7 @@ Framework version:
 ```
 The choice between a version or capacity compatibility interface is always free. But the slogan is always to indicate our choice.
 
-Is it really useful?
+### Is it really useful?
 
 I think so. We should know that the compiler will ensure, by semantic stage checks, that the interface role would be coherent despite the interface can inherit by another interface. So a growing of interface will still remain clean and meaningful. And the compiler will check if the contracts of a class are coherent.
 In rare and particular use cases where we want to overstep these rules, we can use "@Forced_int_inh" annotation in both language and framework. This forcing can be done about an "extends" of an interface, or "contracts" of a class.
@@ -188,7 +188,7 @@ public class ClientMysqlDao implements @Contracts ClientDAO, CityDAO { //THIS IS
 
 ```
 
-What is the "with_compat" stuff, is it really useful?
+### What is the "with_compat" stuff, is it really useful?
 
 "with_compat" is just a keyword to add when interface type is used. It precedes a variable, field, or parameter declaration. It means "with compatibility", so we accept, for these variables, any objects with a class type compatible with our required interface. We do not use "with compat" on a return type. It keeps our vision of interfaces, while permitting to remind that the requested object is still an object with a class. Actually, an interface is not really a type, by a requirement about a class type. And the weakly coupled variables are quickly visible, as well as the dependency injection(needed or done).
 

@@ -1,10 +1,10 @@
-Differences between simol and java or any usual object-oriented language - The classes
+# Differences between simol and java or any usual object-oriented language - The classes
 
-Introduction
+## Introduction
 
 Simol introduces a new way of thinking, about object-oriented. But it is not crazy, and we should gain naturally our bearings.
 
-The classes
+## The classes
 
 First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the real-world objects, and the information objects. Let's talk about them later.
 In object-oriented programming, we have to create objects. A difficulty is to choose the objects to create. In simol, we create either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
@@ -92,7 +92,7 @@ A great use case of the simu_comp_worker can be to put the code for display on s
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
 When we talk about a computer worker, we talk about a worker who is just able to obey, and do the job we've entrusted to it. We are not talking about an AI worker, who could take initiatives and have creativity.
 
-What is a "real_world_obj"?
+### What is a "real_world_obj"?
 
 A real-world object(real_world_obj in simol) is easy to perceive. It's really like an entity in oop. It could be compared too to a DTO, Data Transfert Object.  In other words, it's an object without methods, used only to modelize an equivalent real-world object.
 We often use real_world_obj for databases, to get our datas into java objects. Let's take an example, a Client object, with only attributes and getters/setters and constructors, should be placed in a real_world_obj class.
@@ -122,7 +122,7 @@ public class Client {
 
 ```
 
-What is an "Information"?
+### What is an "Information"?
 
 The second kind of class without methods, is the Information, or @Information in the framework. It's the same thing as a data structure in C, approximately. The nuance with a C struct, is that for us, it's an element of datas for an algorithm.
 So we call it an "information", because it suits with our "computer worker" vision. So as soon as we need a set of informations, which does not represent the real-world, but only for assemble some variables, we have to use it.
@@ -153,7 +153,7 @@ And we will then ensure, by compiler, that our classes are staying always great,
 There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_worker, to stay compatible with legacy code, then you can do that.
 But it is not recommended by the language, and you have to explicitly ask it. So it is a conscious thing done, marked by the annotation.
 
-What is the meaning of "nature"?
+### What is the meaning of "nature"?
 
 "nature" keyword, or "@Nature" annotation, replaces "extends" in java. In fact, in the framework, we still keep the "extends", and we add "@Nature".
 So "nature" indicates an inheritance. We precise "nature" because we not only see the inheritance as a copy of class members, but as a compatibility of meaning too.
@@ -209,7 +209,7 @@ public class Dog extends @Nature Animal {
 
 ```
 
-What are the roles for a simu_real_world_obj?
+### What are the roles for a simu_real_world_obj?
 
 Specifying the role of the simu_real_world_obj classes is absolutely not mandatory. The roles can be, currently, @Human_expert, @Machine_tool, @GUI_role, @Design_role, in the simol language. For the framework, we indicate it as @Simu_real_world_obj(Role.HUMAN_EXPERT), or @Simu_real_world_obj(Role.Design_role), for example, a value of the Role enumeration.
 A human expert specifies that we emulate a real-world human expert. This could remind us the expert systems, except that all the expert rules are given by an algorithm. For example, we could see a controller as a business expert, in his speciality.
