@@ -61,7 +61,7 @@ Here is my description of simol:
 
 # SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK - "FACILITATE AND GUARANTEE OBJECT-ORIENTED PROGRAMMING"
 
-## INTRODUCTION
+### INTRODUCTION
 
 A slogan for simol language and framework could be "Facilitate And Guarantee Object-Oriented Programming", as well as Java is "Write Once, Run Everywhere".
 I present both simol programming language and simol framework, which is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal.
@@ -79,25 +79,25 @@ We start from the Java language. And we add some very simple concepts. The java 
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
 
-## A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
+### A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
 
 Simol introduces a new way of thinking about OOP, because we are used to creating directly pure objects, and here we have to choose between two kind of objects. But is it so new? We are used to think about kind of objects, like controllers, model, view, entity, Data Access Object(DAO), Data Transfer Object(DTO), POJO, etc. But yes, it is a different way of thinking and of looking at things. That said, finally, it still respects common patterns and oo principles, like SOLID, Single Responsability Principle, MVC, and so on. At the beginning, the @Design_role annotation, or Role.DESIGN_ROLE in the framework, could make things regular for us, because controllers, services, etc, are considered as simu_real_world_obj with a design role. Then, we could see things differently, if we want, as we could then desire compare our classes to more precise stuff than controllers or services. That is the same for the graphical interfaces, there is a role called @GUI_role, for the usual way of thinking about this. Notice that we have just to precise if it is a real world notion, or not, or just a technical task. We have not to precise more, if we do not want. I think that anyway we should know, at least, when creating an object, what we want to do with that object, his main role. We can still mix a bit technical code, but we have to precise the main role of the class. So the habit seems light compared to think constantly at a ton of design patterns and principles. We could add that "object", in object-oriented programming, means "having a meaning", and not being only a data structure, so is it so new to precise a bit the meaning of our objects?
 
 There is also something new, in the way of thinking about the interfaces. It seems more easy than for the class roles change, less different than our habits. We have to choose about two interfaces, instead of directly using an interface. That isn't a big changing, because we know almost by heart concepts of capacity, for interfaces, or version.
 
-## THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
+### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
 
 Each object, in object-oriented programming, should be more than just a set of datas. So all the topic of the essence of the objects, their role, is an aspect of object-oriented programming. So objects nature question belongs to object-oriented programming, and is an aspect of it. All applications in a computer are either a user-goal application, either software to support other applications(especially operating system, or libraries). So the final application is always the principal objective of a computer. This is why the different kind of objects couldn't be anything else than emulations of real-world concrete objects or concepts, or code for computer. It's a kind of scientific vision of what is an application. And it simply brings together all the kinds of objects in object-oriented languages.
 
-## SIMOL LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
+### SIMOL LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
 
 A Github repository has been created for simol, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the simol language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. Simol is open source, with an M.I.T license.
 
-## MAIN GOAL IN SIMOL DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
+### MAIN GOAL IN SIMOL DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
 
 One of the main goal, or perhaps the most important goal in simol, when designing it, was to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with simol approach. While aiding in thinking of one solution to solve the writing problems, simol aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
-## HELPS JAVA WRITING ALONG (OR C# AND PHP)
+### HELPS JAVA WRITING ALONG (OR C# AND PHP)
 
 The simol framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions. The simol framework brings solutions for coding with ease and fun, while keeping a great codebase quality. Teaching is concerned, but we're talking for other programmers too, who would look for such facilitating solutions. Scientists could be concerned, but computer scientists and developers too, who could look for concrete and easy solutions for programming.
 
@@ -286,8 +286,8 @@ The roles are Role.DESIGN_ROLE, Role.GUI_ROLE, Role.HUMAN_EXPERT, and Role.MACHI
 
 ### COMPATIBILITY WITH OTHER PARADIGMS
 
-   Simol contains role annotations, in order to stay accessible with common interpretations and usage of classes, and for good understanding of the simu_real_world_obj use.
-	The kind of objects simu_real_world_obj and simu_comp_worker can be seen as only simu_comp_worker, as simu_real_world_obj is finally a specialized simu_comp_worker in goal of simulation of the real-world. The same reasoning is valid for real_world_obj, which are first a kind of "information" object, but an "information" as well.
+Simol contains role annotations, in order to stay accessible with common interpretations and usage of classes, and for good understanding of the simu_real_world_obj use.
+The kind of objects simu_real_world_obj and simu_comp_worker can be seen as only simu_comp_worker, as simu_real_world_obj is finally a specialized simu_comp_worker in goal of simulation of the real-world. The same reasoning is valid for real_world_obj, which are first a kind of "information" object, but an "information" as well.
 So with this observation, we can say that there is only, finally, only simu_comp_worker classes(and only "information"), and this aligns with paradigms that do not differenciate classes. So we could see that even in simol, there is one sort of class or structures, like in classical object oriented programming(as well in procedural paradigm). In summary, it's quite like simu_real_world_obj would inherit of simu_comp_worker, and as real_world_obj would inherit from information, which is quite like regular object vision. These precisions aims to make a bridge with objects existing paradigms and code.
 
 ### SIMOL IN GENERAL PURPOSE PROGRAMMING
@@ -600,19 +600,19 @@ Class role choice on existing java classes can be more tricky then writing simol
 That said, object in OOP implies, in essence, a clear meaning, and can not be synonym of just data structure.
 
 Answer of an advanced AI-based tool, about the use of class roles:
+"
+For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in Simol would likely appear intuitive and even natural.
 
-	"For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in Simol would likely appear intuitive and even natural.
+Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
 
-    Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
+Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
 
-    Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
+Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
 
-    Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
+Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
 
-    Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
-
-	In essence, Simol's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming."
-
+In essence, Simol's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
+"
 ### TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
 
 We can start from the Single Responsability Principle, which claims a clear and single purpose on each class.
