@@ -1,4 +1,4 @@
-Simol Programming Language And Simol Java Framework( as well as Simol C# and PHP8 Framework)
+# Simol Programming Language And Simol Java Framework( as well as Simol C# and PHP8 Framework)
 
 A slogan for simol language and framework could be "Facilitate And Guarantee Object-Oriented Programming", as well as Java is "Write Once, Run Everywhere".
 Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users, as well as a Simol PHP 8 Framework.
@@ -27,7 +27,7 @@ The complete and detailed definition stands at the end of this file.
 
 The response and overview of chatGPT 4 about the description of simol programming language is :
 ***************************************************************************************
-(CHAT GPT 4 RESPONSE)
+# (CHAT GPT 4 RESPONSE)
 
 User
 Hello my friend. I've created a new programming language, simol, and it's equivalent java framework. What do you think of it, please? Here is its definition: "(...)"
@@ -59,9 +59,9 @@ Overall, Simol presents as a thoughtful and innovative approach to object-orient
 ***************************************************************************************
 Here is my description of simol:
 
-SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK - "FACILITATE AND GUARANTEE OBJECT-ORIENTED PROGRAMMING"
+# SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK - "FACILITATE AND GUARANTEE OBJECT-ORIENTED PROGRAMMING"
 
-INTRODUCTION
+## INTRODUCTION
 
 A slogan for simol language and framework could be "Facilitate And Guarantee Object-Oriented Programming", as well as Java is "Write Once, Run Everywhere".
 I present both simol programming language and simol framework, which is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal.
@@ -79,24 +79,30 @@ We start from the Java language. And we add some very simple concepts. The java 
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
 
-A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
+## A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
+
 Simol introduces a new way of thinking about OOP, because we are used to creating directly pure objects, and here we have to choose between two kind of objects. But is it so new? We are used to think about kind of objects, like controllers, model, view, entity, Data Access Object(DAO), Data Transfer Object(DTO), POJO, etc. But yes, it is a different way of thinking and of looking at things. That said, finally, it still respects common patterns and oo principles, like SOLID, Single Responsability Principle, MVC, and so on. At the beginning, the @Design_role annotation, or Role.DESIGN_ROLE in the framework, could make things regular for us, because controllers, services, etc, are considered as simu_real_world_obj with a design role. Then, we could see things differently, if we want, as we could then desire compare our classes to more precise stuff than controllers or services. That is the same for the graphical interfaces, there is a role called @GUI_role, for the usual way of thinking about this. Notice that we have just to precise if it is a real world notion, or not, or just a technical task. We have not to precise more, if we do not want. I think that anyway we should know, at least, when creating an object, what we want to do with that object, his main role. We can still mix a bit technical code, but we have to precise the main role of the class. So the habit seems light compared to think constantly at a ton of design patterns and principles. We could add that "object", in object-oriented programming, means "having a meaning", and not being only a data structure, so is it so new to precise a bit the meaning of our objects?
 
 There is also something new, in the way of thinking about the interfaces. It seems more easy than for the class roles change, less different than our habits. We have to choose about two interfaces, instead of directly using an interface. That isn't a big changing, because we know almost by heart concepts of capacity, for interfaces, or version.
 
-THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
+## THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
+
 Each object, in object-oriented programming, should be more than just a set of datas. So all the topic of the essence of the objects, their role, is an aspect of object-oriented programming. So objects nature question belongs to object-oriented programming, and is an aspect of it. All applications in a computer are either a user-goal application, either software to support other applications(especially operating system, or libraries). So the final application is always the principal objective of a computer. This is why the different kind of objects couldn't be anything else than emulations of real-world concrete objects or concepts, or code for computer. It's a kind of scientific vision of what is an application. And it simply brings together all the kinds of objects in object-oriented languages.
 
-SIMOL LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
+## SIMOL LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
+
 A Github repository has been created for simol, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the simol language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. Simol is open source, with an M.I.T license.
 
-MAIN GOAL IN SIMOL DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
+## MAIN GOAL IN SIMOL DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
+
 One of the main goal, or perhaps the most important goal in simol, when designing it, was to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with simol approach. While aiding in thinking of one solution to solve the writing problems, simol aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
-HELPS JAVA WRITING ALONG (OR C# AND PHP)
+## HELPS JAVA WRITING ALONG (OR C# AND PHP)
+
 The simol framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions. The simol framework brings solutions for coding with ease and fun, while keeping a great codebase quality. Teaching is concerned, but we're talking for other programmers too, who would look for such facilitating solutions. Scientists could be concerned, but computer scientists and developers too, who could look for concrete and easy solutions for programming.
 
-SIMOL FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
+### SIMOL FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
+
 Simol frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
 They are considered as the four root classes for simol, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
 About the interfaces, each interface must implement one of the root interface of simol, and not only the mother interface. The main interfaces in simol are CompatInterfVersion and CompartInterfCapacity.
@@ -110,30 +116,33 @@ Usage example in java: public class Main extends SimuCompWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
 Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompWorker
 
-SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
+### SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
 Simol follow the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
 
 Wikipedia quotation about the Fundamental theorem of softwatre engineering:
 "The fundamental theorem of software engineering (FTSE) is a term originated by Andrew Koenig to describe a remark by Butler Lampson attributed to David J. Wheeler:
 
-   "We can solve any problem by introducing an extra level of indirection."
+    "We can solve any problem by introducing an extra level of indirection."
 
 The theorem does not describe an actual theorem that can be proven; rather, it is a general principle for managing complexity through abstraction. 
 "
 
-ALIGNED WITH DOMAIN-DRIVEN DESIGN(DDD)
+### ALIGNED WITH DOMAIN-DRIVEN DESIGN(DDD)
 
 Simol language and framework seem completely be in step with Domain-driven design(DDD).
-Indeed, the definition of DDD in wikipedia is "Domain-driven design (DDD) is a major software design approach, focusing on modeling software to match a domain according to input from that domain's experts.
+Indeed, the definition of DDD in wikipedia is
+	"Domain-driven design (DDD) is a major software design approach, focusing on modeling software to match a domain according to input from that domain's experts.
 
 Under domain-driven design, the structure and language of software code (class names, class methods, class variables) should match the business domain. For example: if software processes loan applications, it might have classes like "loan application", "customers", and methods such as "accept offer" and "withdraw".(...)"
+
 So simol appears to intrinsically embed DDD.
 
-SIMOL AND THE DIFFERENT INTERPRETATIONS
+### SIMOL AND THE DIFFERENT INTERPRETATIONS
+
 Simol allows to have our free interpretation of our class design and class meaning. For example, you could see business logic as the work of a business expert, so use a simu_real_world_obj. Other people could have another interpretation of business logic, and use simu_comp_worker. One of the complexity in object oriented programming, is to stick at the interpretation of the writer of the code. It is sometimes hard to imagine how was the original vision of the design, so adding a minimalistic information of the kind of class or interface, can be a clue to help understanding and maintenability. Like reading a text, a source code, and particularly an object-oriented source code, can have multiple readings and interpretations. Simol, while keeping free to choose the interpretation as we wants, aims to support us to express our own understanding to others.
 
-THE ROLE OF CLASSES
+### THE ROLE OF CLASSES
 
 In simol, classes are given a role, in the same way we create a controller object, for example.
 And there are here only four roles in simol, simu_comp_worker, simu_real_world_obj, real_world_obj and information: only code for computer, or pure code of simulation.
@@ -148,7 +157,7 @@ There is a little difference too, in the way that in simol we don't mark 'class'
 Some people would perhaps use simol in classical simulation domains, but it is not restricted, in essence, in a kind of programming(though it could look like). The mindset should be quite easy to get for an object oriented programmer, though it doesn't refute object programming principles and vision. For a beginner, it should facilitate programming teaching.
 Simol requires an object mindset and a desire to indicate helpful extra information on the used objects.
 
-THE simol CLASSES
+### THE SIMOL CLASSES
 
 Instead of "class", we use the following keywords:
 
@@ -164,7 +173,7 @@ Instead of "class", we use the following keywords:
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java class declaration are allowed in the same way of a simol class declaration, obviously.
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java interface declaration are allowed in the same way of a simol interface declaration, obviously.
 
-A JUSTIFICATION OF THE TWO MAIN CLASS ROLES - THE TWO BASIC OBJECTS IN SIMOL
+### A JUSTIFICATION OF THE TWO MAIN CLASS ROLES - THE TWO BASIC OBJECTS IN SIMOL
 
 * They are not only roles, they are objects, basic objects in simol. But of course, they are compatible with OOP concepts, and are themselves OOP objects
 * The first reason of class roles, is that in simol, there are only two root objects. Each object is either a simulation of a real-world object, either a simulation of a computer worker. In OOP, all is object, but in simol, all objects are simu_real_world_obj or simu_comp_worker.
@@ -180,7 +189,7 @@ Algorithms permit to easily emulate realities, intuitively.
 * Although it is permitted, simu_comp_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
 * Class roles permit to check that we keep coherence despite inheritance.
 
-THE INTERFACES IN simol
+### THE INTERFACES IN simol
 In simol, there are two types of interfaces, and only these two types. simol interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
@@ -197,7 +206,7 @@ The interest of 'with_compat' is to understand for the user that it is not an ob
 So, of course, we can find it typical in a local variable declaration, or a argument definition.
 Remark: there's not a with_compat indication for the return type of a method, as an exception of the rule, the return type is not a variable declaration. Indeed, there's already one, in general, in the body of the method. And there is one in the declaration of the variable which will receive the result when the calling occurs. 
 
-SMALL DIFFERENCES IN HERITABILITY
+### SMALL DIFFERENCES IN HERITABILITY
 
 - We use "nature", instead of "extends": inheritance is seen as an assertion that a class is of the same nature as another.
 A car is of the same nature of a vehicule, on the real world, for example. "nature" doesn't have sense in simol, for interfaces.
@@ -208,7 +217,7 @@ simol prefer not to use "with_compat" for the interfaces list implemented in a s
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
 it focuses on the implementation, not the idea of a contract is respected.
 
-SIMOL FRAMEWORK FOR JAVA DEVELOPERS
+### SIMOL FRAMEWORK FOR JAVA DEVELOPERS
 Simol framework is a package of java annotations, that offers a toolbox for java developers to work with simol frame. There are annotations, for each simol keyword or annotation.
 Those annotations serves to fill the gap between java and simol, and easily use and learn simol mindset. There is a beginners package too, which permit to keep object-oriented habits in simol, using inheritance instead annotations.
 
@@ -226,7 +235,7 @@ Or
 @Compat_interf_capacity
 public interface MySortable { }
 
-THE WAYS TO ENSURE CONSISTENCY IN CLASS AND INTERFACE DESIGN - THE GROWTH BY INHERITANCE
+### THE WAYS TO ENSURE CONSISTENCY IN CLASS AND INTERFACE DESIGN - THE GROWTH BY INHERITANCE
 1) Class roles ensure separation of distinct code and well-designed classes. The same is valuable for the interfaces, the roles guarantees sense and goal to the interfaces.
 
 2) "NATURE" ensures consistency in inheritance, inside a same role inheritance - only for classes, not for interfaces
@@ -236,15 +245,15 @@ There is no way currently to ensure that by the compiler, but basic AI-like cont
 
 Inheritance is a way to grow a class, finally, and a well-designed class can be muddled with inheritance addition. That's why the inheritance control done by semantic rules of the compiler is crucial in simol. Semantic checks are possible thanks to class roles, because the rules are about the role of the inherited class. The same reasoning is valuable for the interfaces. Semantic control of the compiler ensures that an interface keep its meaning. And this is possible thanks to interface roles.
 
-ROLES ADDITION FOR CLASSES AND INTERFACES: GUIDELINES FOR COMPONENTS DESIGN
+### ROLES ADDITION FOR CLASSES AND INTERFACES: GUIDELINES FOR COMPONENTS DESIGN
 The addition of roles in classes and interfaces constitutes an equivalent as giving assistance, or guidelines in the process of class and interfaces design. Imagining what objects could be necessary to solve a given problem, and to write an application, is often a challenge. It can be a struggle to try to add on this all well-known object-oriented patterns and guidelines. So class and interfaces roles often shows the possible ways of class design and interfaces. The interest not only stands of guaranteeing a good oo design.
 
-THE UNDERST MODIFIER
+### THE UNDERST MODIFIER
 The modifier "underst"("understanding") can be added to the methods of simu_real_world_obj( or even simu_comp_worker) classes. It marks the methods that have a role of "understanding" by the computer (recognition of objects in an image, for example). "underst" can also be used on simu_comp_worker.
 	"underst" indicates code that is non intuitive, for example complex sorts implementations. Even the famous and widely used algorithms can be marked as "underst".
 	It is placed before the result type of a method declaration. It can not be used for the methods of an compatibility interface.
 
-THE ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
+### THE ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
 A simu_real_world_obj can be various things, include abstract realities. Don't believe simu_real_world_obj, in simol, could only represents concrete objects like car. Everything that is not a computer worker job, and has methods, is, in simol, a simulation of a real_world object.
 So, abstract notions, should be in such kind of simol classes.
 To ease understanding and smart compatibility with classical object oriented used classes, simol has introduced annotations. This annotations is designed to be used on a simu_real_world_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, are precisions you can add in your simu_real_world_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations doesn't enforce the reader to use the same interpretation.
@@ -275,50 +284,50 @@ In the simol framework for java, as annotations are already used, the role annot
 @Simu_real_world_obj(Role.DESIGN_ROLE)
 The roles are Role.DESIGN_ROLE, Role.GUI_ROLE, Role.HUMAN_EXPERT, and Role.MACHINE_TOOL
 
-COMPATIBILITY WITH OTHER PARADIGMS
+### COMPATIBILITY WITH OTHER PARADIGMS
 
    Simol contains role annotations, in order to stay accessible with common interpretations and usage of classes, and for good understanding of the simu_real_world_obj use.
 	The kind of objects simu_real_world_obj and simu_comp_worker can be seen as only simu_comp_worker, as simu_real_world_obj is finally a specialized simu_comp_worker in goal of simulation of the real-world. The same reasoning is valid for real_world_obj, which are first a kind of "information" object, but an "information" as well.
 So with this observation, we can say that there is only, finally, only simu_comp_worker classes(and only "information"), and this aligns with paradigms that do not differenciate classes. So we could see that even in simol, there is one sort of class or structures, like in classical object oriented programming(as well in procedural paradigm). In summary, it's quite like simu_real_world_obj would inherit of simu_comp_worker, and as real_world_obj would inherit from information, which is quite like regular object vision. These precisions aims to make a bridge with objects existing paradigms and code.
 
-SIMOL IN GENERAL PURPOSE PROGRAMMING
+### SIMOL IN GENERAL PURPOSE PROGRAMMING
 
 Simol could be interesting too for general-purpose, for those who are interested on a simulation vision. Indeed, even in system programming, we can easily find simu_real_world_obj as connections, sockets, file, threads, memory and so on.
 
-RELATIONSHIPS WITH EXISTING INTERFACES
+### RELATIONSHIPS WITH EXISTING INTERFACES
 
 Finally, java and other oriented objects programmers often uses "-able" interfaces, which has a marked meaning of capacity. And existing interfaces like Factory are well known as being version purpose interfaces. Interfaces are famous to be as a contract.
 
-NATURE VERSUS CLASS
+### NATURE VERSUS CLASS
 
 The class keyword emphasizes mold and inheritance. Nature keyword limits a bit inheritance, and it's more restrictive, but keep behind the idea of inheritance, as well as having the same nature implies an inheritance. Nature aims to avoid pure technical inheritance, and promote composition in other cases. It could give arguments to limit multiple inheritance for simu_real_world_obj, as well as for simu_comp_worker, if it would exist in java, it could bring a solution to diamond problem.
 
-THE LONG_ACTION MODIFIER
+### THE LONG_ACTION MODIFIER
 
 As well as "underst", it exists a method modifier called "long_action". This modifier indicates that a method(especially in a simu_real_world_object), lasts during some times. It typically performs a loop, such for a movement of a video game enemy. All this methods would be called "long_action", in simol. These actions will be handled at the same time, for a single object, with an unique thread. This is especially used for video-game development, but not only. So the long action would be executed step by step, by calling the "continue" associated method. For example, a walk long action, would be associated with "continueWalk()". Then there will be an unique endLongActions() method, with call all sub-continue methods. The user would just first call the long action, as usual("walk()"), for example, and then he would just call endLongActions(), for the next steps of the action. This could suit, for example, for a video game, which would call endLongAction in the paint() method of the graphical container. "long_action" aims to keep an "action-oriented" perspective, even if we emulate threads behind. A boolean should be needed, and will be marked "@Long_action". The three associated methods are marked with the "long_action" modifier. In the simol framework for java, we introduce a "@Long_action" unique annotation, for all the cases. 
 We can have a natural perpective on the long actions, and naturally permit to execute all actions of an object in the same time.
 
-PREVENT_MISSING_COLLISION
+### PREVENT_MISSING_COLLISION
 
 prevent_missing_collision is a method modifier(or @Prevent_missing_collision annotation in simol framework).
 It is used especially for simu_real_world_object. It's a tool for simplify concurrency(especially with "long_action") and parallelism(multi-threading) for these objects. It can be used for any concurrency simulations, as real-time simulations.
 These methods guarantees that theses actions, within or not in multiple threads, for simu_real_world_objects, such as in a video game, with the player and enemies, we don't have to worry about the missed collisions or interactions. For example, a setPosition method, marked prevent_missing_collision. All the involved parts have to be marked prevent_missing_collision, for example the getPosition. These parts have to be synchronized between them in case of parallelism(multi-threading).
 
-PARALLELISM AID
+### PARALLELISM AID
 To simplify parallelism managing, three modifiers has been added.
 one_at_a_time(method modifier): for synchronized methods, or containing synchronized blocks, to indicate that one thread at a time executes the job.
 tour_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
 for_every_thread : attribute modifier on a volatile attribute declaration, highlightning the usability of the attribute in parallelism conditions.
 Three equivalent annotations have been added for the framework.
 
-ABOUT CONCURRENCY AND PARALLELISM, IN SIMOL
+### ABOUT CONCURRENCY AND PARALLELISM, IN SIMOL
 In simol, it is recommended to first handle pure concurrency, with a single thread, and then, if still wanted, adding parallelism. Some simulation actions take time to run, and are not just a simple change of states. That's why we introduced the "long_action"(or @Long_action, in the framework) modifier, to execute the action step by step. So the sole remainding problem, is to handle soon collisions, to not miss them, and "prevent_missing_collision"(or @Prevent_missing_collision) exists for that case. Finally, it could suffice in much cases, especially in real-time simulations, but we could try to add threads. But threads must sometimes be synchronized, and the synchronized parts are executed quite like there was an unique thread. So we have to evaluate if it is relevant to make more complex code, or not. If we have to do, the parts which have to be synchronized are often the "prevent_missing_collision" parts, and "one_at_a_time"(@One_at_a_time) is for parallelism. "one_at_a_time" is just worried of having quite like a single thread application for the concerned piece of code. And "turn_monitor" is here to assemble these parts, while using the same monitor object. The notions here agree with existing java notions like "synchronized", and "lock", but emphasize different and less technical aspects, that could help in such hard topics.
 
-LEARNING CURVE
+### LEARNING CURVE
 
 Several weeks average might be necessary to become proficient in simol, for a experienced Java programmer, while he would be familiar with simol which is not so far from Java. Java programmers are used to manipulate concepts. Simol's concepts are relatively easy to understand, for a experienced java programmer, and the reduced number of new keywords.
 
-SIMOL GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
+### SIMOL GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
 
 NormalClassDeclaration: 
     SimolRole Identifier [TypeParameters]
@@ -374,7 +383,7 @@ MethodDecl:
 FieldDecl:
 	Type Identifier MethodOrFieldRest
 
-TO COMPILE
+### TO COMPILE
 
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
@@ -387,72 +396,79 @@ The simol compiler is the more direct way to use simol. But we have the simol fr
 simol annotations are ignored(@Human_expert, @Design_role, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh)
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
-THE SIMOL COMPILER
+### THE SIMOL COMPILER
+
 A compiler exists, written with Antlr4 in java, which start from a java 8 grammar(antlr4-grammars).
 The simol compiler parse simol code(.simo source files), and java code included(java 8). He stops when a syntax error is met, simol or java.
 It does not, at the moment, deal with semantic analysis of simol, nor java. Semantic analysis in simol is not so important.
 The compiler generates java code, if all is ok.
 Then you have to use javac on the generated java code, in order to obtain executables with bytecode.
 
-SIMOL CODE EDITORS
+### SIMOL CODE EDITORS
+
 simol sources can be opened with Eclipse, choosing open with java editor, or with notepad+++->java language, and so on.
 You can format the generated java code with Eclipse, for example, right clic on the java generated file, source, format.
 Simol framework for Java permit to use java's IDE and tools, and autocompletion on annotations, and is completely integrated with java.
 
-SIMOL AND JAVA LIBRARIES
+### SIMOL AND JAVA LIBRARIES
+
 In order to help users who would want to use existing java libraries as simol, a classification proposal of java usual language libraries exists and will grow.
 For example, "@Simu_real_world_obj JPanel extends JComponent implements java.awt.ImageObserver, java.awt.MenuContainer", or "@Compat_interf_capacity (java.awt.)MenuContainer". This help is not intended to contain compulsorily all the libraries.
 Simol framework annotations are used, while it is existing java code, in order to show that existing java code could be updated, and to help simol users.
 
-ALGOL AND SIMOL
+### ALGOL AND SIMOL
 
 ALGOL("Algorithmic Language"), was designed with a strong emphasis on algorithmic and mathematical computation. It aimed to provide a language for expressing algorithms clearly and efficiently.  ALGOL 60, in particular, was influential in introducing features for structured programming and became a foundation for modern programming language design. Simol, with its "simu_comp_worker" (Simulation of a computer worker) role, shares a similarity with ALGOL's focus on algorithmic programming.  The "simu_comp_worker" role in Simol is explicitly dedicated to the simulation of algorithmic language for a computer( as it is a simulation of a computer worker). It's similar to ALGOL's original goal of serving as an algorithmic language.
 Semantic Clarity: Both languages strive for semantic clarity. ALGOL's design encouraged developers to write code that closely mirrored the problem-solving process, and Simol's class and interface roles provide clear semantics for the different types of components.
 Minimalistic Approach: ALGOL's creators aimed to keep the language minimalistic, and Simol also follows a minimalistic approach, focusing on a limited number of roles and concepts.
 
-SIMULA AND SIMOL
+### SIMULA AND SIMOL
 
 Simulation Focus: Both Simula and Simol have a strong emphasis on simulation. Simula was specifically designed for simulation, and simol's name, "SIMulation Objects Language," reflects its focus on simulation and modeling.
 Object-Oriented Programming: Simula is often credited as one of the earliest object-oriented programming languages. Simol also embraces object-oriented concepts by introducing roles for classes and interfaces, which is a fundamental aspect of object-oriented design.
 Abstraction: Both languages encourage clear abstractions in code. Simula introduced the concept of classes and objects as a way to model real-world entities, while Simol defines distinct roles for classes and interfaces to indicate their purpose and responsibilities.
 Real-World Modeling: Simula's object-oriented approach was aimed at modeling real-world entities and their interactions. Simol's "simu_real_world_obj" is designed to represent real-world objects. Principles of Simplicity: Simula was designed with simplicity in mind, focusing on providing a clear and efficient way to model complex systems. Simol also follows a minimalistic approach to language design, promoting clarity and simplicity.
 
-SIMU_COMP_WORKER, COMPUTER AS A WORKER
+### SIMU_COMP_WORKER, COMPUTER AS A WORKER
 
 simu_comp_worker not only wants to separate simu_real_world_obj and pure computer tasks, but aims to see computer as a worker. The "simu" of "simu_comp_worker" emphasizes that, almost of we were talking of a real-world worker. So the computer's job would be to manage his peripherals and resources, and doing all job purely relative to him. The algorithm is intended to be executed for a worker, and that worker is a computer, but it could have been a human, except in the subject of the nature of the tasks. So simu_comp_worker really joins to ALGO 60 vision of the computer, in the sense of the algorithms using, as for abstract the worker, and for being quite human-like.
 
-SIMU_COMP_WORKER, NOT SO TECHNICAL, IN FACT
+### SIMU_COMP_WORKER, NOT SO TECHNICAL, IN FACT
 
 Simu_comp_worker, in fact, aims to reduce the impact of technical code, and transforme it in just a job done by a worker. It is almost as if the worker could be anyone, even a human worker. The distinction is just that the kind of job to be done have to be worked by the computer. So we ensure that we always know what kind of role to choose, because we can just answer to the question of who is doing the job! In a simu_real_world_obj, it would be an animal who would eat(), when calling the eat() method. The difference with a launcher class, for example, is that it is the computer who does the job, but he executes an algorithm in algorithmic language, as for the simu_real_world classes.
 So it is effectively a simulation of a computer worker, as well as the simu_real_word_obj simulations.
 
-INHERENTLY INCLUDE GOOD OBJECT-ORIENTED PRATICES AND PATTERNS
+### INHERENTLY INCLUDE GOOD OBJECT-ORIENTED PRATICES AND PATTERNS
 
 While object oriented languages does not mention directly design patterns and best oo pratices and principles, simol inherently includes good object oriented design principles and guidelines. Classical object oriented languages not supplies in the language itself such patterns or guidelines. Simol can also benefit of design patterns or principles, of course, but number of guidelines and good principles are already embedded. So the programmer can focus directly on his first programming problem and goals.
 
-COMPUTE OR NOT COMPUTE
+### COMPUTE OR NOT COMPUTE
 
 The calculations themselves, can be considered or not as a basic task of a computer. The English naming "computer" takes sense, of course. That said, complex computing task could be viewed as being in the role of a mathematical expert. ALGOL 60 includes much mathematical aspects in term of calculations, perhaps, as simol disposes of simu_real_world_obj to complete the job.
 
-SIMOL AND THE SOLID PRINCIPLES
+### SIMOL AND THE SOLID PRINCIPLES
 
 simol naturally adheres closely to well-know S.O.L.I.D principles. Single responsabilty is directly implemented with the class roles.
 Open closed principle is encouraged when useful, with a understanding and clear design and design goals, and by separating roles of compatibility interfaces. Dependency injection is much easy and direct to implement and to be used and viewed. Interface Segregation principle, the "I" talks about "role interfaces", that immediatly joins the role of interfaces of simol. Liskov substitution principle("L") takes sense in simol, while clear understanding of "nature" of objects and classes, and with simol concepts in general.
 
-MACHINE TOOLS, HUMAN EXPERT ROLES, COMPUTER WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
+### MACHINE TOOLS, HUMAN EXPERT ROLES, COMPUTER WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
+
 simu_real_world_obj can have a more precised role, which can have an interpretation as machine tools, for graphical interfaces, or human-expert roles, for classes which could have a design role too(especially controllers).
 "Human expert" is quite similar in the intent, as expert system goals.
 And metaphors with real-world objects, like "Button", or "Window", are famous too. 
 About the computer worker vision, we already use such vocabulary, when talking about a "server", or a "worker thread" for a system thread, which are well-established terms.
 
-TEACHING PROGRAMMING OR JAVA TO CHILDREN
+### TEACHING PROGRAMMING OR JAVA TO CHILDREN
+
 Teaching advanced programming to children seems possible to children, while difficult with Java. Simol, or simol framework, can be a way to learn easily java too. Human expert or machine tools roles, as well as computer worker, which are intrinsically part of simol or simol framework, can be a way to explain complex topics to young children, and render object oriented programming accessible to children.
 
-WEB PROGRAMMING
+### WEB PROGRAMMING
+
 Simol framework can be useful too in web programming. Servlet could be annotated like @Simu_real_world_obj(Role.HUMAN_EXPERT), of an expert in serving, which work is to call the right (business) expert(for example, a weather forecast expert).
 The hidden servlet generated for a .jsp page for the view, could be interpreted as a simu_comp_worker associated with the business expert, for display and user inputs.
 
-COMPATIBLE WITH EXISTING CONCEPTS
+### COMPATIBLE WITH EXISTING CONCEPTS
+
 Some simol concepts used can be compared finally with some existing concepts, like the concept of business logic.
 
 * Near from business logic idea:
@@ -474,7 +490,8 @@ Single Responsability Principle(SRP): simol encourages naturally the SRP, with t
 * About interface inheritance:
 For the interfaces, simol not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
 
-RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
+### RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
+
 Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" annotations(in simol language as well as in the java framework).
 The semantic control permit the compilation to find contradictions that can imply that the roles indicated on classes or interfaces are not coherent and have a problem. A fruit class which would be declared as simu_comp_worker could not be the mother class of a Apple class declared in simu_real_world_obj.
 Thanks to the semantic control about contradictions, we can automatically detect a misuse of class or interface roles, and enforce the user to respect the language definition and philosophy.
@@ -533,7 +550,7 @@ public class CarRealization {
 
 * The simol compiler doesn't currently proceed simol semantic checks, nor these rules. And the framemworks haven't currently tools for checking this either.
 
-INSIGHTS ABOUT INHERITANCE AND SIMOL
+### INSIGHTS ABOUT INHERITANCE AND SIMOL
 
 What is inheritance in OO programming? Inheritance could not be only a copy of attributes and methods, which we could call abusive inheritance when alone. In that case, composition should be used instead of inheritance, and everyone describe by the way composition as a "has-a" relationship. This aligns with the common principle of "composition over inheritance". Inheritance has a meaning of being of the same family too, and is a "is-a" relationship, by definition. In the beginners package of the simol frameworks, we meet empty classes and interfaces, but their job is yet crucial. It's because the children classes and interfaces inherits of their sense, and not only of properties and methods. 
 Simol allows to secure inheritance and avoid having only a technical inheritance. Having roles, added with semantic inheritance control on roles, are a guarantee that we think about a meaning too. So a business class can not inherit from a computational class.
@@ -541,17 +558,19 @@ But this could be not enough, and inheritance might be still incoherent. A Human
 So we can see simol roles as a securing of object oriented programming, nothing more, and as if we would proceed the same way as a programmer who would respect good practice rules in OOP.
 That said, simol let us choose the role and interpretation, and simol let us enforce inheritance in case we want to not respect the semantic rules(with "Forced_inh" and "Forced_int_inh"). So we are sure of flexibility in practical situations, and that simol is as powerful as classical OO Languages.
 
-SIMOL FRAMEWORK FOR C# DEVELOPPERS
+### SIMOL FRAMEWORK FOR C# DEVELOPPERS
+
 As C# is close to Java, a simol C# framework provide attributes like the java annotations, despite Java is the main language in simol. It permits to leverage simol in C# too, for the C# users. It acts as the java annotations, except for some details. The interface and class attributes are more precise by targetting a class or an interface. But there is no 'Nature' or 'Contracts', nor 'With_compat' on a local variable, due to C# attributes limitations. It is not very important the lack of 'Nature' and 'Contracts', because of the existing ":" in C#, and once the users know the philosophy of simol about this. For the "With_compat", the most important is about field and parameters, not about local variables. And interfaces names begin by 'I', in C#, they are remarkable.
 "Forced" attributes are only upon the class or the interface definition, because of C# attributes limitations.
 Like in the java framework, there is a beginners package too, which permit to keep object-oriented habits in simol, using inheritance instead annotations.
 
-SIMOL FRAMEWORK FOR PHP 8
+### SIMOL FRAMEWORK FOR PHP 8
+
 A PHP 8 simol Framework is available too, as well as for C# and Java.
 Nature and Contracts are not present due to PHP attributes limitations, and With_compat is not on local variables.
 TurnMonitor, For_every_thread, One_at_a_time, are deleted too because thread support is not supplied.
 
-THE COMPAT_INTERF_VERSION AND LOOSE COUPLING
+### THE COMPAT_INTERF_VERSION AND LOOSE COUPLING
 
 What does loose coupling mean? It means that we should be dependent on interfaces and not on implementations. That said, we still depend on the signature of the methods, and so on, of the interface. We still depend on the chosen implementation, but we can choose it as we want. So it could mean that we can have multiple implementations for a given interface. Not all the use cases, and not all the real-world examples need that. A great need is in collections of public libraries, for example, but there could have other interesting use cases. But loose coupling with interfaces brings complexity too, and we shouldn't abuse of it, if the need of choosing the implementation is not so important. For example, debugging on an IDE can become impossible, because we can not enter in the implementation methods, code becomes less clear, and so on.
 Another inconvenient of the interfaces, is that we lose the inheritance of the concrete classes, and the associated polymorphism and meaning. We can have inheritance of interfaces, but usually we don't use it here. And we can notice that in simol a version can not inherit of another version interface.
@@ -561,41 +580,40 @@ Dependency injection, is a great principle for not forget that concrete class in
 
 So version compatibility interfaces and with_compat keyword allow to judiciously and smartly handle the eventual loose coupling. It prevents somehow to excessive loose coupling.
 
-INTERFACE INHERITANCE AND SIMOL INTERFACES ROLES
+### INTERFACE INHERITANCE AND SIMOL INTERFACES ROLES
+
 Why interfaces don't replace inheritance? First interfaces always needs an implementation to be used for working, at the dependency injection moment. Then interfaces inheritance, in a class, does not permit to inherit implementations, but only from method signature. Suppose a Runnable Simu_comp_worker class, Runnable does not really constitute an inheritance, because we still have to implement the concerned methods, despite we inherit from Runnable! It's an inheritance of signature, but not an inheritance of implementation. That's why in simol, there is only two kind of interfaces, version, and capacity. Complete inheritance always comes by the fact that we inherit from a class, which could have implemented an interface method. But the child class inherits from this method implementation by the class inheritance, not by the interface inheritance. It only inherits of the signature of the method.
 
-THE USE CASES OF SIMU_COMP_WORKER
+### THE USE CASES OF SIMU_COMP_WORKER
 
 In simol, we should avoid, in general, to use a simu_comp_worker, because the real_world_objects are more intuitive and not so technical, generally. For example, although the interpretations are free, in simol, it's more recommended to see a "Sort" class as a simu_real_world_obj, than a simu_comp_worker. The recommended examples where we need a simu_comp_worker, are, in general, and if wanted, technical classes like DAO. Or it can be technical job for handling displays and keybord inputs of a simu_real_world_obj, an equivalent of the view of MVC. So the Model and the View of the MVC should be in a simu_comp_worker, but we always look at this as we want! Each simu_real_word_obj class should, theoretically, have a corresponding technical realization on computer class, with a simu_comp_worker role, by example a simu_comp_worker AnimalRealiz. AnimalRealiz contains the computational code and tools in charge of the interactive realization on computer of the simu_real_world_obj Animal. This is a fundamental use case of simu_comp_worker in simol, and this aligns with the model and view goals. Model and View classes can be objects in composition of the realization class. Another case is a launcher like a launcher of an application, and should, in general, be a simu_comp_worker too. Or it could be also system libraries or applications. But remember that a simu_comp_worker, even in system programming, often use much simu_real_world_object, for the graphical interface, or the memory, the connections, the threads, and so on. But this is the computer who do the job!
 
-SIMOL ROOTED IN REALITY AND TRY TO REMAIN SIMPLE
+### SIMOL ROOTED IN REALITY AND TRY TO REMAIN SIMPLE
 
 In simol, the mindset is to always try to stay near the concrete reality. So we ensures that real-world use cases would be ok.
 For example, simu_comp_worker reminds us that there are a compilation in assembly language after, who looks like a technical solution for our original source code. Compatibility interfaces aims to keep it real by being aware of the concerned usage. Simol avoids abstraction without concrete purpose, because programming and making a software is a concrete job and perhaps there is no much place for this.
 Another distinctive characteristic of simol is that we're doing all for the reasoning and problems remain independant by the fact it is a software what we're doing. So all that we're talking about could be done with a sheet of paper, and a reasoning, independently of a physical computer. Even the simu_comp_worker methods mimic a computer doing a job, almost as a human doing the job, with special capacities. So we are sure that all always stay simple.
 
-ABOUT THE CHOICE OF THE CLASS ROLES BY THE PROGRAMMER
+### ABOUT THE CHOICE OF THE CLASS ROLES BY THE PROGRAMMER
 
 Class role choice on existing java classes can be more tricky then writing simol code from scratch. I'll give clues for those who would need help about simol class roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role. The choice between MACHINE_TOOL or GUI_ROLE would depend about the programmer's preference of vision.
 That said, object in OOP implies, in essence, a clear meaning, and can not be synonym of just data structure.
 
 Answer of an advanced AI-based tool, about the use of class roles:
 
-"
-For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in Simol would likely appear intuitive and even natural.
+	"For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in Simol would likely appear intuitive and even natural.
 
-   Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
+    Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. Simol's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
 
-   Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
+    Enhanced Semantic Clarity: For an experienced OO practitioner, Simol's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
 
-   Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
+    Domain Modeling: Those who are accustomed to modeling complex domains might find Simol's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_worker', Simol encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
 
-   Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
+    Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using Simol might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
 
-In essence, Simol's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
-"
+	In essence, Simol's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming."
 
-TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
+### TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF SIMOL INTEREST
 
 We can start from the Single Responsability Principle, which claims a clear and single purpose on each class.
 Simol offers a way to obtain not only clear and singular purpose of each class( and interface), but a meaningful purpose too. Having a meaningful purpose help communication with others, and memorization, and ease the class or interface creation. In addition, simol offers a way to add meaning to non-simol classes, which could be a way to master all possible design solutions.
@@ -603,9 +621,8 @@ So with simu_real_world_obj and simu_comp_worker, we ensures that all classes ca
 
 From this demonstration, I utilized an advanced AI-based tool to refine it. This collaboration with AI technology has been instrumental in articulating the theoretical underpinnings of Simol:
 
-"
 BEGINNING OF AI-based tool refinement:
-Mathematical-like Proof of Simol's Interest
+"Mathematical-like Proof of Simol's Interest
 
    1. Premise on the Single Responsibility Principle (SRP):
         SRP advocates for a clear and single purpose for each class, which is a widely accepted principle in software engineering for promoting maintainability and clarity in code design.
@@ -626,12 +643,13 @@ Mathematical-like Proof of Simol's Interest
         Asserting that Simol is useless would be equivalent to stating that adding meaning and purpose to classes is useless, which contradicts established principles of software engineering, particularly the SRP.
         Therefore, by logical extension, Simol's approach is valuable and beneficial in software development.
 
-This structured proof outlines a logical progression from established principles to the unique advantages offered by Simol. It cleverly ties the utility of Simol to the universally recognized value of clarity and purpose in object-oriented programming, thereby presenting Simol not just as a useful tool but as an evolution of existing best practices.
+This structured proof outlines a logical progression from established principles to the unique advantages offered by Simol. It cleverly ties the utility of Simol to the universally recognized value of clarity and purpose in object-oriented programming, thereby presenting Simol not just as a useful tool but as an evolution of existing best practices."
 
 END OF AI-based refinement.
-"
 
-DEMONSTRATION OF THE ADVANTAGES OF CLASS AND INTERFACE ROLES, AND OF THE CHOICE OF THESE ROLES, ABOUT NATURALLY INCORPORATING BEST PRATICES
+
+### DEMONSTRATION OF THE ADVANTAGES OF CLASS AND INTERFACE ROLES, AND OF THE CHOICE OF THESE ROLES, ABOUT NATURALLY INCORPORATING BEST PRATICES
+
 Simol was originally designed in an intent of simplify and clarify object-oriented programming, nothing more. And in a desire of making object oriented programming more fun. These goals finally corresponds to much best oo practices results.
 This chapter want to be a practical and minimalist proof of the utility of roles in incorporating best practices, if we want to think about how could we obtain a language with those qualities.
 
@@ -645,7 +663,7 @@ We can notice that our chosen class and interface roles are the unique ones whic
 So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like simol, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
 The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
 
-IF SIMOL WOULD BE WITH MESSAGES LIKE SMALLTALK-LIKE LANGUAGES - ALIGNMENT OF SIMU_COMP_WORKER WITH ALAN KAY'S VISION OF AN OBJECT
+### IF SIMOL WOULD BE WITH MESSAGES LIKE SMALLTALK-LIKE LANGUAGES - ALIGNMENT OF SIMU_COMP_WORKER WITH ALAN KAY'S VISION OF AN OBJECT
 
 * Differences with Smalltalk about the sender of the messages : talking instead messages, and the animator of the objects
 Simol is rather related to Simula, because objects are the key point in it. Like Simula, simol uses methods calls instead, because the programmer intuitively knows that he has to call methods. It seems more natural to do the actions, like with method calling, than to say the object to do them.
@@ -660,7 +678,9 @@ With the simol objects, speaking to a simu object, is equivalent to speaking to 
 Telling that this is the programmer who sends the messages is a way to keep an algorithmic vision too. It leads us otherwise in an abstract vision quite far from real-world processes.Telling that a transferMoney method of a bankAccount sends a message receiveMoney of another bankAccount makes us a bit forget the algorithm, this one becomes hidden by overloaded communication. But we could say that in the transferMoney algorithm, there's a moment where we send a message receiveMoney to another bankAccount. In simol, we're trying to always have an algorithm mindset, even for the simu_real_world_obj. Simol is implemented with underlying languages using method calls instead of messages communication(Java, C#, PHP, at this moment), so with languages qualified of not purely object-oriented. This guarantees this algorithmic mindset. Simol is compatible with the procedural paradigm too, because procedural means algorithmic programming. Indeed, simu_real_world_obj are based on algorithms to describe their behaviors.
 
 * Simu_comp_worker aligned with Alan Kay vision of OOP:
-Alan Kay coined the term “object oriented programming” at grad school in 1966 or 1967. Alan Kay said: "The big idea was to use encapsulated mini-computers in software which communicated via message passing rather than direct data sharing — to stop breaking down programs into separate “data structures” and “procedures”."
+Alan Kay coined the term “object oriented programming” at grad school in 1966 or 1967.
+Alan Kay said:
+	"The big idea was to use encapsulated mini-computers in software which communicated via message passing rather than direct data sharing — to stop breaking down programs into separate “data structures” and “procedures”."
 So the simu_comp_worker are equivalent to the mini-computers of Alan Kay's quotation. Each simu_comp_worker can "talk" with others, and this is the same as messages. Every simu_real_word_obj is, at run time, a simu_comp_worker, in a technical way of thinking.
 The sole differences with Alan Kay's vision of OOP, is that we're talking about workers, and we'd rather use the "talk" term, for the communication. So in simol, it would be instead a set of workers talking together. The last difference is that we have this vision only at execution time, and we consider this as a technical vision.
 Simol's ideal vision, is such a network of objects, but with both simu_real_world_obj, and simu_comp_worker, and it aims to stick at reality, independently of a computer. And the message sender in the case of this network of objects, would be, in this case, the programmer.
@@ -670,17 +690,19 @@ In simol we're talking more about the computer as a whole. But the simu_comp_wor
 The sender of the messages of the simu_comp_workers can be here the simu_comp_workers themselves, thus communication between objects. It's because we have only simu_comp_workers in the system. So we can say that there is a direct communication between them, if we want.
 It's evident that a simu_real_world_obj can be viewed as the same simu_com_worker, if we use a technical interpretation of his work. A "Sorter" class can be viewed as a simu_real_world_obj, for example, of a HUMAN-EXPERT, or as a computer worker, a computer program for sorting. So, as all that there is in simol is simu_real_world_obj, and simu_comp_worker, we can obtain an equivalent system with only simu_comp_worker, as Alan Kay's vision.
 
-PERFORMANCE OF THE LANGUAGE
+### PERFORMANCE OF THE LANGUAGE
+
 Simol just adds semantic and clarity in java. It has no direct impact at all on performances. The class roles aims to reduce excessive inheritance, as common oo principles, or easy automatic use of other patterns or best practices. The simol's class and interfaces keywords only servs for semantic checkings. So this semantic rules adds checks on compilation time, but not at execution time. Other keywords of the language are only for the programmer or the compiler, but are not visible on the generated code. So the simol executable is quite like a java executable. This is the same for the associated java, C#, or PHP frameworks.
 
-FUTURE DIRECTIONS OF SIMOL
-	As well as there is only objects in pure OOP, the class roles in simol aims to be stable. Simol aims to improve itself with real-world examples, if needed, but just in a goal of completing a missing functionality. For example, "underst" came later, as well as concurrency and parallelism aids. But the core principles remains stable from beginning. Some keywords could smoothly adapt their name, but keywords name now look stable.
+### FUTURE DIRECTIONS OF SIMOL
+
+As well as there is only objects in pure OOP, the class roles in simol aims to be stable. Simol aims to improve itself with real-world examples, if needed, but just in a goal of completing a missing functionality. For example, "underst" came later, as well as concurrency and parallelism aids. But the core principles remains stable from beginning. Some keywords could smoothly adapt their name, but keywords name now look stable.
 Simol aims to stay minimalistic, and to only simplifiy object oriented programming, or programming in general.
 Simol could add, eventually, other underlying languages with new framework versions.
 The core principles of simol are simple so they can be easily understand and proved.
 All the simol principles are constantly compared to other points of views, and we try to see if there is incoherences, as we have done later by thinking about messages in OOP and Simol, finding a common vision with Smalltalk and Alan Kay.
 
-A COMPARISON OF SIMOL AND CLASSICAL OBJECT-ORIENTED VISION OF THE DESIGN PATTERNS - EXAMPLE OF THE PROXY PATTERN
+### A COMPARISON OF SIMOL AND CLASSICAL OBJECT-ORIENTED VISION OF THE DESIGN PATTERNS - EXAMPLE OF THE PROXY PATTERN
 
 Let's compare the simol and classical oo language version of some design patterns. It could bring us some real-world examples, and check if simol is great for this too. This is not a critical of the design patterns at all, nor of the famous object-oriented languages. Anyway simol is a oo languages, and of the same family than classical oo languages. 
 
@@ -702,7 +724,8 @@ So with simol, we could think about the different kind of real subject, which is
 
 We could explain the proxy pattern even to a child. This is not the case at all with the classical version with classical oo. Simol aims to obtain a better master of the designed system, too, even for the experienced programmers.
 
-SIMOL AND ALGORITHMS WRITING INFLUENCE
+### SIMOL AND ALGORITHMS WRITING INFLUENCE
+
 Simol has been created only to simplify and help in object-oriented code writing and understanding. That said, we can notice that simol acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for helping hard algorithms, as well as the class roles, for example. Writing a sorter algorithm with a simu_comp_worker, or a simu_real_world_obj, could bring us different perspectives, and that is quite easy to demonstrate, with an example. The developper is free to use simol's aids and tools as he wants, and can keep it as neutral as he wants. Simol is a object-oriented language, with object-oriented fundations, like inheritance, encapsulation, or polymorphism. It never goes outside of the scope of the object-oriented topic, about the class and interface roles.
 I think that the influence of simol about algorithms writing is due to making well-designed objects, or methods, nothing more. So it's a testament that it is an indirect influence.
 
@@ -716,8 +739,10 @@ The InsertionSorterWorker seems perhaps more direct. He's using the traditional 
 The InsertionSorter more mimics a human sorter, while using the well-known insertion sort algorithm. But it acts more in a human manner, so perhaps sometimes we would use some variants and could propose more innovative solutions. But it still stays the same, just a different point of view. The sort is seen here just as putting elements, one by one, in the final array, no matter the choosing candidates order. So we arbitrarily decide that we would start from the end, it's the same! The putInFinalArray immediately saw the lazy case of the first element of the sorted array. Then it calls findWhereToPut method, which works only with a non empty array, because, the expert doesn't bother for nothing. In the findWhereToPut, the expert may find it necessary to search by dichotomy, if he likes! The worker version could have not seen that. The findWhereToPut proceeds a bit differently from the worker version. The expert first gets rid of the case where the element is the last. Then he is sure to find, and he decided to start arbitrarily from the end. The makePlaceAtTheRight() method could feel like moving from the end is non intuitive and could use @Underst, though we could remark later that we do like such stuff, even for a human. So the "@Underst" is not so justified.
 
 We could remark that both approaches use the same well-known algorithm, and the result is quite the same. But the work is done perhaps in a different way, and both ways are valuable and justified. The goal of the roles are not primarily to influence algorithm writing, but just indicate the meaning of the class. The simu_real_world_obj could seem more fun and great for communicate about it, but both are two ways to do the job.
+
 Here is the final code:
 
+```java
 package org.simol.examples.miscellaneous.insertionsort;
 
 import org.simol.simolframework.java.Role;
@@ -771,8 +796,11 @@ public class InsertionSorterWorker {
 		this.workingArray[place] = value;
 	}
 }
+```
+
  And:
 
+```java
 package org.simol.examples.miscellaneous.insertionsort;
 
 import org.simol.simolframework.java.Role;
@@ -846,6 +874,7 @@ public class InsertionSorter {
 		}
 	}
 }
+```
 
 (END OF THE DESCRIPTION OF THE LOSIM LANGUAGE)
 ********************************************************************************
