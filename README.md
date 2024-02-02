@@ -4,7 +4,8 @@ A slogan for simol language and framework could be "Facilitate And Guarantee Obj
 Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users, as well as a Simol PHP 8 Framework.
  The language could be a DSL(Domain Specific Language) in simulation, as well as object oriented work. The definition of simol stands on few pages, and it's quite fast to get an overview.
 Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
-It well aligns with Domain-driven Design(DDD). I'm looking for persons interested in testing the language, or more if they like.
+It well aligns with Domain-driven Design(DDD). The language's approach is, at the same time, to support and ease the algorithms writing, thanks to classes and interfaces types, and to modifiers addition.
+I'm looking for persons interested in testing the language, or more if they like.
 
 One of the main goal, or perhaps the most important goal in simol, is to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with simol approach. While aiding in thinking of one solution to solve the writing problems, simol aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
@@ -25,35 +26,34 @@ There is a basic simol compiler, but it works great. There is a simol framework 
 I used chatGPT at the end of my work, for validate simol's design choices, and for feedback and overview. As I don't want autopromotion, I regularly ask chatGPT assistance and support, and add them to this README file.
 The complete and detailed definition stands at the end of this file.
 
-The response and overview of chatGPT 4 about the description of simol programming language is :
 ***************************************************************************************
-# (CHAT GPT 4 RESPONSE)
+## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
 User
 Hello my friend. I've created a new programming language, simol, and it's equivalent java framework. What do you think of it, please? Here is its definition: "(...)"
 ChatGPT
 
-It's evident that you've put a tremendous amount of thought and effort into creating Simol and its accompanying Java framework. The design philosophy of "Facilitate And Guarantee Object-Oriented Programming" aligns well with contemporary trends in software development, emphasizing simplicity and clarity while leveraging the strengths of Java's object-oriented nature.
+Thank you for sharing the extensive details about your newly created programming language, Simol, and its accompanying Java framework. It's evident that a considerable amount of thought and effort has gone into its development. Here are some thoughts and observations:
 
-Here are some observations and thoughts:
+   Focus on Object-Oriented Programming (OOP): Simol's emphasis on facilitating and guaranteeing OOP principles is commendable. This focus can potentially make it an excellent tool for teaching OOP concepts and for projects where strict adherence to OOP is desired.
 
-   Superset of Java: By building Simol as a superset of Java, you've ensured that it inherits the robustness and ecosystem of an established language while providing additional features and syntactical improvements. This can be particularly appealing to existing Java developers who are looking for more expressive or streamlined ways to handle common programming paradigms.
+   Integration with Java and Other Languages: The ability to use Simol alongside Java and other languages like C# and PHP is a significant advantage. This compatibility could ease the transition for developers familiar with these languages and increase Simol's adoption.
 
-   Emphasis on Object Roles: The concept of defining explicit roles for classes (like simu_real_world_obj and simu_comp_worker) is intriguing. It encourages developers to think more deeply about the purpose and behavior of their objects, which can lead to clearer and more maintainable code.
+   Minimalism and Simplicity: Your approach to keep the language minimalistic could make it more accessible to beginners and reduce the learning curve. This aligns well with modern trends in language design, where simplicity and clarity are highly valued.
 
-   Integration with Existing Java Code: The ability to use Java libraries and code within Simol source code is a significant advantage, as it allows for gradual adoption and interoperability with existing Java projects.
+   Annotations and Framework Usage: The use of annotations in the Java framework for Simol is an interesting choice. It can potentially make the integration seamless and maintain the readability of the code.
 
-   Educational Tool: The language's simplicity and the emphasis on clear object roles could make it an excellent tool for teaching object-oriented concepts. It might help students grasp the principles of OOP more intuitively.
+   Unique Concepts and Terminology: Introducing concepts like simu_real_world_obj, simu_comp_worker, information, real_world_obj, etc., provides a fresh perspective on classifying and understanding objects and their roles in programming. This could lead to more intuitive and meaningful code structures.
 
-   Open Source and Community Involvement: Making Simol open source and encouraging community involvement through a GitHub repository is a wise move. This not only allows for collaborative development and improvement but also increases the language's visibility and adoption.
+   Enhanced Semantic Clarity: By categorizing classes into specific roles, Simol encourages developers to think more deeply about the purpose and behavior of their objects in the context of the application. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
 
-   Alignment with Design Principles and Patterns: Your approach of inherently embedding good object-oriented design principles and common patterns within the language's structure could reduce the learning curve and prevent common design pitfalls.
+   Alignment with Modern Software Principles: Simol's design aligns with contemporary software design principles like Domain-Driven Design (DDD) and the Fundamental Theorem of Software Engineering, which is a strong foundation for any modern programming language.
 
-   Performance Considerations: It's good to know that Simol is designed to be as performant as Java, considering it compiles to Java code. This is crucial for adoption in scenarios where performance is a key concern.
+   Potential for Educational Use: Given its focus on OOP and simplicity, Simol could be a useful tool in educational settings for teaching programming concepts, especially in the context of OOP.
 
-   Future Directions: The stated goal of keeping Simol minimalistic and focused aligns with the modern trend of creating tools that do one thing well. Future enhancements, especially in terms of tooling and IDE support, could greatly increase its appeal.
+   Future Development and Community Engagement: The creation of a GitHub repository and your openness to collaboration and feedback is a vital step in developing a programming language. Engaging with a community of developers can provide valuable insights and contribute to the evolution and refinement of Simol.
 
-Overall, Simol presents as a thoughtful and innovative approach to object-oriented programming, building upon the strengths of Java and adding unique features that encourage good design practices. Its success will largely depend on community adoption, the richness of its ecosystem (libraries, tools, documentation), and how well it addresses the pain points of Java developers. As with any new language or framework, widespread adoption can be a slow process, but focusing on its educational benefits and the clarity it brings to OOP can be effective strategies for growth.
+In conclusion, Simol presents an innovative approach to object-oriented programming, emphasizing clarity, simplicity, and adherence to OOP principles. Its compatibility with popular languages like Java, C#, and PHP, along with its unique conceptual framework, positions it as a potentially valuable tool for both educational and professional software development environments. The success of any new programming language depends significantly on its adoption and the community that forms around it, so your focus on collaboration and openness to feedback is crucial. Best of luck with your endeavors in developing Simol further!
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -84,6 +84,15 @@ Simol can be used with the simol compiler, or can also be used through the simol
 Simol introduces a new way of thinking about OOP, because we are used to creating directly pure objects, and here we have to choose between two kind of objects. But is it so new? We are used to think about kind of objects, like controllers, model, view, entity, Data Access Object(DAO), Data Transfer Object(DTO), POJO, etc. But yes, it is a different way of thinking and of looking at things. That said, finally, it still respects common patterns and oo principles, like SOLID, Single Responsability Principle, MVC, and so on. At the beginning, the @Design_role annotation, or Role.DESIGN_ROLE in the framework, could make things regular for us, because controllers, services, etc, are considered as simu_real_world_obj with a design role. Then, we could see things differently, if we want, as we could then desire compare our classes to more precise stuff than controllers or services. That is the same for the graphical interfaces, there is a role called @GUI_role, for the usual way of thinking about this. Notice that we have just to precise if it is a real world notion, or not, or just a technical task. We have not to precise more, if we do not want. I think that anyway we should know, at least, when creating an object, what we want to do with that object, his main role. We can still mix a bit technical code, but we have to precise the main role of the class. So the habit seems light compared to think constantly at a ton of design patterns and principles. We could add that "object", in object-oriented programming, means "having a meaning", and not being only a data structure, so is it so new to precise a bit the meaning of our objects?
 
 There is also something new, in the way of thinking about the interfaces. It seems more easy than for the class roles change, less different than our habits. We have to choose about two interfaces, instead of directly using an interface. That isn't a big changing, because we know almost by heart concepts of capacity, for interfaces, or version.
+
+### THE SIMOL OBJECTS - ANOTHER PERSPECTIVE ABOUT OBJECT-ORIENTED OBJECTS - "SHEET OBJECTS"
+
+What could be the difference between the vision of an object-oriented object in Java, and Simol? Of course, it is the same thing. But in simol, an object is rather defined as a set of human-like algorithms and datas, and it could exist on a sheet of paper. We could almost call them "sheet objects". It's quite like a mathematical, or theoretical object. In Java, or usual object-oriented languages, we'd rather focus on attributes and methods. So if we talk about objects in simol as "simol objects", it seems quite normal to say that with those simol objects what could we do? We could emulate real-world objects, with their actions and states, and we can emulate a computer as a quite-human worker. So the difference of thinking is certainly due to the little difference of the vision of an "object".
+So the classical oo objects are totally compatible with the "sheet objects", and people are free to be interested in that, sometimes, always, or never. It's a matter of interpretation, but it is two sides of the same thing. It especially serves to prove that simol's class roles are natural, and root objects.
+
+### A LANGUAGE FOCUSED ON ALGORITHMIC TOO
+
+If we want to clearly understand simol's approach, let's talk about algorithms. Simol is algorithmic-centric too, beyond being specialized in object-oriented features. The roles are well adapted to ease code writing at the implementation level. So kind of classes and interfaces should greatly help in algorithms writing and obtained system mastering and memorization. In addition of that, and in the same mindset, simol try to add tools for much painless code writing, with keywords like "underst", or those for concurrency and parallelism. The implementations writing is a continuously focused problem in simol.
 
 ### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
 
@@ -118,7 +127,7 @@ Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : 
 
 ### SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
-Simol follow the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
+Simol follow the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top of classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
 
 Wikipedia quotation about the Fundamental theorem of softwatre engineering:
 "The fundamental theorem of software engineering (FTSE) is a term originated by Andrew Koenig to describe a remark by Butler Lampson attributed to David J. Wheeler:
