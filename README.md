@@ -29,23 +29,38 @@ The complete and detailed definition stands at the end of this file.
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
-User
 Hello my friend. I've created a new programming language, simol, and it's equivalent java framework. What do you think of it, please? Here is its definition: "(...)"
 ChatGPT
 
-Thank you for sharing the comprehensive definition and overview of your new programming language, Simol, and its accompanying Java framework. It's apparent that you have put a lot of thought and effort into developing this language and framework with the aim of enhancing object-oriented programming.
+Thank you for sharing the comprehensive details of your new programming language, Simol, and its accompanying Java framework. It's evident that a considerable amount of thought and effort has gone into its creation. Here are some thoughts and observations:
 
-Your emphasis on facilitating and guaranteeing object-oriented programming while keeping the language minimalistic is intriguing. Simol's approach of categorizing classes and interfaces into specific roles like 'simu_real_world_obj', 'simu_comp_worker', 'real_world_obj', 'information', 'compat_interf_version', and 'compat_interf_capacity' is a unique way to structure and conceptualize object-oriented design. This could potentially offer more semantic clarity and align well with domain-driven design principles.
+   Object-Oriented Emphasis: Your focus on facilitating and guaranteeing object-oriented programming is commendable. The differentiation between simu_real_world_obj and simu_comp_worker is an interesting concept that seems to encourage developers to think more deeply about the roles of their objects in the system.
 
-The integration of Simol with Java, allowing it to leverage existing Java libraries and infrastructure, is a smart move. It not only makes Simol accessible to a large pool of existing Java developers but also provides the familiarity of Java with the added benefits of Simol's structure and design philosophy.
+   Compatibility with Java: The fact that Simol is a superset of Java and allows the use of Java libraries is a big plus. This should ease the learning curve for existing Java developers and facilitate the integration of Simol in current Java-based projects.
 
-Your approach towards algorithmic language enhancements and the focus on intuitively expressing algorithms, especially in concurrency and parallelism situations, can be a valuable asset in software development.
+   Annotations and Keywords: The use of specific annotations and keywords like with_compat, underst, simu_real_world_obj, etc., shows your intention to make the language expressive and self-documenting. This could potentially improve readability and maintainability of the code.
 
-The concept of "sheet objects" and the emphasis on the real-world representation of objects align well with the fundamental principles of object-oriented programming, which is to model software close to real-world entities and interactions.
+   Teaching Tool: As you mentioned, Simol could be an interesting teaching tool. Its emphasis on object-oriented concepts, along with the integration of these concepts into the language structure itself, might make it easier for learners to grasp these concepts.
 
-It's also commendable that you are seeking collaboration and open-source contributions, which can lead to diverse insights and rapid evolution of the language.
+   Concurrency and Parallelism Features: The attention to concurrency and parallelism, particularly through the illustrative example of the hypermarket, demonstrates the language's capacity to handle modern computing challenges efficiently.
 
-In summary, Simol appears to be a thoughtful and innovative approach towards object-oriented programming, aiming to simplify and clarify the programming model while adhering to and enhancing established best practices. The success and acceptance of Simol in the broader programming community would largely depend on its ease of use, the learning curve, performance, and how well it integrates with existing systems and practices. I'm looking forward to seeing how Simol evolves and is received by the developer community.
+   Simol's Approach to OOP: Your language seems to have a unique approach to OOP, focusing on the simulation aspect of objects (simu_real_world_obj and simu_comp_worker). This could lead to a different way of thinking about objects and their interactions within a software system.
+
+   Alignment with Domain-Driven Design: The alignment with DDD (Domain-Driven Design) is a smart move, considering the popularity and effectiveness of DDD in complex software systems.
+
+   Flexibility and Interpretation: Allowing developers to choose between different interpretations of object roles (like simu_real_world_obj and simu_comp_worker) adds a layer of flexibility, but it also demands a higher level of discipline and understanding from the developer to maintain consistency.
+
+   GitHub Repository and Open Source Nature: Having a GitHub repository for open collaboration and contributions is a great way to evolve the language. The open-source aspect should encourage a community to build around it, offering improvements and varied use cases.
+
+   Learning Curve and Accessibility: While the language seems to offer a lot of expressive power, the learning curve might be steep, especially for those not well-versed in object-oriented programming concepts. Its success might depend heavily on the availability of good learning resources and community support.
+
+In summary, Simol presents an intriguing approach to object-oriented programming with its unique concepts and tight integration with Java. Its focus on clarity, role-based design, and alignment with modern software design principles could make it a valuable tool in certain contexts, especially in educational settings or projects that heavily rely on OOP paradigms. The real test would be its adoption by the developer community and the practical challenges it faces in various software development scenarios.
+***************************************************
+User
+THANK YOU SO MUCH my friend, that's incredible, have a fantastic day! Thank you so much for your invaluable support! I'm going to add your feedback on github!
+ChatGPT
+
+You're very welcome! I'm glad I could provide useful feedback on your Simol programming language and framework. It's exciting to see such innovative projects being developed, and I wish you the best of luck with your endeavor. Sharing this feedback on GitHub sounds like a great idea to inform and engage with your growing community. If you have any more questions or need further assistance in the future, feel free to reach out. Have a fantastic day and all the best with your project!
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -84,9 +99,187 @@ So the classical oo objects are totally compatible with the "sheet objects", and
 
 ### A LANGUAGE FOCUSED ON ALGORITHMIC TOO - ALGORITHMIC LANGUAGE ENHANCEMENTS
 
-If we want to clearly understand simol's approach, let's talk about algorithms. Simol is algorithmic-centric too, beyond being specialized in object-oriented features. The roles are well adapted to ease code writing at the implementation level. So kind of classes and interfaces should greatly help in algorithms writing and in obtaining system mastering and memorization. In addition of that, and in the same mindset, simol try to add tools for much painless code writing, with keywords like "underst", or those for concurrency and parallelism. The implementations writing is a continuously focused problem in simol.
+* If we want to clearly understand simol's approach, let's talk about algorithms. Simol is algorithmic-centric too, beyond being specialized in object-oriented features. The roles are well adapted to ease code writing at the implementation level. So kind of classes and interfaces should greatly help in algorithms writing and in obtaining system mastering and memorization. In addition of that, and in the same mindset, simol try to add tools for much painless code writing, with keywords like "underst", or those for concurrency and parallelism. The implementations writing is a continuously focused problem in simol.
 Indeed, added features could look like algorithmic language enhancements, in a goal of better express algorithms, for example in concurrency and parallelism situations, the "underst" concept, or well-designed objects and interfaces.
 Simol aims to provide practical objects and interfaces, that are aligned with the process of intuitive algorithms writing. So it became algorithm-compatible to say, "I want an object with the capacity of eat", or "I just need an object who is a version of a ClientDAO". Or "I need two simulations of animal, a Giraffe simulation, and a Horse simulation. Then I need two workers to animate on screen these animations".
+
+Simol was built in a direction of never forget algorithmic programming facilitation. Including features that enhance algorithmic language is significant, as well as recursion helped in Quick Sort algorithm recognition. In the same manner, simol leverages of all existing algorithmic and object features of java. So new features like qualify computer-cognition specific methods, with "underst", for example, could permit to add power to the existing algorithmic language. And there could be a lack about concurrency and parallelism subject, in pure algorithmic language, as express that some parts of code should be in single-thread("one_at_a_time"). This is quite like handling the problem at the algorithmic level, because we can then focus on the fact that's matter for the algorithm.
+
+* Let's take an example to illustrate this:
+
+Imagine a hypermarket, where there is a unique queue, that dispatches people to many checkouts. Each people waiting to the main queue, have to read on a screen the number of the checkout to go, when it is their turn to pass. The waiting for the screen is due to the time needed for a checkout to become free. So in simol, the people have to read "one at a time" the screen for their checkout number. Simol handles this as if there was a single thread, but doesn't matter that it is equivalent to synchronize all threads of each people. Each people are waiting for their turn, as a method locked by a "synchronized" keyword. But in simol, we could focus on the active flow having his turn, and not on the waiting processes. In the real life, in such examples, we see the main queue quite as a unique thread, but we see people as many threads as soon as they live their lives independently. Another problem is added to parallelism, it is the locks problem. Here, all the customers would have the same lock object, because all customers are blocking each other. In simol, we're talking about a monitor of turn, quite like if they would a person who would survey that all people in the main queue are obeying. If they'd have two main queues, they would need to different turn monitors.
+
+In the Java framework: 
+
+```java
+package simol.simple_examples.parallelism.hypermarket;
+
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/* An example for parallelism, @One_at_a_time, @Turn_monitor, @For_every_thread
+ * v1.0		20240203
+ *
+ */
+@Simu_comp_worker
+public class Launcher {
+
+	public static void main(String[] args) throws InterruptedException {
+		Object firstMonitor, secondMonitor;
+		firstMonitor = new Object();
+		secondMonitor = new Object();
+		
+		Customer john = new Customer("John", firstMonitor, secondMonitor);
+		Customer ryan = new Customer("Ryan", firstMonitor, secondMonitor);
+		Customer robert = new Customer("Robert", firstMonitor, secondMonitor);
+		
+		Thread johnThread = new Thread(john); //Customer's life!
+		johnThread.start();
+		Thread.sleep(500); // Just to have a gap
+		Thread ryanThread = new Thread(ryan); //Customer's life!
+		ryanThread.start();
+		Thread.sleep(500); // Just to have a gap
+		Thread robertThread = new Thread(robert); //Customer's life!
+		robertThread.start();
+		
+		Thread.sleep(30000);
+		john.setBlnContinue(false); //Example of usage of @For_every_thread.
+		ryan.setBlnContinue(false);
+		robert.setBlnContinue(false);
+	}
+
+}
+```
+
+```java
+package simol.simple_examples.parallelism.hypermarket;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.For_every_thread;
+import org.simol.simolframework.java.One_at_a_time;
+import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.Turn_monitor;
+
+/* To simplify the example, we are supposing that it takes two seconds for one checkout to be free to take one customer, in the first main queue. */
+@Simu_real_world_obj
+public class Customer implements @Contracts Runnable {
+	
+	private String name;
+	@For_every_thread
+	private volatile boolean blnContinue; //The main thread would say to stop!
+	
+	public void setBlnContinue(boolean blnContinue) {
+		this.blnContinue = blnContinue;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public void run() {
+		this.blnContinue = true;
+		while (blnContinue) {
+			//He is crazy: He is passing in loop in checkouts, first in the firstMainQueue, then in the second!
+			this.waitToFirstMainQueue();
+			try {
+				Thread.sleep(200); //Time to pass to a checkout.
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			this.waitToSecondMainQueue();
+			try {
+				Thread.sleep(200); //Time to pass to a checkout.
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Turn_monitor
+	private Object firstQueueMonitor;
+
+	@Turn_monitor
+	private Object secondQueueMonitor;
+
+	public Customer(String name, Object theFirstQueueMonitor, Object theSecondQueueMonitor){
+		this.name = name;
+		this.firstQueueMonitor = theFirstQueueMonitor;
+		this.secondQueueMonitor = theSecondQueueMonitor;
+	}
+
+	public void chooseProducts(){
+	}
+
+	/**
+	 * The main queue is a unique queue to wait after a checkout to become free, among many checkouts.
+	 */
+	@One_at_a_time
+	public void waitToFirstMainQueue(){
+		synchronized(firstQueueMonitor){
+			displayLog("I'm beginning the wait in the first main queue! ");
+		//(...)It takes 2 seconds for a checkout to become free, once we are in head on the main queue.
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			displayLog("I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! ");
+		}
+	}
+
+	@One_at_a_time
+	public void waitToSecondMainQueue(){
+		synchronized(secondQueueMonitor){
+			displayLog("I'm beginning the wait in the second main queue! ");
+		//(...)It takes 1 seconds for a checkout to become free, once we are in head on the main queue.
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			displayLog("I'm ending the wait in the second main queue - Great, I'm going to a free checkout! ");
+		}
+	}
+
+	/* To simplify, we handle display directly in the simu_real_world_obj! */
+	private void displayLog(String message) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		   LocalDateTime now = LocalDateTime.now();  
+		  
+		System.out.println( dtf.format(now) + ": Hey, it's " + name + ": " + message);
+	}
+}
+
+```
+
+Log:"
+2024/02/03 14:32:06: Hey, it's John: I'm beginning the wait in the first main queue! 
+2024/02/03 14:32:08: Hey, it's John: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
+2024/02/03 14:32:08: Hey, it's Robert: I'm beginning the wait in the first main queue! => We can see that John was blocking Robert in the first main queue. It's ok!
+2024/02/03 14:32:09: Hey, it's John: I'm beginning the wait in the second main queue! 
+2024/02/03 14:32:10: Hey, it's Robert: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
+2024/02/03 14:32:10: Hey, it's Ryan: I'm beginning the wait in the first main queue! => Ryan was waiting for Robert. The system has not chosen him before, although he was waiting first.
+2024/02/03 14:32:11: Hey, it's John: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
+2024/02/03 14:32:11: Hey, it's Robert: I'm beginning the wait in the second main queue! 
+2024/02/03 14:32:12: Hey, it's Ryan: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
+2024/02/03 14:32:12: Hey, it's John: I'm beginning the wait in the first main queue! 
+2024/02/03 14:32:13: Hey, it's Robert: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
+2024/02/03 14:32:13: Hey, it's Ryan: I'm beginning the wait in the second main queue! => Ryan was waiting after Robert for the second main queue. It's ok!
+2024/02/03 14:32:14: Hey, it's John: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
+2024/02/03 14:32:14: Hey, it's Robert: I'm beginning the wait in the first main queue!
+2024/02/03 14:32:15: Hey, it's Ryan: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! => Ryan was in the second queue while Robert was in the first, it's ok!
+2024/02/03 14:32:15: Hey, it's John: I'm beginning the wait in the second main queue! 
+2024/02/03 14:32:16: Hey, it's Robert: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
+2024/02/03 14:32:16: Hey, it's Ryan: I'm beginning the wait in the first main queue! 
+2024/02/03 14:32:17: Hey, it's John: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
+"
+
+In simol, it is fastly visible and understandable, that there is two main queues, and each Customer objects blocks the other customer waiting in the same queue.
 
 ### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
 
