@@ -1004,7 +1004,7 @@ public class InsertionSorterWorker {
 				return i;
 			}
 		}
-		return this.virtualLengthWorkingArr-1;
+		return this.virtualLengthWorkingArr;
 	}
 	
 	private void insertAndShift( int value, int place) {
