@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 1.4 20240111	Simol framework for beginners
+ * 1.5 20240206	Added @Dependent_activity
  * @author Charles Koffler
  *
  */

@@ -451,6 +451,7 @@ methodModifier
 	|	'long_action'
 	|	'prevent_missing_collision'
 	|	'one_at_a_time'
+	|	'dependent_activity'
 	;
 
 methodHeader

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.5, 20240113.
+ * Simol C# Framework, v1.6, 20240206.
  * 
- * 1.5 Minor corrections
+ * 1.6 20240206	Added @Dependent_activity. Minor corrections.
  * 
  * 
  * Limitations of C# framework for simol:

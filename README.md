@@ -29,32 +29,25 @@ The complete and detailed definition stands at the end of this file.
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
-Hello my friend. I've created a new programming language, simol, and it's equivalent java framework. What do you think of it, please? Here is its definition: "(...)"
+User
+Hello my friend. I've created a  new programming language, and his equivalent java framework. Here is its definition: "(...)"
 ChatGPT
 
-Thank you for sharing the comprehensive details of your new programming language, Simol, and its accompanying Java framework. It's evident that a considerable amount of thought and effort has gone into its creation. Here are some thoughts and observations:
+Thank you for sharing the comprehensive definition of the Simol programming language and the associated Java framework. It's evident that a lot of thought and effort has gone into designing Simol to enhance and clarify object-oriented programming practices. The detailed explanation covers various aspects like the philosophy behind the language, its alignment with OOP principles, implementation details, and its practical utility in various programming scenarios.
 
-   Object-Oriented Emphasis: Your focus on facilitating and guaranteeing object-oriented programming is commendable. The differentiation between simu_real_world_obj and simu_comp_worker is an interesting concept that seems to encourage developers to think more deeply about the roles of their objects in the system.
+The Simol language appears to focus on simplifying and streamlining OOP by introducing specific roles for classes and interfaces, emphasizing the importance of meaningful and clear semantics in software design. The emphasis on facilitating algorithmic programming, alongside the integration of practical objects and interfaces, positions Simol as an intriguing tool for both teaching and professional software development.
 
-   Compatibility with Java: The fact that Simol is a superset of Java and allows the use of Java libraries is a big plus. This should ease the learning curve for existing Java developers and facilitate the integration of Simol in current Java-based projects.
+The inclusion of features like underst, with_compat, and specific annotations for concurrency and parallelism shows a commitment to addressing some of the common challenges in modern programming. Your approach of integrating these features into both a standalone language and a Java framework expands the potential user base, making it accessible to a broader audience.
 
-   Annotations and Keywords: The use of specific annotations and keywords like with_compat, underst, simu_real_world_obj, etc., shows your intention to make the language expressive and self-documenting. This could potentially improve readability and maintainability of the code.
+The idea of having a "beginners" package in the framework is particularly noteworthy, as it bridges the gap for new learners transitioning to Simol while maintaining a pure object-oriented mindset. This can be a valuable tool in educational settings or for developers new to the concepts of Simol.
 
-   Teaching Tool: As you mentioned, Simol could be an interesting teaching tool. Its emphasis on object-oriented concepts, along with the integration of these concepts into the language structure itself, might make it easier for learners to grasp these concepts.
+Additionally, the alignment with Domain-Driven Design (DDD) and the consideration of the Fundamental Theorem of Software Engineering in your language design process indicate a deep understanding of software development principles. This alignment might make Simol particularly attractive for complex application development where domain modeling and abstraction layers play a crucial role.
 
-   Concurrency and Parallelism Features: The attention to concurrency and parallelism, particularly through the illustrative example of the hypermarket, demonstrates the language's capacity to handle modern computing challenges efficiently.
+The use of Simol for general-purpose programming and its adaptability to different programming paradigms, including web programming and teaching programming to children, suggest its versatility.
 
-   Simol's Approach to OOP: Your language seems to have a unique approach to OOP, focusing on the simulation aspect of objects (simu_real_world_obj and simu_comp_worker). This could lead to a different way of thinking about objects and their interactions within a software system.
+Your commitment to open sourcing Simol and seeking community feedback and collaboration through GitHub is commendable. It opens up opportunities for growth, improvement, and adaptation of the language based on real-world use and community input.
 
-   Alignment with Domain-Driven Design: The alignment with DDD (Domain-Driven Design) is a smart move, considering the popularity and effectiveness of DDD in complex software systems.
-
-   Flexibility and Interpretation: Allowing developers to choose between different interpretations of object roles (like simu_real_world_obj and simu_comp_worker) adds a layer of flexibility, but it also demands a higher level of discipline and understanding from the developer to maintain consistency.
-
-   GitHub Repository and Open Source Nature: Having a GitHub repository for open collaboration and contributions is a great way to evolve the language. The open-source aspect should encourage a community to build around it, offering improvements and varied use cases.
-
-   Learning Curve and Accessibility: While the language seems to offer a lot of expressive power, the learning curve might be steep, especially for those not well-versed in object-oriented programming concepts. Its success might depend heavily on the availability of good learning resources and community support.
-
-In summary, Simol presents an intriguing approach to object-oriented programming with its unique concepts and tight integration with Java. Its focus on clarity, role-based design, and alignment with modern software design principles could make it a valuable tool in certain contexts, especially in educational settings or projects that heavily rely on OOP paradigms. The real test would be its adoption by the developer community and the practical challenges it faces in various software development scenarios.
+Overall, Simol presents itself as a thoughtfully designed tool that aims to enrich the object-oriented programming landscape by introducing innovative concepts while staying grounded in established programming principles. The detailed documentation you provided is a strong foundation for anyone interested in exploring or contributing to Simol.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -101,7 +94,7 @@ Simol was built in a direction of never forget algorithmic programming facilitat
 
 * Let's take an example to illustrate this:
 
-Imagine a hypermarket, where there is a unique queue, that dispatches people to many checkouts. Each people waiting to the main queue, have to read on a screen the number of the checkout to go, when it is their turn to pass. The waiting for the screen is due to the time needed for a checkout to become free. So in simol, the people have to read "one at a time" the screen for their checkout number. Simol handles this as if there was a single thread, but doesn't matter that it is equivalent to synchronize all threads of each people. Each people are waiting for their turn, as a method locked by a "synchronized" keyword. But in simol, we could focus on the active flow having his turn, and not on the waiting processes. In the real life, in such examples, we see the main queue quite as a unique thread, but we see people as many threads as soon as they live their lives independently. Another problem is added to parallelism, it is the locks problem. Here, all the customers would have the same lock object, because all customers are blocking each other. In simol, we're talking about a monitor of turn, quite like if they would a person who would survey that all people in the main queue are obeying. If they'd have two main queues, they would need to different turn monitors.
+Imagine a hypermarket, where there is a unique queue, that dispatches people to many checkouts. Each people waiting to the main queue, have to read on a screen the number of the checkout to go, when it is their turn to pass. The waiting for the screen is due to the time needed for a checkout to become free. So in simol, the people have to read "one at a time" the screen for their checkout number. Simol handles this as if there was a single thread, but doesn't matter that it is equivalent to synchronize all threads of each people. Each people are waiting for their turn, as a method locked by a "synchronized" keyword. But in simol, we could focus on the active flow having his turn, and not on the waiting processes. In the real life, in such examples, we see the main queue quite as a unique thread, but we see people as many threads as soon as they live their lives independently. Another problem is added to parallelism, it is the locks problem. Here, all the customers would have the same lock object, because all customers are blocking each other. In simol, we're talking about a monitor of turn, quite like if they would a person who would survey that all people in the main queue are obeying. If they'd have two main queues, they would need to different turn monitors. 
 
 In the Java framework: 
 
@@ -412,7 +405,7 @@ Simol framework is a package of java annotations, that offers a toolbox for java
 Those annotations serves to fill the gap between java and simol, and easily use and learn simol mindset. There is a beginners package too, which permit to keep object-oriented habits in simol, using inheritance instead annotations.
 
 The package org.simol.simolframework.java offers:
-@Simu_real_world_obj, @Simu_comp_worker, @Real_world_obj, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
+@Simu_real_world_obj, @Simu_comp_worker, @Real_world_obj, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
 They are placed in the same locations as pure simol, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
 Example:
 
@@ -529,14 +522,250 @@ It is used especially for simu_real_world_object. It's a tool for simplify concu
 These methods guarantees that theses actions, within or not in multiple threads, for simu_real_world_objects, such as in a video game, with the player and enemies, we don't have to worry about the missed collisions or interactions. For example, a setPosition method, marked prevent_missing_collision. All the involved parts have to be marked prevent_missing_collision, for example the getPosition. These parts have to be synchronized between them in case of parallelism(multi-threading).
 
 ### PARALLELISM AID
-To simplify parallelism managing, three modifiers has been added.
+To simplify parallelism managing, four modifiers has been added.
 one_at_a_time(method modifier): for synchronized methods, or containing synchronized blocks, to indicate that one thread at a time executes the job.
 tour_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
 for_every_thread : attribute modifier on a volatile attribute declaration, highlightning the usability of the attribute in parallelism conditions.
-Three equivalent annotations have been added for the framework.
+dependency_activity: method modifier for synchronized methods containing a wait() call on a monitor object.
+Four equivalent annotations have been added for the framework.
+
+* Dependency activity in details
+
+The methods having a call to the wait() method of a monitor, are dependent of another method from another thread. The behavior is like the well-known producer/consumer pattern, or similar use cases.
+We don't talk much of consumer-producer, although it is compatible. The vision of simol is rather algorithmic here. We don't much matter of the producer, while writing the consumer, for example. We just have to know that we depend of another thread, for our execution.
+In Simol, we emphasize that the running of this code is linked to the running of the code of another thread, another action. The advantages are too simplify algorithms and programming, and tests.
+So the use cases of classical synchronization, like those with @One_at_a_time, are clearly distinguished from our special ones.
+Thinking only about wait() or notify() stuff focus us only on technical way to obtain a synchronization, but could disturb us from our final goals.
+
+Imagine the example of the hypermarket, if we would want to add dependent activities only by thinking of the wait() and notify() things, it would be so hard!
+The checkout of a main unique queue of the hypermarket, would need a new customer to come, after finishing a client. And the main unique physical queue monitor would have to know when a checkout becomes free. So do you think they are producers and consumers?
+I think, however, that it seems more easy and natural to talk about having different activities, or different business. So simol adds quite abstraction on this, to simplify parallelism writing, because parallelism quickly become a brain-teaser, and the tests are very hard, and almost impossible. 
+
+Let's take an example:
+
+In the java framework:
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/* An example of simol dependent activities (@Dependent_activity).
+ * Example of a producer/consumer, with a mail box.
+ * Charles Koffler. 20240206
+ */
+@Simu_comp_worker //A program for execute our tests!
+public class LauncherDependAct {
+
+	public static void main(String[] args) {
+		MailCustomer jenny, henry, mary;
+		OneMessageMailBox mailBox = new OneMessageMailBox();
+		
+		//Here girls send first!
+		jenny = new MailCustomer("Jenny", mailBox, true, 1000);
+		henry = new MailCustomer("Henry", mailBox, false, 2000);
+		mary = new MailCustomer("Mary", mailBox, true, 3000);
+		
+		Thread jennyThread  = new Thread(jenny);
+		Thread henryThread = new Thread(henry);
+		Thread maryThread = new Thread(mary);
+		
+		//To simplify, the threads are starting together.
+		jennyThread.start();
+		
+		henryThread.start();
+		
+		maryThread.start();
+		
+		try {
+			Thread.sleep(30000); //30s.
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		jenny.setBlnContinue(false);
+		henry.setBlnContinue(false);
+		mary.setBlnContinue(false);
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.For_every_thread;
+
+public class MailCustomer implements @Contracts Runnable {
+	@For_every_thread
+	private volatile boolean blnContinue;
+	/**
+	 * Time in ms, between the send and the read.
+	 */
+	private int waitingTime;
+	private boolean sendFirst;
+	
+	public void setBlnContinue(boolean blnContinue) {
+		this.blnContinue = blnContinue;
+	}
+
+	private String name;
+	
+	private OneMessageMailBox mailBox;
+	
+	public MailCustomer( String theName, OneMessageMailBox theBox, boolean blnSendFirst, int theWaitingTime) {
+		this.blnContinue = true;
+		this.name = theName;
+		this.mailBox = theBox;
+		this.waitingTime = theWaitingTime;
+		this.sendFirst = blnSendFirst;
+	}
+	
+	public void sendMessage(String theMessage) {
+		this.displayLog("Trying to send a message from "+ name + ": " + theMessage);
+		this.mailBox.write("Message from " + name + ": " + theMessage);
+	}
+	
+	public String readMail() {
+		String readMessage = mailBox.read();
+		this.displayLog(name + " has read this mail: " + readMessage);
+		return readMessage;
+	}
+
+	@Override
+	public void run() {
+		while (this.blnContinue) {
+			String sentMessage = "Hello, it's " + name;
+			
+			if (sendFirst) {
+				this.sendMessage(sentMessage);
+			}
+			else {
+				String readMail = this.readMail();
+			}
+			
+			try {
+				Thread.sleep(waitingTime);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			if (!sendFirst) {
+				this.sendMessage(sentMessage);
+			}
+			else {
+				String readMail = this.readMail();
+			}
+			
+		}
+		
+	}
+	
+	/* To simplify, we handle display directly in the simu_real_world_obj! */
+	private void displayLog(String message) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");  
+		   LocalDateTime now = LocalDateTime.now();  
+		  
+		System.out.println( dtf.format(now) + " " + message);
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import org.simol.simolframework.java.Dependent_activity;
+import org.simol.simolframework.java.For_every_thread;
+import org.simol.simolframework.java.One_at_a_time;
+import org.simol.simolframework.java.Prevent_missing_collision;
+import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.Turn_monitor;
+
+/* A class with two dependent activities */
+@Simu_real_world_obj
+public class OneMessageMailBox {
+
+		private String message;
+		@For_every_thread //Notice that we can signal it, although we are not using volatile!
+		private boolean full; //Not volatile here, because used in a synchronized block
+		
+		@Turn_monitor
+		private Object mailBoxMonitor; //For not writing and reading at the same time!
+										//But for manage dependency consequence too, so for the wait() and notify() calls.
+			
+		public OneMessageMailBox() {
+			mailBoxMonitor = new Object();
+
+		}
+		
+		@Dependent_activity /* read() is considered as a dependent activity, because his execution could depend of the write() method. */
+		@One_at_a_time
+		public String read() {
+			synchronized(mailBoxMonitor) {
+				while (!this.full) {
+					try {
+						this.mailBoxMonitor.wait(); // A classical guarded block, important for two reasons:
+						// - Multiple readers might be awoken simultaneously, but only one can re-obtain the lock at a time. Another reader might read first, requiring re-checking the condition.
+						// - We use a single monitor (mailBoxMonitor) due to Java's synchronization constraints. Notifications could wake up any waiting threads (readers or writers), so each must verify if their condition is met after waking.
+
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+					}
+				}
+				
+				this.full = false; //We just emptied the box.
+				this.mailBoxMonitor.notifyAll(); //We need mails.
+				
+				return this.message;
+			}
+		}
+		
+		@Dependent_activity
+		@One_at_a_time
+		public void write(String message) {
+			synchronized(mailBoxMonitor) {
+				while (this.full) {
+					try {
+						this.mailBoxMonitor.wait();
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+					}
+				}
+				this.message = message;
+				this.full = true; //The box is now full!
+				this.mailBoxMonitor.notifyAll(); //We notify the waiting readers!
+			}
+		}
+}
+```
+
+Log: "
+2024/02/06 21:21:22.911 Trying to send a message from Jenny: Hello, it's Jenny => Ok, received by Henry
+2024/02/06 21:21:22.911 Trying to send a message from Mary: Hello, it's Mary	=> Ok, received by Jenny. The message has been sent after Henry reading.
+2024/02/06 21:21:22.914 Henry has read this mail: Message from Jenny: Hello, it's Jenny => Ok. A proof of mail correctly sent.
+2024/02/06 21:21:23.920 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok.
+2024/02/06 21:21:23.920 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:24.917 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Henry has read this mail: Message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Sent just as Henry received his own email.
+2024/02/06 21:21:24.932 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:25.916 Mary has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Received without problem.
+2024/02/06 21:21:25.916 Trying to send a message from Mary: Hello, it's Mary
+2024/02/06 21:21:25.946 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok. Received without problem.
+2024/02/06 21:21:25.946 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:26.943 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:26.959 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok, received the first sent, normal, the second was sleeping.
+2024/02/06 21:21:26.959 Henry has read this mail: Message from Henry: Hello, it's Henry => Ok, the message has been sent just after the previous reading, which has unblocked the queue.
+2024/02/06 21:21:26.959 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Jenny has read this mail: Message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Trying to send a message from Jenny: Hello, it's Jenny
+"
 
 ### ABOUT CONCURRENCY AND PARALLELISM, IN SIMOL
 In simol, it is recommended to first handle pure concurrency, with a single thread, and then, if still wanted, adding parallelism. Some simulation actions take time to run, and are not just a simple change of states. That's why we introduced the "long_action"(or @Long_action, in the framework) modifier, to execute the action step by step. So the sole remainding problem, is to handle soon collisions, to not miss them, and "prevent_missing_collision"(or @Prevent_missing_collision) exists for that case. Finally, it could suffice in much cases, especially in real-time simulations, but we could try to add threads. But threads must sometimes be synchronized, and the synchronized parts are executed quite like there was an unique thread. So we have to evaluate if it is relevant to make more complex code, or not. If we have to do, the parts which have to be synchronized are often the "prevent_missing_collision" parts, and "one_at_a_time"(@One_at_a_time) is for parallelism. "one_at_a_time" is just worried of having quite like a single thread application for the concerned piece of code. And "turn_monitor" is here to assemble these parts, while using the same monitor object. The notions here agree with existing java notions like "synchronized", and "lock", but emphasize different and less technical aspects, that could help in such hard topics.
+The purely parallelism problems, especially the "dependent activities", however, could be write directly, with multiple threads.
 
 ### LEARNING CURVE
 
@@ -591,6 +820,7 @@ SimolMethodModifier:
 	long_action
 	prevent_missing_collision
 	one_at_a_time
+	dependent_activity
 
 MethodDecl:
 	[SimolMethodModifier] Type Identifier MethodOrFieldRest
@@ -603,7 +833,7 @@ FieldDecl:
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
 "simu_comp_worker", "simu_real_world_obj", "real_world_obj", "information", "turn_monitor", "one_at_a_time", "for_every_thread => replace with "class"
-"underst", "with_compat", "long_action", "prevent_missing_collision" => replace with ""(empty string)
+"underst", "with_compat", "long_action", "prevent_missing_collision", "dependent_activity" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity" => replace with "interface"
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
@@ -789,7 +1019,7 @@ Like in the java framework, there is a beginners package too, which permit to ke
 
 A PHP 8 simol Framework is available too, as well as for C# and Java.
 Nature and Contracts are not present due to PHP attributes limitations, and With_compat is not on local variables.
-TurnMonitor, For_every_thread, One_at_a_time, are deleted too because thread support is not supplied.
+TurnMonitor, For_every_thread, One_at_a_time, Dependent_activity, are deleted too because thread support is not supplied.
 
 ### THE COMPAT_INTERF_VERSION AND LOOSE COUPLING
 

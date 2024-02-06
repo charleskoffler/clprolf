@@ -14,6 +14,7 @@ History of the versions of the simol java framework
 1.2 20231216  Added @One_at_a_time, @Turn_monitor, and @For_every_thread
 1.3 20240108 	Added @Forced_inh and @Forced_int_inh
 1.4 20240111	Simol framework for beginners
+1.5 20240206	Added @Dependent_activity
 
 History of the versions of the simol C# framework
 
@@ -23,6 +24,7 @@ History of the versions of the simol C# framework
 1.3 20240111 Simol framework for beginners
 1.4 20240113 Corrections on class and files names. Beginners package in a directory.
 1.5 20240113 Minor correction
+1.6 20240206	Added @Dependent_activity. Minor corrections.
 
 History of the versions of the simol PHP 8 framework
 

@@ -124,6 +124,7 @@ PREVENT_MISSING_COLLISION : 'prevent_missing_collision';
 ONE_AT_A_TIME: 'one_at_a_time';
 TOUR_MONITOR: 'tour_monitor';
 FOR_EVERY_THREAD: 'for_every_thread';
+DEPENDENT_ACTIVITY: 'dependent_activity';
 
 // §3.10.1 Integer Literals
 

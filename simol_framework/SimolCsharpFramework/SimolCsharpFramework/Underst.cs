@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestAttrsAvecConsole
+namespace Org.Simol.Framework.Csharp
 {
     [AttributeUsage(AttributeTargets.Method)]
     class UnderstAttribute: Attribute

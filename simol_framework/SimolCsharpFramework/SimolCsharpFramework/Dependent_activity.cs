@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Org.Simol.Framework.Csharp
 {
-    [AttributeUsage(AttributeTargets.Field)]
-    class For_every_threadAttribute: Attribute
+    [AttributeUsage(AttributeTargets.Method)]
+    class Dependent_activityAttribute: Attribute
     {
     }
 }
