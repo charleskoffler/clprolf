@@ -30,3 +30,4 @@ History of the versions of the simol PHP 8 framework
 
 1.0	20240113
 1.1 20240113 Minor corrections
+1.2 20240207 Minor corrections

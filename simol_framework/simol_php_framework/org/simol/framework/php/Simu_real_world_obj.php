@@ -13,13 +13,15 @@ enum Role /* since PHP 8.1 */
 };
 
 /**
- * Simol framework for PHP 8. v1.0.
+ * Simol framework for PHP 8. v1.2.
+ * 
+ * Minor corrections.
  * 
  * About Simol PHP framework:
  * 
  * Nature and Constracts not present due to PHP attributes limitations, and
  * With_compat is not on local variables.
- * TurnMonitor, For_every_thread, One_at_a_time, because thread support is not supplied in Simol PHP Framework.
+ * TurnMonitor, For_every_thread, One_at_a_time, Dependent_activity because thread support is not supplied in Simol PHP Framework.
  */
 
 #[Attribute(Attribute::TARGET_CLASS)]
