@@ -17,7 +17,7 @@ public class OneMessageMailBox {
 		
 		@Turn_monitor
 		private Object mailBoxMonitor; //For not writing and reading at the same time!
-										//But for manage dependency consequence too, so for the wait() and notify() calls.
+										//But for manage dependent consequence too, so for the wait() and notify() calls.
 			
 		public OneMessageMailBox() {
 			mailBoxMonitor = new Object();

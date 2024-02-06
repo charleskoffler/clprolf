@@ -65,6 +65,7 @@
     <Compile Include="Simu_comp_worker.cs" />
     <Compile Include="Simu_real_world_obj.cs" />
     <Compile Include="Turn_monitor.cs" />
+    <Compile Include="Dependent_activity.cs" />
     <Compile Include="Underst.cs" />
     <Compile Include="With_compat.cs" />
   </ItemGroup>

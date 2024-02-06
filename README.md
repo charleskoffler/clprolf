@@ -526,10 +526,10 @@ To simplify parallelism managing, four modifiers has been added.
 one_at_a_time(method modifier): for synchronized methods, or containing synchronized blocks, to indicate that one thread at a time executes the job.
 tour_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
 for_every_thread : attribute modifier on a volatile attribute declaration, highlightning the usability of the attribute in parallelism conditions.
-dependency_activity: method modifier for synchronized methods containing a wait() call on a monitor object.
+dependent_activity: method modifier for synchronized methods containing a wait() call on a monitor object.
 Four equivalent annotations have been added for the framework.
 
-* Dependency activity in details
+* Dependent activity in details
 
 The methods having a call to the wait() method of a monitor, are dependent of another method from another thread. The behavior is like the well-known producer/consumer pattern, or similar use cases.
 We don't talk much of consumer-producer, although it is compatible. The vision of simol is rather algorithmic here. We don't much matter of the producer, while writing the consumer, for example. We just have to know that we depend of another thread, for our execution.
@@ -693,7 +693,7 @@ public class OneMessageMailBox {
 		
 		@Turn_monitor
 		private Object mailBoxMonitor; //For not writing and reading at the same time!
-										//But for manage dependency consequence too, so for the wait() and notify() calls.
+										//But for manage dependent consequence too, so for the wait() and notify() calls.
 			
 		public OneMessageMailBox() {
 			mailBoxMonitor = new Object();
