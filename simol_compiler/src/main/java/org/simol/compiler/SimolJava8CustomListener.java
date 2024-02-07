@@ -53,6 +53,12 @@ public class SimolJava8CustomListener extends SimolJava8ParserBaseListener {
 						break;
 					case "underst":
 					case "with_compat":
+					case "long_action":
+					case "prevent_missing_collision":
+					case "one_at_a_time":
+					case "tour_monitor":
+					case "for_every_thread":
+					case "dependent_activity":
 						text = "";
 						simolEmptyKeywordMet = true; //As if there was not a keyword.
 						break;

@@ -29,7 +29,8 @@ mvn compile doesn't compile generated sources, so you have to execute compileGen
 Then you can use mvn compile.
 
 - The simol compiler parse simol code(.simo source files), and java code included(java 8). He stops when a syntax error is met, simol or java.
-It does not, actually, deal with semantic analysis of simol, nor java. Semantic analysis of simol is not so important, it's only about:
+It does not, actually, deal with semantic analysis of simol, nor java. Semantic analysis of simol is not vital, if we want to program in simol anyway. It's about:
+semantic analysis of class inheritance, and inheritance of interfaces by interfaces et classes.
 rewo and information, checking is there are no methods.
 simu_rewo and simu_alfoc, it have to contain methods.
 with_compat, check if the type is an interface, and checks about presence of with_compat when needed
