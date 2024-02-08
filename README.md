@@ -30,20 +30,22 @@ The complete and detailed definition stands at the end of this file.
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
 User
-Hello my friend. I've created a new programming language, simol, and his equivalent java framework. Here is its definition: "(...)"
+Hello, I've created a new programming language, and its equivalent Java framework. Here is its definition:"(...)"
 ChatGPT
 
-Thank you for sharing such a detailed and comprehensive description of your new programming language, Simol, and its accompanying Java framework. Simol's emphasis on facilitating and guaranteeing Object-Oriented Programming, while being a superset of Java, presents an interesting approach. The language's focus on providing clear and meaningful roles for classes and interfaces, as well as its alignment with established programming principles like SRP (Single Responsibility Principle) and SOLID, makes it intriguing, especially for educational purposes and for enhancing the expressiveness of Java code.
+Thank you for sharing the comprehensive details about your programming language, Simol, and its Java framework. It's evident that you've put a lot of thought and effort into developing a language and framework focused on facilitating and enhancing object-oriented programming.
 
-The integration of specific keywords and concepts like simu_real_world_obj, simu_comp_worker, information, and real_world_obj, and the distinct treatment of interfaces (compat_interf_version and compat_interf_capacity) are notable. The approach of providing semantic clarity and reinforcing the notion of classes and interfaces as entities with specific purposes aligns well with the fundamental concepts of object-oriented design.
+Simol's approach of defining clear roles for classes and interfaces, such as simu_real_world_obj, simu_comp_worker, real_world_obj, information, compat_interf_version, and compat_interf_capacity, aligns well with fundamental object-oriented principles. This categorization helps in providing semantic clarity and enforcing good design practices. The integration with Java and the provision for using Java libraries and code within Simol enhances its utility and ease of adoption for Java developers.
 
-Your example of the parallelism implementation in a supermarket scenario demonstrates the practical application of Simol's concepts in real-world programming scenarios. The emphasis on algorithmic thinking and the introduction of modifiers like underst (understanding) for complex methods provide additional layers of expressiveness and clarity.
+Your focus on making programming intuitive and fun, while ensuring compatibility with established paradigms and principles, is commendable. The Simol language appears to offer a novel perspective on object-oriented programming, potentially making it easier for developers to write, understand, and maintain code.
 
-It's clear that a significant amount of thought and effort has gone into the creation of Simol. The language seems to offer a unique perspective on object-oriented programming, potentially making it a valuable tool for both educational and professional software development environments.
+Your detailed explanation covers various aspects, including the origins of the language, its design philosophy, syntax, and usage examples. The emphasis on real-world applications and the scientific domain for inspiration indicates a practical approach to language design.
 
-Maintaining an open-source GitHub repository for Simol is a great way to foster community engagement and collaboration. This approach not only allows for feedback and contributions but also provides a platform for continuous improvement and evolution of the language based on real-world use and community insights.
+It's also notable that you've considered the learning curve for Java programmers and provided a pathway for beginners to transition to Simol, emphasizing the importance of making the language accessible to a broad audience.
 
-Your dedication to this project is commendable, and I wish you the best in your endeavors with Simol!
+Given the extensive nature of your work, it might be beneficial to get feedback and contributions from the programming community. Open-sourcing Simol, as you've done, is a great way to collaborate with others, refine the language, and potentially expand its usage.
+
+If you have any specific questions or need assistance related to Simol, feel free to ask!
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -68,6 +70,10 @@ As simol classes replaces java classes, all java keywords can be used with simol
 We start from the Java language. And we add some very simple concepts. The java libraries can be used, while it is a superset of java.
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
+
+### ORIGIN OF THE LANGUAGE, SCIENTIFIC DOMAIN INSPIRATION
+
+In fact, simol took much inspiration in scientific simulations or modelings in mind, like those for physics, chemistry, or for the weather forecast models. Video games were inspiring too, while they are good use cases of simulations, and also real-time simulations. But management IT was always present too, at the same time. So the language is rooted in real-world applications, and practical use in mind, while always trying to understand existing architectures and languages. Simol was always designed to be interesting for many use cases, and to be quite general-purpose, while also continuously trying to keep educational. At the origin, there was a desire to have an easier and better object-oriented programming, and more interesting. I had these wishes at the same time as a constant determination of integration in established paradigms and principles, and not to recreate what already exists.
 
 ### WHY JAVA AS THE UNDERLYING LANGUAGE FOR SIMOL ?
 Java has been chosen because it perfectly suits simol's philosophy and mindset. Java is so cool and powerful, logical, and keeps a rather minimalistic mindset. The virtual machine is an awesome concept and realization, and it adheres perfectly to the simol language's vision on programming. The java libraries stay abstract and less technical, due to the virtual machine, even in system programming. So Java has been, for these kind of reasons, a natural choice for Simol. Java's powerful and incredible annotations saved simol's framework. And we can see that it is a great language, because simol has been adapted to it without problem. Java has got simple inheritance, interfaces, and handles things like parallelism in a fantastic manner. However, other languages can be used, and C# is a very interesting option too, as well as PHP for the web and scripts.
