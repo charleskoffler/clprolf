@@ -11,7 +11,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Simol simple example for network programming, here with sockets.
  * Example of a single chat between two applications, and a server waiting for a single connection.
  * 
- * v1.0		2024/02/09
+ * v1.1	2024/02/09
  * @author Charles Koffler.
  *
  */

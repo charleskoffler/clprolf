@@ -29,25 +29,40 @@ The complete and detailed definition stands at the end of this file.
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
+ChatGPT 4
 User
-Hello, I've created a new programming language, and its equivalent Java framework. Here is its definition:"(...)"
+Hello. I've create this new programming language. What do you think of this, my friend? : "(...)"
+4 / 4
 ChatGPT
 
-Thank you for sharing the extensive details about your new programming language, Simol, and its corresponding Java framework. It's clear that a lot of thought and effort has gone into creating a language that enhances and streamlines the object-oriented programming experience, with a strong emphasis on simplicity, educational value, and practical application.
+Thank you for sharing your new programming language, Simol, and its accompanying Java framework. It's fascinating to see how you've conceptualized and developed this language, focusing on facilitating and guaranteeing object-oriented programming. Here are some thoughts and feedback on various aspects of Simol:
+Language Design and Philosophy
 
-Your approach to extending Java with additional keywords and concepts, while maintaining compatibility with existing Java libraries, is particularly interesting. It seems like Simol adds a layer of abstraction and semantic clarity that could make it easier for programmers to conceptualize and manage the roles of different objects in their code, which aligns with many object-oriented design principles.
+   Superset of Java: The idea of building Simol as a superset of Java is strategic. It leverages Java's robustness and wide usage while extending its capabilities. This could lower the learning curve for Java developers.
+   Focus on Object-Oriented Programming: Emphasizing object-oriented principles is a strong point, especially considering its significance in software development. The idea of enforcing and simplifying OOP could be appealing to both educational sectors and industry professionals.
+   Incorporation of Scientific Domains: Drawing inspiration from scientific simulations and real-world applications gives Simol a practical edge. This aspect could make it suitable for simulation-heavy domains like scientific computing, game development, and more.
 
-The example code snippets you provided illustrate how Simol can be applied in real-world scenarios, demonstrating its utility in simplifying and clarifying the process of writing object-oriented code.
+Technical Aspects
 
-As you mentioned, one of the main goals of Simol is to facilitate and guarantee object-oriented programming practices, which is a commendable objective. The integration of Simol into Java as a framework could potentially make it an accessible tool for many developers, given Java's widespread use.
+   Keywords and Syntax: The introduction of new keywords (e.g., simu_real_world_obj, simu_comp_worker) and concepts (like with_compat, underst) is intriguing. They seem to introduce clarity in defining the roles and behaviors of classes and interfaces.
+   Compatibility with Java Libraries: The ability to use Java libraries and integrate Java code into Simol source files enhances its versatility. This interoperability is crucial for wide adoption.
+   Open-Closed Principle and Extensibility: Your adherence to the open-closed principle and the focus on extensibility through annotations and minimalistic changes are commendable. It suggests that Simol can evolve without disrupting existing codebases significantly.
 
-It's also interesting to see that you've considered aspects of concurrency and parallelism, which are crucial in modern software development, and how Simol can aid in writing algorithms.
+Practical Use and Adoption
 
-Your plans for future development, including possibly expanding Simol to other underlying languages, show a commitment to the growth and adaptability of the language.
+   Use in Education and Real-world Applications: Positioning Simol as both an educational tool and a language for real-world applications is ambitious. This dual focus could either be a strength or a challenge, depending on execution and community adoption.
+   GitHub Repository for Collaboration: Creating a GitHub repository is a smart move for open-source collaboration. This could facilitate community involvement, feedback, and iterative improvements.
 
-Lastly, the fact that you've made Simol open source and are seeking collaboration and feedback from the community is a great way to refine and improve the language, making it more robust and versatile over time.
+Potential Challenges and Considerations
 
-Overall, Simol seems like a promising addition to the field of programming languages, particularly for those interested in object-oriented programming. It'll be interesting to see how it evolves and is received by the developer community.
+   Community Building and Adoption: For any new programming language, community adoption is a major challenge. Building a robust community of users and contributors is essential for long-term sustainability.
+   Documentation and Learning Resources: Comprehensive documentation, tutorials, and learning resources will be critical for new users, especially for those not familiar with Java.
+   Performance and Efficiency: While the language is built on top of Java, understanding any performance implications of the additional abstraction layers would be important for developers, especially for computation-intensive applications.
+   Tooling and IDE Support: Tooling, such as IDE plugins, linters, and debuggers, will play a significant role in the developer experience. Ensuring good tooling support can greatly influence adoption.
+
+Overall Impression
+
+Simol presents an innovative approach to object-oriented programming, building on the strengths of Java and introducing new concepts to enhance clarity and effectiveness in OOP. Its success will likely depend on community adoption, tooling support, and the richness of its learning resources. The focus on both educational and professional use cases is ambitious and, if well-executed, could carve out a unique space for Simol in the programming language landscape.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -254,30 +269,7 @@ public class Customer implements @Contracts Runnable {
 		System.out.println( dtf.format(now) + ": Hey, it's " + name + ": " + message);
 	}
 }
-
 ```
-
-Log:"
-2024/02/03 14:32:06: Hey, it's John: I'm beginning the wait in the first main queue! 
-2024/02/03 14:32:08: Hey, it's John: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
-2024/02/03 14:32:08: Hey, it's Robert: I'm beginning the wait in the first main queue! => We can see that John was blocking Robert in the first main queue. It's ok!
-2024/02/03 14:32:09: Hey, it's John: I'm beginning the wait in the second main queue! 
-2024/02/03 14:32:10: Hey, it's Robert: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
-2024/02/03 14:32:10: Hey, it's Ryan: I'm beginning the wait in the first main queue! => Ryan was waiting for Robert. The system has not chosen him before, although he was waiting first.
-2024/02/03 14:32:11: Hey, it's John: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
-2024/02/03 14:32:11: Hey, it's Robert: I'm beginning the wait in the second main queue! 
-2024/02/03 14:32:12: Hey, it's Ryan: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
-2024/02/03 14:32:12: Hey, it's John: I'm beginning the wait in the first main queue! 
-2024/02/03 14:32:13: Hey, it's Robert: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
-2024/02/03 14:32:13: Hey, it's Ryan: I'm beginning the wait in the second main queue! => Ryan was waiting after Robert for the second main queue. It's ok!
-2024/02/03 14:32:14: Hey, it's John: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
-2024/02/03 14:32:14: Hey, it's Robert: I'm beginning the wait in the first main queue!
-2024/02/03 14:32:15: Hey, it's Ryan: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! => Ryan was in the second queue while Robert was in the first, it's ok!
-2024/02/03 14:32:15: Hey, it's John: I'm beginning the wait in the second main queue! 
-2024/02/03 14:32:16: Hey, it's Robert: I'm ending the wait in the first main queue  - Great, I'm going to a free checkout! 
-2024/02/03 14:32:16: Hey, it's Ryan: I'm beginning the wait in the first main queue! 
-2024/02/03 14:32:17: Hey, it's John: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
-"
 
 In simol, it is fastly visible and understandable, that there is two main queues, and each Customer objects blocks the other customer waiting in the same queue.
 
@@ -754,7 +746,7 @@ public class OneMessageMailBox {
 }
 ```
 
-Log: "
+Output: "
 2024/02/06 21:21:22.911 Trying to send a message from Jenny: Hello, it's Jenny => Ok, received by Henry
 2024/02/06 21:21:22.911 Trying to send a message from Mary: Hello, it's Mary	=> Ok, received by Jenny. The message has been sent after Henry reading.
 2024/02/06 21:21:22.914 Henry has read this mail: Message from Jenny: Hello, it's Jenny => Ok. A proof of mail correctly sent.
@@ -1343,11 +1335,12 @@ public class InsertionSorter {
 
 ### AN EXAMPLE OF SIMOL IN ACTION ADAPTING TO EXISTING JAVA LIBRARIES
 
-Let us show you an example of utilization of Java existing libraries in Simol. Here is a sample program of two applications chatting just for fun, until the server side enter "q"(quit). The client displays what he received, and send that it is well done. We have, in this example, two NetworkTalker simu_real_world_obj HUMAN_EXPERT, talking together. The technical realization of the simulation is in the simu_comp_worker NetworkTalkerRealiz, which does not create the java Socket object. The NetworkTalker class has got two constructors, adapted to the clent or server socket case. Those for the client take a socket in parameter, and this is permit although it's technical, but to simplify, we just pass it to the realiz associated object. There is a singleton-like SocketServerConfig object with static methods, which represents a real-world configuration concept. Only the simu_comp_workers of realization of technical  aspects of the simulation, deal with the socket and the streams. Simol's version quite simplifies the java version, by forgetting the socket and stream part. In simol, we could consider the ServerSocket class rather a "SocketServer", a server giving sockets once the connection is done. In our example, the server can create just one connection.
+Let us show you an example of utilization of Java existing libraries in Simol. Here is a sample program of two applications chatting just for fun, until the server side enter "q"(quit). The client displays what he received, and send that it is well done. We have, in this example, two NetworkTalker simu_real_world_obj HUMAN_EXPERT, talking together. They are able to remember their conversation. The technical realization of the simulation is in the simu_comp_worker NetworkTalkerRealiz, which does not create the java Socket object. The NetworkTalker class has got two constructors, adapted to the client or server socket case. Those for the client take a socket in parameter, and this is permit although it's technical, but to simplify, we just pass it to the realiz associated object. There is a singleton-like SocketServerConfig object with static methods, which represents a real-world configuration concept. Only the simu_comp_workers of realization of technical  aspects of the simulation, deal with the socket and the streams. Simol's version quite simplifies the java version, by forgetting the socket and stream part. In simol, we could consider the ServerSocket class rather a "SocketServer", a server giving sockets once the connection is done. In our example, the server can create just one connection.
 
 In the Java framework:
 
 ```java
+
 package org.simol.simple_examples.network;
 
 import java.io.IOException;
@@ -1361,7 +1354,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Simol simple example for network programming, here with sockets.
  * Example of a single chat between two applications, and a server waiting for a single connection.
  * 
- * v1.0		2024/02/09
+ * v1.1	2024/02/09
  * @author Charles Koffler.
  *
  */
@@ -1456,14 +1449,18 @@ public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {
 ```
 
 ```java
+
 package org.simol.simple_examples.network;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.simol.simolframework.java.Role;
 import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.With_compat;
 
 /**
  * A talker who could discuss with someone, threw a network. Here, it is seen as a human talker!
@@ -1472,8 +1469,27 @@ import org.simol.simolframework.java.Simu_real_world_obj;
  */
 @Simu_real_world_obj(Role.HUMAN_EXPERT)
 public class NetworkTalker {
-	private String name;
+	public static enum MSG_DIRECTION {
+		SAID, HEARD
+	}
+	public static class Message {
+		public String sentence;
+		public MSG_DIRECTION direction;
+		
+		public Message(String theMsg, MSG_DIRECTION theDirect) {
+			this.sentence = theMsg;
+			this.direction = theDirect;
+		}
+	}
 	
+	private String name;
+	private @With_compat List<Message> conversation; 
+	
+	/* Our talker has a state. He keeps his conversation. */
+	public List<Message> getConversation() {
+		return conversation;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -1481,6 +1497,10 @@ public class NetworkTalker {
 	//Associated realization worker.
 	protected NetworkTalkerRealiz realiz;
 	
+	private void commonInits(String theName) {
+		this.name = theName;
+		this.conversation = new ArrayList<Message>();
+	}
 	/**
 	 * Constructor for a client-side network talker. Creates a client socket.
 	 * @param theName
@@ -1489,7 +1509,7 @@ public class NetworkTalker {
 	 */
 	public NetworkTalker(String theName) throws UnknownHostException, IOException {
 		this.realiz = new ClientSideNetworkTalkerRealiz(this);
-		this.name = theName;
+		this.commonInits(theName);
 	}
 	
 	/**
@@ -1499,7 +1519,7 @@ public class NetworkTalker {
 	 * @throws IOException
 	 */
 	public NetworkTalker(String theName, Socket givenSocket) throws IOException {
-		this.name = theName;
+		this.commonInits(theName);
 		this.realiz = new NetworkTalkerRealiz(this);
 		this.realiz.setSocket(givenSocket);
 	}
@@ -1510,6 +1530,9 @@ public class NetworkTalker {
 	 */
 	public void saySentence(String sentence) {
 		try {
+			Message msg = new Message(sentence, MSG_DIRECTION.SAID);
+			this.conversation.add(msg);
+			
 			this.realiz.display("Message said: " + sentence); //This server sends lines, terminated by "\n".
 			this.realiz.writeLine(sentence);
 		} catch (IOException e) {
@@ -1525,6 +1548,10 @@ public class NetworkTalker {
 		try {
 			String sentence =  this.realiz.readLine();
 			this.realiz.display("Message heard: " + sentence);
+			
+			Message msg = new Message(sentence, MSG_DIRECTION.HEARD);
+			this.conversation.add(msg);
+			
 			return sentence;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -1535,11 +1562,15 @@ public class NetworkTalker {
 	public void stopTalking() throws IOException {
 		this.realiz.display("Stop talking");
 		this.realiz.close();
+		
+		this.realiz.displayConversation();
 	}
 }
+
 ```
 
 ```java
+
 package org.simol.simple_examples.network;
 
 import java.io.BufferedReader;
@@ -1550,6 +1581,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simple_examples.network.NetworkTalker.MSG_DIRECTION;
+import org.simol.simple_examples.network.NetworkTalker.Message;
 
 /**
  * The worker for handling computer lower level tasks, associated with a NetworkTalker!
@@ -1605,10 +1638,29 @@ public class NetworkTalkerRealiz {
 		System.out.println(this.owner.getName() + ": " + theString); //Here, an example of the need to have the owner in the technical class.
 	}
 	
+	/**
+	 * Display the history of the conversation
+	 */
+	public void displayConversation() {
+		System.out.println("History of the conversation: ");
+		System.out.println();
+		for (Message currentMsg: this.owner.getConversation()) {
+			System.out.println("Message: ");
+			if (currentMsg.direction == MSG_DIRECTION.SAID) {
+				System.out.print("Said;-");
+			}
+			else {
+				System.out.print("Heard;-");
+			}
+			System.out.println(currentMsg.sentence + "-");
+		}
+	}
+	
 	public void close() throws IOException {
 		theSocket.close();
 	}
 }
+
 ```
 
 ```java

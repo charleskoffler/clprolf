@@ -3,9 +3,12 @@ package org.simol.simple_examples.network;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.simol.simolframework.java.Role;
 import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.With_compat;
 
 /**
  * A talker who could discuss with someone, threw a network. Here, it is seen as a human talker!
@@ -14,8 +17,27 @@ import org.simol.simolframework.java.Simu_real_world_obj;
  */
 @Simu_real_world_obj(Role.HUMAN_EXPERT)
 public class NetworkTalker {
-	private String name;
+	public static enum MSG_DIRECTION {
+		SAID, HEARD
+	}
+	public static class Message {
+		public String sentence;
+		public MSG_DIRECTION direction;
+		
+		public Message(String theMsg, MSG_DIRECTION theDirect) {
+			this.sentence = theMsg;
+			this.direction = theDirect;
+		}
+	}
 	
+	private String name;
+	private @With_compat List<Message> conversation; 
+	
+	/* Our talker has a state. He keeps his conversation. */
+	public List<Message> getConversation() {
+		return conversation;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -23,6 +45,10 @@ public class NetworkTalker {
 	//Associated realization worker.
 	protected NetworkTalkerRealiz realiz;
 	
+	private void commonInits(String theName) {
+		this.name = theName;
+		this.conversation = new ArrayList<Message>();
+	}
 	/**
 	 * Constructor for a client-side network talker. Creates a client socket.
 	 * @param theName
@@ -31,7 +57,7 @@ public class NetworkTalker {
 	 */
 	public NetworkTalker(String theName) throws UnknownHostException, IOException {
 		this.realiz = new ClientSideNetworkTalkerRealiz(this);
-		this.name = theName;
+		this.commonInits(theName);
 	}
 	
 	/**
@@ -41,7 +67,7 @@ public class NetworkTalker {
 	 * @throws IOException
 	 */
 	public NetworkTalker(String theName, Socket givenSocket) throws IOException {
-		this.name = theName;
+		this.commonInits(theName);
 		this.realiz = new NetworkTalkerRealiz(this);
 		this.realiz.setSocket(givenSocket);
 	}
@@ -52,6 +78,9 @@ public class NetworkTalker {
 	 */
 	public void saySentence(String sentence) {
 		try {
+			Message msg = new Message(sentence, MSG_DIRECTION.SAID);
+			this.conversation.add(msg);
+			
 			this.realiz.display("Message said: " + sentence); //This server sends lines, terminated by "\n".
 			this.realiz.writeLine(sentence);
 		} catch (IOException e) {
@@ -67,6 +96,10 @@ public class NetworkTalker {
 		try {
 			String sentence =  this.realiz.readLine();
 			this.realiz.display("Message heard: " + sentence);
+			
+			Message msg = new Message(sentence, MSG_DIRECTION.HEARD);
+			this.conversation.add(msg);
+			
 			return sentence;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -77,5 +110,7 @@ public class NetworkTalker {
 	public void stopTalking() throws IOException {
 		this.realiz.display("Stop talking");
 		this.realiz.close();
+		
+		this.realiz.displayConversation();
 	}
 }

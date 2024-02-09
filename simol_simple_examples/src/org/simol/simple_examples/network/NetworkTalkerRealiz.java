@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simple_examples.network.NetworkTalker.MSG_DIRECTION;
+import org.simol.simple_examples.network.NetworkTalker.Message;
 
 /**
  * The worker for handling computer lower level tasks, associated with a NetworkTalker!
@@ -61,6 +63,24 @@ public class NetworkTalkerRealiz {
 	
 	public void display(String theString) {
 		System.out.println(this.owner.getName() + ": " + theString); //Here, an example of the need to have the owner in the technical class.
+	}
+	
+	/**
+	 * Display the history of the conversation
+	 */
+	public void displayConversation() {
+		System.out.println("History of the conversation: ");
+		System.out.println();
+		for (Message currentMsg: this.owner.getConversation()) {
+			System.out.println("Message: ");
+			if (currentMsg.direction == MSG_DIRECTION.SAID) {
+				System.out.print("Said;-");
+			}
+			else {
+				System.out.print("Heard;-");
+			}
+			System.out.println(currentMsg.sentence + "-");
+		}
 	}
 	
 	public void close() throws IOException {
