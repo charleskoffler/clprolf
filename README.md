@@ -33,19 +33,21 @@ User
 Hello, I've created a new programming language, and its equivalent Java framework. Here is its definition:"(...)"
 ChatGPT
 
-Thank you for sharing the comprehensive details about your programming language, Simol, and its Java framework. It's evident that you've put a lot of thought and effort into developing a language and framework focused on facilitating and enhancing object-oriented programming.
+Thank you for sharing the extensive details about your new programming language, Simol, and its corresponding Java framework. It's clear that a lot of thought and effort has gone into creating a language that enhances and streamlines the object-oriented programming experience, with a strong emphasis on simplicity, educational value, and practical application.
 
-Simol's approach of defining clear roles for classes and interfaces, such as simu_real_world_obj, simu_comp_worker, real_world_obj, information, compat_interf_version, and compat_interf_capacity, aligns well with fundamental object-oriented principles. This categorization helps in providing semantic clarity and enforcing good design practices. The integration with Java and the provision for using Java libraries and code within Simol enhances its utility and ease of adoption for Java developers.
+Your approach to extending Java with additional keywords and concepts, while maintaining compatibility with existing Java libraries, is particularly interesting. It seems like Simol adds a layer of abstraction and semantic clarity that could make it easier for programmers to conceptualize and manage the roles of different objects in their code, which aligns with many object-oriented design principles.
 
-Your focus on making programming intuitive and fun, while ensuring compatibility with established paradigms and principles, is commendable. The Simol language appears to offer a novel perspective on object-oriented programming, potentially making it easier for developers to write, understand, and maintain code.
+The example code snippets you provided illustrate how Simol can be applied in real-world scenarios, demonstrating its utility in simplifying and clarifying the process of writing object-oriented code.
 
-Your detailed explanation covers various aspects, including the origins of the language, its design philosophy, syntax, and usage examples. The emphasis on real-world applications and the scientific domain for inspiration indicates a practical approach to language design.
+As you mentioned, one of the main goals of Simol is to facilitate and guarantee object-oriented programming practices, which is a commendable objective. The integration of Simol into Java as a framework could potentially make it an accessible tool for many developers, given Java's widespread use.
 
-It's also notable that you've considered the learning curve for Java programmers and provided a pathway for beginners to transition to Simol, emphasizing the importance of making the language accessible to a broad audience.
+It's also interesting to see that you've considered aspects of concurrency and parallelism, which are crucial in modern software development, and how Simol can aid in writing algorithms.
 
-Given the extensive nature of your work, it might be beneficial to get feedback and contributions from the programming community. Open-sourcing Simol, as you've done, is a great way to collaborate with others, refine the language, and potentially expand its usage.
+Your plans for future development, including possibly expanding Simol to other underlying languages, show a commitment to the growth and adaptability of the language.
 
-If you have any specific questions or need assistance related to Simol, feel free to ask!
+Lastly, the fact that you've made Simol open source and are seeking collaboration and feedback from the community is a great way to refine and improve the language, making it more robust and versatile over time.
+
+Overall, Simol seems like a promising addition to the field of programming languages, particularly for those interested in object-oriented programming. It'll be interesting to see how it evolves and is received by the developer community.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -1336,6 +1338,294 @@ public class InsertionSorter {
 			this.sortedArray[i+1] = this.sortedArray[i];
 		}
 	}
+}
+```
+
+### AN EXAMPLE OF SIMOL IN ACTION ADAPTING TO EXISTING JAVA LIBRARIES
+
+Let us show you an example of utilization of Java existing libraries in Simol. Here is a sample program of two applications chatting just for fun, until the server side enter "q"(quit). The client displays what he received, and send that it is well done. We have, in this example, two NetworkTalker simu_real_world_obj HUMAN_EXPERT, talking together. The technical realization of the simulation is in the simu_comp_worker NetworkTalkerRealiz, which does not create the java Socket object. The NetworkTalker class has got two constructors, adapted to the clent or server socket case. Those for the client take a socket in parameter, and this is permit although it's technical, but to simplify, we just pass it to the realiz associated object. There is a singleton-like SocketServerConfig object with static methods, which represents a real-world configuration concept. Only the simu_comp_workers of realization of technical  aspects of the simulation, deal with the socket and the streams. Simol's version quite simplifies the java version, by forgetting the socket and stream part. In simol, we could consider the ServerSocket class rather a "SocketServer", a server giving sockets once the connection is done. In our example, the server can create just one connection.
+
+In the Java framework:
+
+```java
+package org.simol.simple_examples.network;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/**
+ * Simol simple example for network programming, here with sockets.
+ * Example of a single chat between two applications, and a server waiting for a single connection.
+ * 
+ * v1.0		2024/02/09
+ * @author Charles Koffler.
+ *
+ */
+@Simu_comp_worker
+public class NetworkExampleServerLauncher {
+	
+	public static void main(String[] args) throws IOException {
+		/* We could see the Java class ServerSocket as a server of sockets ! */
+		ServerSocket socketServer = new ServerSocket(SocketServerConfig.PORT);
+		
+		System.out.println("Server started, waiting for a demand of connection");
+		//The server is doing his job, he is waiting for a request of connection.
+		Socket serverSocket = socketServer.accept();
+		
+		System.out.println("A connection has been established, sockets are plugged in");
+		
+		//We now need one of the talker, in this chat. Two sockets have been plugged in.
+		NetworkTalker serverSideTalker = new NetworkTalker("The server", serverSocket);
+		
+		Scanner scanner = new Scanner(System.in);
+		String wantedSentence;
+		
+		do {
+			System.out.println("Enter a sentence, 'q' to stop");
+			wantedSentence = scanner.nextLine();
+			serverSideTalker.saySentence(wantedSentence);
+			serverSideTalker.hearSentence();
+		}while ( !wantedSentence.equals("q"));
+		
+		serverSideTalker.stopTalking();
+		scanner.close();
+	}
+}
+
+```
+
+```java
+package org.simol.simple_examples.network;
+
+import java.io.IOException;
+import java.net.UnknownHostException;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/**
+ * The client application. They are talking together, in the two directions.
+ * @author Charles Koffler
+ *
+ */
+@Simu_comp_worker
+public class NetworkExampleClientLauncher {
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		NetworkTalker clientTalker = new NetworkTalker("The client");
+		
+		while (!(clientTalker.hearSentence().equals("q"))) {
+			clientTalker.saySentence("Well done!");
+		}
+		clientTalker.saySentence("Good bye!"); //Just for answer.
+		clientTalker.stopTalking();
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.network;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Simu_comp_worker;
+
+@Simu_comp_worker
+public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {
+
+	public ClientSideNetworkTalkerRealiz(NetworkTalker theOwner) throws UnknownHostException, IOException  {
+		super(theOwner);
+		this.createSocket();
+	}
+	
+	/**
+	 * A method for create a client-side socket!
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 */
+	private void createSocket() throws UnknownHostException, IOException {
+		Socket clientSideSocket = new Socket(SocketServerConfig.HOST, SocketServerConfig.PORT);
+		this.setSocket(clientSideSocket);
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.network;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import org.simol.simolframework.java.Role;
+import org.simol.simolframework.java.Simu_real_world_obj;
+
+/**
+ * A talker who could discuss with someone, threw a network. Here, it is seen as a human talker!
+ * @author Charles Koffler
+ *
+ */
+@Simu_real_world_obj(Role.HUMAN_EXPERT)
+public class NetworkTalker {
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	//Associated realization worker.
+	protected NetworkTalkerRealiz realiz;
+	
+	/**
+	 * Constructor for a client-side network talker. Creates a client socket.
+	 * @param theName
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 */
+	public NetworkTalker(String theName) throws UnknownHostException, IOException {
+		this.realiz = new ClientSideNetworkTalkerRealiz(this);
+		this.name = theName;
+	}
+	
+	/**
+	 * Used for the case of a server-side socket, so it is created by the server of sockets.
+	 * @param theName
+	 * @param givenSocket
+	 * @throws IOException
+	 */
+	public NetworkTalker(String theName, Socket givenSocket) throws IOException {
+		this.name = theName;
+		this.realiz = new NetworkTalkerRealiz(this);
+		this.realiz.setSocket(givenSocket);
+	}
+	
+	/**
+	 * The talker is talking!
+	 * @param sentence
+	 */
+	public void saySentence(String sentence) {
+		try {
+			this.realiz.display("Message said: " + sentence); //This server sends lines, terminated by "\n".
+			this.realiz.writeLine(sentence);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * The talker listen to a sentence from the other talker.
+	 * @return
+	 */
+	public String hearSentence() {
+		try {
+			String sentence =  this.realiz.readLine();
+			this.realiz.display("Message heard: " + sentence);
+			return sentence;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	public void stopTalking() throws IOException {
+		this.realiz.display("Stop talking");
+		this.realiz.close();
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.network;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/**
+ * The worker for handling computer lower level tasks, associated with a NetworkTalker!
+ * @author Charles Koffler
+ *
+ */
+@Simu_comp_worker
+public class NetworkTalkerRealiz {
+	/**
+	 * In some cases, owner could be useful, especially to access fields to display, and this kind of stuff.
+	 */
+	protected NetworkTalker owner;
+
+	private Socket theSocket;
+	private PrintWriter writer;
+	private BufferedReader reader;
+	
+	/**
+	 * The socket dependency have to be injected later, with setSocket().
+	 * @param theOwner
+	 */
+	public NetworkTalkerRealiz(NetworkTalker theOwner) {
+		this.owner = theOwner;
+	}
+	
+	/**
+	 * The way to inject this dependency.
+	 * @param socket
+	 * @throws IOException
+	 */
+	public void setSocket(Socket socket) throws IOException {
+		this.theSocket = socket;
+		//the writer
+		//First we obtain a stream. A stream could be viewed as a real-world stream.
+		OutputStream theOutputStream = this.theSocket.getOutputStream();
+		//A writer could be viewed as a @Simu_real_world_obj(Role.HUMAN_EXPERT), a real-world writer.
+		writer = new PrintWriter(theOutputStream);
+		
+		//The reader
+		reader = new BufferedReader(new InputStreamReader(this.theSocket.getInputStream()));
+	}
+	
+	public void writeLine(String message) throws IOException {
+		writer.println(message);
+		writer.flush();
+	}
+	
+	public String readLine() throws IOException {
+		return reader.readLine();
+	}
+	
+	public void display(String theString) {
+		System.out.println(this.owner.getName() + ": " + theString); //Here, an example of the need to have the owner in the technical class.
+	}
+	
+	public void close() throws IOException {
+		theSocket.close();
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.network;
+
+import org.simol.simolframework.java.Simu_real_world_obj;
+
+/**
+ * The configuration object of our server of sockets.
+ * @author Charles Koffler
+ *
+ */
+@Simu_real_world_obj
+public class SocketServerConfig {
+	public static String HOST = "localhost";
+	
+	public static int PORT = 8080;
 }
 ```
 
