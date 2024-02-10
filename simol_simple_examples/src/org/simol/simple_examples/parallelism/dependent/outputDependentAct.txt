@@ -1,0 +1,21 @@
+Output: "
+2024/02/06 21:21:22.911 Trying to send a message from Jenny: Hello, it's Jenny => Ok, received by Henry
+2024/02/06 21:21:22.911 Trying to send a message from Mary: Hello, it's Mary	=> Ok, received by Jenny. The message has been sent after Henry reading.
+2024/02/06 21:21:22.914 Henry has read this mail: Message from Jenny: Hello, it's Jenny => Ok. A proof of mail correctly sent.
+2024/02/06 21:21:23.920 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok.
+2024/02/06 21:21:23.920 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:24.917 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Henry has read this mail: Message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Sent just as Henry received his own email.
+2024/02/06 21:21:24.932 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:25.916 Mary has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Received without problem.
+2024/02/06 21:21:25.916 Trying to send a message from Mary: Hello, it's Mary
+2024/02/06 21:21:25.946 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok. Received without problem.
+2024/02/06 21:21:25.946 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:26.943 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:26.959 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok, received the first sent, normal, the second was sleeping.
+2024/02/06 21:21:26.959 Henry has read this mail: Message from Henry: Hello, it's Henry => Ok, the message has been sent just after the previous reading, which has unblocked the queue.
+2024/02/06 21:21:26.959 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Jenny has read this mail: Message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Trying to send a message from Jenny: Hello, it's Jenny
+"

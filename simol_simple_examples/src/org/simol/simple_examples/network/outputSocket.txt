@@ -1,0 +1,71 @@
+The server output:
+"
+Server started, waiting for a demand of connection
+A connection has been established, sockets are plugged in
+Enter a sentence, 'q' to stop
+Hello, glad to see you
+The server: Message said: Hello, glad to see you
+The server: Message heard: Well done!
+Enter a sentence, 'q' to stop
+Are you ok?
+The server: Message said: Are you ok?
+The server: Message heard: Well done!
+Enter a sentence, 'q' to stop
+Are you angry, my friend?
+The server: Message said: Are you angry, my friend?
+The server: Message heard: Well done!
+Enter a sentence, 'q' to stop
+q
+The server: Message said: q
+The server: Message heard: Good bye!
+The server: Stop talking
+History of the conversation:
+
+Message:
+Said;-Hello, glad to see you-
+Message:
+Heard;-Well done!-
+Message:
+Said;-Are you ok?-
+Message:
+Heard;-Well done!-
+Message:
+Said;-Are you angry, my friend?-
+Message:
+Heard;-Well done!-
+Message:
+Said;-q-
+Message:
+Heard;-Good bye!-
+"
+
+The client output:
+"
+The client: Message heard: Hello, glad to see you
+The client: Message said: Well done!
+The client: Message heard: Are you ok?
+The client: Message said: Well done!
+The client: Message heard: Are you angry, my friend?
+The client: Message said: Well done!
+The client: Message heard: q
+The client: Message said: Good bye!
+The client: Stop talking
+History of the conversation:
+
+Message:
+Heard;-Hello, glad to see you-
+Message:
+Said;-Well done!-
+Message:
+Heard;-Are you ok?-
+Message:
+Said;-Well done!-
+Message:
+Heard;-Are you angry, my friend?-
+Message:
+Said;-Well done!-
+Message:
+Heard;-q-
+Message:
+Said;-Good bye!-
+"
