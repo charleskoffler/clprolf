@@ -152,3 +152,239 @@ We still have to write the java keywords, because simol doesn't want to replace 
 
 ### Is there a link between concurrency and parallelism aids?
 Yeah. It is recommended, in simol, to first write a single-thread code handling concurrency, and to then think about if it needs more than that. So if we decide that yes, we then use the parallelism keywords. Remember too that the "prevent_missing_collision" part, which are often about setter methods, have, in multi-threading case, to be in "one_at_a_time", and sometimes the associated getters.
+
+### What about the "dependent activities"? Is it a complex topic?
+
+* Let's explain about the dependent_activity method modifier, or @Dependent_activity in the framework. This keyword is used in case of multithreaded applications. It shows that a method, thus an activity, depends on the execution of another activity, to be able to continue. So it is the other activity which emits the event indicating that the sleeping action can continue. This feature was first designed for the simu_real_world_obj, but it could be applied evidently for the simu_comp_worker!
+
+* Let's take an example, of a mail box, of a unique mail. The mailbox can only contain one mail. So the threads which would want to read a mail, are blocked until someone has put a mail inside. The activity of reading is dependent of the activity of writing. When this happens, the reader have to send a notification, for the writer to act. And the writer would wait when the mailbox is still full. So reading and writing are depending activities, because we want here the thread to wait until the action could be performed. If we would want a non-blocking read, or write, it would not be the same.
+
+Another class, a MailCustomer, uses the MailBox class. The sendMessage() and readMail() methods call the dependent_activity methods of MailBox. We can notice that only the dependent_activity methods are synchronized, and we add "@One_at_a_time" too. Read() and write() methods of MailBox, can not be called at the same time, so they have the same "turn_monitor". This monitor have to be used for the "notifyAll()" and "wait()" calls, because Java enforces to use the same monitor as the synchronization.
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import org.simol.simolframework.java.Simu_comp_worker;
+
+/* An example of simol dependent activities (@Dependent_activity).
+ * Example of a producer/consumer, with a mail box.
+ * Charles Koffler. 20240206
+ */
+@Simu_comp_worker //A program for execute our tests!
+public class LauncherDependAct {
+
+	public static void main(String[] args) {
+		MailCustomer jenny, henry, mary;
+		OneMessageMailBox mailBox = new OneMessageMailBox();
+		
+		//Here girls send first!
+		jenny = new MailCustomer("Jenny", mailBox, true, 1000);
+		henry = new MailCustomer("Henry", mailBox, false, 2000);
+		mary = new MailCustomer("Mary", mailBox, true, 3000);
+		
+		Thread jennyThread  = new Thread(jenny);
+		Thread henryThread = new Thread(henry);
+		Thread maryThread = new Thread(mary);
+		
+		//To simplify, the threads are starting together.
+		jennyThread.start();
+		
+		henryThread.start();
+		
+		maryThread.start();
+		
+		try {
+			Thread.sleep(30000); //30s.
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		jenny.setBlnContinue(false);
+		henry.setBlnContinue(false);
+		mary.setBlnContinue(false);
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.For_every_thread;
+
+public class MailCustomer implements @Contracts Runnable {
+	@For_every_thread
+	private volatile boolean blnContinue;
+	/**
+	 * Time in ms, between the send and the read.
+	 */
+	private int waitingTime;
+	private boolean sendFirst;
+	
+	public void setBlnContinue(boolean blnContinue) {
+		this.blnContinue = blnContinue;
+	}
+
+	private String name;
+	
+	private OneMessageMailBox mailBox;
+	
+	public MailCustomer( String theName, OneMessageMailBox theBox, boolean blnSendFirst, int theWaitingTime) {
+		this.blnContinue = true;
+		this.name = theName;
+		this.mailBox = theBox;
+		this.waitingTime = theWaitingTime;
+		this.sendFirst = blnSendFirst;
+	}
+	
+	public void sendMessage(String theMessage) {
+		this.displayLog("Trying to send a message from "+ name + ": " + theMessage);
+		this.mailBox.write("Message from " + name + ": " + theMessage);
+	}
+	
+	public String readMail() {
+		String readMessage = mailBox.read();
+		this.displayLog(name + " has read this mail: " + readMessage);
+		return readMessage;
+	}
+
+	@Override
+	public void run() {
+		while (this.blnContinue) {
+			String sentMessage = "Hello, it's " + name;
+			
+			if (sendFirst) {
+				this.sendMessage(sentMessage);
+			}
+			else {
+				String readMail = this.readMail();
+			}
+			
+			try {
+				Thread.sleep(waitingTime);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			if (!sendFirst) {
+				this.sendMessage(sentMessage);
+			}
+			else {
+				String readMail = this.readMail();
+			}
+			
+		}
+		
+	}
+	
+	/* To simplify, we handle display directly in the simu_real_world_obj! */
+	private void displayLog(String message) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");  
+		   LocalDateTime now = LocalDateTime.now();  
+		  
+		System.out.println( dtf.format(now) + " " + message);
+	}
+}
+```
+
+```java
+package org.simol.simple_examples.parallelism.dependent;
+
+import org.simol.simolframework.java.Dependent_activity;
+import org.simol.simolframework.java.For_every_thread;
+import org.simol.simolframework.java.One_at_a_time;
+import org.simol.simolframework.java.Prevent_missing_collision;
+import org.simol.simolframework.java.Simu_real_world_obj;
+import org.simol.simolframework.java.Turn_monitor;
+
+/* A class with two dependent activities */
+@Simu_real_world_obj
+public class OneMessageMailBox {
+
+		private String message;
+		@For_every_thread //Notice that we can signal it, although we are not using volatile!
+		private boolean full; //Not volatile here, because used in a synchronized block
+		
+		@Turn_monitor
+		private Object mailBoxMonitor; //For not writing and reading at the same time!
+										//But for manage dependent consequence too, so for the wait() and notify() calls.
+			
+		public OneMessageMailBox() {
+			mailBoxMonitor = new Object();
+
+		}
+		
+		@Dependent_activity  /* read() is considered as a dependent activity, because his execution could depend of the write() method. */
+		@One_at_a_time
+		public String read() {
+			synchronized(mailBoxMonitor) {
+				while (!this.full) {
+					try {
+						this.mailBoxMonitor.wait(); // A classical guarded block, important for two reasons:
+						// - Multiple readers might be awoken simultaneously, but only one can re-obtain the lock at a time. Another reader might read first, requiring re-checking the condition.
+						// - We use a single monitor (mailBoxMonitor) due to Java's synchronization constraints. Notifications could wake up any waiting threads (readers or writers), so each must verify if their condition is met after waking.
+
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+					}
+				}
+				
+				this.full = false; //We just emptied the box.
+				this.mailBoxMonitor.notifyAll(); //We need mails.
+				
+				return this.message;
+			}
+		}
+		
+		@Dependent_activity
+		@One_at_a_time
+		public void write(String message) {
+			synchronized(mailBoxMonitor) {
+				while (this.full) {
+					try {
+						this.mailBoxMonitor.wait();
+					} catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
+					}
+				}
+				this.message = message;
+				this.full = true; //The box is now full!
+				this.mailBoxMonitor.notifyAll(); //We notify the waiting readers!
+			}
+		}
+}
+```
+
+Output:
+
+Output: "
+2024/02/06 21:21:22.911 Trying to send a message from Jenny: Hello, it's Jenny => Ok, received by Henry
+2024/02/06 21:21:22.911 Trying to send a message from Mary: Hello, it's Mary	=> Ok, received by Jenny. The message has been sent after Henry reading.
+2024/02/06 21:21:22.914 Henry has read this mail: Message from Jenny: Hello, it's Jenny => Ok. A proof of mail correctly sent.
+2024/02/06 21:21:23.920 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok.
+2024/02/06 21:21:23.920 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:24.917 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Henry has read this mail: Message from Henry: Hello, it's Henry
+2024/02/06 21:21:24.932 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Sent just as Henry received his own email.
+2024/02/06 21:21:24.932 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:25.916 Mary has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Received without problem.
+2024/02/06 21:21:25.916 Trying to send a message from Mary: Hello, it's Mary
+2024/02/06 21:21:25.946 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok. Received without problem.
+2024/02/06 21:21:25.946 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:26.943 Trying to send a message from Henry: Hello, it's Henry
+2024/02/06 21:21:26.959 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok, received the first sent, normal, the second was sleeping.
+2024/02/06 21:21:26.959 Henry has read this mail: Message from Henry: Hello, it's Henry => Ok, the message has been sent just after the previous reading, which has unblocked the queue.
+2024/02/06 21:21:26.959 Trying to send a message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Jenny has read this mail: Message from Jenny: Hello, it's Jenny
+2024/02/06 21:21:27.965 Trying to send a message from Jenny: Hello, it's Jenny
+"
+
+* The reasoning in these cases in much simplified, and we don't have to qualify the writer as a producer, or the read as consumer. We focuses on what are the more interesting for us, and we know immediately if we need such implementation or not.
+
+So a simol dependent activity is a method that is dependent of another method, and a method which want to wait until the action could end.
+
+* Performance consideration
+
+"dependency_activity" should not impact at all performance results. It does not actually have semantic checking of a particular implementation, but it was designed to work with the low level library of java (as the example). So it should not impact the performance, because we did dependent activities without knowing it, while implementing stuff like producer-consumer.
