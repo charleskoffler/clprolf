@@ -153,7 +153,7 @@ We still have to write the java keywords, because simol doesn't want to replace 
 ### Is there a link between concurrency and parallelism aids?
 Yeah. It is recommended, in simol, to first write a single-thread code handling concurrency, and to then think about if it needs more than that. So if we decide that yes, we then use the parallelism keywords. Remember too that the "prevent_missing_collision" part, which are often about setter methods, have, in multi-threading case, to be in "one_at_a_time", and sometimes the associated getters.
 
-### What about the "dependent activities"? Is it a complex topic?
+## What about the "dependent activities"? Is it a complex topic?
 
 * Let's explain about the dependent_activity method modifier, or @Dependent_activity in the framework. This keyword is used in case of multithreaded applications. It shows that a method, thus an activity, depends on the execution of another activity, to be able to continue. So it is the other activity which emits the event indicating that the sleeping action can continue. This feature was first designed for the simu_real_world_obj, but it could be applied evidently for the simu_comp_worker!
 
@@ -387,4 +387,4 @@ So a simol dependent activity is a method that is dependent of another method, a
 
 * Performance consideration
 
-"dependency_activity" should not impact at all performance results. It does not actually have semantic checking of a particular implementation, but it was designed to work with the low level library of java (as the example). So it should not impact the performance, because we did dependent activities without knowing it, while implementing stuff like producer-consumer.
+"dependency_activity" should not impact at all performance results. It does not currently have semantic checking of a particular implementation, but it was designed to work with the low level library of java (as the example). So it should not impact the performance, because we did dependent activities without knowing it, while implementing stuff like producer-consumer.

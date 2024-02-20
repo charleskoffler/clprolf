@@ -29,40 +29,15 @@ The complete and detailed definition stands at the end of this file.
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
-ChatGPT 4
-User
-Hello. I've create this new programming language. What do you think of this, my friend? : "(...)"
-4 / 4
-ChatGPT
+Thank you for sharing your detailed description of the Simol programming language. It's quite comprehensive and covers various aspects, from its design philosophy, inspiration from scientific simulations, and integration with Java, to its focus on object-oriented programming (OOP), enhancements over Java, and various programming concepts like concurrency and parallelism.
 
-Thank you for sharing your new programming language, Simol, and its accompanying Java framework. It's fascinating to see how you've conceptualized and developed this language, focusing on facilitating and guaranteeing object-oriented programming. Here are some thoughts and feedback on various aspects of Simol:
-Language Design and Philosophy
+It's evident that a lot of thought has been put into creating Simol, making it a language that aims to simplify and enhance OOP while maintaining compatibility with Java. The emphasis on facilitating object-oriented programming with minimalistic design while extending Java's capabilities is notable. The examples you provided, particularly the network programming example, illustrate Simol's approach to making coding more intuitive and aligned with real-world concepts.
 
-   Superset of Java: The idea of building Simol as a superset of Java is strategic. It leverages Java's robustness and wide usage while extending its capabilities. This could lower the learning curve for Java developers.
-   Focus on Object-Oriented Programming: Emphasizing object-oriented principles is a strong point, especially considering its significance in software development. The idea of enforcing and simplifying OOP could be appealing to both educational sectors and industry professionals.
-   Incorporation of Scientific Domains: Drawing inspiration from scientific simulations and real-world applications gives Simol a practical edge. This aspect could make it suitable for simulation-heavy domains like scientific computing, game development, and more.
+Your language seems to strike a balance between providing new features and paradigms while ensuring that it doesn't deviate too far from established Java practices. This could make it easier for Java developers to adopt Simol, as they can leverage their existing knowledge and skills.
 
-Technical Aspects
+Overall, Simol presents an interesting approach to programming language design, aiming to make development more accessible and efficient, especially in the context of OOP. The integration with Java and focus on practical application in various domains, including scientific simulations and IT management, could make it a valuable tool for a range of developers.
 
-   Keywords and Syntax: The introduction of new keywords (e.g., simu_real_world_obj, simu_comp_worker) and concepts (like with_compat, underst) is intriguing. They seem to introduce clarity in defining the roles and behaviors of classes and interfaces.
-   Compatibility with Java Libraries: The ability to use Java libraries and integrate Java code into Simol source files enhances its versatility. This interoperability is crucial for wide adoption.
-   Open-Closed Principle and Extensibility: Your adherence to the open-closed principle and the focus on extensibility through annotations and minimalistic changes are commendable. It suggests that Simol can evolve without disrupting existing codebases significantly.
-
-Practical Use and Adoption
-
-   Use in Education and Real-world Applications: Positioning Simol as both an educational tool and a language for real-world applications is ambitious. This dual focus could either be a strength or a challenge, depending on execution and community adoption.
-   GitHub Repository for Collaboration: Creating a GitHub repository is a smart move for open-source collaboration. This could facilitate community involvement, feedback, and iterative improvements.
-
-Potential Challenges and Considerations
-
-   Community Building and Adoption: For any new programming language, community adoption is a major challenge. Building a robust community of users and contributors is essential for long-term sustainability.
-   Documentation and Learning Resources: Comprehensive documentation, tutorials, and learning resources will be critical for new users, especially for those not familiar with Java.
-   Performance and Efficiency: While the language is built on top of Java, understanding any performance implications of the additional abstraction layers would be important for developers, especially for computation-intensive applications.
-   Tooling and IDE Support: Tooling, such as IDE plugins, linters, and debuggers, will play a significant role in the developer experience. Ensuring good tooling support can greatly influence adoption.
-
-Overall Impression
-
-Simol presents an innovative approach to object-oriented programming, building on the strengths of Java and introducing new concepts to enhance clarity and effectiveness in OOP. Its success will likely depend on community adoption, tooling support, and the richness of its learning resources. The focus on both educational and professional use cases is ambitious and, if well-executed, could carve out a unique space for Simol in the programming language landscape.
+If you have specific questions or need further assistance related to Simol, feel free to ask!
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -306,9 +281,9 @@ Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : 
 
 ### SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
-Simol follow the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top of classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
+Simol follows the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top of classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
 
-Wikipedia quotation about the Fundamental theorem of softwatre engineering:
+Wikipedia quotation about the Fundamental theorem of software engineering:
 "The fundamental theorem of software engineering (FTSE) is a term originated by Andrew Koenig to describe a remark by Butler Lampson attributed to David J. Wheeler:
 
     "We can solve any problem by introducing an extra level of indirection."
@@ -360,6 +335,21 @@ Instead of "class", we use the following keywords:
 
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java class declaration are allowed in the same way of a simol class declaration, obviously.
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java interface declaration are allowed in the same way of a simol interface declaration, obviously.
+
+### THE "class_for" MODIFIER
+
+In pure simol, there is an optional modifier, which looks like the class keyword: "class_for". It is used in the place of "class", and is placed before the simol role. It does not exist in the frameworks, because 'class' is already there.
+
+```java
+public class_for simu_real_world_obj Car { //(...) }
+```
+or
+
+```java
+public class_for simu_comp_worker Launcher { //(...) }
+```
+"class_for" is used to keep class concept, while maintaining simol's philosophy. So we would need a memory object (with his methods) which would be a simulation of a real world object, and we would have to first create a class for ('class_for') it. Or we could need a memory object and his methods, which would be a simulation of a computer worker, and we would create a class for ("class_for") it. "class_for" is optional.
+"class_for" is user-friendly, to not forget the class stage, and is designed to be used by those who wants to clearly notice the mold aspect in oop. It can be used as often as we want, instead of directly precise the role, and it is just as effective.
 
 ### A JUSTIFICATION OF THE TWO MAIN CLASS ROLES - THE TWO BASIC OBJECTS IN SIMOL
 
@@ -746,28 +736,6 @@ public class OneMessageMailBox {
 }
 ```
 
-Output: "
-2024/02/06 21:21:22.911 Trying to send a message from Jenny: Hello, it's Jenny => Ok, received by Henry
-2024/02/06 21:21:22.911 Trying to send a message from Mary: Hello, it's Mary	=> Ok, received by Jenny. The message has been sent after Henry reading.
-2024/02/06 21:21:22.914 Henry has read this mail: Message from Jenny: Hello, it's Jenny => Ok. A proof of mail correctly sent.
-2024/02/06 21:21:23.920 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok.
-2024/02/06 21:21:23.920 Trying to send a message from Jenny: Hello, it's Jenny
-2024/02/06 21:21:24.917 Trying to send a message from Henry: Hello, it's Henry
-2024/02/06 21:21:24.932 Henry has read this mail: Message from Henry: Hello, it's Henry
-2024/02/06 21:21:24.932 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Sent just as Henry received his own email.
-2024/02/06 21:21:24.932 Trying to send a message from Jenny: Hello, it's Jenny
-2024/02/06 21:21:25.916 Mary has read this mail: Message from Jenny: Hello, it's Jenny => Ok. Received without problem.
-2024/02/06 21:21:25.916 Trying to send a message from Mary: Hello, it's Mary
-2024/02/06 21:21:25.946 Jenny has read this mail: Message from Mary: Hello, it's Mary => Ok. Received without problem.
-2024/02/06 21:21:25.946 Trying to send a message from Jenny: Hello, it's Jenny
-2024/02/06 21:21:26.943 Trying to send a message from Henry: Hello, it's Henry
-2024/02/06 21:21:26.959 Jenny has read this mail: Message from Jenny: Hello, it's Jenny => Ok, received the first sent, normal, the second was sleeping.
-2024/02/06 21:21:26.959 Henry has read this mail: Message from Henry: Hello, it's Henry => Ok, the message has been sent just after the previous reading, which has unblocked the queue.
-2024/02/06 21:21:26.959 Trying to send a message from Jenny: Hello, it's Jenny
-2024/02/06 21:21:27.965 Jenny has read this mail: Message from Jenny: Hello, it's Jenny
-2024/02/06 21:21:27.965 Trying to send a message from Jenny: Hello, it's Jenny
-"
-
 ### ABOUT CONCURRENCY AND PARALLELISM, IN SIMOL
 In simol, it is recommended to first handle pure concurrency, with a single thread, and then, if still wanted, adding parallelism. Some simulation actions take time to run, and are not just a simple change of states. That's why we introduced the "long_action"(or @Long_action, in the framework) modifier, to execute the action step by step. So the sole remainding problem, is to handle soon collisions, to not miss them, and "prevent_missing_collision"(or @Prevent_missing_collision) exists for that case. Finally, it could suffice in much cases, especially in real-time simulations, but we could try to add threads. But threads must sometimes be synchronized, and the synchronized parts are executed quite like there was an unique thread. So we have to evaluate if it is relevant to make more complex code, or not. If we have to do, the parts which have to be synchronized are often the "prevent_missing_collision" parts, and "one_at_a_time"(@One_at_a_time) is for parallelism. "one_at_a_time" is just worried of having quite like a single thread application for the concerned piece of code. And "turn_monitor" is here to assemble these parts, while using the same monitor object. The notions here agree with existing java notions like "synchronized", and "lock", but emphasize different and less technical aspects, that could help in such hard topics.
 The purely parallelism problems, especially the "dependent activities", however, could be write directly, with multiple threads.
@@ -779,7 +747,7 @@ Several weeks average might be necessary to become proficient in simol, for a ex
 ### SIMOL GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
 
 NormalClassDeclaration: 
-    SimolRole Identifier [TypeParameters]
+    [class_for] SimolRole Identifier [TypeParameters]
                                 [nature Type] [contracts TypeList] ClassBody
 
 SimolRole:
@@ -838,7 +806,7 @@ FieldDecl:
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
 "simu_comp_worker", "simu_real_world_obj", "real_world_obj", "information", "turn_monitor", "one_at_a_time", "for_every_thread => replace with "class"
-"underst", "with_compat", "long_action", "prevent_missing_collision", "dependent_activity" => replace with ""(empty string)
+"class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "dependent_activity" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity" => replace with "interface"
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
