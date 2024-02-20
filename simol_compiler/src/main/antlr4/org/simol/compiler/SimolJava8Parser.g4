@@ -277,7 +277,7 @@ classDeclaration
 	;
 
 normalClassDeclaration
-	:	classModifier* simolRole Identifier typeParameters? superclass? superinterfaces? classBody
+	:	classModifier* 'class_for'? simolRole Identifier typeParameters? superclass? superinterfaces? classBody
 	;
 	
 simolRole

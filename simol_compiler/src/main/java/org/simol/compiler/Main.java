@@ -10,9 +10,7 @@ package org.simol.compiler;
 	Author Charles Koffler, M.I.T License. 2023/10/16
 	https://github.com/charleskoffler/simol-language
 
-	2.0.0 2024/02/07	Added all the new keywords ("long_action", "prevent_missing_collision",
-					,"one_at_a_time","tour_monitor",
-					"for_every_thread","dependent_activity").
+	2.1.0 2024/02/20	Added "class_for".
 	
 */
  

@@ -51,6 +51,7 @@ public class SimolJava8CustomListener extends SimolJava8ParserBaseListener {
 					case "contracts":
 						text = "implements";
 						break;
+					case "class_for":
 					case "underst":
 					case "with_compat":
 					case "long_action":

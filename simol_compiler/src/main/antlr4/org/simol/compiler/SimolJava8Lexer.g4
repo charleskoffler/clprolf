@@ -109,6 +109,7 @@ VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
 //simol tokens
+CLASS_FOR : 'class_for';
 SIMU_REAL_WORLD_OBJ : 'simu_real_world_obj';
 SIMU_COMP_WORKER : 'simu_comp_worker';
 REAL_WORLD_OBJ : 'real_world_obj';
