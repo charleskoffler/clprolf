@@ -14,7 +14,7 @@ What is a simulation of a real-world object?
 The keyword simu_real_world_obj is used instead of classes, that's all, in that case. Or you can use the @Simu_real_world_obj annotation in the java framework. This kind of object describes the objects used for simulate a real-world-object. There's nothing else. "Simulation" in simol means methods, because methods are action. Without methods, it is only a modeling object, and it is a "real_world_obj". Ideally, this class should not contain other stuff than pure simulation code.
 
 ```java
-public simu_real_world_obj Human {
+public class_for simu_real_world_obj Human {
 	public string name; //We don't have time for this example to put getters/setters!
 	public void cleanTeeth(Brush brush){
 		//We are taking the brush with our hand.
@@ -52,6 +52,11 @@ Why are we doing that? First, such pure simulation code is often straightforward
 Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in simol, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the class, for the programmer, but for the other readers too.
 It is clear that the part "real-world" doesn't imply only concrete real-world objects. A Vehicule suits well, it's evident, but we can also use it for abstract notions, like a Connection, a Color, or any abstract idea of the real-world.
 In other words, as soon as you take as a reference a real-world thing, you have to use a simu_real_world_obj. It is true for the pure "real_world_obj" too, of course.
+
+What does 'class_for' mean?
+
+'class_for' is an optional keyword, that can be placed just before a class role. It replaces 'class' of Java, and means "class for a simu_real_world_obj"(or class for another class role).
+It could be great for people who prefer have a more classical way of speaking about objects and classes.
 
 What is a simulation of a computer worker?
 
