@@ -1,8 +1,8 @@
 # Simol Programming Language And Simol Java Framework( as well as Simol C# and PHP8 Framework)
 
 A slogan for simol language and framework could be "Facilitate And Guarantee Object-Oriented Programming", as well as Java is "Write Once, Run Everywhere".
-Repository about my own programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users, as well as a Simol PHP 8 Framework.
- The language could be a DSL(Domain Specific Language) in simulation, as well as object oriented work. The definition of simol stands on few pages, and it's quite fast to get an overview.
+Official repository of the new programming language simol, which is a superset of Java, and about Simol Java Framework both. The simol framework is a java framework with pure annotations, to leverage Simol language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the simol java framework. A simol C# framework is present too, for the C# users, as well as a Simol PHP 8 Framework.
+Simol is the fruit of a reflection on how could we use OOP objects. The definition of simol is not so long, and it's relatively fast to get an overview.
 Simol is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
 It well aligns with Domain-driven Design(DDD). The language's approach is, at the same time, to support and ease the algorithms writing, thanks to classes and interfaces types, and to modifiers addition.
 I'm looking for persons interested in testing the language, or more if they like.
@@ -25,7 +25,6 @@ There is a basic simol compiler, but it works great. There is a simol framework 
 
 I used chatGPT at the end of my work, for validate simol's design choices, and for feedback and overview. As I don't want autopromotion, I regularly ask chatGPT assistance and support, and add them to this README file.
 The complete and detailed definition stands at the end of this file.
-
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
@@ -67,6 +66,9 @@ As simol classes replaces java classes, all java keywords can be used with simol
 We start from the Java language. And we add some very simple concepts. The java libraries can be used, while it is a superset of java.
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
+
+### A REFLECTION ON HOW COULD WE USE ALAN KAY'S OOP OBJECTS
+ So we have a software system, which is OOP, imagined by Alan Kay, based on an emulation of biological cells. So what could we do with it? Simol just thought about applications we have to write, and simol have looked for a way to fit our programming problems into OOP objects.
 
 ### ORIGIN OF THE LANGUAGE, SCIENTIFIC DOMAIN INSPIRATION
 
@@ -348,6 +350,7 @@ In pure simol, there is an optional modifier, which looks like the class keyword
 ```java
 public class_for simu_real_world_obj Car { //(...) }
 ```
+
 or
 
 ```java
