@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Real_world_obj {
+public @interface Model_real_world_obj {
 
 }

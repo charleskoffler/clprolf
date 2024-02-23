@@ -24,7 +24,7 @@ public class SimolJava8Parser extends Parser {
 		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
 		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
 		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
-		WHILE=50, CLASS_FOR=51, SIMU_REAL_WORLD_OBJ=52, SIMU_COMP_WORKER=53, REAL_WORLD_OBJ=54, 
+		WHILE=50, CLASS_FOR=51, SIMU_REAL_WORLD_OBJ=52, SIMU_COMP_WORKER=53, MODEL_REAL_WORLD_OBJ=54, 
 		INFORMATION=55, NATURE=56, CONTRACTS=57, COMPAT_INTERF_VERSION=58, COMPAT_INTERF_CAPACITY=59, 
 		WITH_COMPAT=60, UNDERST=61, LONG_ACTION=62, PREVENT_MISSING_COLLISION=63, 
 		ONE_AT_A_TIME=64, TOUR_MONITOR=65, FOR_EVERY_THREAD=66, DEPENDENT_ACTIVITY=67, 
@@ -209,16 +209,16 @@ public class SimolJava8Parser extends Parser {
 			"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
 			"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
 			"'transient'", "'try'", "'void'", "'volatile'", "'while'", "'class_for'", 
-			"'simu_real_world_obj'", "'simu_comp_worker'", "'real_world_obj'", "'information'", 
-			"'nature'", "'contracts'", "'compat_interf_version'", "'compat_interf_capacity'", 
-			"'with_compat'", "'underst'", "'long_action'", "'prevent_missing_collision'", 
-			"'one_at_a_time'", "'tour_monitor'", "'for_every_thread'", "'dependent_activity'", 
-			null, null, null, null, null, "'null'", "'('", "')'", "'{'", "'}'", "'['", 
-			"']'", "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", "'~'", "'?'", 
-			"':'", "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", "'++'", "'--'", 
-			"'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", "'->'", "'::'", 
-			"'+='", "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='", 
-			"'>>='", "'>>>='", null, "'@'", "'...'"
+			"'simu_real_world_obj'", "'simu_comp_worker'", "'model_real_world_obj'", 
+			"'information'", "'nature'", "'contracts'", "'compat_interf_version'", 
+			"'compat_interf_capacity'", "'with_compat'", "'underst'", "'long_action'", 
+			"'prevent_missing_collision'", "'one_at_a_time'", "'tour_monitor'", "'for_every_thread'", 
+			"'dependent_activity'", null, null, null, null, null, "'null'", "'('", 
+			"')'", "'{'", "'}'", "'['", "']'", "';'", "','", "'.'", "'='", "'>'", 
+			"'<'", "'!'", "'~'", "'?'", "':'", "'=='", "'<='", "'>='", "'!='", "'&&'", 
+			"'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", 
+			"'%'", "'->'", "'::'", "'+='", "'-='", "'*='", "'/='", "'&='", "'|='", 
+			"'^='", "'%='", "'<<='", "'>>='", "'>>>='", null, "'@'", "'...'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -231,7 +231,7 @@ public class SimolJava8Parser extends Parser {
 			"NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", 
 			"STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", 
 			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "CLASS_FOR", 
-			"SIMU_REAL_WORLD_OBJ", "SIMU_COMP_WORKER", "REAL_WORLD_OBJ", "INFORMATION", 
+			"SIMU_REAL_WORLD_OBJ", "SIMU_COMP_WORKER", "MODEL_REAL_WORLD_OBJ", "INFORMATION", 
 			"NATURE", "CONTRACTS", "COMPAT_INTERF_VERSION", "COMPAT_INTERF_CAPACITY", 
 			"WITH_COMPAT", "UNDERST", "LONG_ACTION", "PREVENT_MISSING_COLLISION", 
 			"ONE_AT_A_TIME", "TOUR_MONITOR", "FOR_EVERY_THREAD", "DEPENDENT_ACTIVITY", 
@@ -3245,7 +3245,7 @@ public class SimolJava8Parser extends Parser {
 	public static class SimolRoleContext extends ParserRuleContext {
 		public TerminalNode SIMU_REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.SIMU_REAL_WORLD_OBJ, 0); }
 		public TerminalNode SIMU_COMP_WORKER() { return getToken(SimolJava8Parser.SIMU_COMP_WORKER, 0); }
-		public TerminalNode REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.REAL_WORLD_OBJ, 0); }
+		public TerminalNode MODEL_REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.MODEL_REAL_WORLD_OBJ, 0); }
 		public TerminalNode INFORMATION() { return getToken(SimolJava8Parser.INFORMATION, 0); }
 		public SimolRoleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);

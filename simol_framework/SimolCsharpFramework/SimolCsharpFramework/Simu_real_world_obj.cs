@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.6, 20240206.
+ * Simol C# Framework, v1.7, 20240223.
  * 
- * 1.6 20240206	Added @Dependent_activity. Minor corrections.
+ * 1.7 20240223 Real_world_obj becomes Model_real_world_obj
  * 
  * 
  * Limitations of C# framework for simol:

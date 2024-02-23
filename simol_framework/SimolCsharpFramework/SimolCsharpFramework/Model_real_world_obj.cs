@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Org.Simol.Framework.Csharp
 {
     [AttributeUsage(AttributeTargets.Class)]
-    class Real_world_objAttribute: Attribute
+    class Model_real_world_objAttribute: Attribute
     {
     }
 }

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 1.5 20240206	Added @Dependent_activity
+ * 1.6 20240223 Real_world_obj becomes Model_real_world_obj
  * @author Charles Koffler
  *
  */

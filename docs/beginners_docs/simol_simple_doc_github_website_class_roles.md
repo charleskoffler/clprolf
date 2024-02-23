@@ -11,7 +11,7 @@ In object-oriented programming, we have to create objects. A difficulty is to ch
 
 What is a simulation of a real-world object?
 
-The keyword simu_real_world_obj is used instead of classes, that's all, in that case. Or you can use the @Simu_real_world_obj annotation in the java framework. This kind of object describes the objects used for simulate a real-world-object. There's nothing else. "Simulation" in simol means methods, because methods are action. Without methods, it is only a modeling object, and it is a "real_world_obj". Ideally, this class should not contain other stuff than pure simulation code.
+The keyword simu_real_world_obj is used instead of classes, that's all, in that case. Or you can use the @Simu_real_world_obj annotation in the java framework. This kind of object describes the objects used for simulate a real-world-object. There's nothing else. "Simulation" in simol means methods, because methods are action. Without methods, it is only a modeling object, and it is a "model_real_world_obj". Ideally, this class should not contain other stuff than pure simulation code.
 
 ```java
 public class_for simu_real_world_obj Human {
@@ -51,7 +51,7 @@ Why are we doing that? First, such pure simulation code is often straightforward
 
 Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in simol, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the class, for the programmer, but for the other readers too.
 It is clear that the part "real-world" doesn't imply only concrete real-world objects. A Vehicule suits well, it's evident, but we can also use it for abstract notions, like a Connection, a Color, or any abstract idea of the real-world.
-In other words, as soon as you take as a reference a real-world thing, you have to use a simu_real_world_obj. It is true for the pure "real_world_obj" too, of course.
+In other words, as soon as you take as a reference a real-world thing, you have to use a simu_real_world_obj. It is true for the pure "model_real_world_obj" too, of course.
 
 What does 'class_for' mean?
 
@@ -97,15 +97,15 @@ A great use case of the simu_comp_worker can be to put the code for display on s
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
 When we talk about a computer worker, we talk about a worker who is just able to obey, and do the job we've entrusted to it. We are not talking about an AI worker, who could take initiatives and have creativity.
 
-### What is a "real_world_obj"?
+### What is a "model_real_world_obj"?
 
-A real-world object(real_world_obj in simol) is easy to perceive. It's really like an entity in oop. It could be compared too to a DTO, Data Transfert Object.  In other words, it's an object without methods, used only to modelize an equivalent real-world object.
-We often use real_world_obj for databases, to get our datas into java objects. Let's take an example, a Client object, with only attributes and getters/setters and constructors, should be placed in a real_world_obj class.
+A model of real-world object(model_real_world_obj) is easy to perceive. It's really like an entity in oop. It could be compared too to a DTO, Data Transfert Object.  In other words, it's an object without methods, used only to modelize an equivalent real-world object.
+We often use model_real_world_obj for databases, to get our datas into java objects. Let's take an example, a Client object, with only attributes and getters/setters and constructors, should be placed in a model_real_world_obj class.
 We know that the object wouldn't evolve by adding methods, otherwise a simu_real_world_obj is required. The nature of these objects are only to modelize the relative real-world object and his datas.
-As for its equivalent with methods, the real_world_obj is free to represent any notion of the real-world, including abstract concepts. We are free to create an "Idea" real_world_obj, if we want!
+As for its equivalent with methods, the model_real_world_obj is free to represent any notion of the real-world, including abstract concepts. We are free to create an "Idea" model_real_world_obj, if we want!
 
 ```java
-public real_world_obj Client {
+public model_real_world_obj Client {
 	public int age; //Not a good idea, it would be better the date of birth!
 	public String firstName;
 	public String familyName;
@@ -117,7 +117,7 @@ public real_world_obj Client {
 In Java:
 
 ```java
-@Real_world_obj
+@Model_real_world_obj
 public class Client {
 	public int age; //Not a good idea, it would be better the date of birth!
 	public String firstName;
@@ -131,8 +131,8 @@ public class Client {
 
 The second kind of class without methods, is the Information, or @Information in the framework. It's the same thing as a data structure in C, approximately. The nuance with a C struct, is that for us, it's an element of datas for an algorithm.
 So we call it an "information", because it suits with our "computer worker" vision. So as soon as we need a set of informations, which does not represent the real-world, but only for assemble some variables, we have to use it.
-Classically, it should be used rather by a simu_comp_worker, it is quite made for him. And you know, an "Information" is obviously allowed to contain (simu_)real_world_obj, if it stays just a set of variables, for example a Connection object, and so on.
-An Information could be used, for example, to return many different objects, but perhaps we'd rather create an Response object instead!
+Classically, it should be used rather by a simu_comp_worker, it is quite made for him. And you know, an "Information" is obviously allowed to be contained by a simu_real_world_obj too, but it should be rare.
+An Information could be used, for example, in a simu_comp_worker, to return many different objects, but perhaps we'd rather create an Response object instead!
 "Information" should be rarely used, except perhaps some kind of programs, like system programming.
 
 ```java

@@ -13,9 +13,9 @@ enum Role /* since PHP 8.1 */
 };
 
 /**
- * Simol framework for PHP 8. v1.2.
+ * Simol framework for PHP 8. v1.3.
  * 
- * Minor corrections.
+ * 20240223 Real_world_obj becomes Model_real_world_obj
  * 
  * About Simol PHP framework:
  * 

@@ -7,7 +7,7 @@ import java.util.Random;
 
 import org.simol.simolframework.java.Long_action;
 import org.simol.simolframework.java.Prevent_missing_collision;
-import org.simol.simolframework.java.Real_world_obj;
+import org.simol.simolframework.java.Model_real_world_obj;
 import org.simol.simolframework.java.Simu_real_world_obj;
 import org.simol.simolframework.java.Underst;
 
@@ -45,7 +45,7 @@ public class Snake  {
 	}
 	
 	// public real_world_obj SnakeLink
-	@Real_world_obj
+	@Model_real_world_obj
 	public static class SnakeLink {
 		public int x;
 		public int y;

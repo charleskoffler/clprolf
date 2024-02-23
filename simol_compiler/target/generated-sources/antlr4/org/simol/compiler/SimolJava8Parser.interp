@@ -53,7 +53,7 @@ null
 'class_for'
 'simu_real_world_obj'
 'simu_comp_worker'
-'real_world_obj'
+'model_real_world_obj'
 'information'
 'nature'
 'contracts'
@@ -180,7 +180,7 @@ WHILE
 CLASS_FOR
 SIMU_REAL_WORLD_OBJ
 SIMU_COMP_WORKER
-REAL_WORLD_OBJ
+MODEL_REAL_WORLD_OBJ
 INFORMATION
 NATURE
 CONTRACTS

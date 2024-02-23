@@ -17,26 +17,27 @@ public class SimolJava8Parser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		CONTRACTS=57, THROW=44, STATIC=38, INTERFACE=28, AND_ASSIGN=112, BREAK=4, 
-		BYTE=5, ELSE=15, IF=22, ENUM=16, SUB=99, BANG=86, LPAREN=74, DOT=82, CASE=6, 
-		AT=120, LINE_COMMENT=124, StringLiteral=72, ELLIPSIS=121, LBRACK=78, PUBLIC=35, 
-		THROWS=45, NullLiteral=73, RSHIFT_ASSIGN=117, COMPAT_INTERF_VERSION=58, 
-		LBRACE=76, GOTO=23, SUB_ASSIGN=109, SEMI=80, CHAR=8, COLONCOLON=107, ASSIGN=83, 
-		COMMENT=123, IMPORT=25, ARROW=106, BITOR=103, CATCH=7, MUL_ASSIGN=110, 
-		LONG_ACTION=62, DOUBLE=14, PROTECTED=34, LONG=29, COMMA=81, BITAND=102, 
-		TOUR_MONITOR=65, PREVENT_MISSING_COLLISION=63, PRIVATE=33, CONTINUE=11, 
-		DIV=101, NATURE=56, UNDERST=61, SIMU_REAL_WORLD_OBJ=52, FloatingPointLiteral=69, 
-		LE=91, FOR_EVERY_THREAD=66, CharacterLiteral=71, VOLATILE=49, EXTENDS=17, 
-		INSTANCEOF=26, NEW=31, ADD=98, LT=85, CLASS=9, DO=13, FINALLY=19, Identifier=119, 
-		CONST=10, PACKAGE=32, OR_ASSIGN=113, TRY=47, REAL_WORLD_OBJ=54, IntegerLiteral=68, 
-		SYNCHRONIZED=42, MUL=100, INFORMATION=55, FOR=21, FINAL=18, ONE_AT_A_TIME=64, 
-		RPAREN=75, CARET=104, URSHIFT_ASSIGN=118, BOOLEAN=3, WITH_COMPAT=60, NOTEQUAL=93, 
-		SIMU_COMP_WORKER=53, RBRACK=79, RBRACE=77, AND=94, THIS=43, SWITCH=41, 
-		VOID=48, TRANSIENT=46, INC=96, FLOAT=20, NATIVE=30, DIV_ASSIGN=111, BooleanLiteral=70, 
-		DEPENDENT_ACTIVITY=67, ABSTRACT=1, STRICTFP=39, INT=27, QUESTION=88, RETURN=36, 
-		CLASS_FOR=51, LSHIFT_ASSIGN=116, ADD_ASSIGN=108, WS=122, GE=92, SUPER=40, 
-		OR=95, DEC=97, MOD=105, XOR_ASSIGN=114, ASSERT=2, EQUAL=90, IMPLEMENTS=24, 
-		COLON=89, GT=84, SHORT=37, COMPAT_INTERF_CAPACITY=59, MOD_ASSIGN=115, 
-		WHILE=50, TILDE=87, DEFAULT=12;
+		BYTE=5, ELSE=15, IF=22, ENUM=16, SUB=99, MODEL_REAL_WORLD_OBJ=54, BANG=86, 
+		LPAREN=74, DOT=82, CASE=6, AT=120, LINE_COMMENT=124, StringLiteral=72, 
+		ELLIPSIS=121, LBRACK=78, PUBLIC=35, THROWS=45, NullLiteral=73, RSHIFT_ASSIGN=117, 
+		COMPAT_INTERF_VERSION=58, LBRACE=76, GOTO=23, SUB_ASSIGN=109, SEMI=80, 
+		CHAR=8, COLONCOLON=107, ASSIGN=83, COMMENT=123, IMPORT=25, ARROW=106, 
+		BITOR=103, CATCH=7, MUL_ASSIGN=110, LONG_ACTION=62, DOUBLE=14, PROTECTED=34, 
+		LONG=29, COMMA=81, BITAND=102, TOUR_MONITOR=65, PREVENT_MISSING_COLLISION=63, 
+		PRIVATE=33, CONTINUE=11, DIV=101, NATURE=56, UNDERST=61, SIMU_REAL_WORLD_OBJ=52, 
+		FloatingPointLiteral=69, LE=91, FOR_EVERY_THREAD=66, CharacterLiteral=71, 
+		VOLATILE=49, EXTENDS=17, INSTANCEOF=26, NEW=31, ADD=98, LT=85, CLASS=9, 
+		DO=13, FINALLY=19, Identifier=119, CONST=10, PACKAGE=32, OR_ASSIGN=113, 
+		TRY=47, IntegerLiteral=68, SYNCHRONIZED=42, MUL=100, INFORMATION=55, FOR=21, 
+		FINAL=18, ONE_AT_A_TIME=64, RPAREN=75, CARET=104, URSHIFT_ASSIGN=118, 
+		BOOLEAN=3, WITH_COMPAT=60, NOTEQUAL=93, SIMU_COMP_WORKER=53, RBRACK=79, 
+		RBRACE=77, AND=94, THIS=43, SWITCH=41, VOID=48, TRANSIENT=46, INC=96, 
+		FLOAT=20, NATIVE=30, DIV_ASSIGN=111, BooleanLiteral=70, DEPENDENT_ACTIVITY=67, 
+		ABSTRACT=1, STRICTFP=39, INT=27, QUESTION=88, RETURN=36, CLASS_FOR=51, 
+		LSHIFT_ASSIGN=116, ADD_ASSIGN=108, WS=122, GE=92, SUPER=40, OR=95, DEC=97, 
+		MOD=105, XOR_ASSIGN=114, ASSERT=2, EQUAL=90, IMPLEMENTS=24, COLON=89, 
+		GT=84, SHORT=37, COMPAT_INTERF_CAPACITY=59, MOD_ASSIGN=115, WHILE=50, 
+		TILDE=87, DEFAULT=12;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'abstract'", "'assert'", "'boolean'", "'break'", "'byte'", 
 		"'case'", "'catch'", "'char'", "'class'", "'const'", "'continue'", "'default'", 
@@ -46,17 +47,18 @@ public class SimolJava8Parser extends Parser {
 		"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
 		"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
 		"'transient'", "'try'", "'void'", "'volatile'", "'while'", "'class_for'", 
-		"'simu_real_world_obj'", "'simu_comp_worker'", "'real_world_obj'", "'information'", 
-		"'nature'", "'contracts'", "'compat_interf_version'", "'compat_interf_capacity'", 
-		"'with_compat'", "'underst'", "'long_action'", "'prevent_missing_collision'", 
-		"'one_at_a_time'", "'tour_monitor'", "'for_every_thread'", "'dependent_activity'", 
-		"IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", 
-		"StringLiteral", "'null'", "'('", "')'", "'{'", "'}'", "'['", "']'", "';'", 
-		"','", "'.'", "'='", "'>'", "'<'", "'!'", "'~'", "'?'", "':'", "'=='", 
-		"'<='", "'>='", "'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", "'-'", 
-		"'*'", "'/'", "'&'", "'|'", "'^'", "'%'", "'->'", "'::'", "'+='", "'-='", 
-		"'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='", "'>>='", "'>>>='", 
-		"Identifier", "'@'", "'...'", "WS", "COMMENT", "LINE_COMMENT"
+		"'simu_real_world_obj'", "'simu_comp_worker'", "'model_real_world_obj'", 
+		"'information'", "'nature'", "'contracts'", "'compat_interf_version'", 
+		"'compat_interf_capacity'", "'with_compat'", "'underst'", "'long_action'", 
+		"'prevent_missing_collision'", "'one_at_a_time'", "'tour_monitor'", "'for_every_thread'", 
+		"'dependent_activity'", "IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", 
+		"CharacterLiteral", "StringLiteral", "'null'", "'('", "')'", "'{'", "'}'", 
+		"'['", "']'", "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", "'~'", 
+		"'?'", "':'", "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", "'++'", 
+		"'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", "'->'", 
+		"'::'", "'+='", "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", 
+		"'<<='", "'>>='", "'>>>='", "Identifier", "'@'", "'...'", "WS", "COMMENT", 
+		"LINE_COMMENT"
 	};
 	public static final int
 		RULE_literal = 0, RULE_primitiveType = 1, RULE_numericType = 2, RULE_integralType = 3, 
@@ -2124,7 +2126,7 @@ public class SimolJava8Parser extends Parser {
 			setState(729);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ENUM) | (1L << FINAL) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << STRICTFP) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || _la==SEMI || _la==AT) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ENUM) | (1L << FINAL) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << STRICTFP) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || _la==SEMI || _la==AT) {
 				{
 				{
 				setState(726); typeDeclaration();
@@ -2724,7 +2726,7 @@ public class SimolJava8Parser extends Parser {
 			{
 			setState(807);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -3090,7 +3092,7 @@ public class SimolJava8Parser extends Parser {
 			setState(849);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << NATIVE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOID) | (1L << VOLATILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY) | (1L << WITH_COMPAT) | (1L << UNDERST) | (1L << LONG_ACTION) | (1L << PREVENT_MISSING_COLLISION))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ONE_AT_A_TIME - 64)) | (1L << (TOUR_MONITOR - 64)) | (1L << (FOR_EVERY_THREAD - 64)) | (1L << (DEPENDENT_ACTIVITY - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (Identifier - 64)) | (1L << (AT - 64)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << NATIVE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOID) | (1L << VOLATILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY) | (1L << WITH_COMPAT) | (1L << UNDERST) | (1L << LONG_ACTION) | (1L << PREVENT_MISSING_COLLISION))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ONE_AT_A_TIME - 64)) | (1L << (TOUR_MONITOR - 64)) | (1L << (FOR_EVERY_THREAD - 64)) | (1L << (DEPENDENT_ACTIVITY - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (Identifier - 64)) | (1L << (AT - 64)))) != 0)) {
 				{
 				{
 				setState(846); classBodyDeclaration();
@@ -5751,7 +5753,7 @@ public class SimolJava8Parser extends Parser {
 			}
 			setState(1176);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0)) {
 				{
 				setState(1175); blockStatements();
 				}
@@ -6276,7 +6278,7 @@ public class SimolJava8Parser extends Parser {
 			setState(1284);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << NATIVE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOID) | (1L << VOLATILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY) | (1L << WITH_COMPAT) | (1L << UNDERST) | (1L << LONG_ACTION) | (1L << PREVENT_MISSING_COLLISION))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ONE_AT_A_TIME - 64)) | (1L << (TOUR_MONITOR - 64)) | (1L << (FOR_EVERY_THREAD - 64)) | (1L << (DEPENDENT_ACTIVITY - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (Identifier - 64)) | (1L << (AT - 64)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << NATIVE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOID) | (1L << VOLATILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY) | (1L << WITH_COMPAT) | (1L << UNDERST) | (1L << LONG_ACTION) | (1L << PREVENT_MISSING_COLLISION))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ONE_AT_A_TIME - 64)) | (1L << (TOUR_MONITOR - 64)) | (1L << (FOR_EVERY_THREAD - 64)) | (1L << (DEPENDENT_ACTIVITY - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (Identifier - 64)) | (1L << (AT - 64)))) != 0)) {
 				{
 				{
 				setState(1281); classBodyDeclaration();
@@ -6630,7 +6632,7 @@ public class SimolJava8Parser extends Parser {
 			setState(1325);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DEFAULT) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << VOID) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || ((((_la - 80)) & ~0x3f) == 0 && ((1L << (_la - 80)) & ((1L << (SEMI - 80)) | (1L << (LT - 80)) | (1L << (Identifier - 80)) | (1L << (AT - 80)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DEFAULT) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << VOID) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || ((((_la - 80)) & ~0x3f) == 0 && ((1L << (_la - 80)) & ((1L << (SEMI - 80)) | (1L << (LT - 80)) | (1L << (Identifier - 80)) | (1L << (AT - 80)))) != 0)) {
 				{
 				{
 				setState(1322); interfaceMemberDeclaration();
@@ -7089,7 +7091,7 @@ public class SimolJava8Parser extends Parser {
 			setState(1385);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || ((((_la - 80)) & ~0x3f) == 0 && ((1L << (_la - 80)) & ((1L << (SEMI - 80)) | (1L << (Identifier - 80)) | (1L << (AT - 80)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BYTE) | (1L << CHAR) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << LONG) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << COMPAT_INTERF_VERSION) | (1L << COMPAT_INTERF_CAPACITY))) != 0) || ((((_la - 80)) & ~0x3f) == 0 && ((1L << (_la - 80)) & ((1L << (SEMI - 80)) | (1L << (Identifier - 80)) | (1L << (AT - 80)))) != 0)) {
 				{
 				{
 				setState(1382); annotationTypeMemberDeclaration();
@@ -7982,7 +7984,7 @@ public class SimolJava8Parser extends Parser {
 			setState(1496); match(LBRACE);
 			setState(1498);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0)) {
 				{
 				setState(1497); blockStatements();
 				}
@@ -8042,7 +8044,7 @@ public class SimolJava8Parser extends Parser {
 				setState(1505); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << CLASS_FOR) | (1L << SIMU_REAL_WORLD_OBJ) | (1L << SIMU_COMP_WORKER) | (1L << MODEL_REAL_WORLD_OBJ) | (1L << INFORMATION) | (1L << WITH_COMPAT))) != 0) || ((((_la - 68)) & ~0x3f) == 0 && ((1L << (_la - 68)) & ((1L << (IntegerLiteral - 68)) | (1L << (FloatingPointLiteral - 68)) | (1L << (BooleanLiteral - 68)) | (1L << (CharacterLiteral - 68)) | (1L << (StringLiteral - 68)) | (1L << (NullLiteral - 68)) | (1L << (LPAREN - 68)) | (1L << (LBRACE - 68)) | (1L << (SEMI - 68)) | (1L << (INC - 68)) | (1L << (DEC - 68)) | (1L << (Identifier - 68)) | (1L << (AT - 68)))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {

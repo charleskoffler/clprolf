@@ -15,6 +15,7 @@ History of the versions of the simol java framework
 1.3 20240108 	Added @Forced_inh and @Forced_int_inh
 1.4 20240111	Simol framework for beginners
 1.5 20240206	Added @Dependent_activity
+1.6 20240223	Real_world_obj becomes Model_real_world_obj
 
 History of the versions of the simol C# framework
 
@@ -25,9 +26,11 @@ History of the versions of the simol C# framework
 1.4 20240113 Corrections on class and files names. Beginners package in a directory.
 1.5 20240113 Minor correction
 1.6 20240206	Added @Dependent_activity. Minor corrections.
+1.7 20240223	Real_world_obj becomes Model_real_world_obj
 
 History of the versions of the simol PHP 8 framework
 
 1.0	20240113
 1.1 20240113 Minor corrections
 1.2 20240207 Minor corrections
+1.3 20240223Real_world_obj becomes Model_real_world_obj

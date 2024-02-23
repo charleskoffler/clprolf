@@ -9,6 +9,7 @@ ELSE=15
 IF=22
 ENUM=16
 SUB=99
+MODEL_REAL_WORLD_OBJ=54
 BANG=86
 LPAREN=74
 DOT=82
@@ -68,7 +69,6 @@ CONST=10
 PACKAGE=32
 OR_ASSIGN=113
 TRY=47
-REAL_WORLD_OBJ=54
 IntegerLiteral=68
 SYNCHRONIZED=42
 MUL=100
@@ -185,6 +185,7 @@ DEFAULT=12
 '+='=108
 'simu_real_world_obj'=52
 ')'=75
+'model_real_world_obj'=54
 '!'=86
 'public'=35
 '|'=103
@@ -231,7 +232,6 @@ DEFAULT=12
 '^='=114
 'while'=50
 '!='=93
-'real_world_obj'=54
 'char'=8
 'finally'=19
 'interface'=28
