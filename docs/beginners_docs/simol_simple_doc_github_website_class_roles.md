@@ -134,9 +134,10 @@ So we call it an "information", because it suits with our "computer worker" visi
 Classically, it should be used rather by a simu_comp_worker, it is quite made for him. And you know, an "Information" is obviously allowed to be contained by a simu_real_world_obj too, but it should be rare.
 An Information could be used, for example, in a simu_comp_worker, to return many different objects, but perhaps we'd rather create an Response object instead!
 "Information" should be rarely used, except perhaps some kind of programs, like system programming.
+You know, by the way, that you can, in an "Information" class, have attributes that can be simu_real_world_obj objects, or what you want. 
 
 ```java
-public information myInformation {
+public class_for information myInformation {
 	Socket theConnection; //A simu_real_world_obj, it is allowed.
 	int myMysteriousNumberForMyWorker;
 }
@@ -259,7 +260,33 @@ public simu_real_world_obj WeatherForecastController {
 In the framework:
 
 ```java
-@Simu_real_world_obj(Role.HUMAN_EXPERT)
+@Simu_real_world_obj(Role.DESIGN_ROLE)
+public class WeatherForecastController {
+
+	public void getForecasts() { //This time, the controller is doing his job!
+	}
+
+}
+
+```
+
+There is another interesting role, @Expert_component(or Role.EXPERT_COMPONENT), that can always replace, if we prefer, the @Human_expert role. It's a kind of design role, where we call the class a component, so it's a true design role. But this component is an expert in a job, defined in a quite general way. And it keeps a simulation because it's an ideal role.
+
+```java
+@Expert_component
+public simu_real_world_obj WeatherForecastController {
+
+	public void getForecasts() { //This time, the controller is doing his job!
+	}
+
+}
+
+```
+
+In the framework:
+
+```java
+@Simu_real_world_obj(Role.EXPERT_COMPONENT)
 public class WeatherForecastController {
 
 	public void getForecasts() { //This time, the controller is doing his job!

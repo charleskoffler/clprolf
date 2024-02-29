@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 1.6 20240223 Real_world_obj becomes Model_real_world_obj
+ * 1.7 20240229 Added EXPERT_COMPONENT role of @Simu_real_world_obj. 
  * @author Charles Koffler
  *
  */

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.7, 20240223.
+ * Simol C# Framework, v1.8, 20240229.
  * 
- * 1.7 20240223 Real_world_obj becomes Model_real_world_obj
+ * Added EXPERT_COMPONENT role of @Simu_real_world_obj. 
  * 
  * 
  * Limitations of C# framework for simol:
@@ -20,8 +20,9 @@ namespace Org.Simol.Framework.Csharp
     public enum Role
     {
         DESIGN_ROLE,
-        GUI_ROLE,
         HUMAN_EXPERT,
+        EXPERT_COMPONENT,
+        GUI_ROLE,
         MACHINE_TOOL,
         UNDEFINED
     };

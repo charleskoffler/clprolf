@@ -7,8 +7,9 @@ package org.simol.simolframework.java;
  */
 public enum Role {
 	DESIGN_ROLE,
-	GUI_ROLE,
 	HUMAN_EXPERT,
+	EXPERT_COMPONENT,
+	GUI_ROLE,
 	MACHINE_TOOL,
 	UNDEFINED
 }

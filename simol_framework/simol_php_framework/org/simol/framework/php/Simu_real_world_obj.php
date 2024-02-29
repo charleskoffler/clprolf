@@ -6,16 +6,17 @@ use \Attribute;
 enum Role /* since PHP 8.1 */
 {
     case DESIGN_ROLE;
-    case GUI_ROLE;
     case HUMAN_EXPERT;
+    case EXPERT_COMPONENT;
+    case GUI_ROLE;
     case MACHINE_TOOL;
     case UNDEFINED;
 };
 
 /**
- * Simol framework for PHP 8. v1.3.
+ * Simol framework for PHP 8. v1.4(20240229).
  * 
- * 20240223 Real_world_obj becomes Model_real_world_obj
+ * Added EXPERT_COMPONENT role of #[Simu_real_world_obj]. 
  * 
  * About Simol PHP framework:
  * 
