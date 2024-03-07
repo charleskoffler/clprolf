@@ -2,7 +2,7 @@
 
 ## What is an AI tool?
 
-Artifical Intelligence means simulated intelligence. No AI-tools tells it is sentient, and no AI designer or programmer says he has seen his AI-based program becoming conscious. This would be a true intelligence. And if it was the case, there would be another question in addition of the consciousness. Would the AI software execute more than his algorithms are made for? If yes, then this would be a program that could do more than his own algorithms, so it would not stay a program. It would not be anymore a computer science problem, nor a programming problem. So we interests us here is AI is the sense of Simulated Intelligence.
+Artifical Intelligence means simulated intelligence. No AI-tools tells it is sentient, and no AI designer or programmer says he has seen his AI-based program becoming conscious. This would be a true intelligence. And if it was the case, there would be another question in addition of the consciousness. Would the AI software execute more than his algorithms are made for? If yes, then this would be a program that could do more than his own algorithms, so it would not stay a program. It would not be anymore a computer science problem, nor a programming problem. So we interests us here in AI in the sense of Simulated Intelligence.
 
 ## Would simol be interesting in writing AI tools?
 

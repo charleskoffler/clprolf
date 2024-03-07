@@ -6,7 +6,7 @@ Simol introduces a new way of thinking, about object-oriented. But it is not cra
 
 ## The classes
 
-First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the real-world objects, and the information objects. Let's talk about them later.
+First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the models of real-world objects, and the information objects. Let's talk about them later.
 In object-oriented programming, we have to create objects. A difficulty is to choose the objects to create. In simol, we create either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
 
 What is a simulation of a real-world object?
