@@ -1,4 +1,4 @@
-#Simol PROGRAMMING LANGUAGE
+# Simol PROGRAMMING LANGUAGE
 
 Simol is a new programming language, that has been made for simplify object oriented programming. It is a superset of java.
 
