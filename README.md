@@ -10,6 +10,8 @@ The annotation frameworks enables to use simol inside Java, C#, or PHP.
 
 [Whole directory](https://github.com/charleskoffler/simol-language/tree/main/docs/beginners_docs)
 
+[Getting started in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/beginners_docs/simol_simple_doc_github_website_getting_started.md)
+
 [Hello world example](https://github.com/charleskoffler/simol-language/tree/main/docs/beginners_docs/simol_simple_doc_github_website_hello_world.md)
 
 [The class roles](https://github.com/charleskoffler/simol-language/tree/main/docs/beginners_docs/simol_simple_doc_github_website_class_roles.md)
