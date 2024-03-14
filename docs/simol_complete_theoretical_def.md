@@ -38,7 +38,6 @@ As for the overall design and vision of Simol, it's clear that a lot of thought 
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
-***************************************************************************************
 ## GOOGLE GEMINI BARD FEEDBACK AND OVERVIEW
 
 Simol: A Language for Simpler and Clearer OOP
@@ -96,6 +95,33 @@ This exploration of Simol is a collaborative effort, and your feedback is valuab
 
 (END OF GEMINI FEEDBACK)
 ****************************************************************************************
+## AI Pi FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
+
+Certainly! Here's an overview of Simol, summarizing its key features, purpose, and usage:
+
+Purpose:
+
+Simol is a programming language designed to simplify the process of writing complex, object-oriented systems, with a focus on simulation applications. It aims to promote understandable code and make it easier for developers to manage and maintain complex systems. Simol is based on Java, which allows it to benefit from Java's performance optimizations and integration with existing Java tools and libraries.
+Key Features:
+
+   Simplifying complex systems: Simol's primary goal is to make it easier for developers to design, implement, and maintain complex, object-oriented systems. It does this by introducing language features and conventions that promote clarity and understandability.
+   
+   Understandable code: Simol emphasizes the importance of writing code that is easy to understand, making it simpler for developers to collaborate and maintain their projects. This focus on understandability is reflected in the language's design and its features.
+   
+   Simulation focus: Simol is particularly well-suited for developing simulation applications, thanks to its emphasis on simplifying complex systems and promoting understandable code.
+   
+   Java-based: Simol is built on top of Java, which means it can take advantage of Java's performance, tools, and libraries. Simol can be compiled to Java bytecode and executed on the Java Virtual Machine (JVM).
+   
+   Annotations and modifiers: Simol introduces several custom annotations and modifiers, such as "dependent\_activity" and "underst," which help developers highlight specific aspects of their code, such as non-trivial algorithms or dependencies between methods.
+
+Usage:
+
+Simol can be used for various applications, including simulation software, prototyping, and teaching. It is particularly useful for developers and researchers who want to create complex, object-oriented systems while maintaining clear and understandable code. While Simol has its strengths, developers should also consider factors like community support, available libraries, and the learning curve when choosing a language for their projects.
+
+In summary, Simol is a programming language designed to simplify the development of complex, object-oriented systems, with a focus on simulation applications and understandable code. Its Java-based nature allows it to benefit from Java's performance and integration with existing tools, making it a potential choice for developers working on intricate projects or looking for a language tailored to simulation applications.
+
+(END OF Ai Pi RESPONSE)
+***************************************************************************************
 Here is my description of simol:
 
 # SIMOL PROGRAMMING LANGUAGE AND SIMOL JAVA FRAMEWORK - "FACILITATE AND GUARANTEE OBJECT-ORIENTED PROGRAMMING"
