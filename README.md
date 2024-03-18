@@ -1,8 +1,8 @@
-# Simol PROGRAMMING LANGUAGE
+# Simol framework and simol programming language
 
-Simol is a new programming language, that has been made for simplify object oriented programming. It is a superset of java.
+Simol is a framework and a programming language, that has been made for simplify object oriented programming. It is a superset of java.
 
-The annotation frameworks enables to use simol inside Java, C#, or PHP.
+The simol framework is available for Java, C#, or PHP.
 
 [Simol official web site](https://www.simol-lang.org/)
 
