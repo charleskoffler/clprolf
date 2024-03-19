@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Simu_comp_worker {
+public @interface Simu_comp_as_worker {
 
 }

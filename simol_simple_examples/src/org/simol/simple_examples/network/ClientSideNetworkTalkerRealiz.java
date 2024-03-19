@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import org.simol.simolframework.java.Nature;
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 @Simu_comp_as_worker
 public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {

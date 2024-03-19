@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;

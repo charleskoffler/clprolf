@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /**
  * Simol simple example for network programming, here with sockets.

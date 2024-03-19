@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simolframework.java.With_compat;
 
 // A simu_comp_as_worker is exactly what we need here, and it's so close to the DAO pattern!

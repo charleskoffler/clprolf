@@ -1,6 +1,6 @@
 package simol.simple_examples.hello_world.first_way;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /* The simple way to do this! */
 //Launch an application is a computer worker job!

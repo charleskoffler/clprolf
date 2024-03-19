@@ -4,7 +4,7 @@ package org.simol.snake_game;
 import java.awt.EventQueue;
 
 import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 // A class for the technical realization of the life scene simu_real_world_obj. Typically it is used for display and sound
 //effects. It can be compared to a view. Other simu_comp_as_worker can be used for other technical needs, as DAO.

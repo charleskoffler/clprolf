@@ -1,6 +1,6 @@
 package simol.simple_examples.dog;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /*
  * A first simple example of simol. It's simulate a dog, using a simu_real_world_obj class

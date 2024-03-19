@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.di;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simolframework.java.With_compat;
 
 //public simu_comp_as_worker Main

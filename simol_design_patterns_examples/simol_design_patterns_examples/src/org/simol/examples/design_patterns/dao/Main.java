@@ -2,7 +2,7 @@ package org.simol.examples.design_patterns.dao;
 
 import java.util.List;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simolframework.java.With_compat;
 
 /* 20231003 An example of DAO design pattern in simol. */

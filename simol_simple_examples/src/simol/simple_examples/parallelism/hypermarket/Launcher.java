@@ -1,7 +1,7 @@
 package simol.simple_examples.parallelism.hypermarket;
 
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /* An example for parallelism, @One_at_a_time, @Turn_monitor, @For_every_thread
  * v1.0		20240203

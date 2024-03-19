@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.di;
 
 import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 //Concrete implementation of the MessageService interface
 //public simu_comp_as_worker EmailService contracts MessageService {

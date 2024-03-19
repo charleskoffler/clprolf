@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.mvc;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 
 /* 2023/10/23 A simol example of MVC design pattern implementation, from a MVC example in the text file. */

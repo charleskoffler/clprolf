@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simple_examples.network.NetworkTalker.MSG_DIRECTION;
 import org.simol.simple_examples.network.NetworkTalker.Message;
 

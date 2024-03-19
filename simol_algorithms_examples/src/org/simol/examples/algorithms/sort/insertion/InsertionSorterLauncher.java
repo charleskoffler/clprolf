@@ -1,6 +1,6 @@
 package org.simol.examples.algorithms.sort.insertion;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 @Simu_comp_as_worker
 public class InsertionSorterLauncher {

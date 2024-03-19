@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.decorator;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simolframework.java.With_compat;
 
 //2023/10/02 Example of CoffeShopMaker in simol. I started from the java example in the text file

@@ -1,7 +1,7 @@
 package org.simol.examples.design_patterns.adapter;
 
 import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 //Adapter class of the design pattern, that adapts OldSystem to NewSystem interface
 //public simu_comp_as_worker NewSystemFromOld contracts NewSystem

@@ -3,7 +3,7 @@ package org.simol.simple_examples.network;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /**
  * The client application. They are talking together, in the two directions.

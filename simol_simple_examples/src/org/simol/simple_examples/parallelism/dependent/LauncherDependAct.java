@@ -1,6 +1,6 @@
 package org.simol.simple_examples.parallelism.dependent;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /* An example of simol dependent activities (@Dependent_activity).
  * Example of a producer/consumer, with a mail box.

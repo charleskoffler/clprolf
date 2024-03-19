@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 1.8 20240319 Simu_comp_worker renamed to Simu_comp_as_worker. 
+ * 1.8 20240319 Simu_comp_as_worker renamed to Simu_comp_as_worker. 
  * @author Charles Koffler
  *
  */

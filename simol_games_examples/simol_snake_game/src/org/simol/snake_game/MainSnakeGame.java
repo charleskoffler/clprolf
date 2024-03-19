@@ -1,6 +1,6 @@
 package org.simol.snake_game;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 /**
  * It's a simple 2D snake game, with two players and two snakes.

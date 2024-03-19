@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.bridge;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 import org.simol.simolframework.java.With_compat;
 
 /* Example of simol bridge from java bridge pattern example. Illustrates a case where a compat_interf_version

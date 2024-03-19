@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.adapter;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 //public simu_comp_as_worker OldSystem
 //Existing class

@@ -1,6 +1,6 @@
 package simol.simple_examples.hello_world.third_way;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 //Another way to do an hello 
 

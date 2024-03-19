@@ -1,6 +1,6 @@
 package org.simol.examples.design_patterns.mvc;
 
-import org.simol.simolframework.java.Simu_comp_worker;
+import org.simol.simolframework.java.Simu_comp_as_worker;
 
 //Model: WeatherModel stores the weather data
 //A computer job for dealing with databases, and so on.
