@@ -5,7 +5,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
 //An elegant way to do this.
 
 //Launch an application is a computer worker job!
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class HelloMain {
 	
 	public static void main(String[] args){

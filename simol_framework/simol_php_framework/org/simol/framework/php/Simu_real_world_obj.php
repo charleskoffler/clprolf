@@ -14,9 +14,9 @@ enum Role /* since PHP 8.1 */
 };
 
 /**
- * Simol framework for PHP 8. v1.4(20240229).
+ * Simol framework for PHP 8. v1.5(20240319).
  * 
- * Added EXPERT_COMPONENT role of #[Simu_real_world_obj]. 
+ * Renamed Simu_comp_worker to Simu_comp_as_worker. 
  * 
  * About Simol PHP framework:
  * 

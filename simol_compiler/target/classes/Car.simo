@@ -1,4 +1,4 @@
-public class_for simu_real_world_obj Car nature Vehicule contracts VehiculeAble {
+public simu_real_world_obj Car nature Vehicule contracts VehiculeAble {
 	int age;
 	int test;
 	with_compat Comparable theValue;

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.8, 20240229.
+ * Simol C# Framework, v1.9, 20240319.
  * 
- * Added EXPERT_COMPONENT role of @Simu_real_world_obj. 
+ * Renamed Simu_comp_worker to Simu_comp_as_worker.
  * 
  * 
  * Limitations of C# framework for simol:

@@ -65,7 +65,7 @@ Why do we call it a worker? Because, to simplify our problem, we want to see it 
 So to mimic a real worker, we use a human-like algorithm to describe the job. In fact, the computer is running maching code! This is why we're talking here of a simulation of a worker. Seeing the computer as a worker is frequently used, in fact, it is not so new! When we're saying a "server", it's quite like our worker. When we're saying "the computer is executing my application", it is rather the same thing.
 
 ```java
-public simu_comp_worker {
+public simu_comp_as_worker {
 
 	public static void main(String[] args) {
 		Human myHuman = new Human();
@@ -78,7 +78,7 @@ public simu_comp_worker {
 Or, in pure java:
 
 ```java
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class Launcher {
 
 	public static void main(String[] args) {
@@ -91,10 +91,10 @@ public class Launcher {
 
 In this example, we need an object to execute the application, and the simulation of a human.
 A class with a static method is quite like a singleton object, isn't it? The static attributes and methods are unique for a given class.
-So this class, in simol, in a simu_comp_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, and this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not a real-world object.
-So we will often have a simu_comp_worker as a launcher of the application.
-A great use case of the simu_comp_worker can be to put the code for display on screen, or playing animations or sounds, to realize technically a simulation of real-world object on the computer! If you have only a simu_real_world_obj, without technical reflection on screen , keyboard, music, and so on, the simulation would be only a memory simulation! So it seems great to separate this code which is frequently technical, and computer-dependent. In this kind of code, we have to know the computer libraries, for example.
-Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
+So this class, in simol, in a simu_comp_as_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, and this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not a real-world object.
+So we will often have a simu_comp_as_worker as a launcher of the application.
+A great use case of the simu_comp_as_worker can be to put the code for display on screen, or playing animations or sounds, to realize technically a simulation of real-world object on the computer! If you have only a simu_real_world_obj, without technical reflection on screen , keyboard, music, and so on, the simulation would be only a memory simulation! So it seems great to separate this code which is frequently technical, and computer-dependent. In this kind of code, we have to know the computer libraries, for example.
+Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_as_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
 When we talk about a computer worker, we talk about a worker who is just able to obey, and do the job we've entrusted to it. We are not talking about an AI worker, who could take initiatives and have creativity.
 
 ### What is a "model_real_world_obj"?
@@ -131,8 +131,8 @@ public class Client {
 
 The second kind of class without methods, is the Information, or @Information in the framework. It's the same thing as a data structure in C, approximately. The nuance with a C struct, is that for us, it's an element of datas for an algorithm.
 So we call it an "information", because it suits with our "computer worker" vision. So as soon as we need a set of informations, which does not represent the real-world, but only for assemble some variables, we have to use it.
-Classically, it should be used rather by a simu_comp_worker, it is quite made for him. And you know, an "Information" is obviously allowed to be contained by a simu_real_world_obj too, but it should be rare.
-An Information could be used, for example, in a simu_comp_worker, to return many different objects, but perhaps we'd rather create an Response object instead!
+Classically, it should be used rather by a simu_comp_as_worker, it is quite made for him. And you know, an "Information" is obviously allowed to be contained by a simu_real_world_obj too, but it should be rare.
+An Information could be used, for example, in a simu_comp_as_worker, to return many different objects, but perhaps we'd rather create an Response object instead!
 "Information" should be rarely used, except perhaps some kind of programs, like system programming.
 You know, by the way, that you can, in an "Information" class, have attributes that can be simu_real_world_obj objects, or what you want. 
 
@@ -156,7 +156,7 @@ So it is only that, simol? Is it useful that I add all that stuff to my Java cod
 Yeah, I would say you'd gain a lot. Much reasons could be given. First, it a guarantee to stay with well-designed and clear objects. Remember yourself reading the java code of something else, it's often tricky to understand what are the precise goals of a class.
 Then it allows to think to many different interpretations, and to stay compatible with much design principles, like SRP(Single Responsability Principle). The MVC is also not far.
 And we will then ensure, by compiler, that our classes are staying always great, verifying that a new inherited class, is compatible with our role. A Simu_comp_worker class can not inherit of a simu_real_world_obj, that is not possible in simol, except if you really want to do that.
-There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_worker, to stay compatible with legacy code, then you can do that.
+There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_as_worker, to stay compatible with legacy code, then you can do that.
 But it is not recommended by the language, and you have to explicitly ask it. So it is a conscious thing done, marked by the annotation.
 
 ### What is the meaning of "nature"?

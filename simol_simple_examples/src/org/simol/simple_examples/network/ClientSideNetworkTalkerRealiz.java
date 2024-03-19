@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 import org.simol.simolframework.java.Nature;
 import org.simol.simolframework.java.Simu_comp_worker;
 
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {
 
 	public ClientSideNetworkTalkerRealiz(NetworkTalker theOwner) throws UnknownHostException, IOException  {

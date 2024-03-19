@@ -30,7 +30,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
 2024/02/03 14:32:17: Hey, it's John: I'm ending the wait in the second main queue - Great, I'm going to a free checkout! 
 "
  */
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class Launcher {
 
 	public static void main(String[] args) throws InterruptedException {

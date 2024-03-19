@@ -24,20 +24,20 @@ public class SimolJava8Parser extends Parser {
 		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
 		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
 		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
-		WHILE=50, CLASS_FOR=51, SIMU_REAL_WORLD_OBJ=52, SIMU_COMP_WORKER=53, MODEL_REAL_WORLD_OBJ=54, 
-		INFORMATION=55, NATURE=56, CONTRACTS=57, COMPAT_INTERF_VERSION=58, COMPAT_INTERF_CAPACITY=59, 
-		WITH_COMPAT=60, UNDERST=61, LONG_ACTION=62, PREVENT_MISSING_COLLISION=63, 
-		ONE_AT_A_TIME=64, TOUR_MONITOR=65, FOR_EVERY_THREAD=66, DEPENDENT_ACTIVITY=67, 
-		IntegerLiteral=68, FloatingPointLiteral=69, BooleanLiteral=70, CharacterLiteral=71, 
-		StringLiteral=72, NullLiteral=73, LPAREN=74, RPAREN=75, LBRACE=76, RBRACE=77, 
-		LBRACK=78, RBRACK=79, SEMI=80, COMMA=81, DOT=82, ASSIGN=83, GT=84, LT=85, 
-		BANG=86, TILDE=87, QUESTION=88, COLON=89, EQUAL=90, LE=91, GE=92, NOTEQUAL=93, 
-		AND=94, OR=95, INC=96, DEC=97, ADD=98, SUB=99, MUL=100, DIV=101, BITAND=102, 
-		BITOR=103, CARET=104, MOD=105, ARROW=106, COLONCOLON=107, ADD_ASSIGN=108, 
-		SUB_ASSIGN=109, MUL_ASSIGN=110, DIV_ASSIGN=111, AND_ASSIGN=112, OR_ASSIGN=113, 
-		XOR_ASSIGN=114, MOD_ASSIGN=115, LSHIFT_ASSIGN=116, RSHIFT_ASSIGN=117, 
-		URSHIFT_ASSIGN=118, Identifier=119, AT=120, ELLIPSIS=121, WS=122, COMMENT=123, 
-		LINE_COMMENT=124;
+		WHILE=50, CLASS_FOR=51, SIMU_REAL_WORLD_OBJ=52, SIMU_COMP_AS_WORKER=53, 
+		MODEL_REAL_WORLD_OBJ=54, INFORMATION=55, NATURE=56, CONTRACTS=57, COMPAT_INTERF_VERSION=58, 
+		COMPAT_INTERF_CAPACITY=59, WITH_COMPAT=60, UNDERST=61, LONG_ACTION=62, 
+		PREVENT_MISSING_COLLISION=63, ONE_AT_A_TIME=64, TOUR_MONITOR=65, FOR_EVERY_THREAD=66, 
+		DEPENDENT_ACTIVITY=67, IntegerLiteral=68, FloatingPointLiteral=69, BooleanLiteral=70, 
+		CharacterLiteral=71, StringLiteral=72, NullLiteral=73, LPAREN=74, RPAREN=75, 
+		LBRACE=76, RBRACE=77, LBRACK=78, RBRACK=79, SEMI=80, COMMA=81, DOT=82, 
+		ASSIGN=83, GT=84, LT=85, BANG=86, TILDE=87, QUESTION=88, COLON=89, EQUAL=90, 
+		LE=91, GE=92, NOTEQUAL=93, AND=94, OR=95, INC=96, DEC=97, ADD=98, SUB=99, 
+		MUL=100, DIV=101, BITAND=102, BITOR=103, CARET=104, MOD=105, ARROW=106, 
+		COLONCOLON=107, ADD_ASSIGN=108, SUB_ASSIGN=109, MUL_ASSIGN=110, DIV_ASSIGN=111, 
+		AND_ASSIGN=112, OR_ASSIGN=113, XOR_ASSIGN=114, MOD_ASSIGN=115, LSHIFT_ASSIGN=116, 
+		RSHIFT_ASSIGN=117, URSHIFT_ASSIGN=118, Identifier=119, AT=120, ELLIPSIS=121, 
+		WS=122, COMMENT=123, LINE_COMMENT=124;
 	public static final int
 		RULE_literal = 0, RULE_primitiveType = 1, RULE_numericType = 2, RULE_integralType = 3, 
 		RULE_floatingPointType = 4, RULE_referenceType = 5, RULE_classOrInterfaceType = 6, 
@@ -209,7 +209,7 @@ public class SimolJava8Parser extends Parser {
 			"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
 			"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
 			"'transient'", "'try'", "'void'", "'volatile'", "'while'", "'class_for'", 
-			"'simu_real_world_obj'", "'simu_comp_worker'", "'model_real_world_obj'", 
+			"'simu_real_world_obj'", "'simu_comp_as_worker'", "'model_real_world_obj'", 
 			"'information'", "'nature'", "'contracts'", "'compat_interf_version'", 
 			"'compat_interf_capacity'", "'with_compat'", "'underst'", "'long_action'", 
 			"'prevent_missing_collision'", "'one_at_a_time'", "'tour_monitor'", "'for_every_thread'", 
@@ -231,8 +231,8 @@ public class SimolJava8Parser extends Parser {
 			"NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", 
 			"STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", 
 			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "CLASS_FOR", 
-			"SIMU_REAL_WORLD_OBJ", "SIMU_COMP_WORKER", "MODEL_REAL_WORLD_OBJ", "INFORMATION", 
-			"NATURE", "CONTRACTS", "COMPAT_INTERF_VERSION", "COMPAT_INTERF_CAPACITY", 
+			"SIMU_REAL_WORLD_OBJ", "SIMU_COMP_AS_WORKER", "MODEL_REAL_WORLD_OBJ", 
+			"INFORMATION", "NATURE", "CONTRACTS", "COMPAT_INTERF_VERSION", "COMPAT_INTERF_CAPACITY", 
 			"WITH_COMPAT", "UNDERST", "LONG_ACTION", "PREVENT_MISSING_COLLISION", 
 			"ONE_AT_A_TIME", "TOUR_MONITOR", "FOR_EVERY_THREAD", "DEPENDENT_ACTIVITY", 
 			"IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", 
@@ -3244,7 +3244,7 @@ public class SimolJava8Parser extends Parser {
 	@SuppressWarnings("CheckReturnValue")
 	public static class SimolRoleContext extends ParserRuleContext {
 		public TerminalNode SIMU_REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.SIMU_REAL_WORLD_OBJ, 0); }
-		public TerminalNode SIMU_COMP_WORKER() { return getToken(SimolJava8Parser.SIMU_COMP_WORKER, 0); }
+		public TerminalNode SIMU_COMP_AS_WORKER() { return getToken(SimolJava8Parser.SIMU_COMP_AS_WORKER, 0); }
 		public TerminalNode MODEL_REAL_WORLD_OBJ() { return getToken(SimolJava8Parser.MODEL_REAL_WORLD_OBJ, 0); }
 		public TerminalNode INFORMATION() { return getToken(SimolJava8Parser.INFORMATION, 0); }
 		public SimolRoleContext(ParserRuleContext parent, int invokingState) {

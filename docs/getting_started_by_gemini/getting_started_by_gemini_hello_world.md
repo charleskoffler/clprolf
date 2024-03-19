@@ -7,11 +7,11 @@ This section showcases two ways to write a "Hello World" program in Simol, demon
 ```java
 
 // Launch an application is a computer worker job!
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class Main {
   
   public static void main(String[] args) {
-    System.out.println("Hello world!"); // System is a simu_comp_worker, stream out is a simu_real_world_obj
+    System.out.println("Hello world!"); // System is a simu_comp_as_worker, stream out is a simu_real_world_obj
   }
 }
 ```
@@ -22,7 +22,7 @@ This example introduces two Simol classes: SimolWorld and SimolWorldTechnRealiz.
 
    SimolWorld (simu_real_world_obj): Represents the application itself.
     
-   SimolWorldTechnRealiz (simu_comp_worker): Handles the technical aspects of displaying messages, acting as the computer worker.
+   SimolWorldTechnRealiz (simu_comp_as_worker): Handles the technical aspects of displaying messages, acting as the computer worker.
 
 Simol Code:
 
@@ -40,7 +40,7 @@ public simu_real_world_obj SimolWorld {
   }
 }
 
-public simu_comp_worker SimolWorldTechnRealiz {
+public simu_comp_as_worker SimolWorldTechnRealiz {
   // The associated simu_real_world object
   private SimolWorld owner;
 
@@ -55,7 +55,7 @@ public simu_comp_worker SimolWorldTechnRealiz {
 }
 
 // Launch an application is a computer worker job!
-public simu_comp_worker HelloMain {
+public simu_comp_as_worker HelloMain {
   
   public static void main(String[] args) {
     SimolWorld world = new SimolWorld();
@@ -83,7 +83,7 @@ public class SimolWorld {
 }
 
 // Technical realization is a computer worker
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class SimolWorldTechnRealiz {
   // The associated simu_real_world object
   private SimolWorld owner;
@@ -99,7 +99,7 @@ public class SimolWorldTechnRealiz {
 }
 
 // Launch an application is a computer worker job!
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class HelloMain {
   
   public static void main(String[] args) {
@@ -115,7 +115,7 @@ This example highlights Simol's approach:
    
    Methods model object behavior.
    
-   simu_comp_worker objects handle computational tasks.
+   simu_comp_as_worker objects handle computational tasks.
    
    The System class can be seen as a worker performing the display.
 

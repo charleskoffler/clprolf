@@ -52,7 +52,7 @@ null
 'while'
 'class_for'
 'simu_real_world_obj'
-'simu_comp_worker'
+'simu_comp_as_worker'
 'model_real_world_obj'
 'information'
 'nature'
@@ -179,7 +179,7 @@ VOLATILE
 WHILE
 CLASS_FOR
 SIMU_REAL_WORLD_OBJ
-SIMU_COMP_WORKER
+SIMU_COMP_AS_WORKER
 MODEL_REAL_WORLD_OBJ
 INFORMATION
 NATURE

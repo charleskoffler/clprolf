@@ -7,7 +7,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Without it, it would be a simulation only in memory, not directly visible!
  * If things are very simple, you can do technical stuff directly in the simulation class!
  */
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class SimolWorldTechnRealiz {
 	//The associated simu_real_world object. It could be useful to have it, especially for fields.
 	private SimolWorld owner;

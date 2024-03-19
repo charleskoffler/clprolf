@@ -22,7 +22,7 @@ This explanation dives into the "@Underst" method modifier in Simol, a helpful t
 
 ## Where is "@Underst" Used?
 
-   It applies to both simu_real_world_obj (modeling real-world objects) and simu_comp_worker (computational worker) classes.
+   It applies to both simu_real_world_obj (modeling real-world objects) and simu_comp_as_worker (computational worker) classes.
    It emphasizes that the complexity lies in making the computer understand, not necessarily in the core goal itself.
 
 ## Simol Code Example:

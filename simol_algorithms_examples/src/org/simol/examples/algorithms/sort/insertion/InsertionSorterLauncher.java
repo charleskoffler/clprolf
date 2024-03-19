@@ -2,7 +2,7 @@ package org.simol.examples.algorithms.sort.insertion;
 
 import org.simol.simolframework.java.Simu_comp_worker;
 
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class InsertionSorterLauncher {
 
 	public static void main(String[] args) {

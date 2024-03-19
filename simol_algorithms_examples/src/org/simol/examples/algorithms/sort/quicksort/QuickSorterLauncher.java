@@ -2,7 +2,7 @@ package org.simol.examples.algorithms.sort.quicksort;
 
 import org.simol.simolframework.java.Simu_comp_worker;
 
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class QuickSorterLauncher {
 
 	public static void main(String[] args) {

@@ -6,7 +6,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Example of a producer/consumer, with a mail box.
  * Charles Koffler. 20240206
  */
-@Simu_comp_worker //A program for execute our tests!
+@Simu_comp_as_worker //A program for execute our tests!
 public class LauncherDependAct {
 
 	public static void main(String[] args) {

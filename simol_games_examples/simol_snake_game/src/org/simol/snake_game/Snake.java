@@ -329,7 +329,7 @@ public class Snake  {
 		
 		this.links.add(newLink);
 		//The snake make a noise while growing.
-		// This technical stuff was not placed in a simu_comp_worker, because so simple!
+		// This technical stuff was not placed in a simu_comp_as_worker, because so simple!
 		java.awt.Toolkit.getDefaultToolkit().beep();
 		
 		return true; //We achieved the snake extension

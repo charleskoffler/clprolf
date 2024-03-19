@@ -5,7 +5,7 @@ import java.util.List;
 /* 20231003 An example of DAO design pattern in simol. */
 
 //Just a simple technical Launcher, that's a good job for the computer!
-public simu_comp_worker Main {
+public simu_comp_as_worker Main {
 
 	public static void main(String[] args) {
 		//we need the memory version of the UserDao

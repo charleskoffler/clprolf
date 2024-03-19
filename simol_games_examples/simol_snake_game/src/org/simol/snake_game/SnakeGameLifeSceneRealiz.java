@@ -7,12 +7,12 @@ import org.simol.simolframework.java.Contracts;
 import org.simol.simolframework.java.Simu_comp_worker;
 
 // A class for the technical realization of the life scene simu_real_world_obj. Typically it is used for display and sound
-//effects. It can be compared to a view. Other simu_comp_worker can be used for other technical needs, as DAO.
+//effects. It can be compared to a view. Other simu_comp_as_worker can be used for other technical needs, as DAO.
 // When the technical realization on computer is very simple, there's no need of a separate class, so we can put
 // the technical code straight into the simu_real_world_obj class.
 
-/* public simu_comp_worker SnakeGameLifeSceneRealiz contracts Runnable */
-@Simu_comp_worker
+/* public simu_comp_as_worker SnakeGameLifeSceneRealiz contracts Runnable */
+@Simu_comp_as_worker
 public class SnakeGameLifeSceneRealiz implements @Contracts Runnable {
 	
 	// Accessors

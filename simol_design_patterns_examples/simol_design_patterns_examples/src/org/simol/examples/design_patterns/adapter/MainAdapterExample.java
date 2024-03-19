@@ -6,8 +6,8 @@ import org.simol.simolframework.java.With_compat;
 /* Example of adapter design pattern in simol. 2023/09/21
  * (c) Sabri Koffler MIT License */
 
-//public simu_comp_worker MainAdapterExample
-@Simu_comp_worker
+//public simu_comp_as_worker MainAdapterExample
+@Simu_comp_as_worker
 public class MainAdapterExample {
 
 	public static void main(String[] args) {

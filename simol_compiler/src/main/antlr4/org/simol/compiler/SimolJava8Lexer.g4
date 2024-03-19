@@ -111,7 +111,7 @@ WHILE : 'while';
 //simol tokens
 CLASS_FOR : 'class_for';
 SIMU_REAL_WORLD_OBJ : 'simu_real_world_obj';
-SIMU_COMP_WORKER : 'simu_comp_worker';
+SIMU_COMP_AS_WORKER : 'simu_comp_as_worker';
 MODEL_REAL_WORLD_OBJ : 'model_real_world_obj';
 INFORMATION : 'information';
 NATURE : 'nature';

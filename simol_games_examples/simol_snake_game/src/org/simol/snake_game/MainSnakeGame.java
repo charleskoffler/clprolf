@@ -23,8 +23,8 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * @author Charles Koffler for simol language GitHub Repository
  *
  */
-//public simu_comp_worker MainSnakeGame
-@Simu_comp_worker
+//public simu_comp_as_worker MainSnakeGame
+@Simu_comp_as_worker
 public class MainSnakeGame {
 	public static void main(String[] args) {
 		//Just create a life scene, and the simulation will be displayed.

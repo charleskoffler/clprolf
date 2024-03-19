@@ -16,7 +16,7 @@ import org.simol.simple_examples.network.NetworkTalker.Message;
  * @author Charles Koffler
  *
  */
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class NetworkTalkerRealiz {
 	/**
 	 * In some cases, owner could be useful, especially to access fields to display, and this kind of stuff.

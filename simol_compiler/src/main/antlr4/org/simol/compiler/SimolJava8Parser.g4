@@ -282,7 +282,7 @@ normalClassDeclaration
 	
 simolRole
 	: 'simu_real_world_obj'
-	| 'simu_comp_worker'
+	| 'simu_comp_as_worker'
 	| 'model_real_world_obj'
 	| 'information'
 	;

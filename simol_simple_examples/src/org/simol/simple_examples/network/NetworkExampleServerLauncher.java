@@ -15,7 +15,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * @author Charles Koffler.
  *
  */
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class NetworkExampleServerLauncher {
 	
 	public static void main(String[] args) throws IOException {

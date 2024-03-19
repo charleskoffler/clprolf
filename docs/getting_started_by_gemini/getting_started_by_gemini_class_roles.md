@@ -12,7 +12,7 @@ This text dives into Simol, a unique object-oriented programming language, and c
     
    simu_real_world_obj: Represents simulations of real-world objects with methods for behavior.
         
-   simu_comp_worker: Represents tasks for the computer, lacking real-world counterparts.
+   simu_comp_as_worker: Represents tasks for the computer, lacking real-world counterparts.
         
    model_real_world_obj: Similar to data transfer objects (DTOs) in Java, with only attributes to model real-world objects.
         
@@ -22,7 +22,7 @@ This text dives into Simol, a unique object-oriented programming language, and c
 
    Emphasis on Simulation: Simol views objects as simulations of real-world behavior, while Java is more general-purpose.
     
-   Separation of Concerns: Simol encourages separating simulation code (simu_real_world_obj) from technical details (simu_comp_worker), promoting cleaner designs.
+   Separation of Concerns: Simol encourages separating simulation code (simu_real_world_obj) from technical details (simu_comp_as_worker), promoting cleaner designs.
     
    Inheritance with "Nature": Simol uses @Nature (or nature) for inheritance, emphasizing compatibility and meaningful relationships between classes.
 

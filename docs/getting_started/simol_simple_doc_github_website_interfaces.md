@@ -34,7 +34,7 @@ public interface Runnable {
 
 import org.me.mylib.Runnable;
 
-public simu_comp_worker MyLauncher contracts Runnable {
+public simu_comp_as_worker MyLauncher contracts Runnable {
 	public void execute(){
 		//The executed code.
 	}
@@ -46,7 +46,7 @@ public simu_comp_worker MyLauncher contracts Runnable {
 
 import org.me.mylib.Runnable;
 
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class MyLauncher implements @Contracts Runnable {
 	public void execute(){
 		//The executed code.
@@ -172,7 +172,7 @@ public interface ClientDao extends @Forced_int_inh CityDAO {
 NOR
 
 ```java
-public simu_comp_worker ClientMysqlDao contracts ClientDAO, CityDAO { //THIS IS NOT ALLOWED BY THE COMPILER. WE CAN NOT IMPLEMENT TWO VERSION INTERFACES, BECAUSE WE CAN NOT BE TWO VERSIONS AT THE SAME TIME!
+public simu_comp_as_worker ClientMysqlDao contracts ClientDAO, CityDAO { //THIS IS NOT ALLOWED BY THE COMPILER. WE CAN NOT IMPLEMENT TWO VERSION INTERFACES, BECAUSE WE CAN NOT BE TWO VERSIONS AT THE SAME TIME!
 (...)
 }
 
@@ -181,7 +181,7 @@ public simu_comp_worker ClientMysqlDao contracts ClientDAO, CityDAO { //THIS IS 
 In the framework:
 
 ```java
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class ClientMysqlDao implements @Contracts ClientDAO, CityDAO { //THIS IS NOT ALLOWED BY THE COMPILER. WE CAN NOT IMPLEMENT TWO VERSION INTERFACES, BECAUSE WE CAN NOT BE TWO VERSIONS AT THE SAME TIME!
 (...)
 }
@@ -194,7 +194,7 @@ public class ClientMysqlDao implements @Contracts ClientDAO, CityDAO { //THIS IS
 
 ```java
 
-public simu_comp_worker Launcher {
+public simu_comp_as_worker Launcher {
 
 	public static void main(String[] args){
 		with_compat ClientDAO daoClient = new MysqlClientDAO();
@@ -209,7 +209,7 @@ In the framework:
 
 ```java
 
-@Simu_comp_worker
+@Simu_comp_as_worker
 public class Launcher {
 
 	public static void main(String[] args){

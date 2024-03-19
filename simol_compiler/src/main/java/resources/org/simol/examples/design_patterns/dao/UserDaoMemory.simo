@@ -3,8 +3,8 @@ package org.simol.examples.design_patterns.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-// A simu_comp_worker is exactly what we need here, and it's so close to the DAO pattern!
-public simu_comp_worker UserDaoMemory contracts UserDao {
+// A simu_comp_as_worker is exactly what we need here, and it's so close to the DAO pattern!
+public simu_comp_as_worker UserDaoMemory contracts UserDao {
 	// You would typically have a database connection or data source here.
     // For this example, we'll use a List as a simple in-memory storage.
 

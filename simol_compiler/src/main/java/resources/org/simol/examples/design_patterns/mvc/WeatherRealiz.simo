@@ -16,7 +16,7 @@ import javax.swing.JLabel;;
 //WeatherRealiz realizes the simulation of the human expert(for example), the controller, on a computer.
 //Here, it's only display and inputs.
 //
-public simu_comp_worker WeatherRealiz {
+public simu_comp_as_worker WeatherRealiz {
 //Graphical components, in simol, could be viewed as simu_real_world_obj, of real buttons, of a real machine.
  private JFrame frame;
  private JTextField locationField;

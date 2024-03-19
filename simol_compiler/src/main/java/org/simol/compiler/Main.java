@@ -14,7 +14,7 @@ package org.simol.compiler;
 	
 */
  
-// public simu_comp_worker Main
+// public simu_comp_as_worker Main
 public class Main {
     public static void main(String[] args) throws Exception {
     	SimolCompiler compiler = new SimolCompiler();

@@ -19,7 +19,7 @@ This section delves deeper into Simol's unique approach to object-oriented progr
 
    simu_real_world_obj: These objects simulate real-world entities and have methods to represent their behavior.
    
-   simu_comp_worker: These objects perform computational tasks for the computer, seen as a dedicated worker.
+   simu_comp_as_worker: These objects perform computational tasks for the computer, seen as a dedicated worker.
    
    model_real_world_obj: These are purely data objects that represent models of real-world entities. They lack methods.
    

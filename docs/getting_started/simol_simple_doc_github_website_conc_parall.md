@@ -2,7 +2,7 @@
 
 ## How do we handle concurrency in simol in details?
 
-We have two modifiers, in simol, "long_action", and "prevent_missing_collision", for concurrency. It has been added to clarify this point in simol. These aids concern especially simu_real_world_obj, but are made for both simu_comp_worker or simu_real_world_obj.
+We have two modifiers, in simol, "long_action", and "prevent_missing_collision", for concurrency. It has been added to clarify this point in simol. These aids concern especially simu_real_world_obj, but are made for both simu_comp_as_worker or simu_real_world_obj.
 
 ### "long_action" or "@Long_action"
 Some methods of simu_real_world_obj, like jumping, have duration, in time, and don't consist in just a states changing. For a video game and a class Player, the "jump" method would be a long action. Because the player is moving towards up, then falls. And this action could take some seconds, or almost one second. We want just to trigger it, like saying to the player object to jump, and that's all. We don't want to matter about the fact it takes some time, to keep simple and stay like in the real-world life. So the idea is to cut in steps the action, and to execute it step by step. It is not a new idea to do that, because we can find it in video game programming.
@@ -155,7 +155,7 @@ Yeah. It is recommended, in simol, to first write a single-thread code handling 
 
 ## What about the "dependent activities"? Is it a complex topic?
 
-* Let's explain about the dependent_activity method modifier, or @Dependent_activity in the framework. This keyword is used in case of multithreaded applications. It shows that a method, thus an activity, depends on the execution of another activity, to be able to continue. So it is the other activity which emits the event indicating that the sleeping action can continue. This feature was first designed for the simu_real_world_obj, but it could be applied evidently for the simu_comp_worker!
+* Let's explain about the dependent_activity method modifier, or @Dependent_activity in the framework. This keyword is used in case of multithreaded applications. It shows that a method, thus an activity, depends on the execution of another activity, to be able to continue. So it is the other activity which emits the event indicating that the sleeping action can continue. This feature was first designed for the simu_real_world_obj, but it could be applied evidently for the simu_comp_as_worker!
 
 * Let's take an example, of a mail box, of a unique mail. The mailbox can only contain one mail. So the threads which would want to read a mail, are blocked until someone has put a mail inside. The activity of reading is dependent of the activity of writing. When this happens, the reader have to send a notification, for the writer to act. And the writer would wait when the mailbox is still full. So reading and writing are depending activities, because we want here the thread to wait until the action could be performed. If we would want a non-blocking read, or write, it would not be the same.
 
@@ -170,7 +170,7 @@ import org.simol.simolframework.java.Simu_comp_worker;
  * Example of a producer/consumer, with a mail box.
  * Charles Koffler. 20240206
  */
-@Simu_comp_worker //A program for execute our tests!
+@Simu_comp_as_worker //A program for execute our tests!
 public class LauncherDependAct {
 
 	public static void main(String[] args) {
