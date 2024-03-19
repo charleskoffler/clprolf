@@ -1,38 +1,41 @@
 # LET'S UNDERSTAND SIMOL FROM GEMINI'S EXPLANATIONS
 Let's present in these documents, the explanations of Google Gemini, from the getting started documents of simol. All these texts have been written by Gemini from the equivalent simol's documents.
 
-# Simol: A Simulation-Oriented Approach to Programming
+# Simol: A Deep Dive into Object-Oriented Programming
 
-This section delves deeper into Simol's unique approach to object-oriented programming, focusing on how it views software as a network of communicating applications.
+This explanation dives deeper into Simol's approach to object-oriented programming (OOP) and how it differs from the traditional paradigm. Here's a breakdown of the key points:
 
-## Simol's Software Viewpoint:
+## Simol's View on Software:
 
-   Micro-Applications: Simol perceives software as a collection of interconnected micro-applications, similar to how services communicate on the internet.
+   Set of Communicating Applications: Simol views software as a collection of micro-applications that interact with each other.
+    
+   Objects as Applications: Each object represents an individual application, potentially containing smaller applications within it.
+    
+   Real-World vs. Computational Focus:
+        simu_real_world_obj: Simulates real-world entities and their behavior.
+        
+   		simu_comp_as_worker: Represents purely computational tasks for the computer.
+
+## Data Objects:
+
+   model_real_world_obj: Data objects that model real-world entities but lack methods (functions).
    
-   Objects as Applications: Each object in Simol can be considered a self-contained application.
-   
-   Micro-Simulations and Tasks: These applications can be further composed of even smaller micro-simulations or purely computational tasks, resembling an operating system.
-   
-   Business and Scientific Focus: Objects can represent management applications, scientific simulations, or anything with a defined business or scientific function.
+   information Objects: Pure data structures without methods, used for general data storage.
 
-## Simol Object Types:
+## Comparison with Traditional OOP:
 
-   simu_real_world_obj: These objects simulate real-world entities and have methods to represent their behavior.
-   
-   simu_comp_as_worker: These objects perform computational tasks for the computer, seen as a dedicated worker.
-   
-   model_real_world_obj: These are purely data objects that represent models of real-world entities. They lack methods.
-   
-   information objects: These are general data structures used to store information and lack methods.
+   Simol Aligns with Alan Kay's Vision: Simol's approach aligns more closely with Alan Kay's original concept of objects as communicating micro-computers.
 
-## Comparison to Traditional OOP:
+## Advantages of Simol's Approach:
 
-Simol aligns more closely with Alan Kay's original vision of objects as communicating micro-computers. It extends this concept to a network of micro-applications.
+   Reasoning with Real-World Objects: The simulation perspective allows for easier reasoning about how the program interacts with real-world entities.
+    
+   Simplified Worker View of Computer: Treating the computer as a worker simplifies understanding its role in the system.
 
-## Advantages of Simulation Perspective:
+Overall, Simol offers a unique perspective on OOP that emphasizes communication and real-world simulation. Here are some additional thoughts:
 
-   Reasoning with Real-World Objects: The simulation viewpoint allows for easier reasoning about real-world objects directly within the code.
-   
-   Worker Mentality for Computers: Viewing the computer as a worker simplifies the approach to assigning computational tasks.
+   The concept of micro-applications within objects is interesting and could potentially lead to more modular and reusable code.
+    
+   Providing clear examples of how simu_real_world_obj and simu_comp_as_worker interact in practice would be helpful for understanding their functionalities.
 
-This breakdown clarifies Simol's object-oriented structure and its unique perspective on software development. By treating objects as mini-applications and tasks as simulations, Simol aims to create a more intuitive and efficient programming experience.
+It would be interesting to see how Simol handles concurrency and communication between these micro-applications.
