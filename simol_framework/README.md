@@ -18,6 +18,7 @@ History of the versions of the simol java framework
 1.6 20240223	Real_world_obj becomes Model_real_world_obj
 1.7	20240229	Added EXPERT_COMPONENT role of @Simu_real_world_obj.
 1.8 20240319 Simu_comp_worker renamed to Simu_comp_as_worker.
+1.9	20240321	Changed in the beginners classes, to SimuCompAsWorker.
 
 History of the versions of the simol C# framework
 
@@ -30,6 +31,8 @@ History of the versions of the simol C# framework
 1.6 20240206	Added @Dependent_activity. Minor corrections.
 1.7 20240223	Real_world_obj becomes Model_real_world_obj
 1.8 20240229	Added EXPERT_COMPONENT role of @Simu_real_world_obj.
+1.9	20240319	Renamed Simu_comp_worker to Simu_comp_as_worker.
+2.0	20240321	Changed in the beginners package, to SimuCompAsWorker.
 
 History of the versions of the simol PHP 8 framework
 

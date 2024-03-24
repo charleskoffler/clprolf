@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v1.9, 20240319.
+ * Simol C# Framework, v2.0, 20240321.
  * 
- * Renamed Simu_comp_worker to Simu_comp_as_worker.
+ * Changed in the beginners package, to SimuCompAsWorker.
  * 
  * 
  * Limitations of C# framework for simol:

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Org.Simol.Framework.Csharp.Beginners
 {
-    class SimuCompWorker
+    class SimuCompAsWorker
     {
     }
 }

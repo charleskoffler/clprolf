@@ -117,7 +117,7 @@ and it adds some keywords like 'with_compat', or 'underst'.
 We can use java libraries in simol. We can use also java code in simol source code, except the keywords "class", "implements", "extends", "interface".
 For example, java local variable is of course allowed in simol methods, "public" is authorized for a "simu_real_world_obj", and so on.
 All java which can be applied to a class can be applied to a "simu_real_world_obj", "simu_comp_as_worker", "information", "model_real_world_obj", "compat_interf_version", "compat_interf_capacity".
-As simol classes replaces java classes, all java keywords can be used with simol classes, for example "public simu_comp_as_worker { }".
+As simol classes replaces java classes, all java keywords can be used with simol classes, for example "public simu_comp_as_worker Launcher { }".
 
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.

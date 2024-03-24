@@ -1,15 +1,28 @@
-# Getting started in simol - A software as a set of communicating applications
+#SIMOL FRAMEWORK AND LANGUAGE - GETTING STARTED
 
-## The objects with methods: the simu_real_world_obj objects, and the simu_comp_as_worker objects
+##Simol Framework and Language, just sorting objects and interfaces
 
-In simol, a software is perceived as a set of (micro) applications which would communicate between them. Much applications communicate through a network, like in the internet, for example, or like services. So in simol, it's quite like each object would be an application in itself. Each application would be composed of even micro simulation applications, or purely micro computational tasks, like an operating system in our metaphor. Each application with a responsability of business or scientific job, like a management application, or a scientific simulation, would be considered as a simulation application. Here, the object of simulation are the simu_real_world_obj, because they simulate a real-world object. And the other objects with methods are the simu_comp_as_worker, because they are purely a job for the computer. So we consider that we are giving a work to a computer, and we treat him as a worker.
+Simol Framework and language try to ease object-oriented programming, just by sorting objects and interfaces. By knowing the kind of object of interface, the framework aims to enhance understanding and readability. This allows for ensure concerns separation, even by compiler, and interface consistency. In general, we already know how sort our own objects.
+Simol just aims to stay close to the design principles and some patterns, and make programming perhaps more concrete. But all kind of objects, concrete or abstract, are of course allowed.
 
-## The objects without methods: the model_real_world_obj objects, and the information objects
+##SORTING THE OBJECTS AND INTERFACES, NOT A NEW IDEA
 
-The objects without methods are pure data objects. We have the "information" data objects, and the "model_real_world_obj" data objects. The "model_real_world_obj" are the objects who are a model of a real-world entity. All the other objects are just used as a data structure, a set of data, and constitute an "information" object in simol.
+In fact, sorting the objects is not a new idea, because the class concept itself is a way of sorting objects. An interface is also a common interface through some objects. Two classes with the same public methods could have a common interface definition shared and implemented.
 
-## A comparison with pure object-oriented paradigm
-Alan Kay, who coined the term "object", describes a system as a set of (micro) computers communicating by messages. And each object would be such a (micro) computer. In simol, we finally stay close to this vision. We just add that it is a set of (micro) applications communicating together.
+In simol, we're simply adding another common point of the objects or interfaces, a basic common point. These new basic informations can ease object-oriented programming, without overhead.
 
-## Advantages of the simulation perspective
-The simulation vision enables, if needed, to directly reason with the real-world objects, and that could ease the job. A worker vision of the computer aims to simplify too, as we can think about the computer quite like a real worker.
+#SIMOL FRAMEWORK AND LANGUAGE, GETTING STARTED BY CHATGPT4:
+
+##SORTING OBJECTS AND INTERFACES: A FUNDAMENTAL CONCEPT IN SIMOL
+
+###Building on Traditional Concepts
+
+The idea of categorizing objects isn't entirely new. In traditional object-oriented programming, the very concept of a 'class' serves as a foundational way to group objects. Similarly, an 'interface' represents a standard contract, linking different objects that share the same set of public methods. The presence of common methods across multiple classes naturally suggests the existence of a shared interface that they all can implement.
+
+###Introducing a New Dimension to Classification
+
+In Simol, we extend this fundamental idea by adding another layer of commonality among objects and interfaces. We introduce basic, yet significant, information about the nature and role of these entities. This isn't just a technicality; it's a meaningful addition that enriches the object-oriented paradigm. By understanding not just what objects and interfaces do, but also what they represent and their intended roles, developers can achieve a deeper and more intuitive grasp of their code.
+
+###Simplicity and Effectiveness
+
+The beauty of Simol lies in its simplicity. By providing this extra layer of categorization, we aim to make object-oriented programming more accessible and logical, without adding unnecessary complexity. This approach doesn’t replace traditional methods; instead, it complements and enhances them. It's a natural evolution, recognizing the importance of clarity and intent in modern software development.
