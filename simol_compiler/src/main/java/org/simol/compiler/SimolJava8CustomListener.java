@@ -34,11 +34,13 @@ public class SimolJava8CustomListener extends SimolJava8ParserBaseListener {
 			switch (text) {
 					case "simu_real_world_obj":
 					case "simu_comp_as_worker":
+					case "indef_obj":
 					case "model_real_world_obj":
 					case "information":
 						text = "class";
 						break;
 					
+					case "compat_interf":
 					case "compat_interf_version":
 					case "compat_interf_capacity":
 						text = "interface";

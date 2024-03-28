@@ -19,6 +19,6 @@ This keyword allows to use traditional java interfaces (or of another underlying
 
 ## No simol annotations mandatory in the framework, except for @Forced_inh, and @Forced_int_inh
 
-To keep flexible for Java (or else) developers, simol annotations are not mandatory at all, in the simol framework. For example, @Nature, @With_compat, and all other keywords, can be not used, in some cases or always. Even the concurrency keywords are in that case. The sole keywords that we muse use in the simol framework are those about forced inheritance(@Forced_inh, and @Forced_int_inh).
+To keep flexible for Java (or else) developers, simol annotations are not mandatory at all, in the simol framework. For example, @Nature, @With_compat, and all other keywords, can be not used, in some cases or always. Even the concurrency keywords are in that case. The sole keywords that we must use in the simol framework are those about forced inheritance(@Forced_inh, and @Forced_int_inh).
 
 If we do not use @Nature, the nature check, obviously, will not be done.

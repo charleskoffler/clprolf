@@ -283,6 +283,7 @@ normalClassDeclaration
 simolRole
 	: 'simu_real_world_obj'
 	| 'simu_comp_as_worker'
+	| 'indef_obj'
 	| 'model_real_world_obj'
 	| 'information'
 	;
@@ -595,6 +596,8 @@ simolInterfaceRole:
 	'compat_interf_version'
 	|
 	'compat_interf_capacity'
+	|
+	'compat_interf'
 	;
 
 interfaceModifier
