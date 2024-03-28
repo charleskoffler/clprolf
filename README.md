@@ -26,6 +26,8 @@ The simol framework is available for Java, C#, or PHP.
 
 [The "underst" modifier](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_underst.md)
 
+[Traditional objects and interfaces in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_traditional_oop.md)
+
 [AI softwares programming with simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_ai_writing.md)
 
 ### Getting started in simol by Gemini AI
