@@ -23,18 +23,22 @@ The complete and detailed definition stands at the end of this file.
 
 ChatGPT 4
 User
-Hello my friend. I've created a new framework and programming language. Here is the definition: "(...)"
+Hello my friend. I've created a new programming language, and its associated framework. Here is the definition: "(...)"
 ChatGPT
 
-Thank you for sharing your comprehensive and detailed description of the Simol programming language and framework. It's apparent that you've put a great deal of thought and effort into designing Simol to be a user-friendly and educational tool, especially for those learning or using object-oriented programming.
+Thank you for sharing the details of the Simol programming language and its associated Java framework. Simol appears to be an innovative approach to object-oriented programming, emphasizing clear role definitions for classes and interfaces to facilitate understanding and maintainability. By categorizing classes as either simulations of real-world objects or computational workers (simu_real_world_obj and simu_comp_as_worker), Simol encourages developers to think more explicitly about the purpose and behavior of their entities in the context of the application.
 
-Your approach in Simol seems to emphasize clarity and explicit role definition in programming, which can be highly beneficial for conceptual understanding and readability. It's particularly interesting how you've designed Simol to be a superset of Java, leveraging Java's existing strengths while introducing new concepts to facilitate and enhance the object-oriented programming paradigm.
+Your approach to extend Java and provide a framework with pure annotations is quite interesting. It appears to make the language more accessible, particularly for educational purposes, and could potentially simplify the development process by providing more intuitive abstractions and reducing complexity.
 
-Your examples, particularly the network chat implementation, demonstrate the practical application of Simol concepts in a real-world scenario. The usage of roles like Simu_real_world_obj and Simu_comp_as_worker to categorize and clarify the purpose of classes is a unique approach that could help programmers think more critically about the design and architecture of their software.
+The integration of Simol with Java, allowing the use of Java libraries and code, is a significant advantage for adoption, as it enables developers to leverage existing Java ecosystems while experimenting with the Simol language.
 
-The integration with Java and the provision for use with Java frameworks also indicates that Simol is versatile and could be integrated into existing Java-based projects, potentially easing the transition for Java developers to Simol.
+The comprehensive explanation of the role of classes, the class_for modifier, and the different types of interfaces in Simol shows the depth of thought put into the language design. It's clear that Simol is not just a programming language, but also a framework for thinking about object-oriented design in a structured and disciplined manner.
 
-Overall, Simol appears to be a well-thought-out language and framework with a strong emphasis on educational value and practical application. It seems to hold potential for teaching, simplifying, and enhancing object-oriented programming, especially for those who are already familiar with Java. Your work on Simol is quite impressive, and it would be interesting to see how it is received and utilized in the programming and educational communities.
+Your focus on facilitating and guaranteeing object-oriented programming aligns well with modern software development practices. The detailed examples, especially the adaptation of existing Java libraries to Simol, illustrate the practical application of the language and how it can be used in real-world scenarios.
+
+Simol’s alignment with fundamental object-oriented principles and its potential to intuitively integrate well-known design patterns demonstrate its promise as both an educational tool and a practical programming language for developers. The idea of embedding best practices into the language itself is particularly intriguing and could lead to more robust and maintainable code.
+
+Overall, Simol seems to offer a fresh perspective on object-oriented programming, with potential benefits for both new learners and experienced developers. Its focus on clarity, simplicity, and the inherent incorporation of best practices makes it an interesting contribution to the field of programming languages.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -116,8 +120,8 @@ It is a superset to the Java language. It adds keywords that replace some java k
 and it adds some keywords like 'with_compat', or 'underst'.
 We can use java libraries in simol. We can use also java code in simol source code, except the keywords "class", "implements", "extends", "interface".
 For example, java local variable is of course allowed in simol methods, "public" is authorized for a "simu_real_world_obj", and so on.
-All java which can be applied to a class can be applied to a "simu_real_world_obj", "simu_comp_as_worker", "information", "model_real_world_obj", "compat_interf_version", "compat_interf_capacity".
-As simol classes replaces java classes, all java keywords can be used with simol classes, for example "public simu_comp_as_worker Launcher { }".
+All java which can be applied to a class can be applied to a a simol class, and all java applied to a Java interface can be include in a simol interface.
+As simol classes replaces java classes, all java keywords can be used with simol classes, for example "public simu_comp_as_worker Launcher{ }".
 
 Simol follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 Simol can be used with the simol compiler, or can also be used through the simol framework for java, which provide annotations to introduce simol in java.
@@ -125,16 +129,17 @@ Simol can be used with the simol compiler, or can also be used through the simol
 ### THE ROLE OF CLASSES
 
 In simol, we sort objects, in the same way we have controller objects, for example.
-And there are here only four roles in simol, simu_comp_as_worker, simu_real_world_obj, model_real_world_obj and information: only code for computer, or pure code of simulation.
+And there are here only five roles in simol, simu_comp_as_worker, simu_real_world_obj, model_real_world_obj, information and indef_obj: only code for computer, or pure code of simulation.
 Simol is based on the fact that you can notice than some classes emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
 Then, the other kind of classes could be classes for computational or technical tasks, where we want the computer to work for us with his resources, but not in a emulation goal. To being coherent, and not dependant of computer problems, we could abstract that, and do as if it could be algorithmic tasks given to a computer seen as a worker.
 So the computational tasks emulate an algorithm for worker, as the computer needs a compilation to understand the algorithms.
 These roles of classes aims to help for make concrete the object oriented programming, and to help other programmers to read the existing code. It aims also to facilitate design choices, and easily separate responsabilities. It marks classes with clear concrete abstractions, and the simu_real_world_obj should be easier to use and write, in general.
 The ambition of the class is clearly indicated, and it adds information on the design intents of the developer. 
-Other roles could eventually have been candidate, but these roles are already covered by the four main roles. We don't want to have too much roles, for staying efficient and clear.
+Other roles could eventually have been candidate, but these roles are already covered by the five main roles. We don't want to have too much roles, for staying efficient and clear.
 There is a little difference too, in the way that in simol we don't mark 'class' the classes, and directly talk about objects. While we talk about a role, we couldn't add the information that it is a mold, and we can imagine directly the class as an object. It aims to facilitate abstractions, but of course the concepts about classes keep valuable in simol.
 Some people would perhaps use simol in classical simulation domains, but it is not restricted, in essence, in a kind of programming(though it could look like). The mindset should be quite easy to get for an object oriented programmer, though it doesn't refute object programming principles and vision. For a beginner, it should facilitate programming teaching.
 Simol requires an object mindset and a desire to indicate helpful extra information on the used objects.
+We keep flexibility with "indef_obj"(indefinite object), like a traditional oo object.
 
 ### THE SIMOL CLASSES
 
@@ -148,6 +153,8 @@ Instead of "class", we use the following keywords:
 "model_real_world_obj" (means model of real-world object) => like "simu_real_world_obj", but when we don't have methods. We just model a reality. Example: a Customer class (with only attributes). It is typically used for entities.
 
 "information" => like "simu_comp_as_worker", but when we don't have methods. It is typically used by a simu_comp_as_worker, as a data structure, and shouldn't be used in simu_real_world_obj, except for an eventual technical realization part.
+
+"indef_obj" (indefinite object) => in case where we don't want to give a role to a class. Flexibility is given to the programmer.
 
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java class declaration are allowed in the same way of a simol class declaration, obviously.
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java interface declaration are allowed in the same way of a simol interface declaration, obviously.
@@ -169,12 +176,14 @@ public class_for simu_comp_as_worker Launcher { //(...) }
 "class_for" is user-friendly, to not forget the class stage, and is designed to be used by those who wants to clearly notice the mold aspect in oop. It can be used as often as we want, instead of directly precise the role, and it is just as effective.
 
 ### THE INTERFACES IN simol
-In simol, we sort the interfaces, there are two types of interfaces. simol interfaces are called compatibility interfaces.
+In simol, we sort the interfaces, there are three types of interfaces. simol interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
 	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use an compat_interf_version too, to indicate that the intent is to forecast a change of implementation and not depend to a concrete class.
 
 "compat_interf_capacity": the purpose of the interface is to guarantee that a class has a certain capability (to sort, etc.), no matter what the implementation.
+
+"compat_interf": in case where we don't want to give a role to the interface, to remain flexible.
 
 We can't use interfaces in simol, except for these two cases.
 
@@ -184,6 +193,26 @@ Example: void drink(with_compat Drink obj_buvable){(...}}
 The interest of 'with_compat' is to understand for the user that it is not an object which have a particular class, but an object which have a particular compatibility.
 So, of course, we can find it typical in a local variable declaration, or a argument definition.
 Remark: there's not a with_compat indication for the return type of a method, as an exception of the rule, the return type is not a variable declaration. Indeed, there's already one, in general, in the body of the method. And there is one in the declaration of the variable which will receive the result when the calling occurs. 
+
+### Using traditional objects and interfaces in simol
+
+indef_obj
+
+In simol, you can use traditional objects and classes, with the kind of objects named "indef_obj" (as INDEFinite OBJect).
+So, if you don't want to give a role to a class, you can do it in simol, by giving the indefinite object role.
+In the framework, simply use no annotation for the class, there are no equivalent annotation.
+This role allows to keep free to choose, or not, a role. By doing this, inheritance is not checked for that type.
+
+compat_interf (or @Compat_interf in the framework)
+
+In simol, this is not mandatory to use the interface roles. We can write "compat_interf" (compatibility interface), in case where we don't desire to choose a kind of interface. If we use that, there would be not compiler checks about this interface when used.
+In the framework, just use no annotation for the interface, there are no such keyword.
+This keyword allows to use traditional java interfaces (or of another underlying language), if needed or wanted. In theory, there is no need for this, but people could like it for some reasons.
+
+No simol annotations mandatory in the framework, except for @Forced_inh, and @Forced_int_inh
+
+To keep flexible for Java (or else) developers, simol annotations are not mandatory at all, in the simol framework. For example, @Nature, @With_compat, and all other keywords, can be not used, in some cases or always. Even the concurrency keywords are in that case. The sole keywords that we must use in the simol framework are those about forced inheritance(@Forced_inh, and @Forced_int_inh).
+If we do not use @Nature, the nature check, obviously, will not be done.
 
 ### A REFLECTION ON HOW COULD WE USE ALAN KAY'S OOP OBJECTS
  So we have a software system, which is OOP, imagined by Alan Kay, based on an emulation of biological cells. So what could we do with it? Simol just thought about applications we have to write, and simol have looked for a way to fit our programming problems into OOP objects.
@@ -398,11 +427,11 @@ The developper who want to slowly move to simol, while keeping a pure object-ori
 In fact, they are empty but allow the transition to simol while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
 
 Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
-For classes, it is not the same, only the root classes must inherit from a root simol class(SimuRealWorldObj, SimuCompWorker, ModelRealWorldObj, Information). This is because all the descendants must have the same role, in simol. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
+For classes, it is not the same, only the root classes must inherit from a root simol class(SimuRealWorldObj, SimuCompAsWorker, ModelRealWorldObj, Information). This is because all the descendants must have the same role, in simol. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
 
-Usage example in java: public class Main extends SimuCompWorker { (...) }
+Usage example in java: public class Main extends SimuCompAsWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
-Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompWorker
+Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
 
 ### SIMOL AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
@@ -624,137 +653,7 @@ Imagine the example of the hypermarket, if we would want to add dependent activi
 The checkout of a main unique queue of the hypermarket, would need a new customer to come, after finishing a client. And the main unique physical queue monitor would have to know when a checkout becomes free. So do you think they are producers and consumers?
 I think, however, that it seems more easy and natural to talk about having different activities, or different business. So simol adds quite abstraction on this, to simplify parallelism writing, because parallelism quickly become a brain-teaser, and the tests are very hard, and almost impossible. 
 
-Let's take an example:
-
-In the java framework:
-
-```java
-package org.simol.simple_examples.parallelism.dependent;
-
-import org.simol.simolframework.java.Simu_comp_as_worker;
-
-/* An example of simol dependent activities (@Dependent_activity).
- * Example of a producer/consumer, with a mail box.
- * Charles Koffler. 20240206
- */
-@Simu_comp_as_worker //A program for execute our tests!
-public class LauncherDependAct {
-
-	public static void main(String[] args) {
-		MailCustomer jenny, henry, mary;
-		OneMessageMailBox mailBox = new OneMessageMailBox();
-		
-		//Here girls send first!
-		jenny = new MailCustomer("Jenny", mailBox, true, 1000);
-		henry = new MailCustomer("Henry", mailBox, false, 2000);
-		mary = new MailCustomer("Mary", mailBox, true, 3000);
-		
-		Thread jennyThread  = new Thread(jenny);
-		Thread henryThread = new Thread(henry);
-		Thread maryThread = new Thread(mary);
-		
-		//To simplify, the threads are starting together.
-		jennyThread.start();
-		
-		henryThread.start();
-		
-		maryThread.start();
-		
-		try {
-			Thread.sleep(30000); //30s.
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		jenny.setBlnContinue(false);
-		henry.setBlnContinue(false);
-		mary.setBlnContinue(false);
-	}
-}
-```
-
-```java
-package org.simol.simple_examples.parallelism.dependent;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.For_every_thread;
-
-public class MailCustomer implements @Contracts Runnable {
-	@For_every_thread
-	private volatile boolean blnContinue;
-	/**
-	 * Time in ms, between the send and the read.
-	 */
-	private int waitingTime;
-	private boolean sendFirst;
-	
-	public void setBlnContinue(boolean blnContinue) {
-		this.blnContinue = blnContinue;
-	}
-
-	private String name;
-	
-	private OneMessageMailBox mailBox;
-	
-	public MailCustomer( String theName, OneMessageMailBox theBox, boolean blnSendFirst, int theWaitingTime) {
-		this.blnContinue = true;
-		this.name = theName;
-		this.mailBox = theBox;
-		this.waitingTime = theWaitingTime;
-		this.sendFirst = blnSendFirst;
-	}
-	
-	public void sendMessage(String theMessage) {
-		this.displayLog("Trying to send a message from "+ name + ": " + theMessage);
-		this.mailBox.write("Message from " + name + ": " + theMessage);
-	}
-	
-	public String readMail() {
-		String readMessage = mailBox.read();
-		this.displayLog(name + " has read this mail: " + readMessage);
-		return readMessage;
-	}
-
-	@Override
-	public void run() {
-		while (this.blnContinue) {
-			String sentMessage = "Hello, it's " + name;
-			
-			if (sendFirst) {
-				this.sendMessage(sentMessage);
-			}
-			else {
-				String readMail = this.readMail();
-			}
-			
-			try {
-				Thread.sleep(waitingTime);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			if (!sendFirst) {
-				this.sendMessage(sentMessage);
-			}
-			else {
-				String readMail = this.readMail();
-			}
-			
-		}
-		
-	}
-	
-	/* To simplify, we handle display directly in the simu_real_world_obj! */
-	private void displayLog(String message) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");  
-		   LocalDateTime now = LocalDateTime.now();  
-		  
-		System.out.println( dtf.format(now) + " " + message);
-	}
-}
-```
+Let's take an example, in the Java framework:
 
 ```java
 package org.simol.simple_examples.parallelism.dependent;
@@ -843,6 +742,7 @@ SimolRole:
 	simu_comp_as_worker
 	model_real_world_obj
 	information
+	indef_obj
 	
 NormalInterfaceDeclaration: 
     SimolInterfaceRole Identifier [TypeParameters] [extends TypeList] InterfaceBody
@@ -850,6 +750,7 @@ NormalInterfaceDeclaration:
 SimolInterfaceRole:
 	compat_interf_version
 	compat_interf_capacity
+	compat_interf
 	
 Modifier: 
     Annotation
@@ -893,9 +794,9 @@ FieldDecl:
 
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
-"simu_comp_as_worker", "simu_real_world_obj", "model_real_world_obj", "information", "turn_monitor", "one_at_a_time", "for_every_thread => replace with "class"
-"class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "dependent_activity" => replace with ""(empty string)
-"compat_interf_version", "compat_interf_capacity" => replace with "interface"
+"simu_comp_as_worker", "simu_real_world_obj", "model_real_world_obj", "information", "indef_obj" => replace with "class"
+"class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "turn_monitor", "one_at_a_time", "for_every_thread", "dependent_activity" => replace with ""(empty string)
+"compat_interf_version", "compat_interf_capacity", "compat_interf" => replace with "interface"
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
 
