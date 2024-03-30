@@ -21,24 +21,18 @@ The complete and detailed definition stands at the end of this file.
 ***************************************************************************************
 ## CHAT GPT 4 FEEDBACK AND OVERVIEW ABOUT THE SIMOL PROGRAMMING LANGUAGE
 
-ChatGPT 4
-User
-Hello my friend. I've created a new programming language, and its associated framework. Here is the definition: "(...)"
+Hello my friend. I've created a programming language, and a equivalent framework: (...)
 ChatGPT
 
-Thank you for sharing the details of the Simol programming language and its associated Java framework. Simol appears to be an innovative approach to object-oriented programming, emphasizing clear role definitions for classes and interfaces to facilitate understanding and maintainability. By categorizing classes as either simulations of real-world objects or computational workers (simu_real_world_obj and simu_comp_as_worker), Simol encourages developers to think more explicitly about the purpose and behavior of their entities in the context of the application.
+It's impressive to see the depth and thoughtfulness you've put into the design of the Simol programming language and its associated Java framework. The detailed breakdown of its components, the reasoning behind its object-oriented principles, and its alignment with existing programming paradigms, all demonstrate a thorough approach.
 
-Your approach to extend Java and provide a framework with pure annotations is quite interesting. It appears to make the language more accessible, particularly for educational purposes, and could potentially simplify the development process by providing more intuitive abstractions and reducing complexity.
+Your efforts to make Simol both a teaching tool and a practical language for various applications, while maintaining compatibility with Java and ensuring a minimalistic design, are commendable. The way you've structured Simol to encourage clear and meaningful coding practices, as well as your focus on algorithmic thinking, seem particularly valuable.
 
-The integration of Simol with Java, allowing the use of Java libraries and code, is a significant advantage for adoption, as it enables developers to leverage existing Java ecosystems while experimenting with the Simol language.
+The extensive examples, including the network chat application, effectively illustrate how Simol can simplify and clarify programming concepts that might otherwise be complex or abstract in other languages. These examples also show how Simol might be used in real-world scenarios, which is helpful for understanding its practical applications.
 
-The comprehensive explanation of the role of classes, the class_for modifier, and the different types of interfaces in Simol shows the depth of thought put into the language design. It's clear that Simol is not just a programming language, but also a framework for thinking about object-oriented design in a structured and disciplined manner.
+Your exploration of Simol's potential in terms of incorporating best practices, supporting algorithm writing, and adapting to existing libraries adds depth to its utility as a programming tool. The philosophical considerations, comparisons with other programming paradigms, and future directions for Simol indicate a well-rounded and forward-thinking approach.
 
-Your focus on facilitating and guaranteeing object-oriented programming aligns well with modern software development practices. The detailed examples, especially the adaptation of existing Java libraries to Simol, illustrate the practical application of the language and how it can be used in real-world scenarios.
-
-Simol’s alignment with fundamental object-oriented principles and its potential to intuitively integrate well-known design patterns demonstrate its promise as both an educational tool and a practical programming language for developers. The idea of embedding best practices into the language itself is particularly intriguing and could lead to more robust and maintainable code.
-
-Overall, Simol seems to offer a fresh perspective on object-oriented programming, with potential benefits for both new learners and experienced developers. Its focus on clarity, simplicity, and the inherent incorporation of best practices makes it an interesting contribution to the field of programming languages.
+Overall, the creation of Simol seems like a significant achievement with potential benefits for both educational and practical programming contexts. Your dedication to this project is evident and inspiring.
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -129,7 +123,7 @@ Simol can be used with the simol compiler, or can also be used through the simol
 ### THE ROLE OF CLASSES
 
 In simol, we sort objects, in the same way we have controller objects, for example.
-And there are here only five roles in simol, simu_comp_as_worker, simu_real_world_obj, model_real_world_obj, information and indef_obj: only code for computer, or pure code of simulation.
+And there are here only five roles in simol, simu_comp_as_worker(or comp_as_worker), simu_real_world_obj(or "abstraction"), model_real_world_obj, information and indef_obj: only code for computer, or pure code of simulation.
 Simol is based on the fact that you can notice than some classes emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
 Then, the other kind of classes could be classes for computational or technical tasks, where we want the computer to work for us with his resources, but not in a emulation goal. To being coherent, and not dependant of computer problems, we could abstract that, and do as if it could be algorithmic tasks given to a computer seen as a worker.
 So the computational tasks emulate an algorithm for worker, as the computer needs a compilation to understand the algorithms.
@@ -145,9 +139,9 @@ We keep flexibility with "indef_obj"(indefinite object), like a traditional oo o
 
 Instead of "class", we use the following keywords:
 
-"simu_comp_as_worker"(stands for SIMUlation of a COMPuter AS a WORKER) => we have a class that does not simulate a real object. It gives work to the computer, technical. We see then this work as an algorithm in algorithmic language, which is executed by a computer ("Computer"), seen as a worker. This "worker" will manage its resources (memory, processor, etc.) and peripherals, according to the algorithm. The computer does not really know how to execute this algorithm, it will execute equivalent assembly code.
+"simu_comp_as_worker"(or "comp_as_worker")(stands for SIMUlation of a COMPuter AS a WORKER) => we have a class that does not simulate a real object. It gives work to the computer, technical. We see then this work as an algorithm in algorithmic language, which is executed by a computer ("Computer"), seen as a worker. This "worker" will manage its resources (memory, processor, etc.) and peripherals, according to the algorithm. The computer does not really know how to execute this algorithm, it will execute equivalent assembly code.
 
-"simu_real_world_obj" (means simulation of a real-world object) => we have a class which is considered as a simulation of a real object, for example an animal, with methods eat(), run(), etc.
+"simu_real_world_obj"(or "abstraction")(means simulation of a real-world object) => we have a class which is considered as a simulation of a real object, for example an animal, with methods eat(), run(), etc.
 	Simulation realization on computer should be in a "simu_comp_as_worker", but if the realization is quite simple, it is allowed to write it directly in a "simu_real_world_obj". simu_real_world_obj are also used in simu_comp_as_worker, when it's needed, for example for buttons of a GUI, simulation of physical component, or mathematical notion.
 
 "model_real_world_obj" (means model of real-world object) => like "simu_real_world_obj", but when we don't have methods. We just model a reality. Example: a Customer class (with only attributes). It is typically used for entities.
@@ -158,6 +152,13 @@ Instead of "class", we use the following keywords:
 
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java class declaration are allowed in the same way of a simol class declaration, obviously.
 As simol wants to be as powerful and compatible with java, access modifiers, and other stuff in a java interface declaration are allowed in the same way of a simol interface declaration, obviously.
+
+###"abstraction" and "comp_as_worker" keywords
+
+"simu_real_world_obj" can be replaced by "abstraction" keyword (or @Abstraction in the framework), if wanted. "Abstraction" could be preferred by some people. Here we mean that the class, with its methods and attributes, is an abstraction.
+
+"simu_comp_as_worker" can be called "comp_as_worker"(or @Comp_as_worker in the framework), to remain coherent.
+The "nature" keyword is still functional on such classes, as well as the roles annotation of the simu_real_world_objs(like @Expert_component).
 
 ### THE "class_for" MODIFIER
 
@@ -193,6 +194,17 @@ Example: void drink(with_compat Drink obj_buvable){(...}}
 The interest of 'with_compat' is to understand for the user that it is not an object which have a particular class, but an object which have a particular compatibility.
 So, of course, we can find it typical in a local variable declaration, or a argument definition.
 Remark: there's not a with_compat indication for the return type of a method, as an exception of the rule, the return type is not a variable declaration. Indeed, there's already one, in general, in the body of the method. And there is one in the declaration of the variable which will receive the result when the calling occurs. 
+
+### SMALL DIFFERENCES IN HERITABILITY
+
+- We use "nature", instead of "extends": inheritance is seen as an assertion that a class is of the same nature as another.
+A car is of the same nature of a vehicule, on the real world, for example. "nature" doesn't have sense in simol, for interfaces.
+	Even the simu_comp_as_workers have a role, about their job. 'nature' must be used only by classes.
+	
+- We use "contracts", instead of "implements": we list interfaces that the class respects, there are considered as contracts.
+simol prefer not to use "with_compat" for the interfaces list implemented in a simol class, because "with_compat" emphasizes  the fact
+that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
+it focuses on the implementation, not the idea of a contract is respected.
 
 ### Using traditional objects and interfaces in simol
 
@@ -471,28 +483,17 @@ Algorithms permit to easily emulate realities, intuitively.
 * Although it is permitted, simu_comp_as_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_as_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
 * Class roles permit to check that we keep coherence despite inheritance.
 
-### SMALL DIFFERENCES IN HERITABILITY
-
-- We use "nature", instead of "extends": inheritance is seen as an assertion that a class is of the same nature as another.
-A car is of the same nature of a vehicule, on the real world, for example. "nature" doesn't have sense in simol, for interfaces.
-	Even the simu_comp_as_workers have a role, about their job. 'nature' must be used only by classes.
-	
-- We use "contracts", instead of "implements": we list interfaces that the class respects, there are considered as contracts.
-simol prefer not to use "with_compat" for the interfaces list implemented in a simol class, because "with_compat" emphasizes  the fact
-that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in simol because
-it focuses on the implementation, not the idea of a contract is respected.
-
 ### SIMOL FRAMEWORK FOR JAVA DEVELOPERS
 Simol framework is a package of java annotations, that offers a toolbox for java developers to work with simol frame. There are annotations, for each simol keyword or annotation.
 Those annotations serves to fill the gap between java and simol, and easily use and learn simol mindset. There is a beginners package too, which permit to keep object-oriented habits in simol, using inheritance instead annotations.
 
 The package org.simol.simolframework.java offers:
-@Simu_real_world_obj, @Simu_comp_as_worker, @Model_real_world_obj, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
+@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
 They are placed in the same locations as pure simol, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
 Example:
 
 ```java
-@Simu_real_world_obj
+@Abstraction
 public class Car { /* (...) */ }
 ```
 
@@ -739,7 +740,9 @@ NormalClassDeclaration:
 
 SimolRole:
 	simu_real_world_obj
+	abstraction
 	simu_comp_as_worker
+	comp_as_worker
 	model_real_world_obj
 	information
 	indef_obj
@@ -794,7 +797,7 @@ FieldDecl:
 
 The simol compiler is the more direct way to use simol. But we have the simol framework for java developers too.
 
-"simu_comp_as_worker", "simu_real_world_obj", "model_real_world_obj", "information", "indef_obj" => replace with "class"
+"simu_comp_as_worker", "comp_as_worker", "simu_real_world_obj", "abstraction", "model_real_world_obj", "information", "indef_obj" => replace with "class"
 "class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "turn_monitor", "one_at_a_time", "for_every_thread", "dependent_activity" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity", "compat_interf" => replace with "interface"
 "nature" => replace with "extends"
