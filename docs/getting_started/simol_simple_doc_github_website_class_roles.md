@@ -7,9 +7,10 @@ Simol introduces a new way of thinking, about object-oriented. But it is not cra
 ## The classes
 
 First, in simol you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in simol, or simulation of computer workers. In fact, there are too other possible objects in simol, without methods, and simpler, the models of real-world objects, and the information objects. Let's talk about them later.
+The simulation of real-world object is also called "abstraction", as well as the simulation of a computer worker can also be called "comp_as_worker". And the model of real-world object can be named "model".
 In object-oriented programming, we have to create objects. A difficulty is to choose the objects to create. In simol, we create either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
 
-What is a simulation of a real-world object?
+### What is a simulation of a real-world object (or "abstraction")?
 
 The keyword simu_real_world_obj is used instead of classes, that's all, in that case. Or you can use the @Simu_real_world_obj annotation in the java framework. This kind of object describes the objects used for simulate a real-world-object. There's nothing else. "Simulation" in simol means methods, because methods are action. Without methods, it is only a modeling object, and it is a "model_real_world_obj". Ideally, this class should not contain other stuff than pure simulation code.
 
@@ -53,12 +54,12 @@ Be aware that sometimes, some people would see the class as being a computer job
 It is clear that the part "real-world" doesn't imply only concrete real-world objects. A Vehicule suits well, it's evident, but we can also use it for abstract notions, like a Connection, a Color, or any abstract idea of the real-world.
 In other words, as soon as you take as a reference a real-world thing, you have to use a simu_real_world_obj. It is true for the pure "model_real_world_obj" too, of course.
 
-What does 'class_for' mean?
+### What does 'class_for' mean?
 
 'class_for' is an optional keyword, that can be placed just before a class role. It replaces 'class' of Java, and means "class for a simu_real_world_obj"(or class for another class role).
 It could be great for people who prefer have a more classical way of speaking about objects and classes.
 
-What is a simulation of a computer worker?
+### What is a simulation of a computer worker(or "comp_as_worker")?
 
 Sometimes, we can have classes that don't aim to emulate. It's just a work for the computer, as find objects in a database, or launch a program. The worker is not a real-world object, and the action is executed by the computer.
 Why do we call it a worker? Because, to simplify our problem, we want to see it as a worker, someone who do his job, as well as us when we work!
@@ -97,7 +98,7 @@ A great use case of the simu_comp_as_worker can be to put the code for display o
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_as_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
 When we talk about a computer worker, we talk about a worker who is just able to obey, and do the job we've entrusted to it. We are not talking about an AI worker, who could take initiatives and have creativity.
 
-### What is a "model_real_world_obj"?
+### What is a "model_real_world_obj"(or "model")?
 
 A model of real-world object(model_real_world_obj) is easy to perceive. It's really like an entity in oop. It could be compared too to a DTO, Data Transfert Object.  In other words, it's an object without methods, used only to modelize an equivalent real-world object.
 We often use model_real_world_obj for databases, to get our datas into java objects. Let's take an example, a Client object, with only attributes and getters/setters and constructors, should be placed in a model_real_world_obj class.
@@ -155,7 +156,7 @@ So it is only that, simol? Is it useful that I add all that stuff to my Java cod
 
 Yeah, I would say you'd gain a lot. Much reasons could be given. First, it a guarantee to stay with well-designed and clear objects. Remember yourself reading the java code of something else, it's often tricky to understand what are the precise goals of a class.
 Then it allows to think to many different interpretations, and to stay compatible with much design principles, like SRP(Single Responsability Principle). The MVC is also not far.
-And we will then ensure, by compiler, that our classes are staying always great, verifying that a new inherited class, is compatible with our role. A Simu_comp_worker class can not inherit of a simu_real_world_obj, that is not possible in simol, except if you really want to do that.
+And we will then ensure, by compiler, that our classes are staying always great, verifying that a new inherited class, is compatible with our role. A simu_comp_as_worker class can not inherit of a simu_real_world_obj, that is not possible in simol, except if you really want to do that.
 There is a way to force an unauthorized inheritance, with @Forced_inh annotation, in simol language and framework. If it is more practical to inherit of a simu_comp_as_worker, to stay compatible with legacy code, then you can do that.
 But it is not recommended by the language, and you have to explicitly ask it. So it is a conscious thing done, marked by the annotation.
 
@@ -167,11 +168,11 @@ So a Stone should not inherit of a Monkey, except in particular cases, on in you
 It acts as a reminder that an inheritance is significant, and is not only a composition. We do not want to mix inheritance and composition. An inheritance is a key topic in the object-oriented paradigm, and it implies polymorphism.
 So when a method asks for a Monkey, is it normal that we can pass it a Stone?
 With such concept, there would not have diamond inheritance problems, because in simol, we can have only one nature. In simol, a tutor would be rather a student, because his first nature is to be a student, even if it gives some courses in addition.
-Even in the Simu_comp_worker, "nature" is active, and we must think about the right inheritances, in such a way that the inherited worker has the same nature of work as us.
+Even in the Simu_comp_as_worker, "nature" is active, and we must think about the right inheritances, in such a way that the inherited worker has the same nature of work as us.
 For example, a Launcher class should not inherit from a DAO class.
 
 ```java
-public simu_real_world_obj Dog nature Animal {
+public abstraction Dog nature Animal {
 	private String name;
 	
 	public getName(){
@@ -194,7 +195,7 @@ public simu_real_world_obj Dog nature Animal {
 In the java framework:
 
 ```java
-@Simu_real_world_obj
+@Abstraction
 public class Dog extends @Nature Animal {
 	private String name;
 	
@@ -342,5 +343,12 @@ public class MyBeautifulButton nature JButton {
 }
 ```
 
-
 Remember that an equivalent framework exists in C# and PHP 8. The PHP 8 version doesn't currently support the parallelism aids.
+
+### "abstraction", "comp_as_worker", and "model" keywords
+
+"simu_real_world_obj" can be replaced by "abstraction" keyword (or @Abstraction in the framework), if wanted. "Abstraction" could be preferred by some people. Here we mean that the class, with its methods and attributes, is an abstraction.
+
+"simu_comp_as_worker" can be called "comp_as_worker"(or @Comp_as_worker in the framework), to remain coherent.
+"model_real_world_obj" can be replaced by "model" as well.
+The "nature" keyword is still functional on such classes, as well as the roles annotation of the simu_real_world_objs(like @Expert_component).
