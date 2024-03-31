@@ -19,6 +19,7 @@ History of the versions of the simol java framework
 1.7	20240229	Added EXPERT_COMPONENT role of @Simu_real_world_obj.
 1.8 20240319 Simu_comp_worker renamed to Simu_comp_as_worker.
 1.9	20240321	Changed in the beginners classes, to SimuCompAsWorker.
+2.0 20240331 Addition of Abstraction, Comp_as_worker, and Model annotations.
 
 History of the versions of the simol C# framework
 
