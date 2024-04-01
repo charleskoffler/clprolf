@@ -2,7 +2,7 @@
 
 ```java
 //Launch an application is a computer worker job!
-public simu_comp_as_worker Main {
+public comp_as_worker Main {
 	
 	public static void main(String[] args){
 		System.out.println("Hello world!"); //Notice that System should be viewed as a simu_comp_as_worker, and the stream out, a simu_real_world_obj
@@ -15,7 +15,7 @@ In the java framework:
 
 ```java
 //Launch an application is a computer worker job!
-@Simu_comp_as_worker
+@Comp_as_worker
 public class Main {
 
 	public static void main(String[] args){
@@ -27,7 +27,7 @@ public class Main {
 ### Another way to do this, perhaps a bit more elegant, in simol:
 
 ```java
-//Another way
+//Another way //We could use "abstraction" instead of "simu_real_world_obj"
 public simu_real_world_obj SimolWorld {
 	private SimolWorldTechnRealiz ourTechnRealiz;
 
@@ -41,7 +41,7 @@ public simu_real_world_obj SimolWorld {
 
 }
 
-public simu_comp_as_worker SimolWorldTechnRealiz {
+public simu_comp_as_worker SimolWorldTechnRealiz { //We could use "comp_as_worker" instead.
 	//The associated simu_real_world object. It could be useful to have it, especially for fields.
 	private SimolWorld owner;
 	
@@ -71,7 +71,7 @@ In the java framework:
 
 ```java
 //Another way
-@Simu_real_world_obj
+@Simu_real_world_obj  //We could use "@Abstraction" instead of "@Simu_real_world_obj"
 public class SimolWorld {
 	private SimolWorldTechnRealiz ourTechnRealiz;
 
@@ -85,7 +85,7 @@ public class SimolWorld {
 
 }
 
-@Simu_comp_as_worker
+@Simu_comp_as_worker //We could use "@Comp_as_worker" instead.
 public  class SimolWorldTechnRealiz {
 	//The associated simu_real_world object. It could be useful to have it, especially for fields.
 	private SimolWorld owner;
