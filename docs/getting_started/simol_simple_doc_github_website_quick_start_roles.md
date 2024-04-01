@@ -5,7 +5,7 @@
 Simol Framework and language talks especially about sorting our objects. The idea is to qualify the classes, in the same way we can add @Component, @Service, or @Controller in Spring Framework (role of types in Spring). The roles of objects are basic. They allows to ensure separation of concerns, by compiler checking of types roles obtained by inheritance.
 
 The interfaces are also sorted to take advantage of the obtained abstraction, and also to ensure consistency in interfaces.
-    
+
     
 ## KIND OF OBJECTS
 

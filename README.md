@@ -12,6 +12,8 @@ The simol framework is available for Java, C#, or PHP.
 
 [Getting started in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_getting_started.md)
 
+[Theoretical background](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_theoretical_background.md)
+
 [Hello world example](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_hello_world.md)
 
 [Quick start about the roles](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_quick_start_roles.md)
