@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.0 20240331 Addition of Abstraction, Comp_as_worker, and Model annotations. 
+ * 2.1 20240404 Correction about Abstraction annotation.
  * @author Charles Koffler
  *
  */

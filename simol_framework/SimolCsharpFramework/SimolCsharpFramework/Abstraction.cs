@@ -17,23 +17,14 @@ using System.Threading.Tasks;
  */
 namespace Org.Simol.Framework.Csharp
 {
-    public enum Role
-    {
-        DESIGN_ROLE,
-        HUMAN_EXPERT,
-        EXPERT_COMPONENT,
-        GUI_ROLE,
-        MACHINE_TOOL,
-        UNDEFINED
-    };
-
+   
     [AttributeUsage(AttributeTargets.Class)]
-    public class Simu_real_world_objAttribute: Attribute
+    public class AbstractionAttribute: Attribute
     {
        
         private Role role;
 
-        public Simu_real_world_objAttribute(Role theRole = Role.UNDEFINED)
+        public AbstractionAttribute(Role theRole = Role.UNDEFINED)
         {
             this.role = theRole;
         }

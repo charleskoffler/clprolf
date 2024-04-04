@@ -20,6 +20,7 @@ History of the versions of the simol java framework
 1.8 20240319 Simu_comp_worker renamed to Simu_comp_as_worker.
 1.9	20240321	Changed in the beginners classes, to SimuCompAsWorker.
 2.0 20240331 Addition of Abstraction, Comp_as_worker, and Model annotations.
+2.1 20240404 Correction about Abstraction annotation.
 
 History of the versions of the simol C# framework
 
@@ -34,6 +35,7 @@ History of the versions of the simol C# framework
 1.8 20240229	Added EXPERT_COMPONENT role of @Simu_real_world_obj.
 1.9	20240319	Renamed Simu_comp_worker to Simu_comp_as_worker.
 2.0	20240321	Changed in the beginners package, to SimuCompAsWorker.
+2.1	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".
 
 History of the versions of the simol PHP 8 framework
 
