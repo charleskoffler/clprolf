@@ -36,6 +36,7 @@ History of the versions of the simol C# framework
 1.9	20240319	Renamed Simu_comp_worker to Simu_comp_as_worker.
 2.0	20240321	Changed in the beginners package, to SimuCompAsWorker.
 2.1	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".
+2.2 20240404	Addition of "Abstraction", "Comp_as_worker", and "Model" in the beginners package.
 
 History of the versions of the simol PHP 8 framework
 
@@ -45,4 +46,5 @@ History of the versions of the simol PHP 8 framework
 1.3 20240223Real_world_obj becomes Model_real_world_obj
 1.4	20240229 Added EXPERT_COMPONENT role of #[Simu_real_world_obj].
 1.5	20240319 Renamed Simu_comp_worker to Simu_comp_as_worker.
-1.6	20240324 Correction on the beginners class SimuCompAsWorker. 
+1.6	20240324 Correction on the beginners class SimuCompAsWorker.
+1.7	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".

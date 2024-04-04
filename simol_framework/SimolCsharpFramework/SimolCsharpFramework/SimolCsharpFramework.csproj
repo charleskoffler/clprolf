@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="beginners\ICompatInterfCapacity.cs" />
     <Compile Include="beginners\ICompatInterfVersion.cs" />
+    <Compile Include="beginners\Model.cs" />
+    <Compile Include="beginners\CompAsWorker.cs" />
+    <Compile Include="beginners\Abstraction.cs" />
     <Compile Include="Forced_int_inh.cs" />
     <Compile Include="Forced_inh.cs" />
     <Compile Include="examples\ICallable.cs" />
@@ -54,6 +57,7 @@
     <Compile Include="Information.cs" />
     <Compile Include="Long_action.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="beginners\ModelRealWorldObj.cs" />
     <Compile Include="Model_real_world_obj.cs" />
     <Compile Include="One_at_a_time.cs" />
     <Compile Include="Prevent_missing_collision.cs" />
