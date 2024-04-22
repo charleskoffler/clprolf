@@ -1,8 +1,8 @@
-# QUICK START WITH SIMOL FRAMEWORK AND LANGUAGE
+# QUICK START WITH clprolf FRAMEWORK AND LANGUAGE
 
 ## ABOUT SORTING OUR OBJECTS AND INTERFACES
 
-Simol Framework and language talks especially about sorting our objects. The idea is to qualify the classes, in the same way we can add @Component, @Service, or @Controller in Spring Framework (role of types in Spring). The roles of objects are basic. They allows to ensure separation of concerns, by compiler checking of types roles obtained by inheritance.
+clprolf language and framework talks especially about sorting our objects. The idea is to qualify the classes, in the same way we can add @Component, @Service, or @Controller in Spring Framework (role of types in Spring). The roles of objects are basic. They allows to ensure separation of concerns, by compiler checking of types roles obtained by inheritance.
 
 The interfaces are also sorted to take advantage of the obtained abstraction, and also to ensure consistency in interfaces.
 
@@ -21,7 +21,7 @@ In the language, it's "simu_real_world_obj", "abstraction", "simu_comp_as_worker
 
 ## KIND OF INTERFACES
 
-Interfaces in simol are classified by their function. Some interfaces are made for guarantee that a feature is present. The others bring an interface of a complete implementation. The separation of the sort of interfaces adds a way to keep the coherence of the interfaces. It is achieved by checking the inheritance of interfaces, or the "implements" part of a class, by compiler.
+Interfaces in clprolf are classified by their function. Some interfaces are made for guarantee that a feature is present. The others bring an interface of a complete implementation. The separation of the sort of interfaces adds a way to keep the coherence of the interfaces. It is achieved by checking the inheritance of interfaces, or the "implements" part of a class, by compiler.
 
 Specific feature interfaces: @Compat_interf_capacity
 

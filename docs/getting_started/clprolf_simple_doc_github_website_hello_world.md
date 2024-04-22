@@ -24,7 +24,7 @@ public class Main {
 }
 ```
 
-### Another way to do this, perhaps a bit more elegant, in simol:
+### Another way to do this, perhaps a bit more elegant, in clprolf:
 
 ```java
 //Another way //We could use "abstraction" instead of "simu_real_world_obj"
@@ -36,7 +36,7 @@ public simu_real_world_obj SimolWorld {
 	}
 
 	public void say(String message){
-		ourTechnRealiz.display("A message from Simol's world: " + message);
+		ourTechnRealiz.display("A message from clprolf's world: " + message);
 	}
 
 }
@@ -80,7 +80,7 @@ public class SimolWorld {
 	}
 
 	public void say(String message){
-		ourTechnRealiz.display("A message from Simol's world: " + message);
+		ourTechnRealiz.display("A message from clprolf's world: " + message);
 	}
 
 }

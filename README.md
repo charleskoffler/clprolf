@@ -10,33 +10,33 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)
 
-[Getting started in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_getting_started.md)
+[Getting started in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_getting_started.md)
 
-[Theoretical background](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_theoretical_background.md)
+[Theoretical background](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_theoretical_background.md)
 
-[Hello world example](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_hello_world.md)
+[Hello world example](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_hello_world.md)
 
-[Quick start about the roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_quick_start_roles.md)
+[Quick start about the roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_quick_start_roles.md)
 
-[The class roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_class_roles.md)
+[The class roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_class_roles.md)
 
-[The interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_interfaces.md)
+[The interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_interfaces.md)
 
-[clprolf and the algorithmic language](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_algo.md)
+[clprolf and the algorithmic language](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_algo.md)
 
-[Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_conc_parall.md)
+[Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_conc_parall.md)
 
-[The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_underst.md)
+[The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_underst.md)
 
-[Traditional objects and interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_traditional_oop.md)
+[Traditional objects and interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_traditional_oop.md)
 
-[AI softwares programming with clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_ai_writing.md)
+[AI softwares programming with clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_ai_writing.md)
 
 ### Complete definition
 
 This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
 
-[Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/simol_complete_theoretical_def.md)
+[Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_complete_theoretical_def.md)
 
 ### Design patterns in clprolf analysis
 

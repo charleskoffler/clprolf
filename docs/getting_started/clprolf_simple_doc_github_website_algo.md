@@ -1,0 +1,6 @@
+# clprolf and the algorithmic foundations - Trying to enhance classical algorithmic language
+
+clprolf is well in step with the algorithmic approach, as well it suits well with Algol mindset. It tries to enhance the algorithmic language, by modifiers to enhance intents and clarity. So "underst" modifier reenforces the algorithmic expression by highlighting the computer-specific parts. And concurrency is improved by being able to indicate the long duration methods, and having a step by step approach, as well as inherently managing collisions. Parallelism is algorithmically embedded with "one_at_a_time", and "turn_monitor", or "for_every_thread". And capacity and version interfaces ease algorithmic intuitive thinking, as well as concrete and clear kind of objects.
+
+So clprolf, while first wanting to simplify and clarify object-oriented programming topic, uses a algorithmic-centric approach at the same time.
+Having intuitive real-world objects simulations, allows for reason with real-world comparisons, and keep an algorithmic thinking, with objects as well as we already have with primitive types. For example, I need two animals for my algorithm, who have the capacity of eating. And I'm creating a worker in my algorithm, to display on computer my simulation. Or my algorithm accepts a object compatible with a version of a OrderDAO.
