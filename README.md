@@ -1,89 +1,69 @@
-# Simol framework and simol programming language
+# clprolf language and framework
 
-Simol is a framework and a programming language, that has been made for simplify object oriented programming. It is a superset of java.
+clprolf(CLear PROgramming Language and Framework) has been made for simplify programming, especially OOP. It is a superset of java.
 
-The simol framework is available for Java, C#, or PHP.
+The clprolf framework is available for Java, C#, or PHP.
 
-[Simol official web site](https://www.simol-lang.org/)
+[clprolf official web site](https://www.clprolf-lang.org/)
 
-### Getting started in simol
+### Getting started in clprolf
 
-[Whole directory](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started)
+[Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)
 
-[Getting started in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_getting_started.md)
+[Getting started in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_getting_started.md)
 
-[Theoretical background](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_theoretical_background.md)
+[Theoretical background](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_theoretical_background.md)
 
-[Hello world example](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_hello_world.md)
+[Hello world example](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_hello_world.md)
 
-[Quick start about the roles](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_quick_start_roles.md)
+[Quick start about the roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_quick_start_roles.md)
 
-[The class roles](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_class_roles.md)
+[The class roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_class_roles.md)
 
-[The interfaces](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_interfaces.md)
+[The interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_interfaces.md)
 
-[Simol and the algorithmic language](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_algo.md)
+[clprolf and the algorithmic language](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_algo.md)
 
-[Concurrency and parallelism](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_conc_parall.md)
+[Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_conc_parall.md)
 
-[The "underst" modifier](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_underst.md)
+[The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_underst.md)
 
-[Traditional objects and interfaces in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_traditional_oop.md)
+[Traditional objects and interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_traditional_oop.md)
 
-[AI softwares programming with simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started/simol_simple_doc_github_website_ai_writing.md)
-
-### Getting started in simol by Gemini AI
-
-[Gemini/Whole directory](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini)
-
-[Gemini/Getting started in simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_getting_started.md)
-
-[Gemini/Hello world example](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_hello_world.md)
-
-[Gemini/The class roles](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_class_roles.md)
-
-[Gemini/The interfaces](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_interfaces.md)
-
-[Gemini/Simol and the algorithmic language](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_algo.md)
-
-[Gemini/Concurrency and parallelism](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_conc_parall.md)
-
-[Gemini/The "underst" modifier](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_underst.md)
-
-[Gemini/AI softwares programming with simol](https://github.com/charleskoffler/simol-language/tree/main/docs/getting_started_by_gemini/getting_started_by_gemini_ai_writing.md)
+[AI softwares programming with clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/simol_simple_doc_github_website_ai_writing.md)
 
 ### Complete definition
 
 This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
 
-[Complete and theoretical definition of simol](https://github.com/charleskoffler/simol-language/tree/main/docs/simol_complete_theoretical_def.md)
+[Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/simol_complete_theoretical_def.md)
 
-### Design patterns in simol analysis
+### Design patterns in clprolf analysis
 
-[Whole directory](https://github.com/charleskoffler/simol-language/tree/main/docs/design_patterns_in_simol_analysis)
+[Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis)
 
-[Proxy pattern analysis](https://github.com/charleskoffler/simol-language/tree/main/docs/design_patterns_in_simol_analysis/proxy_design_patterns_in_simol_analysis.md)
+[Proxy pattern analysis](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis/proxy_design_patterns_in_simol_analysis.md)
 
 ## Sources
 
-### Simol compiler
+### clprolf compiler
 
-[Simol compiler directory](https://github.com/charleskoffler/simol-language/tree/main/simol_compiler)
+[clprolf compiler directory](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler)
 
-### Simol frameworks
+### clprolf frameworks
 
-[Simol Java framework](https://github.com/charleskoffler/simol-language/tree/main/simol_compiler/src/main/java/org/simol/simolframework/java)
+[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/clprolf/simolframework/java)
 
-[Simol C# framework](https://github.com/charleskoffler/simol-language/tree/main/simol_framework/SimolCsharpFramework)
+[clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/SimolCsharpFramework)
 
-[Simol PHP framework](https://github.com/charleskoffler/simol-language/tree/main/simol_framework/simol_php_framework)
+[clprolf PHP framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/simol_php_framework)
 
 ### Source examples
 
-[Simol simple examples](https://github.com/charleskoffler/simol-language/tree/main/simol_simple_examples)
+[clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
 
-[Simol algorithms examples](https://github.com/charleskoffler/simol-language/tree/main/simol_algorithms_examples)
+[clprolf algorithms examples](https://github.com/charleskoffler/clprolf/tree/main/simol_algorithms_examples)
 
-[Simol design patterns examples](https://github.com/charleskoffler/simol-language/tree/main/simol_design_patterns_examples)
+[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
 
-[Simol games examples](https://github.com/charleskoffler/simol-language/tree/main/simol_games_examples)
+[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/simol_games_examples)
