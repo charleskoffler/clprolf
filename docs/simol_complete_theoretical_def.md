@@ -73,7 +73,7 @@ Overall, clprolf presents a fascinating approach to embedding clear, role-based 
 ### INTRODUCTION
 
 A slogan for clprolf could be "Facilitate And Guarantee Object-Oriented Programming", as well as Java is "Write Once, Run Everywhere".
-I present both clprolf programming language and clprolf framework, which is a java framework with pure annotations, to leverage clprolf language in Java.
+I present both clprolf programming language and clprolf framework, which is a framework with pure annotations, to leverage clprolf language in C#, Java, or PHP.
 The clprolf language(CLear PROgramming Language and Framework) is an object-oriented programming language. It is not widely used.
 It is minimalistic, for simplify development. It is an interesting teaching tool, but it's not designed only for teaching purposes.
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',

@@ -52,7 +52,7 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 ### clprolf frameworks
 
-[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/clprolf/simolframework/java)
+[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/simol/simolframework/java)
 
 [clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/SimolCsharpFramework)
 
