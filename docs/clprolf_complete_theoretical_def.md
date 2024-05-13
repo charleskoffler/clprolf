@@ -23,50 +23,23 @@ The complete and detailed definition stands at the end of this file.
 
 Hello my friend. I've created a new programming language, and its equivalent framework: (...)
 
-ChatGPT
-Wow, you've put a lot of thought and effort into creating your new programming language and framework, clprolf! It's fascinating to see how you've conceptualized a way to simplify and enhance Java programming, introducing a clear role-based model for objects and adding layers of semantics that guide design choices.
-Feedback and Thoughts
+It looks like you've put a tremendous amount of thought and detail into creating your programming language and framework, clprolf. It's quite impressive! You've outlined a unique approach to object-oriented programming by emphasizing roles and responsibilities in a more narrative and intuitive manner. This not only aids in conceptual clarity but also aligns well with the principles of domain-driven design.
 
-1. Language Philosophy and Design:
+Your approach to integrating traditional Java with your language concepts, through annotations and role-based class definitions, is innovative. It simplifies the understanding and application of OOP principles by making them more explicit and aligned with real-world analogies, which is fantastic for both teaching and practical application.
 
-   Your language's philosophy of making object roles explicit is intriguing. It encourages developers to think about the purpose and functionality of objects in a more structured way, which could greatly aid in understanding and maintaining complex codebases.
-   The separation of concerns is clear, with distinct roles for classes that emulate real-world objects (simu_real_world_obj) and those that handle computational tasks (simu_comp_as_worker), which could make it easier for developers to keep a clean architecture.
+If you're looking for feedback or further development suggestions:
 
-2. Compatibility and Flexibility:
+   Community Involvement: Since clprolf is open source, you might consider increasing community involvement to test, give feedback, and contribute to the development. Engaging with communities like GitHub, Stack Overflow, or even Reddit can provide diverse insights and help improve and popularize the language.
 
-   The approach to maintain compatibility with Java is smart, as it allows developers to leverage existing libraries and infrastructure while adopting new paradigms introduced by clprolf.
-   The flexibility offered by allowing Java code within clprolf and vice versa (excluding certain keywords) ensures that developers can transition at their own pace without being forced into an entirely new environment all at once.
+   Documentation and Examples: Comprehensive documentation, including more detailed use cases and examples, would be beneficial. This can help new users understand how to implement clprolf in various scenarios, highlighting its advantages over traditional Java programming.
 
-3. Teaching and Adoption:
+   Integration with IDEs: Developing plugins for popular Integrated Development Environments (IDEs) like Eclipse or IntelliJ IDEA could facilitate adoption by easing the coding, debugging, and testing processes within those environments.
 
-   As a teaching tool, clprolf has a lot of potentials. By simplifying object-oriented concepts and clearly defining the roles of objects, it could make it easier for new programmers to grasp these concepts.
-   The explicit roles might also help in reducing common design and architectural mistakes made by beginners by providing a more structured way to think about object interactions.
+   Educational Outreach: Given its potential as a teaching tool, you might consider reaching out to educational institutions to see how clprolf can be integrated into their programming curricula or used in specific courses focusing on software design principles.
 
-4. Practical Applications and Community Engagement:
+   Performance Benchmarks: While clprolf enhances Java with additional semantics without impacting performance, providing benchmarks and case studies demonstrating this could reassure potential adopters about the practicality of using clprolf in performance-sensitive applications.
 
-   The example you provided with the NetworkTalker classes showcases how clprolf could be used in practical applications, emphasizing the separation of simulation logic from computational logic.
-   Engaging with the community through GitHub is a great way to gather feedback and foster a community around clprolf. Collaborative development can lead to improvements and more robust testing of your language and framework.
-
-Suggestions for Further Development
-
-1. Tooling and IDE Support:
-
-   Consider developing plugins for popular IDEs like Eclipse and IntelliJ IDEA to support syntax highlighting, code completion, and other helpful features that encourage adoption and ease the development process.
-
-2. Comprehensive Documentation and Examples:
-
-   Comprehensive documentation that includes a variety of examples, from simple to complex, can significantly aid in adoption. Developers often rely heavily on documentation to understand new technologies.
-
-3. Real-world Testing:
-
-   Encourage real-world testing by providing a beta version of the framework for developers to try in their projects. Feedback from real-world usage will be invaluable in refining clprolf.
-
-4. Performance Benchmarks:
-
-   It would be beneficial to conduct and publish performance benchmarks comparing clprolf applications with standard Java applications. This could address potential adopters' concerns about the overhead or performance implications of the additional semantic layer.
-
-Overall, clprolf is a promising project with a lot of thought behind its design and philosophy. Its focus on clarity, teaching, and compatibility could make it a valuable tool for both new and experienced programmers. Keep up the great work, and I'm looking forward to seeing how clprolf evolves!
-
+Your language has a lot of potentials, especially in how it makes object-oriented programming more accessible and intuitive by emphasizing storytelling and real-world analogies. It’s exciting to see where this could go with the right community and resources behind it!
 
 (END OF CHAT GPT 4 RESPONSE)
 ***************************************************************************************
@@ -87,6 +60,10 @@ As clprolf classes replaces java classes, all java keywords can be used with clp
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 clprolf can be used with the clprolf compiler, or can also be used through the clprolf framework for java, which provide annotations to introduce clprolf in java.
+
+### STORYTELLING
+
+Clprolf lets you see programming as storytelling. So we can describe the characters, and the story of the scenes, the interactions, and so on. The programmer of the software can become quite like a writer. Having kind of objects, and distinguishing the interfaces, simplifying concurrency and parallelism and other topics by adding algorithmic support, all this allows this storytelling mindset.
 
 ### THE ROLE OF CLASSES
 
