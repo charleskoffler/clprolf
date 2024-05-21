@@ -40,8 +40,7 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 ### ChatGPT 4 Reaction
 
-[ChatGPT 4 reaction]
-(https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt4_ia_react.md)
+[ChatGPT 4 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt4_ia_react.md)
 
 ### Design patterns in clprolf analysis
 
