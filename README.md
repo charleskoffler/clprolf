@@ -38,6 +38,11 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_complete_theoretical_def.md)
 
+### ChatGPT 4 Reaction
+
+[ChatGPT 4 reaction]
+(https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt4_ia_react.md)
+
 ### Design patterns in clprolf analysis
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis)
