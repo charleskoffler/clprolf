@@ -11,9 +11,9 @@ Introduction
 Clprolf (CLear PROgramming Language and Framework) is an object-oriented programming language designed to enhance and simplify Java. It introduces additional keywords and concepts, making it a superset of Java, aiming to streamline development while remaining powerful and flexible.
 Key Features
 
-    Object-Oriented: Builds on Java's object-oriented principles with added clarity and minimalism.
-    Java-Compatible: Fully compatible with Java libraries and code, except for specific keywords like class, interface, extends, and implements.
-    Framework Support: Annotations provided for integration with C#, Java, and PHP.
+   Object-Oriented: Builds on Java's object-oriented principles with added clarity and minimalism.
+   Java-Compatible: Fully compatible with Java libraries and code, except for specific keywords like class, interface, extends, and implements.
+   Framework Support: Annotations provided for integration with C#, Java, and PHP.
 
 Storytelling in Programming
 
@@ -22,18 +22,18 @@ Class Roles in Clprolf
 
 Classes in Clprolf are categorized into specific roles to clarify their purpose and responsibilities:
 
-    simu_comp_as_worker (comp_as_worker): Represents technical tasks executed by the computer.
-    simu_real_world_obj (abstraction): Simulates real-world objects and their behaviors.
-    model_real_world_obj (model): Models real-world objects without behaviors.
-    information: Represents data structures used by other classes.
-    indef_obj: Flexible objects without a predefined role.
+   simu_comp_as_worker (comp_as_worker): Represents technical tasks executed by the computer.
+   simu_real_world_obj (abstraction): Simulates real-world objects and their behaviors.
+   model_real_world_obj (model): Models real-world objects without behaviors.
+   information: Represents data structures used by other classes.
+   indef_obj: Flexible objects without a predefined role.
 
 Clprolf Classes and Interfaces
 Keywords
 
-    Class Roles: Replace class with specific roles like simu_comp_as_worker, simu_real_world_obj, etc.
-    Inheritance and Contracts: Use nature instead of extends and contracts instead of implements.
-    Interfaces: Sorted into compat_interf_version, compat_interf_capacity, and compat_interf.
+   Class Roles: Replace class with specific roles like simu_comp_as_worker, simu_real_world_obj, etc.
+   Inheritance and Contracts: Use nature instead of extends and contracts instead of implements.
+   Interfaces: Sorted into compat_interf_version, compat_interf_capacity, and compat_interf.
 
 Example
 
