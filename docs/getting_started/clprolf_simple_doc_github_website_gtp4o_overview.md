@@ -1,10 +1,3 @@
-simol_simple_doc_github_website_gpt4o_overview.md, Version 1.0, (20240524).
-
-Overview par chatGPT 4o(omini), faite en réaction à la grosse version 2024-05-I.	
-	
-====================================================================================================
-
-====================================================================================================
 ## CHAT GPT 4o Overview of clprolf
 
 ChatGPT 4o
