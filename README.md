@@ -32,6 +32,8 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [AI softwares programming with clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_ai_writing.md)
 
+[ChatGPT 4o Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_gtp4o_overview.md)
+
 ### Complete definition
 
 This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
