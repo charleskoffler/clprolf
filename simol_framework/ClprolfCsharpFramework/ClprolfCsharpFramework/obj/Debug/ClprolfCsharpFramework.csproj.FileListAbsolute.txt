@@ -1,0 +1,13 @@
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.dll.config
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.dll
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\bin\Debug\TestAttrsAvecConsole.pdb
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\ClprolfCsharpFramework.csproj.CoreCompileInputs.cache
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\TestAttrsAvecConsole.dll
+C:\Users\sabri\source\repos\SimolCsharpFramework\SimolCsharpFramework\obj\Debug\TestAttrsAvecConsole.pdb
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Debug\ClprolfCsharpFramework.dll.config
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Debug\ClprolfCsharpFramework.dll
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Debug\ClprolfCsharpFramework.pdb
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Debug\ClprolfCsharpFramework.csproj.AssemblyReference.cache
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Debug\ClprolfCsharpFramework.csproj.CoreCompileInputs.cache
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Debug\ClprolfCsharpFramework.dll
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Debug\ClprolfCsharpFramework.pdb

@@ -37,6 +37,7 @@ History of the versions of the simol C# framework
 2.0	20240321	Changed in the beginners package, to SimuCompAsWorker.
 2.1	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".
 2.2 20240404	Addition of "Abstraction", "Comp_as_worker", and "Model" in the beginners package.
+2.3	20240606	Renamed package from Simol to Clprolf. Addition of forgotten "public" modifiers. Changed the project type to "class library".
 
 History of the versions of the simol PHP 8 framework
 
