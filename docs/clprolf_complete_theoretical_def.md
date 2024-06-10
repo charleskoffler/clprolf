@@ -405,9 +405,11 @@ Algorithms permit to easily emulate realities, intuitively.
 * Although it is permitted, simu_comp_as_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_as_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
 * Class roles permit to check that we keep coherence despite inheritance.
 
-### clprolf FRAMEWORK FOR JAVA DEVELOPERS
+### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations, that offers a toolbox for java developers to work with clprolf frame. There are annotations, for each clprolf keyword or annotation.
 Those annotations serves to fill the gap between java and clprolf, and easily use and learn clprolf mindset. There is a beginners package too, which permit to keep object-oriented habits in clprolf, using inheritance instead annotations.
+It is still a framework, although it supplies only annotations, and not code libraries. Indeed, these annotations need an executable to work, checking the coherence, quite like the compiler.
+But this executable does not exist at the moment. It could be written by the community, for example.
 
 The package org.clprolf.simolframework.java offers:
 @Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
@@ -1563,4 +1565,3 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
-
