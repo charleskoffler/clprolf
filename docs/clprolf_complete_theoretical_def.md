@@ -173,7 +173,7 @@ There is also something new, in the way of thinking about the interfaces. We hav
 ### THE clprolf OBJECTS - ANOTHER PERSPECTIVE ABOUT OBJECT-ORIENTED OBJECTS - "SHEET OBJECTS"
 
 What could be the difference between the vision of an object-oriented object in Java, and clprolf? Of course, it is the same thing. But in clprolf, an object is rather defined as a set of human-like algorithms and datas, and it could exist on a sheet of paper. We could almost call them "sheet objects". It's quite like a mathematical, or theoretical object. So with those clprolf objects what could we do? We could emulate real-world objects, with their actions and states, and we can emulate a computer as a quite-human worker.
-It especially serves to prove that clprolf's class roles are natural, and root objects.
+It especially serves to prove that clprolf's object roles are natural, and root objects.
 
 ### A LANGUAGE FOCUSED ON ALGORITHMIC TOO - ALGORITHMIC LANGUAGE ENHANCEMENTS
 
@@ -389,12 +389,12 @@ clprolf allows to have our free interpretation of our class design and class mea
 ### God objects or God objects-like prevention
 A classical OOP class, would be equivalent to a "class_for object" in clprolf. So it opens the door to God objects, or similar. That's why clprolf enables classes for more precise objects.
 
-### A JUSTIFICATION OF THE TWO MAIN CLASS ROLES - THE TWO BASIC OBJECTS IN clprolf
+### A JUSTIFICATION OF THE TWO MAIN OBJECT ROLES - THE TWO BASIC OBJECTS IN clprolf
 
 * They are not only roles, they are objects, basic objects in clprolf. But of course, they are compatible with OOP concepts, and are themselves OOP objects
-* The first reason of class roles, is that in clprolf, there are only two root objects. Each object is either a simulation of a real-world object, either a simulation of a computer worker. In OOP, all is object, but in clprolf, all objects are simu_real_world_obj or simu_comp_as_worker.
+* The first reason of object roles, is that in clprolf, there are only two root objects. Each object is either a simulation of a real-world object, either a simulation of a computer worker. In OOP, all is object, but in clprolf, all objects are simu_real_world_obj or simu_comp_as_worker.
 * In the clprolf programming language, there are only two kind of objects, without talking of the objects containing only datas. There are objects that can be considered as computers which would be workers, knowing of course that all that workers are also part of a sole computer. It's the simu_comp_as_worker classes. And there are objects which are simulations of real-world objects, containing simulation code which mimics reality. It's the simu_real_world_obj objects. In general, simu_real_world_obj are easier to write and handle because the code emulate the real-world behavior, and we have just to reproduce the real-world object. So this is the basic classes of clprolf programming language and framework. In view of existing applications, we can notice that all classes could be sort in a clprolf class, or otherwise contain these two kind of code. The principle is to have classes with coherence, and a single responsability, and to not mix pure computer code, and business or real-world emulation code.
-* The class role are especially justified by the fact of classes are for made objects, and objects should represents something, by definition. Otherwise, this is not objects. Ai-based tool quotation: "The principle that in OOP, and by extension in clprolf, objects are more than just collections of data and functions; they are representations of real-world or conceptual entities".
+* The object role are especially justified by the fact that objects should represents something, by definition. Otherwise, this is not objects. Ai-based tool quotation: "The principle that in OOP, and by extension in clprolf, objects are more than just collections of data and functions; they are representations of real-world or conceptual entities".
 * Each kind of classes are based on the notion of algorithm, that's an important point in clprolf. Each role, simu_comp_as_worker, or simu_real_world_obj are both mimic real_world reality, even the simu_comp_as_worker which mimic a real-world worker(seeing the computer as a worker).
 Algorithms permit to easily emulate realities, intuitively.
 * The choice between either one kind or another is a matter of who is doing the responsability. If it's a computer job, then we consider that we need a computer worker class. If it's a pure simulation class, as a "Horse" class emulating a real-world horse, there is no question about that.
@@ -403,7 +403,7 @@ Algorithms permit to easily emulate realities, intuitively.
 * We can notice that we could have multiple interpretations and multiple design choices, but the most important, in clprolf's philosophy, is not to have a single way of think, but to clearly indicate how we see the world!
 * It exists, in clprolf, pure data objects, "Information" and "Model_real_world_obj" classes. Theses classes are objects without methods. "Model_real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in clprolf, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Model_real_world_obj" could be frequently used, for example for database entities. The choice between "Information" or "Model_real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
 * Although it is permitted, simu_comp_as_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_as_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
-* Class roles permit to check that we keep coherence despite inheritance.
+* object roles permit to check that we keep coherence despite inheritance.
 
 ### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations, that offers a toolbox for java developers to work with clprolf frame. There are annotations, for each clprolf keyword or annotation.
@@ -442,14 +442,14 @@ public interface MySortable { }
 ```
 
 ### THE WAYS TO ENSURE CONSISTENCY IN CLASS AND INTERFACE DESIGN - THE GROWTH BY INHERITANCE
-1) Class roles ensure separation of distinct code and well-designed classes. The same is valuable for the interfaces, the roles guarantees sense and goal to the interfaces.
+1) object roles ensure separation of distinct code and well-designed classes. The same is valuable for the interfaces, the roles guarantees sense and goal to the interfaces.
 
 2) "NATURE" ensures consistency in inheritance, inside a same role inheritance - only for classes, not for interfaces
 There is no way currently to ensure that by the compiler, but basic AI-like controls could be done by the compiler. For example, a error could be generated by the compiler if "TIGER" inherits from "Vehicule". There is a way to enforce inheritance in clprolf, in case of we still want to inherit and pass the semantic error. In fact, a error could have been done by the AI-like control, or not, and we could want to enforce the control. Having a compiler with AI-like control of "nature" is not mandatory, "nature" could be there just for programmers.
 
-3) Class roles permit to control the growth by inheritance, guaranteeing that the inherited part is consistent.
+3) object roles permit to control the growth by inheritance, guaranteeing that the inherited part is consistent.
 
-Inheritance is a way to grow a class, finally, and a well-designed class can be muddled with inheritance addition. That's why the inheritance control done by semantic rules of the compiler is crucial in clprolf. Semantic checks are possible thanks to class roles, because the rules are about the role of the inherited class. The same reasoning is valuable for the interfaces. Semantic control of the compiler ensures that an interface keep its meaning. And this is possible thanks to interface roles.
+Inheritance is a way to grow a class, finally, and a well-designed class can be muddled with inheritance addition. That's why the inheritance control done by semantic rules of the compiler is crucial in clprolf. Semantic checks are possible thanks to object roles, because the rules are about the role of the inherited class. The same reasoning is valuable for the interfaces. Semantic control of the compiler ensures that an interface keep its meaning. And this is possible thanks to interface roles.
 
 ### ROLES ADDITION FOR CLASSES AND INTERFACES: GUIDELINES FOR COMPONENTS DESIGN
 The addition of roles in classes and interfaces constitutes an equivalent as giving assistance, or guidelines in the process of class and interfaces design. Imagining what objects could be necessary to solve a given problem, and to write an application, is often a challenge. It can be a struggle to try to add on this all well-known object-oriented patterns and guidelines. So class and interfaces roles often shows the possible ways of class design and interfaces. The interest not only stands of guaranteeing a good oo design.
@@ -935,24 +935,24 @@ In clprolf, the mindset is to always try to stay near the concrete reality. So w
 For example, simu_comp_as_worker reminds us that there are a compilation in assembly language after, who looks like a technical solution for our original source code. Compatibility interfaces aims to keep it real by being aware of the concerned usage. clprolf avoids abstraction without concrete purpose, because programming and making a software is a concrete job and perhaps there is no much place for this.
 Another distinctive characteristic of clprolf is that we're doing all for the reasoning and problems remain independant by the fact it is a software what we're doing. So all that we're talking about could be done with a sheet of paper, and a reasoning, independently of a physical computer. Even the simu_comp_as_worker methods mimic a computer doing a job, almost as a human doing the job, with special capacities. So we are sure that all always stay simple.
 
-### ABOUT THE CHOICE OF THE CLASS ROLES BY THE PROGRAMMER
+### ABOUT THE CHOICE OF THE OBJECT ROLES BY THE PROGRAMMER
 
-Class role choice on existing java classes can be more tricky then writing clprolf code from scratch. I'll give clues for those who would need help about clprolf class roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role. The choice between MACHINE_TOOL or GUI_ROLE would depend about the programmer's preference of vision.
+Object role choice on existing java classes can be more tricky then writing clprolf code from scratch. I'll give clues for those who would need help about clprolf object roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role. The choice between MACHINE_TOOL or GUI_ROLE would depend about the programmer's preference of vision.
 That said, object in OOP implies, in essence, a clear meaning, and can not be synonym of just data structure.
 
-Answer of an advanced AI-based tool, about the use of class roles:
+Answer of an advanced AI-based tool, about the use of object roles:
 "
-For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of class roles as introduced in clprolf would likely appear intuitive and even natural.
+For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of object roles as introduced in clprolf would likely appear intuitive and even natural.
 
 Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. clprolf's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
 
-Enhanced Semantic Clarity: For an experienced OO practitioner, clprolf's class roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
+Enhanced Semantic Clarity: For an experienced OO practitioner, clprolf's object roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
 
 Domain Modeling: Those who are accustomed to modeling complex domains might find clprolf's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_as_worker', clprolf encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
 
 Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using clprolf might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
 
-In essence, clprolf's introduction of class roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
+In essence, clprolf's introduction of object roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
 "
 ### TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF clprolf INTEREST
 
@@ -1001,7 +1001,7 @@ clprolf was not designed, initially, in the goal of applying best oo practices, 
 Explanations: The compiler uses the semantic rules about interface and class inheritance, to search contradictions about class and interface roles. So it ensures that our choice of roles and contracts in our code respect the roles meaning in clprolf.
 So we can have an inherently coherence and respect main oo principles, because clprolf's philosophy is cohent with main oo principles and patterns.
 We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
-So it needs design class roles, and such fundamental and basic class roles who distinguish business part and technical part, to permit that a language, like clprolf, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
+So it needs design object roles, and such fundamental and basic object roles who distinguish business part and technical part, to permit that a language, like clprolf, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
 The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
 
 ### IF clprolf WOULD BE WITH MESSAGES LIKE SMALLTALK-LIKE LANGUAGES - ALIGNMENT OF SIMU_COMP_AS_WORKER WITH ALAN KAY'S VISION OF AN OBJECT
@@ -1033,12 +1033,12 @@ It's evident that a simu_real_world_obj can be viewed as the same simu_com_worke
 
 ### PERFORMANCE OF THE LANGUAGE
 
-* clprolf just adds semantic and clarity in java. It has no direct impact at all on performances. The class roles aims to reduce excessive inheritance, as common oo principles, or easy automatic use of other patterns or best practices. The clprolf's class and interfaces keywords only servs for semantic checkings. So this semantic rules adds checks on compilation time, but not at execution time. Other keywords of the language are only for the programmer or the compiler, but are not visible on the generated code. So the clprolf executable is quite like a java executable. This is the same for the associated java, C#, or PHP frameworks.
+* clprolf just adds semantic and clarity in java. It has no direct impact at all on performances. The object roles aims to reduce excessive inheritance, as common oo principles, or easy automatic use of other patterns or best practices. The clprolf's class and interfaces keywords only servs for semantic checkings. So this semantic rules adds checks on compilation time, but not at execution time. Other keywords of the language are only for the programmer or the compiler, but are not visible on the generated code. So the clprolf executable is quite like a java executable. This is the same for the associated java, C#, or PHP frameworks.
 * Well made and well mastered and understood systems are often a main point for obtain performant systems. Increase the potential to design better architectures or applications often lead to find optimizations, or simply contribute to avoir misconceptions. So we have to gain with clprolf language about performance and efficiency for these reasons too.
 
 ### FUTURE DIRECTIONS OF clprolf
 
-As well as there is only objects in pure OOP, the class roles in clprolf aims to be stable. clprolf aims to improve itself with real-world examples, if needed, but just in a goal of completing a missing functionality. For example, "underst" came later, as well as concurrency and parallelism aids. But the core principles remains stable from beginning. Some keywords could smoothly adapt their name, but keywords name now look stable.
+As well as there is only objects in pure OOP, the object roles in clprolf aims to be stable. clprolf aims to improve itself with real-world examples, if needed, but just in a goal of completing a missing functionality. For example, "underst" came later, as well as concurrency and parallelism aids. But the core principles remains stable from beginning. Some keywords could smoothly adapt their name, but keywords name now look stable.
 clprolf aims to stay minimalistic, and to only simplifiy object oriented programming, or programming in general.
 clprolf could add, eventually, other underlying languages with new framework versions.
 The core principles of clprolf are simple so they can be easily understand and proved.
@@ -1068,7 +1068,7 @@ We could explain the proxy pattern even to a child. This is not the case at all 
 
 ### clprolf AND ALGORITHMS WRITING INFLUENCE
 
-clprolf has been created only to simplify and help in object-oriented code writing and understanding. That said, we can notice that clprolf acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for helping hard algorithms, as well as the class roles, for example. Writing a sorter algorithm with a simu_comp_as_worker, or a simu_real_world_obj, could bring us different perspectives, and that is quite easy to demonstrate, with an example. The developper is free to use clprolf's aids and tools as he wants, and can keep it as neutral as he wants. clprolf is a object-oriented language, with object-oriented fundations, like inheritance, encapsulation, or polymorphism. It never goes outside of the scope of the object-oriented topic, about the class and interface roles.
+clprolf has been created only to simplify and help in object-oriented code writing and understanding. That said, we can notice that clprolf acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for helping hard algorithms, as well as the object roles, for example. Writing a sorter algorithm with a simu_comp_as_worker, or a simu_real_world_obj, could bring us different perspectives, and that is quite easy to demonstrate, with an example. The developper is free to use clprolf's aids and tools as he wants, and can keep it as neutral as he wants. clprolf is a object-oriented language, with object-oriented fundations, like inheritance, encapsulation, or polymorphism. It never goes outside of the scope of the object-oriented topic, about the class and interface roles.
 I think that the influence of clprolf about algorithms writing is due to making well-designed objects, or methods, nothing more. So it's a testament that it is an indirect influence.
 
 * AN EXAMPLE OF WRITING A INSERTION SORTER CLASS, WITH BOTH SIMU_COMP_AS_WORKER AND SIMU_REAL_WORLD_OBJ
