@@ -459,7 +459,7 @@ The modifier "underst"("understanding") can be added to the methods of simu_real
 	"underst" indicates code that is non intuitive, for example complex sorts implementations. Even the famous and widely used algorithms can be marked as "underst".
 	It is placed before the result type of a method declaration. It can not be used for the methods of an compatibility interface.
 
-### THE ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
+### THE SUB-ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
 A simu_real_world_obj can be various things, include abstract realities. Don't believe simu_real_world_obj, in clprolf, could only represents concrete objects like car. Everything that is not a computer worker job, and has methods, is, in clprolf, a simulation of a real_world object.
 So, abstract notions, should be in such kind of clprolf classes.
 To ease understanding and smart compatibility with classical object oriented used classes, clprolf has introduced annotations. This annotations is designed to be used on a simu_real_world_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, are precisions you can add in your simu_real_world_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations doesn't enforce the reader to use the same interpretation.
@@ -494,7 +494,7 @@ public simu_real_world_obj MeteoExpert { /*(...)*/ }
 public simu_real_world_obj Window { /*(...)*/ }
 ```
 
-In the clprolf framework for java, as annotations are already used, the role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
+In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
 @Simu_real_world_obj(Role.DESIGN_ROLE)
 The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL
 

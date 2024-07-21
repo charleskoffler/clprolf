@@ -2,13 +2,13 @@
 
 ## Introduction
 
-clprolf introduces a new way of thinking, about object-oriented. But it is not crazy, and we should gain naturally our bearings.
+clprolf go further than traditional object-oriented programming, by introducting roles (or responsabilities) for objects.
 
 ## The classes
 
-First, in clprolf you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. So we define either real-world object simulation, in clprolf, or simulation of computer workers. In fact, there are too other possible objects in clprolf, without methods, and simpler, the models of real-world objects, and the information objects. Let's talk about them later.
+First, in clprolf you don't have the class keyword. We still define classes, but we talk rather about an object that we describe. And we have to choose a role for the objects. So we define either objects for real-world object simulation, in clprolf, or for a simulation of computer workers. In fact, there are too other possible objects in clprolf, without methods, and simpler, the models of real-world objects, and the information objects. Let's talk about them later.
 The simulation of real-world object is also called "abstraction", as well as the simulation of a computer worker can also be called "comp_as_worker". And the model of real-world object can be named "model".
-In object-oriented programming, we have to create objects. A difficulty is to choose the objects to create. In clprolf, we create either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
+In object-oriented programming, we have to create objects. In clprolf, we still create objects, but we have to precise his responsability. It would be either a real-world object, either a computer worker. So the obtained system is a system where real-world objects works together, or works with computer workers, and vice versa. It looks natural and human.
 
 ### What is a simulation of a real-world object (or "abstraction")?
 
@@ -46,22 +46,22 @@ public class Human {
 }
 ```
 
-We notice that there is only pure emulation code. It is the code to describe the process, in the real-world. We don't matter in this class about displaying an animation to user. No, we matter only to emulate the behavior we see in the reality.
-In other words, pure technical code, which is often more complex, for handle a technical aspect regarding the computer itself, is not here.
+We notice that there is only pure emulation code. It is the code to describe the process, in the real-world. We don't matter in this class about displaying an animation to the user. No, we matter only to emulate the behavior we see in the reality.
+In other words, pure technical code, which is often more complex, for handling a technical aspect regarding the computer itself, is not here.
 Why are we doing that? First, such pure simulation code is often straightforward. It's quite the "business" code, in other more classical words. And we don't want to mix two concerns, two responsabilities.
 
-Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in clprolf, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the class, for the programmer, but for the other readers too.
+Be aware that sometimes, some people would see the class as being a computer job, not a simulation of a real-world object! But no problem, in clprolf, you are free to perceive your objects as you want, as long as you are coherent. It is considered as important to indicate the role of the object, for the programmer, but for the other readers too.
 It is clear that the part "real-world" doesn't imply only concrete real-world objects. A Vehicule suits well, it's evident, but we can also use it for abstract notions, like a Connection, a Color, or any abstract idea of the real-world.
 In other words, as soon as you take as a reference a real-world thing, you have to use a simu_real_world_obj. It is true for the pure "model_real_world_obj" too, of course.
 
 ### What does 'class_for' mean?
 
 'class_for' is an optional keyword, that can be placed just before a class role. It replaces 'class' of Java, and means "class for a simu_real_world_obj"(or class for another class role).
-It could be great for people who prefer have a more classical way of speaking about objects and classes.
+It could be great for people who prefer have a more classical way of speaking about objects and classes. It does not exist, obviously, in the annotation frameworks.
 
 ### What is a simulation of a computer worker(or "comp_as_worker")?
 
-Sometimes, we can have classes that don't aim to emulate. It's just a work for the computer, as find objects in a database, or launch a program. The worker is not a real-world object, and the action is executed by the computer.
+Sometimes, we can have objects that don't aim to emulate. It's just a work for the computer, as finding objects in a database, or launching a program. The worker is not a real-world object, and the action is executed by the computer.
 Why do we call it a worker? Because, to simplify our problem, we want to see it as a worker, someone who do his job, as well as us when we work!
 So to mimic a real worker, we use a human-like algorithm to describe the job. In fact, the computer is running maching code! This is why we're talking here of a simulation of a worker. Seeing the computer as a worker is frequently used, in fact, it is not so new! When we're saying a "server", it's quite like our worker. When we're saying "the computer is executing my application", it is rather the same thing.
 
@@ -92,7 +92,7 @@ public class Launcher {
 
 In this example, we need an object to execute the application, and the simulation of a human.
 A class with a static method is quite like a singleton object, isn't it? The static attributes and methods are unique for a given class.
-So this class, in clprolf, in a simu_comp_as_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, and this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not a real-world object.
+So this Launcher, in clprolf, is a simu_comp_as_worker. The object is more a computer job, the computer worker will do his job. And this work is to create a Human object, and to clean his Teeth. Be aware that a computer worker can, and this is frequent, use simu_real_world_obj. But who is doing the job? The computer, not a real-world object.
 So we will often have a simu_comp_as_worker as a launcher of the application.
 A great use case of the simu_comp_as_worker can be to put the code for display on screen, or playing animations or sounds, to realize technically a simulation of real-world object on the computer! If you have only a simu_real_world_obj, without technical reflection on screen , keyboard, music, and so on, the simulation would be only a memory simulation! So it seems great to separate this code which is frequently technical, and computer-dependent. In this kind of code, we have to know the computer libraries, for example.
 Notice that even a computer worker class should be quite intuitive, because it is like a human worker, except that we know that it is a computer. So we know that some things would become a bit less intuitive, and less straightforward, than a pure real-world simulation. But it is still simulation, and the simu_comp_as_worker classes could, theoritically, be placed only on a sheet of paper, and verbally explained without a physical computer. All this stuff is obviously to simplify the programs, and make programming less daunting, and perhaps more mathematical.
@@ -130,7 +130,7 @@ public class Client {
 
 ### What is an "Information"?
 
-The second kind of class without methods, is the Information, or @Information in the framework. It's the same thing as a data structure in C, approximately. The nuance with a C struct, is that for us, it's an element of datas for an algorithm.
+The second kind of objects without methods, is the Information, or @Information in the framework. It's the same thing as a data structure in C, approximately. The nuance with a C struct, is that for us, it's an element of datas for an algorithm.
 So we call it an "information", because it suits with our "computer worker" vision. So as soon as we need a set of informations, which does not represent the real-world, but only for assemble some variables, we have to use it.
 Classically, it should be used rather by a simu_comp_as_worker, it is quite made for him. And you know, an "Information" is obviously allowed to be contained by a simu_real_world_obj too, but it should be rare.
 An Information could be used, for example, in a simu_comp_as_worker, to return many different objects, but perhaps we'd rather create an Response object instead!
@@ -216,9 +216,9 @@ public class Dog extends @Nature Animal {
 
 ```
 
-### What are the roles for a simu_real_world_obj?
+### What are the sub-roles for a simu_real_world_obj?
 
-Specifying the role of the simu_real_world_obj classes is absolutely not mandatory. The roles can be, currently, @Human_expert, @Machine_tool, @GUI_role, @Design_role, in the clprolf language. For the framework, we indicate it as @Simu_real_world_obj(Role.HUMAN_EXPERT), or @Simu_real_world_obj(Role.Design_role), for example, a value of the Role enumeration.
+Specifying the sub-role of the simu_real_world_obj objects is absolutely not mandatory. The sub-roles can be, currently, @Human_expert, @Expert_component, @Machine_tool, @GUI_role, @Design_role, in the clprolf language. For the framework, we indicate it as @Simu_real_world_obj(Role.HUMAN_EXPERT), or @Simu_real_world_obj(Role.Design_role), for example, a value of the Role enumeration.
 A human expert specifies that we emulate a real-world human expert. This could remind us the expert systems, except that all the expert rules are given by an algorithm. For example, we could see a controller as a business expert, in his speciality.
 
 ```java
@@ -271,7 +271,7 @@ public class WeatherForecastController {
 
 ```
 
-There is another interesting role, @Expert_component(or Role.EXPERT_COMPONENT), that can always replace, if we prefer, the @Human_expert role. It's a kind of design role, where we call the class a component, so it's a true design role. But this component is an expert in a job, defined in a quite general way. And it keeps a simulation because it's an ideal role.
+There is another interesting sub-role, @Expert_component(or Role.EXPERT_COMPONENT), that can always replace, if we prefer, the @Human_expert sub-role. It's a kind of @Design_role, where we call the object a component, so it's a true design role. But this component is an expert in a job, defined in a quite general way. And it keeps a simulation because it's an ideal role.
 
 ```java
 @Expert_component
@@ -301,7 +301,7 @@ But what is a machine tool and a GUI_role ?
 
 These are compensation in term of GUI, of such different visions. The GUI_role is the more classical view, of a graphical interface. A button is a component, or a control, of a window, and the whole is a graphical interface. Yeah. But some people could see that it is quite an emulation of a real-world machine tool, with buttons, displays, and so on. So the window is viewed like a real-world machine tool, nothing more. So the abstraction becomes more direct and imaginative. When we execute a graphical application, it is just as if we had obtained a specialized machine tool, to do a particular work. Notice that much metaphors used in graphical interfaces, like buttons, or window, suit well to this vision.
 
-Remember that indicating the roles are not mandatory in clprolf. We could just specify the class role, "simu_real_world_obj", and nothing more. It's enough, if we want.
+Remember that indicating the sub-roles are not mandatory in clprolf. We could just specify the object role, "simu_real_world_obj", and nothing more. It's enough, if we want.
 
 In clprolf language:
 
@@ -347,8 +347,12 @@ Remember that an equivalent framework exists in C# and PHP 8. The PHP 8 version 
 
 ### "abstraction", "comp_as_worker", and "model" keywords
 
-"simu_real_world_obj" can be replaced by "abstraction" keyword (or @Abstraction in the framework), if wanted. "Abstraction" could be preferred by some people. Here we mean that the class, with its methods and attributes, is an abstraction.
+"simu_real_world_obj" can be replaced by "abstraction" keyword (or @Abstraction in the framework), if wanted. "Abstraction" could be preferred by some people. Here we mean that the object, with its methods and attributes, is an abstraction.
 
 "simu_comp_as_worker" can be called "comp_as_worker"(or @Comp_as_worker in the framework), to remain coherent.
 "model_real_world_obj" can be replaced by "model" as well.
 The "nature" keyword is still functional on such classes, as well as the roles annotation of the simu_real_world_objs(like @Expert_component).
+
+### "indef_obj"(indefinite object) object role
+We are not obliged to define an object role, in case where we desire to stay compatible with traditional OOP.So the "indef_obj" modifier(indefinite object) can be used instead of the other object role modifiers.
+In the framework, there are no equivalent, and simply don't use a role annotation for the class.
