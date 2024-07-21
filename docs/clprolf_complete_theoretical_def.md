@@ -41,19 +41,19 @@ clprolf can be used with the clprolf compiler, or can also be used through the c
 
 Clprolf lets you see programming as storytelling. So we can describe the characters, and the story of the scenes, the interactions, and so on. The programmer of the software can become quite like a writer. Having kind of objects, and distinguishing the interfaces, simplifying concurrency and parallelism and other topics by adding algorithmic support, all this allows this storytelling mindset.
 
-### THE ROLE OF CLASSES
+### THE ROLE OF OBJECTS
 
 In clprolf, we sort objects, in the same way we have controller objects, for example.
 And there are here only five roles in clprolf, simu_comp_as_worker(or comp_as_worker), simu_real_world_obj(or "abstraction"), model_real_world_obj(or "model"), information and indef_obj: only code for computer, or pure code of simulation.
-clprolf is based on the fact that you can notice than some classes emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
-Then, the other kind of classes could be classes for computational or technical tasks, where we want the computer to work for us with his resources, but not in a emulation goal. To being coherent, and not dependant of computer problems, we could abstract that, and do as if it could be algorithmic tasks given to a computer seen as a worker.
+clprolf is based on the fact that you can notice than some objects emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
+Then, the other kind of objects could be objects for computational or technical tasks, where we want the computer to work for us with his resources, but not in a emulation goal. To being coherent, and not dependant of computer problems, we could abstract that, and do as if it could be algorithmic tasks given to a computer seen as a worker.
 So the computational tasks emulate an algorithm for worker, as the computer needs a compilation to understand the algorithms.
-These roles of classes aims to help for make concrete the object oriented programming, and to help other programmers to read the existing code. It aims also to facilitate design choices, and easily separate responsabilities. It marks classes with clear concrete abstractions, and the simu_real_world_obj should be easier to use and write, in general.
-The ambition of the class is clearly indicated, and it adds information on the design intents of the developer. 
+These roles of objects aims to help for make concrete the object oriented programming, and to help other programmers to read the existing code. It aims also to facilitate design choices, and easily separate responsabilities. It marks objects with clear concrete abstractions, and the simu_real_world_obj should be easier to use and write, in general.
+The ambition of the object is clearly indicated, and it adds information on the design intents of the developer. 
 Other roles could eventually have been candidate, but these roles are already covered by the five main roles. We don't want to have too much roles, for staying efficient and clear.
 There is a little difference too, in the way that in clprolf we don't mark 'class' the classes, and directly talk about objects. While we talk about a role, we couldn't add the information that it is a mold, and we can imagine directly the class as an object. It aims to facilitate abstractions, but of course the concepts about classes keep valuable in clprolf.
 Some people would perhaps use clprolf in classical simulation domains, but it is not restricted, in essence, in a kind of programming(though it could look like). The mindset should be quite easy to get for an object oriented programmer, though it doesn't refute object programming principles and vision. For a beginner, it should facilitate programming teaching.
-clprolf requires an object mindset and a desire to indicate helpful extra information on the used objects.
+clprolf requires an object mindset and a desire to add helpful extra information on the used objects.
 We keep flexibility with "indef_obj"(indefinite object), like a traditional oo object.
 
 ### THE clprolf CLASSES
