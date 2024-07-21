@@ -18,7 +18,7 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Quick start about the roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_quick_start_roles.md)
 
-[The class roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_class_roles.md)
+[The object roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_object_roles.md)
 
 [The interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_interfaces.md)
 
