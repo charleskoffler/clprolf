@@ -98,6 +98,13 @@ public class_for simu_comp_as_worker Launcher { //(...) }
 "class_for" is used to keep class concept, while maintaining clprolf's philosophy. So we would need a memory object (with his methods) which would be a simulation of a real world object, and we would have to first create a class for ('class_for') it. Or we could need a memory object and his methods, which would be a simulation of a computer worker, and we would create a class for ("class_for") it. "class_for" is optional.
 "class_for" is user-friendly, to not forget the class stage, and is designed to be used by those who wants to clearly notice the mold aspect in oop. It can be used as often as we want, instead of directly precise the role, and it is just as effective.
 
+### THE OBJECT ROLES: A METHOD FOR DESIGNING OUR OBJECTS
+
+Pure object-oriented programming doesn't tell us how designing our objects. It gives the definition of what an object is, it is a bundle of variables and methods. But nothing more. Clprolf gives us clues to imagine how create our classes, so we can design easily our objects. The resulting design is intuitive, and quite easily memorizable, and we can think about multiple solutions. We can choose among different interpretations, according to our sensibility, and communicate them. The obtained objects still remains pure object-oriented objects,and the clprolf roles are always IT objects( simulation, abstraction, or model of a real-world entity). All this can be achieved by assigning a clprolf role to our objects.
+Assigning a role means choosing a primary responsibility, and this is in line with the Single Responsibility Principle. The clprolf roles allow storytelling, and imitations of the reality. They allow the computer to check the inheritance consistency, at compilation time. So the compiler takes part of the object designing process.
+So clprolf still allows to keep an object-centric mindset, and compatible with OOP habits.
+OOP always needs guidelines like object-oriented design principles, or design patterns, and this is a proof that we need a support to design our classes and objects. So clprolf object roles automatically bring us this kind of guidelines or support.
+
 ### THE INTERFACES IN clprolf
 In clprolf, we sort the interfaces, there are three types of interfaces. clprolf interfaces are called compatibility interfaces.
 
