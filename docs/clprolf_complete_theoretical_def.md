@@ -135,6 +135,76 @@ clprolf prefer not to use "with_compat" for the interfaces list implemented in a
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in clprolf because
 it focuses on the implementation, not the idea of a contract is respected.
 
+### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
+
+Each object, in object-oriented programming, should be more than just a set of datas. So all the topic of the essence of the objects, their role, is an aspect of object-oriented programming. So objects nature question belongs to object-oriented programming, and is an aspect of it. All applications in a computer are either a user-goal application, either software to support other applications(especially operating system, or libraries). So the final application is always the principal objective of a computer. This is why the different kind of objects couldn't be anything else than emulations of real-world concrete objects or concepts, or code for computer. It's a kind of scientific vision of what is an application. And it simply brings together all the kinds of objects in object-oriented languages.
+
+### clprolf LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
+
+A Github repository has been created for clprolf, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the clprolf language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. clprolf is open source, with an M.I.T license.
+
+### MAIN GOAL IN clprolf DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
+
+One of the main goal, or perhaps the most important goal in clprolf, when designing it, was to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with clprolf approach. While aiding in thinking of one solution to solve the writing problems, clprolf aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
+
+### HELPS JAVA WRITING ALONG (OR C# AND PHP)
+
+The clprolf framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions. The clprolf framework brings solutions for coding with ease and fun, while keeping a great codebase quality. Teaching is concerned, but we're talking for other programmers too, who would look for such facilitating solutions. Scientists could be concerned, but computer scientists and developers too, who could look for concrete and easy solutions for programming.
+
+### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
+clprolf framework is a package of java annotations'or C# and PHP attributes), that offers a toolbox for java, C#, or PHP developers to work with clprolf frame.
+The Java and C# frameworks, as well as the PHP one, allow to still stay in Java, or C#, and to leverage the clprolf concepts while remaining in a pure object mindset. So the shift  in thinking is reduced. For example, for the classes, we think about objects as usual, then we have to choose an object role. It is quite like an MVC framework, where we use predefined kind of objects. We stay in the primary language, and just a way of writing code brought and inspired by the framework.
+The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working! 
+
+There is a beginners package too, which permit to keep object-oriented habits in clprolf, using inheritance instead annotations.
+It is still a framework, although it supplies only annotations, and not code libraries. Indeed, it brings a frame. What's more, these annotations need an executable to work, checking the coherence, quite like the compiler.
+This executable does not exist at the moment. It could be written by the community, for example.
+
+The package org.clprolf.simolframework.java offers:
+@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
+They are placed in the same locations as pure clprolf, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
+Example:
+
+```java
+@Abstraction
+public class Car { /* (...) */ }
+```
+
+Or
+
+```java
+@With_compat UserDao daoUser;
+```
+
+Or
+
+```java
+@Underst //Recognize object in an image.
+public void recognizeObject(){ }
+```
+
+Or
+
+```java
+@Compat_interf_capacity
+public interface MySortable { }
+```
+
+### clprolf FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
+
+clprolf frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
+They are considered as the four root classes for clprolf, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
+About the interfaces, each interface must implement one of the root interface of clprolf, and not only the mother interface. The main interfaces in clprolf are CompatInterfVersion and CompartInterfCapacity.
+The developper who want to slowly move to clprolf, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
+In fact, they are empty but allow the transition to clprolf while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
+
+Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
+For classes, it is not the same, only the root classes must inherit from a root clprolf class(SimuRealWorldObj, SimuCompAsWorker, ModelRealWorldObj, Information). This is because all the descendants must have the same role, in clprolf. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
+
+Usage example in java: public class Main extends SimuCompAsWorker { (...) }
+Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
+Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
+
 ### Using traditional objects and interfaces in clprolf
 
 indef_obj
@@ -343,37 +413,6 @@ public class Customer implements @Contracts Runnable {
 
 In clprolf, it is fastly visible and understandable, that there is two main queues, and each Customer objects blocks the other customer waiting in the same queue.
 
-### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
-
-Each object, in object-oriented programming, should be more than just a set of datas. So all the topic of the essence of the objects, their role, is an aspect of object-oriented programming. So objects nature question belongs to object-oriented programming, and is an aspect of it. All applications in a computer are either a user-goal application, either software to support other applications(especially operating system, or libraries). So the final application is always the principal objective of a computer. This is why the different kind of objects couldn't be anything else than emulations of real-world concrete objects or concepts, or code for computer. It's a kind of scientific vision of what is an application. And it simply brings together all the kinds of objects in object-oriented languages.
-
-### clprolf LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
-
-A Github repository has been created for clprolf, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the clprolf language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. clprolf is open source, with an M.I.T license.
-
-### MAIN GOAL IN clprolf DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
-
-One of the main goal, or perhaps the most important goal in clprolf, when designing it, was to make possible to write programs that we would think quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with clprolf approach. While aiding in thinking of one solution to solve the writing problems, clprolf aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
-
-### HELPS JAVA WRITING ALONG (OR C# AND PHP)
-
-The clprolf framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions. The clprolf framework brings solutions for coding with ease and fun, while keeping a great codebase quality. Teaching is concerned, but we're talking for other programmers too, who would look for such facilitating solutions. Scientists could be concerned, but computer scientists and developers too, who could look for concrete and easy solutions for programming.
-
-### clprolf FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
-
-clprolf frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
-They are considered as the four root classes for clprolf, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
-About the interfaces, each interface must implement one of the root interface of clprolf, and not only the mother interface. The main interfaces in clprolf are CompatInterfVersion and CompartInterfCapacity.
-The developper who want to slowly move to clprolf, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
-In fact, they are empty but allow the transition to clprolf while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
-
-Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
-For classes, it is not the same, only the root classes must inherit from a root clprolf class(SimuRealWorldObj, SimuCompAsWorker, ModelRealWorldObj, Information). This is because all the descendants must have the same role, in clprolf. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
-
-Usage example in java: public class Main extends SimuCompAsWorker { (...) }
-Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
-Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
-
 ### clprolf AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
 
 clprolf follows the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top of classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
@@ -411,42 +450,6 @@ Algorithms permit to easily emulate realities, intuitively.
 * It exists, in clprolf, pure data objects, "Information" and "Model_real_world_obj" classes. Theses classes are objects without methods. "Model_real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in clprolf, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Model_real_world_obj" could be frequently used, for example for database entities. The choice between "Information" or "Model_real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
 * Although it is permitted, simu_comp_as_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_as_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
 * object roles permit to check that we keep coherence despite inheritance.
-
-### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
-clprolf framework is a package of java annotations, that offers a toolbox for java developers to work with clprolf frame. There are annotations, for each clprolf keyword or annotation.
-Those annotations serves to fill the gap between java and clprolf, and easily use and learn clprolf mindset. There is a beginners package too, which permit to keep object-oriented habits in clprolf, using inheritance instead annotations.
-It is still a framework, although it supplies only annotations, and not code libraries. Indeed, these annotations need an executable to work, checking the coherence, quite like the compiler.
-But this executable does not exist at the moment. It could be written by the community, for example.
-
-The package org.clprolf.simolframework.java offers:
-@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
-They are placed in the same locations as pure clprolf, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
-Example:
-
-```java
-@Abstraction
-public class Car { /* (...) */ }
-```
-
-Or
-
-```java
-@With_compat UserDao daoUser;
-```
-
-Or
-
-```java
-@Underst //Recognize object in an image.
-public void recognizeObject(){ }
-```
-
-Or
-
-```java
-@Compat_interf_capacity
-public interface MySortable { }
-```
 
 ### THE WAYS TO ENSURE CONSISTENCY IN CLASS AND INTERFACE DESIGN - THE GROWTH BY INHERITANCE
 1) object roles ensure separation of distinct code and well-designed classes. The same is valuable for the interfaces, the roles guarantees sense and goal to the interfaces.
@@ -881,7 +884,7 @@ OR
 
 ```java
 @Simu_real_world_obj
-public class Car extends Vehicule, @Forced_inh CarRealization {
+public class Car extends @Forced_inh CarRealization {
 //(...)
 }
 ```
