@@ -5,6 +5,7 @@ clprolf(CLear PROgramming Language and Framework) has been made for simplify pro
 The clprolf framework is available for Java, C#, or PHP.
 
 [clprolf official web site](https://www.clprolf-lang.org/)
+[Contributing](https://github.com/charleskoffler/clprolf/blob/main/CONTRIBUTING.md)
 
 ### Getting started in clprolf
 
