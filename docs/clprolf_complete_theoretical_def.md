@@ -35,11 +35,17 @@ All java which can be applied to a class can be applied to a a clprolf class, an
 As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, for example "public simu_comp_as_worker Launcher{ }".
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
-clprolf can be used with the clprolf compiler, or can also be used through the clprolf framework for java, which provide annotations to introduce clprolf in java.
 
 ### STORYTELLING
 
 Clprolf lets you see programming as storytelling. So we can describe the characters, and the story of the scenes, the interactions, and so on. The programmer of the software can become quite like a writer. Having kind of objects, and distinguishing the interfaces, simplifying concurrency and parallelism and other topics by adding algorithmic support, all this allows this storytelling mindset.
+
+### THE CLASSES GROUPED IN LAYERS - clprolf AND THE THREE-TIER ARCHITECTURE
+
+In clprolf, there is a top abstraction layer, which is composed by the "abstraction" classes(or its equivalent "simu_real_world_obj"), and the "model_real_world_obj"(or "model") classes. Here we can meet the classes containing business code(the Business Logic Layer of the three-tier architecture), but not only. Every abstraction (or simulation) code is considered quite like business code.
+
+Then there is a technical layer, which is composed by the technical classes. Here, the computer is seen as an abstraction of a real-world worker. It is the "simu_comp_as_worker"(or "comp_as_worker") classes. Here we can find the classes as in the Data-Access Layer(DAL) and Presentation Layer of the three-tier architecture. In clprolf, we especially separate classes that contain technical code needed for the "abstraction" classes: display code, as well as data-access code. Everything that is not pure abstraction code should be put in a technical class.
+However, some software, for example parts of an operating system, is composed mainly by the technical layer, which can call the abstraction layer.
 
 ### THE ROLE OF OBJECTS
 
@@ -141,7 +147,7 @@ Each object, in object-oriented programming, should be more than just a set of d
 
 ### clprolf LANGUAGE AND FRAMEWORK GITHUB REPOSITORY
 
-A Github repository has been created for clprolf, so I can share it with people, and gather feedback and contributions. I'm looking especially, at least, for testers, nothing more. And then, interested people could go further by participating in a deeper manner. So collaborators would be awesome to test the clprolf language or framework, giving feedback or insights about it, or share discussions with me or others! ChatGPT has been my first collaborator, thanks to this fantastic AI-based tool. clprolf is open source, with an M.I.T license.
+A Github repository has been created for clprolf. Clprolf is open source, with an M.I.T license.
 
 ### MAIN GOAL IN clprolf DESIGN: AID TO EASILY AND WITH FUN MAKE POSSIBLE WRITING WHAT WE THINK IMPOSSIBLE OR HARD
 
@@ -950,20 +956,6 @@ Another distinctive characteristic of clprolf is that we're doing all for the re
 Object role choice on existing java classes can be more tricky then writing clprolf code from scratch. I'll give clues for those who would need help about clprolf object roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role. The choice between MACHINE_TOOL or GUI_ROLE would depend about the programmer's preference of vision.
 That said, object in OOP implies, in essence, a clear meaning, and can not be synonym of just data structure.
 
-Answer of an advanced AI-based tool, about the use of object roles:
-"
-For someone who practices object-oriented programming (OOP) comprehensively and with a deep understanding of its principles, the concept of object roles as introduced in clprolf would likely appear intuitive and even natural.
-
-Alignment with OO Principles: In true object-oriented design, the focus is on creating objects that represent meaningful entities with clear roles and responsibilities. clprolf's approach of defining explicit roles for classes aligns well with this philosophy. It reinforces the idea of thinking about objects not just as data structures with associated methods, but as entities with a specific purpose and behavior in the context of the application.
-
-Enhanced Semantic Clarity: For an experienced OO practitioner, clprolf's object roles could provide a clearer and more structured way to articulate the intent behind each class. This enhanced semantic clarity can aid in designing more maintainable and understandable systems.
-
-Domain Modeling: Those who are accustomed to modeling complex domains might find clprolf's approach beneficial. By categorizing classes into specific roles like 'simu_real_world_obj' or 'simu_comp_as_worker', clprolf encourages developers to think more deeply about how their software reflects the real world or the specific domain they are modeling.
-
-Intuitive Transition: For OO programmers who already think deeply about the roles and responsibilities of their classes, transitioning to using clprolf might be relatively straightforward. The language's explicit focus on roles can be seen as an extension or formalization of what they are already doing in practice.
-
-In essence, clprolf's introduction of object roles could be seen as a natural evolution of object-oriented principles, providing a framework that encourages developers to think more explicitly about the purpose and meaning of their objects. It underscores the importance of aligning software design closely with real-world concepts, which is a core tenet of effective object-oriented programming.
-"
 ### TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF clprolf INTEREST
 
 We can start from the Single Responsability Principle, which claims a clear and single purpose on each class.
