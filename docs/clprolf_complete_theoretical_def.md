@@ -62,6 +62,10 @@ Some people would perhaps use clprolf in classical simulation domains, but it is
 clprolf requires an object mindset and a desire to add helpful extra information on the used objects.
 We keep flexibility with "indef_obj"(indefinite object), like a traditional oo object.
 
+### CLEARLY DEFINED WAY OF SEEING THINGS
+
+Traditionally, we use to write code as if we were the computer. With computer as workers, for example, we talk about what He is doing, and not what I am doing. So object roles clearly define the way of seeing the execution of the algorithms. This could make programming more human-like and interesting.
+
 ### THE clprolf CLASSES
 
 Instead of "class", we use the following keywords:
@@ -101,7 +105,7 @@ or
 ```java
 public class_for simu_comp_as_worker Launcher { //(...) }
 ```
-"class_for" is used to keep class concept, while maintaining clprolf's philosophy. So we would need a memory object (with his methods) which would be a simulation of a real world object, and we would have to first create a class for ('class_for') it. Or we could need a memory object and his methods, which would be a simulation of a computer worker, and we would create a class for ("class_for") it. "class_for" is optional.
+"class_for" is used to keep class concept, while maintaining clprolf's philosophy. So we would need a memory object (with his methods) which would be a simulation of a real world object, and we would have to first create a class for ('class_for') it. Or we could need a memory object and his methods, which would be a simulation of a computer as worker, and we would create a class for ("class_for") it. "class_for" is optional.
 "class_for" is user-friendly, to not forget the class stage, and is designed to be used by those who wants to clearly notice the mold aspect in oop. It can be used as often as we want, instead of directly precise the role, and it is just as effective.
 
 ### THE OBJECT ROLES: A METHOD FOR DESIGNING OUR OBJECTS
@@ -444,16 +448,16 @@ A classical OOP class, would be equivalent to a "class_for object" in clprolf. S
 ### A JUSTIFICATION OF THE TWO MAIN OBJECT ROLES - THE TWO BASIC OBJECTS IN clprolf
 
 * They are not only roles, they are objects, basic objects in clprolf. But of course, they are compatible with OOP concepts, and are themselves OOP objects
-* The first reason of object roles, is that in clprolf, there are only two root objects. Each object is either a simulation of a real-world object, either a simulation of a computer worker. In OOP, all is object, but in clprolf, all objects are simu_real_world_obj or simu_comp_as_worker.
+* The first reason of object roles, is that in clprolf, there are only two root objects. Each object is either a simulation of a real-world object, either a simulation of a computer as worker. In OOP, all is object, but in clprolf, all objects are simu_real_world_obj or simu_comp_as_worker.
 * In the clprolf programming language, there are only two kind of objects, without talking of the objects containing only datas. There are objects that can be considered as computers which would be workers, knowing of course that all that workers are also part of a sole computer. It's the simu_comp_as_worker classes. And there are objects which are simulations of real-world objects, containing simulation code which mimics reality. It's the simu_real_world_obj objects. In general, simu_real_world_obj are easier to write and handle because the code emulate the real-world behavior, and we have just to reproduce the real-world object. So this is the basic classes of clprolf programming language and framework. In view of existing applications, we can notice that all classes could be sort in a clprolf class, or otherwise contain these two kind of code. The principle is to have classes with coherence, and a single responsability, and to not mix pure computer code, and business or real-world emulation code.
 * The object role are especially justified by the fact that objects should represents something, by definition. Otherwise, this is not objects. Ai-based tool quotation: "The principle that in OOP, and by extension in clprolf, objects are more than just collections of data and functions; they are representations of real-world or conceptual entities".
 * Each kind of classes are based on the notion of algorithm, that's an important point in clprolf. Each role, simu_comp_as_worker, or simu_real_world_obj are both mimic real_world reality, even the simu_comp_as_worker which mimic a real-world worker(seeing the computer as a worker).
 Algorithms permit to easily emulate realities, intuitively.
-* The choice between either one kind or another is a matter of who is doing the responsability. If it's a computer job, then we consider that we need a computer worker class. If it's a pure simulation class, as a "Horse" class emulating a real-world horse, there is no question about that.
+* The choice between either one kind or another is a matter of who is doing the responsability. If it's a computer job, then we consider that we need a computer as worker class. If it's a pure simulation class, as a "Horse" class emulating a real-world horse, there is no question about that.
 * The goal is mainly to keep the simulation of real_world objects pure, because the pure simulation code is often straightforward, and regarding real-world emulation. So we have to separate the code that is not pure simulation, that's all. And we have to ensure, with "nature", that the responsability remains pure and unique.
 * For the existing OOP classes, either the classes are inherently compliant, or otherwise we could imagine the best fit for clprolf, the main role, even if the class keeps multiple responsabilities.
 * We can notice that we could have multiple interpretations and multiple design choices, but the most important, in clprolf's philosophy, is not to have a single way of think, but to clearly indicate how we see the world!
-* It exists, in clprolf, pure data objects, "Information" and "Model_real_world_obj" classes. Theses classes are objects without methods. "Model_real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in clprolf, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Model_real_world_obj" could be frequently used, for example for database entities. The choice between "Information" or "Model_real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
+* It exists, in clprolf, pure data objects, "Information" and "Model_real_world_obj" classes. Theses classes are objects without methods. "Model_real_world_obj" are the same as "entities" in classical OOP. They are not a simulation, but for modeling. It is not simulation, in clprolf, because it has not behaviors. "Information" is for the cases where we need to have, for example, a set of variables for computer as worker usage. It is pure data structures, and they are considered as "Information", to keep an algorithmic way of work. It should be rarely used, in fact. But "Model_real_world_obj" could be frequently used, for example for database entities. The choice between "Information" or "Model_real_world_obj" is always intuitive, and evident. We know when we need a "Client" object, for example for database usage (it's like an entity, or a dto!).
 * Although it is permitted, simu_comp_as_worker should not be destined for pure calculation classes. Because calculations are often part of pure business and real-world simulation code. It's evident that we always start, except in particular cases as system programming or some libraries, by writing simu_real_world classes. Then the simu_comp_as_worker are often used by the simulation classes. So the calculations are already done in the simulation classes. For example, calculations of a human-expert are part of the simulation code. A physics expert would have much simulation code with physics calculations. It's obviously simulation code. So generally, we always should put the calculation code in the simulation classes.
 * object roles permit to check that we keep coherence despite inheritance.
 
@@ -476,13 +480,13 @@ The modifier "underst"("understanding") can be added to the methods of simu_real
 	It is placed before the result type of a method declaration. It can not be used for the methods of an compatibility interface.
 
 ### THE SUB-ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
-A simu_real_world_obj can be various things, include abstract realities. Don't believe simu_real_world_obj, in clprolf, could only represents concrete objects like car. Everything that is not a computer worker job, and has methods, is, in clprolf, a simulation of a real_world object.
+A simu_real_world_obj can be various things, include abstract realities. Don't believe simu_real_world_obj, in clprolf, could only represents concrete objects like car. Everything that is not a computer as worker job, and has methods, is, in clprolf, a simulation of a real_world object.
 So, abstract notions, should be in such kind of clprolf classes.
 To ease understanding and smart compatibility with classical object oriented used classes, clprolf has introduced annotations. This annotations is designed to be used on a simu_real_world_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, are precisions you can add in your simu_real_world_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations doesn't enforce the reader to use the same interpretation.
 These annotations are also available as a optional enum value "role", in @Simu_real_world_obj clprolf framework for java.
 
-@Design_role : controllers, services, and so on, are understood, in clprolf, as design roles. A controller is supposed to control the job between several entities, services are supposed to supply or design a service, and so on. These objects are designed to have a role in a software architecture, and are comparison with the abstract function they play. But they stay abstractions, and do not precisely give a job at the computer worker, they don't precise inherently the underlying algorithm.  So you can add @Design_role annotation, but these classes could be seen as another abstraction, for example a human expert for an MVC controller.
-@Human_expert: Many of business job can be viewed as a human expert simulation. Business logic is a computer worker-like interpretation at the basis, but could also be understood as a human-expert simulation.
+@Design_role : controllers, services, and so on, are understood, in clprolf, as design roles. A controller is supposed to control the job between several entities, services are supposed to supply or design a service, and so on. These objects are designed to have a role in a software architecture, and are comparison with the abstract function they play. But they stay abstractions, and do not precisely give a job at the computer as worker, they don't precise inherently the underlying algorithm.  So you can add @Design_role annotation, but these classes could be seen as another abstraction, for example a human expert for an MVC controller.
+@Human_expert: Many of business job can be viewed as a human expert simulation. Business logic is a computer as worker-like interpretation at the basis, but could also be understood as a human-expert simulation.
 @Expert_component: quite like a @Human_expert, but seeing it like a component expert in a job. A @Expert_component is simply an accurate @Design_role. It is perfect for people who stick with a technical and computational vision. This class is still a simulation, because it's quite like an ideal component, which would be able to be perfect on this role.
 
 @GUI_role: software developers who prefer a GUI interpretation, can use @GUI_role for the buttons, windows, and other classes like that. This does not enforce people to have the same vision, and a window could also be seen of the simulation of a real-world machine, with his real buttons, etc.
@@ -769,7 +773,7 @@ clprolf framework annotations are used, while it is existing java code, in order
 
 ### ALGOL AND clprolf
 
-ALGOL("Algorithmic Language"), was designed with a strong emphasis on algorithmic and mathematical computation. It aimed to provide a language for expressing algorithms clearly and efficiently.  ALGOL 60, in particular, was influential in introducing features for structured programming and became a foundation for modern programming language design. clprolf, with its "simu_comp_as_worker" (Simulation of a computer worker) role, shares a similarity with ALGOL's focus on algorithmic programming.  The "simu_comp_as_worker" role in clprolf is explicitly dedicated to the simulation of algorithmic language for a computer( as it is a simulation of a computer worker). It's similar to ALGOL's original goal of serving as an algorithmic language.
+ALGOL("Algorithmic Language"), was designed with a strong emphasis on algorithmic and mathematical computation. It aimed to provide a language for expressing algorithms clearly and efficiently.  ALGOL 60, in particular, was influential in introducing features for structured programming and became a foundation for modern programming language design. clprolf, with its "simu_comp_as_worker" (Simulation of a computer as worker) role, shares a similarity with ALGOL's focus on algorithmic programming.  The "simu_comp_as_worker" role in clprolf is explicitly dedicated to the simulation of algorithmic language for a computer( as it is a simulation of a computer as worker). It's similar to ALGOL's original goal of serving as an algorithmic language.
 Semantic Clarity: Both languages strive for semantic clarity. ALGOL's design encouraged developers to write code that closely mirrored the problem-solving process, and clprolf's class and interface roles provide clear semantics for the different types of components.
 Minimalistic Approach: ALGOL's creators aimed to keep the language minimalistic, and clprolf also follows a minimalistic approach, focusing on a limited number of roles and concepts.
 
@@ -787,7 +791,7 @@ simu_comp_as_worker not only wants to separate simu_real_world_obj and pure comp
 ### SIMU_COMP_AS_WORKER, NOT SO TECHNICAL, IN FACT
 
 Simu_comp_as_worker, in fact, aims to reduce the impact of technical code, and transforme it in just a job done by a worker. It is almost as if the worker could be anyone, even a human worker. The distinction is just that the kind of job to be done have to be worked by the computer. So we ensure that we always know what kind of role to choose, because we can just answer to the question of who is doing the job! In a simu_real_world_obj, it would be an animal who would eat(), when calling the eat() method. The difference with a launcher class, for example, is that it is the computer who does the job, but he executes an algorithm in algorithmic language, as for the simu_real_world classes.
-So it is effectively a simulation of a computer worker, as well as the simu_real_word_obj simulations.
+So it is effectively a simulation of a computer as worker, as well as the simu_real_word_obj simulations.
 
 ### INHERENTLY INCLUDE GOOD OBJECT-ORIENTED PRATICES AND PATTERNS
 
@@ -802,16 +806,16 @@ The calculations themselves, can be considered or not as a basic task of a compu
 clprolf naturally adheres closely to well-know S.O.L.I.D principles. Single responsabilty is directly implemented with the class roles.
 Open closed principle is encouraged when useful, with a understanding and clear design and design goals, and by separating roles of compatibility interfaces. Dependency injection is much easy and direct to implement and to be used and viewed. Interface Segregation principle, the "I" talks about "role interfaces", that immediatly joins the role of interfaces of clprolf. Liskov substitution principle("L") takes sense in clprolf, while clear understanding of "nature" of objects and classes, and with clprolf concepts in general.
 
-### MACHINE TOOLS, HUMAN EXPERT ROLES, COMPUTER WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
+### MACHINE TOOLS, HUMAN EXPERT ROLES, COMPUTER AS WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
 
 simu_real_world_obj can have a more precised role, which can have an interpretation as machine tools, for graphical interfaces, or human-expert roles, for classes which could have a design role too(especially controllers).
 "Human expert" is quite similar in the intent, as expert system goals.
 And metaphors with real-world objects, like "Button", or "Window", are famous too. 
-About the computer worker vision, we already use such vocabulary, when talking about a "server", or a "worker thread" for a system thread, which are well-established terms.
+About the computer as worker vision, we already use such vocabulary, when talking about a "server", or a "worker thread" for a system thread, which are well-established terms.
 
 ### TEACHING PROGRAMMING OR JAVA TO CHILDREN
 
-Teaching advanced programming to children seems possible to children, while difficult with Java. clprolf, or clprolf framework, can be a way to learn easily java too. Human expert or machine tools roles, as well as computer worker, which are intrinsically part of clprolf or clprolf framework, can be a way to explain complex topics to young children, and render object oriented programming accessible to children.
+Teaching advanced programming to children seems possible to children, while difficult with Java. clprolf, or clprolf framework, can be a way to learn easily java too. Human expert or machine tools roles, as well as computer as worker, which are intrinsically part of clprolf or clprolf framework, can be a way to explain complex topics to young children, and render object oriented programming accessible to children.
 
 ### WEB PROGRAMMING
 
@@ -1015,7 +1019,7 @@ It would be the programmer who talks with the objects, and that's here where you
 We can notice than when we have a "talking" with objects vision, interfaces become just a required vocabulary. So "with_compat" would be just asking for an object knowing this set of words. It's a testament too that interfaces are about capacities and versions.
 The computer, on runtime, performs the method calls, and so on, and the simu_real_world_obj objects become simu_comp_as_worker too, in a way, and here we could say that objects become the messages senders, like in Smalltalk's vision. Thus it seems that it is a more technical and lower level vision, the communication between objects.
 
-With the clprolf objects, speaking to a simu object, is equivalent to speaking to the real-world associated object, as it is a simulation. Talking to a simu_real_world_obj of a Horse, is quite like talking to a real-world horse. And talking with a simu_comp_as_worker, is like talking to a real-world worker, as we emulate a computer worker. So it is the programmer who animates the objects. But in Smalltalk, it is an object which talking to another object, thus objects which animate the objects. Choosing the programmer as the main actor of the object animation, permits to be conscious that it is the developper the magician of the orchestra of objects. And it is rather quite what we're doing, we're doing simulation of objects, so we are rooted in reality.
+With the clprolf objects, speaking to a simu object, is equivalent to speaking to the real-world associated object, as it is a simulation. Talking to a simu_real_world_obj of a Horse, is quite like talking to a real-world horse. And talking with a simu_comp_as_worker, is like talking to a real-world worker, as we emulate a computer as worker. So it is the programmer who animates the objects. But in Smalltalk, it is an object which talking to another object, thus objects which animate the objects. Choosing the programmer as the main actor of the object animation, permits to be conscious that it is the developper the magician of the orchestra of objects. And it is rather quite what we're doing, we're doing simulation of objects, so we are rooted in reality.
 
 * Differences with messages vision: Algorithmic mindset, even for the simu_real_world_obj
 Telling that this is the programmer who sends the messages is a way to keep an algorithmic vision too. It leads us otherwise in an abstract vision quite far from real-world processes.Telling that a transferMoney method of a bankAccount sends a message receiveMoney of another bankAccount makes us a bit forget the algorithm, this one becomes hidden by overloaded communication. But we could say that in the transferMoney algorithm, there's a moment where we send a message receiveMoney to another bankAccount. In clprolf, we're trying to always have an algorithm mindset, even for the simu_real_world_obj. clprolf is implemented with underlying languages using method calls instead of messages communication(Java, C#, PHP, at this moment), so with languages qualified of not purely object-oriented. This guarantees this algorithmic mindset. clprolf is compatible with the procedural paradigm too, because procedural means algorithmic programming. Indeed, simu_real_world_obj are based on algorithms to describe their behaviors.
@@ -1031,7 +1035,7 @@ When I'm talking of network, it's just the final system with all our simu_real_w
 For Alan Kay, who created the term "object oriented", an object is such a "mini-computer". So a simu_comp_as_worker can be considered as an object in the Alan Kay's sense.
 In clprolf we're talking more about the computer as a whole. But the simu_comp_as_worker could indeed be viewed as independant micro-computers, thanks to the encapsulation, and the communication between them(messages).
 The sender of the messages of the simu_comp_as_workers can be here the simu_comp_as_workers themselves, thus communication between objects. It's because we have only simu_comp_as_workers in the system. So we can say that there is a direct communication between them, if we want.
-It's evident that a simu_real_world_obj can be viewed as the same simu_com_worker, if we use a technical interpretation of his work. A "Sorter" class can be viewed as a simu_real_world_obj, for example, of a HUMAN-EXPERT, or as a computer worker, a computer program for sorting. So, as all that there is in clprolf is simu_real_world_obj, and simu_comp_as_worker, we can obtain an equivalent system with only simu_comp_as_worker, as Alan Kay's vision.
+It's evident that a simu_real_world_obj can be viewed as the same simu_com_worker, if we use a technical interpretation of his work. A "Sorter" class can be viewed as a simu_real_world_obj, for example, of a HUMAN-EXPERT, or as a computer as worker, a computer program for sorting. So, as all that there is in clprolf is simu_real_world_obj, and simu_comp_as_worker, we can obtain an equivalent system with only simu_comp_as_worker, as Alan Kay's vision.
 
 ### PERFORMANCE OF THE LANGUAGE
 
@@ -1567,3 +1571,5 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
+
+END OF LANGUAGE DEFINITION
