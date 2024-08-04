@@ -1,4 +1,4 @@
-# clprolf Programming Language And Framework
+de# clprolf Programming Language And Framework
 
 CLear PROgramming Language and Framework.
 Official repository of the new programming language clprolf, which is a superset of Java, and about clprolf Java Framework both. The clprolf framework is a java framework with pure annotations, to leverage clprolf language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the clprolf java framework. A clprolf C# framework is present too, for the C# users, as well as a clprolf PHP 8 Framework.
@@ -66,6 +66,8 @@ We keep flexibility with "indef_obj"(indefinite object), like a traditional oo o
 
 Traditionally, we use to write code as if we were the computer. With computer as workers, for example, we talk about what He is doing, and not what I am doing. So object roles clearly define the way of seeing the execution of the algorithms.
 The difference is like that in video games: the FPS (First-person shooter) operates in a subjective view, akin to traditional programming, while the TPS (Third Person Shooter) offers an objective view, similar to the approach in clprolf.
+
+I prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person)
 
 ### THE clprolf CLASSES
 
