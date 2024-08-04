@@ -67,7 +67,7 @@ We keep flexibility with "indef_obj"(indefinite object), like a traditional oo o
 Traditionally, we use to write code as if we were the computer. With computer as workers, for example, we talk about what He is doing, and not what I am doing. So object roles clearly define the way of seeing the execution of the algorithms.
 The difference is like that in video games: the FPS (First-person shooter) operates in a subjective view, akin to traditional programming, while the TPS (Third Person Shooter) offers an objective view, similar to the approach in clprolf.
 
-I prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person)
+If he prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person)
 
 ### THE clprolf CLASSES
 
