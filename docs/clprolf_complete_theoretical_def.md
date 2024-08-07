@@ -69,7 +69,7 @@ The difference is like that in video games: the FPS (First-person shooter) opera
 
 If he prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person). The object role(the 'who?') and the third person(the 'what') are algorithmic enhancements.
 
-Clprolf framework, with the object roles and the third person perspective, allows to obtain mastered systems.
+Clprolf framework, with the object roles and the third person perspective, allows to obtain mastered and high-level systems.
 
 ### THE clprolf CLASSES
 
