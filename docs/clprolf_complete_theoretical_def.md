@@ -36,6 +36,11 @@ As clprolf classes replaces java classes, all java keywords can be used with clp
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 
+### OOP object as a thing
+
+Once we understand the traditional definition of an object in OOP, a set of variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold, and do not exist in memory. An OOP object is also a "thing" in memory, an "object" that is present in memory.
+So these things can be useful as simulation of a real-world object, or as a work for the computer.
+
 ### STORYTELLING
 
 Clprolf lets you see programming as storytelling. So we can describe the characters, and the story of the scenes, the interactions, and so on. The programmer of the software can become quite like a writer. Having kind of objects, and distinguishing the interfaces, simplifying concurrency and parallelism and other topics by adding algorithmic support, all this allows this storytelling mindset.
@@ -66,9 +71,7 @@ We keep flexibility with "indef_obj"(indefinite object), like a traditional oo o
 
 Traditionally, we use to write code as if we were the computer. With computer as workers, for example, we talk about what He is doing, and not what I am doing. So object roles clearly define the way of seeing the execution of the algorithms.
 The difference is like that in video games: the FPS (First-person shooter) operates in a subjective view, akin to traditional programming, while the TPS (Third Person Shooter) offers an objective view, similar to the approach in clprolf.
-
 If he prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person). The object role(the 'who?') and the third person(the 'what') are algorithmic enhancements.
-
 Clprolf framework, with the object roles and the third person perspective, allows to obtain mastered and high-level systems.
 
 ### THE clprolf CLASSES
