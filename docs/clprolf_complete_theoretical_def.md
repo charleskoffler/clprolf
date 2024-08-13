@@ -41,6 +41,10 @@ clprolf follow the open-closed principle, while not really modifies java but rat
 Once we understand the traditional definition of an object in OOP, a set of variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold, and do not exist in memory. An OOP object is also a "thing" in memory, an "object" that is present in memory.
 So these things can be useful as simulation of a real-world object, or as a work for the computer.
 
+### MORE THAN JUST A CLASS NAME
+
+A class is identified only by its name, in traditional OOP. So in clprolf, we go further by stating its kind of category. The name of the class can be insufficient to understand its responsabilities. Indeed, the name is always close to a concept, like 'Horse', or 'Connection', and sometimes this is not enough to immediately grasp its role. Watching the code of the class is often tricky, and dependent of the length of the code (easy for short implementations, but impossible otherwise). The class role is a guarantee given by the programmer, useful even by the compiler. And all the objects are made from their class, so clear classes are vital.
+
 ### STORYTELLING
 
 Clprolf lets you see programming as storytelling. So we can describe the characters, and the story of the scenes, the interactions, and so on. The programmer of the software can become quite like a writer. Having kind of objects, and distinguishing the interfaces, simplifying concurrency and parallelism and other topics by adding algorithmic support, all this allows this storytelling mindset.
@@ -113,8 +117,6 @@ or
 ```java
 public class_for simu_comp_as_worker Launcher { //(...) }
 ```
-"class_for" is used to keep class concept, while maintaining clprolf's philosophy. So we would need a memory object (with his methods) which would be a simulation of a real world object, and we would have to first create a class for ('class_for') it. Or we could need a memory object and his methods, which would be a simulation of a computer as worker, and we would create a class for ("class_for") it. "class_for" is optional.
-"class_for" is user-friendly, to not forget the class stage, and is designed to be used by those who wants to clearly notice the mold aspect in oop. It can be used as often as we want, instead of directly precise the role, and it is just as effective.
 
 ### THE OBJECT ROLES: A METHOD FOR DESIGNING OUR OBJECTS
 
