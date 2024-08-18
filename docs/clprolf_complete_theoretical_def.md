@@ -78,6 +78,8 @@ The difference is like that in video games: the FPS (First-person shooter) opera
 If he prefers, the programmer can translate what he observes into computer actions, as in traditional programming. For example, the worker goes through the array twice (third person), can be translated into: 'I write a loop that goes from 0 to 1.' (first person). The object role(the 'who?') and the third person(the 'what') are algorithmic enhancements.
 Clprolf framework, with the object roles and the third person perspective, allows to obtain mastered and high-level systems.
 
+System abstractions(like "File", or "Connection") should be only in the comp_as_worker classes, except for practical reasons, and except for the thread-like abstractions. It is because the third person implies that only a worker class could do such methods calls, and not a simu_real_world_obj class.
+
 ### THE clprolf CLASSES
 
 Instead of "class", we use the following keywords:
@@ -181,7 +183,7 @@ It is still a framework, although it supplies only annotations, and not code lib
 This executable does not exist at the moment. It could be written by the community, for example.
 
 The package org.clprolf.simolframework.java offers:
-@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh.
+@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code.
 They are placed in the same locations as pure clprolf, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
 Example:
 
@@ -240,7 +242,7 @@ In clprolf, this is not mandatory to use the interface roles. We can write "comp
 In the framework, just use no annotation for the interface, there are no such keyword.
 This keyword allows to use traditional java interfaces (or of another underlying language), if needed or wanted. In theory, there is no need for this, but people could like it for some reasons.
 
-No clprolf annotations mandatory in the framework, except for @Forced_inh, and @Forced_int_inh
+No clprolf annotations mandatory in the framework, except for @Forced_inh, @Forced_int_inh
 
 To keep flexible for Java (or else) developers, clprolf annotations are not mandatory at all, in the clprolf framework. For example, @Nature, @With_compat, and all other keywords, can be not used, in some cases or always. Even the concurrency keywords are in that case. The sole keywords that we must use in the clprolf framework are those about forced inheritance(@Forced_inh, and @Forced_int_inh).
 If we do not use @Nature, the nature check, obviously, will not be done.
@@ -758,7 +760,7 @@ The clprolf compiler is the more direct way to use clprolf. But we have the clpr
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
 
-clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh)
+clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh, @Forced_pract_code)
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
 ### THE clprolf COMPILER
@@ -798,10 +800,13 @@ Real-World Modeling: Simula's object-oriented approach was aimed at modeling rea
 
 simu_comp_as_worker not only wants to separate simu_real_world_obj and pure computer tasks, but aims to see computer as a worker. The "simu" of "simu_comp_as_worker" emphasizes that, almost of we were talking of a real-world worker. So the computer's job would be to manage his peripherals and resources, and doing all job purely relative to him. The algorithm is intended to be executed for a worker, and that worker is a computer, but it could have been a human, except in the subject of the nature of the tasks. So simu_comp_as_worker really joins to ALGO 60 vision of the computer, in the sense of the algorithms using, as for abstract the worker, and for being quite human-like.
 
-### SIMU_COMP_AS_WORKER, NOT SO TECHNICAL, IN FACT
-
 Simu_comp_as_worker, in fact, aims to reduce the impact of technical code, and transforme it in just a job done by a worker. It is almost as if the worker could be anyone, even a human worker. The distinction is just that the kind of job to be done have to be worked by the computer. So we ensure that we always know what kind of role to choose, because we can just answer to the question of who is doing the job! In a simu_real_world_obj, it would be an animal who would eat(), when calling the eat() method. The difference with a launcher class, for example, is that it is the computer who does the job, but he executes an algorithm in algorithmic language, as for the simu_real_world classes.
 So it is effectively a simulation of a computer as worker, as well as the simu_real_word_obj simulations.
+
+A comp_as_worker can use system abstraction(File, Connection, etc). And only a worker can use such system abstractions, for keeping the third person perspective. So it is a testament that each time a system abstraction is used, a comp_as_worker class is useful.
+Compiler checkings check that point.
+We can enforced that with "@Forced_pract_code" annotation, for the simu_real_world_obj classes which need to right a little of technical code, for practical reasons.
+The 'View' and the 'Model' of the MVC pattern can't be viewed as simu_real_world_obj in clprolf, because they use system abstractions. 
 
 ### INHERENTLY INCLUDE GOOD OBJECT-ORIENTED PRATICES AND PATTERNS
 
@@ -857,7 +862,7 @@ For the interfaces, clprolf not directly talks about interface inheritance(nor j
 
 ### RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
-Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" annotations(in clprolf language as well as in the java framework).
+Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh", "@Forced_int_inh", and "@Forced_pract_code" annotations(in clprolf language as well as in the java framework).
 The semantic control permit the compilation to find contradictions that can imply that the roles indicated on classes or interfaces are not coherent and have a problem. A fruit class which would be declared as simu_comp_as_worker could not be the mother class of a Apple class declared in simu_real_world_obj.
 Thanks to the semantic control about contradictions, we can automatically detect a misuse of class or interface roles, and enforce the user to respect the language definition and philosophy.
 These compiler controls still permit to have a free interpretation of our classes and interfaces.
@@ -866,7 +871,7 @@ These compiler controls still permit to have a free interpretation of our classe
 In order for the users to easily learn and master the rules, it's quite easy to explain their intent in few words.
 A synopsis of the semantic inheritance rule could be that we must sort out the sheep from the goats, in clprolf. But the imposed rules are the behavior that we intuitively have while programming clprolf, and we are free to them with "forced" keywords.
 
-* The semantic checks made by the compiler are all in three kind of rules:
+* The semantic checks made by the compiler are all in four kind of rules:
 
 All the rules about semantics are only on the direct level of the class(the single level), and not at multiple level. This simplifies the rules applications and understanding.
 
@@ -876,15 +881,18 @@ class inheritance contradiction:
 Contracts contradictions
 	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing. But a class can have multiple capacities, or can be the version of something and have capacities in addition.
 
-Inheritance of interfaces contractions
+Inheritance of interfaces contradictions
 	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles
 
 Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). And a compat_interf_capacity can not be composed by a compat_interf_version.
 
-Impact of the three kind of contradictions:
+Impact of the classes and contracts contradictions:
 	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to have coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization of the roles.
 
 Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana as simu_comp_as_worker, because the compiler would forbid this when seeing the class inheritance contradiction. But the multiple interpretations are still allowed. For the interfaces, having a "Sortable" interface declared as a compat_interf_version would be detected by the compiler when trying to establish a contract with Sortable and Measurable(a compat_interf_capacity). The checker would see the problem with the contracts contradictions test, and will understand that there is something incoherent. The problem here was that the programmer declared Sortable as a version, and he betrayed his incoherence while trying to use it with a class which implement a capacity interface.
+
+System abstractions usage contradictions
+	Semantic checkings is made by the compiler, to ensure that system abstractions(like "File", "Socket") are only used by simu_real_world_obj classes(or "abstraction" classes), except for the case of @Forced_pract_code marked classes.
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
@@ -1003,22 +1011,6 @@ BEGINNING OF AI-based tool refinement:
 This structured proof outlines a logical progression from established principles to the unique advantages offered by clprolf. It cleverly ties the utility of clprolf to the universally recognized value of clarity and purpose in object-oriented programming, thereby presenting clprolf not just as a useful tool but as an evolution of existing best practices."
 
 END OF AI-based refinement.
-
-
-### DEMONSTRATION OF THE ADVANTAGES OF CLASS AND INTERFACE ROLES, AND OF THE CHOICE OF THESE ROLES, ABOUT NATURALLY INCORPORATING BEST PRATICES
-
-clprolf was originally designed in an intent of simplify and clarify object-oriented programming, nothing more. And in a desire of making object oriented programming more fun. These goals finally corresponds to much best oo practices results.
-This chapter want to be a practical and minimalist proof of the utility of roles in incorporating best practices, if we want to think about how could we obtain a language with those qualities.
-
-A main innovation in clprolf language and framework, is that we inherently use good pratices in object-oriented programming, and some design patterns. We make code following SRP, for example, or SOLID principles, without effort or headache!
-We are not saying that with clprolf we would incorporate all the design patterns in the world, all these aspects, and all oo principles aspects, absolutely not. But we're saying that with clprolf we embeds naturally main ideas and concepts of best object-oriented programming.
-clprolf was not designed, initially, in the goal of applying best oo practices, but just ease object oriented programming. So these advantages came after the end of clprolf design. They are rather a consequence of a desire of simplicity and understandable classes and interfaces.
-
-Explanations: The compiler uses the semantic rules about interface and class inheritance, to search contradictions about class and interface roles. So it ensures that our choice of roles and contracts in our code respect the roles meaning in clprolf.
-So we can have an inherently coherence and respect main oo principles, because clprolf's philosophy is cohent with main oo principles and patterns.
-We can notice that our chosen class and interface roles are the unique ones which could allow semantic rules permitting the semantic analyser to verify much principles or respect of the philosophy of famous design patterns.
-So it needs design object roles, and such fundamental and basic object roles who distinguish business part and technical part, to permit that a language, like clprolf, embeds the power of inherently leverage well-known object oriented principles and design patterns. Classical object oriented languages, like java, do not embeds natively that quality.
-The interface roles, and interface inheritance compiler checks, thanks to them, permit to inherently obtain the Interface segregation principle of SOLID.
 
 ### IF clprolf WOULD BE WITH MESSAGES LIKE SMALLTALK-LIKE LANGUAGES - ALIGNMENT OF SIMU_COMP_AS_WORKER WITH ALAN KAY'S VISION OF AN OBJECT
 
