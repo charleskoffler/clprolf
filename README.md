@@ -42,9 +42,11 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_complete_theoretical_def.md)
 
-### ChatGPT 4 Reaction
+### AI-based tools Reactions
 
 [ChatGPT 4 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt4_ia_react.md)
+
+[FRANCAIS Réaction de Google Gemini Advanced](https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_fr_google_gemi_adv.md)
 
 ### Design patterns in clprolf analysis
 
