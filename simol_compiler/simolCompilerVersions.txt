@@ -7,3 +7,4 @@ Simol compiler versions
 2.0.0 2024/02/07	Added all the new keywords ("long_action", "prevent_missing_collision","one_at_a_time","tour_monitor","for_every_thread","dependent_activity").
 2.1.0 2024/02/20	Added "class_for".
 2.2.0 2024/02/23	"model_real_world_obj", instead of "real_world_obj".
+2.3.0 2024/08/23	Added "@Forced_pract_code".

@@ -10,7 +10,7 @@ package org.simol.compiler;
 	Author Charles Koffler, M.I.T License. 2023/10/16
 	https://github.com/charleskoffler/simol-language
 
-	2.1.0 2024/02/20	Added "class_for".
+	2.3.0 2024/08/23	Added "@Forced_pract_code".
 	
 */
  
