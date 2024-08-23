@@ -680,6 +680,12 @@ public class OneMessageMailBox {
 }
 ```
 
+### PARALLELISM: "TURN SYNCHRONIZATION", VERSUS "APPOINTMENT SYNCHRONIZATION"
+Clprolf introduced two keywords, "one_at_a_time", and "dependent_activity", to differenciate the two existing cases of synchronization.
+"synchronized" is confusing, because synchronization could be about turn synchronization, and about appointment synchronization too (mais one thread wait after another finishs). 
+
+Another reason, is that in clprolf, we are talking about kind of scenario, not how we implement this. The scenario implies that we would use a "synchronized" implementation, or a "wait()/notify()" implementation. So we still are in an algorithm mindset and reasoning.
+
 ### ABOUT CONCURRENCY AND PARALLELISM, IN clprolf
 In clprolf, it is recommended to first handle pure concurrency, with a single thread, and then, if still wanted, adding parallelism. Some simulation actions take time to run, and are not just a simple change of states. That's why we introduced the "long_action"(or @Long_action, in the framework) modifier, to execute the action step by step. So the sole remainding problem, is to handle soon collisions, to not miss them, and "prevent_missing_collision"(or @Prevent_missing_collision) exists for that case. Finally, it could suffice in much cases, especially in real-time simulations, but we could try to add threads. But threads must sometimes be synchronized, and the synchronized parts are executed quite like there was an unique thread. So we have to evaluate if it is relevant to make more complex code, or not. If we have to do, the parts which have to be synchronized are often the "prevent_missing_collision" parts, and "one_at_a_time"(@One_at_a_time) is for parallelism. "one_at_a_time" is just worried of having quite like a single thread application for the concerned piece of code. And "turn_monitor" is here to assemble these parts, while using the same monitor object. The notions here agree with existing java notions like "synchronized", and "lock", but emphasize different and less technical aspects, that could help in such hard topics.
 The purely parallelism problems, especially the "dependent activities", however, could be write directly, with multiple threads.
