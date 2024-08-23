@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /***
  * Simol C# Framework, v2.4, 20240823.
  * 
- * Ajout de "[Forced_pract_code]".
+ * Addition of "[Forced_pract_code]".
  * 
  * 
  * Limitations of C# framework for simol:

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.1 20240404 Correction about Abstraction annotation.
+ * 2.2 20240823 Addition of "@Forced_pract_code".
  * @author Charles Koffler
  *
  */
