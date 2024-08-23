@@ -21,6 +21,7 @@ History of the versions of the simol java framework
 1.9	20240321	Changed in the beginners classes, to SimuCompAsWorker.
 2.0 20240331 Addition of Abstraction, Comp_as_worker, and Model annotations.
 2.1 20240404 Correction about Abstraction annotation.
+2.2 20240823 Ajout de @Forced_pract_code.
 
 History of the versions of the simol C# framework
 
@@ -38,6 +39,7 @@ History of the versions of the simol C# framework
 2.1	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".
 2.2 20240404	Addition of "Abstraction", "Comp_as_worker", and "Model" in the beginners package.
 2.3	20240606	Renamed package from Simol to Clprolf. Addition of forgotten "public" modifiers. Changed the project type to "class library".
+2.4 20240823 Ajout de [Forced_pract_code].
 
 History of the versions of the simol PHP 8 framework
 

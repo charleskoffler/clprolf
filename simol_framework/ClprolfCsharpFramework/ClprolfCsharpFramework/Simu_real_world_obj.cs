@@ -5,11 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v2.3, 20240606.
+ * Simol C# Framework, v2.4, 20240823.
  * 
- * Changed the project type to "class library".
- * Renamed package from Simol to Clprolf
- * Addition of forgotten "public" modifiers.
+ * Ajout de "[Forced_pract_code]".
  * 
  * 
  * Limitations of C# framework for simol:

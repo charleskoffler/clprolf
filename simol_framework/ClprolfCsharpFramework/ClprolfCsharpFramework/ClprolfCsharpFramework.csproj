@@ -51,6 +51,7 @@
     <Compile Include="beginners\Model.cs" />
     <Compile Include="beginners\CompAsWorker.cs" />
     <Compile Include="beginners\Abstraction.cs" />
+    <Compile Include="Forced_pract_code.cs" />
     <Compile Include="Forced_int_inh.cs" />
     <Compile Include="Forced_inh.cs" />
     <Compile Include="examples\ICallable.cs" />

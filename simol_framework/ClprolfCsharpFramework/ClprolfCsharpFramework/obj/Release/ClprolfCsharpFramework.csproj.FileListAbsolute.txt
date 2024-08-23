@@ -1,0 +1,7 @@
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Release\ClprolfCsharpFramework.dll.config
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Release\ClprolfCsharpFramework.dll
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\bin\Release\ClprolfCsharpFramework.pdb
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Release\ClprolfCsharpFramework.csproj.AssemblyReference.cache
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Release\ClprolfCsharpFramework.csproj.CoreCompileInputs.cache
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Release\ClprolfCsharpFramework.dll
+C:\Users\sabri\source\repos\ClprolfCsharpFramework\ClprolfCsharpFramework\obj\Release\ClprolfCsharpFramework.pdb
