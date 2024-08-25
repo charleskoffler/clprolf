@@ -682,7 +682,7 @@ public class OneMessageMailBox {
 
 ### PARALLELISM: "TURN SYNCHRONIZATION", VERSUS "APPOINTMENT SYNCHRONIZATION"
 Clprolf introduced two keywords, "one_at_a_time", and "dependent_activity", to differenciate the two existing cases of synchronization.
-"synchronized" is confusing, because synchronization could be about turn synchronization, and about appointment synchronization too (mais one thread wait after another finishs). 
+"synchronized" is confusing, because synchronization could be about turn synchronization, and about appointment synchronization too (mais one thread wait after another finishes). 
 
 Another reason, is that in clprolf, we are talking about kind of scenario, not how we implement this. The scenario implies that we would use a "synchronized" implementation, or a "wait()/notify()" implementation. So we still are in an algorithm mindset and reasoning.
 
@@ -810,7 +810,7 @@ Simu_comp_as_worker, in fact, aims to reduce the impact of technical code, and t
 So it is effectively a simulation of a computer as worker, as well as the simu_real_word_obj simulations.
 
 A comp_as_worker can use system abstraction(File, Connection, etc). And only a worker can use such system abstractions, for keeping the third person perspective. So it is a testament that each time a system abstraction is used, a comp_as_worker class is useful.
-Compiler checkings check that point.
+Compiler checkings check that point. There is an exception, for the factories of system abstractions, like connection factories, because the factory just instanciante the object, and doesn't use it. So a factory of a system abstraction can be an "abstraction" class.
 We can enforced that with "@Forced_pract_code" annotation, for the simu_real_world_obj classes which need to right a little of technical code, for practical reasons.
 The 'View' and the 'Model' of the MVC pattern can't be viewed as simu_real_world_obj in clprolf, because they use system abstractions. 
 
