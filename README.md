@@ -36,6 +36,15 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [ChatGPT 4o Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_gtp4o_overview.md)
 
+
+### Explanations videos (in French at the moment, with You Tube subtitles)
+
+[Whole You Tube channel](https://www.youtube.com/@clprolf_language)
+
+[Getting started - general presentation](https://www.youtube.com/watch?v=qnBKxgceD3w)
+
+[Getting started - Hello world in clprolf](https://www.youtube.com/watch?v=wFxiNwZZSws)
+
 ### Complete definition
 
 This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
