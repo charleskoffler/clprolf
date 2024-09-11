@@ -30,16 +30,15 @@ It is minimalistic, for simplify development. It is an interesting teaching tool
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
 and it adds some keywords like 'with_compat', or 'underst'.
 We can use java libraries in clprolf. We can use also java code in clprolf source code, except the keywords "class", "implements", "extends", "interface".
-For example, java local variable is of course allowed in clprolf methods, "public" is authorized for a "simu_real_world_obj", and so on.
-All java which can be applied to a class can be applied to a a clprolf class, and all java applied to a Java interface can be include in a clprolf interface.
-As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, for example "public simu_comp_as_worker Launcher{ }".
+
+As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, like in java classes, for example "public simu_comp_as_worker Launcher{ }".
+It is the same for the interfaces.
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 
 ### OOP object as a thing
 
-Once we understand the traditional definition of an object in OOP, a set of variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold, and do not exist in memory. An OOP object is also a "thing" in memory, an "object" that is present in memory.
-So these things can be useful as simulation of a real-world object, or as a work for the computer.
+Once we understand the traditional definition of an object in OOP, a set of variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold. An OOP object is also a "thing" in memory, an "object" present in memory.
 
 ### MORE THAN JUST A CLASS NAME
 
@@ -178,7 +177,6 @@ clprolf framework is a package of java annotations'or C# and PHP attributes), th
 The Java and C# frameworks (Java clprolf and C# clprolf), as well as the PHP one (PHP clprolf), allow to still stay in Java, or C#, and to leverage the clprolf concepts while remaining in a pure object mindset. So the shift  in thinking is reduced. For example, for the classes, we think about objects as usual, then we have to choose an object role. It is quite like an MVC framework, where we use predefined kind of objects. We stay in the primary language, and just a way of writing code brought and inspired by the framework.
 The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working! 
 
-There is a beginners package too, which permit to keep object-oriented habits in clprolf, using inheritance instead annotations.
 It is still a framework, although it supplies only annotations, and not code libraries. Indeed, it brings a frame. What's more, these annotations need an executable to work, checking the coherence, quite like the compiler.
 This executable does not exist at the moment. It could be written by the community, for example.
 
@@ -214,14 +212,14 @@ public interface MySortable { }
 
 ### clprolf FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
 
-clprolf frameworks contain a "beginners" package, which is composed by four classes and two interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
-They are considered as the four root classes for clprolf, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
+clprolf frameworks contain a "beginners" package, which is composed by classes and interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
+They are considered as the root classes for clprolf, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
 About the interfaces, each interface must implement one of the root interface of clprolf, and not only the mother interface. The main interfaces in clprolf are CompatInterfVersion and CompartInterfCapacity.
 The developper who want to slowly move to clprolf, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
-In fact, they are empty but allow the transition to clprolf while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead. And he can keep an inheritance vision of the roles in mind, if he prefers.
+In fact, they are empty but allow the transition to clprolf while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead.
 
 Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
-For classes, it is not the same, only the root classes must inherit from a root clprolf class(SimuRealWorldObj, SimuCompAsWorker, ModelRealWorldObj, Information). This is because all the descendants must have the same role, in clprolf. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
+For classes, it is not the same, only the root classes must inherit from a root clprolf class. This is because all the descendants must have the same role, in clprolf. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
 
 Usage example in java: public class Main extends SimuCompAsWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
@@ -231,15 +229,15 @@ Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : 
 
 indef_obj
 
-In clprolf, you can use traditional objects and classes, with the kind of objects named "indef_obj" (as INDEFinite OBJect).
-So, if you don't want to give a role to a class, you can do it in clprolf, by giving the indefinite object role.
-In the framework, simply use no annotation for the class, there are no equivalent annotation.
-This role allows to keep free to choose, or not, a role. By doing this, inheritance is not checked for that type.
+In clprolf, you can use traditional objects and classes, with "indef_obj" (as INDEFinite OBJect).
+So, if you don't want to give a role to a class, you give the indefinite object role.
+In the framework, simply use no annotation for the class.
+By doing this, inheritance is not checked for that type.
 
 compat_interf (or @Compat_interf in the framework)
 
-In clprolf, this is not mandatory to use the interface roles. We can write "compat_interf" (compatibility interface), in case where we don't desire to choose a kind of interface. If we use that, there would be not compiler checks about this interface when used.
-In the framework, just use no annotation for the interface, there are no such keyword.
+In clprolf, this is not mandatory to use the interface roles. We can write "compat_interf" (compatibility interface). If we use that, there would be not compiler checks about this interface when used.
+In the framework, just use no annotation for the interface.
 This keyword allows to use traditional java interfaces (or of another underlying language), if needed or wanted. In theory, there is no need for this, but people could like it for some reasons.
 
 No clprolf annotations mandatory in the framework, except for @Forced_inh, @Forced_int_inh
@@ -452,7 +450,7 @@ So clprolf appears to intrinsically embed DDD.
 
 ### clprolf AND THE DIFFERENT INTERPRETATIONS
 
-clprolf allows to have our free interpretation of our class design and class meaning. For example, you could see business logic as the work of a business expert, so use a simu_real_world_obj. Other people could have another interpretation of business logic, and use simu_comp_as_worker. One of the complexity in object oriented programming, is to stick at the interpretation of the writer of the code. It is sometimes hard to imagine how was the original vision of the design, so adding a minimalistic information of the kind of class or interface, can be a clue to help understanding and maintenability. Like reading a text, a source code, and particularly an object-oriented source code, can have multiple readings and interpretations. clprolf, while keeping free to choose the interpretation as we wants, aims to support us to express our own understanding to others.
+clprolf allows to have our free interpretation of our class design and class meaning. For example, you could see business logic as the work of a business expert, so use a simu_real_world_obj. Other people could use comp_as_worker.
 
 ### God objects or God objects-like prevention
 A classical OOP class, would be equivalent to a "class_for object" in clprolf. So it opens the door to God objects, or similar. That's why clprolf enables classes for more precise objects.
@@ -484,7 +482,7 @@ There is no way currently to ensure that by the compiler, but basic AI-like cont
 Inheritance is a way to grow a class, finally, and a well-designed class can be muddled with inheritance addition. That's why the inheritance control done by semantic rules of the compiler is crucial in clprolf. Semantic checks are possible thanks to object roles, because the rules are about the role of the inherited class. The same reasoning is valuable for the interfaces. Semantic control of the compiler ensures that an interface keep its meaning. And this is possible thanks to interface roles.
 
 ### ROLES ADDITION FOR CLASSES AND INTERFACES: GUIDELINES FOR COMPONENTS DESIGN
-The addition of roles in classes and interfaces constitutes an equivalent as giving assistance, or guidelines in the process of class and interfaces design. Imagining what objects could be necessary to solve a given problem, and to write an application, is often a challenge. It can be a struggle to try to add on this all well-known object-oriented patterns and guidelines. So class and interfaces roles often shows the possible ways of class design and interfaces. The interest not only stands of guaranteeing a good oo design.
+The addition of roles in classes and interfaces constitutes an equivalent as giving assistance, or guidelines in the process of class and interfaces design. Imagining what objects could be necessary to solve a given problem, and to write an application, is often a challenge. It can be a struggle to try to add on this all well-known object-oriented patterns and guidelines. So class and interfaces roles often shows the possible ways of class design and interfaces.
 
 ### THE UNDERST MODIFIER
 The modifier "underst"("understanding") can be added to the methods of simu_real_world_obj( or even simu_comp_as_worker) classes. It marks the methods that have a role of "understanding" by the computer (recognition of objects in an image, for example). "underst" can also be used on simu_comp_as_worker.
@@ -494,7 +492,7 @@ The modifier "underst"("understanding") can be added to the methods of simu_real
 ### THE SUB-ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
 A simu_real_world_obj can be various things, include abstract realities. Don't believe simu_real_world_obj, in clprolf, could only represents concrete objects like car. Everything that is not a computer as worker job, and has methods, is, in clprolf, a simulation of a real_world object.
 So, abstract notions, should be in such kind of clprolf classes.
-To ease understanding and smart compatibility with classical object oriented used classes, clprolf has introduced annotations. This annotations is designed to be used on a simu_real_world_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, are precisions you can add in your simu_real_world_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations doesn't enforce the reader to use the same interpretation.
+To ease understanding and smart compatibility with classical object oriented used classes, clprolf has introduced annotations. These annotations are designed to be used on a simu_real_world_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, etc, are precisions you can add in your simu_real_world_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations don't enforce the reader to use the same interpretation.
 These annotations are also available as a optional enum value "role", in @Simu_real_world_obj clprolf framework for java.
 
 @Design_role : controllers, services, and so on, are understood, in clprolf, as design roles. A controller is supposed to control the job between several entities, services are supposed to supply or design a service, and so on. These objects are designed to have a role in a software architecture, and are comparison with the abstract function they play. But they stay abstractions, and do not precisely give a job at the computer as worker, they don't precise inherently the underlying algorithm.  So you can add @Design_role annotation, but these classes could be seen as another abstraction, for example a human expert for an MVC controller.
@@ -526,13 +524,16 @@ public simu_real_world_obj MeteoExpert { /*(...)*/ }
 public simu_real_world_obj Window { /*(...)*/ }
 ```
 
+Sometimes, some classes are especially made to be used for their static methods, by example the File class in .net. For the "File" case, static methods are surely used because there haven't kept states. The methods are independent. So the File class could be considered as an equivalent of a "global singleton", and can be marked with a @Human_expert_static(or Expert_component_static) role. The class could be called "FileExpert", because it could be compared to an expert about Files(ReadAllText(string path), etc).
+In the case of Environnement class in .net, we are free to mark it with a "@Static" sub-role, if we don't want an expert interpretation( @Simu_real_world_obj(Role.STATIC)).
+
 In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
 @Simu_real_world_obj(Role.DESIGN_ROLE)
-The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL
+The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL, Role.STATIC, Role.HUMAN_EXPERT_STATIC, Role.EXPERT_COMPONENT_STATIC
 
-### COMPATIBILITY OF THE ROLES OF SIMU_REAL_WORLD_OBJ
+### COMPATIBILITY OF THE SUB-ROLES OF SIMU_REAL_WORLD_OBJ
 
-* @Expert_component / @Human_expert / @Design_role
+* @Expert_component / @Human_expert / @Design_role (or @Human_expert_static / @Expert_component_static)
 
 @Expert_component is interchangeable with @Human_expert. All simulation of human expert can be understood as a component doing this responsability.
 From our example of network programming:
@@ -766,7 +767,7 @@ The clprolf compiler is the more direct way to use clprolf. But we have the clpr
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
 
-clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh, @Forced_pract_code)
+clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Human_expert_static, @Expert_component_static, @Static, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh, @Forced_pract_code)
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
 ### THE clprolf COMPILER
@@ -827,7 +828,7 @@ The calculations themselves, can be considered or not as a basic task of a compu
 clprolf naturally adheres closely to well-know S.O.L.I.D principles. Single responsabilty is directly implemented with the class roles.
 Open closed principle is encouraged when useful, with a understanding and clear design and design goals, and by separating roles of compatibility interfaces. Dependency injection is much easy and direct to implement and to be used and viewed. Interface Segregation principle, the "I" talks about "role interfaces", that immediatly joins the role of interfaces of clprolf. Liskov substitution principle("L") takes sense in clprolf, while clear understanding of "nature" of objects and classes, and with clprolf concepts in general.
 
-### MACHINE TOOLS, HUMAN EXPERT ROLES, COMPUTER AS WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
+### MACHINE TOOLS, EXPERT ROLES, COMPUTER AS WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
 
 simu_real_world_obj can have a more precised role, which can have an interpretation as machine tools, for graphical interfaces, or human-expert roles, for classes which could have a design role too(especially controllers).
 "Human expert" is quite similar in the intent, as expert system goals.
@@ -967,7 +968,7 @@ So version compatibility interfaces and with_compat keyword allow to judiciously
 
 ### INTERFACE INHERITANCE AND clprolf INTERFACES ROLES
 
-Why interfaces don't replace inheritance? First interfaces always needs an implementation to be used for working, at the dependency injection moment. Then interfaces inheritance, in a class, does not permit to inherit implementations, but only from method signature. Suppose a Runnable Simu_comp_as_worker class, Runnable does not really constitute an inheritance, because we still have to implement the concerned methods, despite we inherit from Runnable! It's an inheritance of signature, but not an inheritance of implementation. That's why in clprolf, there is only two kind of interfaces, version, and capacity. Complete inheritance always comes by the fact that we inherit from a class, which could have implemented an interface method. But the child class inherits from this method implementation by the class inheritance, not by the interface inheritance. It only inherits of the signature of the method.
+Why interfaces don't replace inheritance? First interfaces always needs an implementation to be used for working, at the dependency injection moment. Then interfaces inheritance, in a class, does not permit to inherit implementations, but only from method signature. Suppose a Runnable Simu_comp_as_worker class, Runnable does not really constitute an inheritance, because we still have to implement the concerned methods, despite we inherit from Runnable! It's an inheritance of signature. That's why there is only two kind of interfaces, version, and capacity. Complete inheritance always comes by the fact that we inherit from a class, which could have implemented an interface method. But the child class inherits from this method implementation by the class inheritance, not by the interface inheritance. It only inherits of the signature of the method.
 
 ### THE USE CASES OF SIMU_COMP_AS_WORKER
 
@@ -979,44 +980,15 @@ In clprolf, the mindset is to always try to stay near the concrete reality. So w
 For example, simu_comp_as_worker reminds us that there are a compilation in assembly language after, who looks like a technical solution for our original source code. Compatibility interfaces aims to keep it real by being aware of the concerned usage. clprolf avoids abstraction without concrete purpose, because programming and making a software is a concrete job and perhaps there is no much place for this.
 Another distinctive characteristic of clprolf is that we're doing all for the reasoning and problems remain independant by the fact it is a software what we're doing. So all that we're talking about could be done with a sheet of paper, and a reasoning, independently of a physical computer. Even the simu_comp_as_worker methods mimic a computer doing a job, almost as a human doing the job, with special capacities. So we are sure that all always stay simple.
 
-### ABOUT THE CHOICE OF THE OBJECT ROLES BY THE PROGRAMMER
+### THE OBJECT ROLES ON LEGACY CODE
 
-Object role choice on existing java classes can be more tricky then writing clprolf code from scratch. I'll give clues for those who would need help about clprolf object roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role. The choice between MACHINE_TOOL or GUI_ROLE would depend about the programmer's preference of vision.
-That said, object in OOP implies, in essence, a clear meaning, and can not be synonym of just data structure.
+Object role choice on existing java classes can be more tricky then writing clprolf code from scratch. I'll give clues for those who would need help about clprolf object roles on legacy java code, to find the appropriate role. For example, I can say that the GUI classes like those in Swing or Java FX can be well suited for a simu_real_world_obj, with either a MACHINE_TOOL role, or a GUI role.
 
 ### TRYING TO BRING A MATHEMATICAL-LIKE PROOF OF clprolf INTEREST
 
 We can start from the Single Responsability Principle, which claims a clear and single purpose on each class.
 clprolf offers a way to obtain not only clear and singular purpose of each class( and interface), but a meaningful purpose too. Having a meaningful purpose help communication with others, and memorization, and ease the class or interface creation. In addition, clprolf offers a way to add meaning to non-clprolf classes, which could be a way to master all possible design solutions.
 So with simu_real_world_obj and simu_comp_as_worker, we ensures that all classes can be categorized in this kind of objects, while permitting everyone to keep his own interpretation. Having this precision made on a class, is a testament that we have meaning about it. So that looks like what we wanted to demonstrate. We could not say that clprolf is useless, because it would be equivalent to say that adding meaning is useless.
-
-From this demonstration, I utilized an advanced AI-based tool to refine it.
-
-BEGINNING OF AI-based tool refinement:
-"Mathematical-like Proof of clprolf's Interest
-
-   1. Premise on the Single Responsibility Principle (SRP):
-        SRP advocates for a clear and single purpose for each class, which is a widely accepted principle in software engineering for promoting maintainability and clarity in code design.
-
-   2. Introduction of clprolf's Enhanced Purpose:
-        clprolf extends this principle by ensuring not only a clear and singular purpose for each class and interface but also imbuing them with meaningful purpose.
-        A meaningful purpose enhances communication among developers, aids in memorization, and simplifies the process of class or interface creation.
-
-   3. Application to Non-clprolf Classes:
-        clprolf also offers a framework to add meaning to non-clprolf classes, suggesting a method to master various design solutions in a broader programming context.
-
-   4. Categorization with Simu_real_world_obj and Simu_comp_as_worker:
-        The categorization of all classes as either simu_real_world_obj or simu_comp_as_worker in clprolf ensures that every class can be distinctly identified while allowing individual interpretations.
-        This categorization acts as a testament to having a meaningful understanding of each class’s role and functionality.
-
-   5. Conclusion and Inference:
-        The addition of meaning and purpose to classes, as facilitated by clprolf, is fundamentally useful and beneficial.
-        Asserting that clprolf is useless would be equivalent to stating that adding meaning and purpose to classes is useless, which contradicts established principles of software engineering, particularly the SRP.
-        Therefore, by logical extension, clprolf's approach is valuable and beneficial in software development.
-
-This structured proof outlines a logical progression from established principles to the unique advantages offered by clprolf. It cleverly ties the utility of clprolf to the universally recognized value of clarity and purpose in object-oriented programming, thereby presenting clprolf not just as a useful tool but as an evolution of existing best practices."
-
-END OF AI-based refinement.
 
 ### IF clprolf WOULD BE WITH MESSAGES LIKE SMALLTALK-LIKE LANGUAGES - ALIGNMENT OF SIMU_COMP_AS_WORKER WITH ALAN KAY'S VISION OF AN OBJECT
 
@@ -1082,7 +1054,7 @@ We could explain the proxy pattern even to a child. This is not the case at all 
 
 ### clprolf AND ALGORITHMS WRITING INFLUENCE
 
-clprolf has been created only to simplify and help in object-oriented code writing and understanding. That said, we can notice that clprolf acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for helping hard algorithms, as well as the object roles, for example. Writing a sorter algorithm with a simu_comp_as_worker, or a simu_real_world_obj, could bring us different perspectives, and that is quite easy to demonstrate, with an example. The developper is free to use clprolf's aids and tools as he wants, and can keep it as neutral as he wants. clprolf is a object-oriented language, with object-oriented fundations, like inheritance, encapsulation, or polymorphism. It never goes outside of the scope of the object-oriented topic, about the class and interface roles.
+clprolf has been created only to simplify and help in object-oriented code writing and understanding. But we can notice that it acts as a tool for supporting algorithm writing too, indirectly. For example, underst could bring clues for writing hard algorithms, as well as the object roles. Writing a sorter algorithm with a simu_comp_as_worker, or a simu_real_world_obj, could bring us different perspectives. 
 I think that the influence of clprolf about algorithms writing is due to making well-designed objects, or methods, nothing more. So it's a testament that it is an indirect influence.
 
 * AN EXAMPLE OF WRITING A INSERTION SORTER CLASS, WITH BOTH SIMU_COMP_AS_WORKER AND SIMU_REAL_WORLD_OBJ
@@ -1579,5 +1551,3 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
-
-END OF LANGUAGE DEFINITION
