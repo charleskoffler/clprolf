@@ -59,6 +59,9 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [FRANCAIS Réaction de Google Gemini Advanced](https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_fr_google_gemi_adv.md)
 
+[FRANCAIS Réaction de ChatGPT o1-mini]
+(https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_fr_google_gemi_adv.md)
+
 ### Design patterns in clprolf analysis
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis)

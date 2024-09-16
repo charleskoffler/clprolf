@@ -683,7 +683,7 @@ public class OneMessageMailBox {
 
 ### PARALLELISM: "TURN SYNCHRONIZATION", VERSUS "APPOINTMENT SYNCHRONIZATION"
 Clprolf introduced two keywords, "one_at_a_time", and "dependent_activity", to differenciate the two existing cases of synchronization.
-"synchronized" is confusing, because synchronization could be about turn synchronization, and about appointment synchronization too (mais one thread wait after another finishes). 
+"synchronized" is confusing, because synchronization could be about turn synchronization (one_at_a_time), and about appointment synchronization too (where one thread sometimes waits after another finishes a dependent activity). 
 
 Another reason, is that in clprolf, we are talking about kind of scenario, not how we implement this. The scenario implies that we would use a "synchronized" implementation, or a "wait()/notify()" implementation. So we still are in an algorithm mindset and reasoning.
 
