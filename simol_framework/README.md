@@ -22,6 +22,7 @@ History of the versions of the simol java framework
 2.0 20240331 Addition of Abstraction, Comp_as_worker, and Model annotations.
 2.1 20240404 Correction about Abstraction annotation.
 2.2 20240823 Addition of @Forced_pract_code.
+2.3 20240920 New sub-roles: @Human_expert_static and @Expert_component_static.
 
 History of the versions of the simol C# framework
 
