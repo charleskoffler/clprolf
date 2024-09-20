@@ -527,6 +527,23 @@ public simu_real_world_obj Window { /*(...)*/ }
 Sometimes, some classes are especially made to be used for their static methods, by example the File class in .net. For the "File" case, static methods are surely used because there haven't kept states. The methods are independent. So the File class could be considered as an equivalent of a "global singleton", and can be marked with a @Human_expert_static(or Expert_component_static) role. The class could be called "FileExpert", because it could be compared to an expert about Files(ReadAllText(string path), etc).
 In the case of Environnement class in .net, we are free to mark it with a "@Static" sub-role, if we don't want an expert interpretation( @Simu_real_world_obj(Role.STATIC)).
 
+The @Abstraction role can be combined with another @Abstraction having the STATIC sub-role. For example:
+
+```java
+//Two roles because this class is used at the same time for his static methods as an expert in string, and as a abstraction of a string when instanciated!
+// String.valueof(); for example, or String str = new String("the test!");
+@Abstraction
+@Abstraction(Role.HUMAN_EXPERT_STATIC)
+public class String {
+//(…)
+
+}
+```
+
+It is not annoying for the inheritance checking, because there are both abstractions! It is not so amazing, because some abstractions like string need an expert behind in support.
+When inheriting, for example an AwesomeString class extends String, the AwesomeString instanciated abstraction is of the same nature of the String, the inheritance is especially about this. But the AwesomeString can access the static expert too.
+Static subroles have been added to stay compatible with existing languages, especially Java.
+
 In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
 @Simu_real_world_obj(Role.DESIGN_ROLE)
 The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL, Role.STATIC, Role.HUMAN_EXPERT_STATIC, Role.EXPERT_COMPONENT_STATIC
