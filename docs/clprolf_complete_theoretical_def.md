@@ -540,11 +540,11 @@ public class String {
 }
 ```
 
-It is not annoying for the inheritance checking, because there are both abstractions! It is not so amazing, because some abstractions like string need an expert behind in support.
-When inheriting, for example an AwesomeString class extends String, the AwesomeString instanciated abstraction is of the same nature of the String, the inheritance is especially about this. But the AwesomeString can access the static expert too.
+In this case, the @Abstraction plays two roles, so in case of inheritance, the new class inherits from the two aspects. Indeed, some abstractions like string need an expert behind in support.
+When inheriting, for example an AwesomeString class extends String, the AwesomeString instanciated abstraction is of the same nature of the String, but the static methods are inherited too. The AwesomeString can access the static expert too, and also has to have the two sub-roles.
 Static subroles have been added to stay compatible with existing languages, especially Java.
 
-In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through a optional role attribute of @Simu_real_world_obj. For instance:
+In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through an optional role attribute of @Simu_real_world_obj. For instance:
 @Simu_real_world_obj(Role.DESIGN_ROLE)
 The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL, Role.STATIC, Role.HUMAN_EXPERT_STATIC, Role.EXPERT_COMPONENT_STATIC
 
@@ -917,6 +917,12 @@ Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana
 
 System abstractions usage contradictions
 	Semantic checkings is made by the compiler, to ensure that system abstractions(like "File", "Socket") are only used by simu_real_world_obj classes(or "abstraction" classes), except for the case of @Forced_pract_code marked classes.
+
+* Sub-role inheritance check rules:
+
+For the compiler checking of the sub-role inheritance consistency, the rules are evident and intuitive. @Human_expert, @Expert_component, @Design_role are considered as equivalent, as well as @Human_expert_static and @Expert_component_static are equivalent. But @Static are not the same as the other static roles. If a class has only a static role, it can not inherit from a non-static role, and vice versa, except if the class has two abstraction roles. @Machine_tool and Graph_interf are compatible, for inheritance. The sub-role compatibilies are especially made in case of different programmers for the classes.
+
+In clprolf, we have to write a role for each class, even if we inherit from another. For the sub-roles, indicating it, when existing, is recommended to not forget the future inheritance check problems.
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.

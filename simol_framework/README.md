@@ -41,6 +41,7 @@ History of the versions of the simol C# framework
 2.2 20240404	Addition of "Abstraction", "Comp_as_worker", and "Model" in the beginners package.
 2.3	20240606	Renamed package from Simol to Clprolf. Addition of forgotten "public" modifiers. Changed the project type to "class library".
 2.4 20240823 Addition of [Forced_pract_code].
+2.5 20240920 New static sub-roles for simu_real_world_obj("Role.STATIC", "Role.HUMAN_EXPERT_STATIC", and "Role.EXPERT_COMPONENT_STATIC").
 
 History of the versions of the simol PHP 8 framework
 

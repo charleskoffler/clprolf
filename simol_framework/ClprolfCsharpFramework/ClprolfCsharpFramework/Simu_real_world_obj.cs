@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v2.4, 20240823.
+ * Simol C# Framework, v2.5, 20240920.
  * 
- * Addition of "[Forced_pract_code]".
+ * New static sub-roles for simu_real_world_obj("Role.STATIC", "Role.HUMAN_EXPERT_STATIC", and "Role.EXPERT_COMPONENT_STATIC").
  * 
  * 
  * Limitations of C# framework for simol:
@@ -21,7 +21,10 @@ namespace Org.Clprolf.Framework.Csharp
     {
         DESIGN_ROLE,
         HUMAN_EXPERT,
+        HUMAN_EXPERT_STATIC,
         EXPERT_COMPONENT,
+        EXPERT_COMPONENT_STATIC,
+        STATIC,
         GUI_ROLE,
         MACHINE_TOOL,
         UNDEFINED
