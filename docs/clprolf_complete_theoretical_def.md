@@ -922,7 +922,8 @@ System abstractions usage contradictions
 
 For the compiler checking of the sub-role inheritance consistency, the rules are evident and intuitive. @Human_expert, @Expert_component, @Design_role are considered as equivalent, as well as @Human_expert_static and @Expert_component_static are equivalent. But @Static are not the same as the other static roles. If a class has only a static role, it can not inherit from a non-static role, and vice versa, except if the class has two abstraction roles. @Machine_tool and Graph_interf are compatible, for inheritance. The sub-role compatibilies are especially made in case of different programmers for the classes.
 
-In clprolf, we have to write a role for each class, even if we inherit from another. For the sub-roles, indicating it, when existing, is recommended to not forget the future inheritance check problems.
+In clprolf, each class(or interface) has to indicate its role, although inheritance, because the programmer of the class must give its perpective for the class(abstraction or worker, especially), or for the interface.
+For the sub-roles, indicating it, when existing, is recommended to not forget the future inheritance check problems.
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
