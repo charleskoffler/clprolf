@@ -27,6 +27,9 @@ CLear PROgramming Language and Framework.
 I present both clprolf programming language and clprolf framework, which is a framework with pure annotations, to leverage clprolf language in C#, Java, or PHP.
 The clprolf language(CLear PROgramming Language and Framework) is an object-oriented programming language. It is not widely used.
 It is minimalistic, for simplify development. It is an interesting teaching tool, but it's not designed only for teaching purposes.
+clprolf lets you reason with real-life actors, almost as if you weren't programming. Programming focuses on functional problems, and describes the interactions of actors. For the technical parts, we describe solutions by describing what a worker (the computer) must do. Clprolf abstracts from the technical vision as much as possible, to remain functional. This is why design and development should be easier and more maintainable, and the applications produced should be mastered.
+
+### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
 and it adds some keywords like 'with_compat', or 'underst'.
 We can use java libraries in clprolf. We can use also java code in clprolf source code, except the keywords "class", "implements", "extends", "interface".
@@ -174,7 +177,7 @@ The clprolf framework could bring an interesting solution for those who want to 
 
 ### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations'or C# and PHP attributes), that offers a toolbox for java, C#, or PHP developers to work with clprolf frame.
-The clprolf Framework makes us program differently in the target language, in a system where worker and abstractions objects collaborate together. We're moving from a system where objects work together, to a system where worker objects and abstraction objects work together. So we stay in the host language, java, c#, for example, while handling different root objects.
+The clprolf Framework makes us program differently in the target language, in a system where worker and abstraction objects collaborate together. We're moving from a system where objects work together, to a system where worker objects and abstraction objects work together. So we stay in the host language, java, c#, for example, while handling different root objects.
 The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working! 
 
 It is still a framework, although it supplies only annotations, and not code libraries. Indeed, it brings a frame. What's more, these annotations need an executable to work, checking the coherence, quite like the compiler.
