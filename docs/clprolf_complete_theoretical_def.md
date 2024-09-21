@@ -174,7 +174,7 @@ The clprolf framework could bring an interesting solution for those who want to 
 
 ### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations'or C# and PHP attributes), that offers a toolbox for java, C#, or PHP developers to work with clprolf frame.
-The Java and C# frameworks (Java clprolf and C# clprolf), as well as the PHP one (PHP clprolf), allow to still stay in Java, or C#, and to leverage the clprolf concepts while remaining in a pure object mindset. So the shift  in thinking is reduced. For example, for the classes, we think about objects as usual, then we have to choose an object role. It is quite like an MVC framework, where we use predefined kind of objects. We stay in the primary language, and just a way of writing code brought and inspired by the framework.
+The clprolf Framework makes us program differently in the target language, in a system where worker and abstractions objects collaborate together. We're moving from a system where objects work together, to a system where worker objects and abstraction objects work together. So we stay in the host language, java, c#, for example, while handling different root objects.
 The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working! 
 
 It is still a framework, although it supplies only annotations, and not code libraries. Indeed, it brings a frame. What's more, these annotations need an executable to work, checking the coherence, quite like the compiler.
