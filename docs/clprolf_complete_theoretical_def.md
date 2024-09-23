@@ -182,7 +182,7 @@ Notice that you can still keep the name as usual(InvoiceService, for example), w
 
 The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working!
 It is still a framework, although it supplies only annotations, and not code libraries. Indeed, it brings a frame. What's more, these annotations need an executable to work, checking the coherence, quite like the compiler.
-This executable does not exist at the moment. It could be written by the community, for example.
+This executable does not exist at the moment. It could be written by the community, for example. In fact, it is quite like a compiler that makes syntactic then semantic analysis of the Java(or other language) source code, but doesn't generate code.
 
 The package org.clprolf.simolframework.java offers:
 @Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code.
