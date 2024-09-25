@@ -8,13 +8,13 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.4 20240925 New roles and sub-role for multi-agent system perspective.
+ * 2.3 20240920 New sub-roles: @Human_expert_static, @Expert_component_static, and @Static.
  * @author Charles Koffler
  *
  */
 
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Simu_real_world_obj {
+public @interface Agent {
 	Role value() default Role.UNDEFINED;
 }

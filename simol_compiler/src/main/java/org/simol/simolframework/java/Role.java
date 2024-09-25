@@ -14,5 +14,6 @@ public enum Role {
 	STATIC,
 	GUI_ROLE,
 	MACHINE_TOOL,
+	ACTIVE_AGENT,
 	UNDEFINED
 }
