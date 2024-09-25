@@ -7,9 +7,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Simol Framework
- * 2.3 20240920 New sub-roles: @Human_expert_static, @Expert_component_static, and @Static.
- * @author Charles Koffler
  *
  */
 
