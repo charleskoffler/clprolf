@@ -1,6 +1,5 @@
-public simu_real_world_obj Car nature Vehicule contracts VehiculeAble {
+public agent_abstraction Car nature Vehicule contracts VehiculeAble {
 	int age;
-	int test;
 	with_compat Comparable theValue;
 	underst void displayAge(with_compat ParamAble theParam) {
 		with_compat StuffAble theStuffAble;

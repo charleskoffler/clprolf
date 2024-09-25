@@ -289,6 +289,10 @@ simolRole
 	| 'model_real_world_obj'
 	| 'model'
 	| 'information'
+	| 'worker_agent'
+	| 'simu_agent'
+	| 'agent_abstraction'
+	| 'agent'
 	;
 
 classModifier

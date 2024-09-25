@@ -131,6 +131,10 @@ ONE_AT_A_TIME: 'one_at_a_time';
 TOUR_MONITOR: 'tour_monitor';
 FOR_EVERY_THREAD: 'for_every_thread';
 DEPENDENT_ACTIVITY: 'dependent_activity';
+WORKER_AGENT: 'worker_agent';
+SIMU_AGENT: 'simu_agent';
+AGENT_ABSTRACTION: 'agent_abstraction';
+AGENT: 'agent';
 
 // §3.10.1 Integer Literals
 
