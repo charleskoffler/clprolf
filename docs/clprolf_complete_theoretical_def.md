@@ -39,6 +39,22 @@ It is the same for the interfaces.
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 
+## Clprolf COMPATIBLE WITH THE MULTI-AGENT SYSTEMS(MAS)
+
+Clprolf offers a perspective quite like multi-agent systems. But there is the difference that in clprolf all abstraction is an agent, even if it is passive. It is because in clprolf all abstractions with methods are viewed as active. The computational technical code is qualified as a worker_agent.
+This perspective could help clprolf beginners to grasp the concepts, or could interest MAS users.
+
+Here is the equivalences in class roles:
+@Simu_real_world_obj = @Abstraction = @Simu_agent = @Agent_abstraction(abstraction of an agent) = @Agent
+@Simu_comp_as_worker = @Comp_as_worker = @Worker_agent
+
+It aligns with MAS systems, because clprolf frequently refers to real-world counterparts. So it is also a way to explain clprolf's perspective.
+The difference of vision is that we are using this perspective for building any software. And that all agents are active, and that there are computer as worker agents.
+
+So in clprolf we make a system where abstractions of agents and abstractions of worker agents act together, instead of pure OOP objects.
+
+For those who want to closely align to MAS systems, there is an optional sub-role, Role.ACTIVE_AGENT. It is useful to mark an agent is active, according to the MAS definition. The EXPERT sub-roles are understood as inherently MAS-active. And do not forget that you can use either @Agent or another equivalent qualifier, so you can use @Agent only for the active agents.
+
 ### OOP object as a thing
 
 Once we understand the traditional definition of an object in OOP, a set of variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold. An OOP object is also a "thing" in memory, an "object" present in memory.
