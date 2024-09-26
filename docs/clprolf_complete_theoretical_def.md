@@ -39,7 +39,7 @@ It is the same for the interfaces.
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
 
-## Clprolf COMPATIBLE WITH THE MULTI-AGENT SYSTEMS(MAS)
+### Clprolf COMPATIBLE WITH THE MULTI-AGENT SYSTEMS(MAS)
 
 Clprolf offers a perspective quite like multi-agent systems. But there is the difference that in clprolf all abstraction is an agent, even if it is passive. It is because in clprolf all abstractions with methods are viewed as active. The computational technical code is qualified as a worker_agent.
 This perspective could help clprolf beginners to grasp the concepts, or could interest MAS users.
@@ -246,7 +246,7 @@ Usage example in java: public class Main extends SimuCompAsWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
 Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
 
-## THE LANGUAGE ITSELF
+### THE LANGUAGE ITSELF
 
 The clprolf language itself is quite like a clone of Java, with some little changes and additions. First, the class keyword disappears, and the classes are introduced quite like a prototype.
 The kind of classes is always either a simu_agent or a worker_agent, or equivalent roles. You can add optionally a sub-role too. Then clprolf uses some method modifiers, to add controls on functions. Some adjustments has been made about 'extends' which becomes 'nature', adding a requirement about the nature. The interface usage is never direct, it is not allowed, and has to be preceded by with_compat. About the interfaces, it can only be a contract, nothing more. So we have to write 'contracts' at usage, and have to choose between a capacity or a version at interface creation. The roles of objects and interfaces have to keep coherent although inheritance. This is the kind of changes compared to Java.
