@@ -194,6 +194,7 @@ The clprolf framework could bring an interesting solution for those who want to 
 ### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations'or C# and PHP attributes), that offers a toolbox for java, C#, or PHP developers to work with clprolf frame.
 The clprolf Framework makes us program differently in the target language, but with annotations, in a system where worker and abstraction objects collaborate together. We're moving from a system where objects work together, to a system where worker objects and abstraction objects work together. So we stay in the host language(with annotations), java, c#, for example, while handling different root objects.
+We could call the Java Framework by "Java with agents".
 Notice that you can still keep the name as usual(InvoiceService, for example), while adding an annotation.
 
 The C# framework, for example, remains still C#, not clprolf, but C# with a frame for working!
@@ -244,6 +245,11 @@ For classes, it is not the same, only the root classes must inherit from a root 
 Usage example in java: public class Main extends SimuCompAsWorker { (...) }
 Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
 Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
+
+## THE LANGUAGE ITSELF
+
+The clprolf language itself is quite like a clone of Java, with some little changes and additions. First, the class keyword disappears, and the classes are introduced quite like a prototype.
+The kind of classes is always either a simu_agent or a worker_agent, or equivalent roles. You can add optionally a sub-role too. Then clprolf uses some method modifiers, to add controls on functions. Some adjustments has been made about 'extends' which becomes 'nature', adding a requirement about the nature. The interface usage is never direct, it is not allowed, and has to be preceded by with_compat. About the interfaces, it can only be a contract, nothing more. So we have to write 'contracts' at usage, and have to choose between a capacity or a version at interface creation. The roles of objects and interfaces have to keep coherent although inheritance. This is the kind of changes compared to Java.
 
 ### Using traditional objects and interfaces in clprolf
 
