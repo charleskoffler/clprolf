@@ -56,7 +56,8 @@ So in clprolf we make a system where abstractions of agents and abstractions of 
 For those who want to closely align to MAS systems, there is an optional sub-role, Role.ACTIVE_AGENT. It is useful to mark an agent is active, according to the MAS definition. The EXPERT sub-roles are understood as inherently MAS-active. And do not forget that you can use either @Agent or another equivalent qualifier, so you can use @Agent only for the active agents.
 
 The difference with traditional MAS systems, is that we use MAS systems not only for specific use cases. We always create a multi-agent system, in clprolf, and every software is a MAS. We're broadening the use. However, it is a multi-agent system where all agents are active. Clprolf has not been designed for MAS users, only adapted for them in case where they want to be closer to their vision (especially about active agents).
-The object roles can absolutely be mixed, avec we can choose "abstraction" keyword sometimes, for example for a class Thread, if it is more appropriate, or "simu_real_word_obj".
+
+The object roles can absolutely be mixed, avec we can choose "abstraction" keyword sometimes, for example for a class Thread, if it is more appropriate, or "simu_real_word_obj". And of course, we can use "agent" and "worker_agent" even without being a pure MAS user. It is often an interesting object role choice.  And of course, we can use "agent" and "worker_agent" even without being a pure MAS user. It is often an interesting object role choice.
 
 ### OOP object as a thing
 
