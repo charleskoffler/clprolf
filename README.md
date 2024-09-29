@@ -14,6 +14,8 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Getting started in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_getting_started.md)
 
+[Clprolf from an OOP knowledge](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_chatgpt_conv_underst_from_oop.md)
+
 [Theoretical background](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_theoretical_background.md)
 
 [Hello world example](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_hello_world.md)
