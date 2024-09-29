@@ -27,7 +27,11 @@ CLear PROgramming Language and Framework.
 I present both clprolf programming language and clprolf framework, which is a framework with pure annotations, to leverage clprolf language in C#, Java, or PHP.
 The clprolf language(CLear PROgramming Language and Framework) is an object-oriented programming language. It is not widely used.
 It is minimalistic, for simplify development. It is an interesting teaching tool, but it's not designed only for teaching purposes.
-clprolf lets you reason with real-life actors, almost as if you weren't programming. Programming focuses on functional problems, and describes the interactions of actors. For the technical parts, we describe solutions by describing what a worker (the computer) must do. Clprolf abstracts from the technical vision as much as possible, to remain functional. This is why design and development should be easier and more maintainable, and the applications produced should be mastered.
+Programming with clprolf focuses on functional problems, and describes the interactions of actors. For the technical parts, we describe solutions by describing what a worker must do.
+It is a programming language designed for clarity, simplicity, and ease of use. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
+The language's approach is, at the same time, to support and ease the algorithms writing, thanks to classes and interfaces types, and to modifiers addition.
+One of the main goal, or perhaps the most important goal in clprolf, is to ease writing programs.
+Programming is an interweaving of design problems and algorithmic problems. Clprolf not only supports you for the design of your system but for the algorithms inside too.
 
 ### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
@@ -197,6 +201,7 @@ The clprolf framework could bring an interesting solution for those who want to 
 
 ### clprolf FRAMEWORK FOR JAVA, C# AND PHP DEVELOPERS
 clprolf framework is a package of java annotations'or C# and PHP attributes), that offers a toolbox for java, C#, or PHP developers to work with clprolf frame.
+The framework allows you to think in clprolf in Java, C#, and PHP 8.
 The clprolf Framework makes us program differently in the target language, but with annotations, in a system where worker and abstraction objects collaborate together. We're moving from a system where objects work together, to a system where worker objects and abstraction objects work together. So we stay in the host language(with annotations), java, c#, for example, while handling different root objects.
 We could call the Java Framework by "Java with agents".
 Notice that you can still keep the name as usual(InvoiceService, for example), while adding an annotation.
