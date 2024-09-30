@@ -2,12 +2,12 @@
 
 CLear PROgramming Language and Framework.
 Official repository of the new programming language clprolf, which is a superset of Java, and about clprolf Java Framework both. The clprolf framework is a java framework with pure annotations, to leverage clprolf language in Java, it has the same goal. So I will talk about the language, but this could be applied for those who are interested in the clprolf java framework. A clprolf C# framework is present too, for the C# users, as well as a clprolf PHP 8 Framework.
-clprolf is the fruit of a reflection on how we could clarify programming, espcially OOP. It is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
+The language is a blend between OOP and AgentOP. Clprolf is the fruit of a reflection on how we could clarify programming, espcially OOP. It is a programming language designed for clarity, simplicity, and ease of use. It aims to follow the fundamental theorem of software engineering, by adding a layer of indirection, especially for classes and interfaces. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
 The language's approach is, at the same time, to support and ease the algorithms writing, thanks to classes and interfaces types, and to modifiers addition.
 
 One of the main goal, or perhaps the most important goal in clprolf, is to ease writing programs that we would look like quite impossible or very hard to write. The approach to master and make intuitive and fun the objects and class components aims to make almost totally direct or intuitive the programming task. Writing code with pleasure and fun, make it interesting, all this should be permitted with clprolf approach. While aiding in thinking of one solution to solve the writing problems, clprolf aims to aid in eventually seeing all other possible solutions. Indeed all the possible interpretations should help to bring different ways to solve the problem, and mastering it. The conception of the applications should become more human-like and manageable.
 
-The clprolf framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions. The clprolf framework brings solutions for coding with ease and fun, while keeping a great codebase quality. Teaching is concerned, but we're talking for other programmers too, who would look for such facilitating solutions. Scientists could be concerned, but computer scientists and developers too, who could look for concrete and easy solutions for programming.
+The clprolf framework could bring an interesting solution for those who want to make easier java code writing. This is of course also possible with the C# and PHP versions.
 
 clprolf's design started in 2019, and now it's quite stable. I needed it for my own purposes and work, and I have tested the concepts in my work and home programming.
 I especially seek out persons who want to test the language or the clprolf framework for java, C# and PHP8. If people are interested, they can participate further in discussions, writing example code, or writing tools, for example, or submitting evolution ideas for clprolf.
@@ -25,7 +25,7 @@ The complete and detailed definition stands at the end of this file.
 
 CLear PROgramming Language and Framework.
 I present both clprolf programming language and clprolf framework, which is a framework with pure annotations, to leverage clprolf language in C#, Java, or PHP.
-The clprolf language(CLear PROgramming Language and Framework) is an object-oriented programming language. It is not widely used.
+The clprolf language(CLear PROgramming Language and Framework) is an blend of object-oriented programming language and agent OP. It is not widely used.
 It is minimalistic, for simplify development. It is an interesting teaching tool, but it's not designed only for teaching purposes.
 Programming with clprolf focuses on functional problems, and describes the interactions of actors. For the technical parts, we describe solutions by describing what a worker must do.
 It is a programming language designed for clarity, simplicity, and ease of use. The language, and frameworks, inherently embeds good object oriented principles, and significant design patterns, which is a unique feature in programming languages.
