@@ -56,6 +56,8 @@ It aligns with MAS systems, because clprolf frequently refers to real-world coun
 The difference of vision is that we are using this perspective for building any software. And that all agents are active, and that there are computer as worker agents.
 
 So in clprolf we make a system where abstractions of agents and abstractions of worker agents act together, instead of pure OOP objects.
+There is only two kind of components, in clprolf, the (pure) agent components, and the worker agent components. Of course, there are equivalent components too, like simu_real_world_obj and abstraction components.
+So there are not another objects in the language.
 
 For those who want to closely align to MAS systems, there is an optional sub-role, Role.ACTIVE_AGENT. It is useful to mark an agent is active, according to the MAS definition. The EXPERT sub-roles are understood as inherently MAS-active. And do not forget that you can use either @Agent or another equivalent qualifier, so you can use @Agent only for the active agents.
 
@@ -211,7 +213,7 @@ It is still a framework, although it supplies only annotations, and not code lib
 This executable does not exist at the moment. It could be written by the community, for example. In fact, it is quite like a compiler that makes syntactic then semantic analysis of the Java(or other language) source code, but doesn't generate code.
 
 The package org.clprolf.simolframework.java offers:
-@Simu_real_world_obj, @Abstraction, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code.
+@Agent, @Simu_agent, @Simu_real_world_obj, @Abstraction, @Worker_agent, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code.
 They are placed in the same locations as pure clprolf, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
 Example:
 
@@ -646,7 +648,7 @@ These methods guarantees that theses actions, within or not in multiple threads,
 ### PARALLELISM AID
 To simplify parallelism managing, four modifiers has been added.
 one_at_a_time(method modifier): for synchronized methods, or containing synchronized blocks, to indicate that one thread at a time executes the job.
-tour_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
+turn_monitor : attribute modifier on a synchronization lock object declaration, to ease understanding of the synchronization.
 for_every_thread : attribute modifier on a volatile attribute declaration, highlightning the usability of the attribute in parallelism conditions.
 dependent_activity: method modifier for synchronized methods containing a wait() call on a monitor object.
 Four equivalent annotations have been added for the framework.
@@ -754,6 +756,9 @@ NormalClassDeclaration:
                                 [nature Type] [contracts TypeList] ClassBody
 
 SimolRole:
+	agent
+	simu_agent
+	worker_agent
 	simu_real_world_obj
 	abstraction
 	simu_comp_as_worker
@@ -813,7 +818,7 @@ FieldDecl:
 
 The clprolf compiler is the more direct way to use clprolf. But we have the clprolf framework for java developers too.
 
-"simu_comp_as_worker", "comp_as_worker", "simu_real_world_obj", "abstraction", "model_real_world_obj", "model", "information", "indef_obj" => replace with "class"
+"agent", "simu_agent", "worker_agent", "simu_comp_as_worker", "comp_as_worker", "simu_real_world_obj", "abstraction", "model_real_world_obj", "model", "information", "indef_obj" => replace with "class"
 "class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "turn_monitor", "one_at_a_time", "for_every_thread", "dependent_activity" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity", "compat_interf" => replace with "interface"
 "nature" => replace with "extends"
