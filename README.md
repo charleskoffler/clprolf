@@ -38,15 +38,6 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [ChatGPT 4o Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_gtp4o_overview.md)
 
-
-### Explanations videos (in French at the moment, with You Tube subtitles)
-
-[Whole You Tube channel](https://www.youtube.com/@clprolf_language)
-
-[Getting started - general presentation](https://www.youtube.com/watch?v=qnBKxgceD3w)
-
-[Getting started - Hello world in clprolf](https://www.youtube.com/watch?v=wFxiNwZZSws)
-
 ### Complete definition
 
 This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
@@ -60,14 +51,6 @@ This document may seem quite hard at first glance. But it aims to be complete an
 [ChatGPT o1 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt_ia_o1_react.md)
 
 [Google Gemini advanced reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/google_gemini_adv_react.md)
-
-[FRANCAIS Réaction de ChatGPT o1-preview](https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_fr_o1-prev.md)
-
-[FRANCAIS Réaction de ChatGPT 4o](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_react_fr_chatGpt4o.md)
-
-[FRANCAIS Réaction de Google Gemini Advanced](https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_fr_google_gemi_adv.md)
-
-[FRANCAIS Réaction de ChatGPT o1-mini](https://github.com/charleskoffler/clprolf/tree/main/docs/reaction_chatgpt_o1-mini.md)
 
 ### Design patterns in clprolf analysis
 
