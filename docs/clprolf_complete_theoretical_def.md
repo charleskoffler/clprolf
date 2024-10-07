@@ -86,7 +86,7 @@ However, some software, for example parts of an operating system, is composed ma
 
 ### THE ROLE OF OBJECTS
 
-Object roles are about the nature of an object. Clprolf uses only basic roles. This should be reduce the ambiguity of their definitions, but simplifiy the usage. The definition of the roles is quite intuitive. So the first nature of an object-oriented object, is to be an object. And then, in clprolf, it could be a simu_real_obj, or an agent, or for the technical objects, a worker_agent, or a comp_as_worker. Some object natures are the same than others, because we want to emphasize some aspects.
+Object roles are about the nature of an object. Clprolf uses only basic roles. This should reduce the ambiguity of their definitions. The definition of the roles is quite intuitive. So the first nature of an object-oriented object, is to be an object. And then, in clprolf, it could be a simu_real_obj, or an agent, or for the technical objects, a worker_agent, or a comp_as_worker. Some object natures are the same than others, because we want to emphasize some aspects.
 
 There are here only five roles in clprolf, simu_comp_as_worker(or worker_agent, comp_as_worker), simu_real_world_obj(or "simu_real_obj", "simu_agent", "agent", "abstraction"), model_real_world_obj(or "model", "model_real_obj"), information and indef_obj: only code for computer, or pure code of simulation.
 clprolf is based on the fact that you can notice use agents to some objects in a system. And some objects emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.

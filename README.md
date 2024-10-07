@@ -48,6 +48,8 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [ChatGPT 4 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt4_ia_react.md)
 
+[ChatGPT 4o reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_reaction_gpt4o.md)
+
 [ChatGPT o1 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt_ia_o1_react.md)
 
 [Google Gemini advanced reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/google_gemini_adv_react.md)
