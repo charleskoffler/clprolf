@@ -52,6 +52,8 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [ChatGPT o1 reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt_ia_o1_react.md)
 
+[ChatGPT o1-mini reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/chat_gpt_ia_o1_mini_react.md)
+
 [Google Gemini advanced reaction](https://github.com/charleskoffler/clprolf/tree/main/docs/google_gemini_adv_react.md)
 
 ### Design patterns in clprolf analysis
