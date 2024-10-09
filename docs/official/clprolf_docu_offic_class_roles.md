@@ -2,7 +2,7 @@
 
 clprolf language and framework helps you define your objects with a sole responsability. By choosing a main responsability, your objects becomes SRP-compliant. You build a system where objects become pure components, and even inheritance does not change this.
 
-How do we achieve this? We can obtain this by choosing a nature of the class. An object, in clprolf, can be even a business-like object, or a computational object.
+How do we achieve this? We can obtain this by choosing a nature of the class. An object, in clprolf, can be either a business-like object, or a computational object.
 
 ## What are the business-like objects?
 
@@ -35,7 +35,7 @@ A "model_real_obj" is an object without behavior, just there for modeling. It is
 
 ## What are the technical objects?
 
-All the other objects are pure computer objects. Their responsability and job is only about the computer, managing peripherals, or memory, or launch an application.
+All the other objects are pure computer objects. Their responsability and job is only about the computer, managing peripherals, or memory, or launching an application.
 So the view and model of the MVC design pattern, are, in clprolf, technical jobs for the computer. In these classes, the actor of the action is the computer. This is why we have roles like "computer_as_worker", or "worker_agent".
 
 "comp_as_worker" (=shortcut for "simu_comp_as_worker")
@@ -48,19 +48,19 @@ These two roles are equivalent. The so called "worker" is the computer, having s
 
 "worker_agent" is the same role, but it insists on the agent aspect, so it seems having more an active role. This is a way to have agents even for technical parts, as well as the business-like agent objects.So we can obtain a system formed only by agents, pure agents, and worker agents.
 
-"information" is just a container of coherent datas. It is quite like a data structure, but it acts like an information in an algorithm. The datas are about the computer, and used for a worker agent. So it is different of model_real_obj, and does not act as a model. Thus a set of variable having a common topic, and designed for a worker job, is a clprolf information.
+"information" is just a container of coherent datas. It is quite like a data structure, but it acts like an information in an algorithm. The datas are about the computer, and used for a worker agent. So it is different of model_real_obj, and does not act as a model. Thus a set of variables having a common topic, and designed for a worker job, is a clprolf information.
 
 ### How do we use the class role?
 
-The object role is just replacing the class keyword, in the language. Or it is an annotation just above the class definition, in the Framework.
+The object role just replaces the class keyword, in the language. Or it is an annotation just above the class definition, in the Framework.
 
 ### Are the class roles consistent by inheritance ?
 
-Of course! The compiler should check role coherence of the inheritances. Business objects, and technical objects, can not be in the same line of inheritance. It can not be in the same legacy for keeping the roles intact. We can enforce this, as an exception, with the @Forced_inh annotation, both in the Framework and the language.
-The equivalent roles are accepted for the inheritance.
+Of course! The compiler should check role coherence of the inheritances. Business objects, and technical objects, can not be in the same line of inheritance. It can not have the same legacy for keeping the roles intact. We can enforce this, as an exception, with the @Forced_inh annotation, both in the Framework and the language.
+Equivalent roles are accepted for the same inheritance.
 
 ### Summary
 
 In clprolf, we still have objects, the same as in object-oriented programming. These objects becomes components, thanks to class roles. The class roles are just class qualifiers, like "agent", or "worker_agent".
-Some qualifiers are equivalent, either because there are shortcut, or because there emphasizes an aspect. The class roles are checked for the inheritance, by the compiler, even for the framework.
+Some qualifiers are equivalent, either because there are shortcut, or because they emphasize an aspect. The class roles are checked for the inheritance, by the compiler, even for the framework.
 We obtain a simpler system, where components should be more maintainable.
