@@ -8,6 +8,10 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Contributing](https://github.com/charleskoffler/clprolf/blob/main/CONTRIBUTING.md)
 
+### Clprolf official documentation
+
+[The kind of classes](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_class_roles.md)
+
 ### Getting started in clprolf
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)
