@@ -44,22 +44,28 @@ So the view and model of the MVC design pattern, are, in clprolf, technical jobs
 
 These two roles are equivalent. The so called "worker" is the computer, having such a role of worker. So we talk about it at the third person, as we do when we say "My computer is starting", or "my computer has an issue".
 
+### comp_as_worker
+
 "comp_as_worker" means "computer as a worker", a short name for "simulation of a computer as a worker". The "simu_comp_as_worker" keyword is quite long, and is quite rarely used.
+
+### worker_agent
 
 "worker_agent" is the same role, but it insists on the agent aspect, so it seems having more an active role. This is a way to have agents even for technical parts, as well as the business-like agent objects.So we can obtain a system formed only by agents, pure agents, and worker agents.
 
+### information
+
 "information" is just a container of coherent datas. It is quite like a data structure, but it acts like an information in an algorithm. The datas are about the computer, and used for a worker agent. So it is different of model_real_obj, and does not act as a model. Thus a set of variables having a common topic, and designed for a worker job, is a clprolf information.
 
-### How do we use the class role?
+## How do we use the class role?
 
 The object role just replaces the class keyword, in the language. Or it is an annotation just above the class definition, in the Framework.
 
-### Are the class roles consistent by inheritance ?
+## Are the class roles consistent by inheritance ?
 
 Of course! The compiler should check role coherence of the inheritances. Business objects, and technical objects, can not be in the same line of inheritance. It can not have the same legacy for keeping the roles intact. We can enforce this, as an exception, with the @Forced_inh annotation, both in the Framework and the language.
 Equivalent roles are accepted for the same inheritance.
 
-### Summary
+## Summary
 
 In clprolf, we still have objects, the same as in object-oriented programming. These objects becomes components, thanks to class roles. The class roles are just class qualifiers, like "agent", or "worker_agent".
 Some qualifiers are equivalent, either because there are shortcut, or because they emphasize an aspect. The class roles are checked for the inheritance, by the compiler, even for the framework.

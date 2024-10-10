@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.2 20240823 Addition of "@Forced_pract_code".
+ * 2.4 20240925 New roles and sub-role for multi-agent system perspective.
  * @author Charles Koffler
  *
  */
