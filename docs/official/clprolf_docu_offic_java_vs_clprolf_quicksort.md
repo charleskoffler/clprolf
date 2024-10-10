@@ -1,4 +1,4 @@
-#TALKING IN JAVA VERSUS TALKING IN CLPROLF EXAMPLE
+# TALKING IN JAVA VERSUS TALKING IN CLPROLF EXAMPLE
 
 Java is great, but in clprolf we can say the same thing differently!
 Let's take a example of a quick sort implementation, the famous and efficient sort algorithm.
