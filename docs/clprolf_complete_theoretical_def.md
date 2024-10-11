@@ -92,7 +92,7 @@ Object roles are about the nature of an object. Clprolf uses only basic roles. T
 
 There are here only five roles in clprolf, simu_comp_as_worker(or worker_agent, comp_as_worker), simu_real_world_obj(or "simu_real_obj", "simu_agent", "agent", "abstraction"), model_real_world_obj(or "model", "model_real_obj"), information and indef_obj: only code for computer, or pure code of simulation.
 clprolf is based on the fact that you can notice use agents to some objects in a system. And some objects emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
-Then, the other kind of objects could be objects for computational or technical tasks. We tell that it is as algorithmic tasks given to a computer seen as a worker. So this object is seen as a micro-computer, specialized in the given task. Ihe micro-computer is quite like a worker agent.
+Then, the other kind of objects could be objects for computational or technical tasks. We tell that it is as algorithmic tasks given to a computer seen as a worker. So this object is seen as a micro-computer, specialized in the given task. The micro-computer is quite like a worker agent.
 So we emulate a worker, and it needs a compilation to truly understand the algorithms.
 These roles of objects aims to help for make clearer the object oriented programming, and facilitate maintenance. It aims also to facilitate design choices, and responsabilities separation. The simu_real_obj(or equivalent) should be easier to use and write, in general.
 The vision and role of the object is clearly indicated, and it adds information on the design of the developer. 
@@ -979,6 +979,8 @@ For the compiler checking of the sub-role inheritance consistency, the rules are
 
 In clprolf, each class(or interface) has to indicate its role, although inheritance, because the programmer of the class must give its perpective for the class(abstraction or worker, especially), or for the interface.
 For the sub-roles, indicating it, when existing, is recommended to not forget the future inheritance check problems.
+
+* Inheriting from a Java class or interface is not allowed, excepted with the "@Forced"-like annotations.
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.

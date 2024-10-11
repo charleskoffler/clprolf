@@ -14,6 +14,8 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Talking in Java versus talking in Clprolf - Quicksort example](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_java_vs_clprolf_quicksort.md)
 
+[Learning the class roles through Java wrappers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_3_java_lib_wrappers.md)
+
 ### Getting started in clprolf
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)

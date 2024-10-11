@@ -1,7 +1,7 @@
 # TALKING IN JAVA VERSUS TALKING IN CLPROLF EXAMPLE
 
 Java is great, but in clprolf we can say the same thing differently!
-Let's take a example of a quick sort implementation, the famous and efficient sort algorithm.
+Let's take an example of a quick sort implementation, the famous and efficient sorting algorithm.
 These examples are present in the source code examples of the GitHub repository.
 
 ## The Java version of our quick sort
@@ -75,7 +75,7 @@ Unsorted array:
 Sorted array:
 5 6 7 23 32 32 34 62
 
-Here we chose to have a single class, QuickSort, acting both as a launcher, and both of a instance object. The main method has to call the sort method, then the printArray(). printArray() is just a public method integrated in the QuickSort class. The object can sort, and partition. It looks like pure Java-style.
+Here we chose to have a single class, QuickSort, acting both as a launcher, and as an instance object. The main method has to call the sort method, then the printArray(). printArray() is just a public method integrated in the QuickSort class. The object can sort, and partition. It looks like pure Java-style.
 
 ## The clprolf Framework version of the same algorithm
 
@@ -83,7 +83,7 @@ It is a nice example of clprolf Framework in action. QuickSort is an agent, here
 The agent is able to sort, and uses its worker agent to display the results, before and after. It is quite like a technical agent, for secondary tasks.
 The quickSort method is quite intuitive, but the partition method is qualified @Underst. The quick sort algorithm takes advantage of the computer's specific features. This is why we prefer to explicitly give an example of the job, before and after.
 
-The launcher is a independent class, and don't have to call a printArray() method. It just asks the quick sorter to sort the array. It is a launcher, so its role could be @Comp_as_worker, even if the launching method is static.
+The launcher is an independent class, and don't have to call a printArray() method. It just asks the quick sorter to sort the array. It is a launcher, so its role could be @Comp_as_worker, even if the launching method is static.
 The clprolf components respect the single responsability principle, are quite easy to master, and the readability of the code seems nice.
 
 ```java
