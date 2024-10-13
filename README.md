@@ -16,6 +16,8 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [Learning the class roles through Java wrappers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_3_java_lib_wrappers.md)
 
+[A clprolf design pattern example with multiple inheritance](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_clpr_desig_patt_mult_herit.md)
+
 ### Getting started in clprolf
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)

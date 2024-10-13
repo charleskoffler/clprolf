@@ -1,5 +1,5 @@
 package org.simol.simolframework.java.beginners;
 
-public class SimuCompWorker {
+public class Comp_as_worker {
 
 }
