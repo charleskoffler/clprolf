@@ -52,9 +52,9 @@ We can notice some things:
 	
 * Loose coupling is enforced, even if we don't want it. At usage, we must use only the interfaces, even if we need implementations.
 	
-* We can, in fact, with that solution, shared the same Person object, between the teacher and the student, and that is great.
+* We can, in fact, with that solution, share the same Person object, between the teacher and the student, and that is great.
 	
-* The teacher and the student are not really a person, because we inherit only of the implementation, and not of the interface of Person. So the Teacher and Student interfaces should extends a Person interface. So the user of the Teacher could access the Person methods.
+* The teacher and the student are not really a person, because we inherit only of the implementation, and not of the interface of Person. So the Teacher and Student interfaces should extend a Person interface. So the user of the Teacher could access the Person methods.
 	
 Corrected example:
 	
@@ -103,7 +103,7 @@ And we don't use @Compat_interf anymore, and rather precise clprolf interfaces.
 ## Inheritance with interfaces that is not really inheritance
 
 Sometimes, we can talk about inheritance, when we meet the case of interface for giving a capacity, or indicating a version. But this is not really inheritance, unlike the previous case.
-It is more here a contract.
+It is sometimes referred to as inheritance, but it is more of a contract, it's more about implementing an interface. Unlike full inheritance, it does not include inheriting the implementation.
 
 ### Conclusion
 
