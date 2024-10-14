@@ -12,7 +12,7 @@ In Java, we can use interfaces for that case. A classical solution used is to cr
 	
 So for that, this is not directly possible in clprolf, except if you use the generic "compat_interf" keyword. But it should not be used.
 	
-	```Java
+```Java
 	@Compat_interf //If we use Clprolf
 	public interface Teacher {
 		void teach();
@@ -40,8 +40,7 @@ So for that, this is not directly possible in clprolf, except if you use the gen
 		public void walk(){
 		}
 	}
-	
-	```
+```
 	
 We can notice some things:
 	
@@ -59,7 +58,7 @@ We can notice some things:
 	
 Corrected example:
 	
-	```Java
+```Java
 	@Forced_int_inh // If we use Clprolf! We enforce because a version should not inherit from another version.
 	@Compat_interf_version //
 	public interface Teacher extends PersonInterf {
@@ -95,8 +94,7 @@ Corrected example:
 		public void walk(){
 		}
 	}
-	
-	```
+```
 	
 Some pitfalls remains, but it looks better? No? By extending PersonInterf, the Teacher and Student interfaces are now truly Person. So it looks better like true inheritance about the "interface"(list of the methods) itself.
 	
