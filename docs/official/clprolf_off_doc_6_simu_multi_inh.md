@@ -1,4 +1,4 @@
-# Interface multiple inheritance in Clprolf
+# Multiple Inheritance with Interfaces in clprolf
 
 ## Let's take the example
 
@@ -100,7 +100,7 @@ Some pitfalls remains, but it looks better? No? By extending PersonInterf, the T
 	
 And we don't use @Compat_interf anymore, and rather precise clprolf interfaces.
 	
-## The case of interface inheritance that is not
+## Inheritance with interfaces that is not really inheritance
 
 Sometimes, we can talk about inheritance, when we meet the case of interface for giving a capacity, or indicating a version. But this is not really inheritance, unlike the previous case.
 It is more here a contract.
