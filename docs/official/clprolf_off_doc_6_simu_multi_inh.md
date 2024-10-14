@@ -102,7 +102,7 @@ And we don't use @Compat_interf anymore, and rather precise clprolf interfaces.
 	
 ## The case of interface inheritance that is not
 
-Sometimes, we can talk about inheritance, when we meet the case of interface for giving a capacity, or indicating a version. But this is not really inheritance, like the previous case.
+Sometimes, we can talk about inheritance, when we meet the case of interface for giving a capacity, or indicating a version. But this is not really inheritance, unlike the previous case.
 It is more here a contract.
 
 ### Conclusion
