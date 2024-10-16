@@ -175,7 +175,7 @@ import org.simol.simolframework.java.Nature;
 /* AssistantClass is just a version of implementation, for the compat_interf_version Assistant.
 So we only implement Assistant! PersonClass is inherited. */
 @Agent
-public class AssistantClass extends @Nature PersonClass implements @Contracts Assistant { //clprolf: we prefer repeating "@Contracts Teacher, Student" for clarity
+public class AssistantClass extends @Nature PersonClass implements @Contracts Assistant {
 	
 	public AssistantClass(String name, int age){
 		super.setAge(age);
@@ -301,12 +301,340 @@ It is not recommended because multiple inheritance is not allowed in clprolf, an
 The question is now is it great to have objects which have many natures? It seems that beyond the philosophical question, it adds complexity to the design.
 Indeed, sometimes it would become hard to tell if the inheritance is a composed object, or an inheritance. 
 	
+### The not recommended clprolf design pattern with code reuse
+
+We can improve our design pattern to allow code reuse of the implementations. For example, the StudentClass and the TeachClass could be instanciated and live without the AssistantClass.
+To achieve this, we can use the same mechanism as the recommended clprolf design pattern, with an inner class in the Person class. It adds complexities so I don't put the code here.
+The Assistant class would have two composition objects, for TeacherClass and StudentClass. And those objects would have shared properties for their person part.
+All this can be done only be changing the implementation package of the not recommended pattern.
+
+Here is the source code, just for the changing classes:
+
+```java
+
+package org.clprolf.patterns.multiinh.notrecomm;
+
+import org.clprolf.patterns.multiinh.notrecomm.implcodereuse.AssistantClass;
+import org.clprolf.patterns.multiinh.notrecomm.implcodereuse.TeacherClass;
+import org.clprolf.patterns.multiinh.notrecomm.implcodereuse.StudentClass;
+import org.clprolf.patterns.multiinh.notrecomm.implcodereuse.PersonClass;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Person;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
+import org.simol.simolframework.java.With_compat;
+import org.simol.simolframework.java.Worker_agent;
+
+/**
+ * The not recommended functional clprolf design pattern, for multiple inheritance
+ * with interfaces, and code reuse.
+ * 
+ * @author Charles Koffler
+ * 20241015
+ */
+@Worker_agent
+public class LauncherCodeReuse {
+/* Execution output:
+*** TEST OF AN ASSISTANT ***
+John is walking.
+John is learning.
+John is teaching.
+Test of Person polymorphism
+The person John is going to walk: 
+John is walking.
+Test of Student polymorphism
+The student John is going to learn: 
+John is learning.
+End of test
+Test of Teacher polymorphism
+The teacher John is going to teach: 
+John is teaching.
+End of test
+*** TEST OF A TRUE TEACHER ***
+Test of Person polymorphism
+The person Angela is going to walk: 
+Angela is walking.
+Test of Teacher polymorphism
+The teacher Angela is going to teach: 
+Angela is teaching.
+End of test
+*** TEST OF A TRUE STUDENT ***
+Test of Person polymorphism
+The person Mary is going to walk: 
+Mary is walking.
+Test of Student polymorphism
+The student Mary is going to learn: 
+Mary is learning.
+End of test
+*** NEW TEST WITH THE ASSISTANT ***
+John is walking.
+John is learning.
+John is teaching.
+Test of Person polymorphism
+The person John is going to walk: 
+John is walking.
+Test of Student polymorphism
+The student John is going to learn: 
+John is learning.
+End of test
+Test of Teacher polymorphism
+The teacher John is going to teach: 
+John is teaching.
+End of test
+
+ */
+	
+    public static void main(String[] args) {
+    	System.out.println("*** TEST OF AN ASSISTANT ***");
+        AssistantClass john = new AssistantClass("John", 36);
+        john.walk();
+        john.learn();
+        john.teach();
+        LauncherCodeReuse.testPerson(john);
+        LauncherCodeReuse.testStudent(john);
+        LauncherCodeReuse.testTeacher(john);
+        //
+        System.out.println("*** TEST OF A TRUE TEACHER ***");
+        TeacherClass trueTeacherAngela = new TeacherClass("Angela", 54);
+        LauncherCodeReuse.testPerson(trueTeacherAngela);
+        LauncherCodeReuse.testTeacher(trueTeacherAngela);
+        //
+        System.out.println("*** TEST OF A TRUE STUDENT ***");
+        StudentClass trueStudentMary = new StudentClass("Mary", 21);
+        LauncherCodeReuse.testPerson(trueStudentMary);
+        LauncherCodeReuse.testStudent(trueStudentMary);
+        //
+        System.out.println("*** NEW TEST WITH THE ASSISTANT ***");
+        john.walk();
+        john.learn();
+        john.teach();
+        LauncherCodeReuse.testPerson(john);
+        LauncherCodeReuse.testStudent(john);
+        LauncherCodeReuse.testTeacher(john);
+    }
+    
+    public static void testPerson(@With_compat Person person) {
+    	System.out.println("Test of Person polymorphism");
+    	System.out.println("The person " + person.getName() + " is going to walk: ");
+    	person.walk();
+    }
+    
+    public static void testStudent(@With_compat Student student) {
+    	System.out.println("Test of Student polymorphism");
+    	System.out.println("The student "+student.getName() + " is going to learn: ");
+    	student.learn();
+    	System.out.println("End of test");
+    }
+    
+    public static void testTeacher(@With_compat Teacher teacher) {
+    	System.out.println("Test of Teacher polymorphism");
+    	System.out.println("The teacher "+teacher.getName() + " is going to teach: ");
+    	teacher.teach();
+    	System.out.println("End of test");
+    }
+}
+
+```
+
+```java
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Assistant;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+
+
+@Agent
+public class AssistantClass implements @Contracts Assistant, Teacher, Student {
+	protected TeacherClass teacher;
+	protected StudentClass student;
+	protected PersonClass person;
+	
+	public AssistantClass(String name, int age){
+		//We are choosing the teacher as the first twin, but it could be the student!
+		this.teacher = new TeacherClass(name, age);
+		this.student = new StudentClass(teacher); //Passing the teacher to the student, for the person part of the teacher.
+		this.person = (PersonClass)this.teacher;
+	}
+	
+	//For Teacher
+	public void teach(){
+		this.teacher.teach();
+	}
+	
+	//For Student
+	public void learn(){
+		this.student.learn();
+	}
+
+	//For person
+	public int getAge() {
+		return this.person.getAge();
+	}
+	public void setAge(int age) {
+		this.person.setAge(age);
+	}
+	
+	public String getName() {
+		return this.person.getName();
+	}
+	public void setName(String name) {
+		this.person.setName(name);
+	}
+	//
+	public void walk() {
+		this.person.walk();
+	}
+}
+
+```
+
+```Java
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.simol.simolframework.java.Agent;
+
+@Agent //This class do not need to be abstract.
+public class PersonClass {
+    //
+	// We have to do that work, for allowing sharing the properties between clones,
+	// and especially permit automatic synchronization of datas!.
+    protected class PersonProperties {
+        private String name;
+        private int age;
+
+        public PersonProperties(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+    }
+
+    // internal properties accessed only via accessors.
+    private PersonProperties sharedProperties;
+    
+    public void setSharedProperties(PersonProperties sharedProperties) {
+		this.sharedProperties = sharedProperties;
+	}
+    
+    public PersonProperties getSharedProperties() {
+		return this.sharedProperties;
+	}
+
+    // Getters and setters, as usual.
+    public String getName() {
+        return sharedProperties.getName();
+    }
+
+    public int getAge() {
+        return sharedProperties.getAge();
+    }
+    
+    public void setName(String name) {
+        sharedProperties.setName(name);
+    }
+
+    public void setAge(int age) {
+        sharedProperties.setAge(age);
+    }
+    
+    /*
+     * Only for the main role.
+     */
+    public PersonClass(String name, int age) {
+        this.sharedProperties = new PersonProperties(name, age);
+        
+    }
+    
+    // All persons know walking!
+    public void walk() {
+        System.out.println(getName() + " is walking.");
+    }
+}
+
+```
+
+```Java
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.simol.simolframework.java.Contracts;
+
+public class StudentClass extends PersonClass implements @Contracts Student {
+	//For usage without AssistantClass, or for giving the first role!
+	public StudentClass(String name, int age) {
+    	super(name, age);
+    }
+	
+    public StudentClass(PersonClass personTwin) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(personTwin.getSharedProperties());
+    }
+    
+    public void learn() {
+        System.out.println(this.getName() + " is learning.");
+    }
+}
+
+
+```
+
+```
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
+import org.simol.simolframework.java.Contracts;
+
+public class TeacherClass extends PersonClass implements @Contracts Teacher {
+	
+	//For usage without AssistantClass, or for giving the first role!
+	public TeacherClass(String name, int age) {
+    	super(name, age);
+    }
+	
+    public TeacherClass(PersonClass personTwin) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(personTwin.getSharedProperties());
+    }
+
+    public void teach() {
+        System.out.println(this.getName() + " is teaching.");
+    }
+}
+
+
+```
+
 ## Inheritance with interfaces that is not really inheritance
 
-Sometimes, we can talk about inheritance, when we meet the case of interface for giving a capacity, or indicating a version. But this is not really inheritance, unlike the previous case.
-It is sometimes referred to as inheritance, but it is more of a contract, it's more about implementing an interface. Unlike full inheritance, it does not include inheriting the implementation.
+Capacity and versioning interfaces are particuliar interfaces, that do not need code reuse of the implementation. So it is rather contracts. We can call them inheritance, but it is rather capacity inheritance, or version inheritance.
+So we can stay in the implementation-less world, even in these cases, if we prefer.
 
 ### Conclusion
 
 In Clprolf, you can use interface for multiple inheritance anyway, with the generic "@Compat_interf", or with a corrected version, with enforced compat_interf_versions. It is not a good practice in clprolf, and a solution is proposed with a specific design pattern to obtain this without multiple interface inheritance.
-Another Clprolf design pattern, not recommended but correct, is possible, to allow multiple inheritance with interfaces, is improved but still has the code reuse problem.
+Another Clprolf design pattern, not recommended but correct, is possible, to allow multiple inheritance with interfaces, is improved. It does the job with or without the code reuse problem.
+Interfaces can be used for the implemented-less world in all the cases, even while talking about capacity or version inheritance.

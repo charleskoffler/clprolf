@@ -10,7 +10,7 @@ import org.simol.simolframework.java.Nature;
 /* AssistantClass is just a version of implementation, for the compat_interf_version Assistant.
 So we only implement Assistant! PersonClass is inherited. */
 @Agent
-public class AssistantClass extends @Nature PersonClass implements @Contracts Assistant { //clprolf: we prefer repeating "@Contracts Teacher, Student" for clarity
+public class AssistantClass extends @Nature PersonClass implements @Contracts Assistant {
 	
 	public AssistantClass(String name, int age){
 		super.setAge(age);
