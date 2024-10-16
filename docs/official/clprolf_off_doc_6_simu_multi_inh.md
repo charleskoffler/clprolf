@@ -582,7 +582,7 @@ package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
 import org.simol.simolframework.java.Contracts;
 
-public class StudentClass extends PersonClass implements @Contracts Student {
+public class StudentClass extends @Nature PersonClass implements @Contracts Student {
 	//For usage without AssistantClass, or for giving the first role!
 	public StudentClass(String name, int age) {
     	super(name, age);
@@ -609,7 +609,7 @@ import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
 import org.simol.simolframework.java.Contracts;
 
 @Agent
-public class TeacherClass extends PersonClass implements @Contracts Teacher {
+public class TeacherClass extends @Nature PersonClass implements @Contracts Teacher {
 	
 	//For usage without AssistantClass, or for giving the first role!
 	public TeacherClass(String name, int age) {
@@ -636,32 +636,34 @@ So we can stay in the implementation-less world, even in these cases, if we pref
 
 ### The (optional) clprolf annotations and features for the inheritance by interface fans
 
-There is some optional features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer the implementation-less world.
+There is some optional features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer the implementation-less world. So here, interfaces are viewed quite like classes without implementations.
 
 When a with_compat occured, it is quite like we would have change the API of the class used by the object, and replaced it by the wanted implemented interface. So the object becomes now in a new hierarchy, the hierarchy of the interface. And here is the implemented-less world, where we forget the implementation classes.
-In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
+In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role, for coherence. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
 The @Compat_interf_version would have an equivalent @Version_inh, and @Compat_interf_capacity = @Capacity_inh, especially for this vision. No class role can be write for a @Capacity_inh.
 
 The class roles used on the interfaces will be checked exactly the same way except that it will be in the hierarchy of the interface. @Forced_inh, and not @Forced_int_inh, has to be written to enforce the roles coherence rules.
-@Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. But all the list of inherited interfaces must have exactly the same role between them, not an equivalent. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. It is not recommended to have multiple natures, but allowed for the interfaces.
+@Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. An agent-like role have to keep his nature(s) by extending interfaces with an equivalent role, and this is the same with the worker-agent-like interface roles. All the capacity interfaces are accepted for inheritance, because there can not have roles.
+It is not recommended to have multiple natures, but allowed for the interfaces.
 
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 
 The previous example, with the optional annotations:
 
 ```java
+
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
 import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Compat_interf_version;
 import org.simol.simolframework.java.Forced_int_inh;
 import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Version_inh;
 
 //The implementation-less world: the interfaces hierarchy is ideal and intuitive
 
 @Agent //Optional for the interfaces!
 @Forced_int_inh // We enforce this because, in Clprolf, a version typically does not inherit from another version.
-@Compat_interf_version
+@Version_inh
 public interface Assistant extends @Nature Teacher, Student { //@Nature is optional. When used, Teacher and Student has to be exactly of the same role.
 	
 }
@@ -669,10 +671,10 @@ public interface Assistant extends @Nature Teacher, Student { //@Nature is optio
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
 import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Version_inh;
 
 @Agent
-@Compat_interf_version
+@Version_inh
 public interface Person {
 	//Accessors
 	public int getAge();
@@ -688,27 +690,28 @@ public interface Person {
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
 import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Compat_interf_version;
 import org.simol.simolframework.java.Forced_int_inh;
 import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Version_inh;
 
 @Agent
 @Forced_int_inh
-@Compat_interf_version //
+@Version_inh
 public interface Student extends @Nature Person {  //Nature is optional for the interfaces.
 	void learn();
 }
 
+
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
 import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Compat_interf_version;
 import org.simol.simolframework.java.Forced_int_inh;
 import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Version_inh;
 
 @Agent
 @Forced_int_inh// We enforce this because, in Clprolf, a version typically does not inherit from another version.
-@Compat_interf_version
+@Version_inh
 public interface Teacher extends @Nature Person { //Nature is optional for the interfaces.
 	void teach();
 }
@@ -852,7 +855,7 @@ import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Contracts;
 
 @Agent
-public class StudentClass extends PersonClass implements @Contracts Student {
+public class StudentClass extends @Nature PersonClass implements @Contracts Student {
 	//For usage without AssistantClass, or for giving the first role!
 	public StudentClass(String name, int age) {
     	super(name, age);
@@ -875,7 +878,7 @@ import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Contracts;
 
 @Agent //If class role on the interface Teacher, here we have exactly the same role.
-public class TeacherClass extends PersonClass implements @Contracts Teacher {
+public class TeacherClass extends @Nature PersonClass implements @Contracts Teacher {
 	
 	//For usage without AssistantClass, or for giving the first role!
 	public TeacherClass(String name, int age) {
