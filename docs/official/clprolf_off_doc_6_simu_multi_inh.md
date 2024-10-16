@@ -601,7 +601,7 @@ public class StudentClass extends PersonClass implements @Contracts Student {
 
 ```
 
-```
+```java
 
 package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 
