@@ -608,6 +608,7 @@ package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
 import org.simol.simolframework.java.Contracts;
 
+@Agent
 public class TeacherClass extends PersonClass implements @Contracts Teacher {
 	
 	//For usage without AssistantClass, or for giving the first role!
@@ -628,13 +629,275 @@ public class TeacherClass extends PersonClass implements @Contracts Teacher {
 
 ```
 
-## Inheritance with interfaces that is not really inheritance
+### Inheritance with interfaces that is not really inheritance
 
 Capacity and versioning interfaces are particuliar interfaces, that do not need code reuse of the implementation. So it is rather contracts. We can call them inheritance, but it is rather capacity inheritance, or version inheritance.
 So we can stay in the implementation-less world, even in these cases, if we prefer.
 
-### Conclusion
+### The (optional) clprolf annotations and features for the inheritance by interface fans
+
+There is some optional features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer the implementation-less world.
+
+When a with_compat occured, it is quite like we would have change the API of the class used by the object, and replaced it by the wanted implemented interface. So the object becomes now in a new hierarchy, the hierarchy of the interface. And here is the implemented-less world, where we forget the implementation classes.
+In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
+The @Compat_interf_version would have an equivalent @Version_inh, and @Compat_interf_capacity = @Capacity_inh, especially for this vision. No class role can be write for a @Capacity_inh.
+
+The class roles used on the interfaces will be checked exactly the same way except that it will be in the hierarchy of the interface. @Forced_inh, and not @Forced_int_inh, has to be written to enforce the roles coherence rules.
+@Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. But all the list of inherited interfaces must have exactly the same role between them, not an equivalent. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. It is not recommended to have multiple natures, but allowed for the interfaces.
+
+Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
+
+The previous example, with the optional annotations:
+
+```java
+package org.clprolf.patterns.multiinh.notrecomm.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Forced_int_inh;
+import org.simol.simolframework.java.Nature;
+
+//The implementation-less world: the interfaces hierarchy is ideal and intuitive
+
+@Agent //Optional for the interfaces!
+@Forced_int_inh // We enforce this because, in Clprolf, a version typically does not inherit from another version.
+@Compat_interf_version
+public interface Assistant extends @Nature Teacher, Student { //@Nature is optional. When used, Teacher and Student has to be exactly of the same role.
+	
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Compat_interf_version;
+
+@Agent
+@Compat_interf_version
+public interface Person {
+	//Accessors
+	public int getAge();
+	public void setAge(int age);
+	
+	public String getName();
+	public void setName(String name);
+	//
+	public void walk();
+	
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Forced_int_inh;
+import org.simol.simolframework.java.Nature;
+
+@Agent
+@Forced_int_inh
+@Compat_interf_version //
+public interface Student extends @Nature Person {  //Nature is optional for the interfaces.
+	void learn();
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Forced_int_inh;
+import org.simol.simolframework.java.Nature;
+
+@Agent
+@Forced_int_inh// We enforce this because, in Clprolf, a version typically does not inherit from another version.
+@Compat_interf_version
+public interface Teacher extends @Nature Person { //Nature is optional for the interfaces.
+	void teach();
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Assistant;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+
+
+@Agent //If class role on the interface Teacher, here we have exactly the same role.
+public class AssistantClass implements @Contracts Assistant, Teacher, Student {
+	protected TeacherClass teacher;
+	protected StudentClass student;
+	protected PersonClass person;
+	
+	public AssistantClass(String name, int age){
+		//We are choosing the teacher as the first twin, but it could be the student!
+		this.teacher = new TeacherClass(name, age);
+		this.student = new StudentClass(teacher); //Passing the teacher to the student, for the person part of the teacher.
+		this.person = (PersonClass)this.teacher;
+	}
+	
+	//For Teacher
+	public void teach(){
+		this.teacher.teach();
+	}
+	
+	//For Student
+	public void learn(){
+		this.student.learn();
+	}
+
+	//For person
+	public int getAge() {
+		return this.person.getAge();
+	}
+	public void setAge(int age) {
+		this.person.setAge(age);
+	}
+	
+	public String getName() {
+		return this.person.getName();
+	}
+	public void setName(String name) {
+		this.person.setName(name);
+	}
+	//
+	public void walk() {
+		this.person.walk();
+	}
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.simol.simolframework.java.Agent;
+
+@Agent //This class do not need to be abstract.
+public class PersonClass {
+    //
+	// We have to do that work, for allowing sharing the properties between clones,
+	// and especially permit automatic synchronization of datas!.
+    protected class PersonProperties {
+        private String name;
+        private int age;
+
+        public PersonProperties(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+    }
+
+    // internal properties accessed only via accessors.
+    private PersonProperties sharedProperties;
+    
+    public void setSharedProperties(PersonProperties sharedProperties) {
+		this.sharedProperties = sharedProperties;
+	}
+    
+    public PersonProperties getSharedProperties() {
+		return this.sharedProperties;
+	}
+
+    // Getters and setters, as usual.
+    public String getName() {
+        return sharedProperties.getName();
+    }
+
+    public int getAge() {
+        return sharedProperties.getAge();
+    }
+    
+    public void setName(String name) {
+        sharedProperties.setName(name);
+    }
+
+    public void setAge(int age) {
+        sharedProperties.setAge(age);
+    }
+    
+    /*
+     * Only for the main role.
+     */
+    public PersonClass(String name, int age) {
+        this.sharedProperties = new PersonProperties(name, age);
+        
+    }
+    
+    // All persons know walking!
+    public void walk() {
+        System.out.println(getName() + " is walking.");
+    }
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+
+@Agent
+public class StudentClass extends PersonClass implements @Contracts Student {
+	//For usage without AssistantClass, or for giving the first role!
+	public StudentClass(String name, int age) {
+    	super(name, age);
+    }
+	
+    public StudentClass(PersonClass personTwin) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(personTwin.getSharedProperties());
+    }
+    
+    public void learn() {
+        System.out.println(this.getName() + " is learning.");
+    }
+}
+
+package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
+
+import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+
+@Agent //If class role on the interface Teacher, here we have exactly the same role.
+public class TeacherClass extends PersonClass implements @Contracts Teacher {
+	
+	//For usage without AssistantClass, or for giving the first role!
+	public TeacherClass(String name, int age) {
+    	super(name, age);
+    }
+	
+    public TeacherClass(PersonClass personTwin) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(personTwin.getSharedProperties());
+    }
+
+    public void teach() {
+        System.out.println(this.getName() + " is teaching.");
+    }
+}
+
+```
+
+## Conclusion
 
 In Clprolf, you can use interface for multiple inheritance anyway, with the generic "@Compat_interf", or with a corrected version, with enforced compat_interf_versions. It is not a good practice in clprolf, and a solution is proposed with a specific design pattern to obtain this without multiple interface inheritance.
 Another Clprolf design pattern, not recommended but correct, is possible, to allow multiple inheritance with interfaces, is improved. It does the job with or without the code reuse problem.
 Interfaces can be used for the implemented-less world in all the cases, even while talking about capacity or version inheritance.
+There is a way to use inheritance for interfaces directly in the language, but this is optional. The class roles are allowed above interfaces, except capacity inheritances. And there is capacity_inh and version_inh equivalent keywords to classical interface roles.
+Multiple inheritance, except for capacities, is still not recommended in clprolf, even with that option.

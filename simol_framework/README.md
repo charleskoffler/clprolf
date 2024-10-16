@@ -24,6 +24,7 @@ History of the versions of the simol java framework
 2.2 20240823 Addition of @Forced_pract_code.
 2.3 20240920 New sub-roles: @Human_expert_static and @Expert_component_static.
 2.4 20240925 New roles and sub-role for multi-agent system perspective.
+2.5 20241016 New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
 
 History of the versions of the simol C# framework
 

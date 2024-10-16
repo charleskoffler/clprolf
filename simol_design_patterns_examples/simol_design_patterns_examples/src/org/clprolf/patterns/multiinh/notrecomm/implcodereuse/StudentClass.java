@@ -1,9 +1,12 @@
 package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
+import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.Nature;
 
-public class StudentClass extends PersonClass implements @Contracts Student {
+@Agent
+public class StudentClass extends @Nature PersonClass implements @Contracts Student {
 	//For usage without AssistantClass, or for giving the first role!
 	public StudentClass(String name, int age) {
     	super(name, age);

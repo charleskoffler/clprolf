@@ -1,10 +1,13 @@
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
-import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Forced_int_inh;
+import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Version_inh;
 
+@Agent
 @Forced_int_inh
-@Compat_interf_version //
-public interface Student extends Person {
+@Version_inh
+public interface Student extends @Nature Person {  //Nature is optional for the interfaces.
 	void learn();
 }

@@ -7,7 +7,7 @@ import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Contracts;
 
 
-@Agent
+@Agent //If class role on the interface Teacher, here we have exactly the same role.
 public class AssistantClass implements @Contracts Assistant, Teacher, Student {
 	protected TeacherClass teacher;
 	protected StudentClass student;

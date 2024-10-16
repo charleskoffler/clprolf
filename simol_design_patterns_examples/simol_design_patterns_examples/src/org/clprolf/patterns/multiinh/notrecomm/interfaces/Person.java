@@ -1,8 +1,10 @@
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
-import org.simol.simolframework.java.Compat_interf_version;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Version_inh;
 
-@Compat_interf_version
+@Agent
+@Version_inh
 public interface Person {
 	//Accessors
 	public int getAge();

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.4 20240925 New roles and sub-role for multi-agent system perspective.
+ * 2.5 20241016 New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
  * @author Charles Koffler
  *
  */
