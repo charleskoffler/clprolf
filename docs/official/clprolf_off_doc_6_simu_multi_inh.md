@@ -901,6 +901,192 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 
 ```
 
+### Another example in clprolf language, of interface inheritance with optional features
+
+Imagine we want use multiple inheritance for an hybrid animal, a mule.
+
+First, we create the interfaces, as if it were our classes! So we are using class roles. The inheritances are true inheritances, in the hierarchical sense.
+
+```Java
+
+// The coherence of interface inheritance are checked, about the class roles! Mule can not extends a worker_agent interface, for example.
+public version_inh agent Mule nature Donkey, Horse {
+	public void carryHeavyLoad();
+}
+
+
+public version_inh agent Donkey nature Animal {
+	//The donkey has endurance
+	public void longRun(int distance);
+
+}
+
+public version_inh agent Horse nature Animal {
+	public void fastRun(int distance);
+}
+
+public version_inh agent Animal {
+	public String getName();
+	public int getAge();
+}
+```
+
+Now we have to write the implementations. There is a class for each agent, even in multiple inheritance.
+
+The Mule class, as "inheriting" from the Mule interface, has to add wrappers for Donkey, Horse, and even Animal. Mule class don't have any inheritance. MuleClass uses composition too, and keep an instance of a horse and a donkey. It also uses a Animal object, found in the horse or the donkey.
+
+The Donkey and Horse classes are as usual, inheriting from AnimalClass. They have two constructors, one taking directly a MuleClass, to obtain the sharedProperties.
+
+The Animal class will have its properties shared (thanks to an inner class), with two constructors at least. A classical constructor, and a constructor for accepting a properties shared object.
+
+So the implementations are quite intuitive, and we can instanciate true horses or donkeys.
+
+```java
+
+public agent MuleClass implements contracts Mule {
+	protected DonkeyClass donkey;
+	protected HorseClass horse;
+	protected AnimalClass animal;
+	
+	public MuleClass(String name, int age){
+		this.donkey = new DonkeyClass(name, age);
+		this.horse = new HorseClass(Donkey); 
+		this.animal = (AnimalClass)this.Donkey;
+	}
+	
+	//For Donkey
+	public void longRun(){
+		this.donkey.longRun();
+	}
+	
+	//For Horse
+	public void fastRun(){
+		this.horse.fastRun();
+	}
+
+	//For Animal
+	public int getAge() {
+		return this.animal.getAge();
+	}
+
+	public void setAge(int age) {
+		this.animal.setAge(age);
+	}
+	
+	public String getName() {
+		return this.animal.getName();
+	}
+	public void setName(String name) {
+		this.animal.setName(name);
+	}
+	public void sleep {
+		this.animal.sleep();
+	}
+	//
+	public void carryHeavyLoad() {
+		//(…)
+	}
+}
+
+public agent AnimalClass {
+        protected class AnimalProperties {
+        	private String name;
+        	private int age;
+
+        	public AnimalProperties(String name, int age) {
+            		this.name = name;
+            		this.age = age;
+        	}
+
+       		public String getName() {
+            		return name;
+        	}
+
+        	public void setName(String name) {
+            		this.name = name;
+        	}
+
+        	public int getAge() {
+            		return age;
+        	}
+
+        	public void setAge(int age) {
+            	this.age = age;
+        	}
+    	}
+
+    private AnimalProperties sharedProperties;
+    
+    public void setSharedProperties(AnimalProperties sharedProperties) {
+		this.sharedProperties = sharedProperties;
+	}
+    
+    public AnimalProperties getSharedProperties() {
+		return this.sharedProperties;
+	}
+
+    // Getters and setters, as usual.
+    public String getName() {
+        return sharedProperties.getName();
+    }
+
+    public int getAge() {
+        return sharedProperties.getAge();
+    }
+    
+    public void setName(String name) {
+        sharedProperties.setName(name);
+    }
+
+    public void setAge(int age) {
+        sharedProperties.setAge(age);
+    }
+    
+    public AnimalClass(String name, int age) {
+        this.sharedProperties = new AnimalProperties(name, age);
+        
+    }
+    
+    public void sleep() {
+        System.out.println(getName() + " is sleeping.");
+    }
+}
+
+
+public agent HorseClass extends nature AnimalClass contracts Horse {
+	public HorseClass(String name, int age) {
+    	super(name, age);
+    }
+	
+    public HorseClass(MuleClass theMule) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(theMule.donkey.getSharedProperties());
+    }
+    
+    public void fastRun() {
+        System.out.println(this.getName() + " fast running.");
+    }
+}
+
+
+public agent DonkeyClass nature AnimalClass contracts Donkey {
+	public DonkeyClass(String name, int age) {
+    	super(name, age);
+    }
+	// It is better to pass a mule, for security reasons, to be sure to create a donkey from a mule, and not from an individual horse.
+    public DonkeyClass(MuleClass theMule) {
+        super(null, 0);  // enforced by Java.
+        this.setSharedProperties(MuleClass.horse.getSharedProperties());
+    }
+
+    public void longRun() {
+        System.out.println(this.getName() + " is longRuning.");
+    }
+}
+
+```
+Conclusion: we have true inheritance, not simulated, with enforced loose coupling, and we achieve this in an intuitive way for the interfaces. The implementations remains quite easy and coherent to write. 
+
 ## Conclusion
 
 In Clprolf, you can use interface for multiple inheritance anyway, with the generic "@Compat_interf", or with a corrected version, with enforced compat_interf_versions. It is not a good practice in clprolf, and a solution is proposed with a specific design pattern to obtain this without multiple interface inheritance.
