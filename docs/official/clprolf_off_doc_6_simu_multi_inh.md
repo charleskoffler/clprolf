@@ -928,6 +928,8 @@ public version_inh agent Horse nature Animal {
 public version_inh agent Animal {
 	public String getName();
 	public int getAge();
+	
+	public void sleep();
 }
 ```
 
