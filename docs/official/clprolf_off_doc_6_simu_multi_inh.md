@@ -945,7 +945,7 @@ So the implementations are quite intuitive, and we can instanciate true horses o
 
 ```java
 
-public agent MuleClass implements contracts Mule {
+public agent MuleClass contracts Mule {
 	protected DonkeyClass donkey;
 	protected HorseClass horse;
 	protected AnimalClass animal;
@@ -1055,7 +1055,7 @@ public agent AnimalClass {
 }
 
 
-public agent HorseClass extends nature AnimalClass contracts Horse {
+public agent HorseClass nature AnimalClass contracts Horse {
 	public HorseClass(String name, int age) {
     	super(name, age);
     }
