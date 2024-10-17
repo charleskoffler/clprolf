@@ -784,6 +784,18 @@ public class SimolJava8ParserBaseListener implements SimolJava8ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSimolInterfExtends(@NotNull SimolJava8Parser.SimolInterfExtendsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSimolInterfExtends(@NotNull SimolJava8Parser.SimolInterfExtendsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterEnumConstantName(@NotNull SimolJava8Parser.EnumConstantNameContext ctx) { }
 	/**
 	 * {@inheritDoc}

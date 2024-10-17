@@ -648,6 +648,16 @@ public interface SimolJava8ParserListener extends ParseTreeListener {
 	 */
 	void exitConstructorModifier(@NotNull SimolJava8Parser.ConstructorModifierContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SimolJava8Parser#simolInterfExtends}.
+	 * @param ctx the parse tree
+	 */
+	void enterSimolInterfExtends(@NotNull SimolJava8Parser.SimolInterfExtendsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimolJava8Parser#simolInterfExtends}.
+	 * @param ctx the parse tree
+	 */
+	void exitSimolInterfExtends(@NotNull SimolJava8Parser.SimolInterfExtendsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SimolJava8Parser#enumConstantName}.
 	 * @param ctx the parse tree
 	 */

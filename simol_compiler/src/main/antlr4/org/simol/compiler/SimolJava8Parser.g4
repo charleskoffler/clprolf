@@ -622,7 +622,12 @@ interfaceModifier
 	;
 
 extendsInterfaces
-	:	'extends' interfaceTypeList
+	:	simolInterfExtends interfaceTypeList
+	;
+	
+simolInterfExtends
+	: 'extends'
+	| 'nature'
 	;
 
 interfaceBody

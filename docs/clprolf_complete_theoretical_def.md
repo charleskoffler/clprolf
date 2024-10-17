@@ -1059,7 +1059,7 @@ SimolRole:
 	indef_obj
 	
 NormalInterfaceDeclaration: 
-    SimolInterfaceRole [SimolRole] Identifier [TypeParameters] [extends TypeList] InterfaceBody
+    SimolInterfaceRole [SimolRole] Identifier [TypeParameters] [SimolInterfExtends TypeList] InterfaceBody
 
 SimolInterfaceRole:
 	compat_interf_version
@@ -1067,6 +1067,10 @@ SimolInterfaceRole:
 	compat_interf
 	version_inh
 	capacity_inh
+
+SimolInterfExtends:
+	extends
+	nature
 	
 Modifier: 
     Annotation
