@@ -641,11 +641,13 @@ There is some optional features, for those who prefer talking about inheritance,
 When a with_compat occured, it is quite like we would have change the API of the class used by the object, and replaced it by the wanted implemented interface. So the object becomes now in a new hierarchy, the hierarchy of the interface. And here is the implemented-less world, where we forget the implementation classes.
 In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role, for coherence. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
 The @Compat_interf_version would have an equivalent @Version_inh, and @Compat_interf_capacity = @Capacity_inh, especially for this vision. No class role can be write for a @Capacity_inh.
-When a role annotation is present on an interface, like @Agent, for example, the "@Version_inh"(nor @Compat_interf_version) is not mandatory.
 
 The class roles used on the interfaces will be checked exactly the same way except that it will be in the hierarchy of the interface. @Forced_inh, and not @Forced_int_inh, has to be written to enforce the roles coherence rules.
 @Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. An agent-like role have to keep his nature(s) by extending interfaces with an equivalent role, and this is the same with the worker-agent-like interface roles. All the capacity interfaces are accepted for inheritance, because there can not have roles.
 It is not recommended to have multiple natures, but allowed for the interfaces.
+
+When a role annotation is present on an interface, like @Agent, for example, the "@Version_inh"(nor @Compat_interf_version) is not mandatory.
+When a class role is present on an interface, and extends an interface with a marked class role too, the enforcing of inheritance @Forced_int_inh is not mandatory.
 
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 
