@@ -648,6 +648,7 @@ It is not recommended to have multiple natures, but allowed for the interfaces.
 
 When a role annotation is present on an interface, like @Agent, for example, the "@Version_inh"(nor @Compat_interf_version) is not mandatory.
 When a class role is present on an interface, and extends an interface with a marked class role too, the enforcing of inheritance @Forced_int_inh is not mandatory.
+But in the language, the syntax is 'version_inh agent(or another class role) Teacher (...)".
 
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 

@@ -596,7 +596,7 @@ interfaceDeclaration
 	;
 
 normalInterfaceDeclaration
-	:	interfaceModifier* simolInterfaceRole Identifier typeParameters? extendsInterfaces? interfaceBody
+	:	interfaceModifier* simolInterfaceRole simolRole? Identifier typeParameters? extendsInterfaces? interfaceBody
 	;
 	
 simolInterfaceRole:
@@ -605,6 +605,10 @@ simolInterfaceRole:
 	'compat_interf_capacity'
 	|
 	'compat_interf'
+	|
+	'version_inh'
+	|
+	'capacity_inh'
 	;
 
 interfaceModifier

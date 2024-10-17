@@ -123,6 +123,8 @@ CONTRACTS : 'contracts';
 COMPAT_INTERF_VERSION : 'compat_interf_version';
 COMPAT_INTERF_CAPACITY : 'compat_interf_capacity';
 COMPAT_INTERF : 'compat_interf';
+VERSION_INH : 'version_inh';
+CAPACITY_INH : 'capacity_inh';
 WITH_COMPAT : 'with_compat';
 UNDERST : 'underst';
 LONG_ACTION : 'long_action';
