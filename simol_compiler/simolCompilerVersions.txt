@@ -10,3 +10,4 @@ Simol compiler versions
 2.3.0 2024/08/23	Added "@Forced_pract_code".
 2.4.0 2024/09/20	New annotations "@Human_expert_static", "@Expert_component_static", and "@Static".
 2.5.0 2024/09/25	Added modifiers for MAS("simu_agent", "agent_abstraction", "agent", "worker_agent", @Active_agent).
+2.6.0 2024/10/17	Added "version_int", and "capacity_int" modifiers.
