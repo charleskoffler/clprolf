@@ -308,6 +308,8 @@ When a role annotation is present on an interface, like @Agent, for example, the
 When a class role is present on an interface, and extends an interface with a marked class role too, the enforcing of inheritance @Forced_int_inh is not mandatory.
 But in the language, the syntax is 'version_inh agent(or another class role) Teacher (...)". We have to write the "version_inh" keyword(or compat_interf_version), in the language, but not in the framework, just to have an interface-like keyword somewhere.
 
+The optional features for interface inheritance allow to work with interface like we do with classes, except that we have no direct access to the implementation.
+
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 
 ### Optional features for interface inheritance: Does a class inherit from an interface, or is it just a implementation of a contract?
@@ -566,6 +568,24 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 }
 
 ```
+
+### USING THE CLASS ROLES ON INTERFACES FOR COLLABORATIVE PROJECTS
+For collaborative projects, like public APIs, or for big teams with much collaborations, you can use the class roles on interfaces. It's quite like with the optional features for interface inheritance, except that we keep only the class roles addition(of course with the compiler checkings).
+ 
+Example in clprolf:
+
+``` java
+
+package clprolf.wrappers.java.sql;
+
+@Forced_int_inh // We can not inherit from Java interfaces naturally.
+@Abstraction // We can add a class role, for public APIs, or other projects with much collaboration.
+public compat_interf_version abstraction ClpConnection extends Connection   {
+	
+}
+```
+
+The implementation classes must have exactly the same role as the interface, in this case(here 'abstraction', not a same role).
 
 ### OOP class versus instances
 
