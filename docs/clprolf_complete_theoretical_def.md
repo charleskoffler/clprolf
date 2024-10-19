@@ -303,12 +303,14 @@ The @Compat_interf_version would have an equivalent @Version_inh, and @Compat_in
 The class roles used on the interfaces will be checked exactly the same way except that it will be in the hierarchy of the interface. @Forced_inh, and not @Forced_int_inh, has to be written to enforce the roles coherence rules.
 @Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. An agent-like role have to keep his nature(s) by extending interfaces with an equivalent role, and this is the same with the worker-agent-like interface roles. All the capacity interfaces are accepted for inheritance, because there can not have roles.
 It is not recommended to have multiple natures, but allowed for the interfaces.
+It is the "nature"(or @Nature) keyword that shows that we choose an inheritance vision for the interface, and not an "extension" perspective. Indeed, class roles, "version_inh" and "capacity_inh", can be used by collaborative projects, for interfaces.
 
 When a role annotation is present on an interface, like @Agent, for example, the "@Version_inh"(nor @Compat_interf_version) is not mandatory.
 When a class role is present on an interface, and extends an interface with a marked class role too, the enforcing of inheritance @Forced_int_inh is not mandatory.
 But in the language, the syntax is 'version_inh agent(or another class role) Teacher (...)". We have to write the "version_inh" keyword(or compat_interf_version), in the language, but not in the framework, just to have an interface-like keyword somewhere.
 
-The optional features for interface inheritance allow to work with interface like we do with classes, except that we have no direct access to the implementation.
+The optional features for interface inheritance allow to work with interfaces like we do with classes, except that we have no direct access to the implementation.
+It marks an inheritance perspective, not an "extends" perspective for interface inheritance. But these perspectives are interchangeable, and we are free to perceive as "extends", an "nature" of an interface.
 
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 
@@ -571,6 +573,8 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 
 ### USING THE CLASS ROLES ON INTERFACES FOR COLLABORATIVE PROJECTS
 For collaborative projects, like public APIs, or for big teams with much collaborations, you can use the class roles on interfaces. It's quite like with the optional features for interface inheritance, except that we keep only the class roles addition(of course with the compiler checkings).
+We can still use "version_inh", or "capacity_inh", because those keywords are also about horizontal inheritance (when a class implements an interface).
+But we can not use "nature" for collaborative projects, except for those who want an interface inheritance perpective.
  
 Example in clprolf:
 
