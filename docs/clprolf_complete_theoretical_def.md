@@ -591,6 +591,75 @@ public compat_interf_version abstraction ClpConnection extends Connection   {
 
 The implementation classes must have exactly the same role as the interface, in this case(here 'abstraction', not a same role).
 
+### Optional Features for interface inheritance: an example with interface simple inheritance
+
+```java
+
+public version_inh agent Dog nature Animal {
+	void bark(int duration);
+}
+
+public version_inh agent Animal {
+	public void eat(String foodName);
+}
+
+public agent DogImpl nature AnimalImpl contracts Dog {
+	public void bark(int duration){
+		System.out.println("The dog is barking for " + duration + "s");
+	}
+}
+
+public agent AnimalImpl contracts Animal {
+	public void eat(String foodName){
+		System.out.println("The animal is eating " + foodName);
+	}
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh;
+
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl.DogImpl;
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
+
+import org.simol.simolframework.java.With_compat;
+import org.simol.simolframework.java.Worker_agent;
+
+/**
+ * The free impl dog: 
+	The dog is barking for 100s
+	The animal is eating meat
+	The dog impl: 
+	The dog is barking for 100s
+	The animal is eating meat
+  */
+
+public worker_agent Launcher {
+	public static void main(String[] args) {
+		//We can either use a dog with or without direct implementation
+		with_compat Dog myFreeImplDog = new DogImpl();
+		DogImpl myImplDog = new DogImpl();
+		
+		System.out.println("The free impl dog: ");
+		myFreeImplDog.bark(100);
+		myFreeImplDog.eat("meat");
+		
+		System.out.println("The dog impl: ");
+		myImplDog.bark(100);
+		myImplDog.eat("meat");
+	}
+}
+
+```
+Let's see the optional features for interface inheritance in action, for a simple interface inheritance. This is the most common case.
+
+What is the different between "horizontal" inheritance, and "vertical" inheritance?
+
+We can call "horizontal" inheritance, an inheritance like the part of interface of a class, inherited with an "implements". So it extends the class, with a part of interface, and the class has to implement it. Finally, horizontal and vertical inheritance are quite the same, because vertical inheritance is just an "extension" of the class (or of the interface). It's just a question of perspective. So, when a class implementing an interface,  and "extends" a class that already implements this interface, the class does not need to write it. So in this case, the inheritance of the interface seems vertical, as usual inheritance.
+
+So, in this basic example of The Dog, in this example, the DogImpl implements the Animal interface in another class, although it was on the Dog contract.
+Thus, in clprolf, although "contracts" is about horizontal inheritance (as the "implements" of Java), it is equivalent perspectives. So the "nature" keyword and "extends", used for interfaces, whether we use or not the optional features, are equivalent.
+
+Here, the Dog and Animal interfaces are perfect for loose coupling, with polymorphism. And the implementations are usable directly too, if we prefer.
+
 ### OOP class versus instances
 
 Once we understand the traditional definition of an object in OOP, a set of encapsulated variables and functions, we can try to express the difference between an object and a class. An object truly exist in memory, for the variables, as well as the code of the methods. So an OOP object is finally real, and a class is just the mold. An OOP object is also a "thing" in memory, an "object" present in memory.
