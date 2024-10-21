@@ -28,6 +28,8 @@ The sole place where not to write "with_compat" is for a return type of a method
 In Clprolf, "implements" is replaced by "contracts" (plural of contract). Thus, when implementing an interface, we have to write the list of the fulfilled contracts.
 The annotation "@Contracts" is used in the framework.
 
+```java
+
 public class UserDAOImpl implements @Contracts UserDAO {
 
 	//methods from UserDAO
@@ -38,6 +40,8 @@ public class UserDAOImpl implements @Contracts UserDAO {
 	//(…)
 
 }
+
+```
 
 ### Capacity interface
 
