@@ -18,6 +18,8 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [A clprolf design pattern example with multiple inheritance](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_clpr_desig_patt_mult_herit.md)
 
+[The basics and the single inheritance of interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_interfaces_basics.md)
+
 [Multiple Inheritance with Interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_simu_multi_inh.md)
 
 ### Getting started in clprolf
