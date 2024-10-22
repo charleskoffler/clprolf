@@ -206,6 +206,8 @@ In the language, the advice is simple annotation above the interface definition,
 So the advice is always defined, because it is not given, it is the agent-like goal by default. And the advice is mandatory, because we can not enforce a capacity inheritance, we have to follow the advice. The reason is that it is not wanted, in Clprolf, to have a with_compat clause that could bring both agent and worker agent.
 So the compiler will check, for each compat_interf_version definition, in the case where it extends capacities, that the class role of the version suits the capacities advices.
 
+Interfaces that are about a capacity for all objects, like Serializable, are not capacities in Clprolf. It can be a compat_interf_version without precise role, and enforced with @Forced_int_inh.
+
 Let's take a concrete example:
 
 ```java
