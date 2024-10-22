@@ -1514,7 +1514,7 @@ Inheritance of interfaces contradictions
 
 Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). Interface inheritance with the optional features is an exception. And a compat_interf_capacity can not be composed by a compat_interf_version.
 
-	A capacity always refers to an advice, even the default "@Agent_like_advice". The role of the version extending the capacity has to be marked, and be the same. If a capacity extends a capacity, the advice of the extending capacity has to be identical.
+A capacity always refers to an advice, even the default "@Agent_like_advice". The role of the version extending the capacity has to be marked, and be the same. If a capacity extends a capacity, the advice of the extending capacity has to be identical.
 
 Impact of the classes and contracts contradictions:
 	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to remain coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization of the roles.
