@@ -24,33 +24,9 @@ The clprolf framework is available for Java, C#, or PHP.
 
 ### Getting started in clprolf
 
-[Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started)
-
-[Getting started in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_getting_started.md)
-
-[Clprolf from an OOP knowledge](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_chatgpt_conv_underst_from_oop.md)
-
-[Theoretical background](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_theoretical_background.md)
-
-[Hello world example](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_hello_world.md)
-
-[Quick start about the roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_quick_start_roles.md)
-
-[The object roles](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_object_roles.md)
-
-[The interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_interfaces.md)
-
-[clprolf and the algorithmic language](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_algo.md)
-
 [Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_conc_parall.md)
 
 [The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_underst.md)
-
-[Traditional objects and interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_traditional_oop.md)
-
-[AI softwares programming with clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_ai_writing.md)
-
-[ChatGPT 4o Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_gtp4o_overview.md)
 
 ### Complete definition
 
