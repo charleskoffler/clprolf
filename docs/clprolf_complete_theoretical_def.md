@@ -195,6 +195,174 @@ clprolf prefer not to use "with_compat" for the interfaces list implemented in a
 that an object is compatible, not a class. A class is considered as respecting contracts. "implements" can not be used in clprolf because
 it focuses on the implementation, not the idea of a contract is respected.
 
+### Capacity interfaces: The advice of a capacity interface
+
+capacity interfacies are only for compat_interf_version extension. It constitutes a common functionnaly across different compat_interf_version family. So it is a common capacity between different hierarchies of interfacies, thus of classes.
+The capacity interfaces can not be used directly in a class. The Reason is that we could confuse with a version interface role. A Connection could be seen as a capacity, otherwise, for example.
+
+The capacity interfaces have to indicate an advice. This advice is quite like a sub-role, and tell if the capacity applies on an agent-like class role, or rather a worker-like role. So when a version interface implements a capacity, this interface has to have a class role. The compiler will check the coherence between the class role and the advice of the capacity. It is mandatory to indicate the advice when writing a capacity interface. So it is more than an advice. If no advice is given, it is considered as for an agent-like class role.
+
+In the language, the advice is simple annotation above the interface definition, @Agent_like_advice or @Worker_like_advice. In the Framework, it is a sub-role of the compat_interf annotation: Advice.FOR_AGENT_LIKE, or Advice.FOR_WORKER_LIKE. Example: @Compat_interf_capacity(Advice.FOR_AGENT_LIKE).
+So the advice is always defined, because it is not given, it is the agent-like goal by default. And the advice is mandatory, because we can not enforce a capacity inheritance, we have to follow the advice. The reason is that it is not wanted, in Clprolf, to have a with_compat clause that could bring both agent and worker agent.
+So the compiler will check, for each compat_interf_version definition, in the case where it extends capacities, that the class role of the version suits the capacities advices.
+
+Let's take a concrete example:
+
+```java
+
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world, simu_real_world_obj)
+
+@Agent_like_advice
+public compat_interf_capacity Eatable {
+	void eat(int quantity);
+}
+
+//We have to give the class role, because it has a capacity
+public version_inh agent Animal extends Eatable {
+	int getAge();
+	String getName();
+	
+	void setAge(int age);
+	void setName(String name);
+
+	void run();
+}
+
+//We have to give the class role, because it has a capacity
+public version_inh agent Person extends Eatable {
+	void laugh();
+}
+
+//We can not write Eatable in the contracts, because it is a capacity.
+public agent AnimalClass contracts Animal {
+	//(…)
+	public int getAge(){ //(…) }
+	public String getName(){ //(…) }
+	
+	public void setAge(int age){ //(…) }
+	public void setName(String name){ //(…) }
+
+	public void run(){
+		System.out.println("I am running");
+	}
+
+	//Eatable
+	public void eat(){
+		System.out.println("I am eating");
+	}
+	//
+}
+
+//We can not write Eatable in the contracts, because it is a capacity.
+public agent PersonClass contracts Person {
+	//(…)
+	public void laugh(){
+		System.out.println("I am laughing!");
+	}
+	//Eatable
+	public void eat(){
+		System.out.println("I am eating properly");
+	}
+}
+
+public worker_agent Launcher {
+	public static void test(with_compat Eatable eatableAgent){
+		System.out.println("The agent will eat");
+		eatableAgent.eat();
+	}
+
+	public static void main(String args[]){
+		AnimalClass theMonkey = new AnimalClass("monkey", "4");
+		PersonClass john = new PersonClass("John", 25);
+
+		Launcher.test(theMonkey);
+		Launcher.test(john);
+	}
+}
+
+```
+
+In the Java Framework:
+
+```java
+
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world, simu_real_world_obj)
+
+@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
+public compat_interf_capacity Eatable {
+	void eat(int quantity);
+}
+
+//We have to give the class role, because it has a capacity
+@Agent
+public interface Animal extends Eatable {
+	int getAge();
+	String getName();
+	
+	void setAge(int age);
+	void setName(String name);
+
+	void run();
+}
+
+//We have to give the class role, because it has a capacity
+@Agent
+public interface Person extends Eatable {
+	void laugh();
+}
+
+//We can not write Eatable in the contracts, because it is a capacity.
+@Agent
+public class AnimalClass implements @Contracts Animal {
+	//(…)
+	public int getAge(){ //(…) }
+	public String getName(){ //(…) }
+	
+	public void setAge(int age){ //(…) }
+	public void setName(String name){ //(…) }
+
+	public void run(){
+		System.out.println("I am running");
+	}
+
+	//Eatable
+	public void eat(){
+		System.out.println("I am eating");
+	}
+	//
+}
+
+//We can not write Eatable in the contracts, because it is a capacity.
+@Agent
+public class PersonClass implements @Contracts Person {
+	//(…)
+	public void laugh(){
+		System.out.println("I am laughing!");
+	}
+	//Eatable
+	public void eat(){
+		System.out.println("I am eating properly");
+	}
+}
+
+@Worker_agent
+public interface Launcher {
+	public static void test(@With_compat Eatable eatableAgent){
+		System.out.println("The agent will eat");
+		eatableAgent.eat();
+	}
+
+	public static void main(String args[]){
+		AnimalClass theMonkey = new AnimalClass("monkey", "4");
+		PersonClass john = new PersonClass("John", 25);
+
+		Launcher.test(theMonkey);
+		Launcher.test(john);
+	}
+}
+
+```
+
 ### THE ESSENCE OF THE OBJECT, ANOTHER SIDE OF OBJECT-ORIENTED PROGRAMMING
 
 Each object, in object-oriented programming, should be more than just a set of datas. So all the topic of the essence of the objects, their role, is an aspect of object-oriented programming. So objects nature question belongs to object-oriented programming, and is an aspect of it. All applications in a computer are either a user-goal application, either software to support other applications(especially operating system, or libraries). So the final application is always the principal objective of a computer. This is why the different kind of objects couldn't be anything else than emulations of real-world concrete objects or concepts, or code for computer. It's a kind of scientific vision of what is an application. And it simply brings together all the kinds of objects in object-oriented languages.
@@ -2012,4 +2180,3 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
-
