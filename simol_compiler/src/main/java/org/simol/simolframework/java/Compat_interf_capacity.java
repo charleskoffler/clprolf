@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Compat_interf_capacity {
-
+	Advice value() default Advice.FOR_AGENT_LIKE;
 }

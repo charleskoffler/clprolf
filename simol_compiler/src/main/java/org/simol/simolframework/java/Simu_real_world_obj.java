@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.5 20241016 New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
+ * 2.6 20241022 Ajout énumération pour les compat_interf_capacity ou capacity_inh (Advice).
  * @author Charles Koffler
  *
  */

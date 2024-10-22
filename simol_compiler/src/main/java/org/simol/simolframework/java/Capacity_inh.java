@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Capacity_inh {
-
+	Advice value() default Advice.FOR_AGENT_LIKE;
 }
