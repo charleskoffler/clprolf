@@ -45,8 +45,18 @@ public class UserDAOImpl implements @Contracts UserDAO {
 
 ### Capacity interface
 
-This kind of interface is quite current, because there are many of this in Java. It is simply an "able"-like interface, which brings a capacity.
-"Comparable" is a typical example of capacity, ensuring that a class implementing this is comparable. A class will generally implementing Comparable<thisClass>, and will be able to compare two elements of its own class. In the example below, the Car class has the capacity of compare cars.
+This kind of interface is an "able"-like interface, which brings a capacity.
+The goal of a capacity interface is to add a functionality across different families of compat_interf_version with a class role.
+
+We can not implement a capacity interface on a class, it only extends another interface(version or capacity).
+"Comparable" is a typical example of capacity. A version interface implementing Comparable<thisClass> will be able to compare two elements of its own interface.
+
+A capacity interface always has an advice to give, which is either to be a agent-like version interface, or a worker-like version interface, to be able to use it.
+By default, a capacity interface gives the advice to be used on a agent-like version interface.
+
+In the framework: an enumeration Advice(Advice.FOR_AGENT_LIKE, or Advice.FOR_WORKER_LIKE) is used with the @compat_interf_capacity, quite like a sub-role.
+In the language, there are two pure annotations, above the compat_interf_version definition: @Agent_like_advice and @Worker_like_advice.
+The version interface implementing the capacity has to be marked with a class role, according to the advice of the capacity.
 
 Let's imagine a Clprolf wrapper for java.lang.Comparable:
 
@@ -56,9 +66,21 @@ package clprolf.wrappers.java.lang;
 
 import org.simol.simolframework.java.Compat_interf_capacity;
 
-@Compat_interf_capacity
+@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
 public interface ClpComparable<T> {
           public int compareTo(T o);
+}
+
+package org.clprolf.offdoc.examples.interfaces;
+import org.simol.simolframework.java.Agent;
+import clprolf.wrappers.java.lang.ClpComparable;
+
+@Agent //Agent is compatible with the Advice of ClpComparable(FOR_ADGENT_LIKE)
+public interface Car extends ClpComparable<Car> {
+	
+	public int getYear();
+	
+	public String getName();
 }
 
 package org.clprolf.offdoc.examples.interfaces;
@@ -66,14 +88,12 @@ package org.clprolf.offdoc.examples.interfaces;
 import org.simol.simolframework.java.Agent;
 import org.simol.simolframework.java.Contracts;
 
-import clprolf.wrappers.java.lang.ClpComparable;
-
 @Agent
-public class Car implements @Contracts ClpComparable<Car> {
+public class CarClass implements @Contracts Car {
 	private int year;
 	private String name;
 	
-	public Car(String name, int year) {
+	public CarClass(String name, int year) {
 		this.name = name;
 		this.year = year;
 	}
@@ -90,12 +110,15 @@ public class Car implements @Contracts ClpComparable<Car> {
 	 * We wanted an old car to be superior to a young car.
 	 */
 	public int compareTo(Car otherCar){
-		if (this.year < otherCar.year) return 1; //older
-		else if (this.year > otherCar.year) return -1; //younger
+		if (this.year < otherCar.getYear()) return 1; //older
+		else if (this.year > otherCar.getYear()) return -1; //younger
 		else return 0; //The same age
 	}
 }
 
+package org.clprolf.offdoc.examples.interfaces;
+
+import org.simol.simolframework.java.With_compat;
 import org.simol.simolframework.java.Worker_agent;
 
 import clprolf.wrappers.java.lang.ClpComparable;
@@ -109,8 +132,9 @@ import clprolf.wrappers.java.lang.ClpComparable;
 public class Launcher {
 	
 	public static void main(String[] args){
-		@With_compat ClpComparable<Car> comparableObj = new Car("Renault Clio 4", 2015);
-		Car carTwo = new Car("Ford Mustang", 1967);
+		//comparableObj is an agent-like component, with the capacity ClpComparable.
+		@With_compat ClpComparable<Car> comparableObj = new CarClass("Renault Clio 4", 2015);
+		Car carTwo = new CarClass("Ford Mustang", 1967);
 
 		System.out.println("Comparaison between carOne and carTwo: " + comparableObj.compareTo(carTwo) );
 	}
@@ -174,7 +198,7 @@ public class MyAwesomeDatabaseConnection implements @Contracts ClpConnection {
 
 ### The generic compat_interf
 
-"compat_interf" is generic, and only for the language. Indeed, the framework already has the "interface" generic keyword of Java.
+	"compat_interf" is generic, and only for the language. Indeed, the framework already has the "interface" generic keyword of Java.
 It means "compatibility interface", and it useful in case of an interface definition without role. It is not recommended to use it, but it adds flexibility.
 
 ```Java
@@ -194,11 +218,11 @@ There are semantic rules for interface inheritance, or for the contracts of a cl
 A version interface can't extend another version interface, to remain simple about the version meaning.
 Any kind of interfaces can extend one or many capacity interfaces, because it's only capacity growing.
 
-A class can only implement one version compatibility interface, because it can be only one implementation at a time. But it can be under contract with much capacity interfaces.
+A class can only implement one version compatibility interface, because it can be only one implementation at a time. And it can not (directly) be under contract with a capacity interface.
 
 These rules are intuitive, and will be checked by the compiler or the semantic checker of the framework.
  
-@Forced_int_inh annotation means "forced interface inheritance", and we can annotate with this in the language or framework.
+@Forced_int_inh annotation means "forced interface inheritance", and we can annotate with this in the language or framework. @Forced_int_inh can not be used for enforce an advice of a capacity.
 It can be above an interface, or a class. 
 Or we can be more precise on the target: it is just before a contract type of the "contracts" part. Or it can be before a type name of the "extends" part of an interface definition.
 It allows to bypass the compiler checks.

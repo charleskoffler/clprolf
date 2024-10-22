@@ -6,8 +6,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+//Optional annotation, equivalent to @Compat_interf_version
+
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Compat_interf_capacity {
-	Advice value() default Advice.FOR_AGENT_LIKE;
+public @interface Version_inh {
+
 }

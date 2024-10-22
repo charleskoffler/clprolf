@@ -14,8 +14,9 @@ import clprolf.wrappers.java.lang.ClpComparable;
 public class Launcher {
 	
 	public static void main(String[] args){
-		@With_compat ClpComparable<Car> comparableObj = new Car("Renault Clio 4", 2015);
-		Car carTwo = new Car("Ford Mustang", 1967);
+		//comparableObj is an agent-like component, with the capacity ClpComparable.
+		@With_compat ClpComparable<Car> comparableObj = new CarClass("Renault Clio 4", 2015);
+		Car carTwo = new CarClass("Ford Mustang", 1967);
 
 		System.out.println("Comparaison between carOne and carTwo: " + comparableObj.compareTo(carTwo) );
 	}
