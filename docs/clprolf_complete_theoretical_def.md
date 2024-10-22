@@ -1489,14 +1489,14 @@ For the interfaces, clprolf not directly talks about interface inheritance(nor j
 
 ### RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
-Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored, by using "@Forced_inh", "@Forced_int_inh", and "@Forced_pract_code" annotations(in clprolf language as well as in the java framework).
+Classes and interfaces roles allow some semantic checks, done by the compiler or semantic checking tools. Those checks can be ignored (except for the capacity interfaces), by using "@Forced_inh", "@Forced_int_inh", and "@Forced_pract_code" annotations(in clprolf language as well as in the java framework).
 The semantic control permit the compilation to find contradictions that can imply that the roles indicated on classes or interfaces are not coherent and have a problem. A fruit class which would be declared as simu_comp_as_worker could not be the mother class of a Apple class declared in simu_real_obj.
-Thanks to the semantic control about contradictions, we can automatically detect a misuse of class or interface roles, and enforce the user to respect the language definition and philosophy.
+Thanks to the semantic control about contradictions, we can automatically detect a misuse of class or interface roles, and enforce the user to respect the language definition and philosophy. A capacity is only about a shared functionality across many version interfaces, and a capacity always targets agents or workers.
 These compiler controls still permit to have a free interpretation of our classes and interfaces.
 
 * Summary of the semantic rules for inheritance
 In order for the users to easily learn and master the rules, it's quite easy to explain their intent in few words.
-A synopsis of the semantic inheritance rule could be that we must sort out the sheep from the goats, in clprolf. But the imposed rules are the behavior that we intuitively have while programming clprolf, and we are free to them with "forced" keywords.
+A synopsis of the semantic inheritance rules could be that we must sort out the sheep from the goats, in clprolf. But the imposed rules are the behavior that we intuitively have while programming clprolf, and we are generally free to them with "forced" keywords.
 
 * The semantic checks made by the compiler are all in four kind of rules:
 
@@ -1506,15 +1506,18 @@ class inheritance contradiction:
 	The direct inheritance of a class, his nature in clprolf, should  be coherent with the role of this class. The role of the mother class should be the same of the role of the class itself. For example, the nature of a simu_real_obj have to be a simu_real_obj. Or a simu_comp_as_worker class must inherit of a simu_comp_as_worker_class.
 
 Contracts contradictions
-	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing. But a class can have multiple capacities, or can be the version of something and have capacities in addition.
+	A class should implement only one compat_interf_version. It's quite evident, because of the definition of a compatibility interface version. A class should be only the version of one thing.
+	A class can not implement a compat_interf_capacity(or capacity_inh).
 
 Inheritance of interfaces contradictions
-	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles
+	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles. It is not true for the optional features for inheritance, when a class role is indicated.
 
-Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). And a compat_interf_capacity can not be composed by a compat_interf_version.
+Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). Interface inheritance with the optional features is an exception. And a compat_interf_capacity can not be composed by a compat_interf_version.
+
+	A capacity always refers to an advice, even the default "@Agent_like_advice". The role of the version extending the capacity has to be marked, and be the same. If a capacity extends a capacity, the advice of the extending capacity has to be identical.
 
 Impact of the classes and contracts contradictions:
-	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to have coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization of the roles.
+	 Thanks to inheritance and contracts declarations, the compiler can find contradictions in the chosen roles for classes and interfaces. This leads to enforce the code to remain coherent and correct, while allowing all types of interpretations. And the programmer is enforced to respect the class and interface roles. This is a way for the compiler to ensure the correct utilization of the roles.
 
 Examples: The programmer can not declare a Fruit as simu_real_word_obj, a Banana as simu_comp_as_worker, because the compiler would forbid this when seeing the class inheritance contradiction. But the multiple interpretations are still allowed. For the interfaces, having a "Sortable" interface declared as a compat_interf_version would be detected by the compiler when trying to establish a contract with Sortable and Measurable(a compat_interf_capacity). The checker would see the problem with the contracts contradictions test, and will understand that there is something incoherent. The problem here was that the programmer declared Sortable as a version, and he betrayed his incoherence while trying to use it with a class which implement a capacity interface.
 
@@ -1523,7 +1526,7 @@ System abstractions usage contradictions
 
 * Sub-role inheritance check rules:
 
-For the compiler checking of the sub-role inheritance consistency, the rules are evident and intuitive. @Human_expert, @Expert_component, @Design_role are considered as equivalent, as well as @Human_expert_static and @Expert_component_static are equivalent. But @Static are not the same as the other static roles. If a class has only a static role, it can not inherit from a non-static role, and vice versa, except if the class has two abstraction roles. @Machine_tool and Graph_interf are compatible, for inheritance. The sub-role compatibilies are especially made in case of different programmers for the classes.
+For the compiler checking of the sub-role inheritance consistency, the rules are evident and intuitive. @Human_expert, @Expert_component, @Design_role are considered as equivalent, as well as @Human_expert_static and @Expert_component_static are equivalent. But @Static are not the same as the other static roles. If a class has only a static role, it can not inherit from a non-static role, and vice versa, except if the class has two abstraction roles. @Machine_tool and Graph_interf are compatible, for inheritance. The sub-role compatibities are especially made in case of different programmers for the classes.
 
 In clprolf, each class(or interface) has to indicate its role, although inheritance, because the programmer of the class must give its perpective for the class(abstraction or worker, especially), or for the interface.
 For the sub-roles, indicating it, when existing, is recommended to not forget the future inheritance check problems.
@@ -1531,7 +1534,9 @@ For the sub-roles, indicating it, when existing, is recommended to not forget th
 * Inheriting from a Java class or interface is not allowed, excepted with the "@Forced"-like annotations.
 
 * Ignoring inheritance checking
-These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface. In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
+These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface.
+@Forced_inh is exceptionally used for an interface definition, for the optional features for interface inheritance, about the inheritance of two interfaces having a clsss role, because we are truly talking about the inheritance as the nature.
+In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
 
 In the clprolf framework:
 
