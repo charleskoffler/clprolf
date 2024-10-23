@@ -25,6 +25,8 @@ History of the versions of the simol java framework
 2.3 20240920 New sub-roles: @Human_expert_static and @Expert_component_static.
 2.4 20240925 New roles and sub-role for multi-agent system perspective.
 2.5 20241016 New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
+2.6 20241022 Ajout énumération pour les compat_interf_capacity ou capacity_inh (Advice).
+2.7 20241023 Removed beginners package.
 
 History of the versions of the simol C# framework
 
@@ -44,6 +46,7 @@ History of the versions of the simol C# framework
 2.3	20240606	Renamed package from Simol to Clprolf. Addition of forgotten "public" modifiers. Changed the project type to "class library".
 2.4 20240823 Addition of [Forced_pract_code].
 2.5 20240920 New static sub-roles for simu_real_world_obj("Role.STATIC", "Role.HUMAN_EXPERT_STATIC", and "Role.EXPERT_COMPONENT_STATIC").
+2.6 20241023 Removed beginners package.
 
 History of the versions of the simol PHP 8 framework
 
@@ -56,3 +59,4 @@ History of the versions of the simol PHP 8 framework
 1.6	20240324 Correction on the beginners class SimuCompAsWorker.
 1.7	20240404	Addition of the new keywords "Abstraction", "Comp_as_worker", and "Model".
 1.8 20240823 Addition of "Forced_pract_code".
+1.9 20241023 Removed beginners package.

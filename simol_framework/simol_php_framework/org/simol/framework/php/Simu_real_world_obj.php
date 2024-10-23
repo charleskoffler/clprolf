@@ -14,13 +14,13 @@ enum Role /* since PHP 8.1 */
 };
 
 /**
- * Simol framework for PHP 1.8	20240823
+ * Simol framework for PHP 1.9	20240823
  * 
- * Addition of "Forced_pract_code".
+ * 20241023 Removed beginners package.
  * 
  * About Simol PHP framework:
  * 
- * Nature and Constracts not present due to PHP attributes limitations, and
+ * Nature and Contracts not present due to PHP attributes limitations, and
  * With_compat is not on local variables.
  * TurnMonitor, For_every_thread, One_at_a_time, Dependent_activity because thread support is not supplied in Simol PHP Framework.
  */

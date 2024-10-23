@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v2.5, 20240920.
+ * Simol C# Framework, v2.6, 20241023.
  * 
- * New static sub-roles for simu_real_world_obj("Role.STATIC", "Role.HUMAN_EXPERT_STATIC", and "Role.EXPERT_COMPONENT_STATIC").
+ * 20241023 Removed beginners package.
  * 
  * 
  * Limitations of C# framework for simol:

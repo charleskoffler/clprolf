@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.6 20241022 Ajout énumération pour les compat_interf_capacity ou capacity_inh (Advice).
+ * 2.7 20241023 Removed beginners package.
  * @author Charles Koffler
  *
  */

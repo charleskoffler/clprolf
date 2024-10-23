@@ -169,13 +169,13 @@ OOP always needs guidelines like object-oriented design principles, or design pa
 In clprolf, we sort the interfaces, there are three types of interfaces. clprolf interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
-	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use an compat_interf_version too, to indicate that the intent is to forecast a change of implementation and not depend to a concrete class.
+	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use a compat_interf_version too, to indicate that the intent is to foresee a change of implementation and not depend to a concrete class. Optional features for interface inheritance allow to add a class role for version interfaces, and to simplify loose coupling for them.
 
-"compat_interf_capacity": the purpose of the interface is to guarantee that a class has a certain capability (to sort, etc.), no matter what the implementation.
+"compat_interf_capacity": the purpose of this interface is to guarantee that we have a common functionality across mutiple compat_interf_version interfaces. A compatibility interface always targets either an agent-like compat_interf_version, or worker-like compat_interf_version.
 
-"compat_interf": in case where we don't want to give a role to the interface, to remain flexible.
+"compat_interf": in case where we don't want to give a role to the interface, to remain flexible. It is not recommended to use it.
 
-We can't use interfaces in clprolf, except for these two cases.
+We can't use interfaces in clprolf, except for these two cases. But the optional features for interface inheritance allow to add class roles on version interface, and having a true inheritance perspective with "nature"(even multiple).
 
 Another difference, for interfaces, is the obligation to write "with_compat" (with compatibility), before the name of an interface, when using it.
 Example: void drink(with_compat Drink obj_buvable){(...}}
@@ -418,24 +418,9 @@ public void recognizeObject(){ }
 Or
 
 ```java
-@Compat_interf_capacity
+@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
 public interface MySortable { }
 ```
-
-### clprolf FOR BEGINNERS, A WAY TO KEEP OBJECT-ORIENTED MINDSET
-
-clprolf frameworks contain a "beginners" package, which is composed by classes and interfaces, for each class and interface kind. For example, the SimuRealWorldObj class, or CompatInterfVersion interface.
-They are considered as the root classes for clprolf, and can be used instead of the corresponding annotation, or in addition. As well as java has 'Object' class as a root of all classes, we have such root classes.
-About the interfaces, each interface must implement one of the root interface of clprolf, and not only the mother interface. The main interfaces in clprolf are CompatInterfVersion and CompartInterfCapacity.
-The developper who want to slowly move to clprolf, while keeping a pure object-oriented mindset, can inherit all his root classes or interfaces with them.
-In fact, they are empty but allow the transition to clprolf while keeping their coding style. Once the programmer would have integrated the concepts, he could use all annotations instead.
-
-Summary: Each interface must extend either CompatInterfVersion root interface, or CompatInterfCapacity. But it can have another interfaces in their inheritance, of course.
-For classes, it is not the same, only the root classes must inherit from a root clprolf class. This is because all the descendants must have the same role, in clprolf. And because we can not have multiple inheritance in the underlying language, for declaring a role in each class.
-
-Usage example in java: public class Main extends SimuCompAsWorker { (...) }
-Or public class Animal extends SimuRealWorldObj. Interface examples: public interface Callable extends CompatInterfCapacity { (...) }
-Examples in C#: interface ICallable : ICompatInterfCapacity, or class Program : SimuCompAsWorker
 
 ### THE LANGUAGE ITSELF
 
@@ -1387,7 +1372,7 @@ The clprolf compiler is the more direct way to use clprolf. But we have the clpr
 "nature" => replace with "extends"
 "contracts" => replace with "implements"
 
-clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Human_expert_static, @Expert_component_static, @Static, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh, @Forced_pract_code)
+clprolf annotations are ignored(@Design_role, @Human_expert, @Expert_component, @Human_expert_static, @Expert_component_static, @Static, @Machine_tool, @GUI_role, @LongAction, @Forced_inh, @Forced_int_inh, @Forced_pract_code, @Agent_like_advice, @Worker_like_advice)
 EVERYTHING ELSE IS IDENTICAL TO JAVA
 
 ### THE clprolf COMPILER
@@ -1574,7 +1559,7 @@ public class CarRealization {
 
 ### INSIGHTS ABOUT INHERITANCE AND clprolf
 
-What is inheritance in OO programming? Inheritance could not be only a copy of attributes and methods, which we could call abusive inheritance when alone. In that case, composition should be used instead of inheritance, and everyone describe by the way composition as a "has-a" relationship. This aligns with the common principle of "composition over inheritance". Inheritance has a meaning of being of the same family too, and is a "is-a" relationship, by definition. In the beginners package of the clprolf frameworks, we meet empty classes and interfaces, but their job is yet crucial. It's because the children classes and interfaces inherits of their sense, and not only of properties and methods. 
+What is inheritance in OO programming? Inheritance could not be only a copy of attributes and methods, which we could call abusive inheritance when alone. In that case, composition should be used instead of inheritance, and everyone describe by the way composition as a "has-a" relationship. This aligns with the common principle of "composition over inheritance". Inheritance has a meaning of being of the same family too, and is a "is-a" relationship, by definition.
 clprolf allows to secure inheritance and avoid having only a technical inheritance. Having roles, added with semantic inheritance control on roles, are a guarantee that we think about a meaning too. So a business class can not inherit from a computational class.
 But this could be not enough, and inheritance might be still incoherent. A Human class could inherit of a Heart class, because there are both real-world objects simulation. That's why the "nature" keyword prevents of having inheritance without being really the same kind of thing.
 So we can see clprolf roles as a securing of object oriented programming, nothing more, and as if we would proceed the same way as a programmer who would respect good practice rules in OOP.
@@ -1584,7 +1569,6 @@ That said, clprolf let us choose the role and interpretation, and clprolf let us
 
 As C# is close to Java, a clprolf C# framework provide attributes like the java annotations, despite Java is the main language in clprolf. It permits to leverage clprolf in C# too, for the C# users. It acts as the java annotations, except for some details. The interface and class attributes are more precise by targetting a class or an interface. But there is no 'Nature' or 'Contracts', nor 'With_compat' on a local variable, due to C# attributes limitations. It is not very important the lack of 'Nature' and 'Contracts', because of the existing ":" in C#, and once the users know the philosophy of clprolf about this. For the "With_compat", the most important is about field and parameters, not about local variables. And interfaces names begin by 'I', in C#, they are remarkable.
 "Forced" attributes are only upon the class or the interface definition, because of C# attributes limitations.
-Like in the java framework, there is a beginners package too, which permit to keep object-oriented habits in clprolf, using inheritance instead annotations.
 
 ### clprolf FRAMEWORK FOR PHP 8
 
