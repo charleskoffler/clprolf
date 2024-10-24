@@ -226,3 +226,171 @@ These rules are intuitive, and will be checked by the compiler or the semantic c
 It can be above an interface, or a class. 
 Or we can be more precise on the target: it is just before a contract type of the "contracts" part. Or it can be before a type name of the "extends" part of an interface definition.
 It allows to bypass the compiler checks.
+
+## Interface single inheritance
+
+Clprolf contains optional features for interface inheritance. These features especially allow "nature" to replace "extends" on an interface.
+We obtain an inheritance perspective for interface inheritance. The multiple inheritance with nature is also possible, but not recommended (except for the capacities).
+We'll talk about this in the next chapter.
+Class roles are possible for an interface, for example "agent"(or @Agent in the framework), or "comp_as_worker". In this case, interfaces with class roles allow version inheritance by a version, without enforcing.
+The class role checkings are done by the compiler, when roles are present, and inheritance coherence is checked. About the implementation classes, they have to use exactly the same class role (not an equivalent).
+With these features, we can mimic class inheritance or interfaces, also it was full abstract classes.
+These features can be interesting (or a part of these features) for full loose coupling, or collaborative projects.
+The complete inheritance done on the interfaces allows to full polymorphism, and class-like usage of the interfaces.
+In these features, "version_inh", and "capacity_inh" can replace "compat_interf_version" and "compat_interf_capacity".
+
+Clprolf language version:
+
+```java
+
+public version_inh agent Dog nature Animal {
+	void bark(int duration);
+}
+
+public version_inh agent Animal {
+	public void eat(String foodName);
+}
+
+public agent DogImpl nature AnimalImpl contracts Dog {
+	public void bark(int duration){
+		System.out.println("The dog is barking for " + duration + "s");
+	}
+}
+
+public agent AnimalImpl contracts Animal {
+	public void eat(String foodName){
+		System.out.println("The animal is eating " + foodName);
+	}
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh;
+
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl.DogImpl;
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
+
+import org.simol.simolframework.java.With_compat;
+import org.simol.simolframework.java.Worker_agent;
+
+/**
+ * The free impl dog: 
+	The dog is barking for 100s
+	The animal is eating meat
+	The dog impl: 
+	The dog is barking for 100s
+	The animal is eating meat
+  */
+
+public worker_agent Launcher {
+	public static void main(String[] args) {
+		//We can either use a dog with or without direct implementation
+		with_compat Dog myFreeImplDog = new DogImpl();
+		DogImpl myImplDog = new DogImpl();
+		
+		System.out.println("The free impl dog: ");
+		myFreeImplDog.bark(100);
+		myFreeImplDog.eat("meat");
+		
+		System.out.println("The dog impl: ");
+		myImplDog.bark(100);
+		myImplDog.eat("meat");
+	}
+}
+
+```
+
+Java Framework version:
+
+```Java
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Version_inh;
+
+@Agent
+@Version_inh
+public interface Animal {
+	public void eat(String foodName);
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces;
+
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Nature;
+import org.simol.simolframework.java.Version_inh;
+
+@Agent
+@Version_inh
+public interface Dog extends @Nature Animal {
+	void bark(int duration);
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl;
+
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Animal;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+
+
+@Agent
+public class AnimalImpl implements @Contracts Animal {
+	public void eat(String foodName){
+		System.out.println("The animal is eating " + foodName);
+	}
+
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl;
+
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
+import org.simol.simolframework.java.Agent;
+import org.simol.simolframework.java.Contracts;
+import org.simol.simolframework.java.Nature;
+
+@Agent
+public class DogImpl extends @Nature AnimalImpl implements @Contracts Dog {
+	public void bark(int duration){
+		System.out.println("The dog is barking for " + duration + "s");
+	}
+}
+
+package org.clprolf.patterns.optfeaturesinterf.simpleintinh;
+
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl.DogImpl;
+import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
+
+import org.simol.simolframework.java.With_compat;
+import org.simol.simolframework.java.Worker_agent;
+
+/**
+ * The free impl dog: 
+	The dog is barking for 100s
+	The animal is eating meat
+	The dog impl: 
+	The dog is barking for 100s
+	The animal is eating meat
+ *
+ * @author Charles Koffler
+ *
+ */
+@Worker_agent
+public class Launcher {
+	public static void main(String[] args) {
+		//We can either use a dog with or without direct implementation
+		@With_compat Dog myFreeImplDog = new DogImpl();
+		DogImpl myImplDog = new DogImpl();
+		
+		System.out.println("The free impl dog: ");
+		myFreeImplDog.bark(100);
+		myFreeImplDog.eat("meat");
+		
+		System.out.println("The dog impl: ");
+		myImplDog.bark(100);
+		myImplDog.eat("meat");
+	}
+}
+
+```
+
+## Conclusion
+Clprolf is mainly focused on compatibility interfaces. A capacity aims to unify different hierarchies of interfaces. A version represents the interface of different implementations of the same object.
+Version interfaces can have class roles, and a nature, with the optional features. This can make easier loose coupling, and collaborative projects.
