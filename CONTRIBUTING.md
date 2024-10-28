@@ -1,4 +1,4 @@
-#Call to Contribute to Clprolf
+# Call to Contribute to Clprolf
 
 Explore and contribute to Clprolf—a new programming language that offers a distinct approach to object-oriented design. Clprolf introduces a minimalistic framework built around clear component roles and interaction principles, designed to simplify development while supporting structured, layered applications.
 
