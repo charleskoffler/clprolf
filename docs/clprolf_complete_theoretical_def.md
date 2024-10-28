@@ -15,7 +15,7 @@ I put code examples, language description in the main README file, clprolf compi
 
 There is a basic clprolf compiler, but it works great. There is a clprolf framework for java developers too, with java annotations, for leveraging clprolf's concepts in java.
 
-I used chatGPT at the end of my work, for validate clprolf's design choices, and for feedback and overview. As I don't want autopromotion, I regularly ask chatGPT assistance and support, and add them to this README file.
+I used chatGPT at the end of my work, for validate clprolf's design choices, and for feedback and overview.
 The complete and detailed definition stands at the end of this file.
 
 ***************************************************************************************
