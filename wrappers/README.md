@@ -18,8 +18,26 @@ Contributors are welcome to add their own wrappers!
 
 java.net.Socket => clprolf.wrappers.java.net.ClpSocket
 ServerSocket => clprolf.wrappers.java.net.ClpSocketServer NAME CHANGED (FOR CONSISTENCY)
+
 javax.swing.JButton => clprolf.wrappers.javax.swing.ClpJButton
+
 java.util.Scanner => clprolf.wrappers.java.util.ClpScanner
+
+### JavaFX classes
+
+clprolf.wrappers.javafx.application.ClpFXApplication => javafx.application.Application
+
+clprolf.wrappers.javafx.stage.ClpStageWindow => javafx.stage.Stage
+
+clprolf.wrappers.javafx.layout.ClpPane
+
+clprolf.wrappers.javafx.shape.ClpBox
+clprolf.wrappers.javafx.shape.ClpShape3D
+
+clprolf.wrappers.javafx.scene.ClpCamera
+clprolf.wrappers.javafx.scene.ClpScene
+clprolf.wrappers.javafx.scene.ClpSceneNode
+clprolf.wrappers.javafx.scene.control.ClpButton
 
 ## INTERFACES
 
