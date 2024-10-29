@@ -1388,6 +1388,7 @@ Then you have to use javac on the generated java code, in order to obtain execut
 clprolf sources can be opened with Eclipse, choosing open with java editor, or with notepad+++->java language, and so on.
 You can format the generated java code with Eclipse, for example, right clic on the java generated file, source, format.
 clprolf framework for Java permit to use java's IDE and tools, and autocompletion on annotations, and is completely integrated with java.
+The Eclipse IDE for Java, and IntelliJ IDEA display a tooltip with annotations when hovering over classes and interfaces. So we can see at a glance the Clprolf annotations, in the framework.
 
 ### clprolf AND JAVA LIBRARIES
 
