@@ -1,8 +1,8 @@
 # clprolf language and framework
 
-clprolf(CLear PROgramming Language and Framework) has been made for simplify programming, especially OOP. It is a superset of java.
+Clprolf is a specialized, guided object-oriented language. It features predefined, specialized components and applies constraints to inheritance and interfaces, focusing on algorithmic programming. It is a superset of java.
 
-The clprolf framework is available for Java, C#, or PHP.
+The clprolf framework is available for Java, C#, or PHP, and is designed to leverage Clprolf in those languages.
 
 [clprolf official web site](https://www.clprolf-lang.org/)
 
@@ -20,7 +20,7 @@ The clprolf framework is available for Java, C#, or PHP.
 
 [The basics and the single inheritance of interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_interfaces_basics.md)
 
-[Multiple Inheritance with Interfaces in clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_simu_multi_inh.md)
+[Interface multiple inheritance in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_simu_multi_inh.md)
 
 ### Getting started in clprolf
 
