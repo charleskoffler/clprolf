@@ -86,16 +86,16 @@ In clprolf, there is a top abstraction layer, which is composed by the "abstract
 Then there is a technical layer, which is composed by the technical classes. Here, the computer is seen as an abstraction of a real-world worker. It is the "simu_comp_as_worker"(or "comp_as_worker") classes. Here we can find the classes as in the Data-Access Layer(DAL) and Presentation Layer of the three-tier architecture. In clprolf, we especially separate classes that contain technical code needed for the "abstraction" classes: display code, as well as data-access code. Everything that is not pure abstraction code should be put in a technical class.
 However, some software, for example parts of an operating system, is composed mainly by the technical layer, which can call the abstraction layer.
 
-### THE ROLE OF OBJECTS
+### THE ROLE OF OBJECTS - THE CLASS ROLE OR CLASS RESPONSABILITY
 
-Object roles are about the nature of an object. Clprolf uses only basic roles. This should reduce the ambiguity of their definitions. The definition of the roles is quite intuitive. So the first nature of an object-oriented object, is to be an object. And then, in clprolf, it could be a simu_real_obj, or an agent, or for the technical objects, a worker_agent, or a comp_as_worker. Some object natures are the same than others, because we want to emphasize some aspects.
+Object roles are about the nature of an object. Clprolf uses only basic class roles, which is the class responsability. This should reduce the ambiguity of their definitions. The definition of the roles is quite intuitive. So the first nature of an object-oriented object, is to be an object. And then, in clprolf, its class has a responsability, either a simu_real_obj, or an agent, or for the technical objects, a worker_agent, or a comp_as_worker responsability. Some object natures are the same than others, because we want to emphasize some aspects.
 
-There are here only five roles in clprolf, simu_comp_as_worker(or worker_agent, comp_as_worker), simu_real_world_obj(or "simu_real_obj", "simu_agent", "agent", "abstraction"), model_real_world_obj(or "model", "model_real_obj"), information and indef_obj: only code for computer, or pure code of simulation.
+There are here only five main role (or responsabilities) in clprolf, simu_comp_as_worker(or worker_agent, comp_as_worker), simu_real_world_obj(or "simu_real_obj", "simu_agent", "agent", "abstraction"), model_real_world_obj(or "model", "model_real_obj"), information and indef_obj: only code for computer, or pure code of simulation.
 clprolf is based on the fact that you can notice use agents to some objects in a system. And some objects emulate, or simulate, real-world objects, as an abstraction of the underlying data structure. Even in system programming, much abstractions of such objects are used, such as connections, streams, files or threads.
 Then, the other kind of objects could be objects for computational or technical tasks. We tell that it is as algorithmic tasks given to a computer seen as a worker. So this object is seen as a micro-computer, specialized in the given task. The micro-computer is quite like a worker agent.
 So we emulate a worker, and it needs a compilation to truly understand the algorithms.
 These roles of objects aims to help for make clearer the object oriented programming, and facilitate maintenance. It aims also to facilitate design choices, and responsabilities separation. The simu_real_obj(or equivalent) should be easier to use and write, in general.
-The vision and role of the object is clearly indicated, and it adds information on the design of the developer. 
+The vision and responsability of the class is clearly indicated, and chosen from the beginning, and it adds information on the design of the developer. 
 
 We keep flexibility with the optional "indef_obj"(indefinite object), like a traditional oo object.
 
