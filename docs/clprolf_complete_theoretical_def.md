@@ -105,7 +105,7 @@ The two qualifiers are equivalent, in clprolf. An abstraction is a black box hid
 
 "simu_real_obj" is always a simulation object, emulating a real-world object. But the sense of real-world object is here very large, and includes abstract concepts, like a socket. The real-world object is here a concept.
 
-That said, it is recommended to use rather "abstraction" to represent the abstract ideas, like those used in the system abstractions, like a connection class. These classes are used only by the worker_agent classes.
+That said, it is recommended to use rather "abstraction" to represent the abstract ideas, like those used in the system abstractions, like a connection class. The system abstractions are used only by the worker_agent classes.
 
 And then the "simu_real_obj" classes are rather reserved for simulating the concrete real-world objects, like a vehicle class but this is not an obligation. It's a matter of preference and sensibility!
 
