@@ -1110,7 +1110,7 @@ The @Abstraction role can be combined with another @Abstraction having the STATI
 ```java
 //Two roles because this class is used at the same time for his static methods as an expert in string, and as a abstraction of a string when instanciated!
 // String.valueof(); for example, or String str = new String("the test!");
-@Abstraction
+
 @Abstraction(Role.HUMAN_EXPERT_STATIC)
 public class String {
 //(…)
@@ -1118,9 +1118,10 @@ public class String {
 }
 ```
 
-In this case, the @Abstraction plays two roles, so in case of inheritance, the new class inherits from the two aspects. Indeed, some abstractions like string need an expert behind in support.
+In this case, the @Abstraction plays two roles, so in case of inheritance, the new class inherits from the two aspects. But we can write only a sole (main) role, "abstraction" for example, even in the framework. Indeed, some abstractions like string need an expert behind in support.
 When inheriting, for example an AwesomeString class extends String, the AwesomeString instanciated abstraction is of the same nature of the String, but the static methods are inherited too. The AwesomeString can access the static expert too, and also has to have the two sub-roles.
 Static subroles have been added to stay compatible with existing languages, especially Java.
+For a dual sub-role, if the non static role has no sub-role, we can guess that it exists while seeing instance members in the class. So in that case, we indicate only the static sub-role. For the example of the String class, it could be an "abstraction", with a @Expert_component_static subrole. The String could be an abstraction of a string(no sub-role), and a static expert component(for the instance methods).
 
 In the clprolf framework for java, as annotations are already used, the sub-role annotations are available through an optional role attribute of @Simu_real_obj. For instance:
 @Simu_real_obj(Role.DESIGN_ROLE)
