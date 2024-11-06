@@ -8,6 +8,8 @@ The clprolf framework is available for Java, C#, or PHP, and is designed to leve
 
 [Contributing](https://github.com/charleskoffler/clprolf/blob/main/CONTRIBUTING.md)
 
+[AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
+
 ### Clprolf official documentation
 
 [The kind of classes](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_class_roles.md)
