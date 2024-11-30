@@ -89,6 +89,43 @@ In clprolf, there is a top abstraction layer, which is composed by the "abstract
 Then there is a technical layer, which is composed by the technical classes. Here, the computer is seen as an abstraction of a real-world worker. It is the "simu_comp_as_worker"(or "comp_as_worker") classes. Here we can find the classes as in the Data-Access Layer(DAL) and Presentation Layer of the three-tier architecture. In clprolf, we especially separate classes that contain technical code needed for the "abstraction" classes: display code, as well as data-access code. Everything that is not pure abstraction code should be put in a technical class.
 However, some software, for example parts of an operating system, is composed mainly by the technical layer, which can call the abstraction layer.
 
+### OBJECT AND INTERFACE DECLENSIONS AND GENRES
+
+In Clprolf, we strive to approximate the richness of natural languages. Each object has a declension, representing its function within the system. Declension, also known as the object role or class role, is central to the design philosophy of Clprolf.
+
+In addition to declension, objects are assigned a gender, which serves as a synonym for their function. The primary declensions are:
+
+    Agent: Includes types such as agent, simu_agent, simu_real_world_obj, simu_real_obj, and abstraction.
+    Worker: Includes worker_agent, simu_comp_as_worker, and comp_as_worker.
+    Model: Includes model, model_real_world_obj, and model_real_obj.
+    Information: Includes only information, which has no synonyms.
+
+To further refine an object’s role, sub-roles like @Expert_component or @Human_expert can specify variations within the agent declension.
+Interrelationships Between Declensions
+
+    Agents and Workers: Every object with an agent declension can also function as a worker. This reflects how computers execute agents—as specialized workers. However, the goal is to minimize the number of workers in the system to maintain clarity and efficiency.
+    Models and Information: Similarly, any object with a model declension can be represented as information, as this is how the computer stores models. Despite this, it is essential to avoid misusing information where a model would be more appropriate.
+    Unidirectional Substitutions: While agents can take on worker roles and models can be viewed as information, the reverse is not true. A true worker cannot become an agent, and information cannot be replaced by a model. Such substitutions often indicate a design flaw or a deliberate perspective shift (e.g., when treating a sorting class as a worker).
+
+Class Identification in Clprolf
+
+Each class in Clprolf is identified by its name, with the addition of its declension and gender. This explicit classification simplifies understanding and enhances system consistency.
+Interfaces and Their Declensions
+
+Interfaces in Clprolf also have declensions, referred to as interface roles:
+
+    Compat_interf_version: Represents version-based compatibility.
+    Compat_interf_capacity: Represents capability-based compatibility.
+
+Each interface role has a gender:
+
+    For compat_interf_version, the secondary gender is version_inh.
+    For compat_interf_capacity, the secondary gender is capacity_inh.
+
+An object’s declension can be added to an interface to specify which class declension is allowed to implement it (using contracts).
+
+By integrating declensions and genders, Clprolf ensures clarity in design, unambiguous role assignment, and a robust structure for both objects and interfaces.
+
 ### THE ROLE OF OBJECTS - THE CLASS ROLE OR CLASS RESPONSABILITY
 
 Object roles are about the nature of an object. Clprolf uses only basic class roles, which is the class responsability. This should reduce the ambiguity of their definitions. The definition of the roles is quite intuitive. So the first nature of an object-oriented object, is to be an object. And then, in clprolf, its class has a responsability, either a simu_real_obj, or an agent, or for the technical objects, a worker_agent, or a comp_as_worker responsability. Some object natures are the same than others, because we want to emphasize some aspects.
@@ -1370,7 +1407,7 @@ FieldDecl:
 
 The clprolf compiler is the more direct way to use clprolf. But we have the clprolf framework for java developers too.
 
-"agent", "simu_agent", "worker_agent", "simu_comp_as_worker", "comp_as_worker", "simu_real_world_obj", "simu_real_obj", "abstraction", "model_real_world_obj", "model", "information", "indef_obj" => replace with "class"
+"agent", "simu_agent", "worker_agent", "simu_comp_as_worker", "comp_as_worker", "simu_real_world_obj", "simu_real_obj", "abstraction", "model_real_world_obj", "model", "model_real_obj", "information", "indef_obj" => replace with "class"
 "class_for", "underst", "with_compat", "long_action", "prevent_missing_collision", "turn_monitor", "one_at_a_time", "for_every_thread", "dependent_activity" => replace with ""(empty string)
 "compat_interf_version", "compat_interf_capacity", "compat_interf", "version_inh", "capacity_inh" => replace with "interface"
 "nature" => replace with "extends"
