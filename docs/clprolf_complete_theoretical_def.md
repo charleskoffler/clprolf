@@ -53,6 +53,20 @@ Clprolf transforms each object in a component. A component, by definition, has o
 
 Clprolf just classifies existing best practices, and OOP guidelines already recommends the SRP, a separation between business and technical layers, and use some objects like system abstractions, or as a representation of a real-world counterpart. So we all know that OOP applications already respect these principles. So clprolf is a way to integrate these best practices at language level, and to make an intuitive design. Then components becomes actors in a system, and not only technical components, and it is this addition that clprolf brings too. So writing an application begins by choosing our agents (or worker_agents).
 
+### S.O.L.I.D
+
+Clprolf language is especially compatible with S.O.L.I.D principles. Let's see how it achieves this.
+
+Single Responsibility Principle: The choice of a declension and a gender allows to guarantee the unique responsibility, and the same "nature", because each declension and gender have a precise responsibility. The "nature" keyword ensures that the inheritance remains coherent. The interface inheritance features assign a class role to the targeted object, guaranteeing a future single responsibility. All the declensions are checked for coherence with the compiler, about classes and interfaces.
+
+Open/Closed Principle: The clear nature and class roles, as well as the interfaces, naturally enforce the open/closed principle, with the clear and targeted design.
+
+Liskov Substitution Principle: All the class hierarchy truly is of the same family, with the "nature" guarantee, and the declensions (and genders). So Liskov substitution is direct.
+
+Interface Segregation Principle: There are two main kinds of interfaces (version and capacity), and the capacity interfaces refine the version ones. All interfaces can be even more precise with the class role indicated, thanks to the interface inheritance features. So all the interface methods are justified and useful.
+
+Dependency Injection Principle: The "with_compat" modifier clearly indicates the variables of an interface type. So the injections are quickly visible. The optional features for inheritance are a great tool to clone the associated class hierarchy in the interfaces, in the version_inh interfaces. So loose coupling is direct and facilitated.
+
 ### Clprolf COMPATIBLE WITH THE MULTI-AGENT SYSTEMS(MAS)
 
 Clprolf offers a perspective quite like multi-agent systems. But there is the difference that in clprolf all abstraction is an agent, even if it is passive. It is because in clprolf all abstractions with methods are viewed as active. The computational technical code is qualified as a worker_agent.
@@ -1471,11 +1485,6 @@ While object oriented languages does not mention directly design patterns and be
 
 The calculations themselves, can be considered or not as a basic task of a computer. The English naming "computer" takes sense, of course. That said, complex computing task could be viewed as being in the role of a mathematical expert. ALGOL 60 includes much mathematical aspects in term of calculations, perhaps, as clprolf disposes of simu_real_obj to complete the job.
 
-### clprolf AND THE SOLID PRINCIPLES
-
-clprolf naturally adheres closely to well-know S.O.L.I.D principles. Single responsabilty is directly implemented with the class roles.
-Open closed principle is encouraged when useful, with a understanding and clear design and design goals, and by separating roles of compatibility interfaces. Dependency injection is much easy and direct to implement and to be used and viewed. Interface Segregation principle, the "I" talks about "role interfaces", that immediatly joins the role of interfaces of clprolf. Liskov substitution principle("L") takes sense in clprolf, while clear understanding of "nature" of objects and classes, and with clprolf concepts in general.
-
 ### MACHINE TOOLS, EXPERT ROLES, COMPUTER AS WORKER, ETC., WELL ESTABLISHED PERSPECTIVES
 
 simu_real_obj can have a more precised role, which can have an interpretation as machine tools, for graphical interfaces, or human-expert roles, for classes which could have a design role too(especially controllers).
@@ -1501,9 +1510,6 @@ Some clprolf concepts used can be compared finally with some existing concepts, 
 The idea of separating business logic code and low level code which handles managing a database, and so on, looks like the simu_real_obj and simu_comp_as_worker. It would be a simu_real_obj which would simulate an human expert work, and simu_comp_as_worker would manage low-level details.
 clprolf goes further while considering simulation code, like business logic for this real-world object. But the reasoning can be compared.
 
-* Adheres naturally to SRP
-Single Responsability Principle(SRP): clprolf encourages naturally the SRP, with the kind of class separation, and also with the "nature" keyword.
-
 * clprolf is natively well adapted with the MVC pattern, with his simulation focus, well made for the controller(simu_real_obj), the model(simu_comp_as_worker), and the view(simu_comp_as_worker), for example.
 
 * Adheres closely to the DAO Design Pattern. simu_comp_as_worker, and compat_interf_version suits closely for implementing the DAO pattern in clprolf.
@@ -1511,9 +1517,6 @@ Single Responsability Principle(SRP): clprolf encourages naturally the SRP, with
 * Compatible with loose coupling principle, bridge pattern, "program to an interface not an implementation" principle, with the compat_interf_version interfaces, and "with_compat" keyword. As well aligned with Dependency Injection(DI) pattern(with with_compat keyword).
 
 * Well suited for design patterns and object oriented principles in general(composite, and so on), as clprolf brings accuracy and clear intents. For example adapter design pattern, with especially compat_interf_version.
-
-* About interface inheritance:
-For the interfaces, clprolf not directly talks about interface inheritance(nor java, anyway). But if we want we can use it as a capacity, it would show that this inheritance is not of the same nature.
 
 ### RULES ABOUT INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
