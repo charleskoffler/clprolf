@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Worker_agent {
-
+	Role value() default Role.UNDEFINED;//Only for Static, today
 }

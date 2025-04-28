@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.8 20240428 Addition of @Indef_obj and @Compat_interf
+ * 2.9 20240428 Addition of a role (for @Static) in worker_agent declensions.
  * @author Charles Koffler
  *
  */

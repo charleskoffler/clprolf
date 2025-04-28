@@ -118,18 +118,28 @@ In clprolf, there is a top abstraction layer, which is composed by the "abstract
 Then there is a technical layer, which is composed by the technical classes. Here, the computer is seen as an abstraction of a real-world worker. It is the "simu_comp_as_worker"(or "comp_as_worker") classes. Here we can find the classes as in the Data-Access Layer(DAL) and Presentation Layer of the three-tier architecture. In clprolf, we especially separate classes that contain technical code needed for the "abstraction" classes: display code, as well as data-access code. Everything that is not pure abstraction code should be put in a technical class.
 However, some software, for example parts of an operating system, is composed mainly by the technical layer, which can call the abstraction layer.
 
-### OBJECT AND INTERFACE DECLENSIONS AND GENRES
+### OBJECT AND INTERFACE DECLENSIONS AND GENDERS
 
 In Clprolf, we strive to approximate the richness of natural languages. Each object has a declension, representing its function within the system. Declension, also known as the object role or class role, is central to the design philosophy of Clprolf.
 
-In addition to declension, objects are assigned a gender, which serves as a synonym for their function. The primary declensions are:
+Each declension has some synonyms, which are completely equivalent. We choose one over another depending on our feeling or perspective about the class.
 
-    Agent: Includes types such as agent, simu_agent, simu_real_world_obj, simu_real_obj, and abstraction.
-    Worker: Includes worker_agent, simu_comp_as_worker, and comp_as_worker.
-    Model: Includes model, model_real_world_obj, and model_real_obj.
-    Information: Includes only information, which has no synonyms.
+agent declension: agent, simu_agent, simu_real_world_obj, simu_real_obj, and abstraction.
+worker_agent declension: worker_agent, simu_comp_as_worker, and comp_as_worker.
+model declension: model, model_real_world_obj, and model_real_obj.
+information declension: information, which has no synonyms.
+indef_obj declension: no synonym
 
-To further refine an object’s role, sub-roles like @Expert_component or @Human_expert can specify variations within the agent declension.
+Each gender can have gender synonyms too. :
+
+@Expert_component gender = @Human_expert = @Design_role
+@GUI_Role gender = @Machine_tool
+@Active_agent gender = no synonym
+@Static gender = @Expert_component_static = @Human_expert_static
+@Static gender for worker_agent declension = no synonyms
+ 
+Note: genders are available only for the abstraction declension (except @Static, which can also apply to the worker_agent declension). Genders are always optional.
+
 Interrelationships Between Declensions
 
     Agents and Workers: Every object with an agent declension can also function as a worker. This reflects how computers execute agents—as specialized workers. However, the goal is to minimize the number of workers in the system to maintain clarity and efficiency.
@@ -139,19 +149,23 @@ Interrelationships Between Declensions
 Class Identification in Clprolf
 
 Each class in Clprolf is identified by its name, with the addition of its declension and gender. This explicit classification simplifies understanding and enhances system consistency.
-Interfaces and Their Declensions
 
-Interfaces in Clprolf also have declensions, referred to as interface roles:
+Interface declensions synonyms:
 
-    Compat_interf_version: Represents version-based compatibility.
-    Compat_interf_capacity: Represents capability-based compatibility.
+compat_interf_version declension: 
 
-Each interface role has a gender:
-
-    For compat_interf_version, the secondary gender is version_inh.
-    For compat_interf_capacity, the secondary gender is capacity_inh.
+compat_interf_version declension = version_inh
+compat_interf_capacity_declension = capacity_inh
+compat_interf_declension: no synonym
 
 An object’s declension can be added to an interface to specify which class declension is allowed to implement it (using contracts).
+
+The gender of a compat_interf_capacity declension:
+
+A capacity interface can have a gender called an Advice (advice-type gender):
+
+@For_agent _like gender(advice)
+@For_worker_like gender(advice)
 
 By integrating declensions and genders, Clprolf ensures clarity in design, unambiguous role assignment, and a robust structure for both objects and interfaces.
 
@@ -1130,7 +1144,7 @@ The modifier "underst"("understanding") can be added to the methods of simu_real
 	"underst" indicates code that is non intuitive, for example complex sorts implementations. Even the famous and widely used algorithms can be marked as "underst".
 	It is placed before the result type of a method declaration. It can not be used for the methods of an compatibility interface.
 
-### THE SUB-ROLE ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
+### THE GENDER ANNOTATIONS OF SIMU_REAL_WORLD_OBJ
 A simu_real_obj can be various things, include abstract realities. Don't believe simu_real_obj, in clprolf, could only represents concrete objects like car. Everything that is not a computer as worker job, and has methods, is, in clprolf, a simulation of a real_world object.
 So, abstract notions, should be in such kind of clprolf classes.
 To ease understanding and smart compatibility with classical object oriented used classes, clprolf has introduced annotations. These annotations are designed to be used on a simu_real_obj declaration. Thus, @Design_role, @GUI_role, @Human_expert, etc, are precisions you can add in your simu_real_obj, for better understanding of your interpretation and vision. But they are not mandatory. And these annotations don't enforce the reader to use the same interpretation.
@@ -1190,7 +1204,7 @@ In the clprolf framework for java, as annotations are already used, the sub-role
 @Simu_real_obj(Role.DESIGN_ROLE)
 The roles are Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL, Role.STATIC, Role.HUMAN_EXPERT_STATIC, Role.EXPERT_COMPONENT_STATIC
 
-### COMPATIBILITY OF THE SUB-ROLES OF SIMU_REAL_OBJ
+### COMPATIBILITY OF THE GENDERS OF SIMU_REAL_OBJ
 
 * @Expert_component / @Human_expert / @Design_role (or @Human_expert_static / @Expert_component_static)
 
