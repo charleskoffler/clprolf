@@ -41,6 +41,16 @@ The language's approach is, at the same time, to support and ease the algorithms
 One of the main goal, or perhaps the most important goal in clprolf, is to ease writing programs.
 Programming is an interweaving of design problems and algorithmic problems. Clprolf not only supports you for the design of your system but for the algorithms inside too.
 
+### Is Clprolf Object-Oriented?
+
+Clprolf is not an Object-Oriented Programming (OOP) language.
+It does not use traditional OOP objects directly.
+Instead, it defines specific basic components for objects and interfaces.
+
+However, Clprolf remains fully compatible with OOP and relies on OOP objects for code generation when needed.
+
+In Java or C++, you can keep thinking in OOP. In Clprolf, you can't, and that's normal. Clprolf is not OOP.
+
 ### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
 and it adds some keywords like 'with_compat', or 'underst'.
@@ -452,7 +462,7 @@ It is still a framework, although it supplies only annotations, and not code lib
 This executable does not exist at the moment. It could be written by the community, for example. In fact, it is quite like a compiler that makes syntactic then semantic analysis of the Java(or other language) source code, but doesn't generate code.
 
 The package org.clprolf.simolframework.java offers:
-@Agent, @Simu_agent, @Simu_real_world_obj, @Simu_real_obj, @Abstraction, @Worker_agent, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model_real_obj, @Model, @Information, @Compat_interf_capacity, @Compat_interf_version, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code, @Version_inh, @Capacity_inh.
+@Agent, @Simu_agent, @Simu_real_world_obj, @Simu_real_obj, @Abstraction, @Worker_agent, @Simu_comp_as_worker, @Comp_as_worker, @Model_real_world_obj, @Model_real_obj, @Model, @Information, @Indef_obj, @Compat_interf_capacity, @Compat_interf_version, @Compat_interf, @With_compat, @Underst, @Long_action, @Prevent_missing_collision, @One_at_a_time, @For_every_thread, @Turn_monitor, @Dependent_activity, @Nature, @Contracts, @Forced_inh, @Forced_int_inh, @Forced_pract_code, @Version_inh, @Capacity_inh.
 They are placed in the same locations as pure clprolf, but just before class line, or interface, or method, or before a type (like for @With_compat, except in particular cases as return type of methods).
 Example:
 
@@ -490,15 +500,15 @@ The kind of classes is always either a simu_agent or a worker_agent, or equivale
 
 indef_obj
 
-In clprolf, you can use traditional objects and classes, with "indef_obj" (as INDEFinite OBJect).
+In clprolf, you can use traditional objects and classes, with "indef_obj" (as INDEFinite OBJect), @Indef_obj in the framework.
 So, if you don't want to give a role to a class, you give the indefinite object role.
-In the framework, simply use no annotation for the class.
 By doing this, inheritance is not checked for that type.
 
 compat_interf (or @Compat_interf in the framework)
 
-In clprolf, this is not mandatory to use the interface roles. We can write "compat_interf" (compatibility interface). If we use that, there would be not compiler checks about this interface when used.
-In the framework, just use no annotation for the interface.
+In clprolf, this is not mandatory to use the interface roles. We can write "compat_interf" (compatibility interface), @Compat_interf in the framework.
+If we use that, there would be not compiler checks about this interface when used.
+
 This keyword allows to use traditional java interfaces (or of another underlying language), if needed or wanted. In theory, there is no need for this, but people could like it for some reasons.
 
 No clprolf annotations mandatory in the framework, except for @Forced_inh, @Forced_int_inh
@@ -897,12 +907,6 @@ Java has been chosen because it perfectly suits clprolf's philosophy and mindset
 clprolf is not a language that starts from scratch, it is a superset of java. It aims to complete and enhance Java, and classical object-oriented programming. And it aims to enhance algorithmic language contained in Java, and inherited from Algol. Its postulate is that we should begin with objects with a sense. And its postulate is that it doesn't seem quite normal to need many design patterns and design principles to use a programming language like Java. It could seem that we missed something. It could seem too that some programming tasks, like parallelism, are too complex, and not intuitive. So clprolf works about abstractions and bringing fresh and practical perspectives. clprolf does not intend to reinvent the wheel, because it is totally useless. It could seem too that design patterns are difficult to apply because they are difficult to memorize, and that they are only about a technical perspective. And does a technical perspective suffice to program with objects?
 So clprolf is very grateful to all the fantastic work and brings in Java and other existing languages, but tries to exist too with its differences and contributions. These contributions are certainly not of the same kind of additions than Java or other similar languages. So the supply of clprolf is more about perspectives or paradigms, than to start a new programming language. This is why it could be difficult to compare it with Java.
 But clprolf is a programming language, too, in the sense that we express ourselves differently with it, and that we think quite differently. But we always try to stay compatible with other visions.
-
-### A NEW WAY OF THINKING ABOUT OBJECT-ORIENTED PROGRAMMING
-
-clprolf introduces a new way of thinking about OOP, because we are used to creating directly pure objects. But all clprolf's object are still defined as computer objects, as well as OOP. So the habit seems light compared to think constantly at a ton of design patterns and principles. We could add that "object", in object-oriented programming, means "having a meaning", and not being only a data structure, so is it so new to precise a bit the meaning of our objects?
-
-There is also something new, in the way of thinking about the interfaces. We have to choose about two interfaces, instead of directly using an interface. That isn't a big changing, because we know almost by heart concepts of capacity, for interfaces, or version.
 
 ### THE clprolf OBJECTS - ANOTHER PERSPECTIVE ABOUT OBJECT-ORIENTED OBJECTS - "SHEET OBJECTS"
 

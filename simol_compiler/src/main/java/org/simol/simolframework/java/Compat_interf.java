@@ -6,15 +6,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-/**
- * Simol Framework
- * 2.8 20240428 Addition of @Indef_obj and @Compat_interf
- * @author Charles Koffler
- *
- */
-
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Simu_real_world_obj {
-	Role value() default Role.UNDEFINED;
+public @interface Compat_interf {
+
 }

@@ -27,6 +27,7 @@ History of the versions of the simol java framework
 2.5 20241016 New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
 2.6 20241022 Ajout énumération pour les compat_interf_capacity ou capacity_inh (Advice).
 2.7 20241023 Removed beginners package.
+2.8 20240428 Addition of @Indef_obj and @Compat_interf
 
 History of the versions of the simol C# framework
 
