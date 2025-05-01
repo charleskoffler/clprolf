@@ -10,11 +10,11 @@ Clprolf is a specialized, guided language. It features predefined, dedicated com
 
 It is particularly suited for:
 
-    complex systems,
+   complex systems,
 
-    simulation and MAS-like applications,
+   simulation and MAS-like applications,
 
-    or educational purposes.
+   or educational purposes.
 
 Clprolf also serves as a tool to aid memory and understanding of class/interface structures — much like a mnemonic or memory palace — ideal for those who struggle to retain large, abstract architectures.
 
@@ -22,9 +22,9 @@ Additionally, Clprolf is a language for testing, explaining, and validating scie
 
 I present both:
 
-    the Clprolf programming language, and
+   the Clprolf programming language, and
 
-    the Clprolf framework, a lightweight annotation-based framework that brings Clprolf concepts to Java, C#, or PHP.
+   the Clprolf framework, a lightweight annotation-based framework that brings Clprolf concepts to Java, C#, or PHP.
 
 Clprolf is minimalistic, to simplify development.
 It is a powerful teaching tool, but not designed only for teaching.
@@ -37,11 +37,11 @@ It inherently embeds object-oriented principles and significant design patterns 
 
 Clprolf supports both:
 
-    algorithm design, with help from typed classes and interface constraints,
+   algorithm design, with help from typed classes and interface constraints,
 
-    and structural clarity, through roles and modifiers.
+   and structural clarity, through roles and modifiers.
 
-    🧠 One of the main — perhaps the most important — goals of Clprolf is to make writing programs easier.
+   🧠 One of the main — perhaps the most important — goals of Clprolf is to make writing programs easier.
 
 Programming is the interweaving of design and algorithmic concerns.
 Clprolf supports both.
@@ -104,9 +104,11 @@ Note: genders are available only for the abstraction declension (except @Static,
 
 Interrelationships Between Declensions
 
-    Agents and Workers: Every object with an agent declension can also function as a worker. This reflects how computers execute agents—as specialized workers. However, the goal is to minimize the number of workers in the system to maintain clarity and efficiency.
-    Models and Information: Similarly, any object with a model declension can be represented as information, as this is how the computer stores models. Despite this, it is essential to avoid misusing information where a model would be more appropriate.
-    Unidirectional Substitutions: While agents can take on worker roles and models can be viewed as information, the reverse is not true. A true worker cannot become an agent, and information cannot be replaced by a model. Such substitutions often indicate a design flaw or a deliberate perspective shift (e.g., when treating a sorting class as a worker).
+   Agents and Workers: Every object with an agent declension can also function as a worker. This reflects how computers execute agents—as specialized workers. However, the goal is to minimize the number of workers in the system to maintain clarity and efficiency.
+    
+   Models and Information: Similarly, any object with a model declension can be represented as information, as this is how the computer stores models. Despite this, it is essential to avoid misusing information where a model would be more appropriate.
+    
+   Unidirectional Substitutions: While agents can take on worker roles and models can be viewed as information, the reverse is not true. A true worker cannot become an agent, and information cannot be replaced by a model. Such substitutions often indicate a design flaw or a deliberate perspective shift (e.g., when treating a sorting class as a worker).
 
 Class Identification in Clprolf
 
@@ -1092,10 +1094,11 @@ public class Customer implements @Contracts Runnable {
 
 In clprolf, it is fastly visible and understandable, that there is two main queues, and each Customer objects blocks the other customer waiting in the same queue.
 
-### clprolf AND THE FUNDAMENTAL THEOREM OF SOFTWARE ENGINEERING
+### The Abstractions and Concepts of Clprolf
 
-clprolf follows the guidelines of the Fundamental theorem of software engineering, by trying to add an abstraction layer on top of classes and interfaces. It aims to decrease complexity through the indirection of classes and interfaces roles.
-	"We can solve any problem by introducing an extra level of indirection."
+Clprolf is not a layer on top of object-oriented programming.
+It simply uses its own core components instead of traditional objects — especially agents, worker agents, and pure data structures.
+These elements are declared with explicit roles, making their purpose clear from the start.
 
 ### ALIGNED WITH DOMAIN-DRIVEN DESIGN(DDD)
 
