@@ -1,10 +1,48 @@
 # clprolf language and framework
 
-Clprolf is a niche language designed to aid in creating systems with mindful structure. It offers a clear and thoughtful framework to build software with coherence, purpose, and long-term stability.
-Clprolf is a specialized, guided object-oriented language. It features predefined, specialized components and applies constraints to inheritance and interfaces, focusing on algorithmic programming.
-It is especially made for complex systems, simulation or Multi-Agent System-like applications, or education benefits. Clprolf also serves as a language and tool for aiding in the memorization of class and interface structures. This specialization in memory ease, much like mnemonics or the memory palace method, is tailored for those who struggle to remember large numbers of classes.
-Clprolf language is also a tool to test, explain, and validate scientific theories, by simulation as well as describing the conception, the algorithms and the actors.
-It is a superset of java. The clprolf framework is available for Java, C#, or PHP, and is designed to leverage Clprolf in those languages.
+CLear PROgramming Language and Framework.
+Clprolf is a niche language designed to help create systems with a mindful and coherent structure.
+It offers a clear and thoughtful framework to build software with consistency, purpose, and long-term stability.
+
+Clprolf is a specialized, guided language. It features predefined, dedicated components and applies strict constraints to inheritance and interfaces, with a strong focus on algorithmic programming.
+
+It is particularly suited for:
+
+    complex systems,
+
+    simulation and MAS-like applications,
+
+    or educational purposes.
+
+Clprolf also serves as a tool to aid memory and understanding of class/interface structures — much like a mnemonic or memory palace — ideal for those who struggle to retain large, abstract architectures.
+
+Additionally, Clprolf is a language for testing, explaining, and validating scientific theories — by simulation, algorithm description, and clear actor modeling.
+
+I present both:
+
+    the Clprolf programming language, and
+
+    the Clprolf framework, a lightweight annotation-based framework that brings Clprolf concepts to Java, C#, or PHP.
+
+Clprolf is minimalistic, to simplify development.
+It is a powerful teaching tool, but not designed only for teaching.
+
+Programming in Clprolf focuses on functional problems and describes the interactions of actors.
+For technical details, it describes what a worker must do, not how it is done internally.
+
+Clprolf is a language designed for clarity, simplicity, and ease of use.
+It inherently embeds object-oriented principles and significant design patterns — a rare feature in a programming language.
+
+Clprolf supports both:
+
+    algorithm design, with help from typed classes and interface constraints,
+
+    and structural clarity, through roles and modifiers.
+
+    🧠 One of the main — perhaps the most important — goals of Clprolf is to make writing programs easier.
+
+Programming is the interweaving of design and algorithmic concerns.
+Clprolf supports both.
 
 [clprolf official web site](https://www.clprolf-lang.org/)
 
