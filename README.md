@@ -76,6 +76,10 @@ This document may seem quite hard at first glance. But it aims to be complete an
 
 [Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_complete_theoretical_def.md)
 
+### Tutorials for OOP programmers
+
+[Getting started for OOP programmers](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_oop_tutorials/clprolf_oop_getting_started.md)
+
 ### Design patterns in clprolf analysis
 
 [Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis)
