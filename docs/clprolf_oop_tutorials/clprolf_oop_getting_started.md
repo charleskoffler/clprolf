@@ -1,4 +1,3 @@
-
 # How to Use the Clprolf Framework with an OOP Mindset - Introduction
 
 It’s possible to use the Clprolf Framework while keeping a fully object-oriented approach, even though Clprolf itself is not based on traditional OOP.
@@ -129,3 +128,23 @@ This is not “pure” Clprolf usage — but a way to apply it in OOP while keep
 You can think of @Agent and @Worker_agent as support annotations to help clarify and separate responsibilities in your object-oriented code.
 
 It’s up to you to use more of the framework later, but even at this level, Clprolf already provides clarity and structure.
+
+### Start Soft with Clprolf — Use @Indef_obj and @Compat_interf as Placeholders
+
+When using Clprolf within a traditional OOP mindset,
+you don’t need to classify every class or interface right away.
+
+In fact, if you're unsure about the role or responsibility of a class at first, that’s completely normal.
+
+To help you transition smoothly:
+
+   Use @Indef_obj for your classes when the role is not yet clear.
+
+   Use @Compat_interf for your interfaces until a more precise purpose emerges.
+
+These markers are completely neutral.
+They keep you in the OOP flow — and they allow for a clean upgrade later:
+
+   Once the responsibility becomes clearer,
+    just replace @Indef_obj with something more accurate like @Agent, @Worker_agent, or a declension without methods.
+    And replace @Compat_interf with @Compat_interf_version or another appropriate interface role.
