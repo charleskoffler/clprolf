@@ -52,7 +52,7 @@ Clprolf supports both.
 
 ### Clprolf official documentation
 
-[The kind of classes](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_class_roles.md)
+[The declensions and genders](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_declensions.md)
 
 [Talking in Java versus talking in Clprolf - Quicksort example](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_java_vs_clprolf_quicksort.md)
 
