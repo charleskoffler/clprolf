@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Org.Clprolf.Framework.Csharp
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    public class Simu_comp_as_workerAttribute: Attribute
+    public enum Advice
     {
-    }
+        FOR_AGENT_LIKE, FOR_WORKER_LIKE
+    };
+
 }

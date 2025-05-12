@@ -29,6 +29,7 @@ History of the versions of the simol java framework
 2.7 20241023 Removed beginners package.
 2.8 20240428 Addition of @Indef_obj and @Compat_interf
 2.9 20240428 Addition of a role (for @Static) in worker_agent declensions.
+3.0 20250512 Added role in version_inh(correction)
 
 History of the versions of the simol C# framework
 
@@ -49,6 +50,15 @@ History of the versions of the simol C# framework
 2.4 20240823 Addition of [Forced_pract_code].
 2.5 20240920 New static sub-roles for simu_real_world_obj("Role.STATIC", "Role.HUMAN_EXPERT_STATIC", and "Role.EXPERT_COMPONENT_STATIC").
 2.6 20241023 Removed beginners package.
+2.7 20250512 Simol C# Framework, v2.7
+
+ 	New roles and sub-role for multi-agent system perspective.
+    New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
+    New enum for compat_interf_capacity and capacity_inh (Advice).
+    Removed beginners package.
+    Addition of @Indef_obj and @Compat_interf
+    Addition of a role (for @Static) in worker_agent declensions.
+    Independent enum for Role.
 
 History of the versions of the simol PHP 8 framework
 

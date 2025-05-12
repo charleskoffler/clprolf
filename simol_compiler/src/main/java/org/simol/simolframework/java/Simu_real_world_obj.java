@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * Simol Framework
- * 2.9 20240428 Addition of a role (for @Static) in worker_agent declensions.
+ * 3.0 20240428 Added role in version_inh(correction)
  * @author Charles Koffler
  *
  */

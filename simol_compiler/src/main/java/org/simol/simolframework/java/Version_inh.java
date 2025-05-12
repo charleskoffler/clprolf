@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Version_inh {
-
+	Role value() default Role.UNDEFINED;
 }

@@ -4,10 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Org.Clprolf.Framework.Csharp
 {
+   
     [AttributeUsage(AttributeTargets.Class)]
-    public class Comp_as_workerAttribute: Attribute
+    public class Worker_agentAttribute: Attribute
     {
+       
+        private Role role;
+
+        public Worker_agentAttribute(Role theRole = Role.UNDEFINED)
+        {
+            this.role = theRole;
+        }
     }
 }
