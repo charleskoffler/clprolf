@@ -59,6 +59,9 @@ History of the versions of the simol C# framework
     Addition of @Indef_obj and @Compat_interf
     Addition of a role (for @Static) in worker_agent declensions.
     Independent enum for Role.
+    Simol C# Framework, v2.8 (20250514)
+ 
+2.8 20250514 Agent declensions allowed upon interfaces, for optional features for interface inheritance.
 
 History of the versions of the simol PHP 8 framework
 

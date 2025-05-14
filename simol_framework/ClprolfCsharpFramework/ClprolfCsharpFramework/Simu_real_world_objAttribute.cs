@@ -5,15 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /***
- * Simol C# Framework, v2.7 (20250512)
+ * Simol C# Framework, v2.8 (20250514)
  * 
- * New roles and sub-role for multi-agent system perspective.
-    New optional annotations for interface inheritance( @Version_int and @Capacity_inh)
-    New enum for compat_interf_capacity and capacity_inh (Advice).
-    Removed beginners package.
-    Addition of @Indef_obj and @Compat_interf
-    Addition of a role (for @Static) in worker_agent declensions.
-    Independent enum for Role.
+ * Agent declensions allowed upon interfaces, for optional features for interface inheritance.
  * 
  * Limitations of C# framework for simol:
  * 
@@ -23,7 +17,7 @@ using System.Threading.Tasks;
 namespace Org.Clprolf.Framework.Csharp
 {
    
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class Simu_real_world_objAttribute: Attribute
     {
        

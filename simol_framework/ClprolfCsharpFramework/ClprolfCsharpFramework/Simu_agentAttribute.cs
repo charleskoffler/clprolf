@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Org.Clprolf.Framework.Csharp
 {
-   
-    [AttributeUsage(AttributeTargets.Class)]
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class Simu_agentAttribute: Attribute
     {
        

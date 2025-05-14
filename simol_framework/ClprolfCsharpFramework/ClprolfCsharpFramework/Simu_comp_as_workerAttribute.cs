@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Org.Clprolf.Framework.Csharp
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class Simu_comp_as_workerAttribute: Attribute
     {
         private Role role;
