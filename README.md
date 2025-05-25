@@ -64,17 +64,9 @@ Clprolf supports both.
 
 [Interface multiple inheritance in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_simu_multi_inh.md)
 
-### Getting started in clprolf
-
 [Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_conc_parall.md)
 
 [The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/getting_started/clprolf_simple_doc_github_website_underst.md)
-
-### Complete definition
-
-This document may seem quite hard at first glance. But it aims to be complete and bringing demonstrations.
-
-[Complete and theoretical definition of clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_complete_theoretical_def.md)
 
 ### Tutorials for OOP programmers
 

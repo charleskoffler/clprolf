@@ -1,4 +1,4 @@
-# Explaining clprolf language - "underst" method modifier
+# "underst" method modifier
 
 This chapter is about the "underst" method modifier, or "@Underst" in the clprolf framework
 It intends to mark particular methods of classes. "underst" means "understanding". It is placed to precise in the code that the algorithm is not intuitive, not straightforward, because of differences between computers abilities and human abilities. It can concerned simu_real_world_obj, as well as simu_comp_as_worker classes. Even with human-like algorithms, such we are using in algol-like languages, it can be tricky to write some jobs. For example, sorting algorithms, are often a bit different than the human way.

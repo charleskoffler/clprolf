@@ -1,4 +1,4 @@
-# Explaining clprolf language for beginners - concurrency and parallelism aids
+# Concurrency and parallelism aids
 
 ## How do we handle concurrency in clprolf in details?
 
