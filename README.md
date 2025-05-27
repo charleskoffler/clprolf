@@ -1,56 +1,56 @@
-# clprolf language and framework
+# Clprolf – Clear Programming Language & Framework
 
-CLear PROgramming Language and Framework.
-Clprolf is a niche language designed to help create systems with a mindful and coherent structure.
-It offers a clear and thoughtful framework to build software with consistency, purpose, and long-term stability.
+> **Turn a class’s responsibility into a keyword.**  
+> Build simulations and complex systems that *explain themselves.*
 
-Clprolf is a specialized, guided language. It features predefined, dedicated components and applies strict constraints to inheritance and interfaces, with a strong focus on algorithmic programming.
+```java
+// One word tells the intent:
+agent OrderService {                   // business actor
+    with_compat OrderRepository repo;  // explicit contract
+    void checkout(Order o) { /* model Order */
+        repo.save(o);
+    }
+}
+```
 
-It is particularly suited for:
+Why bother?
 
-   complex systems,
+Pain in vanilla OOP
 
-   simulation and MAS-like applications,
+a) A service accidentally calls a low-level helper → architectural drift
+	
+b) Concurrency bugs need ad-hoc synchronized
+	
+c) New dev spends hours mapping layers
 
-   or educational purposes.
+Same code with Clprolf
 
-Clprolf also serves as a tool to aid memory and understanding of class/interface structures — much like a mnemonic or memory palace — ideal for those who struggle to retain large, abstract architectures.
+a) 🚫 Compile-time error (agent cannot depend on worker_agent)
 
-Additionally, Clprolf is a language for testing, explaining, and validating scientific theories — by simulation, algorithm description, and clear actor modeling.
+b) one_at_a_time + turn_monitor declare the intent up front
 
-I present both:
+c) One glance at agent, worker_agent, model keywords tells the whole story
 
-   the Clprolf programming language, and
+What is Clprolf?
 
-   the Clprolf framework, a lightweight annotation-based framework that brings Clprolf concepts to Java, C#, or PHP.
+   A minimal language where every class starts with a role keyword
+    (agent, worker_agent, model, information, indef_obj).
 
-Clprolf is minimalistic, to simplify development.
-It is a powerful teaching tool, but not designed only for teaching.
+   A set of modifiers for tricky realities:
+    long_action (frame-based ops), one_at_a_time (critical section),
+    dependent_activity (producer/consumer), underst (non-obvious algos).
 
-Programming in Clprolf focuses on functional problems and describes the interactions of actors.
-For technical details, it describes what a worker must do, not how it is done internally.
+   A lightweight annotation framework that brings those ideas to Java, C#, PHP—no new VM required.
 
-Clprolf is a language designed for clarity, simplicity, and ease of use.
-It inherently embeds object-oriented principles and significant design patterns — a rare feature in a programming language.
+Perfect fit for
 
-Clprolf supports both:
+   Large simulations & MAS-style games
 
-   algorithm design, with help from typed classes and interface constraints,
+   Scientific prototypes that model “actors” interacting
 
-   and structural clarity, through roles and modifiers.
+   Teaching OOP / design-pattern concepts without a 70-slide intro
 
-   🧠 One of the main — perhaps the most important — goals of Clprolf is to make writing programs easier.
-
-Programming is the interweaving of design and algorithmic concerns.
-Clprolf supports both.
-
-[clprolf official web site](https://www.clprolf-lang.org/)
-
-[Contributing](https://github.com/charleskoffler/clprolf/blob/main/CONTRIBUTING.md)
-
-[AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
-
-### Clprolf official documentation
+Detailed guides:
 
 [The declensions and genders](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_declensions.md)
 
@@ -68,15 +68,11 @@ Clprolf supports both.
 
 [The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_8_underst.md)
 
-### Tutorials for OOP programmers
-
 [Getting started for OOP programmers](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_oop_tutorials/clprolf_oop_getting_started.md)
 
-### Design patterns in clprolf analysis
+[clprolf official web site](https://www.clprolf-lang.org/)
 
-[Whole directory](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis)
-
-[Proxy pattern analysis](https://github.com/charleskoffler/clprolf/tree/main/docs/design_patterns_in_simol_analysis/proxy_design_patterns_in_simol_analysis.md)
+[AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
 
 ## Sources
 
