@@ -99,3 +99,7 @@ Detailed guides:
 [clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
 
 [clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/simol_games_examples)
+
+### More about Clprolf
+
+[Insights about Clprolf - For those who already know the language](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_insights.md)
