@@ -1,5 +1,18 @@
 # Clprolf – Clear Programming Language & Framework
 
+Clprolf is a tool designed to simplify the writing and maintenance of applications.
+It adds a conceptual layer on top of object-oriented programming to help developers with object usage, algorithm design, and design principles (including design patterns).
+
+Clprolf can be used in two forms:
+
+   As an annotation-based framework for Java, C#, or PHP 8+
+
+   Or as a language built on top of Java, compiling to pure Java code
+
+It aims to preserve performance, or lose very little, and may interest developers and software architects who want to expand their programming toolbox.
+
+Clprolf requires a taste for agent-oriented programming, the actor model, and domain-driven design (DDD).
+
 > **Turn a class’s responsibility into a keyword.**  
 > Build simulations and complex systems that *explain themselves.*
 
