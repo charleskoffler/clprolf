@@ -11,7 +11,12 @@ Clprolf can be used in two forms:
 
 It aims to preserve performance, or lose very little, and may interest developers and software architects who want to expand their programming toolbox.
 
-Clprolf requires a taste for agent-oriented programming, the actor model, and domain-driven design (DDD).
+### A New Perspective, Still 100% OOP
+
+Clprolf changes how you think about design: you create agents, worker agents, and other specialized components instead of starting with generic objects. The same goes for interfaces — you define versions, capacities, or agent-specific variants.
+Under the hood, though, everything is still pure OOP: agents are objects, and all interfaces are standard OOP interfaces.
+
+### Quick example
 
 > **Turn a class’s responsibility into a keyword.**  
 > Build simulations and complex systems that *explain themselves.*
@@ -116,3 +121,4 @@ Detailed guides:
 ### More about Clprolf
 
 [Insights about Clprolf - For those who already know the language](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_insights.md)
+

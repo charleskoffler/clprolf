@@ -48,16 +48,10 @@ Clprolf supports both:
 Programming is the interweaving of design and algorithmic concerns.
 Clprolf supports both.
 
-### Is Clprolf Object-Oriented?
+### A New Perspective, Still 100% OOP
 
-Clprolf is not an Object-Oriented Programming (OOP) language, also but it remains fully compatible with it.
-It does not use traditional OOP objects directly.
-Instead, it defines specific basic components for objects and interfaces. The language is close to the Actor model, and to Multi-agent systems (MAS).
-While the Actor Model and MAS rely on message-based communication, Clprolf takes a different path: it does not implement message passing, but instead enforces a precise declaration of each actor’s role and type.
-
-However, Clprolf relies on OOP objects for code generation when needed.
-
-In Java or C++, you can keep thinking in OOP. In Clprolf language (or framework), you can't, and that's normal. Clprolf is not OOP.
+Clprolf changes how you think about design: you create agents, worker agents, and other specialized components instead of starting with generic objects. The same goes for interfaces — you define versions, capacities, or agent-specific variants.
+Under the hood, though, everything is still pure OOP: agents are objects, and all interfaces are standard OOP interfaces.
 
 ### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
@@ -2248,4 +2242,3 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
-
