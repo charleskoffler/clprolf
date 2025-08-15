@@ -52,6 +52,7 @@ Clprolf supports both.
 
 Clprolf changes how you think about design: you create agents, worker agents, and other specialized components instead of starting with generic objects. The same goes for interfaces — you define versions, capacities, or agent-specific variants.
 Under the hood, though, everything is still pure OOP: agents are objects, and all interfaces are standard OOP interfaces.
+Clprolf is primarily a coding for classes and interfaces. It is also a more algorithmic way of coding, particularly for concurrency and parallelism. Optional features for interface inheritance and semantic checks on class and interface declensions make it a language in its own right.
 
 ### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
