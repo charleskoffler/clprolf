@@ -268,7 +268,9 @@ Example: void drink(with_compat Drink obj_buvable){(...}}
 "with_compat" is a modifier in a declaration of variable(local variable, attribute or argument).
 The interest of 'with_compat' is to understand for the user that it is not an object which have a particular class, but an object which have a particular compatibility.
 So, of course, we can find it typical in a local variable declaration, or a argument definition.
-Remark: there's not a with_compat indication for the return type of a method, as an exception of the rule, the return type is not a variable declaration. Indeed, there's already one, in general, in the body of the method. And there is one in the declaration of the variable which will receive the result when the calling occurs. 
+Remarks: 
+* there's not a with_compat indication for the return type of a method, as an exception of the rule, the return type is not a variable declaration. Indeed, there's already one, in general, in the body of the method. And there is one in the declaration of the variable which will receive the result when the calling occurs. 
+* with_compat is allowed with any clprolf interface type, capacity or version. So the capacities can be used directly although a class can not directly inherits from a capacity interface.
 
 ### SMALL DIFFERENCES IN HERITABILITY
 
@@ -536,6 +538,7 @@ If we do not use @Nature, the nature check, obviously, will not be done.
 ### The (optional) clprolf annotations and features for the inheritance by interfaces fans
 
 There is some optional features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer an implementation-less world. So here, interfaces are viewed quite like classes without implementations.
+These features are mandatory as soon as there are an inheritance of a version interface by another version interface.
 
 When a with_compat occured, it is quite like we would have change the API of the class used by the object, and replaced it by the wanted implemented interface. So the object becomes now in a new hierarchy, the hierarchy of the interface. And here is the implemented-less world, where we forget the implementation classes.
 In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role, for coherence. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
