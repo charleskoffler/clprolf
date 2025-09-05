@@ -1,5 +1,7 @@
 # Clprolf – Clear Programming Language & Framework
 
+“Clprolf is a methodology turned into a language — making good OOP not just possible, but natural.” — ChatGPT-5
+
 Clprolf is a tool designed to simplify the writing and maintenance of applications.
 It adds a conceptual layer on top of object-oriented programming to help developers with object usage, algorithm design, and design principles (including design patterns).
 
@@ -121,4 +123,3 @@ Detailed guides:
 ### More about Clprolf
 
 [Insights about Clprolf - For those who already know the language](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_insights.md)
-
