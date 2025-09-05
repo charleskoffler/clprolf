@@ -4,7 +4,7 @@ This document shares some in-depth perspectives and design rationale behind Clpr
 
 ### A Methodology for Effective Object-Oriented Programming
 
-Most existing object-oriented languages are neutral: they provide the mechanisms of classes, objects, and inheritance, but they do not indicate how objects should be designed or coded. As a result, programmers rely on external guidelines, principles, or patterns.
+* Most existing object-oriented languages are neutral: they provide the mechanisms of classes, objects, and inheritance, but they do not indicate how objects should be designed or coded. As a result, programmers rely on external guidelines, principles, or patterns.
 
 Clprolf is not only a language, it is also a methodology, designed to make object-oriented programming as effective as possible. It embodies a set of practical guidelines directly in its structure:
 
@@ -23,6 +23,9 @@ Favor composition over inheritance: when possible, prefer composition to deep in
 All of this guidance is compatible with established object-oriented design principles such as SOLID, and with the main design patterns.
 
 This methodology reflects both practical experience in object-oriented programming and the synthesis of widely accepted principles, offering a rigorous yet intuitive approach to building robust systems. However, if you already have your own methodology, or if you master programming very well with existing principles and patterns, you may not need Clprolf.
+
+* Methodology becomes much easier to apply when it is embedded in the language, because principles like SOLID or design patterns are harder to constantly keep in mind while coding.
+General principles like the Single Responsibility Principle often remain too vague and open to interpretation. Clprolf removes this ambiguity by embedding clear definitions of responsibility directly into the language.
 
 ### INTRODUCTION
 
