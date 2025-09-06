@@ -77,7 +77,7 @@ Clprolf supports both.
 
 Clprolf changes how you think about design: you create agents, worker agents, and other specialized components instead of starting with generic objects. The same goes for interfaces — you define versions, capacities, or agent-specific variants.
 Under the hood, though, everything is still pure OOP: agents are objects, and all interfaces are standard OOP interfaces.
-Clprolf is primarily a coding for classes and interfaces. It is also a more algorithmic way of coding, particularly for concurrency and parallelism. Optional features for interface inheritance and semantic checks on class and interface declensions make it a language in its own right.
+Clprolf is primarily a coding for classes and interfaces. It is also a more algorithmic way of coding, particularly for concurrency and parallelism. Features for interface inheritance and semantic checks on class and interface declensions make it a language in its own right.
 
 ### A SUPERSET OF JAVA
 It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
@@ -171,7 +171,7 @@ Liskov Substitution Principle: All the class hierarchy truly is of the same fami
 
 Interface Segregation Principle: There are two main kinds of interfaces (version and capacity), and the capacity interfaces refine the version ones. All interfaces can be even more precise with the class role indicated, thanks to the interface inheritance features. So all the interface methods are justified and useful.
 
-Dependency Injection Principle: The "with_compat" modifier clearly indicates the variables of an interface type. So the injections are quickly visible. The optional features for inheritance are a great tool to clone the associated class hierarchy in the interfaces, in the version_inh interfaces. So loose coupling is direct and facilitated.
+Dependency Injection Principle: The "with_compat" modifier clearly indicates the variables of an interface type. So the injections are quickly visible. The features for inheritance are a great tool to clone the associated class hierarchy in the interfaces, in the version_inh interfaces. So loose coupling is direct and facilitated.
 
 ### Clprolf COMPATIBLE WITH THE MULTI-AGENT SYSTEMS(MAS)
 
@@ -280,13 +280,13 @@ OOP always needs guidelines like object-oriented design principles, or design pa
 In clprolf, we sort the interfaces, there are three types of interfaces. clprolf interfaces are called compatibility interfaces.
 
 "compat_interf_version": the purpose of the interface is that the classes implementing it provide an implementation, a "version".
-	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use a compat_interf_version too, to indicate that the intent is to foresee a change of implementation and not depend to a concrete class. Optional features for interface inheritance allow to add a class role for version interfaces, and to simplify loose coupling for them.
+	It is typically used for supply different implementations of the same DAO, for example(with database, web services, memory, etc.). When we're using interfaces for loose coupling goals, we should use a compat_interf_version too, to indicate that the intent is to foresee a change of implementation and not depend to a concrete class. Features for interface inheritance allow to add a class role for version interfaces, and to simplify loose coupling for them.
 
 "compat_interf_capacity": the purpose of this interface is to guarantee that we have a common functionality across mutiple compat_interf_version interfaces. A compatibility interface always targets either an agent-like compat_interf_version, or worker-like compat_interf_version.
 
 "compat_interf": in case where we don't want to give a role to the interface, to remain flexible. It is not recommended to use it.
 
-We can't use interfaces in clprolf, except for these two cases. But the optional features for interface inheritance allow to add class roles on version interface, and having a true inheritance perspective with "nature"(even multiple).
+We can't use interfaces in clprolf, except for these two cases. But the features for interface inheritance allow to add class roles on version interface, and having a true inheritance perspective with "nature"(even multiple).
 
 Another difference, for interfaces, is the obligation to write "with_compat" (with compatibility), before the name of an interface, when using it.
 Example: void drink(with_compat Drink obj_buvable){(...}}
@@ -560,14 +560,18 @@ No clprolf annotations mandatory in the framework, except for @Forced_inh, @Forc
 To keep flexible for Java (or else) developers, clprolf annotations are not mandatory at all, in the clprolf framework. For example, @Nature, @With_compat, and all other keywords, can be not used, in some cases or always. Even the concurrency keywords are in that case. The sole keywords that we must use in the clprolf framework are those about forced inheritance(@Forced_inh, and @Forced_int_inh).
 If we do not use @Nature, the nature check, obviously, will not be done.
 
-### The (optional) clprolf annotations and features for the inheritance by interfaces fans
+### The clprolf annotations and features for the inheritance by interfaces fans
 
-There is some optional features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer an implementation-less world. So here, interfaces are viewed quite like classes without implementations.
+There is some features, for those who prefer talking about inheritance, for the interfaces, and aims to prefer an implementation-less world. So here, interfaces are viewed quite like classes without implementations, quite like pure abstract classes.
 These features are mandatory as soon as there are an inheritance of a version interface by another version interface.
 
 When a with_compat occured, it is quite like we would have change the API of the class used by the object, and replaced it by the wanted implemented interface. So the object becomes now in a new hierarchy, the hierarchy of the interface. And here is the implemented-less world, where we forget the implementation classes.
 In all this hierarchy, it could also have capacity and version inheritances. So we can optionaly add, in the case of a usage of interface for this pure interface world, @Agent (or all class roles allowed) above an interface declaration. And the class implementing this version interface should have exactly the same class role, for coherence. The compiler will check this: not an equivalent role, but exactly the same role(here @Agent, and not @Simu_real_obj, for example).
 The @Compat_interf_version would have an equivalent @Version_inh, and @Compat_interf_capacity = @Capacity_inh, especially for this vision. No class role can be write for a @Capacity_inh.
+
+The interfaces share the same inheritance hierarchy as the concrete classes (or an equivalent one). This is why saying that a class inherits an interface is, in fact, quite true. For example, if HorseImpl extends AnimalImpl and implements Horse, while Horse extends Animal and AnimalImpl implements Animal, then everything is aligned. We can therefore say that HorseImpl inherits from the interface Animal, just as it inherits from the class AnimalImpl.
+
+In Java, we often talk about simulated (multiple) inheritance when a class directly implements several interfaces. In fact, it is only at the point of use that polymorphism allows an interface to be treated as a parent type (for example, when referenced by a variable). Otherwise, the class inherits nothing from the interface — neither implementation, nor state, nor even method signatures, which must all be rewritten.
 
 The class roles used on the interfaces will be checked exactly the same way except that it will be in the hierarchy of the interface. @Forced_inh, and not @Forced_int_inh, has to be written to enforce the roles coherence rules.
 @Nature is allowed for the "extends" of an interface, even in case of multiple inheritance. So for the interfaces, we can have multiple natures, but the meaning of nature is still there. An agent-like role have to keep his nature(s) by extending interfaces with an equivalent role, and this is the same with the worker-agent-like interface roles. All the capacity interfaces are accepted for inheritance, because there can not have roles.
@@ -578,18 +582,18 @@ When a role annotation is present on an interface, like @Agent, for example, the
 When a class role is present on an interface, and extends an interface with a marked class role too, the enforcing of inheritance @Forced_int_inh is not mandatory.
 But in the language, the syntax is 'version_inh agent(or another class role) Teacher (...)". We have to write the "version_inh" keyword(or compat_interf_version), in the language, but not in the framework, just to have an interface-like keyword somewhere.
 
-The optional features for interface inheritance allow to work with interfaces like we do with classes, except that we have no direct access to the implementation.
+The features for interface inheritance allow to work with interfaces like we do with classes, except that we have no direct access to the implementation.
 It marks an inheritance perspective, not an "extends" perspective for interface inheritance. But these perspectives are interchangeable, and we are free to perceive as "extends", an "nature" of an interface.
 It is great for loose coupling, and we can use it like classes, with single inheritance for agent-like interfaces(those with a class role).
 
 Conclusion: we can use the class roles for the interfaces, if we prefer talking about inheritance for interfaces. And it exists @Version_inh and @Capacity_inh too. But this is optional is clprolf, and multiple inheritance (except for capacity inheritance) is not recommended.
 But we can use the interface inheritance features only for loose coupling with single inheritance for the agents, if we want.
 
-### Optional features for interface inheritance: Does a class inherit from an interface, or is it just a implementation of a contract?
+### Features for interface inheritance: Does a class inherit from an interface, or is it just a implementation of a contract?
 
 Surely, we can a bit abusively use the inheritance term, if prefered. It's because the API of the class inherits of a part of interface, in a way. That's why the @Version_inh talk both this case, and both the fact that the interface, once extended by another, would give an inheritance of a version object. In the optional interface inheritance vision, in clprolf, interfaces, except capacities, are viewed quite like pure abstract classes. And they mimic the intuitive hierarchy we usually use for classes. So with this optional perspective, extensions of interfaces remain intuitive inheritance.
 
-### The optional features for inheritance by interfaces: the clprolf design pattern with code reuse
+### The features for inheritance by interfaces: the clprolf design pattern with code reuse
 
 This is the clprolf design pattern, allowing a perspective purely with interfaces, while supplying code reuse for implementations. Code reuse for implementation is great for reuse and for keeping a nice and intuitive class hierarchy.
 
@@ -843,7 +847,7 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 ```
 
 ### USING THE CLASS ROLES ON INTERFACES FOR COLLABORATIVE PROJECTS
-For collaborative projects, like public APIs, or for big teams with much collaborations, you can use the class roles on interfaces. It's quite like with the optional features for interface inheritance, except that we keep only the class roles addition(of course with the compiler checkings).
+For collaborative projects, like public APIs, or for big teams with much collaborations, you can use the class roles on interfaces. It's quite like with the features for interface inheritance, except that we keep only the class roles addition(of course with the compiler checkings).
 We can still use "version_inh", or "capacity_inh", because those keywords are also about horizontal inheritance (when a class implements an interface).
 But we can not use "nature" for collaborative projects, except for those who want an interface inheritance perpective.
  
@@ -862,7 +866,7 @@ public compat_interf_version abstraction ClpConnection extends Connection   {
 
 The implementation classes must have exactly the same role as the interface, in this case(here 'abstraction', not a same role).
 
-### Optional Features for interface inheritance: simple inheritance for interfaces with a class role
+### Features for interface inheritance: simple inheritance for interfaces with a class role
 
 ```java
 
@@ -920,7 +924,7 @@ public worker_agent Launcher {
 }
 
 ```
-Let's see the optional features for interface inheritance in action, for a simple interface inheritance. This is the most common case.
+Let's see the features for interface inheritance in action, for a simple interface inheritance. This is the most common case.
 This is when we don't use multiple inheritances for interfaces with a class role (agent-like interfaces, even for worker_agent role). So it is perfect for loose coupling.
 In this usage, the features for interface inheritance are straightforward, and it is not a problem.
 
@@ -929,7 +933,7 @@ What is the different between "horizontal" inheritance, and "vertical" inheritan
 We can call "horizontal" inheritance, an inheritance like the part of interface of a class, inherited with an "implements". So it extends the class, with a part of interface, and the class has to implement it. Finally, horizontal and vertical inheritance are quite the same, because vertical inheritance is just an "extension" of the class (or of the interface). It's just a question of perspective. So, when a class implementing an interface,  and "extends" a class that already implements this interface, the class does not need to write it. So in this case, the inheritance of the interface seems vertical, as usual inheritance.
 
 So, in this basic example of The Dog, in this example, the DogImpl implements the Animal interface in another class, although it was on the Dog contract.
-Thus, in clprolf, although "contracts" is about horizontal inheritance (as the "implements" of Java), it is equivalent perspectives. So the "nature" keyword and "extends", used for interfaces, whether we use or not the optional features, are equivalent.
+Thus, in clprolf, although "contracts" is about horizontal inheritance (as the "implements" of Java), it is equivalent perspectives. So the "nature" keyword and "extends", used for interfaces, whether we use or not the features, are equivalent.
 
 Here, the Dog and Animal interfaces are perfect for loose coupling, with polymorphism. And the implementations are usable directly too, if we prefer.
 
@@ -1595,9 +1599,9 @@ Contracts contradictions
 	A class can not implement a compat_interf_capacity(or capacity_inh).
 
 Inheritance of interfaces contradictions
-	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles. It is not true for the optional features for inheritance, when a class role is indicated.
+	A single rule in this topic: the direct inheritance of an interface can be only capacities. We can increase an interface only in terms of capacities. This is for coherence with the compatibility interfaces roles. It is not true for the features for inheritance, when a class role is indicated.
 
-Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). Interface inheritance with the optional features is an exception. And a compat_interf_capacity can not be composed by a compat_interf_version.
+Reasons: A compat_interf_version stands for a unique version, and can not be composed by another compat_interf_version (in particular case, such for particular cases of evolutivity, we could use @Forced annotations). Interface inheritance with the features is an exception. And a compat_interf_capacity can not be composed by a compat_interf_version.
 
 A capacity always refers to an advice, even the default "@Agent_like_advice". The role of the version extending the capacity has to be marked, and be the same. If a capacity extends a capacity, the advice of the extending capacity has to be identical.
 
@@ -1620,7 +1624,7 @@ For the sub-roles, indicating it, when existing, is recommended to not forget th
 
 * Ignoring inheritance checking
 These checks can be ignored, by using "@Forced_inh" and "@Forced_int_inh" keywords, on the class or the interface, or directly before the name of the inherited class or interface. @Forced_inh means "forced inheritance", and is for class inheritance. "@Forced_int_inh", is for interface inheritance(included interface to interface inheritance). So all the existing java code can be used and accepted, and we can program as we want to do it. Applied to a class or interface, these keywords concerns all the inherited types of the concerned class or interface.
-@Forced_inh is exceptionally used for an interface definition, for the optional features for interface inheritance, about the inheritance of two interfaces having a clsss role, because we are truly talking about the inheritance as the nature.
+@Forced_inh is exceptionally used for an interface definition, for the features for interface inheritance, about the inheritance of two interfaces having a clsss role, because we are truly talking about the inheritance as the nature.
 In the C# and PHP8 frameworks, there are only "forced" attributes upon the class or the interface, because of C# and PHP8 attributes limitations.
 
 In the clprolf framework:
@@ -1655,7 +1659,7 @@ public class CarRealization {
 
 * The clprolf compiler doesn't currently proceed clprolf semantic checks, nor these rules. And the framemworks haven't currently tools for checking this either.
 
-* There is the checking about the optional features for interface inheritance. There are precised in the concerned chapter.
+* There is the checking about the features for interface inheritance. There are precised in the concerned chapter.
 
 ### INSIGHTS ABOUT INHERITANCE AND clprolf
 
