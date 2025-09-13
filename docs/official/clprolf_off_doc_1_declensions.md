@@ -1,5 +1,3 @@
----
-
 # CLPROLF – Explaining Declensions
 
 Clprolf is a language and framework that helps you design objects with a **single, explicit responsibility**.

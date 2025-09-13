@@ -1,5 +1,3 @@
----
-
 # TALKING IN JAVA VERSUS TALKING IN CLPROLF – EXAMPLE
 
 Java is great — but in Clprolf, we can say the same thing differently.

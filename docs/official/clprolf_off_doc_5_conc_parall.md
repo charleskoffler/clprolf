@@ -1,5 +1,3 @@
----
-
 # Concurrency and Parallelism Aids in Clprolf
 
 Clprolf introduces a set of **semantic aids** to make concurrency and parallelism easier to understand and safer to implement.
