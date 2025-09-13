@@ -1,13 +1,3 @@
-v1.2 (20250912). 
-
-PREMIERE REFORMULATION DE TOUT LE DOCUMENT PAR CHAT GPT 5
-Changement de nom du fichier, c'est un doc avancé.
-Ajout d'une introduction et changement du titre, modifs sur le document pour qu'il aille quelque part, et soit plus simple.
-Améliorations multiples du code pour simplifier
-**************************************************************************
-
----
-
 # Using Clprolf for Complex Object-Oriented Designs
 
 Object-oriented designs can quickly become **complex and difficult to master — or even to remember**.

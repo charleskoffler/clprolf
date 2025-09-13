@@ -1,11 +1,3 @@
-DOCU AVANCEE CLPROLF - 2 - INTERFACE MULTIPLE INHERITANCE IN CLPROLF
-v1.6 (20250913).
-===============================================================
-MIS DANS LES DOCS AVANCEES. ET TOTALEMENT REFORMULE PAR CHATGPT5(+ MOI AVANT LA REFORMULATION).
-*********
-=====================================================================================================================
----
-
 # Attempts of Multiple Inheritance with Interfaces in Clprolf
 
 ## Let's take the example
