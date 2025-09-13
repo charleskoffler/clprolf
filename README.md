@@ -1,98 +1,80 @@
-# Clprolf – Clear Programming Language & Framework
+---
 
-“Clprolf is a methodology turned into a language — making good OOP not just possible, but natural.” — ChatGPT-5
+# Clprolf — Clear Programming Language & Framework
 
-Clprolf is a tool designed to simplify the writing and maintenance of applications.
-It adds a conceptual layer on top of object-oriented programming to help developers with object usage, algorithm design, and design principles (including design patterns).
+> **A methodology turned into a language.**
+> Good OOP becomes natural, not accidental.
 
-Clprolf can be used in two forms:
+Clprolf adds a **conceptual layer** on top of Java/C#/PHP:
+roles, contracts, and design rules are **first-class keywords**.
+You model systems with **agents, worker agents, versions, and capacities**, while the compiler enforces clarity.
 
-   As an annotation-based framework for Java, C#, or PHP 8+
+---
 
-   Or as a language built on top of Java, compiling to pure Java code
+### 🚀 Why Clprolf?
 
-It aims to preserve performance, or lose very little, and may interest developers and software architects who want to expand their programming toolbox.
+* **Safer architecture**: compile-time errors prevent invalid dependencies
+* **Clear concurrency**: intent expressed with `one_at_a_time`, `turn_monitor`, etc.
+* **Readable design**: class roles (`agent`, `worker_agent`, `model`) explain themselves
 
-### A New Perspective, Still 100% OOP
+---
 
-Clprolf changes how you think about design: you create agents, worker agents, and other specialized components instead of starting with generic objects. The same goes for interfaces — you define versions, capacities, or agent-specific variants.
-Under the hood, though, everything is still pure OOP: agents are objects, and all interfaces are standard OOP interfaces.
-
-### Quick example
-
-> **Turn a class’s responsibility into a keyword.**  
-> Build simulations and complex systems that *explain themselves.*
+### 📝 Quick Example
 
 ```java
-// One word tells the intent:
-agent OrderService {                   // business actor
-    with_compat OrderRepository repo;  // explicit contract
-    void checkout(Order o) { /* model Order */
-        repo.save(o);
-    }
+agent OrderService {
+    with_compat OrderRepository repo;
+    void checkout(Order o) { repo.save(o); }
 }
 ```
 
-Why bother?
+* In plain OOP: architecture drifts, concurrency bugs, endless onboarding.
+* With Clprolf: contracts explicit, roles clear, design rules enforced.
 
-Pain in vanilla OOP
+---
 
-a) A service accidentally calls a low-level helper → architectural drift
-	
-b) Concurrency bugs need ad-hoc synchronized
-	
-c) New dev spends hours mapping layers
+### ✨ Key Ideas
 
-Same code with Clprolf
+* Role-based classes: `agent`, `worker_agent`, `model`, `information`, `indef_obj`
+* Modifiers for real-world complexity: `long_action`, `one_at_a_time`, `dependent_activity`
+* Works two ways:
 
-a) 🚫 Compile-time error (agent cannot depend on worker_agent)
+  * **Framework** (annotations for Java, C#, PHP 8+)
+  * **Language** (compiles into pure Java)
 
-b) one_at_a_time + turn_monitor declare the intent up front
+---
 
-c) One glance at agent, worker_agent, model keywords tells the whole story
+### 🎯 Perfect For
 
-What is Clprolf?
+* Large simulations & multi-agent systems
+* Scientific prototypes with interacting “actors”
+* Teaching OOP/design patterns with minimal overhead
 
-   A minimal language where every class starts with a role keyword
-    (agent, worker_agent, model, information, indef_obj).
+---
 
-   A set of modifiers for tricky realities:
-    long_action (frame-based ops), one_at_a_time (critical section),
-    dependent_activity (producer/consumer), underst (non-obvious algos).
+👉 With Clprolf, your code doesn’t just run — **it explains itself.**
 
-   A lightweight annotation framework that brings those ideas to Java, C#, PHP—no new VM required.
-
-Perfect fit for
-
-   Large simulations & MAS-style games
-
-   Scientific prototypes that model “actors” interacting
-
-   Teaching OOP / design-pattern concepts without a 70-slide intro
+---
 
 Detailed guides:
 
-[The declensions and genders](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_declensions.md)
+[Explaining Declensions](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
 
-[Talking in Java versus talking in Clprolf - Quicksort example](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_java_vs_clprolf_quicksort.md)
+[TALKING IN JAVA VERSUS TALKING IN CLPROLF – EXAMPLE](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_2_talking_java_vs_clprolf_quicksort.md)
 
-[Learning the class roles through Java wrappers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_docu_offic_3_java_lib_wrappers.md)
+[LEARNING THE CLASS ROLES THROUGH JAVA WRAPPERS](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_3_java_lib_wrappers.md)
 
-[A clprolf design pattern example with multiple inheritance](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_clpr_desig_patt_mult_herit.md)
+[Interfaces in Clprolf — Complete Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_interfaces.md)
 
-[The basics and the single inheritance of interfaces](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_interfaces_basics.md)
+[Concurrency and Parallelism Aids in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_conc_parall.md)
 
-[Interface multiple inheritance in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_simu_multi_inh.md)
+[The `underst` Method Modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
 
-[Concurrency and parallelism](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_7_conc_parall.md)
-
-[The "underst" modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_8_underst.md)
-
-[Getting started for OOP programmers](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_oop_tutorials/clprolf_oop_getting_started.md)
-
-[clprolf official web site](https://www.clprolf-lang.org/)
+[Insights About Clprolf — For Experienced Readers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
 
 [AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
+
+[clprolf official web site](https://www.clprolf-lang.org/)
 
 ## Sources
 
@@ -119,7 +101,3 @@ Detailed guides:
 [clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
 
 [clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/simol_games_examples)
-
-### More about Clprolf
-
-[Insights about Clprolf - For those who already know the language](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_insights.md)
