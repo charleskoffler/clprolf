@@ -1,5 +1,3 @@
----
-
 # Clprolf — Clear Programming Language & Framework
 
 > **A methodology turned into a language.**
