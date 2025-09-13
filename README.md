@@ -54,7 +54,9 @@ agent OrderService {
 
 ---
 
-Detailed guides:
+## Documentation
+
+### Main documentation
 
 [Explaining Declensions](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
 
@@ -73,6 +75,13 @@ Detailed guides:
 [AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
 
 [clprolf official web site](https://www.clprolf-lang.org/)
+
+### Extended documentation
+
+[Using Clprolf for Complex Object-Oriented Designs](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_1_exempl_assistant.md)
+
+[Attempts of Multiple Inheritance with Interfaces in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_2_attempts_multi_inh_with_interf.md)
+
 
 ## Sources
 
