@@ -1,5 +1,3 @@
----
-
 # Interfaces in Clprolf — Complete Overview
 
 ## 1. General Principles
