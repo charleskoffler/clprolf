@@ -6,7 +6,7 @@
 
 One of the easiest ways to understand **Clprolf class roles** is to look at **wrappers** of well-known Java classes.
 By re-expressing familiar components like `Socket`, `Scanner`, or `System`, we can immediately see how Clprolf’s declensions clarify their **nature** and **responsibility**.
-Each wrapper highlights a specific situation: abstract concepts, expert components, GUI elements, active agents, or static utilities.
+Each wrapper highlights a specific situation: abstract concepts, expert components, active agents, or static utilities.
 This makes wrappers both **practical** (they can replace Java classes through polymorphism) and **educational** (they illustrate how to apply Clprolf roles consistently).
 
 ---
@@ -49,7 +49,7 @@ public class ClpSocket extends @Nature Socket {
 ### ClpSocketServer Wrapper
 
 Here, the name is slightly adapted: `SocketServer` instead of Java’s `ServerSocket`.
-We declare it as `@Agent(Role.EXPERT_COMPONENT)` because it is an **expert component** for serving sockets.
+We declare it as `@Agent(Gender.EXPERT_COMPONENT)` because it is an **expert component** for serving sockets.
 
 ```java
 package clprolf.wrappers.java.net;
@@ -63,7 +63,7 @@ import org.simol.simolframework.java.Role;
 import org.simol.simolframework.java.Agent;
 
 @Forced_inh
-@Agent(Role.EXPERT_COMPONENT)
+@Agent(Gender.EXPERT_COMPONENT)
 public class ClpSocketServer extends @Nature ServerSocket {
 
     public ClpSocketServer() throws IOException {
@@ -88,10 +88,9 @@ public class ClpSocketServer extends @Nature ServerSocket {
 
 ### Swing JButton Wrapper
 
-For `JButton`, it is natural to use `@Abstraction(Role.GUI_ROLE)`.
+For `JButton`, it is natural to use `@Abstraction`.
 
-* As a GUI element, it clearly has a GUI role.
-* Depending on perspective, it could also be `@Simu_real_obj` or even `@Agent`.
+* It is an abstraction.
 
 ```java
 package clprolf.wrappers.javax.swing;
@@ -102,7 +101,7 @@ import org.simol.simolframework.java.Abstraction;
 import org.simol.simolframework.java.Role;
 
 @Forced_inh
-@Abstraction(Role.GUI_ROLE)
+@Abstraction
 public class ClpJButton extends @Nature JButton {
 
 }
@@ -146,7 +145,7 @@ public final class ClpScanner { // Java Scanner is final, so we use composition
 * It is `final`.
 * It only has **static methods**.
 
-This makes it a perfect fit for `@Abstraction(Role.STATIC)`.
+This makes it a perfect fit for `@Abstraction(Gender.STATIC)`.
 We see it as a **singleton abstraction of the operating system**.
 
 ```java
@@ -158,7 +157,7 @@ import java.io.PrintStream;
 import org.simol.simolframework.java.Abstraction;
 import org.simol.simolframework.java.Role;
 
-@Abstraction(Role.STATIC)
+@Abstraction(Gender.STATIC)
 public final class ClpSystem {
 
     public static final PrintStream getOut() {
@@ -188,7 +187,7 @@ public final class ClpSystem {
 Here, the class has **two aspects**:
 
 * For **string objects**, it is an abstraction of the concept → `@Abstraction`.
-* For **static methods**, it can be seen as an expert component → `@Abstraction(Role.EXPERT_COMPONENT_STATIC)`.
+* For **static methods**, it can be seen as an expert component → `@Abstraction(Gender.EXPERT_COMPONENT_STATIC)`.
 
 ```java
 package clprolf.wrappers.java.lang;
@@ -196,7 +195,7 @@ package clprolf.wrappers.java.lang;
 import org.simol.simolframework.java.Abstraction;
 import org.simol.simolframework.java.Role;
 
-@Abstraction(Role.EXPERT_COMPONENT_STATIC)
+@Abstraction(Gender.EXPERT_COMPONENT_STATIC)
 public final class ClpString {
 
     private final String internal;
