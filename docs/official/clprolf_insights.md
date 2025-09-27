@@ -228,8 +228,7 @@ Each declension may also have **synonyms**, which are fully equivalent. Develope
 Declensions may be refined with **genders**, adding another layer of meaning.
 Each gender can also have synonyms:
 
-* `@Expert_component` = `@Human_expert` = `@Design_role`
-* `@GUI_Role` = `@Machine_tool`
+* `@Expert_component` = `@Human_expert`
 * `@Active_agent` (no synonyms)
 * `@Static` = `@Expert_component_static` = `@Human_expert_static`
 * `@Static` (for worker\_agent declension) — no synonyms
@@ -308,26 +307,14 @@ These annotations are optional: they refine interpretation but never enforce it.
 
 #### Available Genders
 
-* **@Design\_role**: For architectural elements such as controllers and services. They represent abstractions designed for software design purposes.
 * **@Human\_expert**: Represents a simulation of a human expert in a given business domain.
 * **@Expert\_component**: Similar to `@Human_expert`, but with a more technical interpretation — the class is an “expert component” specialized in its task.
-* **@GUI\_role**: For graphical elements such as windows or buttons, emphasizing a GUI interpretation.
-* **@Machine\_tool**: An alternative to `@GUI_role`, interpreting GUI elements as machine tools with controls and displays.
 * **@Static / @Human\_expert\_static / @Expert\_component\_static**: For classes used mainly for static methods, like `File` or `Environment` in .NET, or `String` in Java (with both instance and static roles).
 
 ---
 
 #### Examples
 
-```java
-@GUI_role
-public simu_real_obj Window { /* (...) */ }
-```
-
-```java
-@Design_role
-public simu_real_obj Controller { /* (...) */ }
-```
 
 ```java
 @Human_expert   // or @Expert_component
@@ -335,14 +322,9 @@ public simu_real_obj MeteoExpert { /* (...) */ }
 ```
 
 ```java
-@Machine_tool
-public simu_real_obj Window { /* (...) */ }
-```
-
-```java
 // A String is both an abstraction (instance members) 
 // and an expert for static operations.
-@Abstraction(Role.EXPERT_COMPONENT_STATIC)
+@Abstraction(Gender.EXPERT_COMPONENT_STATIC)
 public class String {
     // (...)
 }
@@ -352,8 +334,8 @@ public class String {
 
 #### Compatibility Between Genders
 
-* **@Expert\_component ↔ @Human\_expert ↔ @Design\_role**
-  These genders overlap strongly. A human expert can be viewed as a component, and a component can be understood as a design role.
+* **@Expert\_component ↔ @Human\_expert**
+  These genders overlap strongly. A human expert can be viewed as a component.
   Example:
 
   ```java
@@ -368,23 +350,20 @@ public class String {
   public simu_real_obj NetworkTalker { /* (...) */ }
   ```
 
-* **@GUI\_role ↔ @Machine\_tool**
-  These genders are interchangeable, depending on whether the developer prefers a GUI-centric or machine-tool interpretation.
-
 ---
 
 #### In the Framework
 
-In the Java framework, genders are available as an optional `role` attribute in `@Simu_real_obj`.
+In the Java framework, genders are available as an optional `gender` attribute in `@Simu_real_obj`.
 For example:
 
 ```java
-@Simu_real_obj(Role.DESIGN_ROLE)
+@Simu_real_obj(Gender.Expert_component)
 public class Controller { /* (...) */ }
 ```
 
 The available roles are:
-`Role.DESIGN_ROLE, Role.HUMAN_EXPERT, Role.EXPERT_COMPONENT, Role.GUI_ROLE, Role.MACHINE_TOOL, Role.STATIC, Role.HUMAN_EXPERT_STATIC, Role.EXPERT_COMPONENT_STATIC`.
+`Gender.HUMAN_EXPERT, Gender.EXPERT_COMPONENT, Gender.STATIC, Gender.HUMAN_EXPERT_STATIC, Gender.EXPERT_COMPONENT_STATIC`.
 
 
 ### NOTICE ON THE USE CASES OF `worker_agent`
@@ -540,7 +519,7 @@ There are no additional object categories in the language.
 
 #### Optional MAS Alignment
 
-For those who want to stay closer to MAS conventions, Clprolf provides the optional sub-role **`Role.ACTIVE_AGENT`**.
+For those who want to stay closer to MAS conventions, Clprolf provides the optional sub-role **`Gender.ACTIVE_AGENT`**.
 This can be used to mark an agent explicitly as “active” in MAS terms.
 
 * Expert sub-roles are implicitly MAS-active.
@@ -2184,9 +2163,9 @@ During compilation, Clprolf keywords and annotations are translated into standar
   `contracts` → `implements`
 
 Clprolf-specific annotations are ignored by the Java compiler, such as:
-`@Design_role`, `@Human_expert`, `@Expert_component`,
+`@Human_expert`, `@Expert_component`,
 `@Human_expert_static`, `@Expert_component_static`,
-`@Static`, `@Machine_tool`, `@GUI_role`,
+`@Static`,
 `@LongAction`, `@Forced_inh`, `@Forced_int_inh`,
 `@Forced_pract_code`, `@Agent_like_advice`, `@Worker_like_advice`.
 
@@ -2339,10 +2318,9 @@ The guiding principle is simple: the rules reflect the programmer’s intuitive 
 
 Sub-roles also follow consistency checks:
 
-* `@Human_expert`, `@Expert_component`, and `@Design_role` are equivalent.
+* `@Human_expert`, `@Expert_component` are equivalent.
 * `@Human_expert_static` and `@Expert_component_static` are equivalent.
 * `@Static` is not equivalent to other static roles. A purely static role cannot inherit from a non-static role, and vice versa (except if both are `abstraction` roles).
-* `@Machine_tool` and `@Graph_interf` are compatible.
 
 Each class or interface must declare its role explicitly, even if it inherits, because the author is responsible for indicating their perspective. Declaring sub-roles is recommended to avoid future inheritance issues.
 
@@ -2643,7 +2621,7 @@ import org.clprolf.simolframework.java.Role;
 import org.clprolf.simolframework.java.Agent;
 import org.clprolf.simolframework.java.Underst;
 
-@Agent(Role.HUMAN_EXPERT)
+@Agent(Gender.HUMAN_EXPERT)
 public class InsertionSorter {
 	public int[] array;
 	public int[] sortedArray;
@@ -2861,7 +2839,7 @@ import org.clprolf.simolframework.java.With_compat;
  * @author Charles Koffler
  *
  */
-@Agent(Role.HUMAN_EXPERT)
+@Agent(Gender.HUMAN_EXPERT)
 public class NetworkTalker {
 	public static enum MSG_DIRECTION {
 		SAID, HEARD
@@ -3012,7 +2990,7 @@ public class NetworkTalkerRealiz {
 		//the writer
 		//First we obtain a stream. A stream could be viewed as a real-world stream.
 		OutputStream theOutputStream = this.theSocket.getOutputStream();
-		//A writer could be viewed as a @Simu_real_obj(Role.HUMAN_EXPERT), a real-world writer.
+		//A writer could be viewed as a @Simu_real_obj(Gender.HUMAN_EXPERT), a real-world writer.
 		writer = new PrintWriter(theOutputStream);
 		
 		//The reader
@@ -3074,4 +3052,3 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
-
