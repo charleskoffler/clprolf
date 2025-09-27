@@ -1,4 +1,4 @@
-# Concurrency and Parallelism Aids in Clprolf
+# Concurrency and Parallelism Made Clear
 
 Clprolf introduces a set of **semantic aids** to make concurrency and parallelism easier to understand and safer to implement.
 These aids are not meant to replace Java’s robust primitives, but to **clarify intent** and bring them closer to the Clprolf methodology of explicit design.
