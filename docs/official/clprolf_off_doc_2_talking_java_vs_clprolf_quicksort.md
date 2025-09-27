@@ -1,4 +1,4 @@
-# TALKING IN JAVA VERSUS TALKING IN CLPROLF – EXAMPLE
+# A QuickSort Example: Java vs. Clprolf
 
 Java is great — but in Clprolf, we can say the same thing differently.
 Let’s take an example with **QuickSort**, the famous and efficient sorting algorithm.
@@ -93,7 +93,7 @@ In Clprolf, we separate these roles into **distinct components**:
 
 * `@Agent` → QuickSort, the active sorting component.
 * `@Worker_agent` → Printer, the worker that handles display.
-* `@Worker_agent` → Launcher, the independent entry point (could also be `@Worker_agent(Role.STATIC)`).
+* `@Worker_agent` → Launcher, the independent entry point (could also be `@Worker_agent(Gender.STATIC)`).
 
 This separation makes each component respect the **Single Responsibility Principle (SRP)**.
 
