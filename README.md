@@ -91,7 +91,7 @@ agent OrderService {
 
 ### clprolf frameworks
 
-[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/simol/simolframework/java)
+[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/clprolf/framework/java)
 
 [clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/SimolCsharpFramework)
 
