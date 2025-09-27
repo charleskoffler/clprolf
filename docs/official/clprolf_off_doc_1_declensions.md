@@ -71,8 +71,7 @@ Examples: system utilities, DAOs, repositories, low-level services, or MVC *view
 Declensions can be refined with **genders** (optional sub-roles).
 They may also have synonyms:
 
-* `@Expert_component` = `@Human_expert` = `@Design_role`
-* `@GUI_role` = `@Machine_tool`
+* `@Expert_component` = `@Human_expert`
 * `@Active_agent` (no synonym)
 * `@Static` = `@Expert_component_static` = `@Human_expert_static`
 * `@Static` for `worker_agent` (no synonym)
@@ -167,7 +166,7 @@ But Clprolf favors `@Agent` whenever possible.
 System could also be seen as:
 
 * `@Abstraction` — since “the system” is a conceptual entity.
-* `@Agent(Role.EXPERT_COMPONENT)` — as an expert component representing the environment.
+* `@Agent(Gender.EXPERT_COMPONENT)` — as an expert component representing the environment.
 
 ---
 
@@ -186,7 +185,7 @@ Result: a simpler, more maintainable system, where every object is clearly posit
 If the class already fits one of the well-known architectural categories, you can directly assign a matching role:
 
 * A service → `@Agent`
-* A helper → `@Agent` or `@Worker_agent` (often with `Role.STATIC`)
+* A helper → `@Agent` or `@Worker_agent` (often with `Gender.STATIC`)
 * A DAO or repository → `@Worker_agent`
 * A controller → `@Agent`
 
