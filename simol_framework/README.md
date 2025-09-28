@@ -30,7 +30,8 @@ History of the versions of the simol java framework
 2.8 20240428 Addition of @Indef_obj and @Compat_interf
 2.9 20240428 Addition of a role (for @Static) in worker_agent declensions.
 3.0 20250512 Added role in version_inh(correction)
-3.1 202050927 New name of packages. Refined genders.
+3.1 20250927 New name of packages. Refined genders.
+3.1 20250928 Cleanup: removed 5 synonym annotations, keeping only aspect-based keywords
 
 History of the versions of the simol C# framework
 
