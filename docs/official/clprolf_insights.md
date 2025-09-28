@@ -82,11 +82,11 @@ It is particularly suited for:
 
 #### Keywords in Clprolf
 
-Clprolf defines a **minimal set of 27 keywords**.
+Clprolf defines a **minimal set of 31 keywords**.
 They are divided into two groups:
 
-* **15 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
-* **12 annotations** (genders and advices), which are optional refinements that add perspective and specialization.
+* **19 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
+* **12 annotations** (genders, advices, forcing), which are optional refinements that add perspective and specialization.
 
 This structure makes Clprolf both **minimal and flexible**: easy to learn and memorize, yet expressive enough to capture complex system designs.
 
@@ -115,6 +115,22 @@ This structure makes Clprolf both **minimal and flexible**: easy to learn and me
 
 ---
 
+
+##### Method Modifiers – 4
+
+* `underst`
+* `one_at_a_time`
+* `dependent_activity`
+* `long_action`
+
+---
+
+##### Field Modifiers – 2
+
+* `with_compat`
+* `turn_monitor`
+
+---
 ##### Annotations – Genders – 6
 
 * `@Human_expert`
@@ -128,35 +144,33 @@ This structure makes Clprolf both **minimal and flexible**: easy to learn and me
 
 ##### Annotations – Advices – 2
 
-* `@For_agent_like`
-* `@For_worker_like`
+* `@Agent_like_advice`
+* `@Worker_like_advice`
 
 ---
 
-##### Method Modifiers – 4
+##### Annotations – Forcing – 3
 
-* `underst`
-* `one_at_a_time`
-* `dependent_activity`
-* `for_every_thread`
-
----
-
-##### Field Modifiers – 2
-
-* `with_compat`
-* `turn_monitor`
+* `@Forc_pract_code`
+* `@Forc_inh`
+* `@Forc_int_inh`
 
 ---
 
+##### Annotations – Special – 1
 
-✅ **Total: 27 keywords**
-
-* **15 core keywords** (declensions, interfaces, method/field modifiers)
-* **12 annotations** (genders + advices)
+* `@Long_action`
 
 ---
 
+✅ **Total: 31 keywords**
+
+* **19 core keywords** (declensions, interface declensions, method/field modifiers)
+* **12 annotations** (genders, advices, forcing and others)
+
+---
+
+With only 31 keywords, Clprolf remains minimal and approachable, while still covering complex system design through clear roles, modifiers, and annotations.
 
 #### Beyond Programming
 
