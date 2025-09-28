@@ -2165,6 +2165,17 @@ clprolfDeclension
 	| 'information'
 	| 'indef_obj'
 	;
+	
+classModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'abstract'
+	|	'static'
+	|	'final'
+	|	'strictfp'
+	;
 
 normalInterfaceDeclaration
 	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
