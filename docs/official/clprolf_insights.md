@@ -80,6 +80,84 @@ It is particularly suited for:
 
 ---
 
+#### Keywords in Clprolf
+
+Clprolf defines a **minimal set of 27 keywords**.
+They are divided into two groups:
+
+* **15 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
+* **12 annotations** (genders and advices), which are optional refinements that add perspective and specialization.
+
+This structure makes Clprolf both **minimal and flexible**: easy to learn and memorize, yet expressive enough to capture complex system designs.
+
+---
+
+##### Declensions (class roles) – 8
+
+* `agent`
+* `abstraction`
+* `simu_real_obj`
+* `worker_agent`
+* `comp_as_worker`
+* `model`
+* `information`
+* `indef_obj`
+
+---
+
+##### Interface Declensions – 5
+
+* `compat_interf_version`
+* `version_inh`
+* `compat_interf_capacity`
+* `capacity_inh`
+* `compat_interf`
+
+---
+
+##### Annotations – Genders – 6
+
+* `@Human_expert`
+* `@Expert_component`
+* `@Active_agent`
+* `@Static`
+* `@Human_expert_static`
+* `@Expert_component_static`
+
+---
+
+##### Annotations – Advices – 2
+
+* `@For_agent_like`
+* `@For_worker_like`
+
+---
+
+##### Method Modifiers – 4
+
+* `underst`
+* `one_at_a_time`
+* `dependent_activity`
+* `for_every_thread`
+
+---
+
+##### Field Modifiers – 2
+
+* `with_compat`
+* `turn_monitor`
+
+---
+
+
+✅ **Total: 27 keywords**
+
+* **15 core keywords** (declensions, interfaces, method/field modifiers)
+* **12 annotations** (genders + advices)
+
+---
+
+
 #### Beyond Programming
 
 Clprolf can also serve as a tool for **memory and comprehension**.
@@ -2056,73 +2134,88 @@ This makes the transition smoother than learning a completely new paradigm.
 
 ---
 
-### clprolf GRAMMAR FROM JAVA SE 7 GRAMMAR(BNF-style from Oracle Site):
+### clprolf GRAMMAR FROM JAVA SE 8 GRAMMAR(BNF-style from Oracle Site):
 
-NormalClassDeclaration: 
-    [class_for] SimolRole Identifier [TypeParameters]
-                                [nature Type] [contracts TypeList] ClassBody
-
-SimolRole:
-	agent
-	worker_agent
-	simu_real_obj
-	abstraction
-	comp_as_worker
-	model
-	information
-	indef_obj
+normalClassDeclaration
+	:	classModifier* 'class_for'? clprolfDeclension Identifier typeParameters? superclass? superinterfaces? classBody
+	;
 	
-NormalInterfaceDeclaration: 
-    SimolInterfaceRole [SimolRole] Identifier [TypeParameters] [SimolInterfExtends TypeList] InterfaceBody
+clprolfDeclension
+	: 
+	'agent'
+	| 'abstraction'
+	| 'simu_real_obj'
+	| 'worker_agent'
+	| 'comp_as_worker'
+	| 'model'
+	| 'information'
+	| 'indef_obj'
+	;
 
-SimolInterfaceRole:
-	compat_interf_version
-	compat_interf_capacity
-	compat_interf
-	version_inh
-	capacity_inh
-
-SimolInterfExtends:
-	extends
-	nature
+normalInterfaceDeclaration
+	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
+	;
 	
-Modifier: 
-    Annotation
-    public
-    protected
-    private
-    static 
-    abstract
-    final
-    native
-	synchronized
-    transient
-	volatile
-	for_every_thread
-	turn_monitor
-    strictfp
-    
-VariableModifier:
-    final
-    Annotation
-    with_compat
+clprolfInterfaceDeclension:
+	'compat_interf_version'
+	|
+	'compat_interf_capacity'
+	|
+	'compat_interf'
+	|
+	'version_inh'
+	|
+	'capacity_inh'
+	;
+
+methodModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'abstract'
+	|	'static'
+	|	'final'
+	|	'synchronized'
+	|	'native'
+	|	'strictfp'
+	|	'underst'
+	|	'long_action'
+	|	'prevent_missing_collision'
+	|	'one_at_a_time'
+	|	'dependent_activity'
+	;
+
+fieldModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'static'
+	|	'final'
+	|	'transient'
+	|	'volatile'
+	|	'with_compat'
+	|	'turn_monitor'
+	|	'for_every_thread'
+	;
+
+extendsInterfaces
+	:	clprolfInterfExtends interfaceTypeList
+	;
 	
-MethodOrFieldDecl:
-	MethodDecl
-	FieldDecl
+clprolfInterfExtends
+	: 'extends'
+	| 'nature'
+	;
 
-SimolMethodModifier:
-	underst
-	long_action
-	prevent_missing_collision
-	one_at_a_time
-	dependent_activity
+superclass
+	:	'nature' classType
+	;
 
-MethodDecl:
-	[SimolMethodModifier] Type Identifier MethodOrFieldRest
-
-FieldDecl:
-	Type Identifier MethodOrFieldRest
+superinterfaces
+	:	'contracts' interfaceTypeList
+	;
 
 
 ### TO COMPILE
