@@ -14,19 +14,34 @@ Clprolf defines only a few basic roles, which keeps design unambiguous and intui
 The five available declensions are:
 
 1. **`agent`**
-   Synonyms: `simu_agent`, `simu_real_world_obj`, `simu_real_obj`, `abstraction`.
+   Synonyms: `abstraction`, `simu_real_obj`.
 
 2. **`worker_agent`**
-   Synonyms: `simu_comp_as_worker`, `comp_as_worker`.
+   Synonyms: `comp_as_worker`.
 
 3. **`model`**
-   Synonyms: `model_real_world_obj`, `model_real_obj`.
+   (no synonyms).
 
 4. **`information`**
    (no synonyms).
 
 5. **`indef_obj`**
    A flexible object without explicit role, behaving like a traditional OO class.
+
+---
+
+## Synonyms and Aspects
+
+Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
+
+* **Agent declension** → `agent` (agent aspect), `abstraction` (object aspect), `simu_real_obj` (simulation aspect)
+* **Worker_agent declension** → `worker_agent` (agent aspect), `comp_as_worker` (simulation aspect)
+* **Model declension** → `model`
+* **Information declension** → `information`
+* **Indef_obj declension** → `indef_obj`
+
+This structure makes the system both easy to memorize and easy to teach.
+Synonyms are no longer arbitrary alternatives but clearly justified by the perspective they express.
 
 ---
 
@@ -39,12 +54,11 @@ These objects represent **real-world abstractions** or domain concepts.
   * `agent` emphasizes action.
   * `simu_real_obj` emphasizes simulation.
   * `abstraction` emphasizes conceptual encapsulation (e.g., a `Connection`, a `Socket`).
-  * `simu_agent` highlights simulation of a real-world agent (e.g., an employee).
-
-* **`simu_real_obj`**: a micro-simulation of a real-world entity.
-  Example: a `Giraffe` class with states and behaviors simulating how a giraffe acts.
 
 * **`abstraction`**: for abstract concepts and system elements (connections, sockets, system utilities).
+  
+* **`simu_real_obj`**: a micro-simulation of a real-world entity.
+  Example: a `Giraffe` class with states and behaviors simulating how a giraffe acts.
 
 * **`model`**: a passive entity with no behavior — just attributes.
   Example: a `Customer` with fields but no methods.
@@ -57,7 +71,7 @@ These objects handle **purely computational or support tasks**.
 Here, the **computer itself** is seen as the actor.
 
 * **`worker_agent`**: the computer as a worker executing algorithms.
-  Synonyms: `comp_as_worker`, `simu_comp_as_worker`.
+  Synonyms: `comp_as_worker`.
 
 * **`information`**: a coherent data container, used by workers in algorithms.
   ⚠️ Unlike `model`, it does not represent a real-world entity, only technical data.
