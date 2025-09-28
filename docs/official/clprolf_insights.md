@@ -143,7 +143,7 @@ It is a superset to the Java language. It adds keywords that replace some java k
 and it adds some keywords like 'with_compat', or 'underst'.
 We can use java libraries in clprolf. We can use also java code in clprolf source code, except the keywords "class", "implements", "extends", "interface".
 
-As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, like in java classes, for example "public simu_comp_as_worker Launcher{ }".
+As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, like in java classes, for example "public comp_as_worker Launcher{ }".
 It is the same for the interfaces.
 
 clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
@@ -154,13 +154,28 @@ In Clprolf, **declensions** define the *nature* of an object. Each class is assi
 
 Every class in Clprolf must take on one of a small set of predefined responsibilities:
 
-* **`worker_agent`** (also `simu_comp_as_worker`, `comp_as_worker`)
-* **`agent`** (also `simu_real_world_obj`, `simu_real_obj`, `simu_agent`, `abstraction`)
-* **`model`** (also `model_real_world_obj`, `model_real_obj`)
+* **`worker_agent`** (also `comp_as_worker`)
+* **`agent`** (also `abstraction`, `simu_real_obj`)
+* **`model`**
 * **`information`**
 * **`indef_obj`** (indefinite object)
 
 These five declensions represent the core object roles in Clprolf. Some of them have synonyms, which emphasize different aspects but are fully equivalent.
+
+---
+
+#### Synonyms and Aspects
+
+Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
+
+* **Agent declension** → `agent` (agent aspect), `abstraction` (object aspect), `simu_real_obj` (simulation aspect)
+* **Worker_agent declension** → `worker_agent` (agent aspect), `comp_as_worker` (simulation aspect)
+* **Model declension** → `model`
+* **Information declension** → `information`
+* **Indef_obj declension** → `indef_obj`
+
+This structure makes the system both easy to memorize and easy to teach.
+Synonyms are no longer arbitrary alternatives but clearly justified by the perspective they express.
 
 ---
 
@@ -207,13 +222,13 @@ Each declension may also have **synonyms**, which are fully equivalent. Develope
 #### Object Declensions
 
 * **Agent declension**
-  Synonyms: `agent`, `simu_agent`, `simu_real_world_obj`, `simu_real_obj`, `abstraction`.
+  Synonyms: `agent`, `abstraction`, `simu_real_obj`.
 
 * **Worker\_agent declension**
-  Synonyms: `worker_agent`, `simu_comp_as_worker`, `comp_as_worker`.
+  Synonyms: `worker_agent`, `comp_as_worker`.
 
 * **Model declension**
-  Synonyms: `model`, `model_real_world_obj`, `model_real_obj`.
+  No synonyms.
 
 * **Information declension**
   No synonyms.
@@ -494,17 +509,6 @@ This perspective can help beginners understand Clprolf concepts more easily, and
 
 ---
 
-#### Role Equivalences
-
-Clprolf roles align closely with MAS terminology:
-
-* `@Simu_real_world_obj` = `@Simu_real_obj` = `@Abstraction` = `@Simu_agent` = `@Agent_abstraction` = `@Agent`
-* `@Simu_comp_as_worker` = `@Comp_as_worker` = `@Worker_agent`
-
-Because Clprolf often refers to **real-world counterparts**, this perspective makes it natural to interpret systems in MAS terms.
-
----
-
 #### Agents and Workers
 
 In Clprolf, a system is built from two main kinds of components:
@@ -543,7 +547,7 @@ Clprolf was not designed exclusively for MAS users, but it can be **adapted for 
 #### Flexible Role Choices
 
 Object roles in Clprolf remain flexible.
-For example, one may use the `abstraction` keyword for a class like `Thread` if it feels more appropriate, or `simu_real_world_obj` in another case.
+For example, one may use the `abstraction` keyword for a class like `Thread` if it feels more appropriate, or `simu_real_obj` in another case.
 Developers can also use `agent` and `worker_agent` roles without explicitly working in a MAS context.
 This flexibility makes role assignment an interesting and expressive design choice.
 
@@ -586,7 +590,7 @@ In Clprolf, classes are naturally organized into **layers** that align with the 
 The top layer is composed of:
 
 * **`agent`** classes (synonyms: `abstraction`, `simu_real_obj`),
-* **`model`** classes (synonyms: `model_real_obj`).
+* **`model`** classes.
 
 This is where we find the **business logic** of the application, but not exclusively.
 Every agent, representing a real-world abstraction, is considered business-level code.
@@ -596,7 +600,7 @@ Every agent, representing a real-world abstraction, is considered business-level
 #### The Technical Layer
 
 The second layer is composed of **technical classes**, where the computer is seen as a **worker** abstraction.
-These are the **`worker_agent`** classes (synonyms: `simu_comp_as_worker`, `comp_as_worker`).
+These are the **`worker_agent`** classes (synonyms: `comp_as_worker`).
 
 This layer typically corresponds to the **Data Access Layer (DAL)** and **Presentation Layer** in a traditional three-tier architecture.
 
@@ -696,14 +700,14 @@ Instead of the generic `class` keyword, Clprolf introduces several keywords that
 * **`agent`**
   Main role for classes that simulate real-world entities.
   Example: an `Animal` with methods like `eat()` or `run()`.
-  **Synonyms**: `simu_real_world_obj`, `simu_real_obj`, `simu_agent`, `abstraction`.
+  **Synonyms**: `abstraction`, `simu_real_obj`.
   These older names are still available, but **`agent`** is the preferred keyword.
 
-* **`worker_agent`** (or `simu_comp_as_worker`, `comp_as_worker`)
+* **`worker_agent`** (or `comp_as_worker`)
   Declares a class that delegates technical work to the computer, seen as a worker executing algorithms.
   The worker manages its own resources (memory, processor, peripherals) and runs algorithms in compiled form.
 
-* **`model`** (or `model_real_world_obj`, `model_real_obj`)
+* **`model`**
   Declares a class that models real-world data without behavior.
   Example: a `Customer` class with only attributes.
   This is typically used for **entities**.
@@ -718,18 +722,6 @@ Instead of the generic `class` keyword, Clprolf introduces several keywords that
 
 ---
 
-#### Synonyms and Alternative Keywords
-
-Clprolf provides shorter or alternative keywords for convenience:
-
-* `abstraction` instead of `agent` (annotation form: `@Abstraction`).
-* `comp_as_worker` instead of `simu_comp_as_worker` (annotation form: `@Comp_as_worker`).
-* `model` instead of `model_real_world_obj`.
-
-These alternatives make declarations lighter while preserving the same semantics.
-The `nature` keyword and role annotations (e.g., `@Expert_component`) remain valid on such classes.
-
----
 
 #### The `class_for` Modifier
 
@@ -845,7 +837,7 @@ Typical usages include local variables and method arguments.
 
 - We use "nature", instead of "extends": inheritance is seen as an assertion that a class is of the same nature as another.
 A car is of the same nature of a vehicule, on the real world, for example. "nature" doesn't have sense in clprolf, for interfaces.
-	Even the simu_comp_as_workers have a role, about their job. 'nature' must be used only by classes.
+	Even the worker_agents have a role, about their job. 'nature' must be used only by classes.
 	
 - We use "contracts", instead of "implements": we list interfaces that the class respects, there are considered as contracts.
 clprolf prefer not to use "with_compat" for the interfaces list implemented in a clprolf class, because "with_compat" emphasizes  the fact
@@ -887,7 +879,7 @@ Example in the Language:
 
 ```java
 
-// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world, simu_real_world_obj)
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world)
 
 @Agent_like_advice
 public compat_interf_capacity Eatable {
@@ -963,7 +955,7 @@ In the Java Framework:
 
 ```java
 
-// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world, simu_real_world_obj)
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world)
 
 @Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
 public compat_interf_capacity Eatable {
@@ -1148,10 +1140,9 @@ For example, the Java framework could be described as **“Java with agents.”*
 The package **`org.clprolf.simolframework.java`** provides the following annotations:
 
 * **Class roles**:
-  `@Agent`, `@Simu_agent`, `@Simu_real_world_obj`, `@Simu_real_obj`, `@Abstraction`,
-  `@Worker_agent`, `@Simu_comp_as_worker`, `@Comp_as_worker`,
-  `@Model_real_world_obj`, `@Model_real_obj`, `@Model`,
-  `@Information`, `@Indef_obj`.
+  `@Agent`, `@Abstraction`, `@Simu_real_obj`,
+  `@Worker_agent`, `@Comp_as_worker`,
+  `@Model`, `@Information`, `@Indef_obj`.
 
 * **Interface roles**:
   `@Compat_interf_capacity`, `@Compat_interf_version`, `@Compat_interf`.
@@ -1209,7 +1200,7 @@ This keeps the framework practical for developers in Java, C#, or PHP, avoiding 
 
 | **Category**                | **Annotations**                                                                                                                                                                                                                   |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Class Roles**             | `@Agent`, `@Simu_agent`, `@Simu_real_world_obj`, `@Simu_real_obj`, `@Abstraction`, `@Worker_agent`, `@Simu_comp_as_worker`, `@Comp_as_worker`, `@Model_real_world_obj`, `@Model_real_obj`, `@Model`, `@Information`, `@Indef_obj` |
+| **Class Roles**             | `@Agent`, `@Simu_real_obj`, `@Abstraction`, `@Worker_agent`, `@Comp_as_worker`, `@Model`, `@Information`, `@Indef_obj` |
 | **Interface Roles**         | `@Compat_interf_capacity`, `@Compat_interf_version`, `@Compat_interf`, `@Version_inh`, `@Capacity_inh`                                                                                                                            |
 | **Modifiers & Constraints** | `@With_compat`, `@Nature`, `@Contracts`, `@Forced_inh`, `@Forced_int_inh`, `@Forced_pract_code`                                                                                                                                   |
 | **Behavioral Annotations**  | `@Underst`, `@Long_action`, `@Prevent_missing_collision`, `@One_at_a_time`, `@For_every_thread`, `@Turn_monitor`, `@Dependent_activity`                                                                                           |
@@ -2073,14 +2064,10 @@ NormalClassDeclaration:
 
 SimolRole:
 	agent
-	simu_agent
 	worker_agent
-	simu_real_world_obj
 	simu_real_obj
 	abstraction
-	simu_comp_as_worker
 	comp_as_worker
-	model_real_world_obj
 	model
 	information
 	indef_obj
@@ -2145,9 +2132,9 @@ The **Clprolf compiler** is the most direct way to use the language. However, a 
 During compilation, Clprolf keywords and annotations are translated into standard Java syntax as follows:
 
 * **Roles → `class`**
-  `agent`, `simu_agent`, `worker_agent`, `simu_comp_as_worker`, `comp_as_worker`,
-  `simu_real_world_obj`, `simu_real_obj`, `abstraction`,
-  `model_real_world_obj`, `model`, `model_real_obj`, `information`, `indef_obj`
+  `agent`, `worker_agent`, `comp_as_worker`,
+  `abstraction`, `simu_real_obj`,
+  `model`, `information`, `indef_obj`
 
 * **Other keywords → removed**
   `class_for`, `underst`, `with_compat`, `long_action`,
