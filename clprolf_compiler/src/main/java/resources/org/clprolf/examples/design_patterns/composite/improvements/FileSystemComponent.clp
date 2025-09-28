@@ -1,0 +1,8 @@
+package org.clprolf.examples.design_patterns.composite.improvements;
+
+// This is an interface that we need, because we don't need a common implementation, and
+// for loose coupling benefits. Sometimes, a version strangly almost looks like a mother class
+public version_inh abstraction FileSystemComponent {
+    //To call when the user has finished construct the composite object. Quite like an event that we call.
+    void done(); //Not display here, it's not public.
+}

@@ -1,0 +1,20 @@
+package org.clprolf.examples.design_patterns.composite.improvements;
+
+public worker_agent CompositePatternExample {
+    public static void main(String[] args) {
+        Folder root = new Folder("Root");
+        Folder documents = new Folder("Documents");
+        Folder pictures = new Folder("Pictures");
+        File file1 = new File("File1.txt");
+        File file2 = new File("File2.jpg");
+        File file3 = new File("File3.docx");
+
+        documents.add(file1);
+        pictures.add(file2);
+        documents.add(file3);
+        root.add(documents);
+        root.add(pictures);
+
+        root.done(); // We are calling done() only on the final composite object that we wanted to create
+    }
+}

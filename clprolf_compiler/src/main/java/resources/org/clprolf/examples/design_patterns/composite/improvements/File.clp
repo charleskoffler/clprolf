@@ -1,0 +1,19 @@
+package org.clprolf.examples.design_patterns.composite.improvements;
+
+// Leaf class
+abstraction File contracts FileSystemComponent {
+    private String name;
+
+    public File(String name) {
+        this.name = name;
+    }
+
+    public void done(){
+        this.display();
+    }
+
+    //Realization on computer stuff
+    private void display() {
+        System.out.println("File: " + name);
+    }
+}

@@ -1,0 +1,82 @@
+CLPROLF: JAVA 8 ANTLR4 MODIFICATIONS FOR CLPROLF
+
+normalClassDeclaration
+	:	classModifier* 'class_for'? clprolfDeclension Identifier typeParameters? superclass? superinterfaces? classBody
+	;
+	
+clprolfDeclension
+	: 
+	'agent'
+	| 'abstraction'
+	| 'simu_real_obj'
+	| 'worker_agent'
+	| 'comp_as_worker'
+	| 'model'
+	| 'information'
+	| 'indef_obj'
+	;
+
+normalInterfaceDeclaration
+	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
+	;
+	
+clprolfInterfaceDeclension:
+	'compat_interf_version'
+	|
+	'compat_interf_capacity'
+	|
+	'compat_interf'
+	|
+	'version_inh'
+	|
+	'capacity_inh'
+	;
+
+methodModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'abstract'
+	|	'static'
+	|	'final'
+	|	'synchronized'
+	|	'native'
+	|	'strictfp'
+	|	'underst'
+	|	'long_action'
+	|	'prevent_missing_collision'
+	|	'one_at_a_time'
+	|	'dependent_activity'
+	;
+
+fieldModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'static'
+	|	'final'
+	|	'transient'
+	|	'volatile'
+	|	'with_compat'
+	|	'turn_monitor'
+	|	'for_every_thread'
+	;
+
+extendsInterfaces
+	:	clprolfInterfExtends interfaceTypeList
+	;
+	
+clprolfInterfExtends
+	: 'extends'
+	| 'nature'
+	;
+
+superclass
+	:	'nature' classType
+	;
+
+superinterfaces
+	:	'contracts' interfaceTypeList
+	;
