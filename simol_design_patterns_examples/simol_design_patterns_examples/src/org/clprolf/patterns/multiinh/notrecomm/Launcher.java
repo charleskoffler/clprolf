@@ -1,11 +1,11 @@
 package org.clprolf.patterns.multiinh.notrecomm;
 
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
 import org.clprolf.patterns.multiinh.notrecomm.impl.AssistantClass;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Person;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
-import org.simol.simolframework.java.With_compat;
-import org.simol.simolframework.java.Worker_agent;
 
 /**
  * The not recommended functional clprolf design pattern, for multiple inheritance

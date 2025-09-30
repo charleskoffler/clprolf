@@ -1,10 +1,10 @@
 package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Assistant;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
 
 
 @Agent //If class role on the interface Teacher, here we have exactly the same role.

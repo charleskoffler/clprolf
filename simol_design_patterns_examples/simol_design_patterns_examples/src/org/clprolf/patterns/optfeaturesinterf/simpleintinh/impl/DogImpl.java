@@ -1,9 +1,9 @@
 package org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
+import org.clprolf.framework.java.Nature;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Nature;
 
 @Agent
 public class DogImpl extends @Nature AnimalImpl implements @Contracts Dog {

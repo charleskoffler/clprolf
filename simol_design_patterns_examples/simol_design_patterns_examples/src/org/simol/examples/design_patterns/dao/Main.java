@@ -2,14 +2,14 @@ package org.simol.examples.design_patterns.dao;
 
 import java.util.List;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
-import org.simol.simolframework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
+import org.clprolf.framework.java.With_compat;
 
 /* 20231003 An example of DAO design pattern in simol. */
 
 //Just a simple technical Launcher, that's a good job for the computer!
-//public simu_comp_as_worker Main
-@Simu_comp_as_worker
+
+@Worker_agent
 public class Main {
 
 	public static void main(String[] args) {

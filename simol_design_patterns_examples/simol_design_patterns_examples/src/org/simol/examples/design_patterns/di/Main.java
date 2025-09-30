@@ -1,10 +1,10 @@
 package org.simol.examples.design_patterns.di;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
-import org.simol.simolframework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
+import org.clprolf.framework.java.With_compat;
 
-//public simu_comp_as_worker Main
-@Simu_comp_as_worker
+
+@Worker_agent
 public class Main {
 
   public static void main(String[] args) {

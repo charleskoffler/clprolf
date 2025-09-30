@@ -3,7 +3,7 @@ package org.clprolf.patterns.multiinh;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.simol.simolframework.java.Agent;
+import org.clprolf.framework.java.Agent;
 
 @Agent
 public abstract class Person {

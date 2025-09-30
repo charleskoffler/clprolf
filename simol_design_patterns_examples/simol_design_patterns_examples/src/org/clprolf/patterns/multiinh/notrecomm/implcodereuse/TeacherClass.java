@@ -1,9 +1,9 @@
 package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
+import org.clprolf.framework.java.Nature;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Teacher;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Nature;
 
 @Agent //If class role on the interface Teacher, here we have exactly the same role.
 public class TeacherClass extends @Nature PersonClass implements @Contracts Teacher {

@@ -3,7 +3,7 @@ package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.simol.simolframework.java.Agent;
+import org.clprolf.framework.java.Agent;
 
 @Agent //This class do not need to be abstract.
 public class PersonClass {

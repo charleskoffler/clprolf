@@ -1,11 +1,11 @@
 package org.simol.examples.design_patterns.mvc;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
+import org.clprolf.framework.java.Worker_agent;
 
 //Model: WeatherModel stores the weather data
 //A computer job for dealing with databases, and so on.
-//public simu_comp_as_worker WeatherModel
-@Simu_comp_as_worker
+
+@Worker_agent
 class WeatherModel {
  private String location;
  private String forecast;

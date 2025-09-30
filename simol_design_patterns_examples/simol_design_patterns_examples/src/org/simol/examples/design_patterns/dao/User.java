@@ -1,10 +1,10 @@
 package org.simol.examples.design_patterns.dao;
 
-import org.simol.simolframework.java.Model_real_world_obj;
+import org.clprolf.framework.java.Model;
 
 //Here, it's typically the role of a real_world_obj, for the DTO.
-/* public real_world_obj User */
-@Model_real_world_obj
+
+@Model
 public class User {
 	public User(int id, String username, String email) {
 		super();

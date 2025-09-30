@@ -1,13 +1,13 @@
 package org.simol.examples.design_patterns.adapter;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
-import org.simol.simolframework.java.With_compat;
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
 
 /* Example of adapter design pattern in simol. 2023/09/21
  * (c) Sabri Koffler MIT License */
 
 //public simu_comp_as_worker MainAdapterExample
-@Simu_comp_as_worker
+@Worker_agent
 public class MainAdapterExample {
 
 	public static void main(String[] args) {

@@ -1,9 +1,9 @@
 package org.clprolf.patterns.multiinh.notrecomm.interfaces;
 
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Forced_int_inh;
-import org.simol.simolframework.java.Nature;
-import org.simol.simolframework.java.Version_inh;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Forced_int_inh;
+import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.Version_inh;
 
 //The implementation-less world: the interfaces hierarchy is ideal and intuitive
 

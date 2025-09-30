@@ -1,16 +1,15 @@
 package org.simol.examples.design_patterns.decorator;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
-import org.simol.simolframework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
+import org.clprolf.framework.java.With_compat;
 
-//2023/10/02 Example of CoffeShopMaker in simol. I started from the java example in the text file
-//public simu_comp_as_worker CoffeeShopMaker
-@Simu_comp_as_worker
+
+@Worker_agent
 public class CoffeeShopMaker {
 
     public static void main(String[] args) {
         // Order a simple coffee
-        @With_compat Coffee coffee = new SimpleCoffee();
+        @With_compat CoffeeWithAdditional coffee = new SimpleCoffee();
         System.out.println("Cost: $" + coffee.getCost());
         System.out.println("Description: " + coffee.getDescription());
 

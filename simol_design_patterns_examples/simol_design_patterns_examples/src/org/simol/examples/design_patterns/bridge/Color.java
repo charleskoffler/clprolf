@@ -1,11 +1,10 @@
 package org.simol.examples.design_patterns.bridge;
 
-import org.simol.simolframework.java.Compat_interf_version;
+import org.clprolf.framework.java.Simu_real_obj;
+import org.clprolf.framework.java.Version_inh;
 
-// We chose a compat_interf_version because the aim is to loose coupling. We don't want to use a concrete class for
-// the polymorphism, in a future eventuel case of other implementation used.
-// public compat_interf_version Color
-@Compat_interf_version
+@Simu_real_obj
+@Version_inh
 public interface Color {
 	 void applyColor();
 }

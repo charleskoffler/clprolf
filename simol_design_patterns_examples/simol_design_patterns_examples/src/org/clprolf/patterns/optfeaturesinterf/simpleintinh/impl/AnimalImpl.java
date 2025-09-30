@@ -1,8 +1,8 @@
 package org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Animal;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
 
 
 @Agent

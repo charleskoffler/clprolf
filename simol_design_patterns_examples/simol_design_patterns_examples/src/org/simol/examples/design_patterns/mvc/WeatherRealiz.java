@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
+import org.clprolf.framework.java.Worker_agent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -18,8 +18,8 @@ import javax.swing.JLabel;;
 //View: WeatherRealiz displays the weather information
 //WeatherRealiz realizes the simulation of the human expert(for example), the controller, on a computer.
 //Here, it's only display and inputs.
-//public simu_comp_as_worker WeatherRealiz
-@Simu_comp_as_worker
+
+@Worker_agent
 public class WeatherRealiz {
 //Graphical components, in simol, could be viewed as simu_real_world_obj, of real buttons, of a real machine.
  private JFrame frame;

@@ -1,6 +1,6 @@
 package org.clprolf.patterns.multiinh;
 
-import org.simol.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.Worker_agent;
 
 @Worker_agent
 public class Launcher {

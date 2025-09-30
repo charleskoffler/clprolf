@@ -1,8 +1,8 @@
 package org.clprolf.patterns.multiinh.notrecomm.impl;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Person;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
 
 /*  The PersonClass now contain only true members of the pure PersonClass.
 It is an implementation of the compat_interf_version Person interface. */

@@ -1,9 +1,9 @@
 package org.clprolf.patterns.multiinh.notrecomm.implcodereuse;
 
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
+import org.clprolf.framework.java.Nature;
 import org.clprolf.patterns.multiinh.notrecomm.interfaces.Student;
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Contracts;
-import org.simol.simolframework.java.Nature;
 
 @Agent
 public class StudentClass extends @Nature PersonClass implements @Contracts Student {

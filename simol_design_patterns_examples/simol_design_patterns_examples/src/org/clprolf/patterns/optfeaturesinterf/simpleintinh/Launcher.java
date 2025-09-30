@@ -1,10 +1,9 @@
 package org.clprolf.patterns.optfeaturesinterf.simpleintinh;
 
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl.DogImpl;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
-
-import org.simol.simolframework.java.With_compat;
-import org.simol.simolframework.java.Worker_agent;
 
 /**
  * The free impl dog: 

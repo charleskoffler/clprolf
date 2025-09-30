@@ -1,7 +1,7 @@
 package org.clprolf.patterns.multiinh;
 
-import org.simol.simolframework.java.Agent;
-import org.simol.simolframework.java.Nature;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Nature;
 
 @Agent
 public class Engineer extends @Nature Person {
