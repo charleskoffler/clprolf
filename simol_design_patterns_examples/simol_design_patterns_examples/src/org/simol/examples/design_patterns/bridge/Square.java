@@ -1,12 +1,11 @@
 package org.simol.examples.design_patterns.bridge;
 
+import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Nature;
-import org.clprolf.framework.java.Simu_real_obj;
 import org.clprolf.framework.java.With_compat;
 
-//Concrete implementation for Square
-// public simu_real_obj Square nature Shape
-@Simu_real_obj
+
+@Abstraction
 public class Square extends @Nature Shape {
 	private int sideLength;
 

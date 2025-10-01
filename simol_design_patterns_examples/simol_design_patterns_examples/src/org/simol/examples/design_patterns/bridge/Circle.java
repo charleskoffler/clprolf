@@ -1,12 +1,11 @@
 package org.simol.examples.design_patterns.bridge;
 
+import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Nature;
-import org.clprolf.framework.java.Simu_real_obj;
 import org.clprolf.framework.java.With_compat;
 
-//Concrete implementation for Circle
-/* public simu_real_obj Circle nature Shape */
-@Simu_real_obj
+
+@Abstraction
 public class Circle extends @Nature Shape {
 	private int radius;
 
