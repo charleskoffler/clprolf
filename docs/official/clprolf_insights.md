@@ -1774,12 +1774,11 @@ how can we fit our programming problems into such OOP objects?
 
 Rather than starting from abstract philosophy, Clprolf focuses on the applications we need to build, and provides a structured way to align those problems with the object model.
 
+---
 
-### Origin of the Language: Scientific and Practical Inspiration
+***Origin of the Language: Scientific and Practical Inspiration**
 
-Clprolf was inspired by **scientific domains** such as physics, chemistry, and weather forecasting — all of which rely heavily on simulation and modeling.
-**Video games** also played a role, as they are practical examples of real-time simulations.
-At the same time, **management IT** was always present in the background, grounding the language in everyday software needs.
+Clprolf was inspired by **scientific domains** such as physics, chemistry, and weather forecasting — all of which rely heavily on simulation and modeling. **Video games** also played a role, as they are practical examples of real-time simulations. At the same time, **management IT** was always present in the background, grounding the language in everyday software needs.
 
 From the beginning, Clprolf aimed to:
 
@@ -1789,8 +1788,10 @@ From the beginning, Clprolf aimed to:
 
 At its origin, the motivation was simple: to create an **easier and better way to practice object-oriented programming**, while keeping it interesting.
 This vision was always balanced with a strong determination to **integrate established paradigms and principles**, rather than reinvent what already exists.
+👉 **Clprolf can thus be seen as a programming paradigm in itself, one that integrates methodology directly into the language while staying fully compatible with object-oriented programming.**
 
 ---
+
 
 ### Why Java as the Underlying Language for Clprolf?
 
@@ -2165,7 +2166,7 @@ clprolfDeclension
 	| 'information'
 	| 'indef_obj'
 	;
-
+	
 normalInterfaceDeclaration
 	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
 	;
