@@ -1,14 +1,11 @@
-//!!! This is generated files with simol compiler, and formatted with Eclipse source->format feature
 package org.simol.examples.design_patterns.composite;
 
-class File implements FileComponent {
-	private String name;
+import org.clprolf.framework.java.Abstraction;
+import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.Version_inh;
 
-	public File(String name) {
-		this.name = name;
-	}
+@Abstraction
+@Version_inh
+public interface File extends @Nature FileSystemComponent {
 
-	public void display() {
-		System.out.println("File: " + name);
-	}
 }

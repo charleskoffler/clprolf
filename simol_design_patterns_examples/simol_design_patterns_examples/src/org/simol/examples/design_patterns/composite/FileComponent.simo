@@ -1,7 +1,0 @@
-package org.simol.examples.design_patterns.composite;
-
-// This is an interface that we need, because we don't need a common implementation, and
-// for loose coupling benefits. Sometimes, a version strangly almost looks like a mother class
-public compat_interf_version FileComponent {
-    void display();
-}
