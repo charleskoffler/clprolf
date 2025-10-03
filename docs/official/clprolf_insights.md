@@ -1123,6 +1123,24 @@ public interface Launcher {
 }
 
 ```
+---
+
+#### Special Note: Enforcing a Capacity Across Declensions
+
+Capacities in Clprolf are always **normal capacities**, with a clear advice:
+they are either **agent-like** or **worker-like**, never both.
+
+However, an **interface from the other declension** may still contract such a capacity when required.
+In this case:
+
+* The capacity keeps its original advice (e.g., worker-like for `Runnable`).
+* The **interface of the other declension** can extend it by using **`@Forc_int_inh`**.
+* This makes explicit that the interface (and the classes behind it) are temporarily taking on a role outside their primary declension.
+
+**Example:** `Runnable` is a **worker capacity**.
+An `agent` interface can still extend it, but must declare it with `@Forc_int_inh`, showing that classes implementing this interface are temporarily seen as workers for execution.
+
+---
 
 ### The Essence of the Object — Another Side of Object-Oriented Programming
 
