@@ -107,4 +107,4 @@ agent OrderService {
 
 [clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
 
-[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/simol_games_examples)
+[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
