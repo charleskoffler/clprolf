@@ -4,29 +4,28 @@ import java.util.Random;
 
 import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Version_inh;
-import org.clprolf.snake_game.impl.FoodExpertImpl;
-import org.clprolf.snake_game.impl.SnakeImpl;
-import org.clprolf.snake_game.workers.impl.SnakeGameSceneRealizImpl;
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
 
 @Abstraction
 @Version_inh
 public interface SnakeGameScene {
 	
-	public SnakeGameSceneRealizImpl getRealiz();
+	public SnakeGameSceneRealiz getRealiz();
 
-	public SnakeImpl getSnake();
+	public Snake getSnake();
 
-	public void setSnake(SnakeImpl snake);
+	public void setSnake(@With_compat Snake snake);
 
-	public SnakeImpl getSnake_two();
+	public Snake getSnake_two();
 
-	public void setSnake_two(SnakeImpl snake_two);
+	public void setSnake_two(@With_compat Snake snake_two);
 
-	public FoodExpertImpl getFoodExpert();
+	public FoodExpert getFoodExpert();
 	
 	public Random getRandomExpert();
 
-	public void setFoodExpert(FoodExpertImpl foodExpert);
+	public void setFoodExpert(@With_compat FoodExpert foodExpert);
 	//
 	public boolean checkIfInSceneFrame(int x, int y);
 	

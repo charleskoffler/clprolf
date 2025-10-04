@@ -1,7 +1,9 @@
 package org.clprolf.snake_game.workers.impl;
 
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.framework.java.Worker_agent;
 import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
+import org.clprolf.snake_game.interfaces.SnakeGameScene;
 
 /**
  * It's a simple 2D snake game, with two players and two snakes.
@@ -24,6 +26,6 @@ import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
 public class SnakeGameLauncher {
 	public static void main(String[] args) {
 		//Just create a scene, and the game will start.
-			SnakeGameSceneImpl scene = new SnakeGameSceneImpl();
+		@With_compat SnakeGameScene scene = new SnakeGameSceneImpl();
 	}
 }

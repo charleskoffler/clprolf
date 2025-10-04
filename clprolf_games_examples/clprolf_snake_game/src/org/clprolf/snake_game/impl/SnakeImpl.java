@@ -9,7 +9,9 @@ import org.clprolf.framework.java.Agent;
 import org.clprolf.framework.java.Contracts;
 import org.clprolf.framework.java.Model;
 import org.clprolf.framework.java.Underst;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.interfaces.Snake;
+import org.clprolf.snake_game.interfaces.SnakeGameScene;
 import org.clprolf.snake_game.model.Food;
 
 
@@ -25,7 +27,7 @@ public class SnakeImpl implements @Contracts Snake {
 		return speed;
 	}
 
-	protected SnakeGameSceneImpl scene;
+	protected @With_compat SnakeGameScene scene;
 	protected SlidingType lastSlidingType;
 	
 	public void setLastSlidingType(SlidingType lastSlidingType) {
@@ -73,7 +75,7 @@ public class SnakeImpl implements @Contracts Snake {
 	
 	//
 	
-	public SnakeImpl(SnakeGameSceneImpl scene, int startY, String color) {
+	public SnakeImpl(@With_compat SnakeGameScene scene, int startY, String color) {
 		this.scene = scene;
 		
 		this.speed = 10;
@@ -109,8 +111,8 @@ public class SnakeImpl implements @Contracts Snake {
 		}
 	}
 	
-	private SnakeImpl findOtherSnake() {
-		SnakeImpl otherSnake=null;
+	private Snake findOtherSnake() {
+		@With_compat Snake otherSnake=null;
 		
 		if (this==this.scene.getSnake()) {
 			otherSnake = this.scene.getSnake_two();
@@ -162,7 +164,7 @@ public class SnakeImpl implements @Contracts Snake {
 	@Prevent_missing_collision
 	protected void doControlsForNewHead(SnakeLink newHeadLink) {
 		boolean blnBitesOther=false, blnBiteOurselv=false, blnWall=false;
-		SnakeImpl otherSnake=null;
+		@With_compat Snake otherSnake=null;
 		SnakeLink previousLinkAtNewHead;
 		
 		previousLinkAtNewHead = getLinkAt(newHeadLink.x, newHeadLink.y, this);
@@ -264,12 +266,12 @@ public class SnakeImpl implements @Contracts Snake {
 		this.links.add(growingLink);
 	}
 	
-	public SnakeLink getLinkAt(int x, int y, SnakeImpl snake) {
+	public SnakeLink getLinkAt(int x, int y, @With_compat Snake snake) {
 		if (!this.scene.checkIfInSceneFrame(x, y)) return null;
 		
-		for (int i=0; i<snake.links.size();i++) { //We're ckecking even the head, but it is in goal of the food placing problem. 
-			if (snake.links.get(i).x == x && snake.links.get(i).y == y){
-				return snake.links.get(i);
+		for (int i=0; i<snake.getLinks().size();i++) { //We're ckecking even the head, but it is in goal of the food placing problem. 
+			if (snake.getLinks().get(i).x == x && snake.getLinks().get(i).y == y){
+				return snake.getLinks().get(i);
 			}
 		}
 		return null;

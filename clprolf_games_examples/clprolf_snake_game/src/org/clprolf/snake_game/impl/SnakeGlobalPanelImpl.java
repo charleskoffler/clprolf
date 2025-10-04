@@ -7,8 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.impl.SnakeImpl.SnakeLink;
+import org.clprolf.snake_game.interfaces.Snake;
 import org.clprolf.snake_game.interfaces.SnakeGlobalPanel;
+import org.clprolf.snake_game.interfaces.SnakeWindow;
 import org.clprolf.snake_game.model.Food;
 import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Contracts;
@@ -18,7 +21,7 @@ import org.clprolf.framework.java.Contracts;
 @Abstraction
 public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts SnakeGlobalPanel {
 
-	private SnakeWindowImpl gameWindow;
+	private @With_compat SnakeWindow gameWindow;
 	private JLabel lblVictory;
 	
 	public JLabel getLblVictory() {
@@ -27,7 +30,7 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 
 	//
 
-	public SnakeGlobalPanelImpl(SnakeWindowImpl fenetreJeu) {
+	public SnakeGlobalPanelImpl(@With_compat  SnakeWindow fenetreJeu) {
 		this.gameWindow = fenetreJeu;
 		this.initializeComponents();
 	}
@@ -66,7 +69,7 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 	}
 	
 	private void drawSnake(Graphics g, int snakeNumber) {
-		SnakeImpl snake;
+		@With_compat Snake snake;
 		
 		if (snakeNumber==0) {
 			snake = this.gameWindow.getReal().getScene().getSnake();

@@ -1,12 +1,11 @@
 package org.clprolf.snake_game.interfaces;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import org.clprolf.framework.java.Agent;
 import org.clprolf.framework.java.Long_action;
 import org.clprolf.framework.java.Version_inh;
-import org.clprolf.snake_game.impl.SnakeImpl;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.impl.SnakeImpl.SlidingType;
 import org.clprolf.snake_game.impl.SnakeImpl.SnakeLink;
 
@@ -27,7 +26,7 @@ public interface Snake {
 	@Long_action
 	public void makeSliding();
 	
-	public SnakeLink getLinkAt(int x, int y, SnakeImpl snake);
+	public SnakeLink getLinkAt(int x, int y, @With_compat Snake snake);
 	
 	public void increaseSpeed();
 

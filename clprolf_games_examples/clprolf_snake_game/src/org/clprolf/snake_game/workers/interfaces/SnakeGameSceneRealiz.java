@@ -1,26 +1,25 @@
 package org.clprolf.snake_game.workers.interfaces;
 
-import java.awt.EventQueue;
-
 import org.clprolf.framework.java.Forced_int_inh;
 import org.clprolf.framework.java.Nature;
 import org.clprolf.framework.java.Version_inh;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.framework.java.Worker_agent;
-import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
-import org.clprolf.snake_game.impl.SnakeImpl;
-import org.clprolf.snake_game.impl.SnakeWindowImpl;
+import org.clprolf.snake_game.interfaces.Snake;
+import org.clprolf.snake_game.interfaces.SnakeGameScene;
+import org.clprolf.snake_game.interfaces.SnakeWindow;
 
 @Forced_int_inh // implements a Java interface
 @Worker_agent
 @Version_inh
 public interface SnakeGameSceneRealiz extends @Nature Runnable {
-	public SnakeGameSceneImpl getScene();
+	public @With_compat SnakeGameScene getScene();
 	
-	public SnakeWindowImpl getWindow();
+	public SnakeWindow getWindow();
 
 	public void run();
 
-	public void reactToGameOver(SnakeImpl concernedSnake);
+	public void reactToGameOver(@With_compat Snake concernedSnake);
 	
 	public void doChangeSpeedGearEffect();
 	

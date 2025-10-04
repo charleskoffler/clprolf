@@ -6,9 +6,12 @@ import javax.swing.JFrame;
 import org.clprolf.framework.java.Contracts;
 import org.clprolf.framework.java.Forced_inh;
 import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.impl.SnakeImpl.SlidingType;
+import org.clprolf.snake_game.interfaces.Snake;
+import org.clprolf.snake_game.interfaces.SnakeGlobalPanel;
 import org.clprolf.snake_game.interfaces.SnakeWindow;
-import org.clprolf.snake_game.workers.impl.SnakeGameSceneRealizImpl;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
 import org.clprolf.framework.java.Abstraction;
 
 @Forced_inh // extends a Java class
@@ -19,19 +22,19 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 	private long paintCounter;
 	
 	// Only a getter.
-	private SnakeGameSceneRealizImpl real;
+	private @With_compat SnakeGameSceneRealiz real;
 	
-	public SnakeGameSceneRealizImpl getReal() {
+	public SnakeGameSceneRealiz getReal() {
 		return real;
 	}
 
-	private SnakeGlobalPanelImpl globalPanel;
+	private @With_compat SnakeGlobalPanel globalPanel;
 		
-	public SnakeGlobalPanelImpl getGlobalPanel() {
+	public SnakeGlobalPanel getGlobalPanel() {
 		return globalPanel;
 	}
 
-	public void setGlobalPanel(SnakeGlobalPanelImpl globalPanel) {
+	public void setGlobalPanel(@With_compat SnakeGlobalPanel globalPanel) {
 		this.globalPanel = globalPanel;
 	}
 
@@ -44,7 +47,7 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 		this.blnContinue = blnContinue;
 	}
 
-	public SnakeWindowImpl(SnakeGameSceneRealizImpl real) {
+	public SnakeWindowImpl(@With_compat SnakeGameSceneRealiz real) {
 		this.real = real;
 		this.paintCounter = 0;
 		
@@ -69,7 +72,7 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 	private void createComponents() {
 		globalPanel = new SnakeGlobalPanelImpl(this);
 		
-		this.setContentPane(globalPanel);
+		this.setContentPane((SnakeGlobalPanelImpl)globalPanel);
 	}
 	
 	/* Just count cycles, and send repaint to refresh of the scene. All the rest is done in
@@ -79,7 +82,7 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 		// An infinite loop, refreshing the displaying panel each 20 milliseconds.
 		while (blnContinue) {
 			this.paintCounter++;
-			this.globalPanel.repaint();
+			((SnakeGlobalPanelImpl)(this.globalPanel)).repaint();
 			
 			try {
 				Thread.sleep(20); /* 10ms = 100 times per secondes. */
@@ -97,7 +100,7 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 	/* We're just calling the correct method of the simu_real_obj. */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		SnakeImpl concernedSnake = null;
+		@With_compat Snake concernedSnake = null;
 		
 		/* MOVES MANAGEMENT */
 		switch(e.getKeyCode()) {

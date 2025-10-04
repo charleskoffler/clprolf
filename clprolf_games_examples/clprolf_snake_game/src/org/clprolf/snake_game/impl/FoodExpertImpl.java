@@ -7,21 +7,23 @@ import java.util.Random;
 import org.clprolf.framework.java.Agent;
 import org.clprolf.framework.java.Contracts;
 import org.clprolf.framework.java.Gender;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.model.Food;
 import org.clprolf.snake_game.model.Food.FoodType;
 import org.clprolf.snake_game.interfaces.FoodExpert;
+import org.clprolf.snake_game.interfaces.SnakeGameScene;
 
 @Agent(Gender.EXPERT_COMPONENT)
 public class FoodExpertImpl implements @Contracts FoodExpert {
 	public static int FOOD_COUNT = 40;
 
-	private SnakeGameSceneImpl scene;
+	private @With_compat SnakeGameScene scene;
 	
-	public SnakeGameSceneImpl getScene() {
+	public @With_compat SnakeGameScene getScene() {
 		return scene;
 	}
 
-	public void setScene(SnakeGameSceneImpl scene) {
+	public void setScene(@With_compat SnakeGameScene scene) {
 		this.scene = scene;
 	}
 
@@ -37,7 +39,7 @@ public class FoodExpertImpl implements @Contracts FoodExpert {
 
 	//
 	
-	public FoodExpertImpl(SnakeGameSceneImpl scene) {
+	public FoodExpertImpl(@With_compat SnakeGameScene scene) {
 		this.scene = scene;
 		this.foodList = new ArrayList<Food>();
 	}

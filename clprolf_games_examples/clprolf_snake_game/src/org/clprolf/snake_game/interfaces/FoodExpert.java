@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 import org.clprolf.framework.java.Agent;
 import org.clprolf.framework.java.Version_inh;
-import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.model.Food;
 
 
 @Agent
 @Version_inh
 public interface FoodExpert {
-	public SnakeGameSceneImpl getScene();
+	public @With_compat SnakeGameScene getScene();
 
-	public void setScene(SnakeGameSceneImpl scene);
+	public void setScene(@With_compat SnakeGameScene scene);
 
 	public ArrayList<Food> getFoodList();
 	

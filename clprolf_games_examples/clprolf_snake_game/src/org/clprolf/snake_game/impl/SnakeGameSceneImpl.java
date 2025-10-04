@@ -5,39 +5,43 @@ import java.util.Random;
 import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Contracts;
 import org.clprolf.framework.java.Model;
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.snake_game.interfaces.FoodExpert;
+import org.clprolf.snake_game.interfaces.Snake;
 import org.clprolf.snake_game.interfaces.SnakeGameScene;
 import org.clprolf.snake_game.workers.impl.SnakeGameSceneRealizImpl;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
 
 
 @Abstraction
 public class SnakeGameSceneImpl implements @Contracts SnakeGameScene {
 	
-	private SnakeGameSceneRealizImpl realiz;
+	private @With_compat SnakeGameSceneRealiz realiz;
 	//Only a getter.
-	public SnakeGameSceneRealizImpl getRealiz() {
+	public SnakeGameSceneRealiz getRealiz() {
 		return realiz;
 	}
 
-	private SnakeImpl snake;
-	public SnakeImpl getSnake() {
+	private @With_compat Snake snake;
+	public Snake getSnake() {
 		return snake;
 	}
 
-	public void setSnake(SnakeImpl snake) {
+	public void setSnake(@With_compat Snake snake) {
 		this.snake = snake;
 	}
 
-	private SnakeImpl snake_two;
-	public SnakeImpl getSnake_two() {
+	private @With_compat Snake snake_two;
+	public @With_compat Snake getSnake_two() {
 		return snake_two;
 	}
 
-	public void setSnake_two(SnakeImpl snake_two) {
+	public void setSnake_two(@With_compat Snake snake_two) {
 		this.snake_two = snake_two;
 	}
 
-	private FoodExpertImpl foodExpert;
-	public FoodExpertImpl getFoodExpert() {
+	private @With_compat FoodExpert foodExpert;
+	public FoodExpert getFoodExpert() {
 		return foodExpert;
 	}
 	private Random randomExpert;
@@ -46,7 +50,7 @@ public class SnakeGameSceneImpl implements @Contracts SnakeGameScene {
 		return randomExpert;
 	}
 
-	public void setFoodExpert(FoodExpertImpl foodExpert) {
+	public void setFoodExpert(@With_compat FoodExpert foodExpert) {
 		this.foodExpert = foodExpert;
 	}
 	//

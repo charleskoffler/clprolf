@@ -3,31 +3,35 @@ package org.clprolf.snake_game.workers.impl;
 import java.awt.EventQueue;
 
 import org.clprolf.framework.java.Contracts;
+import org.clprolf.framework.java.With_compat;
 import org.clprolf.framework.java.Worker_agent;
 import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
 import org.clprolf.snake_game.impl.SnakeImpl;
 import org.clprolf.snake_game.impl.SnakeWindowImpl;
+import org.clprolf.snake_game.interfaces.Snake;
+import org.clprolf.snake_game.interfaces.SnakeGameScene;
+import org.clprolf.snake_game.interfaces.SnakeWindow;
 import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
 
 
 @Worker_agent
 public class SnakeGameSceneRealizImpl implements @Contracts SnakeGameSceneRealiz {
 
-	private SnakeGameSceneImpl scene;
+	private @With_compat SnakeGameScene scene;
 
-	public SnakeGameSceneImpl getScene() {
+	public @With_compat SnakeGameScene getScene() {
 		return scene;
 	}
 	
-	private SnakeWindowImpl window;
+	private @With_compat SnakeWindow window;
 	//Just a getter
-	public SnakeWindowImpl getWindow() {
+	public @With_compat SnakeWindow getWindow() {
 		return window;
 	}
 
 	//
 
-	public SnakeGameSceneRealizImpl(SnakeGameSceneImpl lifeScene) {
+	public SnakeGameSceneRealizImpl(@With_compat SnakeGameScene lifeScene) {
 		this.scene = lifeScene;
 		EventQueue.invokeLater(this);
 	}
@@ -40,7 +44,7 @@ public class SnakeGameSceneRealizImpl implements @Contracts SnakeGameSceneRealiz
 			window = new SnakeWindowImpl(this);
 	}
 
-	public void reactToGameOver(SnakeImpl concernedSnake) {
+	public void reactToGameOver(@With_compat Snake concernedSnake) {
 		this.window.setBlnContinue(false);
 		String msg = new String("The " + concernedSnake.getColor() + " snake is loosing!");
 		java.awt.Toolkit.getDefaultToolkit().beep();
