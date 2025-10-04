@@ -11,11 +11,11 @@ import org.clprolf.snake_game.impl.SnakeWindowImpl;
 import org.clprolf.snake_game.interfaces.Snake;
 import org.clprolf.snake_game.interfaces.SnakeGameScene;
 import org.clprolf.snake_game.interfaces.SnakeWindow;
-import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
 
 @Worker_agent
-public class SnakeGameSceneRealizImpl implements @Contracts SnakeGameSceneRealiz {
+public class SnakeGameSceneRendererImpl implements @Contracts SnakeGameSceneRenderer {
 
 	private @With_compat SnakeGameScene scene;
 
@@ -31,7 +31,7 @@ public class SnakeGameSceneRealizImpl implements @Contracts SnakeGameSceneRealiz
 
 	//
 
-	public SnakeGameSceneRealizImpl(@With_compat SnakeGameScene lifeScene) {
+	public SnakeGameSceneRendererImpl(@With_compat SnakeGameScene lifeScene) {
 		this.scene = lifeScene;
 		EventQueue.invokeLater(this);
 	}
@@ -48,7 +48,7 @@ public class SnakeGameSceneRealizImpl implements @Contracts SnakeGameSceneRealiz
 		this.window.setBlnContinue(false);
 		String msg = new String("The " + concernedSnake.getColor() + " snake is loosing!");
 		java.awt.Toolkit.getDefaultToolkit().beep();
-		this.getWindow().getGlobalPanel().getLblVictory().setText(msg);
+		this.getWindow().getGamePanel().getLblVictory().setText(msg);
 	}
 	
 	public void doChangeSpeedGearEffect() {

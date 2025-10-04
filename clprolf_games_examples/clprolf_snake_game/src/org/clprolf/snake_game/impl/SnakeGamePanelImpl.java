@@ -10,7 +10,7 @@ import org.clprolf.framework.java.Nature;
 import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.impl.SnakeImpl.SnakeLink;
 import org.clprolf.snake_game.interfaces.Snake;
-import org.clprolf.snake_game.interfaces.SnakeGlobalPanel;
+import org.clprolf.snake_game.interfaces.SnakeGamePanel;
 import org.clprolf.snake_game.interfaces.SnakeWindow;
 import org.clprolf.snake_game.model.Food;
 import org.clprolf.framework.java.Abstraction;
@@ -19,7 +19,7 @@ import org.clprolf.framework.java.Contracts;
 /* The real drawing container. */
 
 @Abstraction
-public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts SnakeGlobalPanel {
+public class SnakeGamePanelImpl extends @Nature JPanel implements @Contracts SnakeGamePanel {
 
 	private @With_compat SnakeWindow gameWindow;
 	private JLabel lblVictory;
@@ -30,7 +30,7 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 
 	//
 
-	public SnakeGlobalPanelImpl(@With_compat  SnakeWindow fenetreJeu) {
+	public SnakeGamePanelImpl(@With_compat  SnakeWindow fenetreJeu) {
 		this.gameWindow = fenetreJeu;
 		this.initializeComponents();
 	}
@@ -59,8 +59,8 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 		//
 		//End the started long actions of the concerned class, for example continueFalling().
 		//Here the snakes continue a step of a whole body sliding, and the long action never ends.
-		this.gameWindow.getReal().getScene().getSnake().endLongActions();
-		this.gameWindow.getReal().getScene().getSnake_two().endLongActions();
+		this.gameWindow.getRenderer().getScene().getSnake().endLongActions();
+		this.gameWindow.getRenderer().getScene().getSnake_two().endLongActions();
 	}
 
 	private void drawWall(Graphics g) {
@@ -72,10 +72,10 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 		@With_compat Snake snake;
 		
 		if (snakeNumber==0) {
-			snake = this.gameWindow.getReal().getScene().getSnake();
+			snake = this.gameWindow.getRenderer().getScene().getSnake();
 		}
 		else {
-			snake = this.gameWindow.getReal().getScene().getSnake_two();
+			snake = this.gameWindow.getRenderer().getScene().getSnake_two();
 		}
 		
 		for (int linkNumber = 0;linkNumber< snake.getLinks().size();linkNumber++) {
@@ -125,9 +125,9 @@ public class SnakeGlobalPanelImpl extends @Nature JPanel implements @Contracts S
 	}
 	
 	private void displayFood(Graphics g) {
-		for (int indexNourri = 0;indexNourri< this.gameWindow.getReal().getScene().getFoodExpert().getFoodList().size();indexNourri++) {
+		for (int indexNourri = 0;indexNourri< this.gameWindow.getRenderer().getScene().getFoodExpert().getFoodList().size();indexNourri++) {
 			Food food;
-			food = this.gameWindow.getReal().getScene().getFoodExpert().getFoodList().get(indexNourri);
+			food = this.gameWindow.getRenderer().getScene().getFoodExpert().getFoodList().get(indexNourri);
 			switch(food.getType()) {
 			case ORANGE:
 				g.setColor(Color.ORANGE);

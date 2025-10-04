@@ -5,13 +5,13 @@ import java.util.Random;
 import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Version_inh;
 import org.clprolf.framework.java.With_compat;
-import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
 @Abstraction
 @Version_inh
 public interface SnakeGameScene {
 	
-	public SnakeGameSceneRealiz getRealiz();
+	public SnakeGameSceneRenderer getRenderer();
 
 	public Snake getSnake();
 

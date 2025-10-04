@@ -9,7 +9,7 @@ import org.clprolf.framework.java.Version_inh;
 
 @Abstraction
 @Version_inh
-public interface SnakeGlobalPanel {
+public interface SnakeGamePanel {
 	
 	public JLabel getLblVictory();
 

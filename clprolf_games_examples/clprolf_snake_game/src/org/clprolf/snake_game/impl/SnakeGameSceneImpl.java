@@ -9,17 +9,17 @@ import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.interfaces.FoodExpert;
 import org.clprolf.snake_game.interfaces.Snake;
 import org.clprolf.snake_game.interfaces.SnakeGameScene;
-import org.clprolf.snake_game.workers.impl.SnakeGameSceneRealizImpl;
-import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
+import org.clprolf.snake_game.workers.impl.SnakeGameSceneRendererImpl;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
 
 @Abstraction
 public class SnakeGameSceneImpl implements @Contracts SnakeGameScene {
 	
-	private @With_compat SnakeGameSceneRealiz realiz;
+	private @With_compat SnakeGameSceneRenderer renderer;
 	//Only a getter.
-	public SnakeGameSceneRealiz getRealiz() {
-		return realiz;
+	public SnakeGameSceneRenderer getRenderer() {
+		return renderer;
 	}
 
 	private @With_compat Snake snake;
@@ -82,7 +82,7 @@ public class SnakeGameSceneImpl implements @Contracts SnakeGameScene {
 		randomExpert = new Random();
 		
 		//Begin the display. Can be considered as a view.
-		this.realiz = new SnakeGameSceneRealizImpl(this);
+		this.renderer = new SnakeGameSceneRendererImpl(this);
 	}
 	
 	public boolean checkIfInSceneFrame(int x, int y) {

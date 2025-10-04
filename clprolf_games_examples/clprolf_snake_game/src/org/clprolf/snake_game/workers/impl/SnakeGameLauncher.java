@@ -6,17 +6,20 @@ import org.clprolf.snake_game.impl.SnakeGameSceneImpl;
 import org.clprolf.snake_game.interfaces.SnakeGameScene;
 
 /**
- * It's a simple 2D snake game, with two players and two snakes.
- * The display is with Swing, in a JFrame.
- * 
- * There are 4 speed gears.
- * Keys: Snake one: arrows, and comma/space for speed gear changes.
- * Snake two: z/w up/down, q/s left/right, a/x for speed gear changes.
- * 
- * possible evolves:
- * Count score, and display it, but the winner is the one who don't loose, except if all food is eaten.
- * 
- * Version: 20251003
+ * A simple 2D Snake game with two players and two snakes.
+ * The rendering is done with Swing, inside a JFrame.
+ *
+ * There are four speed gears.
+ *
+ * Controls:
+ *  - Snake 1: Arrow keys to move, and comma/space to change speed.
+ *  - Snake 2: Z/W for up/down, Q/S for left/right, and A/X to change speed.
+ *
+ * Possible improvements:
+ *  - Add a scoring system and display it on the screen.
+ *  - The winner is the one who doesn’t lose — unless all the food is eaten.
+ *
+ * Version: 20251004
  * 
  * @author Charles Koffler
  *

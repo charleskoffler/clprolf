@@ -12,7 +12,7 @@ import org.clprolf.snake_game.interfaces.SnakeWindow;
 @Forced_int_inh // implements a Java interface
 @Worker_agent
 @Version_inh
-public interface SnakeGameSceneRealiz extends @Nature Runnable {
+public interface SnakeGameSceneRenderer extends @Nature Runnable {
 	public @With_compat SnakeGameScene getScene();
 	
 	public SnakeWindow getWindow();

@@ -9,18 +9,18 @@ import org.clprolf.framework.java.Nature;
 import org.clprolf.framework.java.Version_inh;
 import org.clprolf.framework.java.With_compat;
 
-import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
 @Forced_int_inh //extends Java interfaces, and Runnable + KeyListener should be capacity interfaces with worker_agent_like advice!
 @Abstraction
 @Version_inh
 public interface SnakeWindow extends @Nature Runnable, KeyListener{
 	
-		public SnakeGameSceneRealiz getReal();
+		public SnakeGameSceneRenderer getRenderer();
 
-		public SnakeGlobalPanel getGlobalPanel();
+		public SnakeGamePanel getGamePanel();
 
-		public void setGlobalPanel(@With_compat SnakeGlobalPanel globalPanel);
+		public void setGamePanel(@With_compat SnakeGamePanel globalPanel);
 		public void setBlnContinue(boolean blnContinue);
 		
 		public boolean timePassed(int paintCycles);

@@ -9,9 +9,9 @@ import org.clprolf.framework.java.Nature;
 import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.impl.SnakeImpl.SlidingType;
 import org.clprolf.snake_game.interfaces.Snake;
-import org.clprolf.snake_game.interfaces.SnakeGlobalPanel;
+import org.clprolf.snake_game.interfaces.SnakeGamePanel;
 import org.clprolf.snake_game.interfaces.SnakeWindow;
-import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRealiz;
+import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 import org.clprolf.framework.java.Abstraction;
 
 @Forced_inh // extends a Java class
@@ -22,20 +22,20 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 	private long paintCounter;
 	
 	// Only a getter.
-	private @With_compat SnakeGameSceneRealiz real;
+	private @With_compat SnakeGameSceneRenderer renderer;
 	
-	public SnakeGameSceneRealiz getReal() {
-		return real;
+	public SnakeGameSceneRenderer getRenderer() {
+		return renderer;
 	}
 
-	private @With_compat SnakeGlobalPanel globalPanel;
+	private @With_compat SnakeGamePanel gamePanel;
 		
-	public SnakeGlobalPanel getGlobalPanel() {
-		return globalPanel;
+	public SnakeGamePanel getGamePanel() {
+		return gamePanel;
 	}
 
-	public void setGlobalPanel(@With_compat SnakeGlobalPanel globalPanel) {
-		this.globalPanel = globalPanel;
+	public void setGamePanel(@With_compat SnakeGamePanel globalPanel) {
+		this.gamePanel = globalPanel;
 	}
 
 	
@@ -47,8 +47,8 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 		this.blnContinue = blnContinue;
 	}
 
-	public SnakeWindowImpl(@With_compat SnakeGameSceneRealiz real) {
-		this.real = real;
+	public SnakeWindowImpl(@With_compat SnakeGameSceneRenderer real) {
+		this.renderer = real;
 		this.paintCounter = 0;
 		
 		this.createComponents();
@@ -70,9 +70,9 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 	}
 	
 	private void createComponents() {
-		globalPanel = new SnakeGlobalPanelImpl(this);
+		gamePanel = new SnakeGamePanelImpl(this);
 		
-		this.setContentPane((SnakeGlobalPanelImpl)globalPanel);
+		this.setContentPane((SnakeGamePanelImpl)gamePanel);
 	}
 	
 	/* Just count cycles, and send repaint to refresh of the scene. All the rest is done in
@@ -82,7 +82,7 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 		// An infinite loop, refreshing the displaying panel each 20 milliseconds.
 		while (blnContinue) {
 			this.paintCounter++;
-			((SnakeGlobalPanelImpl)(this.globalPanel)).repaint();
+			((SnakeGamePanelImpl)(this.gamePanel)).repaint();
 			
 			try {
 				Thread.sleep(20); /* 10ms = 100 times per secondes. */
@@ -105,51 +105,51 @@ public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeW
 		/* MOVES MANAGEMENT */
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.setLastSlidingType(SlidingType.LEFT_SLIDING);
 				break;
 			case KeyEvent.VK_RIGHT:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.setLastSlidingType(SlidingType.RIGHT_SLIDING);
 				break;
 			case KeyEvent.VK_UP:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.setLastSlidingType(SlidingType.UP_SLIDING);
 				break;
 			case KeyEvent.VK_DOWN:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.setLastSlidingType(SlidingType.DOWN_SLIDING);
 				break;
 			case KeyEvent.VK_COMMA:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.increaseSpeed();
 				break;
 			case KeyEvent.VK_SPACE:
-				concernedSnake = this.real.getScene().getSnake();
+				concernedSnake = this.renderer.getScene().getSnake();
 				concernedSnake.decreaseSpeed();
 				break;
 			case KeyEvent.VK_Q:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.setLastSlidingType(SlidingType.LEFT_SLIDING);
 				break;
 			case KeyEvent.VK_S:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.setLastSlidingType(SlidingType.RIGHT_SLIDING);
 				break;
 			case KeyEvent.VK_Z:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.setLastSlidingType(SlidingType.UP_SLIDING);
 				break;
 			case KeyEvent.VK_W:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.setLastSlidingType(SlidingType.DOWN_SLIDING);
 				break;
 			case KeyEvent.VK_A:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.increaseSpeed();
 				break;
 			case KeyEvent.VK_X:
-				concernedSnake = this.real.getScene().getSnake_two();
+				concernedSnake = this.renderer.getScene().getSnake_two();
 				concernedSnake.decreaseSpeed();
 				break;
 				

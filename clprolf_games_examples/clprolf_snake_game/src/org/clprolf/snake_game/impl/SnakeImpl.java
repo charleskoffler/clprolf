@@ -133,13 +133,13 @@ public class SnakeImpl implements @Contracts Snake {
 	}
 	
 	/**
-	 * Make slide the snake if we can(no wall, or no meet of our self body).
+	 * Slide the snake if we can(no wall, or no meet of our self body).
 	 * @param slidingType
 	 * @return
 	 */
 	@Underst
 	@Long_action
-	protected void continueMakeSliding() {
+	protected void continueSliding() {
 		if (this.lastSlidingType == SlidingType.STOPPED) return; //We're doing nothing in that case!
 		SnakeLink newHeadLink, presentHead = this.links.get(0);
 		
@@ -147,7 +147,7 @@ public class SnakeImpl implements @Contracts Snake {
 		
 		newHeadLink = computeHeadLink(presentHead);
 		
-		doControlsForNewHead(newHeadLink);
+		checkCollisionsForNewHead(newHeadLink);
 		
 		// potential extension of the tail.
 		foodAtNewHeadPlace = this.scene.getFoodExpert().getFoodAt(newHeadLink.x, newHeadLink.y);
@@ -162,7 +162,7 @@ public class SnakeImpl implements @Contracts Snake {
 	}
 	
 	@Prevent_missing_collision
-	protected void doControlsForNewHead(SnakeLink newHeadLink) {
+	protected void checkCollisionsForNewHead(SnakeLink newHeadLink) {
 		boolean blnBitesOther=false, blnBiteOurselv=false, blnWall=false;
 		@With_compat Snake otherSnake=null;
 		SnakeLink previousLinkAtNewHead;
@@ -177,7 +177,7 @@ public class SnakeImpl implements @Contracts Snake {
 		blnWall = newHeadLink.y<0 || newHeadLink.y>SnakeGameSceneImpl.SCENE_ROWS_COUNT-1
 		|| newHeadLink.x<0 || newHeadLink.x>SnakeGameSceneImpl.SCENE_COLUMNS_COUNT-1;
 		if (blnWall || blnBiteOurselv || blnBitesOther) {
-			this.scene.getRealiz().reactToGameOver(this);
+			this.scene.getRenderer().reactToGameOver(this);
 		}
 	}
 	
@@ -262,7 +262,7 @@ public class SnakeImpl implements @Contracts Snake {
 		{
 			growingLink.typeLink = LinkTypeEnum.SECOND_LINK;
 		}
-		this.scene.getRealiz().doLinkAddingSound();
+		this.scene.getRenderer().doLinkAddingSound();
 		this.links.add(growingLink);
 	}
 	
@@ -279,14 +279,14 @@ public class SnakeImpl implements @Contracts Snake {
 	
 	public void increaseSpeed() {
 		if (this.speed > SPEED_STEP) { //Not >= because this could not be 0.
-			this.scene.getRealiz().doChangeSpeedGearEffect();
+			this.scene.getRenderer().doChangeSpeedGearEffect();
 			this.speed -= SPEED_STEP;
 		}
 	}
 
 	public void decreaseSpeed() {
 		if (this.speed <= (NB_SPEED_GEARS-1) * SPEED_STEP) {
-			this.scene.getRealiz().doChangeSpeedGearEffect();
+			this.scene.getRenderer().doChangeSpeedGearEffect();
 			this.speed += SPEED_STEP;
 		}
 	}
@@ -297,8 +297,8 @@ public class SnakeImpl implements @Contracts Snake {
 		//never ends. In much cases, we're "waiting", and then we pass the associated boolean
 		//to false, for example isFalling(), to stop the action!
 	
-		if (this.scene.getRealiz().getWindow().timePassed(this.getSpeed())) {
-			this.continueMakeSliding();
+		if (this.scene.getRenderer().getWindow().timePassed(this.getSpeed())) {
+			this.continueSliding();
 		}
 	}
 }
