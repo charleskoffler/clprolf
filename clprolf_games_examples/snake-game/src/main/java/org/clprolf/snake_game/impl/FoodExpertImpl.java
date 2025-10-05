@@ -19,7 +19,7 @@ public class FoodExpertImpl implements @Contracts FoodExpert {
 
 	private @With_compat SnakeGameScene scene;
 	
-	public @With_compat SnakeGameScene getScene() {
+	public SnakeGameScene getScene() {
 		return scene;
 	}
 

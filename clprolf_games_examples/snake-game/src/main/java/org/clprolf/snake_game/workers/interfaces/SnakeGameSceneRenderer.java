@@ -13,7 +13,7 @@ import org.clprolf.snake_game.interfaces.SnakeWindow;
 @Worker_agent
 @Version_inh
 public interface SnakeGameSceneRenderer extends @Nature Runnable {
-	public @With_compat SnakeGameScene getScene();
+	public SnakeGameScene getScene();
 	
 	public SnakeWindow getWindow();
 

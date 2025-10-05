@@ -11,7 +11,7 @@ import org.clprolf.snake_game.model.Food;
 @Agent
 @Version_inh
 public interface FoodExpert {
-	public @With_compat SnakeGameScene getScene();
+	public SnakeGameScene getScene();
 
 	public void setScene(@With_compat SnakeGameScene scene);
 

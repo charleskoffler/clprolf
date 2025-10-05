@@ -19,13 +19,13 @@ public class SnakeGameSceneRendererImpl implements @Contracts SnakeGameSceneRend
 
 	private @With_compat SnakeGameScene scene;
 
-	public @With_compat SnakeGameScene getScene() {
+	public SnakeGameScene getScene() {
 		return scene;
 	}
 	
 	private @With_compat SnakeWindow window;
 	//Just a getter
-	public @With_compat SnakeWindow getWindow() {
+	public SnakeWindow getWindow() {
 		return window;
 	}
 
