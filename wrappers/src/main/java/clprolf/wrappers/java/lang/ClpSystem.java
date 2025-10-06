@@ -4,8 +4,8 @@ import java.io.Console;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.simol.simolframework.java.Abstraction;
-import org.simol.simolframework.java.Role;
+import org.clprolf.framework.java.Abstraction;
+import org.clprolf.framework.java.Gender;
 
 /**
  * Wrapper of the java.lang.System class.
@@ -15,7 +15,7 @@ import org.simol.simolframework.java.Role;
  * @author Charles Koffler
  *
  */
-@Abstraction(Role.STATIC) //Abstraction of the operating system. The methods are statics, and act like a singleton for a System object.
+@Abstraction(Gender.STATIC) //Abstraction of the operating system. The methods are statics, and act like a singleton for a System object.
 public final class ClpSystem { //final as the Java System class.
 	public static final PrintStream getOut() {
 		return System.out;

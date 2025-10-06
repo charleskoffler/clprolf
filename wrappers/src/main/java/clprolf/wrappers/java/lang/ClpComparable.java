@@ -1,8 +1,9 @@
 package clprolf.wrappers.java.lang;
 
-import org.simol.simolframework.java.Compat_interf_capacity;
+import org.clprolf.framework.java.Advice;
+import org.clprolf.framework.java.Capacity_inh;
 
-@Compat_interf_capacity
+@Capacity_inh(Advice.FOR_AGENT_LIKE)
 public interface ClpComparable<T> {
           public int compareTo(T o);
 }

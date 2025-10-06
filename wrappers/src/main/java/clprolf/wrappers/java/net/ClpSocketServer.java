@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 
-import org.simol.simolframework.java.Forced_inh;
-import org.simol.simolframework.java.Nature;
-import org.simol.simolframework.java.Role;
-import org.simol.simolframework.java.Simu_real_obj;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Forced_inh;
+import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.Simu_real_obj;
 
 /*
  * The initial Java name has been changed to "SocketServer", instead of "ServerSocket".
  */
 
 @Forced_inh
-@Simu_real_obj(Role.EXPERT_COMPONENT) //An expert component in serving sockets
+@Agent
 public class ClpSocketServer extends @Nature ServerSocket {
 
 	public ClpSocketServer() throws IOException {

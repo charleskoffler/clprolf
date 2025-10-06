@@ -1,13 +1,13 @@
 package clprolf.wrappers.java.lang;
 
 
-import org.simol.simolframework.java.Abstraction;
-import org.simol.simolframework.java.Role;
-import org.simol.simolframework.java.Simu_real_obj;
+import org.clprolf.framework.java.Abstraction;
+import org.clprolf.framework.java.Gender;
+import org.clprolf.framework.java.Agent;
 
 //This class has two aspects, static and instance.
 
-@Simu_real_obj(Role.EXPERT_COMPONENT_STATIC) //A expert component in strings!
+@Agent(Gender.EXPERT_COMPONENT_STATIC) //A expert component in strings!
 @Abstraction //Abstraction of the concept of string.
 public final class ClpString { //The String class is final.
 	private final String internal;

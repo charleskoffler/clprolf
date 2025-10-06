@@ -11,7 +11,7 @@ import org.clprolf.framework.java.With_compat;
 
 import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
-@Forced_int_inh //extends Java interfaces, and Runnable + KeyListener should be capacity interfaces with worker_agent_like advice!
+@Forced_int_inh //extends Java interfaces, and Runnable should be capacity interfaces with worker_agent_like advice!
 @Abstraction
 @Version_inh
 public interface SnakeWindow extends @Nature Runnable, KeyListener{
