@@ -29,7 +29,7 @@ public class WeatherRenderer {
  private WeatherController expert;	
 
 @Agent
-@Version_inh //ActionListener could be a @Capacity_inh(Advice.FOR_AGENT_LIKE)(often on an abstraction observer)
+@Version_inh //Notice that the Java ActionListener could be a @Capacity_inh(Advice.FOR_AGENT_LIKE)(often on an abstraction observer)
 private static interface WindowObserver extends @Nature ActionListener {
 	
 }

@@ -2388,6 +2388,18 @@ By introducing declensions such as **agent**, **human expert**, **machine tool**
 
 ---
 
+### Compiler as an Architecture Guardian
+
+Clprolf’s compiler does not merely translate keywords into Java code; its semantic rules act like **continuous architecture tests**.
+Each build validates that classes, interfaces, and capacities still respect their declared roles and relationships.
+This turns compilation into a first level of **non-regression testing for architecture**: even after major refactoring, developers receive immediate feedback if a class crosses a forbidden boundary, if a capacity is misused, or if an agent/worker separation is broken.
+
+Although not all semantic mismatches can be detected automatically, these built-in checks guarantee the **essential structural integrity** of the system.
+They ensure that a project remains faithful to its design principles over time, reducing the risk of silent architectural drift that often occurs in large codebases.
+In this sense, Clprolf brings to compilation what automated tests bring to runtime: **a safety net for meaning, not just for syntax.**
+
+---
+
 ### RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
 Declensions (roles) in Clprolf allow **semantic checks** to be performed by the compiler or by external tools. These checks ensure coherence in class and interface design. They can be overridden with `@Forced_inh`, `@Forced_int_inh`, or `@Forced_pract_code` (both in the Clprolf language and in the Java framework).
