@@ -91,20 +91,22 @@ agent OrderService {
 
 ### clprolf frameworks
 
-[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler/src/main/java/org/clprolf/framework/java)
+[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler/src/main/java/org/clprolf/framework/java)
 
-[clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/SimolCsharpFramework)
+[clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/SimolCsharpFramework)
 
-[clprolf PHP framework](https://github.com/charleskoffler/clprolf/tree/main/simol_framework/simol_php_framework)
+[clprolf PHP framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/simol_php_framework)
 
 ### Source examples
 
+
+[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
+
 [clprolf wrappers for Java Standard Libraries](https://github.com/charleskoffler/clprolf/tree/main/wrappers)
+
+[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
 
 [clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
 
 [clprolf algorithms examples](https://github.com/charleskoffler/clprolf/tree/main/simol_algorithms_examples)
 
-[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
-
-[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
