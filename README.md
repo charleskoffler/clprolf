@@ -104,7 +104,7 @@ agent OrderService {
 
 [clprolf wrappers for Java Standard Libraries](https://github.com/charleskoffler/clprolf/tree/main/wrappers)
 
-[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/simol_design_patterns_examples)
+[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_design_patterns_examples)
 
 [clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
 
