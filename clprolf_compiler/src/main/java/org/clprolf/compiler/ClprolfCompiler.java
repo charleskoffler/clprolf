@@ -24,6 +24,7 @@ import org.clprolf.framework.java.With_compat;
  *  */
 @Agent
 public class ClprolfCompiler {
+	
 	public void compile(String fileName) throws URISyntaxException, IOException {
 		String totalSourceCode;
 		
@@ -31,17 +32,16 @@ public class ClprolfCompiler {
 		
         PrintStream originalErrorStream ;
 		
-		//simu_real_world_obj
 		totalSourceCode = this.readClprolfSourceAsString(fileName);
 	   
 	    @With_compat TokenSource tokenSource = new ClprolfJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
 	    CommonTokenStream tokensStream = new CommonTokenStream(tokenSource);
-	    ClprolfJava8Parser grammarParser = new ClprolfJava8Parser(tokensStream);
+	    ClprolfJava8Parser inputParser = new ClprolfJava8Parser(tokensStream);
 	
 	    /* ClprolfJava8Parser.CompilationUnitContext context = parser.compilationUnit(); */
 	
 		// You can now work with the parse tree or AST
-		ClprolfParserObserver observer = new ClprolfParserObserver();
+		ClprolfWalkerObserver walkerObserver = new ClprolfWalkerObserver();
 		
 		// Calling the parsor while keeping the standard errors output.
 		// Create a ByteArrayOutputStream to capture error output
@@ -52,8 +52,10 @@ public class ClprolfCompiler {
         System.setErr(new PrintStream(errorStream));
 
         //produces error output
-    	@With_compat ParseTree parseTree = grammarParser.compilationUnit();
-		
+        //ParseTree of the input text
+    	@With_compat ParseTree parseTree = inputParser.compilationUnit();
+    	System.out.println(parseTree.toStringTree(inputParser));
+    	
         // Restore the original error stream
         System.setErr(originalErrorStream);
 
@@ -62,8 +64,8 @@ public class ClprolfCompiler {
         
 		//Agent to browse the parse tree.
         ParseTreeWalker walker = new ParseTreeWalker();
-		walker.walk(observer, parseTree);
-		String generatedOutput = observer.getOutput();
+		walker.walk(walkerObserver, parseTree);
+		String generatedOutput = walkerObserver.getOutput();
 		
 		if (errorOutput.isEmpty()) {
 			//System.out.println(generatedOutput);

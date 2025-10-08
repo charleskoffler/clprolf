@@ -11,7 +11,7 @@ import org.clprolf.framework.java.Abstraction;
  */
 @SuppressWarnings("CheckReturnValue")
 @Abstraction
-public class ClprolfParserObserver extends ClprolfJava8ParserBaseListener {
+public class ClprolfWalkerObserver extends ClprolfJava8ParserBaseListener {
 	private boolean previousWasIdentifierOrKeyword = false;
 	//
 	private StringBuilder output = new StringBuilder();
