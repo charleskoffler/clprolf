@@ -1,8 +1,8 @@
 package org.clprolf.compiler;
 
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.clprolf.framework.java.Abstraction;
 
 /**
  * This class provides an empty implementation of {@link SimolJava8ParserListener},
@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 @SuppressWarnings("CheckReturnValue")
+@Abstraction
 public class ClprolfParserObserver extends ClprolfJava8ParserBaseListener {
 	private boolean previousWasIdentifierOrKeyword = false;
 	//

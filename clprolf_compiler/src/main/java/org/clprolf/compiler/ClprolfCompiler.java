@@ -10,37 +10,38 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.With_compat;
 
 /*
  * 
  *  */
-// public simu_real_world_obj SimolCompiler
+@Agent
 public class ClprolfCompiler {
 	public void compile(String fileName) throws URISyntaxException, IOException {
 		String totalSourceCode;
-		//simu_real_world_obj
+		
 		ByteArrayOutputStream errorStream;
-		//simu_real_world_obj
+		
         PrintStream originalErrorStream ;
 		
 		//simu_real_world_obj
 		totalSourceCode = this.readClprolfSourceAsString(fileName);
 	   
-	    ClprolfJava8Lexer lexer = new ClprolfJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
-	    CommonTokenStream tokens = new CommonTokenStream(lexer);
-	    ClprolfJava8Parser parser = new ClprolfJava8Parser(tokens);
+	    @With_compat TokenSource tokenSource = new ClprolfJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
+	    CommonTokenStream tokensStream = new CommonTokenStream(tokenSource);
+	    ClprolfJava8Parser grammarParser = new ClprolfJava8Parser(tokensStream);
 	
-	    /* SimolJava8Parser.CompilationUnitContext context = parser.compilationUnit(); */
+	    /* ClprolfJava8Parser.CompilationUnitContext context = parser.compilationUnit(); */
 	
 		// You can now work with the parse tree or AST
-		ClprolfParserObserver listener = new ClprolfParserObserver();
+		ClprolfParserObserver observer = new ClprolfParserObserver();
 		
 		// Calling the parsor while keeping the standard errors output.
 		// Create a ByteArrayOutputStream to capture error output
@@ -51,7 +52,7 @@ public class ClprolfCompiler {
         System.setErr(new PrintStream(errorStream));
 
         //produces error output
-    	ParseTree parseTree = parser.compilationUnit();
+    	@With_compat ParseTree parseTree = grammarParser.compilationUnit();
 		
         // Restore the original error stream
         System.setErr(originalErrorStream);
@@ -59,10 +60,10 @@ public class ClprolfCompiler {
         // Get the captured error output as a string
         String errorOutput = errorStream.toString();
         
-		//Travel of the tree
+		//Agent to browse the parse tree.
         ParseTreeWalker walker = new ParseTreeWalker();
-		walker.walk(listener, parseTree);
-		String generatedOutput = listener.getOutput();
+		walker.walk(observer, parseTree);
+		String generatedOutput = observer.getOutput();
 		
 		if (errorOutput.isEmpty()) {
 			//System.out.println(generatedOutput);
@@ -82,12 +83,12 @@ public class ClprolfCompiler {
 	 */
 	private String readClprolfSourceAsString(String simolResourceName) throws IOException, URISyntaxException {
 		String strInputSourceLine;
-		//simu_real_world_obj of a string, with more capacities
+	
 		StringBuffer totalSourceCode = new StringBuffer();
 		
-		//simu_real_world_obj
+	
 	   File inputFile;
-	   //simu_real_world_obj of a reader
+
 	   BufferedReader sourceReader;
 	   
 		/*String input = "public compat_interf_capacity ClientDAOFile {"
@@ -115,9 +116,9 @@ public class ClprolfCompiler {
 	}
 	
 	private void writeClprolfAsStringToSourceFile(String simolResourceName, String totalSimolSourceString) throws URISyntaxException, IOException {
-		//simu_real_world_obj
+		
 		File outputFile;
-		//simu_real_world_obj
+		
 		BufferedWriter writer;
 		String path, newPath;
 		
