@@ -619,10 +619,10 @@ interfaceModifier
 	;
 
 extendsInterfaces
-	:	clprolfInterfDeclension interfaceTypeList
+	:	clprolfInterfExtends interfaceTypeList
 	;
 	
-clprolfInterfDeclension
+clprolfInterfExtends
 	: 'extends'
 	| 'nature'
 	;
