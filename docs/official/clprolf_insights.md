@@ -80,97 +80,6 @@ It is particularly suited for:
 
 ---
 
-#### Keywords in Clprolf
-
-Clprolf defines a **minimal set of 31 keywords**.
-They are divided into two groups:
-
-* **19 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
-* **12 annotations** (genders, advices, forcing), which are optional refinements that add perspective and specialization.
-
-This structure makes Clprolf both **minimal and flexible**: easy to learn and memorize, yet expressive enough to capture complex system designs.
-
----
-
-##### Declensions (class roles) – 8
-
-* `agent`
-* `abstraction`
-* `simu_real_obj`
-* `worker_agent`
-* `comp_as_worker`
-* `model`
-* `information`
-* `indef_obj`
-
----
-
-##### Interface Declensions – 5
-
-* `compat_interf_version`
-* `version_inh`
-* `compat_interf_capacity`
-* `capacity_inh`
-* `compat_interf`
-
----
-
-
-##### Method Modifiers – 4
-
-* `underst`
-* `one_at_a_time`
-* `dependent_activity`
-* `long_action`
-
----
-
-##### Field Modifiers – 2
-
-* `with_compat`
-* `turn_monitor`
-
----
-##### Annotations – Genders – 6
-
-* `@Human_expert`
-* `@Expert_component`
-* `@Active_agent`
-* `@Static`
-* `@Human_expert_static`
-* `@Expert_component_static`
-
----
-
-##### Annotations – Advices – 2
-
-* `@Agent_like_advice`
-* `@Worker_like_advice`
-
----
-
-##### Annotations – Forcing – 3
-
-* `@Forc_pract_code`
-* `@Forc_inh`
-* `@Forc_int_inh`
-
----
-
-##### Annotations – Special – 1
-
-* `@Long_action`
-
----
-
-✅ **Total: 31 keywords**
-
-* **19 core keywords** (declensions, interface declensions, method/field modifiers)
-* **12 annotations** (genders, advices, forcing and others)
-
----
-
-With only 31 keywords, Clprolf remains minimal and approachable, while still covering complex system design through clear roles, modifiers, and annotations.
 
 #### Beyond Programming
 
@@ -971,7 +880,7 @@ Example in the Language:
 
 ```java
 
-// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world)
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_obj)
 
 @Agent_like_advice
 public compat_interf_capacity Eatable {
@@ -1047,7 +956,7 @@ In the Java Framework:
 
 ```java
 
-// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_world)
+// This interface can be extended only by a compat_interf_version with an agent-like role(abstraction, agent, simu_real_obj)
 
 @Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
 public compat_interf_capacity Eatable {
@@ -2167,90 +2076,6 @@ This makes the transition smoother than learning a completely new paradigm.
 
 ---
 
-### clprolf GRAMMAR FROM JAVA SE 8 GRAMMAR(BNF-style from Oracle Site):
-
-normalClassDeclaration
-	:	classModifier* 'class_for'? clprolfDeclension Identifier typeParameters? superclass? superinterfaces? classBody
-	;
-	
-clprolfDeclension
-	: 
-	'agent'
-	| 'abstraction'
-	| 'simu_real_obj'
-	| 'worker_agent'
-	| 'comp_as_worker'
-	| 'model'
-	| 'information'
-	| 'indef_obj'
-	;
-	
-normalInterfaceDeclaration
-	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
-	;
-	
-clprolfInterfaceDeclension:
-	'compat_interf_version'
-	|
-	'compat_interf_capacity'
-	|
-	'compat_interf'
-	|
-	'version_inh'
-	|
-	'capacity_inh'
-	;
-
-methodModifier
-	:	annotation
-	|	'public'
-	|	'protected'
-	|	'private'
-	|	'abstract'
-	|	'static'
-	|	'final'
-	|	'synchronized'
-	|	'native'
-	|	'strictfp'
-	|	'underst'
-	|	'long_action'
-	|	'prevent_missing_collision'
-	|	'one_at_a_time'
-	|	'dependent_activity'
-	;
-
-fieldModifier
-	:	annotation
-	|	'public'
-	|	'protected'
-	|	'private'
-	|	'static'
-	|	'final'
-	|	'transient'
-	|	'volatile'
-	|	'with_compat'
-	|	'turn_monitor'
-	|	'for_every_thread'
-	;
-
-extendsInterfaces
-	:	clprolfInterfExtends interfaceTypeList
-	;
-	
-clprolfInterfExtends
-	: 'extends'
-	| 'nature'
-	;
-
-superclass
-	:	'nature' classType
-	;
-
-superinterfaces
-	:	'contracts' interfaceTypeList
-	;
-
-
 ### TO COMPILE
 
 The **Clprolf compiler** is the most direct way to use the language. However, a Clprolf framework also exists for Java developers.
@@ -2286,16 +2111,36 @@ Clprolf-specific annotations are ignored by the Java compiler, such as:
 
 ---
 
+### ⚙️ THE CLPROLF COMPILER
 
-### THE CLPROLF COMPILER
+A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on the official **Java 8 grammar** (from the `antlr4-grammars` repository).
 
-A compiler for Clprolf exists, implemented in Java using **ANTLR4**, and based on a Java 8 grammar (from `antlr4-grammars`).
+* It parses Clprolf source files (`.simo`) as well as embedded Java 8 code.
+* Parsing stops immediately upon encountering a syntax error, whether the error is in Clprolf syntax or in embedded Java segments.
+* If parsing succeeds, the compiler generates equivalent and fully valid Java code.
+  Developers can then compile these generated sources with **`javac`**, producing standard Java bytecode executables.
 
-* The compiler parses Clprolf source files (`.simo`) as well as embedded Java 8 code.
-* It stops whenever a syntax error is encountered, whether in Clprolf or Java.
-* Currently, it does not perform semantic analysis (for either Clprolf or Java). Semantic checks are less critical in Clprolf.
-* If parsing succeeds, the compiler generates equivalent Java code.
-* Developers must then use **`javac`** on the generated Java sources to produce standard Java bytecode executables.
+---
+
+#### Current State and Ongoing Development
+
+The current compiler version focuses primarily on syntax analysis and code generation.
+However, **semantic checking is now being implemented** as part of a new phase of the compiler architecture.
+
+* The **Clprolf Semantic Checker** is currently under development.
+  It will perform detailed rule-based analysis (declensions, contracts, genders, inheritance, and concurrency semantics),
+  operating directly on the symbol table generated during parsing.
+
+* In parallel, a dedicated **Framework Checker** is also being written.
+  It reuses the same semantic engine but with a different **symbol table visitor**,
+  enabling it to validate framework-level structures (wrappers, capacities, version interfaces, and practical components)
+  without duplicating the compiler’s logic.
+
+This modular design allows both the compiler and the framework checker to share the same core semantic verification logic,
+while remaining independent in how they collect their symbols and metadata.
+
+> 💡 *In short, Clprolf is evolving from a simple parser into a complete semantic environment —
+> where both the compiler and the framework share a unified rule engine for clarity and consistency.*
 
 ---
 
@@ -2493,13 +2338,7 @@ public class CarRealization {
 
 ---
 
-#### Current State
 
-* The Clprolf compiler does not yet perform semantic checks automatically.
-* The frameworks currently provide no tooling for these rules either.
-* An exception exists for **features in interface inheritance**, which are covered in their own chapter.
-
----
 
 ### NOTICE ON INHERITANCE AND CLPROLF
 
@@ -3177,3 +3016,479 @@ public class SocketServerConfig {
 	public static int PORT = 8080;
 }
 ```
+
+---
+
+## 🧩 **Annex — Grammar and Semantic Rules**
+
+This annex gathers the **formal components** of the Clprolf specification:
+the full **grammar (ANTLR4)** and the **semantic and architectural rules** (`ARCH_*`).
+
+These rules define how the compiler interprets declensions, inheritance,
+contracts, genders, concurrency annotations, and forced exceptions.
+Each rule has a unique identifier for traceability and automated testing.
+
+> 💡 *The Annex serves as a reference for both compiler developers and framework contributors.
+> It ensures that every semantic behavior in Clprolf can be tested, extended, and justified.*
+
+---
+
+### 🧩 **ANNEX A — GRAMMAR (ANTLR4)**
+
+This annex contains the complete Clprolf grammar, based on Java 8 and extended with Clprolf-specific keywords and constructs.
+
+It defines the syntax used by the compiler to recognize:
+
+* class and interface declarations (`agent`, `worker_agent`, `abstraction`, etc.)
+* declensions and genders
+* inheritance keywords (`nature`, `contracts`, `extends`)
+* concurrency annotations (`@Long_action`, `@One_at_a_time`, etc.)
+
+> 📘 *The grammar is written in ANTLR4 format and serves as the single source of truth for both the Clprolf compiler and any compatible parsers.*
+
+---
+
+#### clprolf GRAMMAR FROM JAVA SE 8 GRAMMAR(BNF-style from Oracle Site):
+
+normalClassDeclaration
+	:	classModifier* 'class_for'? clprolfDeclension Identifier typeParameters? superclass? superinterfaces? classBody
+	;
+	
+clprolfDeclension
+	: 
+	'agent'
+	| 'abstraction'
+	| 'simu_real_obj'
+	| 'worker_agent'
+	| 'comp_as_worker'
+	| 'model'
+	| 'information'
+	| 'indef_obj'
+	;
+	
+normalInterfaceDeclaration
+	:	interfaceModifier* clprolfInterfaceDeclension clprolfDeclension? Identifier typeParameters? extendsInterfaces? interfaceBody
+	;
+	
+clprolfInterfaceDeclension:
+	'compat_interf_version'
+	|
+	'compat_interf_capacity'
+	|
+	'compat_interf'
+	|
+	'version_inh'
+	|
+	'capacity_inh'
+	;
+
+methodModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'abstract'
+	|	'static'
+	|	'final'
+	|	'synchronized'
+	|	'native'
+	|	'strictfp'
+	|	'underst'
+	|	'long_action'
+	|	'prevent_missing_collision'
+	|	'one_at_a_time'
+	|	'dependent_activity'
+	;
+
+fieldModifier
+	:	annotation
+	|	'public'
+	|	'protected'
+	|	'private'
+	|	'static'
+	|	'final'
+	|	'transient'
+	|	'volatile'
+	|	'with_compat'
+	|	'turn_monitor'
+	|	'for_every_thread'
+	;
+
+extendsInterfaces
+	:	clprolfInterfExtends interfaceTypeList
+	;
+	
+clprolfInterfExtends
+	: 'extends'
+	| 'nature'
+	;
+
+superclass
+	:	'nature' classType
+	;
+
+superinterfaces
+	:	'contracts' interfaceTypeList
+	;
+
+---
+
+### 🧩 **ANNEX B — SEMANTIC AND ARCHITECTURAL RULES**
+
+This annex lists all formal semantic rules applied by the Clprolf compiler and the framework checker.
+
+Each rule has a unique identifier (`ARCH_*`) that allows:
+
+* precise compiler error or warning references
+* automated semantic testing
+* consistent documentation between versions
+
+> 💡 *The semantic rules form the living heart of the Clprolf compiler —
+> connecting syntax to meaning and ensuring clarity in both structure and behavior.*
+
+---
+
+All Clprolf semantic rules are categorized by domain.
+Each rule has a unique identifier for compiler traceability and documentation.
+Prefixes indicate the rule family:
+
+* **ARCH A** → Class structure and inheritance
+* **ARCH B** → Interfaces and contracts
+* **ARCH C** → Genders and statics
+* **ARCH D** → Concurrency and algorithmic semantics
+* **ARCH E** → Forced annotations and exception handling
+
+---
+
+#### **ARCH A — Classes**
+
+**ARCH A1 (classes):**
+Declensions must be identical for inheritance.
+Synonyms are considered equivalent.
+
+**ARCH A2 (classes):**
+For class inheritance, the `nature` keyword is mandatory.
+
+**ARCH A3 (classes):**
+No technical code is allowed in an `agent` class or in a system-type `abstraction`.
+System abstractions such as `Connection` or `Socket` can only be used inside `worker_agent` classes,
+unless explicitly forced using `@Forced_pract_code` on the class.
+No semantic check is currently enforced for this rule.
+
+---
+
+#### **ARCH B — Interfaces and Usage**
+
+**ARCH BA1 (interfaces, usage):**
+The `contracts` keyword is mandatory for all implementations.
+
+**ARCH BA2 (interfaces, usage):**
+If a class uses `contracts`, the interface type must be a `version`.
+
+**ARCH BA3 (interfaces, usage):**
+A class cannot `contracts` a `capacity`.
+
+**ARCH BA4 (interfaces, usage):**
+A class cannot `contracts` multiple `version` interfaces simultaneously.
+
+**ARCH BA5 (interfaces, usage):**
+`with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`).
+The compiler must verify that the `unannType` or `catchType` is a valid Clprolf interface.
+
+**ARCH BA6 (interfaces, usage):**
+`with_compat` cannot appear in a method return type.
+
+**ARCH BA7 (interfaces, usage):**
+Each `fieldModifier` or `variableModifier` whose `unannType` or `catchType` is a Clprolf interface
+must include the `with_compat` modifier.
+
+---
+
+#### **ARCH BB — Interface Structure**
+
+**ARCH BB1 (interfaces):**
+A `compat_interf_version` interface cannot `contracts` multiple `version` interfaces.
+A `version_inh` can.
+
+**ARCH BB2 (interfaces):**
+A `capacity` interface cannot inherit (`nature`) from a `version`.
+`capacity_inh` and `compat_interf_capacity` are handled identically for all semantic checks.
+
+**ARCH BB3 (interfaces):**
+A `version` interface that inherits a `capacity` must respect the `advice` of that capacity in its declension.
+
+**ARCH BB4 (interfaces):**
+A `version_inh` interface must declare a declension.
+A `compat_interf_version` may declare one.
+
+**ARCH BB5 (interfaces):**
+An interface that inherits must use `nature` if it is a `version_inh` or `capacity_inh`.
+It may also use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
+
+---
+
+#### **ARCH C — Genders and Statics**
+
+**ARCH CA1 (genders):**
+Declaring a gender on classes is optional.
+Genders are annotations used mainly for documentation.
+
+**ARCH CA2 (genders):**
+Interfaces cannot have genders, including `@Static`.
+
+**ARCH CA3 (genders):**
+No gender inheritance is checked for classes, except for `static` ones (and not for `abstraction`).
+
+**ARCH CA5 (genders):**
+`@Active_agent` is the only combinable gender,
+and it can only be combined with `@Static`
+(never with `@Human_expert`, `@Expert_component`, `@Human_expert_static`, or `@Expert_component_static`).
+
+**ARCH CA6 (genders):**
+`@Active_agent` can only be declared on `agent` declensions
+(not on `simu_real_obj` nor on `abstraction`).
+
+**ARCH CA7 (genders):**
+`@Active_agent` cannot be declared on a `worker_agent`.
+
+---
+
+#### **ARCH CB — Static Behavior**
+
+**ARCH CB1 (genders, static):**
+All three statics are equivalent; for the compiler, they are treated simply as `static`.
+
+**ARCH CB2 (genders, static):**
+Static classes must contain at least one static method.
+
+**ARCH CB3 (genders, static):**
+Static classes must contain more `public static` methods than non-static ones,
+except for the `abstraction` role, which allows a dual competence
+(being both an abstraction and a domain expert).
+
+**ARCH CB4 (genders, static):**
+A `static` class may inherit only from another `static` class,
+except for `abstraction`, where mixed inheritance is allowed.
+
+**ARCH CB5 (genders, static):**
+Only the plain `@Static` gender (no expert variant) is allowed on `worker_agent` classes.
+
+**ARCH CB6 (genders, static):**
+In the `static` case for `abstraction`,
+the compiler checks only that at least one static method exists,
+without verifying majority.
+
+**ARCH CB7 (genders, static):**
+No methods are allowed inside `model` or `information` classes,
+except constructors and those marked with `@Forced_pract_code`.
+
+**ARCH CB8 (genders, static):**
+When a class `contracts` a `version_inh`, it must have the same role as that `version_inh`.
+
+---
+
+#### **ARCH D — Concurrency and Algorithmic Semantics**
+
+**ARCH DA1:**
+Warning if no `synchronized` modifier is found in a `one_at_a_time` method (either on the method or on an internal block).
+Other synchronization methods may exist but are not yet detected.
+
+**ARCH DA2:**
+Warning if a `dependent_activity` method is not marked as `one_at_a_time`.
+
+**ARCH DA3:**
+Warning if the number of `turn_monitor` field modifiers does not match the number of `one_at_a_time` methods.
+Currently, only the counts are compared, not their associations.
+
+**ARCH DA4:**
+Warning if no `volatile` modifier is found on a field marked `for_every_thread`.
+
+**ARCH DB1:**
+There must be exactly three methods for each `long_action`:
+two `public` ones (the initial method and `endLongActions()`),
+and one non-public continuation method (`continueActionName`).
+
+**ARCH DB2:**
+Warning if no boolean attribute marked `@Long_action` exists for each trio of `long_action` methods.
+Example: six `long_action` methods → two boolean attributes expected.
+
+**ARCH DC1:**
+Warning if `underst` appears on a method within a `worker_agent` class
+(usually indicates misplaced business logic).
+
+---
+
+#### **ARCH E — Forced Annotations**
+
+**ARCH EA1:**
+`@Forced_inh` can be applied on a class or directly before the inherited type (`TYPE` or `TYPE_USE`).
+
+**ARCH EA2:**
+`@Forced_inh` allows class inheritance to be forced
+(e.g., an `agent` may inherit from a `worker_agent`).
+
+**ARCH EA3:**
+`@Forced_pract_code` allows the inclusion of worker-level code within an `agent` class.
+
+**ARCH EA4:**
+`@Forced_pract_code` also allows methods inside `model` or `information` classes.
+
+**ARCH EA5:**
+A class inheriting from an `indef_obj` or from a Java class must use `@Forced_inh`.
+
+**ARCH EA6:**
+A class that `contracts` a `compat_interf` or a Java interface must use `@Forced_inh`.
+
+**ARCH EA7:**
+`indef_obj` classes may inherit from any interface type without forcing.
+
+---
+
+**ARCH EB1:**
+`@Forced_int_inh` may be applied on a class, on an interface,
+or directly before the contracted or inherited type.
+If applied on a class, it forces all its contracts.
+If applied on an interface, it forces all its inheritances.
+It can also be placed only on the types to be forced inside `nature`, `extends`, or `contracts`.
+
+**ARCH EB2:**
+`@Forced_int_inh` allows a class to `contracts` multiple `version` interfaces.
+In this case, it must be applied at the class level.
+
+**ARCH EB3:**
+`@Forced_int_inh` allows a class to `contracts` a `capacity` interface.
+
+**ARCH EB4:**
+`@Forced_int_inh` allows a `compat_interf_version` interface
+to inherit from multiple `version` interfaces.
+No need to use it for `version_inh`, which is already allowed.
+It must be applied at the interface level.
+
+**ARCH EB5:**
+`@Forced_int_inh` allows a `capacity` interface to inherit from a `version` interface.
+It must be applied at the interface level.
+
+**ARCH EB6:**
+`@Forced_int_inh` allows a class to implement a `version_inh` interface
+that recommends a different declension.
+
+**ARCH EB7:**
+An interface inheriting from a `compat_interf` or a Java interface must use `@Forced_int_inh`.
+
+**ARCH EB8:**
+`compat_interf` interfaces may inherit from any interface type without forcing.
+
+---
+
+💡 *These rules form the foundation of the Clprolf Semantic Checker,
+which operates directly on the compiler’s symbol table.
+Each rule can be traced, tested, and referenced individually
+to ensure clarity and transparency in the compilation process.*
+
+---
+
+
+### 🧩 **ANNEX C — RESERVED KEYWORDS **
+
+
+#### Keywords in Clprolf
+
+Clprolf defines a **minimal set of 32 keywords**.
+They are divided into two groups:
+
+* **20 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
+* **12 annotations** (genders, advices, forcing), which are optional refinements that add perspective and specialization.
+
+This structure makes Clprolf both **minimal and flexible**: easy to learn and memorize, yet expressive enough to capture complex system designs.
+
+---
+
+##### Declensions (class roles) – 8
+
+* `agent`
+* `abstraction`
+* `simu_real_obj`
+* `worker_agent`
+* `comp_as_worker`
+* `model`
+* `information`
+* `indef_obj`
+
+---
+
+##### Interface Declensions – 5
+
+* `compat_interf_version`
+* `version_inh`
+* `compat_interf_capacity`
+* `capacity_inh`
+* `compat_interf`
+
+---
+
+
+##### Method Modifiers – 4
+
+* `underst`
+* `one_at_a_time`
+* `dependent_activity`
+* `long_action`
+
+---
+
+##### Field Modifiers – 2
+
+* `with_compat`
+* `turn_monitor`
+* `for_every_thread`
+
+---
+##### Annotations – Genders – 6
+
+* `@Human_expert`
+* `@Expert_component`
+* `@Active_agent`
+* `@Static`
+* `@Human_expert_static`
+* `@Expert_component_static`
+
+---
+
+##### Annotations – Advices – 2
+
+* `@Agent_like_advice`
+* `@Worker_like_advice`
+
+---
+
+##### Annotations – Forcing – 3
+
+* `@Forc_pract_code`
+* `@Forc_inh`
+* `@Forc_int_inh`
+
+---
+
+##### Annotations – Special – 1
+
+* `@Long_action`
+
+---
+
+✅ **Total: 32 keywords**
+
+* **20 core keywords** (declensions, interface declensions, method/field modifiers)
+* **12 annotations** (genders, advices, forcing and others)
+
+---
+
+With only 32 keywords, Clprolf remains minimal and approachable, while still covering complex system design through clear roles, modifiers, and annotations.
+---
+
+---
+
+### 🧭 **End of Annex — Clprolf**
+
+> This annex completes the formal specification of Clprolf.
+> It connects grammar, semantics, and keywords into a single consistent vision —
+> turning clarity from philosophy into verifiable structure.

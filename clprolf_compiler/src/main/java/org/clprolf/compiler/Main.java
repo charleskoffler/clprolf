@@ -1,5 +1,7 @@
 package org.clprolf.compiler;
 
+import org.clprolf.framework.java.Worker_agent;
+
 /* 
  * Clprolf compiler, made with the maven project clprolf_compiler, to generate antlr4 clprolf grammar compiler.
  * Custom files of the compiler: ClprolfCompiler, ClprolfJava8CustomListener.
@@ -15,6 +17,8 @@ package org.clprolf.compiler;
 */
  
 // public simu_comp_as_worker Main
+
+@Worker_agent
 public class Main {
     public static void main(String[] args) throws Exception {
     	ClprolfCompiler compiler = new ClprolfCompiler();
