@@ -325,7 +325,7 @@ These annotations are optional: they refine interpretation but never enforce it.
 
 * **@Human\_expert**: Represents a simulation of a human expert in a given business domain.
 * **@Expert\_component**: Similar to `@Human_expert`, but with a more technical interpretation — the class is an “expert component” specialized in its task.
-* **@Static / @Human\_expert\_static / @Expert\_component\_static**: For classes used mainly for static methods, like `File` or `Environment` in .NET, or `String` in Java (with both instance and static roles).
+* **@Static / @Human\_expert\_static / @Expert\_component\_static**: For classes used mainly for static methods, like `File` or `Environment` in .NET.
 
 ---
 
@@ -335,15 +335,6 @@ These annotations are optional: they refine interpretation but never enforce it.
 ```java
 @Human_expert   // or @Expert_component
 public simu_real_obj MeteoExpert { /* (...) */ }
-```
-
-```java
-// A String is both an abstraction (instance members) 
-// and an expert for static operations.
-@Abstraction(Gender.EXPERT_COMPONENT_STATIC)
-public class String {
-    // (...)
-}
 ```
 
 ---
@@ -3133,57 +3124,58 @@ superinterfaces
 
 ---
 
-### 🧩 **ANNEX B — SEMANTIC AND ARCHITECTURAL RULES**
+### 🧩 **Annex B — Semantic and Architectural Rules**
 
-This annex lists all formal semantic rules applied by the Clprolf compiler and the framework checker.
+This annex gathers all formal **semantic and architectural rules** enforced (or planned) by the Clprolf compiler and framework checker.
 
-Each rule has a unique identifier (`ARCH_*`) that allows:
+Each rule has a unique identifier (`ARCH_*`) for:
 
-* precise compiler error or warning references
-* automated semantic testing
-* consistent documentation between versions
+* precise compiler error or warning messages
+* automated validation
+* traceability between documentation and code
 
-> 💡 *The semantic rules form the living heart of the Clprolf compiler —
-> connecting syntax to meaning and ensuring clarity in both structure and behavior.*
-
----
-
-All Clprolf semantic rules are categorized by domain.
-Each rule has a unique identifier for compiler traceability and documentation.
-Prefixes indicate the rule family:
-
-* **ARCH A** → Class structure and inheritance
-* **ARCH B** → Interfaces and contracts
-* **ARCH C** → Genders and statics
-* **ARCH D** → Concurrency and algorithmic semantics
-* **ARCH E** → Forced annotations and exception handling
+> 💡 *These rules form the semantic foundation of Clprolf —
+> linking syntax, logic, and architecture into a unified, verifiable structure.*
 
 ---
 
-#### **ARCH A — Classes**
+#### **Rule Categories**
+
+All Clprolf semantic rules are grouped by domain.
+Each prefix defines a family:
+
+* **ARCH A** — Class structure and inheritance
+* **ARCH B** — Interfaces and contracts
+* **ARCH C** — Genders and statics
+* **ARCH D** — Concurrency and algorithmic semantics
+* **ARCH E** — Forced annotations and exceptions
+
+---
+
+### **ARCH A — Classes**
 
 **ARCH A1 (classes):**
-Declensions must be identical for inheritance.
+Declensions must match between parent and child classes.
 Synonyms are considered equivalent.
 
 **ARCH A2 (classes):**
 For class inheritance, the `nature` keyword is mandatory.
 
 **ARCH A3 (classes):**
-No technical code is allowed in an `agent` class or in a system-type `abstraction`.
-System abstractions such as `Connection` or `Socket` can only be used inside `worker_agent` classes,
-unless explicitly forced using `@Forced_pract_code` on the class.
-No semantic check is currently enforced for this rule.
+No technical code is allowed inside an `agent` class or a system-type `abstraction`.
+System abstractions such as `Connection` or `Socket` may only appear inside `worker_agent` classes,
+unless explicitly forced with `@Forc_pract_code` on the class.
+No semantic control is applied to this rule.
 
 ---
 
-#### **ARCH B — Interfaces and Usage**
+### **ARCH B — Interfaces and Usage**
 
 **ARCH BA1 (interfaces, usage):**
 The `contracts` keyword is mandatory for all implementations.
 
 **ARCH BA2 (interfaces, usage):**
-If a class uses `contracts`, the interface type must be a `version`.
+If a class uses `contracts`, the referenced type must be a `version` interface.
 
 **ARCH BA3 (interfaces, usage):**
 A class cannot `contracts` a `capacity`.
@@ -3191,31 +3183,42 @@ A class cannot `contracts` a `capacity`.
 **ARCH BA4 (interfaces, usage):**
 A class cannot `contracts` multiple `version` interfaces simultaneously.
 
+---
+
 **ARCH BA5 (interfaces, usage):**
-`with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`).
-The compiler must verify that the `unannType` or `catchType` is a valid Clprolf interface.
+When a class `contracts` a `version_inh`, it must have the **same declension and synonym** as that `version_inh`.
+For a `compat_interf_version`, if a class role is defined, the implementing class must **match it exactly** —
+reflecting a **stricter compatibility contract rather than a natural hierarchy**.
 
-**ARCH BA6 (interfaces, usage):**
-`with_compat` cannot appear in a method return type.
-
-**ARCH BA7 (interfaces, usage):**
-Each `fieldModifier` or `variableModifier` whose `unannType` or `catchType` is a Clprolf interface
-must include the `with_compat` modifier.
+> 💡 *This rule ensures structural coherence between classes and their version interfaces,
+> whether the relationship is hierarchical (`version_inh`) or strictly contractual (`compat_interf_version`).*
 
 ---
 
-#### **ARCH BB — Interface Structure**
+**ARCH BA6 (interfaces, usage):**
+`with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`),
+and the compiler must verify that the `unannType` or `catchType` is a valid Clprolf interface.
+
+**ARCH BA7 (interfaces, usage):**
+`with_compat` cannot appear in a method return type.
+
+**ARCH BA8 (interfaces, usage):**
+Every field or variable modifier whose `unannType` or `catchType` is a Clprolf interface must include `with_compat`.
+
+---
+
+### **ARCH BB — Interface Structure**
 
 **ARCH BB1 (interfaces):**
 A `compat_interf_version` interface cannot `contracts` multiple `version` interfaces.
-A `version_inh` can.
+A `version_inh` may do so.
 
 **ARCH BB2 (interfaces):**
 A `capacity` interface cannot inherit (`nature`) from a `version`.
-`capacity_inh` and `compat_interf_capacity` are handled identically for all semantic checks.
+`capacity_inh` and `compat_interf_capacity` are treated identically in all semantic checks.
 
 **ARCH BB3 (interfaces):**
-A `version` interface that inherits a `capacity` must respect the `advice` of that capacity in its declension.
+A `version` interface inheriting a `capacity` must respect the `advice` of that capacity in its declension.
 
 **ARCH BB4 (interfaces):**
 A `version_inh` interface must declare a declension.
@@ -3223,170 +3226,181 @@ A `compat_interf_version` may declare one.
 
 **ARCH BB5 (interfaces):**
 An interface that inherits must use `nature` if it is a `version_inh` or `capacity_inh`.
-It may also use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
+It may use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
 
 ---
 
-#### **ARCH C — Genders and Statics**
+### **ARCH C — Genders and Statics**
 
 **ARCH CA1 (genders):**
-Declaring a gender on classes is optional.
-Genders are annotations used mainly for documentation.
+Declaring a gender on a class is optional.
+Genders are annotations that serve mainly as documentation.
 
 **ARCH CA2 (genders):**
-Interfaces cannot have genders, including `@Static`.
+Interfaces cannot have genders — including `@Static`.
 
 **ARCH CA3 (genders):**
-No gender inheritance is checked for classes, except for `static` ones (and not for `abstraction`).
+No gender inheritance is checked for classes, except for `static` ones
+(excluding `abstraction`, which remains neutral).
 
 **ARCH CA5 (genders):**
-`@Active_agent` is the only combinable gender,
-and it can only be combined with `@Static`
-(never with `@Human_expert`, `@Expert_component`, `@Human_expert_static`, or `@Expert_component_static`).
+`@Active_agent` is the only combinable gender.
+It may only be combined with `@Static`, never with
+`@Human_expert`, `@Expert_component`, `@Human_expert_static`, or `@Expert_component_static`.
 
 **ARCH CA6 (genders):**
-`@Active_agent` can only be declared on `agent` declensions
+`@Active_agent` may only appear on `agent` declensions
 (not on `simu_real_obj` nor on `abstraction`).
 
 **ARCH CA7 (genders):**
-`@Active_agent` cannot be declared on a `worker_agent`.
+`@Active_agent` cannot appear on a `worker_agent`.
 
 ---
 
-#### **ARCH CB — Static Behavior**
+### **ARCH CB — Static Behavior**
 
 **ARCH CB1 (genders, static):**
-All three statics are equivalent; for the compiler, they are treated simply as `static`.
+The three static genders (`@Static`, `@Expert_component_static`, `@Human_expert_static`)
+are equivalent — for the compiler, they are all treated as `static`.
 
 **ARCH CB2 (genders, static):**
 Static classes must contain at least one static method.
 
 **ARCH CB3 (genders, static):**
-Static classes must contain more `public static` methods than non-static ones,
-except for the `abstraction` role, which allows a dual competence
-(being both an abstraction and a domain expert).
+Static classes must contain **more public static methods** than non-static ones.
 
 **ARCH CB4 (genders, static):**
 A `static` class may inherit only from another `static` class,
-except for `abstraction`, where mixed inheritance is allowed.
+and a non-static class may inherit only from a non-static class.
+The opposite can be explicitly forced using `@Forc_inh`.
 
 **ARCH CB5 (genders, static):**
 Only the plain `@Static` gender (no expert variant) is allowed on `worker_agent` classes.
 
 **ARCH CB6 (genders, static):**
-In the `static` case for `abstraction`,
-the compiler checks only that at least one static method exists,
-without verifying majority.
+`model` and `information` classes may contain no methods except constructors and those marked with `@Forc_pract_code`.
+Such methods are considered small practical helpers, not domain logic.
 
 **ARCH CB7 (genders, static):**
-No methods are allowed inside `model` or `information` classes,
-except constructors and those marked with `@Forced_pract_code`.
-
-**ARCH CB8 (genders, static):**
-When a class `contracts` a `version_inh`, it must have the same role as that `version_inh`.
+Declaring `@Static` is optional, but if used, the class must comply with static rules.
+No compiler check enforces the presence of `@Static`.
 
 ---
 
-#### **ARCH D — Concurrency and Algorithmic Semantics**
+### **ARCH D — Concurrency and Algorithmic Semantics**
 
 **ARCH DA1:**
-Warning if no `synchronized` modifier is found in a `one_at_a_time` method (either on the method or on an internal block).
-Other synchronization methods may exist but are not yet detected.
+Warning if no `synchronized` is found in a `one_at_a_time` method (either on the method or inside a synchronized block).
+Other synchronization mechanisms are not yet analyzed.
 
 **ARCH DA2:**
 Warning if a `dependent_activity` method is not marked as `one_at_a_time`.
 
 **ARCH DA3:**
-Warning if the number of `turn_monitor` field modifiers does not match the number of `one_at_a_time` methods.
-Currently, only the counts are compared, not their associations.
+Warning if the number of `turn_monitor` fields does not match the number of `one_at_a_time` methods.
+Only counts are compared, not pairings.
 
 **ARCH DA4:**
-Warning if no `volatile` modifier is found on a field marked `for_every_thread`.
+Warning if a field marked `for_every_thread` lacks the `volatile` modifier.
 
 **ARCH DB1:**
-There must be exactly three methods for each `long_action`:
-two `public` ones (the initial method and `endLongActions()`),
-and one non-public continuation method (`continueActionName`).
+Each `long_action` must consist of three methods:
+two public (the starter and `endLongActions()`), and one non-public continuation (`continueActionName`).
 
 **ARCH DB2:**
-Warning if no boolean attribute marked `@Long_action` exists for each trio of `long_action` methods.
-Example: six `long_action` methods → two boolean attributes expected.
+Warning if no boolean field annotated `@Long_action` exists for each trio of `long_action` methods.
+Example: six methods → two boolean fields expected.
 
 **ARCH DC1:**
 Warning if `underst` appears on a method within a `worker_agent` class
-(usually indicates misplaced business logic).
+(indicates misplaced or non-intuitive business logic).
 
 ---
 
-#### **ARCH E — Forced Annotations**
+### **ARCH E — Forced Annotations and Exceptions**
+
+These rules define how forced annotations allow exceptions to normal inheritance or role constraints,
+while keeping the programmer’s intent explicit and traceable.
+
+---
+
+#### **ARCH EA — Forced Class Inheritance and Practical Code**
 
 **ARCH EA1:**
-`@Forced_inh` can be applied on a class or directly before the inherited type (`TYPE` or `TYPE_USE`).
+`@Forc_inh` may be applied on a class or directly before the inherited type (`TYPE` or `TYPE_USE`).
 
 **ARCH EA2:**
-`@Forced_inh` allows class inheritance to be forced
-(e.g., an `agent` may inherit from a `worker_agent`).
+`@Forc_inh` allows class inheritance to be explicitly forced
+—for example, an `agent` may inherit from a `worker_agent`.
 
 **ARCH EA3:**
-`@Forced_pract_code` allows the inclusion of worker-level code within an `agent` class.
+`@Forc_pract_code` allows small portions of worker-level code inside an `agent` class.
 
 **ARCH EA4:**
-`@Forced_pract_code` also allows methods inside `model` or `information` classes.
+`@Forc_pract_code` also allows methods inside `model` or `information` classes.
+These are considered “practical helper” methods.
 
 **ARCH EA5:**
-A class inheriting from an `indef_obj` or from a Java class must use `@Forced_inh`.
+A class inheriting from an `indef_obj` or from a Java class must force its inheritance with `@Forc_inh`.
 
 **ARCH EA6:**
-A class that `contracts` a `compat_interf` or a Java interface must use `@Forced_inh`.
+A class that `contracts` a `compat_interf` or a Java interface must also use `@Forc_inh`.
 
 **ARCH EA7:**
-`indef_obj` classes may inherit from any interface type without forcing.
+`indef_obj` classes may inherit from any type of interface freely, without forcing.
 
 ---
 
+#### **ARCH EB — Forced Interface Inheritance and Contracts**
+
 **ARCH EB1:**
-`@Forced_int_inh` may be applied on a class, on an interface,
-or directly before the contracted or inherited type.
-If applied on a class, it forces all its contracts.
-If applied on an interface, it forces all its inheritances.
-It can also be placed only on the types to be forced inside `nature`, `extends`, or `contracts`.
+`@Forc_int_inh` may be applied on a class, an interface, or directly before the contracted or inherited type.
+If applied on a class, it affects all its contracts; if on an interface, all its inherited types.
+It can also target specific types directly inside `nature`, `extends`, or `contracts`.
 
 **ARCH EB2:**
-`@Forced_int_inh` allows a class to `contracts` multiple `version` interfaces.
-In this case, it must be applied at the class level.
+`@Forc_int_inh` allows a class to `contracts` multiple `version` interfaces.
+In this case, it must be declared at the class level.
 
 **ARCH EB3:**
-`@Forced_int_inh` allows a class to `contracts` a `capacity` interface.
+`@Forc_int_inh` allows a class to `contracts` a `capacity` interface.
 
 **ARCH EB4:**
-`@Forced_int_inh` allows a `compat_interf_version` interface
-to inherit from multiple `version` interfaces.
+`@Forc_int_inh` allows a `compat_interf_version` interface to inherit from several `version` interfaces.
 No need to use it for `version_inh`, which is already allowed.
-It must be applied at the interface level.
+It must be declared at the interface level.
 
 **ARCH EB5:**
-`@Forced_int_inh` allows a `capacity` interface to inherit from a `version` interface.
-It must be applied at the interface level.
+`@Forc_int_inh` allows a `capacity` interface to inherit from a `version` interface.
+It must be declared at the interface level.
 
 **ARCH EB6:**
-`@Forced_int_inh` allows a class to implement a `version_inh` interface
-that recommends a different declension.
+`@Forc_int_inh` allows a class to implement a `version_inh` interface that recommends another declension.
 
 **ARCH EB7:**
-An interface inheriting from a `compat_interf` or a Java interface must use `@Forced_int_inh`.
+A **static** class that wants to inherit from a **non-static** class, or vice versa,
+must force the inheritance using `@Forc_inh`.
 
 **ARCH EB8:**
+An interface inheriting from a `compat_interf` or a Java interface must force its inheritance with `@Forc_int_inh`.
+
+**ARCH EB9:**
 `compat_interf` interfaces may inherit from any interface type without forcing.
 
 ---
 
-💡 *These rules form the foundation of the Clprolf Semantic Checker,
-which operates directly on the compiler’s symbol table.
-Each rule can be traced, tested, and referenced individually
-to ensure clarity and transparency in the compilation process.*
+> 💡 **Principle — Explicit Control Over Exceptions**
+> Forced annotations never act implicitly.
+> They always make the developer’s intent visible and deliberate.
+> Even when forcing inheritance or mixing roles,
+> the declared **declension** remains the primary semantic identity of the component.
 
 ---
 
+✅ *This annex now defines the full set of semantic and architectural rules used by the Clprolf compiler and framework checker.*
+It ensures that every exception, inheritance, or structural decision in Clprolf is explicit, justified, and traceable.
+
+---
 
 ### 🧩 **ANNEX C — RESERVED KEYWORDS **
 
