@@ -184,10 +184,8 @@ public final class ClpSystem {
 
 `String` is also `final`, so the wrapper must use composition.
 
-Here, the class has **two aspects**:
+Here, the class is an abstraction of the concept → `@Abstraction`.
 
-* For **string objects**, it is an abstraction of the concept → `@Abstraction`.
-* For **static methods**, it can be seen as an expert component → `@Abstraction(Gender.EXPERT_COMPONENT_STATIC)`.
 
 ```java
 package clprolf.wrappers.java.lang;
@@ -195,7 +193,7 @@ package clprolf.wrappers.java.lang;
 import org.simol.simolframework.java.Abstraction;
 import org.simol.simolframework.java.Role;
 
-@Abstraction(Gender.EXPERT_COMPONENT_STATIC)
+@Abstraction
 public final class ClpString {
 
     private final String internal;
@@ -214,10 +212,6 @@ public final class ClpString {
     }
 }
 ```
-
-**Notice**
-For the **abstraction** role, both static and non-static aspects may be important (as an exception).
-In most other cases, the `Static` gender only applies when **most methods are static**.
 
 ---
 
