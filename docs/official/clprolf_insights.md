@@ -3210,7 +3210,7 @@ Every field or variable modifier whose `unannType` or `catchType` is a Clprolf i
 ### **ARCH BB — Interface Structure**
 
 **ARCH BB1 (interfaces):**
-A `compat_interf_version` interface cannot `contracts` multiple `version` interfaces.
+A `compat_interf_version` interface cannot inherit multiple `version` interfaces.
 A `version_inh` may do so.
 
 **ARCH BB2 (interfaces):**
