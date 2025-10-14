@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 //Above a compat_interf_capacity, or capacity_inh definition.
 
 @Retention(RUNTIME)
-@Target(value = { TYPE , TYPE_USE })
+@Target(value = { TYPE })
 public @interface Agent_like_advice {
 
 }
