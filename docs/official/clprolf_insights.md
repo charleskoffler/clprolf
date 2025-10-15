@@ -2113,25 +2113,95 @@ A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on
 
 ---
 
+#### 🧩 Compiler Implementation
+
+The **Clprolf compiler** itself is **written in Clprolf**, using the **Clprolf framework** as its structural backbone.
+This makes Clprolf not only a **language** and a **methodology**, but also a **self-hosted system** — its own compiler is built with the same principles it enforces.
+
+This self-reference demonstrates Clprolf’s maturity and internal coherence:
+
+* The compiler uses **Clprolf annotations and declensions** to define its own components.
+* The **framework layer** (implemented over Java) ensures interoperability with the host language while keeping the compiler’s logic entirely Clprolf-driven.
+* This architecture guarantees that Clprolf is **self-descriptive**, **self-validating**, and **consistent** with its own methodology.
+
+> In short: **Clprolf compiles Clprolf** — powered by its own framework.
+
+---
+
 #### Current State and Ongoing Development
 
-The current compiler version focuses primarily on syntax analysis and code generation.
-However, **semantic checking is now being implemented** as part of a new phase of the compiler architecture.
+The **Clprolf compiler**, written in **Clprolf itself** using the **Clprolf framework**, has now entered its **semantic phase**.
+It already **implements several semantic rules (4 as of now)**, which are gradually being added and refined.
 
-* The **Clprolf Semantic Checker** is currently under development.
-  It will perform detailed rule-based analysis (declensions, contracts, genders, inheritance, and concurrency semantics),
-  operating directly on the symbol table generated during parsing.
+The current compiler version still focuses primarily on **syntax analysis** and **code generation**,
+but **semantic checking** has become an integral part of its ongoing evolution.
 
-* In parallel, a dedicated **Framework Checker** is also being written.
-  It reuses the same semantic engine but with a different **symbol table visitor**,
-  enabling it to validate framework-level structures (wrappers, capacities, version interfaces, and practical components)
-  without duplicating the compiler’s logic.
+* The **Clprolf Semantic Checker** is active and growing.
+  It performs rule-based analysis on **declensions**, **contracts**, **genders**, and **inheritance coherence**,
+  operating directly on the **symbol table** generated during parsing.
 
-This modular design allows both the compiler and the framework checker to share the same core semantic verification logic,
-while remaining independent in how they collect their symbols and metadata.
+* In parallel, a dedicated **Framework Checker** is also being developed.
+  It reuses the same **semantic engine**, but with a specialized **symbol table visitor**.
+  This enables it to validate framework-level structures (wrappers, capacities, version interfaces, and practical components)
+  without duplicating compiler logic.
 
-> 💡 *In short, Clprolf is evolving from a simple parser into a complete semantic environment —
-> where both the compiler and the framework share a unified rule engine for clarity and consistency.*
+This modular architecture allows both the **compiler** and the **framework checker** to share a **unified rule engine** —
+ensuring semantic consistency across the entire Clprolf ecosystem.
+
+> 💡 *In short, Clprolf is no longer just a parser — it is becoming a **self-hosted semantic environment**,
+> where its compiler, framework, and rule engine all evolve together within the same language.*
+
+---
+
+#### Example from the Clprolf Compiler
+
+Below is a short excerpt from the **Clprolf compiler**, written with the **Clprolf framework**.
+It shows how semantic verification is organized — using clear roles, coherent structure, and object responsibility, all defined in Clprolf style.
+
+```java
+@Agent
+package org.clprolf.compiler.semantic.agents.impl;
+
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.clprolf.framework.java.Agent;
+import org.clprolf.compiler.semantic.abstractions.impl.SemanticSymbol;
+import org.clprolf.compiler.semantic.enums.CompatInterfaceDeclSynonym;
+import org.clprolf.compiler.semantic.enums.Declension;
+import org.clprolf.compiler.semantic.abstractions.impl.SemanticInterfaceSymbol;
+import org.clprolf.compiler.semantic.abstractions.impl.SemanticClassSymbol;
+
+public class SemanticCheckerImpl {
+
+    private final Map<String, SemanticSymbol> symbols;
+    private final List<String> errors = new ArrayList<>();
+
+    public SemanticCheckerImpl(Map<String, SemanticSymbol> symbols) {
+        this.symbols = symbols;
+    }
+
+    public List<String> getErrors() {
+        return errors;
+    }
+
+    // -------------------------------------------------------------
+    // 🧠 Entry point
+    // -------------------------------------------------------------
+    public void verify() {
+        for (SemanticSymbol s : symbols.values()) {
+            if (s instanceof SemanticClassSymbol) {
+                verifyClassRules((SemanticClassSymbol) s);
+            } else if (s instanceof SemanticInterfaceSymbol) {
+                verifyInterfaceRules((SemanticInterfaceSymbol) s);
+            }
+        }
+    }
+}
+```
+
+> *Excerpt from the current Clprolf compiler — showing the beginning of the semantic rule engine, implemented directly through the Clprolf framework.*
 
 ---
 
@@ -3228,7 +3298,11 @@ A `compat_interf_version` may declare one.
 An interface that inherits must use `nature` if it is a `version_inh` or `capacity_inh`.
 It may use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
 
----
+**ARCH BB6 (interfaces):**
+
+**Advice annotations are applied only above capacities** — either `version_inh` or `compat_interf_capacity`.
+They are *not allowed* on `version` interfaces or on classes.
+
 
 ### **ARCH C — Genders and Statics**
 
