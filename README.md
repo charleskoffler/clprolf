@@ -87,7 +87,7 @@ agent OrderService {
 
 ### clprolf compiler
 
-[clprolf compiler directory](https://github.com/charleskoffler/clprolf/tree/main/simol_compiler)
+[clprolf compiler directory](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler)
 
 ### clprolf frameworks
 
