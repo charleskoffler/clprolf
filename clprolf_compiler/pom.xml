@@ -6,7 +6,7 @@
 
   <groupId>org.clprolf</groupId>
   <artifactId>compiler</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>4.0.0-SNAPSHOT</version>
 
   <name>compiler</name>
   <!-- FIXME change it to the project's website -->
@@ -146,7 +146,7 @@
                 </execution>
             </executions>
             <configuration>
-                <mainClass>org.clprolf.compiler.Main</mainClass>
+                <mainClass>org.clprolf.compiler.workers.impl.Main</mainClass>
             </configuration>
         </plugin>
       </plugins>

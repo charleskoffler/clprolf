@@ -13,3 +13,5 @@ Clprolf compiler versions
 2.6.0 2024/10/17	Added "version_int", and "capacity_int" modifiers.
 2.6.1 2024/10/17	Correction for nature of interfaces.
 3.0.0 2025/09/28	Clprolf instead of deprecated name "simol". Cleanup synonyms.
+4.0.0 2025/10/15	Implemented semantic checks, and tests: BB2, BB1, BA3, BA4
+ 

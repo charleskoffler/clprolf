@@ -1,4 +1,4 @@
-package org.clprolf.compiler;
+package org.clprolf.compiler.agents.impl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,12 +10,18 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Map;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.clprolf.compiler.ClprolfJava8Lexer;
+import org.clprolf.compiler.ClprolfJava8Parser;
+import org.clprolf.compiler.semantic.agents.impl.SemanticCheckerImpl;
+import org.clprolf.compiler.semantic.agents.impl.SemanticSymbolCollectorImpl;
+import org.clprolf.compiler.semantic.workers.impl.SemanticReporterImpl;
 import org.clprolf.framework.java.Agent;
 import org.clprolf.framework.java.With_compat;
 
@@ -23,7 +29,7 @@ import org.clprolf.framework.java.With_compat;
  * 
  *  */
 @Agent
-public class ClprolfCompiler {
+public class ClprolfCompilerImpl {
 	
 	public void compile(String fileName) throws URISyntaxException, IOException {
 		String totalSourceCode;
@@ -41,7 +47,7 @@ public class ClprolfCompiler {
 	    /* ClprolfJava8Parser.CompilationUnitContext context = parser.compilationUnit(); */
 	
 		// You can now work with the parse tree or AST
-		ClprolfWalkerObserver walkerObserver = new ClprolfWalkerObserver();
+		ClprolfWalkerObserverImpl walkerObserver = new ClprolfWalkerObserverImpl();
 		
 		// Calling the parsor while keeping the standard errors output.
 		// Create a ByteArrayOutputStream to capture error output
@@ -74,6 +80,15 @@ public class ClprolfCompiler {
 		else {
 			System.err.print(errorOutput);
 		}
+		
+        SemanticSymbolCollectorImpl collector = new SemanticSymbolCollectorImpl();
+        collector.visit(parseTree);
+
+        SemanticCheckerImpl checker = new SemanticCheckerImpl(collector.getSymbols());
+        checker.verify();
+
+        SemanticReporterImpl reporter = new SemanticReporterImpl(checker);
+        reporter.printReport();
 	}
 	
 	/**
