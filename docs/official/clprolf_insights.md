@@ -3194,7 +3194,7 @@ superinterfaces
 
 ---
 
-### 🧩 **Annex B — Semantic and Architectural Rules**
+### 🧩 **Annex B — Compiler Semantic and Architectural Rules**
 
 This annex gathers all formal **semantic and architectural rules** enforced (or planned) by the Clprolf compiler and framework checker.
 
@@ -3269,11 +3269,31 @@ reflecting a **stricter compatibility contract rather than a natural hierarchy**
 `with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`),
 and the compiler must verify that the `unannType` or `catchType` is a valid Clprolf interface.
 
-**ARCH BA7 (interfaces, usage):**
-`with_compat` cannot appear in a method return type.
+**ARCH-BA7 (interfaces, usage):**
+No `with_compat` is allowed in **method return types** or in **interface type lists** (the list of interfaces inherited or contracted by a class or interface).
+
+**Rationale:**
+`with_compat` is reserved for **variable declarations and parameters**, where compatibility is actively used at runtime.
+In return types or inheritance clauses, it would be meaningless because the compiler already manages structural linkage and contract declaration directly.
+
+**Scope:**
+Applies to:
+
+* method return types,
+* interface type lists of classes (`contracts`),
+* and interface inheritance lists (`nature` / `extends`).
 
 **ARCH BA8 (interfaces, usage):**
 Every field or variable modifier whose `unannType` or `catchType` is a Clprolf interface must include `with_compat`.
+
+**ARCH-BA9 (interfaces, usage):**
+Ensure that every type declared with `with_compat` refers to an **interface type** (`compat_interf`, `compat_interf_version`, or `compat_interf_capacity`).
+
+**Rationale:**
+This rule guarantees that any requested *loose coupling* is always effectively provided.
+
+**Scope:**
+Applies to all uses of `with_compat`, including those found in **interface method signatures**.
 
 ---
 
