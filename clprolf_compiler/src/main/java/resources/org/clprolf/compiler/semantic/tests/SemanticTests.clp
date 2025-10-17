@@ -12,6 +12,10 @@ public capacity_inh Eatable {
 	public void eat(int quantity);
 }
 
+public agent AnimalImpl {
+	
+}
+
 // BB1
 /* **ARCH BB1 (interfaces):**
 A `compat_interf_version` interface cannot inherit multiple `version` interfaces.
@@ -58,3 +62,15 @@ A class cannot `contracts` multiple `version` interfaces simultaneously. */
 //problem
 public agent BA4Animal contracts Animal, Vehicule {
 }
+
+//
+/* **ARCH BA2 (interfaces, usage):**
+If a class uses `contracts`, the referenced type must be a `version` interface. */
+
+//problem
+public agent BA2Animal contracts AnimalImpl {
+	public void jump() {
+	
+	}
+}
+

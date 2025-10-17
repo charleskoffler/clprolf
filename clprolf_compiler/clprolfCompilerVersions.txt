@@ -14,4 +14,4 @@ Clprolf compiler versions
 2.6.1 2024/10/17	Correction for nature of interfaces.
 3.0.0 2025/09/28	Clprolf instead of deprecated name "simol". Cleanup synonyms.
 4.0.0 2025/10/15	Implemented semantic checks, and tests: BB2, BB1, BA3, BA4
- 
+4.0.1 2025/10/15	Implemented semantic checks, and tests: BB2, BB1, BA3, BA4, BA2

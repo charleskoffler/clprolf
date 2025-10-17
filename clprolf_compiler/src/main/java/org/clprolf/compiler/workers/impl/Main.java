@@ -9,8 +9,8 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 4.0.0 2025/10/15
- Implemented semantic checks, and tests: BB2, BB1, BA3, BA4
+ 4.0.1 (20251017)
+ Implemented semantic checks, and tests: BB2, BB1, BA3, BA4, BA2
  
  Usage example: mvn exec:java -Dexec.mainClass="org.clprolf.compiler.workers.impl.Main" -Dexec.args="org/clprolf/compiler/semantic/tests/SemanticTests.clp"
  

@@ -65,7 +65,7 @@ public class SemanticCheckerImpl {
                 .filter(sym -> sym instanceof SemanticInterfaceSymbol
                         && ((SemanticInterfaceSymbol) sym).getCompatRole().isCapacity())
                 .count();
-
+        
         if (capacityContracts > 0) {
             errors.add("ARCH-BA3: " + name
                     + " contracts a capacity (forbidden).");
@@ -83,6 +83,20 @@ public class SemanticCheckerImpl {
             errors.add("ARCH-BA4: " + name
                     + " contracts multiple version_inh interfaces (forbidden).");
         }
+        
+      /*  **ARCH BA2 (interfaces, usage):**
+        A class using `contracts` must refer to a `version` interface, not to a class */
+        
+        long classesContracts = c.getContracts().stream()
+        		.map(symbols::get)
+        		.filter(sym -> sym instanceof SemanticClassSymbol)
+        		.count();
+
+        if (classesContracts > 0) {
+        	errors.add("ARCH-BA2: " + name
+        			+ " contracts a class instead of a version interface (forbidden).");
+        }
+        
     }
     
     private long countVersionExtensions(SemanticInterfaceSymbol i) {
