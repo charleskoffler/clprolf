@@ -3245,7 +3245,7 @@ No semantic control is applied to this rule.
 The `contracts` keyword is mandatory for all implementations.
 
 **ARCH BA2 (interfaces, usage):**
-If a class uses `contracts`, the referenced type must be a `version` interface.
+A class using `contracts` must refer to a `version` interface, not to a class
 
 **ARCH BA3 (interfaces, usage):**
 A class cannot `contracts` a `capacity`.
@@ -3600,3 +3600,4 @@ With only 32 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
