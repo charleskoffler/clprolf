@@ -1710,7 +1710,6 @@ This vision was always balanced with a strong determination to **integrate estab
 
 ---
 
-
 ### Why Java as the Underlying Language for Clprolf?
 
 Java was chosen as the underlying language because it aligns perfectly with Clprolf’s **philosophy and mindset**.
@@ -1725,6 +1724,38 @@ Key reasons include:
 
 While Java was the natural choice, Clprolf is not limited to it.
 Other languages such as **C#** are also strong candidates, and **PHP** is well suited for web and scripting contexts.
+
+---
+
+### ☕ **Interoperability with Java**
+
+Clprolf is fully interoperable with Java.
+It relies on **Java 8 syntax and semantics** for all code embedded in `.clp` files,
+while allowing external Java sources to target **any version** of the JVM.
+
+All Java types are imported explicitly through **typed import statements**:
+
+```java
+import java_class fully.qualified.ClassName;
+import java_interface fully.qualified.InterfaceName;
+```
+
+Optionally, these imports may include a **semantic declaration**
+and even **Clprolf annotations**
+to define how the Java element behaves within Clprolf:
+
+```java
+import java_interface version_inh abstraction java.util.List;
+@Expert_component
+import java_class agent java.util.Timer;
+```
+
+This mechanism makes any Java library appear as a **Clprolf-native library**,
+verified semantically and integrated into the same conceptual framework.
+Each imported type becomes a **true Clprolf entity**,
+subject to the same architectural rules as native components.
+
+> 💡 *Clprolf does not wrap Java — it understands it.*
 
 ---
 
@@ -3265,9 +3296,24 @@ reflecting a **stricter compatibility contract rather than a natural hierarchy**
 
 ---
 
-**ARCH BA6 (interfaces, usage):**
+**ARCH BA6 — `with_compat` Verification**
+
 `with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`),
-and the compiler must verify that the `unannType` or `catchType` is a valid Clprolf interface.
+and the compiler must verify that the `unannType` or `catchType` refers to a valid **interface type**.
+
+Valid interface types include:
+
+* Clprolf compatibility interfaces (`compat_interf`, `compat_interf_version`, `compat_interf_capacity`), and
+* Java interfaces imported using the `java_interface` syntax.
+
+> ✅ `with_compat java_interface java.util.List myList;`
+> ✅ `with_compat MyCompatInterface myInterface;`
+> ❌ `with_compat java_class java.util.ArrayList list;`
+
+This rule ensures that `with_compat` always expresses a meaningful **interface-level coupling**,
+never a dependency on an implementation class.
+
+---
 
 **ARCH-BA7 (interfaces, usage):**
 No `with_compat` is allowed in **method return types** or in **interface type lists** (the list of interfaces inherited or contracted by a class or interface).
@@ -3286,16 +3332,49 @@ Applies to:
 **ARCH BA8 (interfaces, usage):**
 Every field or variable modifier whose `unannType` or `catchType` is a Clprolf interface must include `with_compat`.
 
-**ARCH-BA9 (interfaces, usage):**
-Ensure that every type declared with `with_compat` refers to an **interface type** (`compat_interf`, `compat_interf_version`, or `compat_interf_capacity`).
+---
 
-**Rationale:**
-This rule guarantees that any requested *loose coupling* is always effectively provided.
+**ARCH BA9 — Interface Type Requirement in `with_compat`**
 
-**Scope:**
-Applies to all uses of `with_compat`, including those found in **interface method signatures**.
+Every `with_compat` must reference a valid **interface type**,
+either internal (Clprolf) or external (Java).
+
+Allowed interface types:
+
+* `compat_interf`
+* `compat_interf_version`
+* `compat_interf_capacity`
+* `java_interface`
+
+> ✅ `with_compat java_interface java.awt.event.ActionListener l;`
+> ✅ `with_compat compat_interf_version MyListener v;`
+> ❌ `with_compat java_class java.util.ArrayList list;`
+
+This ensures that all `with_compat` declarations refer to
+**pure contracts**, not to executable classes.
 
 ---
+
+**ARCH BA10 — `with_compat` Extended Scope**
+
+`with_compat` may be used with:
+
+1. **Clprolf compatibility interfaces** (`compat_interf_version`, `compat_interf_capacity`, `compat_interf`), and
+2. **Java interfaces explicitly imported** using the `java_interface` keyword.
+
+For **Clprolf types**, the compiler checks the declension to ensure it is a valid compatibility interface.
+For **Java types**, the compiler verifies only that they are declared as `java_interface` imports —
+no further structural analysis is performed.
+
+> ✅ `public void setListener(with_compat java_interface java.awt.event.ActionListener l);`
+> ✅ `public void setInterface(with_compat compat_interf_version MyVersionInterface v);`
+
+This guarantees full semantic clarity:
+Clprolf knows whether each `with_compat` refers to an internal or external interface,
+while maintaining strict separation between both worlds.
+
+---
+
 
 ### **ARCH BB — Interface Structure**
 
@@ -3434,11 +3513,31 @@ while keeping the programmer’s intent explicit and traceable.
 `@Forc_pract_code` also allows methods inside `model` or `information` classes.
 These are considered “practical helper” methods.
 
-**ARCH EA5:**
-A class inheriting from an `indef_obj` or from a Java class must force its inheritance with `@Forc_inh`.
+**ARCH EA5 — Forced Inheritance from External Classes**
 
-**ARCH EA6:**
-A class that `contracts` a `compat_interf` or a Java interface must also use `@Forc_inh`.
+A class inheriting from an `indef_obj` or from a **Java class**
+must explicitly force this inheritance with `@Forc_inh`.
+
+> ✅ `nature @Forc_inh java.net.Socket;`
+
+The Clprolf compiler recognizes external Java classes
+through `java_class` imports and never parses their internal structure.
+This rule enforces visibility and intent when bridging domains.
+
+---
+
+**ARCH EA6 — Forced Contracts with External Interfaces**
+
+A class that `contracts` either a `compat_interf`
+or a **Java interface** imported via `java_interface`
+must explicitly use `@Forc_inh`.
+
+> ✅ `contracts @Forc_inh java.util.Comparator;`
+
+This preserves explicitness in all external relationships,
+ensuring that no implicit compatibility contract is assumed.
+
+---
 
 **ARCH EA7:**
 `indef_obj` classes may inherit from any type of interface freely, without forcing.
@@ -3475,8 +3574,18 @@ It must be declared at the interface level.
 A **static** class that wants to inherit from a **non-static** class, or vice versa,
 must force the inheritance using `@Forc_inh`.
 
-**ARCH EB8:**
-An interface inheriting from a `compat_interf` or a Java interface must force its inheritance with `@Forc_int_inh`.
+**ARCH EB8 — Forced Inheritance from External Interfaces**
+
+An interface that inherits from a `compat_interf`
+or from a **Java interface imported via `java_interface`**
+must use `@Forc_int_inh`.
+
+> ✅ `nature @Forc_int_inh java.util.List;`
+
+This makes the intent explicit whenever Clprolf interfaces extend
+interfaces defined outside the Clprolf semantic domain.
+
+---
 
 **ARCH EB9:**
 `compat_interf` interfaces may inherit from any interface type without forcing.
@@ -3490,6 +3599,181 @@ An interface inheriting from a `compat_interf` or a Java interface must force it
 > the declared **declension** remains the primary semantic identity of the component.
 
 ---
+
+## ⚙️ **ARCH F — General Language Rules**
+
+### **ARCH F1 — Fully Qualified Imports**
+
+All **Java and Clprolf types** must be fully qualified in import statements.
+The wildcard character `*` is strictly forbidden.
+
+> ✅ `import org.clprolf.framework.java.Worker_agent;`
+> ❌ `import org.clprolf.framework.java.*;`
+
+This rule guarantees clear dependency mapping and prevents ambiguous references.
+
+---
+
+### **ARCH F2 — Java Types Are Not Parsed**
+
+Java types are **never parsed** by the Clprolf compiler.
+They are treated as **external entities**, independent of the internal semantic engine.
+Therefore, any Java version can be used for external `.java` files.
+
+This preserves full interoperability between Clprolf and any Java ecosystem.
+
+---
+
+### **ARCH F3 — Internal Java Reference** (minor rewording)
+
+The Clprolf compiler embeds **Java 8 syntax and semantics**
+for Java code directly written inside `.clp` files.
+External Java code, identified by `java_class` or `java_interface` imports,
+may target any later version of Java and is not parsed.
+
+This guarantees internal stability and external flexibility.
+
+---
+
+### **ARCH F4 — Typed Java Imports**
+
+All external Java imports must explicitly declare their nature:
+
+```java
+import java_class fully.qualified.ClassName;
+import java_interface fully.qualified.InterfaceName;
+```
+
+Examples:
+
+```java
+import java_interface java.util.List;
+import java_class java.util.ArrayList;
+import java_interface java.awt.event.ActionListener;
+```
+
+This explicit typing clearly separates Clprolf symbols from Java entities
+and ensures that the compiler never needs to guess their origin or structure.
+
+---
+
+### **ARCH F5 — Mandatory Typing for Java Imports**
+
+Every Java type used in a `.clp` file must be declared through a **typed import**
+(`java_class` or `java_interface`).
+
+If a non-typed import fails to resolve to a known Clprolf declaration,
+the compiler raises an **ARCH-F5 error**:
+
+> ❌ *“Unknown Clprolf type — use java_class or java_interface for external Java types.”*
+
+This rule enforces a strict semantic boundary between
+the Clprolf domain and the external Java domain,
+while keeping interoperability transparent and safe.
+
+---
+
+💎 *Together, these rules (F1–F5) establish the architectural foundation
+of Clprolf’s clarity: every imported entity is known, named, and declared for what it is.*
+
+> **Clprolf does not merge with Java — it cooperates with it,
+> through explicit, verifiable boundaries.**
+
+---
+
+### **ARCH F6 — Semantic Imports (Extended Form)**
+
+A Java type (`java_class` or `java_interface`) may include a **semantic declaration**
+to define how it behaves inside Clprolf.
+It may also be preceded by **Clprolf annotations**, such as genders or advices,
+allowing the imported type to carry the same semantic richness
+as a native Clprolf declaration.
+
+From that moment, the imported element is **no longer treated as a Java entity**,
+but as a **fully integrated Clprolf type**,
+subject to all standard semantic and architectural rules.
+
+---
+
+#### **Syntax**
+
+```java
+[@ClprolfAnnotation ...]
+import java_class [declension role] fully.qualified.Name;
+
+[@ClprolfAnnotation ...]
+import java_interface [declension role] fully.qualified.Name;
+```
+
+---
+
+#### **Examples**
+
+```java
+import java_interface version_inh abstraction java.util.List;
+@Expert_component
+import java_class abstraction java.net.Socket;
+@Active_agent
+import java_class agent java.util.Timer;
+```
+
+After import, these types are recognized and handled **exactly like native Clprolf types**,
+including gender and advice annotations.
+
+| Imported type     | Declension    | Role                | Behavior                                                                 |
+| ----------------- | ------------- | ------------------- | ------------------------------------------------------------------------ |
+| `java.util.List`  | `version_inh` | `abstraction`       | Acts as a Clprolf abstraction; valid in `with_compat`, `contracts`, etc. |
+| `java.net.Socket` | `abstraction` | `@Expert_component` | Treated as an expert technical abstraction, usable within worker_agents. |
+| `java.util.Timer` | `agent`       | `@Active_agent`     | Behaves as a living agent, capable of scheduled activity.                |
+
+---
+
+#### **Rationale**
+
+This rule allows developers to **map external Java types into the Clprolf ecosystem**
+while preserving their semantics and architectural intent.
+Each imported type becomes a **true Clprolf entity**,
+participating in the same verification process as native classes and interfaces.
+
+This mechanism effectively makes **Java libraries appear as Clprolf-native libraries**,
+endowed with explicit roles, genders, and advice annotations.
+
+> 🧠 *Clprolf does not parse Java — it interprets it.*
+> Through semantic imports, external types become part of Clprolf’s living structure.
+
+---
+
+### **ARCH F7 — Consistent Semantic Imports Across Compilation Units**
+
+If a Java type (`java_class` or `java_interface`) is imported
+in multiple Clprolf source files with **different declensions, roles, or annotations**,
+the compiler raises an **ARCH-F7 error**.
+
+This ensures a single, coherent semantic identity for each external type.
+
+> ❌ Example (error):
+>
+> ```java
+> // In FileA.clp
+> @Active_agent
+> import java_class agent java.util.Timer;
+>
+> // In FileB.clp
+> import java_class worker_agent java.util.Timer;  // Error (ARCH-F7)
+> ```
+
+> *Rationale:*
+> Every imported Java type must keep a unique and consistent semantic definition
+> throughout the project.
+> This rule guarantees architectural clarity across all source files.
+
+---
+
+💎 *Together, F6 and F7 make Clprolf’s integration with Java complete:
+external code becomes semantically alive, unified, and verifiable.*
+
+---
+
 
 ✅ *This annex now defines the full set of semantic and architectural rules used by the Clprolf compiler and framework checker.*
 It ensures that every exception, inheritance, or structural decision in Clprolf is explicit, justified, and traceable.
@@ -3600,4 +3884,3 @@ With only 32 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
-
