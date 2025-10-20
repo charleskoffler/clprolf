@@ -102,11 +102,12 @@ agent OrderService {
 
 [clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
 
+[Practical examples of Clprolf in action](https://github.com/charleskoffler/clprolf/blob/main/clprolf_app_examples)
+
 [clprolf wrappers for Java Standard Libraries](https://github.com/charleskoffler/clprolf/tree/main/wrappers)
 
 [clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_design_patterns_examples)
 
-[clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
-
 [clprolf algorithms examples](https://github.com/charleskoffler/clprolf/tree/main/simol_algorithms_examples)
 
+[clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
