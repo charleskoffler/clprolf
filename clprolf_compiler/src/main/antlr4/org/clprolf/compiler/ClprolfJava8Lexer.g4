@@ -108,7 +108,9 @@ TRY : 'try';
 VOID : 'void';
 VOLATILE : 'volatile';
 WHILE : 'while';
-//simol tokens
+//clprolf tokens
+JAVA_CLASS : 'java_class';
+JAVA_INTERFACE : 'java_interface';
 CLASS_FOR : 'class_for';
 AGENT: 'agent';
 ABSTRACTION : 'abstraction';

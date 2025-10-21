@@ -15,3 +15,9 @@ Clprolf compiler versions
 3.0.0 2025/09/28	Clprolf instead of deprecated name "simol". Cleanup synonyms.
 4.0.0 2025/10/15	Implemented semantic checks, and tests: BB2, BB1, BA3, BA4
 4.0.1 2025/10/15	Implemented semantic checks, and tests: BB2, BB1, BA3, BA4, BA2
+5.0.0 2025/10/21	Changelog — Code Generation & Grammar Update
+					• Updated grammar for import java_class and import java_interface.
+					• Introduced a new visitor-based code generator.
+					• Fixed generation issue for interfaces declaring roles.
+					• Improved base formatting of generated output.
+					• Added full generation support for import java_class and import java_interface.

@@ -1,4 +1,4 @@
-package org.clprolf.compiler.agents.impl;
+package org.clprolf.compiler.generation.agents.impl;
 
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;

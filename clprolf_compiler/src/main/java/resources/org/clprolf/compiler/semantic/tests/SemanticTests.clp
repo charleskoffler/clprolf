@@ -1,4 +1,6 @@
 // For all tests
+@Static
+import java_interface version_inh abstraction java.util.List;
 
 public version_inh agent Animal {
 	public void run();

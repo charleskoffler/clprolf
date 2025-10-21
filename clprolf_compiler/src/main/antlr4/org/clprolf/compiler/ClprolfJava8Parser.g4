@@ -238,28 +238,56 @@ packageModifier
 	:	annotation
 	;
 
+/* Java 8
 importDeclaration
 	:	singleTypeImportDeclaration
 	|	typeImportOnDemandDeclaration
 	|	singleStaticImportDeclaration
 	|	staticImportOnDemandDeclaration
+	; */
+	
+/* Clprolf */
+
+importModifier
+	: annotation
+	;
+
+importDeclaration
+	:	singleTypeImportDeclaration
+	|	singleStaticImportDeclaration
 	;
 
 singleTypeImportDeclaration
-	:	'import' typeName ';'
+	:	importModifier* 'import' clprolfInformationForJava* typeName ';'
 	;
 
+/* Java 8
 typeImportOnDemandDeclaration
 	:	'import' packageOrTypeName '.' '*' ';'
-	;
+	; */
 
 singleStaticImportDeclaration
-	:	'import' 'static' typeName '.' Identifier ';'
+	:	importModifier* 'import' 'static' typeName '.' Identifier ';'
+	;
+	
+clprolfInformationForJava
+	:	clprolfClassInformationForJava
+	|	clprolfInterfaceInformationForJava
+	;
+	
+clprolfClassInformationForJava
+	:	'java_class' clprolfDeclension
+	;
+	
+clprolfInterfaceInformationForJava
+	:	'java_interface' clprolfInterfaceDeclension clprolfDeclension?
 	;
 
+
+/* Java 8
 staticImportOnDemandDeclaration
 	:	'import' 'static' typeName '.' '*' ';'
-	;
+	; */
 
 typeDeclaration
 	:	classDeclaration
