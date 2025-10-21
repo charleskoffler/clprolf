@@ -2098,38 +2098,62 @@ This makes the transition smoother than learning a completely new paradigm.
 
 ---
 
-### TO COMPILE
+### 🧩 **TO COMPILE**
 
-The **Clprolf compiler** is the most direct way to use the language. However, a Clprolf framework also exists for Java developers.
+The **Clprolf compiler** is the most direct way to use the language.
+However, a **Clprolf framework** also exists for Java developers.
 
-During compilation, Clprolf keywords and annotations are translated into standard Java syntax as follows:
+During compilation, **Clprolf keywords and annotations** are translated into standard Java syntax as follows:
+
+---
 
 * **Roles → `class`**
   `agent`, `worker_agent`, `comp_as_worker`,
   `abstraction`, `simu_real_obj`,
   `model`, `information`, `indef_obj`
 
-* **Other keywords → removed**
-  `class_for`, `underst`, `with_compat`, `long_action`,
-  `prevent_missing_collision`, `turn_monitor`, `one_at_a_time`,
-  `for_every_thread`, `dependent_activity`
+---
 
 * **Interface roles → `interface`**
   `compat_interf_version`, `compat_interf_capacity`,
   `compat_interf`, `version_inh`, `capacity_inh`
 
+---
+
+* **Other keywords → removed**
+  `class_for`, `underst`, `with_compat`, `long_action`,
+  `prevent_missing_collision`, `turn_monitor`, `one_at_a_time`,
+  `for_every_thread`, `dependent_activity`,
+  `java_class`, `java_interface`
+
+  > These keywords are used only for semantic analysis inside Clprolf and have no equivalent in generated Java code.
+
+---
+
 * **Inheritance and contracts**
   `nature` → `extends`
   `contracts` → `implements`
 
-Clprolf-specific annotations are ignored by the Java compiler, such as:
-`@Human_expert`, `@Expert_component`,
-`@Human_expert_static`, `@Expert_component_static`,
-`@Static`,
-`@LongAction`, `@Forced_inh`, `@Forced_int_inh`,
-`@Forced_pract_code`, `@Agent_like_advice`, `@Worker_like_advice`.
+---
 
-**Everything else is identical to Java.**
+* **Annotations**
+  Clprolf annotations are preserved in generated Java code **except** when applied to `import` declarations (since Java does not allow them).
+  They have no technical impact but serve as semantic documentation.
+
+  Ignored or preserved annotations include:
+  `@Human_expert`, `@Expert_component`,
+  `@Human_expert_static`, `@Expert_component_static`,
+  `@Static`,
+  `@Long_action`, `@Forc_inh`, `@Forc_int_inh`,
+  `@Forc_pract_code`, `@Agent_like_advice`, `@Worker_like_advice`.
+
+---
+
+✅ **Summary**
+
+* Clprolf-specific keywords are **removed or translated** into valid Java equivalents.
+* **Annotations are kept**, except on `import` lines.
+* The resulting code is **100% valid Java**, identical in structure but enriched with semantic clarity.
 
 ---
 
@@ -2243,8 +2267,6 @@ Clprolf source files can be edited with common tools:
 * **Eclipse** (open as Java files)
 * **Notepad++** (set language to Java)
 * Any other editor with Java syntax highlighting.
-
-Generated Java code can also be formatted with standard IDE features. For example, in Eclipse: right-click the generated file → *Source* → *Format*.
 
 The **Clprolf framework for Java** integrates fully with the Java ecosystem:
 
@@ -3223,6 +3245,32 @@ superinterfaces
 	:	'contracts' interfaceTypeList
 	;
 
+importModifier
+	: annotation
+	;
+
+importDeclaration
+	:	singleTypeImportDeclaration
+	|	singleStaticImportDeclaration
+	;
+
+singleTypeImportDeclaration
+	:	importModifier* 'import' clprolfInformationForJava* typeName ';'
+	;
+	
+clprolfInformationForJava
+	:	clprolfClassInformationForJava
+	|	clprolfInterfaceInformationForJava
+	;
+	
+clprolfClassInformationForJava
+	:	'java_class' clprolfDeclension
+	;
+	
+clprolfInterfaceInformationForJava
+	:	'java_interface' clprolfInterfaceDeclension clprolfDeclension?
+	;
+
 ---
 
 ### 🧩 **Annex B — Compiler Semantic and Architectural Rules**
@@ -3269,6 +3317,37 @@ unless explicitly forced with `@Forc_pract_code` on the class.
 No semantic control is applied to this rule.
 
 ---
+#### **ARCH_A4 — Semantic equivalence for `import java_class`**
+
+All `import java_class` declarations must follow the **same semantic rules** as Clprolf class declarations.
+
+> This means that a Java class imported into Clprolf is treated as a true Clprolf class.
+> It must declare a **declension** (`agent`, `worker_agent`, `model`, `information`, or `indef_obj`),
+> and may optionally declare a **gender** (`@Expert_component`, `@Static`, etc.).
+
+The same architectural rules that apply to Clprolf class declarations also apply here —
+including inheritance consistency and gender validity.
+
+**Valid example:**
+
+```java
+@Expert_component
+import java_class agent java.util.Timer;
+```
+
+**Invalid example:**
+
+```java
+@For_agent_like
+import java_class agent java.util.Timer;   // ❌ Advice not allowed on class imports
+```
+
+**Semantic rule summary:**
+
+> The compiler must perform the same semantic checks as for normal class declarations,
+> raising identical errors (`ARCH_G1`, `ARCH_BA7`, etc.) when violations occur.
+
+---
 
 ### **ARCH B — Interfaces and Usage**
 
@@ -3306,9 +3385,9 @@ Valid interface types include:
 * Clprolf compatibility interfaces (`compat_interf`, `compat_interf_version`, `compat_interf_capacity`), and
 * Java interfaces imported using the `java_interface` syntax.
 
-> ✅ `with_compat java_interface java.util.List myList;`
+> ✅ `with_compat java.util.List myList;`
 > ✅ `with_compat MyCompatInterface myInterface;`
-> ❌ `with_compat java_class java.util.ArrayList list;`
+> ❌ `with_compat java.util.ArrayList list;`
 
 This rule ensures that `with_compat` always expresses a meaningful **interface-level coupling**,
 never a dependency on an implementation class.
@@ -3346,9 +3425,9 @@ Allowed interface types:
 * `compat_interf_capacity`
 * `java_interface`
 
-> ✅ `with_compat java_interface java.awt.event.ActionListener l;`
-> ✅ `with_compat compat_interf_version MyListener v;`
-> ❌ `with_compat java_class java.util.ArrayList list;`
+> ✅ `with_compat java.awt.event.ActionListener l;`
+> ✅ `with_compat MyListener v;`
+> ❌ `with_compat java.util.ArrayList list;`
 
 This ensures that all `with_compat` declarations refer to
 **pure contracts**, not to executable classes.
@@ -3366,8 +3445,8 @@ For **Clprolf types**, the compiler checks the declension to ensure it is a vali
 For **Java types**, the compiler verifies only that they are declared as `java_interface` imports —
 no further structural analysis is performed.
 
-> ✅ `public void setListener(with_compat java_interface java.awt.event.ActionListener l);`
-> ✅ `public void setInterface(with_compat compat_interf_version MyVersionInterface v);`
+> ✅ `public void setListener(with_compat java.awt.event.ActionListener l);`
+> ✅ `public void setInterface(with_compat MyVersionInterface v);`
 
 This guarantees full semantic clarity:
 Clprolf knows whether each `with_compat` refers to an internal or external interface,
@@ -3402,6 +3481,41 @@ It may use `extends` if it is a `compat_interf_version` or `compat_interf_capaci
 **Advice annotations are applied only above capacities** — either `version_inh` or `compat_interf_capacity`.
 They are *not allowed* on `version` interfaces or on classes.
 
+
+#### **ARCH_BB7 (interfaces) — Semantic equivalence for `import java_interface`**
+
+All `import java_interface` declarations must follow the **same semantic rules** as Clprolf interface declarations.
+
+> This means that a Java interface imported into Clprolf becomes a true Clprolf interface.
+> It must declare:
+>
+> * a **declension of interface** (`compat_interf_version`, `compat_interf_capacity`, or `compat_interf`),
+> * a **class role** when appropriate (for `version_inh` interfaces, such as `version_inh agent`),
+> * and an **advice** (`@For_agent_like` or `@For_worker_like`) when it is a `capacity_inh` interface.
+
+**Valid examples:**
+
+```java
+import java_interface version_inh agent java.util.List;
+
+@For_agent_like
+import java_interface capacity_inh java.io.Serializable;
+```
+
+**Invalid examples:**
+
+```java
+@Static
+import java_interface version_inh java.util.List;  // ❌ Gender not allowed on interfaces
+import java_interface capacity_inh java.io.Serializable; // ❌ Missing advice
+```
+
+**Semantic rule summary:**
+
+> The compiler must apply the same semantic checks as for interface declarations —
+> verifying the interface declension, the associated class role, and the presence of the proper advice for capacities.
+
+---
 
 ### **ARCH C — Genders and Statics**
 
@@ -3530,7 +3644,7 @@ This rule enforces visibility and intent when bridging domains.
 
 A class that `contracts` either a `compat_interf`
 or a **Java interface** imported via `java_interface`
-must explicitly use `@Forc_inh`.
+must explicitly use `@Forc_int_inh`.
 
 > ✅ `contracts @Forc_inh java.util.Comparator;`
 
@@ -3772,6 +3886,143 @@ This ensures a single, coherent semantic identity for each external type.
 💎 *Together, F6 and F7 make Clprolf’s integration with Java complete:
 external code becomes semantically alive, unified, and verifiable.*
 
+### ⚖️ **F8 — Coherence of Imported Java Types**
+
+**Rule ID:** ARCH-F8
+**Name:** Coherence of Imported Java Types
+**Scope:** Java Interoperability, Import Declarations
+
+---
+
+#### **Description**
+
+When a `java_class` or `java_interface` is imported, its **declared kind** (class or interface) must remain consistent with the way it is used throughout the Clprolf source code.
+
+False declarations — claiming that a Java class is an interface, or that a Java interface is a class — are detected by the compiler.
+
+This verification applies automatically during the use of these imported types in:
+
+* **`contracts`** clauses,
+* **`nature`** inheritance declarations,
+* and **`with_compat`** variable declarations.
+
+The compiler will reject incoherent usages such as:
+
+```java
+import java_class agent java.util.List; // ❌ List is an interface in Java
+
+public agent MyAgent contracts List;    // Detected: cannot contract a class
+```
+
+and also:
+
+```java
+import java_interface version_inh worker_agent java.util.ArrayList; // ❌ ArrayList is a class
+
+public worker_agent MyWorker nature ArrayList; // Detected: cannot inherit from an interface
+```
+
+---
+
+#### **Goal**
+
+Ensure that imported Java types maintain **semantic coherence** between their Clprolf declaration and their actual role in the language.
+Prevent any inconsistency in inheritance, contracts, and compatibility usage.
+
+This rule makes false declarations detectable **before code generation**, ensuring that Clprolf remains logically sound and self-verifying.
+
+---
+
+#### **Summary**
+
+> **ARCH-F8** — Imported Java types must keep a consistent declared kind (`java_class` or `java_interface`) according to their actual usage.
+> Any false declaration will be detected during semantic validation (especially in `contracts`, `nature`, and `with_compat`).
+
+---
+
+### ⚖️ RULES G — Annotations
+
+---
+
+#### **ARCH_G1 — Control of gender annotations**
+
+Gender annotations (`@Expert_component`, `@Human_expert`, `@Static`, etc.)
+may be applied **only to classes** or to **Java class imports** (`import java_class`).
+
+> 💡 This means that any gender annotation placed on an interface or on a `java_interface` import is semantically invalid.
+> The compiler must raise **ARCH_G1** if a gender annotation is found anywhere else.
+
+**Valid examples:**
+
+```java
+@Static
+public worker_agent Launcher { }
+
+@Expert_component
+import java_class agent java.util.Timer;
+```
+
+**Invalid examples:**
+
+```java
+@Static
+import java_interface version_inh java.util.List;   // ❌ gender not allowed
+@Human_expert
+public version_inh agent Connection { }             // ❌ gender on an interface
+```
+
+---
+
+#### **ARCH_G2 — Control of advice annotations**
+
+Advice annotations (`@For_agent_like`, `@For_worker_like`)
+may be applied **only to capacity interfaces** (`compat_interf_capacity`)
+or to **Java interface imports** (`import java_interface`).
+
+> 💡 This ensures that advice annotations are used exclusively in the context of *capacity interfaces*,
+> either declared in Clprolf or imported from Java.
+> The compiler must raise **ARCH_G2** if an advice annotation is found on a class or on a `java_class` import.
+
+**Valid examples:**
+
+```java
+@For_agent_like
+public compat_interf_capacity Eatable { }
+
+@For_worker_like
+import java_interface capacity_inh java.io.Serializable;
+```
+
+**Invalid examples:**
+
+```java
+@For_worker_like
+public agent Animal { }                // ❌ advice on a class
+@For_agent_like
+import java_class agent java.util.Timer; // ❌ advice on a java_class import
+```
+
+---
+
+**ARCH_G3** — *Control of the `@Long_action` annotation*
+This annotation may be applied **only to a field** (field modifier).
+Even though the annotation is technically attached to the field modifier, the compiler must still verify its proper placement.
+
+**ARCH_G4** — *Control of the `@Forc_pract_code` annotation*
+This annotation may be applied **only to classes**.
+
+**ARCH_G5** — *Control of the `@Forc_inh` annotation*
+This annotation may be applied either:
+
+* **on a class**, or
+* **just before the classType** in a class inheritance clause (`nature`).
+
+**ARCH_G6** — *Control of the `@Forc_int_inh` annotation*
+This annotation may be applied either:
+
+* **on an interface**, or **just before an interfaceType** in an interface inheritance clause,
+* **on a class**, or **just before an interfaceType** in a class contract clause (`contracts`).
+
 ---
 
 
@@ -3785,10 +4036,10 @@ It ensures that every exception, inheritance, or structural decision in Clprolf 
 
 #### Keywords in Clprolf
 
-Clprolf defines a **minimal set of 32 keywords**.
+Clprolf defines a **minimal set of 34 keywords**.
 They are divided into two groups:
 
-* **20 core keywords** (declensions, interface declensions, method modifiers, and field modifiers), which form the backbone of the language.
+* **22 core keywords** (declensions, interface declensions, interoperability, method modifiers, and field modifiers), which form the backbone of the language.
 * **12 annotations** (genders, advices, forcing), which are optional refinements that add perspective and specialization.
 
 This structure makes Clprolf both **minimal and flexible**: easy to learn and memorize, yet expressive enough to capture complex system designs.
@@ -3818,6 +4069,14 @@ This structure makes Clprolf both **minimal and flexible**: easy to learn and me
 
 ---
 
+##### Java Interoperability – 2
+
+* `java_class` — declares that an imported type is a Java class
+* `java_interface` — declares that an imported type is a Java interface
+
+These two keywords allow semantic integration of Java types inside Clprolf import declarations and enable full verification of interoperability.
+
+---
 
 ##### Method Modifiers – 4
 
@@ -3867,14 +4126,14 @@ This structure makes Clprolf both **minimal and flexible**: easy to learn and me
 
 ---
 
-✅ **Total: 32 keywords**
+✅ **Total: 34 keywords**
 
-* **20 core keywords** (declensions, interface declensions, method/field modifiers)
+* **22 core keywords** (declensions, interface declensions, interoperability, method/field modifiers)
 * **12 annotations** (genders, advices, forcing and others)
 
 ---
 
-With only 32 keywords, Clprolf remains minimal and approachable, while still covering complex system design through clear roles, modifiers, and annotations.
+With only 34 keywords, Clprolf remains minimal and approachable, while still covering complex system design through clear roles, modifiers, and annotations.
 ---
 
 ---
@@ -3884,3 +4143,4 @@ With only 32 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
