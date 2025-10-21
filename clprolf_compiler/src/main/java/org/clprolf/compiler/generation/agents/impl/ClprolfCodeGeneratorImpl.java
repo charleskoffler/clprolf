@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.clprolf.compiler.ClprolfJava8Parser;
 import org.clprolf.compiler.ClprolfJava8ParserBaseVisitor;
-import org.clprolf.framework.java.Abstraction;
+import org.clprolf.framework.java.Agent;
 
 /**
  * --------------------------------------------------------------------
@@ -24,7 +24,7 @@ import org.clprolf.framework.java.Abstraction;
  * --------------------------------------------------------------------
  */
 
-@Abstraction
+@Agent
 public class ClprolfCodeGeneratorImpl extends ClprolfJava8ParserBaseVisitor<String> {
 
     private final StringBuilder output = new StringBuilder();
