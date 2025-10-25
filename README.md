@@ -70,7 +70,7 @@ agent OrderService {
 
 [The `underst` Method Modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
 
-[Insights About Clprolf — For Experienced Readers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
+[Insights About Clprolf — For Experienced and Thoughtful Readers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
 
 [AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
 
