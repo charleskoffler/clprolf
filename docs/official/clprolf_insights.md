@@ -110,6 +110,28 @@ It’s not about following design rules — it’s about designing so clearly th
 
 ---
 
+### ⚙️ A Controlled and Coherent System
+
+With **Clprolf**, you obtain a system that remains fully **masterable**.
+The mechanics of the objects are intuitive,
+and there is a natural separation between **business logic** and **technical code**.
+
+Semantic rules allow the compiler to verify
+that the architecture stays **coherent and logical** over time.
+They prevent the drift into uncontrolled systems —
+those where relationships between objects, or the objects themselves,
+become too complex to reason about.
+
+Clprolf acts as a safeguard against the illusion of total freedom —
+the belief that “anything is possible”
+is often what produces systems that are **unmaintainable and chaotic**.
+
+Clprolf does not remove creativity.
+It simply ensures that freedom remains **structured**,
+and that every decision stays connected to meaning.
+
+---
+
 ### A Methodology for Effective Object-Oriented Programming
 
 Most existing object-oriented languages are **neutral**:
@@ -4181,4 +4203,3 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
-
