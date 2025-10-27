@@ -199,15 +199,38 @@ agents are still objects, and all interfaces are standard OOP interfaces.
 Clprolf is first and foremost a language for **classes and interfaces**, with a strong emphasis on **algorithmic coding** — particularly in the areas of **concurrency** and **parallelism**.
 Its features for interface inheritance and its semantic checks on class and interface declensions make it a **full-fledged language in its own right**.
 
-### A SUPERSET OF JAVA
-It is a superset to the Java language. It adds keywords that replace some java keywords like 'class', 'interface',
-and it adds some keywords like 'with_compat', or 'underst'.
-We can use java libraries in clprolf. We can use also java code in clprolf source code, except the keywords "class", "implements", "extends", "interface".
+---
 
-As clprolf classes replaces java classes, all java keywords can be used with clprolf classes, like in java classes, for example "public comp_as_worker Launcher{ }".
-It is the same for the interfaces.
+### ☕ Java-Compatible Language
 
-clprolf follow the open-closed principle, while not really modifies java but rather add notions on top on existing object oriented concepts.
+Clprolf is a **Java-compatible language**.
+It redefines some Java keywords such as `class`, `interface`, `extends`, and `implements`,
+and introduces new ones like `with_compat`, `nature`, and `underst`.
+
+All Java libraries can be used directly in Clprolf.
+You can also write Java code inside Clprolf source files,
+except for the few replaced keywords.
+
+Clprolf classes replace Java classes,
+so all standard Java modifiers can still be used with them —
+for example:
+
+```java
+public worker_agent Launcher { }
+```
+
+The same applies to interfaces.
+
+Clprolf follows the **Open/Closed Principle**,
+not by modifying Java,
+but by adding **clear notions of role and structure**
+on top of existing object-oriented concepts.
+
+> The current Clprolf compiler uses **Java 8 as its host language**.
+> Java serves as a stable and portable support,
+> while Clprolf brings its own semantic layer and conceptual clarity on top of it.
+
+---
 
 ### Declensions or Roles of Objects – The Class Role or Responsibility
 
