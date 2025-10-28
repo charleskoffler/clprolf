@@ -232,6 +232,24 @@ on top of existing object-oriented concepts.
 
 ---
 
+### 🧬 A Living View of Systems
+
+The early idea behind object-oriented programming came from **biological cells** —
+small autonomous entities that communicate through messages.
+Over time, this *living vision* faded, replaced by mechanical notions of classes and inheritance.
+
+In **Clprolf**, the idea is reborn in a clearer form.
+Each `agent` or `worker_agent` behaves like a **cell**, with its own nature and purpose.
+Their relations and communications are **explicitly designed** by the programmer,
+so that interaction becomes part of the model itself, not a side-effect of code.
+
+Together, these cells form a **coherent organism** —
+a system where roles, flows, and responsibilities maintain balance and meaning.
+Clprolf does not imitate biology; it **shares its logic**:
+clarity through Autonomy, life through interaction.
+
+---
+
 ### Declensions or Roles of Objects – The Class Role or Responsibility
 
 In Clprolf, **declensions** define the *nature* of an object. Each class is assigned a clear role, also called its responsibility. This reduces ambiguity and makes the definition of roles more intuitive.
@@ -1766,18 +1784,7 @@ In this example, any class implementing `ClpConnection` must also be annotated a
 
 ---
 
-### A Reflection on Alan Kay’s OOP Objects
-
-Alan Kay originally imagined object-oriented programming as a system inspired by biological cells — independent entities communicating through messages.
-
-Clprolf takes this vision and asks a practical question:
-how can we fit our programming problems into such OOP objects?
-
-Rather than starting from abstract philosophy, Clprolf focuses on the applications we need to build, and provides a structured way to align those problems with the object model.
-
----
-
-***Origin of the Language: Scientific and Practical Inspiration**
+### Origin of the Language: Scientific and Practical Inspiration
 
 Clprolf was inspired by **scientific domains** such as physics, chemistry, and weather forecasting — all of which rely heavily on simulation and modeling. **Video games** also played a role, as they are practical examples of real-time simulations. At the same time, **management IT** was always present in the background, grounding the language in everyday software needs.
 
