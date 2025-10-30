@@ -474,6 +474,122 @@ The available roles are:
 `Gender.HUMAN_EXPERT, Gender.EXPERT_COMPONENT, Gender.STATIC, Gender.HUMAN_EXPERT_STATIC, Gender.EXPERT_COMPONENT_STATIC`.
 
 
+### ✳️ Language-Integrated Annotations — A New Step Toward Purity
+
+Clprolf now introduces a refined and mature approach to **language annotations** —
+a model that eliminates mechanical redundancy while keeping full expressive clarity.
+These annotations are no longer external metadata: they are **words of the language itself.**
+
+---
+
+#### 🌿 1. Simple by Nature
+
+Clprolf annotations are **marker annotations only** —
+lightweight, structural tags understood directly by the compiler.
+They are written naturally, without imports or fully qualified names:
+
+```clprolf
+@Expert_component
+public agent Engine { }
+```
+
+No import statements are needed, and none are ever generated.
+The compiler knows exactly what they mean — because they belong to the language.
+
+> The annotations no longer live in files.
+> They live in Clprolf’s own vocabulary. 🌿
+
+---
+
+#### ⚙️ 2. Clean Generation
+
+During Java code generation, all Clprolf annotations are **removed**.
+They are used only to guide semantic understanding,
+then disappear, leaving clean, standard Java output.
+
+```java
+public class Engine { }
+```
+
+The meaning remains preserved inside the compilation process,
+not in the mechanical result.
+
+> What guided the design does not need to appear in the code. 💫
+
+---
+
+#### 🧭 3. Freedom with Awareness
+
+Clprolf allows developers to use any type name —
+even one that matches a reserved annotation name —
+as long as the Clprolf version of that annotation is not used.
+
+Example:
+
+```clprolf
+import org.me.Static   // ✅ allowed
+// ... no @Static Clprolf used in this file
+```
+
+But if a Clprolf annotation `@Static` is used in the same file,
+then any external import of `Static` becomes **illegal**.
+
+```
+[ARCH-Gx] Illegal import of reserved annotation name: Static
+(use @Clp_Static if you need your own definition)
+```
+
+💡 This rule keeps the language free and consistent:
+you can use any name you want — unless it already has a role in the Clprolf world.
+
+---
+
+#### 🌱 4. Synonyms for Harmony
+
+For each built-in annotation, a synonym exists with the prefix `Clp_`,
+for example `@Clp_Static`, `@Clp_Expert_component`, etc.
+These synonyms serve as **escape routes** for developers
+who need to use a similar name without clashing with Clprolf’s built-ins.
+
+> The `Clp_` prefix is a bridge —
+> a respectful handshake between your code and the language itself. 🌿
+
+---
+
+#### 💎 5. A Living Language
+
+Clprolf no longer relies on annotation source files,
+nor on Java imports to understand its own vocabulary.
+Everything is built into the language itself —
+compact, consistent, and self-sufficient.
+
+The compiler checks what matters:
+only the imports written by the developer.
+If one of them reuses a reserved Clprolf name *and* that annotation is active in the file,
+Clprolf raises an error. Otherwise, it stays silent.
+
+> The language knows when to speak —
+> and when to let you breathe. 🌿
+
+---
+
+#### 🪶 **Philosophy**
+
+This evolution reflects Clprolf’s deeper truth:
+to be clear without being heavy,
+to be structured without being rigid,
+and to protect its meaning while staying open to the world.
+
+No imports.
+No source files.
+No redundant mechanics.
+Only understanding — pure and precise.
+
+> Clprolf does not imitate Java.
+> It finishes what Java began. 💫
+
+---
+
 ### NOTICE ON THE USE CASES OF `worker_agent`
 
 In Clprolf, the general recommendation is to avoid overusing `worker_agent`. Real-world simulations (`agent`) are usually more intuitive and less technical.
@@ -3388,6 +3504,8 @@ Each prefix defines a family:
 * **ARCH C** — Genders and statics
 * **ARCH D** — Concurrency and algorithmic semantics
 * **ARCH E** — Forced annotations and exceptions
+* **ARCH F** — General Language Rules
+* **ARCH G** — Annotations
 
 ---
 
@@ -4113,6 +4231,147 @@ This annotation may be applied either:
 * **on an interface**, or **just before an interfaceType** in an interface inheritance clause,
 * **on a class**, or **just before an interfaceType** in a class contract clause (`contracts`).
 
+**ARCH-G7 (language annotations – marker form)**
+
+Every Clprolf language annotation is a **marker annotation** only —
+it contains **no attributes, parameters, or values**.
+This differs from the framework annotations, which may define attributes or configuration metadata.
+
+> 💡 *Clprolf annotations express meaning, not configuration.*
+
+---
+
+#### **ARCH-G8 (language annotations – naming and imports)**
+
+All Clprolf annotations are written **without package names**
+and **require no imports**.
+Only the simple name of the annotation is used.
+
+✅ *Example – valid usage:*
+
+```clprolf
+@Expert_component
+public agent Engine { }
+```
+
+❌ *Invalid usage:*
+
+```clprolf
+@org.clprolf.language.annotations.Expert_component   // forbidden
+import org.clprolf.language.annotations.Expert_component;  // forbidden
+```
+
+> 💡 *Annotations belong to the language, not to its libraries.*
+
+---
+
+#### **ARCH-G9 (language annotations – name conflict prevention)**
+
+Within a single compilation unit,
+no imported type (Java or Clprolf) may share the same **name**
+as a Clprolf annotation **used** in that unit.
+
+✅ *Allowed:*
+
+```clprolf
+import org.me.Static;  // OK — if @Static is not used in this file
+```
+
+❌ *Error:*
+
+```clprolf
+import org.me.Static;  // ❌ Conflict
+@Static
+public agent Service { }
+```
+
+> 💡 *A file cannot import what the language already owns.*
+
+---
+
+**ARCH-G10 (language annotations – no source files)**
+
+Clprolf language annotations **do not exist as source files**.
+They are embedded in the compiler’s semantic layer
+and cannot be modified, replaced, or shadowed by user code.
+
+> 💡 *No source, no risk.*
+
+---
+
+#### **ARCH-G11 (language annotations – code generation)**
+
+Language annotations are **not generated** in Java output.
+They are removed during code generation once their meaning has been processed.
+
+✅ *Example – generated Java output:*
+
+```java
+public class Engine { }
+```
+
+> 💡 *What guides design disappears after doing its job.*
+
+---
+
+#### **ARCH-G12 (language annotations – synonyms)**
+
+Every Clprolf annotation has a **synonym** prefixed with `@Clp_`.
+These synonyms are semantically equivalent and may be used at any time
+as stylistic alternatives or to avoid conflicts.
+
+✅ *Examples:*
+
+```clprolf
+@Clp_Static
+@Clp_Expert_component
+```
+
+> 💡 *Freedom without ambiguity.*
+
+---
+
+#### **ARCH-G13 (language annotations – synonym import restriction)**
+
+No imported type may begin with the prefix `Clp_`
+if the corresponding Clprolf annotation is used in the same compilation unit.
+This ensures that the synonym namespace remains exclusive to the language.
+
+❌ *Invalid example:*
+
+```clprolf
+import org.me.Clp_Static;   // forbidden if @Static is used
+@Static
+public agent Engine { }
+```
+
+---
+
+**ARCH-G14 (language annotations – categories and roles)**
+
+Clprolf language annotations belong to four categories:
+**Genders, Advices, Forcing, and Special.**
+Each serves a distinct semantic purpose within the language.
+
+* **Genders** refine the interpretation of agents.
+  They are **always optional**, including `@Static`.
+  Examples: `@Expert_component`, `@Human_expert`, `@Static`.
+
+* **Advices** define guidance for capacity interfaces.
+  The default advice is `@For_agent_like`.
+
+* **Forcing** annotations exist for special cases where
+  an interface or capacity must explicitly enforce a constraint.
+  They are rarely required and should be used only in specific
+  capacity interface scenarios.
+
+* **Special** annotations introduce optional semantic hints,
+  such as `@Long_action`, which signals a boolean property or
+  extended behavior without altering structure.
+
+> 💡 *Genders add nuance, advices define direction,
+> forcing ensures precision, and special annotations mark exceptions.*
+
 ---
 
 
@@ -4233,3 +4492,4 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
