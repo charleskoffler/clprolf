@@ -952,6 +952,34 @@ An `agent` interface can still extend it, but must declare it with `@Forc_int_in
 
 ---
 
+#### II.7.h) Neutral Capacity Interfaces
+
+A `compat_interf_capacity` can be declared **without any advice annotation**
+(`@Agent_like_advice`, `@Worker_like_advice`, etc.).
+Such interfaces are called **neutral capacity interfaces**.
+
+Neutral capacities are designed for **neutral `compat_interf_version`**,
+that is, version interfaces **without any class role**
+(`agent`, `worker_agent`, `model`, `information`, `indef_obj`).
+
+They define *role-independent capabilities* that may apply
+to both conceptual and technical worlds,
+but they do not carry any advice or semantic constraint by default.
+
+> **Important:**
+> When a neutral capacity is used by a role-declared version,
+> it is interpreted as **role-bound** (agent-like by default),
+> according to [ARCH_BB8].
+> However, when used within a neutral version,
+> it remains **strictly neutral** and context-independent.
+
+**Summary:**
+
+* ⚪ Neutral capacities = no advice, no world binding.
+* 🟢 When used within a role → interpreted as role-bound (agent-like by default).
+* ⚙️ Intended use → with neutral `compat_interf_version`.
+
+---
 
 ### II.8) Features for Interface Inheritance
 
@@ -1320,7 +1348,7 @@ For collaborative projects — such as public APIs or large teams — it can be 
 
 To do this, you must use the **features for interface inheritance**:
 
-* Declare the interface with **`version_inh`** (or `capacity_inh`),
+* Declare the interface with **`version_inh`** (or `compat_interf_version`),
 * Then add the desired **class role** (e.g. `agent`, `abstraction`, etc.).
 
 This ensures that the compiler checks the coherence between the role of the interface and the role of its implementation classes.
@@ -1332,13 +1360,16 @@ This ensures that the compiler checks the coherence between the role of the inte
 ```java
 package clprolf.wrappers.java.sql;
 
-@Abstraction    // Assigning a class role for clarity in collaborative projects
-public version_inh abstraction ClpConnection extends Connection {
-    
+// Using a role-bound compat_interf_version (feature-equivalent form)
+// Assigning a class role for clarity in collaborative projects
+@Forc_int_inh
+public compat_interf_version abstraction ClpConnection extends Connection {
+
 }
 ```
 
 ---
+
 
 ##### Rule for Implementations
 
@@ -1346,6 +1377,121 @@ Implementation classes must declare **exactly the same role** as the interface.
 In this example, any class implementing `ClpConnection` must also be annotated as **`abstraction`** — not just an equivalent role.
 
 ---
+
+#### II.8.k) Role-Bound `compat_interf_version` — Between Compatibility and Features
+
+Clprolf allows a `compat_interf_version` to declare a **class role**,
+such as `agent`, `abstraction`, `worker_agent`, etc.
+This case remains relatively rare,
+but it is especially useful in **collaborative or interoperability contexts**,
+such as public libraries or Java wrappers.
+
+When a class role is attached to a `compat_interf_version`,
+the interface remains a **compatibility interface** by nature —
+it does **not** become a *feature interface* in syntax,
+but it behaves as a **role-bound version interface**,
+and thus is **semantically equivalent** to features.
+
+This allows developers to explicitly express intent
+without switching to the full feature syntax.
+
+Example:
+
+```java
+package clprolf.wrappers.java.sql;
+
+// Using a role-bound compat_interf_version (feature-equivalent form)
+// Assigning a class role for clarity in collaborative projects
+@Forc_int_inh
+public compat_interf_version abstraction ClpConnection extends Connection {
+}
+```
+
+Here:
+
+* `compat_interf_version` → preserves the compatibility form,
+  ideal for wrappers or API integration.
+* The role `abstraction` → gives the semantic layer that ties it to a world.
+* `@Forc_int_inh` → required since it extends another version (Java’s `Connection`).
+
+This form is therefore **halfway between** the purely structural `version_inh`
+and the compatibility-oriented `compat_interf_version`,
+offering a flexible way to handle APIs that mix both semantics.
+
+> **Summary:**
+>
+> * ✅ A `compat_interf_version` can declare a class role.
+> * ⚙️ It remains a compatibility interface, but behaves as feature-equivalent.
+> * 🧩 Useful for wrappers, public APIs, and cross-language compatibility.
+> * ⚠️ Inheritance from another version requires `@Forc_int_inh`.
+
+---
+
+
+#### II.8.l) Synonym Requalification Between Features and Compatibility Interfaces
+
+Clprolf provides two equivalent syntactic forms for defining interfaces:
+the *feature-oriented* form (with the `_inh` suffix)
+and the *compatibility-oriented* form (`compat_interf_...`).
+
+This duality allows developers to reuse existing interfaces
+while expressing them through a different perspective:
+**implementation structure** (`_inh`)
+or **compatibility semantics** (`compat_interf_...`).
+
+This requalification is purely syntactic —
+but **the interface being defined always takes precedence**.
+It is the **keyword used in the current definition** that determines the nature of the interface.
+
+---
+
+##### **Rule of Precedence**
+
+The defining keyword (`version_inh`, `compat_interf_version`, etc.)
+always determines the semantic category of the interface.
+The parent’s form has no impact on that nature.
+
+---
+
+##### **Examples**
+
+```java
+// The defined interface is a version interface (feature-oriented),
+// even though it inherits from a compatibility form.
+public version_inh MyFeatureVersion extends compat_interf_version BaseInterface { }
+```
+
+Here, `MyFeatureVersion` remains a **feature-oriented interface**,
+because the current definition (`version_inh`) defines its identity.
+
+---
+
+```java
+// The defined interface is compatibility-oriented,
+// but it inherits from a version interface.
+// This normally breaks the rule that versions cannot be chained,
+// so a semantic forcing is required.
+@Forc_int_inh
+public compat_interf_version MyCompatVersion extends version_inh LegacyVersion { }
+```
+
+In this case, `MyCompatVersion` is **compatibility-oriented**,
+but since `compat_interf_version` interfaces are not allowed to inherit from versions
+(whether they are `version_inh` or other `compat_interf_version`),
+the use of `@Forc_int_inh` explicitly authorizes this exception.
+
+---
+
+##### **Summary**
+
+* ✅ `version_inh` ↔ `compat_interf_version` — interchangeable forms.
+* ⚙️ The **current definition** decides the interface’s nature.
+* ⚠️ A `compat_interf_version` cannot inherit any version
+  (`version_inh` or `compat_interf_version`) **without `@Forc_int_inh`**.
+* 🚫 No semantic requalification occurs — only explicit exception handling.
+
+---
+
 
 ### II.9) ✳️ Language-Integrated Annotations — A New Step Toward Purity
 
@@ -3646,9 +3792,30 @@ while maintaining strict separation between both worlds.
 
 ##### **ARCH BB — Interface Structure**
 
-**ARCH BB1 (interfaces):**
-A `compat_interf_version` interface cannot inherit multiple `version` interfaces.
-A `version_inh` may do so.
+**ARCH BB1 (interfaces)**
+
+By default, a `compat_interf_version` **cannot inherit from another `compat_interf_version`**.
+Each version defines a **unique and self-contained implementation contract**.
+
+This rule ensures that “a version remains a version” — versions do not form hierarchies by nature.
+
+However, this restriction can be **explicitly relaxed** when using the **Features for Interface Inheritance**:
+
+* The interface must clearly declare its role (e.g., `@Agent`, `@Worker_agent`, etc.),
+* and the inheritance must use the `nature` keyword (or `@Nature` annotation).
+
+This transforms the extension into a **semantic inheritance** rather than a simple mechanical extension, preserving meaning and consistency.
+
+Outside of this controlled case, inheritance between versions remains forbidden,
+unless explicitly forced using `@Forced_int_inh`.
+
+> **Summary:**
+>
+> * ✅ Allowed: inheritance via *Features for Interface Inheritance* (role + nature explicitly defined).
+> * ⚠️ Forbidden: direct version-to-version inheritance without features.
+> * 🚫 Never implicit — must always be declared and justified.
+
+---
 
 **ARCH BB2 (interfaces):**
 A `capacity` interface cannot inherit (`nature`) from a `version`.
@@ -3705,6 +3872,89 @@ import java_interface capacity_inh java.io.Serializable; // ❌ Missing advice
 > verifying the interface declension, the associated class role, and the presence of the proper advice for capacities.
 
 ---
+
+##### **[ARCH_BB8] — Default Role Interpretation for Neutral Capacities**
+
+A `compat_interf_capacity` declared without advice remains neutral in its definition.
+However, when it is **used by a version that declares a role** (for example `@Agent` or `@Worker_agent`),
+it is **interpreted as a role-bound capacity** — agent-like by default.
+
+This interpretation does not alter the capacity itself;
+it only reflects how it is perceived and validated in a given context.
+
+> **Summary:**
+>
+> * ⚪ Neutral when isolated.
+> * 🟢 Interpreted as role-bound (agent-like by default) when used within a role.
+> * 🧩 Context determines the semantic reading, not the declaration.
+
+---
+
+##### **[ARCH_BB9] — Role Declaration Requirement for Neutral Versions**
+
+If a `compat_interf_version` without any declared declension
+(`agent`, `worker_agent`, `model`, `information`, or `indef_obj`)
+contracts a `compat_interf_capacity` that carries an explicit advice
+(`@Agent_like_advice`, `@Worker_like_advice`, etc.),
+then the compiler must raise a **semantic error**:
+
+> “A neutral version cannot contract a role-bound capacity.
+> Declare a role or remove the advice from the capacity.”
+
+**Summary:**
+
+* ✅ Role-declared version ↔ Roleful capacity → OK
+* ⚪ Neutral version ↔ Neutral capacity → OK
+* 🚫 Neutral version ↔ Roleful capacity → **Error (neutral version lacks class role)**
+
+---
+
+
+##### **[ARCH_BB10] — Semantic equivalence between role-declared compat_interf_version and features**
+
+A `compat_interf_version` belongs by definition to the world of versions.
+When it declares a class role (`agent`, `worker_agent`, `model`, `information`, or `indef_obj`),
+it becomes **semantically equivalent** to a version defining *features*,
+except for the possibility of using `extends`,
+which reminds that it still belongs to the structural world of versions.
+
+---
+
+**[Addition to ARCH_BB10] — Inheritance restriction for role-declared versions**
+
+A role-declared `compat_interf_version` **cannot** inherit (`extends`) another version,
+since each role defines a closed world.
+
+> The only exception is the explicit use of `@Forc_int_inh`,
+> which authorizes inheritance between incompatible worlds.
+> The `extends` clause remains syntactically allowed,
+> but semantically valid only under this forced condition.
+
+---
+
+##### **[ARCH_BB11] — Forced inheritance allowed for features in interfaces**
+
+The annotation `@Forc_inh` may appear in an interface definition **only when that interface defines features.**
+
+> This usage corresponds to the specific case of version interfaces,
+> where structural inheritance between worlds can be explicitly forced.
+> In all other contexts, `@Forc_inh` is forbidden.
+
+> ⚠️ A `compat_interf_version`, whether neutral or role-declared,
+> **cannot use `@Forc_inh`.**
+> Versions are independent entities and cannot be chained under normal circumstances.
+> However, in the **exceptional case** where a `compat_interf_version` must inherit another version,
+> this inheritance must be explicitly forced with `@Forc_int_inh`,
+> since it represents a **conceptual** (not structural) link.
+
+**Summary :**
+
+* ✅ `@Forc_inh` → allowed **only** in interfaces with features (structural inheritance).
+* 🚫 `@Forc_inh` → forbidden elsewhere, including in all `compat_interf_version`.
+* ⚙️ `@Forc_int_inh` → required for **conceptual inheritance** between versions or capacities.
+
+---
+
 
 #### **ARCH C — Genders and Statics**
 
