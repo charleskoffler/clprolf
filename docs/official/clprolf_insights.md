@@ -727,15 +727,15 @@ Outside of these scenarios, interfaces are not used in Clprolf. However, the fea
 
 #### II.7.b) Interface Declensions
 
->
-> Interfaces also have declensions, divided into two main types:
->
-> * **Version declension** — synonyms: `compat_interf_version`, `version_inh`
-> * **Capacity declension** — synonyms: `compat_interf_capacity`, `capacity_inh`
->
-> Each synonym defines the **role** of the interface,
-> providing different lexical forms for the same semantic concept.
-> This keeps the terminology consistent between class and interface hierarchies.
+
+Interfaces also have declensions, divided into two main types:
+
+* **Version declension** — synonyms: `compat_interf_version`, `version_inh`
+* **Capacity declension** — synonyms: `compat_interf_capacity`, `capacity_inh`
+
+Each synonym defines the **role** of the interface,
+providing different lexical forms for the same semantic concept.
+This keeps the terminology consistent between class and interface hierarchies.
 
 ---
 
@@ -775,109 +775,109 @@ A capacity interface can never be implemented directly by a class. This restrict
 ---
 
 #### II.7.f) The Role of Advice
->
-> Capacity interfaces can have a **gender called an Advice**, which specifies their **target class role** —
-> that is, the nature of the classes or versions that are meant to use or implement the capacity.
->
-> * `@Agent_like_advice` advice
-> * `@Worker_like_advice` advice
->
-> This **advice** works like a sub-role.
-> It indicates whether the capacity applies to **agent-like** roles or to **worker-like** roles.
-> When a version interface implements a capacity, it must declare a **class role**,
-> and the compiler will check that this role is consistent with the advice (the target class role of the capacity).
->
-> * **Agent-like capacities** represent *common business requirements* shared by agents of different families.
->
-> * **Worker-like capacities** represent *technical functions* that different workers must provide.
->
-> > ⚠️ If no advice is explicitly given, the **default is agent-like**.
->
-> ---
->
-> ##### In pure Clprolf
->
-> The advice is given by an annotation above the interface:
->
-> * `@Agent_like_advice`
-> * `@Worker_like_advice`
->
-> ```java
-> // This interface can be extended only by a compat_interf_version with an agent-like target class role.
->
-> @Agent_like_advice
-> public compat_interf_capacity Eatable {
->     void eat(int quantity);
-> }
->
-> // Must declare a class role, because it has a capacity
-> public version_inh agent Animal extends Eatable { ... }
->
-> // Must declare a class role, because it has a capacity
-> public version_inh agent Person extends Eatable { ... }
->
-> public agent AnimalClass contracts Animal { ... }
-> public agent PersonClass contracts Person { ... }
->
-> public worker_agent Launcher {
->     public static void test(with_compat Eatable eatableAgent) {
->         System.out.println("The agent will eat");
->         eatableAgent.eat();
->     }
->
->     public static void main(String args[]) {
->         AnimalClass theMonkey = new AnimalClass("monkey", "4");
->         PersonClass john = new PersonClass("John", 25);
->
->         Launcher.test(theMonkey);
->         Launcher.test(john);
->     }
-> }
-> ```
->
-> ---
->
-> ##### In the Java Framework
->
-> In the Clprolf Framework, advice is expressed as a **sub-role** of the `@Compat_interf_capacity` annotation:
->
-> * `@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)`
-> * `@Compat_interf_capacity(Advice.FOR_WORKER_LIKE)`
->
-> ```java
-> @Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
-> public compat_interf_capacity Eatable {
->     void eat(int quantity);
-> }
->
-> @Agent
-> public interface Animal extends Eatable { ... }
->
-> @Agent
-> public interface Person extends Eatable { ... }
->
-> @Agent
-> public class AnimalClass implements @Contracts Animal { ... }
->
-> @Agent
-> public class PersonClass implements @Contracts Person { ... }
->
-> @Worker_agent
-> public interface Launcher {
->     public static void test(@With_compat Eatable eatableAgent) {
->         System.out.println("The agent will eat");
->         eatableAgent.eat();
->     }
->     public static void main(String args[]) { ... }
-> }
-> ```
->
-> ---
->
-> The **advice** therefore acts as a **target class role** for capacities,
-> providing a semantic contract similar to the one used for version interfaces.
-> It guarantees clarity, prevents ambiguous capacities,
-> and reinforces the structural discipline of Clprolf’s two worlds — *agents* and *workers*.
+
+Capacity interfaces can have a **gender called an Advice**, which specifies their **target class role** —
+that is, the nature of the classes or versions that are meant to use or implement the capacity.
+
+* `@Agent_like_advice` advice
+* `@Worker_like_advice` advice
+
+This **advice** works like a sub-role.
+It indicates whether the capacity applies to **agent-like** roles or to **worker-like** roles.
+When a version interface implements a capacity, it must declare a **class role**,
+and the compiler will check that this role is consistent with the advice (the target class role of the capacity).
+
+* **Agent-like capacities** represent *common business requirements* shared by agents of different families.
+
+* **Worker-like capacities** represent *technical functions* that different workers must provide.
+
+⚠️ If no advice is explicitly given, the **default is agent-like**.
+
+---
+
+##### In pure Clprolf
+
+The advice is given by an annotation above the interface:
+
+* `@Agent_like_advice`
+* `@Worker_like_advice`
+
+```java
+// This interface can be extended only by a compat_interf_version with an agent-like target class role.
+
+@Agent_like_advice
+public compat_interf_capacity Eatable {
+ void eat(int quantity);
+}
+
+// Must declare a class role, because it has a capacity
+public version_inh agent Animal extends Eatable { ... }
+
+// Must declare a class role, because it has a capacity
+public version_inh agent Person extends Eatable { ... }
+
+public agent AnimalClass contracts Animal { ... }
+public agent PersonClass contracts Person { ... }
+
+public worker_agent Launcher {
+ public static void test(with_compat Eatable eatableAgent) {
+	 System.out.println("The agent will eat");
+	 eatableAgent.eat();
+ }
+
+ public static void main(String args[]) {
+	 AnimalClass theMonkey = new AnimalClass("monkey", "4");
+	 PersonClass john = new PersonClass("John", 25);
+
+	 Launcher.test(theMonkey);
+	 Launcher.test(john);
+ }
+}
+```
+
+---
+
+##### In the Java Framework
+
+In the Clprolf Framework, advice is expressed as a **sub-role** of the `@Compat_interf_capacity` annotation:
+
+* `@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)`
+* `@Compat_interf_capacity(Advice.FOR_WORKER_LIKE)`
+
+```java
+@Compat_interf_capacity(Advice.FOR_AGENT_LIKE)
+public compat_interf_capacity Eatable {
+ void eat(int quantity);
+}
+
+@Agent
+public interface Animal extends Eatable { ... }
+
+@Agent
+public interface Person extends Eatable { ... }
+
+@Agent
+public class AnimalClass implements @Contracts Animal { ... }
+
+@Agent
+public class PersonClass implements @Contracts Person { ... }
+
+@Worker_agent
+public interface Launcher {
+ public static void test(@With_compat Eatable eatableAgent) {
+	 System.out.println("The agent will eat");
+	 eatableAgent.eat();
+ }
+ public static void main(String args[]) { ... }
+}
+```
+
+---
+
+The **advice** therefore acts as a **target class role** for capacities,
+providing a semantic contract similar to the one used for version interfaces.
+It guarantees clarity, prevents ambiguous capacities,
+and reinforces the structural discipline of Clprolf’s two worlds — *agents* and *workers*.
 
 ---
 
@@ -1289,95 +1289,95 @@ This design pattern shows how Clprolf can technically support **multiple inherit
 
 #### II.8.j) Using Class Roles on Interfaces for Collaborative Projects
 
->
-> For collaborative projects — such as public APIs or large teams — it can be useful to assign **class roles to interfaces**, in order to make their purpose explicit and to enforce coherence.
->
-> In this context, the class role applied to an interface represents its **target class role** —
-> the role expected for any class that will implement this interface.
-> This makes the intent explicit for all contributors and allows the compiler to verify that implementations remain semantically consistent.
->
-> To do this, you must use the **features for interface inheritance**:
->
-> * Declare the interface with **`version_inh`** (or `compat_interf_version`),
-> * Then add the desired **target class role** (e.g. `agent`, `abstraction`, etc.).
->
-> The compiler will then check the coherence between the interface’s target role and the role of each implementing class.
->
-> ---
->
-> ##### Example in Clprolf
->
-> ```java
-> package clprolf.wrappers.java.sql;
->
-> // Using a role-bound compat_interf_version (feature-equivalent form)
-> // Assigning a target class role for clarity in collaborative projects
-> @Forc_int_inh
-> public compat_interf_version abstraction ClpConnection extends Connection {
->
-> }
-> ```
->
-> ---
->
-> ##### Rule for Implementations
->
-> Implementation classes must declare **exactly the same role** as the one defined by the interface’s target class role.
-> In this example, any class implementing `ClpConnection` must also be annotated as **`abstraction`** —
-> not just an equivalent or related role.
->
-> ---
+
+For collaborative projects — such as public APIs or large teams — it can be useful to assign **class roles to interfaces**, in order to make their purpose explicit and to enforce coherence.
+
+In this context, the class role applied to an interface represents its **target class role** —
+the role expected for any class that will implement this interface.
+This makes the intent explicit for all contributors and allows the compiler to verify that implementations remain semantically consistent.
+
+To do this, you must use the **features for interface inheritance**:
+
+* Declare the interface with **`version_inh`** (or `compat_interf_version`),
+* Then add the desired **target class role** (e.g. `agent`, `abstraction`, etc.).
+
+The compiler will then check the coherence between the interface’s target role and the role of each implementing class.
+
+---
+
+##### Example in Clprolf
+
+```java
+package clprolf.wrappers.java.sql;
+
+// Using a role-bound compat_interf_version (feature-equivalent form)
+// Assigning a target class role for clarity in collaborative projects
+@Forc_int_inh
+public compat_interf_version abstraction ClpConnection extends Connection {
+
+}
+```
+
+---
+
+##### Rule for Implementations
+
+Implementation classes must declare **exactly the same role** as the one defined by the interface’s target class role.
+In this example, any class implementing `ClpConnection` must also be annotated as **`abstraction`** —
+not just an equivalent or related role.
+
+---
 
 #### II.8.k) Role-Bound `compat_interf_version` — Between Compatibility and Features
 
->
-> Clprolf allows a `compat_interf_version` to declare a **target class role**
-> (such as `agent`, `abstraction`, `worker_agent`, etc.).
-> This case remains relatively rare,
-> but it is especially useful in **collaborative** or **interoperability contexts**,
-> such as public libraries or Java wrappers.
->
-> When a target class role is attached to a `compat_interf_version`,
-> the interface remains a **compatibility interface** by nature —
-> it does **not** become a *feature interface* syntactically,
-> but it behaves as a **role-bound version interface**,
-> and is therefore **semantically equivalent** to a feature.
->
-> This allows developers to express intent explicitly,
-> without switching to the full feature syntax.
->
-> ---
->
-> ##### Example in Clprolf
->
-> ```java
-> package clprolf.wrappers.java.sql;
->
-> // Using a role-bound compat_interf_version (feature-equivalent form)
-> // Assigning a target class role for clarity in collaborative projects
-> @Forc_int_inh
-> public compat_interf_version abstraction ClpConnection extends Connection {
-> }
-> ```
->
-> Here:
->
-> * `compat_interf_version` → preserves the compatibility form, ideal for wrappers or API integration.
-> * The role `abstraction` → acts as the **target class role**, defining the intended role for implementing classes.
-> * `@Forc_int_inh` → required since it extends another version (Java’s `Connection`).
->
-> This form is therefore **halfway between** the purely structural `version_inh`
-> and the compatibility-oriented `compat_interf_version`,
-> offering a flexible way to handle APIs that mix both semantics.
->
-> > **Summary:**
-> >
-> > * ✅ A `compat_interf_version` can declare a **target class role**.
-> > * ⚙️ It remains a compatibility interface, but behaves as feature-equivalent.
-> > * 🧩 Useful for wrappers, public APIs, and cross-language compatibility.
-> > * ⚠️ Inheritance from another version requires `@Forc_int_inh`.
->
-> ---
+
+Clprolf allows a `compat_interf_version` to declare a **target class role**
+(such as `agent`, `abstraction`, `worker_agent`, etc.).
+This case remains relatively rare,
+but it is especially useful in **collaborative** or **interoperability contexts**,
+such as public libraries or Java wrappers.
+
+When a target class role is attached to a `compat_interf_version`,
+the interface remains a **compatibility interface** by nature —
+it does **not** become a *feature interface* syntactically,
+but it behaves as a **role-bound version interface**,
+and is therefore **semantically equivalent** to a feature.
+
+This allows developers to express intent explicitly,
+without switching to the full feature syntax.
+
+---
+
+##### Example in Clprolf
+
+```java
+package clprolf.wrappers.java.sql;
+
+// Using a role-bound compat_interf_version (feature-equivalent form)
+// Assigning a target class role for clarity in collaborative projects
+@Forc_int_inh
+public compat_interf_version abstraction ClpConnection extends Connection {
+}
+```
+
+Here:
+
+* `compat_interf_version` → preserves the compatibility form, ideal for wrappers or API integration.
+* The role `abstraction` → acts as the **target class role**, defining the intended role for implementing classes.
+* `@Forc_int_inh` → required since it extends another version (Java’s `Connection`).
+
+This form is therefore **halfway between** the purely structural `version_inh`
+and the compatibility-oriented `compat_interf_version`,
+offering a flexible way to handle APIs that mix both semantics.
+
+ **Summary:**
+
+* ✅ A `compat_interf_version` can declare a **target class role**.
+* ⚙️ It remains a compatibility interface, but behaves as feature-equivalent.
+* 🧩 Useful for wrappers, public APIs, and cross-language compatibility.
+* ⚠️ Inheritance from another version requires `@Forc_int_inh`.
+
+---
 
 ---
 
