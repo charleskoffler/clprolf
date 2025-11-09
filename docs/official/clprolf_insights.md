@@ -416,29 +416,28 @@ This separation helps clarify design choices, maintain clean responsibilities, a
 
 #### II.5.c) Interrelationships Between Declensions
 
->
-> * **Agents and Workers**
->   Every agent can also act as a worker, since computers execute agents as specialized workers.
->   However, the number of explicit workers in a system should be minimized for clarity and efficiency.
->   A worker may also exist *inside* a real agent — for instance, when an agent performs a technical job.
->   Such nesting is possible but should remain exceptional, as it blurs the separation between the business and technical layers.
->
-> * **Models and Information**
->   Every model can also be represented as information, since computers store models as data.
->   Conversely, an information structure can sometimes be treated as a model,
->   for instance in analytical or reflective contexts.
->   Yet this reverse view should also remain rare,
->   as it risks mixing data representation with system logic.
->
-> * **Perspective and Design Discipline**
->   Each declension can be viewed from the perspective of its counterpart when the situation justifies it,
->   but such reinterpretations must stay *exceptional* and *explicit*.
->   Using an agent as a worker, or information as a model, may be valid in a narrow context —
->   yet it often reveals either a **design compromise** or a **deliberate conceptual shift**.
->   Clprolf allows such flexibility for experimentation and teaching,
->   but its semantic rules encourage developers to keep each declension true to its own world.
->
-> ---
+* **Agents and Workers**
+  Every agent can also act as a worker, since computers execute agents as specialized workers.
+  However, the number of explicit workers in a system should be minimized for clarity and efficiency.
+  A worker may also exist *inside* a real agent — for instance, when an agent performs a technical job.
+  Such nesting is possible but should remain exceptional, as it blurs the separation between the business and technical layers.
+
+* **Models and Information**
+  Every model can also be represented as information, since computers store models as data.
+  Conversely, an information structure can sometimes be treated as a model,
+  for instance in analytical or reflective contexts.
+  Yet this reverse view should also remain rare,
+  as it risks mixing data representation with system logic.
+
+* **Perspective and Design Discipline**
+  Each declension can be viewed from the perspective of its counterpart when the situation justifies it,
+  but such reinterpretations must stay *exceptional* and *explicit*.
+  Using an agent as a worker, or information as a model, may be valid in a narrow context —
+  yet it often reveals either a **design compromise** or a **deliberate conceptual shift**.
+  Clprolf allows such flexibility for experimentation and teaching,
+  but its semantic rules encourage developers to keep each declension true to its own world.
+
+---
 
 #### II.5.d) Differences in Class Inheritance
 
@@ -4676,3 +4675,4 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
