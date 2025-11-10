@@ -480,8 +480,9 @@ public class_for worker_agent Launcher { ... }
 To remain compatible and powerful, Clprolf accepts all standard Java modifiers in class and interface declarations.
 This includes access modifiers and other familiar constructs, which can be used in exactly the same way.
 
+---
 
-#### II.5.g) Synonyms and Aspects
+#### **II.5.g) Synonyms and Aspects**
 
 Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
 
@@ -502,6 +503,11 @@ Synonyms are no longer arbitrary alternatives but clearly justified by the persp
 >
 > More broadly, the **declension itself can abusively be called the “role”**,
 > since it determines the entity’s nature and its position in the organism.
+>
+> During inheritance, synonyms are generally expected to remain **aligned**
+> — classes or interfaces of the same nature should ideally share the same synonym,
+> unless a deliberate perspective shift is intended by the developer.
+> This prevents conceptual drift and keeps the semantic continuity of the design.
 >
 > This linguistic symmetry keeps the system coherent:
 > whether the role is explicit (through a synonym) or implicit (through the declension name),
@@ -3549,12 +3555,13 @@ clprolfInformationForJava
 	;
 	
 clprolfClassInformationForJava
-	:	'java_class' clprolfDeclension
+	:	'java_class' clprolfDeclension?
+	|	clprolfDeclension
 	;
 	
 clprolfInterfaceInformationForJava
-	:	'java_interface' clprolfInterfaceDeclension clprolfDeclension?
-	;
+    : 'java_interface' (clprolfInterfaceDeclension clprolfDeclension?)?
+    ;
 
 ---
 
@@ -3662,85 +3669,112 @@ reflecting a **stricter compatibility contract rather than a natural hierarchy**
 
 ---
 
-**ARCH BA6 — `with_compat` Verification**
+**ARCH BA6 — `with_compat` in Grammar (Interfaces, Usage)**
 
-`with_compat` can precede a field, local variable, or parameter (`fieldModifier`, `variableModifier`),
-and the compiler must verify that the `unannType` or `catchType` refers to a valid **interface type**.
+The keyword `with_compat` may appear in front of **fields**, **local variables**, and **method parameters**.
+These correspond respectively to `fieldModifier`, `variableModifier`, and parameter declarations in the grammar.
 
-Valid interface types include:
-
-* Clprolf compatibility interfaces (`compat_interf`, `compat_interf_version`, `compat_interf_capacity`), and
-* Java interfaces imported using the `java_interface` syntax.
-
-> ✅ `with_compat java.util.List myList;`
-> ✅ `with_compat MyCompatInterface myInterface;`
-> ❌ `with_compat java.util.ArrayList list;`
-
-This rule ensures that `with_compat` always expresses a meaningful **interface-level coupling**,
-never a dependency on an implementation class.
+This ensures that compatibility markers are part of every variable declaration syntax.
 
 ---
 
-**ARCH-BA7 (interfaces, usage):**
-No `with_compat` is allowed in **method return types** or in **interface type lists** (the list of interfaces inherited or contracted by a class or interface).
+**ARCH BA7 — Forbidden `with_compat` Positions (Interfaces, Usage)**
 
-**Rationale:**
-`with_compat` is reserved for **variable declarations and parameters**, where compatibility is actively used at runtime.
-In return types or inheritance clauses, it would be meaningless because the compiler already manages structural linkage and contract declaration directly.
+`with_compat` cannot be used:
 
-**Scope:**
-Applies to:
+* in **method return types**, or
+* in the **interface type list** of a class or interface declaration.
 
-* method return types,
-* interface type lists of classes (`contracts`),
-* and interface inheritance lists (`nature` / `extends`).
-
-**ARCH BA8 (interfaces, usage):**
-Every field or variable modifier whose `unannType` or `catchType` is a Clprolf interface must include `with_compat`.
+These positions belong to inheritance and definition contexts,
+not to compatibility usage.
 
 ---
 
-**ARCH BA9 — Interface Type Requirement in `with_compat`**
+**ARCH BA8 — Completeness of `with_compat` (Interfaces, Usage)**
 
-Every `with_compat` must reference a valid **interface type**,
-either internal (Clprolf) or external (Java).
+The compiler must verify that **every field or variable modifier**
+whose `unannType` or `catchType` is a **Clprolf interface**
+includes the `with_compat` keyword.
 
-Allowed interface types:
+In other words, `with_compat` must be used **everywhere it is required**,
+to ensure semantic completeness and explicit contract awareness.
+
+This guarantees that all interface-based variables and parameters
+are explicitly marked as compatibility views.
+
+---
+
+**ARCH BA9 — Interface Validation for `with_compat` (Interfaces, Usage)**
+
+The compiler must ensure that every type used with `with_compat`
+is a valid **interface type** —
+either a Clprolf interface or a Java interface imported using `import java_interface`.
+
+Classes and non-imported Java interfaces are strictly prohibited.
+
+> ❌ `with_compat java.util.ArrayList list;` — class type
+> ❌ `with_compat java.sql.Connection c;` — raw Java interface (not imported)
+> ✅ `import java_interface compat_interf_version abstraction Connection;` → `with_compat Connection c;`
+
+This rule enforces architectural discipline
+by ensuring that `with_compat` is used only with pure interface contracts.
+
+---
+
+**ARCH BA10 — Supported Interface Forms for `with_compat`**
+
+`with_compat` can be used with **all Clprolf interface forms**, including:
 
 * `compat_interf`
 * `compat_interf_version`
 * `compat_interf_capacity`
-* `java_interface`
+* `version_inh`
+* `capacity_inh`
 
-> ✅ `with_compat java.awt.event.ActionListener l;`
-> ✅ `with_compat MyListener v;`
-> ❌ `with_compat java.util.ArrayList list;`
+This includes both **compatibility** and **feature interfaces**,
+since all interface forms in Clprolf represent **contract-based connections**
+and support **loose coupling**.
+`with_compat` may also be used with **semantic Java imports**
+(i.e., `import java_interface` declarations enriched with a declension).
 
-This ensures that all `with_compat` declarations refer to
-**pure contracts**, not to executable classes.
+> ✅ `with_compat Animal a;` — `version_inh` interface
+> ✅ `with_compat ClpConnection c;` — `compat_interf_version` interface
 
----
+**Note:**
+Java interfaces imported *without semantic information* are **not recognized as Clprolf interfaces**.
+They cannot be used in `with_compat` expressions,
+but they may still appear in inheritance declarations when explicitly forced (e.g. `@Forc_int_inh`).
 
-**ARCH BA10 — `with_compat` Extended Scope**
-
-`with_compat` may be used with:
-
-1. **Clprolf compatibility interfaces** (`compat_interf_version`, `compat_interf_capacity`, `compat_interf`), and
-2. **Java interfaces explicitly imported** using the `java_interface` keyword.
-
-For **Clprolf types**, the compiler checks the declension to ensure it is a valid compatibility interface.
-For **Java types**, the compiler verifies only that they are declared as `java_interface` imports —
-no further structural analysis is performed.
-
-> ✅ `public void setListener(with_compat java.awt.event.ActionListener l);`
-> ✅ `public void setInterface(with_compat MyVersionInterface v);`
-
-This guarantees full semantic clarity:
-Clprolf knows whether each `with_compat` refers to an internal or external interface,
-while maintaining strict separation between both worlds.
+This preserves full technical interoperability while maintaining semantic safety.
 
 ---
 
+****ARCH BA11 — Meaning of `with_compat`**
+
+The `with_compat` keyword expresses **loose coupling** —
+it clearly indicates that the variable or parameter is typed
+against a **compatibility interface**,
+not against a concrete class.
+
+By using `with_compat`, developers consciously declare
+that they are working with a **contract**, not an implementation.
+This encourages clear boundaries and high modularity.
+
+> Example:
+>
+> ```java
+> with_compat Animal a;   // works with the interface, not the class
+> ```
+
+Additionally, `with_compat` only accepts **Clprolf semantic interfaces** —
+those declared in Clprolf or imported via `import java_interface`.
+This ensures that all referenced interfaces carry **explicit semantics**
+(role, advice, version, or capacity).
+
+> This also means that `with_compat` acts as a subtle *semantic filter*,
+> guaranteeing that every compatible type belongs to the Clprolf conceptual world.
+
+---
 
 ##### **ARCH BB — Interface Structure**
 
@@ -3789,39 +3823,46 @@ It may use `extends` if it is a `compat_interf_version` or `compat_interf_capaci
 **Advice annotations are applied only above capacities** — either `version_inh` or `compat_interf_capacity`.
 They are *not allowed* on `version` interfaces or on classes.
 
+**ARCH_BB7 (interfaces) — Semantic Rules for `import java_interface`**
 
-##### **ARCH_BB7 (interfaces) — Semantic equivalence for `import java_interface`**
+When a **semantic import** is used with `import java_interface`,
+the declaration must follow the **same semantic logic** as native Clprolf interface declarations.
 
-All `import java_interface` declarations must follow the **same semantic rules** as Clprolf interface declarations.
+This means that when a semantic layer is added,
+it must remain coherent and respect Clprolf’s architectural principles.
 
-> This means that a Java interface imported into Clprolf becomes a true Clprolf interface.
-> It must declare:
->
-> * a **declension of interface** (`compat_interf_version`, `compat_interf_capacity`, or `compat_interf`),
-> * a **class role** when appropriate (for `version_inh` interfaces, such as `version_inh agent`),
-> * and an **advice** (`@Agent_like_advice` or `@Worker_like_advice`) when it is a `capacity_inh` interface.
+**Possible semantic enrichments:**
 
-**Valid examples:**
+* A **declension of interface** may be given (`compat_interf`, `compat_interf_version`, `version_inh`, `compat_interf_capacity`, or `capacity_inh`).
+* A **class role** (`agent`, `abstraction`, `worker_agent`, etc.) may also be specified.
+* An **advice** (`@Agent_like_advice`, `@Worker_like_advice`) may optionally indicate a preferred target world.
+
+All these additions are **optional**, but if present,
+they must respect the same semantic consistency rules as native declarations.
+
+**Examples:**
 
 ```java
-import java_interface version_inh agent java.util.List;
+// Minimal import (no semantic enrichment)
+import java_interface java.util.List;
 
-@Agent_like_advice
+// Semantic imports
+import java_interface version_inh abstraction java.util.List;
+@Worker_like_advice
 import java_interface capacity_inh java.io.Serializable;
 ```
 
-**Invalid examples:**
+**Rule summary:**
 
-```java
-@Static
-import java_interface version_inh java.util.List;  // ❌ Gender not allowed on interfaces
-import java_interface capacity_inh java.io.Serializable; // ❌ Missing advice
-```
+> The compiler validates semantic imports exactly like native interface declarations,
+> but non-semantic imports remain valid and unaltered.
 
-**Semantic rule summary:**
+---
 
-> The compiler must apply the same semantic checks as for interface declarations —
-> verifying the interface declension, the associated class role, and the presence of the proper advice for capacities.
+💡 **Philosophy:**
+Clprolf lets developers enrich Java imports semantically when needed,
+without ever forcing them to do so.
+It’s not about strictness — it’s about meaning clarity, when you choose to express it.
 
 ---
 

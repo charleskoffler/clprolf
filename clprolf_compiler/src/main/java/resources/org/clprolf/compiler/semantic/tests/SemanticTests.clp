@@ -76,3 +76,13 @@ public agent BA2Animal contracts AnimalImpl {
 	}
 }
 
+//
+/***ARCH BA1 (interfaces, usage):**
+The `contracts` keyword is mandatory for all implementations. */
+
+//issue
+public agent BA1Animal implements AnimalImpl {
+	public void jump() {
+	
+	}
+}

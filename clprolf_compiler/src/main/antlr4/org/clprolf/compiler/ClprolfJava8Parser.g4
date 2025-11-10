@@ -276,12 +276,13 @@ clprolfInformationForJava
 	;
 	
 clprolfClassInformationForJava
-	:	'java_class' clprolfDeclension
+	:	'java_class' clprolfDeclension?
+	|	clprolfDeclension
 	;
 	
 clprolfInterfaceInformationForJava
-	:	'java_interface' clprolfInterfaceDeclension clprolfDeclension?
-	;
+    : 'java_interface' (clprolfInterfaceDeclension clprolfDeclension?)?
+    ;
 
 
 /* Java 8

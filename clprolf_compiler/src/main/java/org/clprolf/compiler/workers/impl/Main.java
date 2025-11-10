@@ -9,13 +9,12 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 5.0.0 (20251021)
- Changelog — Code Generation & Grammar Update
-• Updated grammar for import java_class and import java_interface.
-• Introduced a new visitor-based code generator.
-• Fixed generation issue for interfaces declaring roles.
-• Improved base formatting of generated output.
-• Added full generation support for import java_class and import java_interface.
+ 5.1.0 (20251110)
+ Changelog Grammar correction for import java_class and import java_interface.
+ 
+ BA1: done by grammar.
+ 
+ Already done: BB2, BB1, BA3, BA4, BA2
  
  Usage example: mvn exec:java -Dexec.mainClass="org.clprolf.compiler.workers.impl.Main" -Dexec.args="org/clprolf/compiler/semantic/tests/SemanticTests.clp"
  

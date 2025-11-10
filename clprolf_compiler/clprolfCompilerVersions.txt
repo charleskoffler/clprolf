@@ -21,3 +21,4 @@ Clprolf compiler versions
 					• Fixed generation issue for interfaces declaring roles.
 					• Improved base formatting of generated output.
 					• Added full generation support for import java_class and import java_interface.
+5.1.0 2025/11/10	Grammar correction for import java_class and import java_interface.
