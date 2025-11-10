@@ -2898,7 +2898,7 @@ In short, Clprolf not only makes the Proxy pattern easier to master, but also sh
 
 ---
 
-#### Example: insertion sort with `worker_agent` and `agent`
+### V.2) Agent–Worker Cooperation Example (Insertion Sort)
 
 To illustrate, let’s implement the insertion sort algorithm in two ways:
 
@@ -3057,7 +3057,7 @@ public class InsertionSorter {
 }
 ```
 
-### V.2) AN EXAMPLE OF CLPROLF IN ACTION WITH EXISTING JAVA LIBRARIES
+### V.3) AN EXAMPLE OF CLPROLF IN ACTION WITH EXISTING JAVA LIBRARIES
 
 This example demonstrates how Clprolf can be applied on top of existing Java libraries.
 
@@ -3643,6 +3643,25 @@ import java_class agent java.util.Timer;   // ❌ Advice not allowed on class im
 
 ---
 
+**ARCH-A5 (Classes – Synonym Continuity in Class Inheritance)**
+
+When a class inherits from another of the same nature,
+their **synonyms** should normally remain identical.
+
+If they differ, this may indicate:
+
+* a **change of perspective**,
+* an **error**, or
+* a **nature violation**.
+
+The compiler emits a **warning** in such cases,
+but inheritance remains **allowed**.
+
+> This rule ensures **semantic continuity** between parent and child classes, without restricting creative freedom.
+
+---
+
+
 #### **ARCH B — Interfaces and Usage**
 
 **ARCH BA1 (interfaces, usage):**
@@ -3810,9 +3829,17 @@ A `capacity` interface cannot inherit (`nature`) from a `version`.
 **ARCH BB3 (interfaces):**
 A `version` interface inheriting a `capacity` must respect the `advice` of that capacity in its declension.
 
-**ARCH BB4 (interfaces):**
-A `version_inh` interface must declare a declension.
-A `compat_interf_version` may declare one.
+**ARCH-BB4 (Interfaces – Target Declension Requirement)**
+
+A **`version_inh`** interface **must declare** a **target declension** (such as `agent`, `worker_agent`, `model`, `information`, or `indef_obj`).
+This declaration explicitly defines the **intended nature** of the classes that will implement it and ensures full semantic traceability within the inheritance hierarchy.
+
+A **`compat_interf_version`**, on the other hand, **may declare** a target declension, but it remains **optional**.
+When it does, the interface behaves as a **role-bound compatibility interface**, maintaining its compatibility purpose while aligning semantically with feature-like interfaces.
+
+> In short:
+> – `version_inh` → **target declension required**.
+> – `compat_interf_version` → **target declension optional**, for compatibility or wrapper contexts.
 
 **ARCH BB5 (interfaces):**
 An interface that inherits must use `nature` if it is a `version_inh` or `capacity_inh`.
@@ -3948,6 +3975,61 @@ The annotation `@Forc_inh` may appear in an interface definition **only when tha
 
 ---
 
+**ARCH-BB12 (Interfaces – Nature Consistency for Target Roles)**
+
+A version interface that declares a **target class role** must ensure that this target role has the **same declension** as the version (or versions) it inherits from.
+
+For example, a `version_inh agent` cannot inherit from a `version_inh worker_agent`.
+Such inheritance is **forbidden**, unless explicitly forced using `@Forc_inh`.
+
+> This rule ensures that both inheritance and class role remain aligned in nature.
+
+---
+
+**ARCH-BB13 (Interfaces – Advice Consistency Between Capacities)**
+
+When a **capacity interface** inherits from another capacity interface,
+each parent capacity must have the **same advice** (`@Agent_like_advice` or `@Worker_like_advice`).
+
+> This preserves the conceptual alignment between all capacities within a hierarchy.
+
+---
+
+**ARCH-BB14 (Interfaces – Synonym Alignment in Inheritance)**
+
+A version interface should normally **use the same synonym** as the versions it inherits from.
+
+For instance:
+
+* a `compat_interf_version` should inherit from one or several `compat_interf_version`,
+* a `version_inh` should inherit from one or several `version_inh`.
+
+If a difference occurs, it may indicate:
+
+* a deliberate **change of perspective**,
+* a **design mistake**, or
+* a **nature violation**.
+
+In such cases, the compiler issues a **warning**, not an error.
+The same rule applies to capacity interfaces (`capacity_inh` vs `compat_interf_capacity`).
+
+> What matters is preserving the same **declension**, not necessarily the same synonym.
+
+---
+
+**ARCH-BB15 (Interfaces – Synonym Alignment for Target Roles)**
+
+When version interfaces declare a **target class role**,
+the target role should keep the **same synonym** across the inheritance chain.
+
+If a synonym change is detected, a **warning** is raised to signal either:
+
+* a **perspective shift**, or
+* a **potential violation of nature**.
+
+However, the situation remains **authorized**.
+
+---
 
 #### **ARCH C — Genders and Statics**
 
@@ -4143,6 +4225,17 @@ interfaces defined outside the Clprolf semantic domain.
 > They always make the developer’s intent visible and deliberate.
 > Even when forcing inheritance or mixing roles,
 > the declared **declension** remains the primary semantic identity of the component.
+
+---
+
+**ARCH-EB10 (Interfaces – Compatibility of Target Roles in Version Inheritance)**
+
+When a version interface declares a **target class role** and inherits from another version,
+it must inherit only from a version with a **compatible target class role**,
+unless explicitly forced using `@Forc_inh`.
+
+> Note: `@Forc_inh` is used here instead of `@Forc_int_inh`,
+> because this constraint applies to **class role inheritance**, not to interface inheritance itself.
 
 ---
 
@@ -4716,4 +4809,3 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
-
