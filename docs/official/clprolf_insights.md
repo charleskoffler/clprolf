@@ -456,7 +456,28 @@ Clprolf introduces a few small but important differences in how **class inherita
 
 ---
 
-#### II.5.e) The `class_for` Modifier
+#### II.5.e) `nature` and Hierarchies with Matching Synonyms
+
+In traditional OOP, the `extends` keyword emphasizes inheritance in a broad sense.
+In **Clprolf**, the `nature` keyword takes a more restrictive approach: it allows inheritance **only when classes truly share the same nature**.
+This prevents purely technical or arbitrary inheritance and encourages the use of **composition** in all other cases.
+
+But Clprolf goes further — **synonyms** (for both classes and interfaces) must also be **compatible**, meaning identical, otherwise the compiler issues a **warning**.
+For example, an `agent` may inherit from an `abstraction`, but this will generate a **compiler warning**.
+
+Because inheritance in Clprolf expresses **a shared nature**, classes (and interfaces) that belong to the same family should ideally share the **same synonym**.
+Using a different synonym may also represent a **deliberate change of perspective** — in that case, the developer can simply ignore the warning.
+However, it may also indicate a **design mistake** or a **violation of the intended nature**.
+
+> **Only inheritance between different declensions generates a compilation error.**
+> Differences in synonyms trigger warnings, never errors.
+
+The compiler does not go further in checking inheritance by nature.
+It remains the developer’s responsibility to ensure that the semantic continuity between classes truly makes sense.
+
+---
+
+#### II.5.f) The `class_for` Modifier
 
 In pure Clprolf, there is an optional modifier **`class_for`** that can be used instead of `class`.
 It appears before the role keyword, explicitly tying the class to its declension.
@@ -475,14 +496,14 @@ public class_for worker_agent Launcher { ... }
 
 ---
 
-#### II.5.f) Compatibility with Java
+#### II.5.g) Compatibility with Java
 
 To remain compatible and powerful, Clprolf accepts all standard Java modifiers in class and interface declarations.
 This includes access modifiers and other familiar constructs, which can be used in exactly the same way.
 
 ---
 
-#### **II.5.g) Synonyms and Aspects**
+#### II.5.h) Synonyms and Aspects
 
 Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
 
@@ -515,7 +536,7 @@ Synonyms are no longer arbitrary alternatives but clearly justified by the persp
 
 ---
 
-#### II.5.h) NOTICE ON THE USE CASES OF `worker_agent`
+#### II.5.i) NOTICE ON THE USE CASES OF `worker_agent`
 
 In Clprolf, the general recommendation is to avoid overusing `worker_agent`. Real-world simulations (`agent`) are usually more intuitive and less technical.
 
@@ -533,7 +554,7 @@ Even in system programming, however, `worker_agent` classes often collaborate wi
 
 ---
 
-#### II.5.i) Example: `agent` ↔ `worker_agent` relationship
+#### II.5.j) Example: `agent` ↔ `worker_agent` relationship
 
 ```
 +-----------------+          +----------------------+
@@ -550,7 +571,7 @@ Here, `Animal` is an `agent` that simulates the real-world entity.
 
 ---
 
-#### II.5.j) Agent, Abstraction, and Simu_real_obj
+#### II.5.k) Agent, Abstraction, and Simu_real_obj
 
 In Clprolf, the qualifiers **`agent`**, **`abstraction`**, and **`simu_real_obj`** are equivalent.
 They all designate the same declension, but with slightly different emphases.
@@ -565,7 +586,7 @@ They all designate the same declension, but with slightly different emphases.
 
 ---
 
-#### II.5.k) Usage Recommendations
+#### II.5.l) Usage Recommendations
 
 * Use **`abstraction`** when representing **abstract ideas** or **system abstractions** (e.g., a `Connection` class).
   These abstractions are typically consumed by **worker\_agent** classes.
@@ -576,7 +597,7 @@ There is no strict rule — it is a matter of **developer preference and sensibi
 Both terms are fully valid and interchangeable.
 
 
-#### II.5.l) NOTICE ON WORKER\_AGENT — COMPUTER AS A WORKER
+#### II.5.m) NOTICE ON WORKER\_AGENT — COMPUTER AS A WORKER
 
 The **`worker_agent`** declension is not only about separating `agent` code from pure computer tasks — it is about treating the **computer as a worker**. The “simu” prefix highlights this metaphor: as if the computer were a real-world worker. Its job is to manage peripherals, handle resources, and perform tasks that are inherently technical.
 
@@ -597,7 +618,7 @@ Finally, some design patterns reinforce this distinction: for example, the **Vie
 
 ---
 
-#### II.5.m) System Abstractions
+#### II.5.n) System Abstractions
 
 System abstractions such as `File` or `Connection` should generally appear **only in worker\_agent classes**.
 Exceptions may be made for practical reasons or for thread-like abstractions.
@@ -607,7 +628,7 @@ This rule follows naturally from the third-person perspective:
 * Only a **worker** should perform such method calls,
 * not an **agent** (or `simu_real_obj`).
 
-#### II.5.n) Flexibility with `indef_obj`
+#### II.5.o) Flexibility with `indef_obj`
 
 For situations where a role is not desirable or not yet determined, Clprolf provides the **`indef_obj`** (indefinite object) declension.
 It behaves like a traditional OOP object and keeps the system flexible.
@@ -2728,16 +2749,7 @@ With this observation, Clprolf can be mapped back to paradigms that treat all cl
 
 In summary, it is as if `agent` were derived from `worker_agent`, and `model` from `information`. This perspective provides a conceptual bridge between Clprolf and existing programming paradigms.
 
-### IV.21) `nature` VERSUS `extends`
-
-In traditional OOP, the `extends` keyword emphasizes inheritance in a broad sense.
-In Clprolf, the `nature` keyword takes a more restrictive approach: it allows inheritance only when classes truly share the same nature. This avoids purely technical or arbitrary inheritance and encourages composition in other situations.
-
-By design, `nature` helps prevent misuse of inheritance for both `agent` and `worker_agent` classes. If Java supported multiple inheritance, `nature` would also reduce risks such as the classic diamond problem.
-
----
-
-### IV.22) ALGOL AND CLPROLF
+### IV.21) ALGOL AND CLPROLF
 
 ALGOL (*Algorithmic Language*) was designed with a strong emphasis on algorithmic and mathematical computation. Its goal was to provide a language for expressing algorithms clearly and efficiently. **ALGOL 60** in particular was highly influential: it introduced features for structured programming and laid the foundation for many modern programming languages.
 
@@ -2747,7 +2759,7 @@ Clprolf, with its **`worker_agent`** declension (simulation of the computer as a
 * **Minimalistic approach**: ALGOL’s creators aimed to keep the language minimalistic, and Clprolf also follows this path, focusing on a limited set of declensions and concepts.
 
 
-### IV.23) SIMULA AND CLPROLF
+### IV.22) SIMULA AND CLPROLF
 
 * **Simulation focus**: Both Simula and Clprolf emphasize simulation. Simula was explicitly created for simulation, while Clprolf builds on the same idea with its concepts of simulation and modeling.
 * **Object-oriented programming**: Simula is often credited as one of the first object-oriented languages. Clprolf also embraces OOP, introducing **declensions** for classes and interfaces to give structure and meaning — a core principle of object-oriented design.
@@ -2758,7 +2770,7 @@ Clprolf, with its **`worker_agent`** declension (simulation of the computer as a
 ---
 
 
-### IV.24) TEACHING PROGRAMMING OR JAVA TO CHILDREN
+### IV.23) TEACHING PROGRAMMING OR JAVA TO CHILDREN
 
 Teaching advanced programming concepts to children is challenging, especially with Java. Clprolf — or the Clprolf framework — can serve as an easier entry point to Java.
 
@@ -2766,7 +2778,7 @@ By introducing declensions such as **agent**, **human expert**, **machine tool**
 
 ---
 
-### IV.25) NOTICE ON INHERITANCE AND CLPROLF
+### IV.24) NOTICE ON INHERITANCE AND CLPROLF
 
 In object-oriented programming, inheritance is more than just copying attributes and methods. When inheritance is used solely for that purpose, it becomes **abusive inheritance**, and composition should be preferred instead — the well-known *“has-a”* relationship, versus inheritance as an *“is-a”* relationship. This is why the principle of *composition over inheritance* exists.
 
@@ -2780,7 +2792,7 @@ At the same time, Clprolf preserves **flexibility**: developers can override the
 
 ---
 
-### IV.26) NOTICE ON SIMPLICITY AND REALITY
+### IV.25) NOTICE ON SIMPLICITY AND REALITY
 
 In Clprolf, the mindset is to stay as close as possible to **concrete reality**. This ensures that real-world use cases can always be modeled effectively.
 
@@ -2795,7 +2807,7 @@ Even `worker_agent` methods are framed as simulations of a worker — almost lik
 ---
 
 
-### IV.27)NOTICE ON MESSAGES, SMALLTALK, AND ALAN KAY’S VISION
+### IV.26)NOTICE ON MESSAGES, SMALLTALK, AND ALAN KAY’S VISION
 
 #### 1. Differences with Smalltalk — the sender of messages
 
@@ -2833,7 +2845,7 @@ For example, a `Sorter` can be viewed either as an `agent` (a human expert at so
 ---
 
 
-### IV.28) NOTICE ON PERFORMANCE
+### IV.27) NOTICE ON PERFORMANCE
 
 * **No runtime overhead**: Clprolf adds semantics and clarity on top of Java without impacting runtime performance. Object roles reduce excessive inheritance and encourage best practices, but all role-related keywords are resolved at compile time. The generated executables are effectively the same as standard Java (and the same applies to the C# and PHP frameworks).
 
@@ -2841,7 +2853,7 @@ For example, a `Sorter` can be viewed either as an `agent` (a human expert at so
 
 ---
 
-### IV.29) NOTICE ON CLPROLF AND ALGORITHMS WRITING INFLUENCE
+### IV.28) NOTICE ON CLPROLF AND ALGORITHMS WRITING INFLUENCE
 
 Clprolf was created to simplify the writing and understanding of object-oriented code. Its primary goal is not algorithm design. Yet, we can observe that it sometimes **influences the way algorithms are written**, indirectly.
 
@@ -2852,7 +2864,7 @@ Ultimately, Clprolf influences algorithm writing by encouraging **well-designed 
 
 ---
 
-### IV.30) FUTURE DIRECTIONS OF CLPROLF
+### IV.29) FUTURE DIRECTIONS OF CLPROLF
 
 Like pure OOP rests on the concept of objects, Clprolf rests on **declensions**, which are intended to remain stable.
 
@@ -4809,3 +4821,4 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
