@@ -54,60 +54,78 @@ agent OrderService {
 
 ---
 
-## Documentation
+## 📚 Documentation — Learn, Understand, and Master Clprolf
 
-### Main documentation
+Explore the complete documentation set, from foundational concepts to advanced insights.
+Each document is designed to make Clprolf progressively clearer — conceptually, semantically, and philosophically.
 
-[Explaining Declensions](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
+---
 
-[TALKING IN JAVA VERSUS TALKING IN CLPROLF – EXAMPLE](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_2_talking_java_vs_clprolf_quicksort.md)
+### 🧠 Main Documentation
 
-[LEARNING THE CLASS ROLES THROUGH JAVA WRAPPERS](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_3_java_lib_wrappers.md)
+* [**Explaining Declensions**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
+  Understand the five declensions (`agent`, `worker_agent`, `model`, `information`, `indef_obj`) and how they shape your system’s architecture.
 
-[Interfaces in Clprolf — Complete Overview](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_interfaces.md)
+* [**Talking in Java vs. Talking in Clprolf — Example**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_2_talking_java_vs_clprolf_quicksort.md)
+  Compare a traditional Java implementation with its Clprolf equivalent — featuring *QuickSort* and conceptual clarity.
 
-[Concurrency and Parallelism Aids in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_conc_parall.md)
+* [**Learning the Class Roles Through Java Wrappers**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_3_java_lib_wrappers.md)
+  Discover how standard Java libraries inspired Clprolf’s role-based wrappers (now partly replaced by `import java_class`).
 
-[The `underst` Method Modifier](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
+* [**Interfaces in Clprolf — Complete Overview**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_4_interfaces.md)
+  Deep dive into `compat_interf_version`, `compat_interf_capacity`, and interface inheritance features.
 
-[Insights About Clprolf — For Experienced and Thoughtful Readers](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
+* [**Concurrency and Parallelism Aids in Clprolf**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_5_conc_parall.md)
+  Learn about method and attribute modifiers such as `one_at_a_time`, `turn_monitor`, and `dependent_activity`.
 
-[AI Insights](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
+* [**The `underst` Method Modifier**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
+  Explore the `underst` keyword — marking non-trivial algorithms or methods requiring computer “understanding”.
 
-[clprolf official web site](https://www.clprolf-lang.org/)
+* [**Insights About Clprolf — For Experienced and Thoughtful Readers**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
+  A reflective document revealing the language’s design philosophy and conceptual depth.
 
-### Extended documentation
+* [**AI Insights**](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
+  A collection of genuine AI feedback and reflections that accompanied Clprolf’s evolution.
 
-[Using Clprolf for Complex Object-Oriented Designs](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_1_exempl_assistant.md)
+* [🌐 **Official Website**](https://www.clprolf-lang.org/)
+  The central hub for Clprolf resources, news, and releases.
 
-[Attempts of Multiple Inheritance with Interfaces in Clprolf](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_2_attempts_multi_inh_with_interf.md)
+---
 
+### 🔬 Extended Documentation
 
-## Sources
+* [**Using Clprolf for Complex Object-Oriented Designs**](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_1_exempl_assistant.md)
+  Practical and advanced examples showing how Clprolf simplifies large-scale OOP architectures.
 
-### clprolf compiler
+* [**Attempts of Multiple Inheritance with Interfaces in Clprolf**](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_2_attempts_multi_inh_with_interf.md)
+  Exploration of interface multiple inheritance patterns — not recommended, but educational.
 
-[clprolf compiler directory](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler)
+---
 
-### clprolf frameworks
+## 🧩 Source Examples — Explore the Language in Action
 
-[clprolf Java framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler/src/main/java/org/clprolf/framework/java)
+Discover how Clprolf comes to life through concrete examples — from simple demonstrations to full applications and design patterns.
+Each directory showcases a different facet of the language: clarity, structure, and algorithmic expressiveness.
 
-[clprolf C# framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/ClprolfCsharpFramework)
+* [🎮 **Clprolf Game Examples**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
+  Real-time and interactive simulations illustrating agent–worker collaboration.
 
-[clprolf PHP framework](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/simol_php_framework)
+* [🧩 **Clprolf in Action — Sample Applications**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_app_examples)
+  Complete applications showing how roles and contracts interact in real-world use cases.
 
-### Source examples
+* [🧠 **Core Language Examples**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_examples)
+  Focused examples demonstrating Clprolf’s core syntax, roles, and design rules.
 
+* [🏗️ **Design Pattern Examples**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_design_patterns_examples)
+  Implementations of classic design patterns rewritten with Clprolf’s roles and semantic clarity.
 
-[clprolf games examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_games_examples)
+* [⚙️ **Algorithm Examples**](https://github.com/charleskoffler/clprolf/tree/main/simol_algorithms_examples)
+  Classic algorithm implementations — such as *QuickSort* or *Insertion Sort* — expressed with Clprolf’s method modifiers and clarity principles.
 
-[Practical examples of Clprolf in action](https://github.com/charleskoffler/clprolf/blob/main/clprolf_app_examples)
+* [🌱 **Introductory & Simple Examples**](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
+  Minimal and beginner-friendly examples to start learning the Clprolf way.
 
-[clprolf wrappers for Java Standard Libraries](https://github.com/charleskoffler/clprolf/tree/main/wrappers)
+* [🧱 **Wrappers for Java Standard Libraries**](https://github.com/charleskoffler/clprolf/tree/main/wrappers)
+  Legacy Java compatibility wrappers, maintained for historical reference — now replaced by `import java_class` and `import java_interface`.
 
-[clprolf design patterns examples](https://github.com/charleskoffler/clprolf/tree/main/clprolf_design_patterns_examples)
-
-[clprolf algorithms examples](https://github.com/charleskoffler/clprolf/tree/main/simol_algorithms_examples)
-
-[clprolf simple examples](https://github.com/charleskoffler/clprolf/tree/main/simol_simple_examples)
+---
