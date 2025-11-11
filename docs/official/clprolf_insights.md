@@ -466,8 +466,10 @@ But Clprolf goes further — **synonyms** (for both classes and interfaces) must
 For example, an `agent` may inherit from an `abstraction`, but this will generate a **compiler warning**.
 
 Because inheritance in Clprolf expresses **a shared nature**, classes (and interfaces) that belong to the same family should ideally share the **same synonym**.
-Using a different synonym may also represent a **deliberate change of perspective** — in that case, the developer can simply ignore the warning.
-However, it may also indicate a **design mistake** or a **violation of the intended nature**.
+Using a different synonym may also represent a **deliberate change of perspective** — in that case, the developer can simply ignore the warning or explicitly **force the inheritance** using:
+
+* `@Forc_inh` for **classes**, or
+* `@Forc_int_inh` for **interfaces**.
 
 > **Only inheritance between different declensions generates a compilation error.**
 > Differences in synonyms trigger warnings, never errors.
@@ -1841,7 +1843,53 @@ These notions are compatible with existing Java mechanisms like `synchronized` a
 
 Finally, problems that are purely parallel — especially those involving **dependent activities** — can be implemented directly with multiple threads.
 
-### II.15) THE `underst` MODIFIER
+
+### II.15) Ignoring Inheritance Checks
+
+Inheritance checks can be bypassed using **`@Forc_inh`** (for classes) and **`@Forc_int_inh`** (for interfaces).
+These annotations apply both to **errors** (when declensions differ) and to **warnings** (when synonyms differ).
+
+They can be written either at the **class/interface level**, or — more precisely — **directly before the inherited type**.
+This second form is recommended, as it makes the developer’s intent explicit and localized to the exact inheritance being forced.
+
+Example in pure Clprolf:
+
+```java
+/* All inherited classes are accepted in inheritance, even if inconsistent */
+@Forc_inh
+public agent Car nature CarRealization {
+   (...)
+}
+```
+
+or, more precisely:
+
+```java
+public agent Car nature @Forc_inh CarRealization {
+   (...)
+}
+```
+
+with
+
+```java
+/* CarRealization handles displays and input for the Car simulation */
+public worker_agent CarRealization {
+   (...)
+}
+```
+
+In both cases, the compiler accepts the inheritance despite the semantic mismatch.
+The forçage applies whether the issue comes from **different declensions** (normally an error) or from **different synonyms** (normally a warning).
+The explicit presence of `@Forc_inh` or `@Forc_int_inh` always signals a **deliberate decision** by the developer.
+
+> 🧭 The forcing rules in Clprolf are perfectly balanced:
+> **errors** (declension differences) and **warnings** (synonym differences) never overlap.
+> Each case has its own dedicated annotation, ensuring that every inheritance — whether structural or conceptual — can be made explicit, controlled, and intentional.
+
+---
+
+### II.16) THE `underst` MODIFIER
 
 The `underst` modifier (short for *understanding*) can be applied to methods in `agent` or `worker_agent` classes. It marks methods that involve some form of *computer understanding* — for example, recognizing objects in an image.
 
@@ -1869,7 +1917,7 @@ public agent ImageAnalyzer {
 
 ---
 
-### II.16) 🧩 **TO COMPILE**
+### II.17) 🧩 **TO COMPILE**
 
 The **Clprolf compiler** is the most direct way to use the language.
 However, a **Clprolf framework** also exists for Java developers.
@@ -1928,7 +1976,7 @@ During compilation, **Clprolf keywords and annotations** are translated into sta
 
 ---
 
-#### II.16.b) Compiler as an Architecture Guardian
+#### II.17.b) Compiler as an Architecture Guardian
 
 Clprolf’s compiler does not merely translate keywords into Java code; its semantic rules act like **continuous architecture tests**.
 Each build validates that classes, interfaces, and capacities still respect their declared roles and relationships.
@@ -1940,100 +1988,27 @@ In this sense, Clprolf brings to compilation what automated tests bring to runti
 
 ---
 
-#### II.16.c) RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
+#### II.17.c) RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
-Declensions (roles) in Clprolf allow **semantic checks** to be performed by the compiler or by external tools. These checks ensure coherence in class and interface design. They can be overridden with `@Forced_inh`, `@Forced_int_inh`, or `@Forced_pract_code` (both in the Clprolf language and in the Java framework).
+Clprolf performs several **semantic inheritance checks** to ensure coherence between classes and interfaces.
+These checks are based on **declensions**, **synonyms**, and **sub-roles**, and are applied automatically by the compiler.
 
-The purpose of these checks is to prevent contradictions in how declensions are applied. For example, a `Fruit` class declared as a `worker_agent` could not be the parent of an `Apple` class declared as an `agent`.
+The detailed definitions of these rules are provided in the **Architectural Annexes**.
+This section only summarizes their general principles.
 
-A **capacity** is always about shared functionality across multiple version interfaces, and always targets either `agent` or `worker_agent` classes.
+* Inheritance between **different declensions** (for example, `agent` and `worker_agent`) produces a **compiler error**.
+* Inheritance between **identical declensions** but with **different synonyms** (for example, `agent` and `abstraction`) produces a **compiler warning**.
+* Sub-role and static checks (such as `@Static` vs non-static) are also verified automatically.
+* All these controls can be **explicitly forced** using `@Forc_inh` (for classes) or `@Forc_int_inh` (for interfaces).
 
-At the same time, Clprolf preserves freedom of interpretation by allowing developers to override checks with *forced* keywords when needed.
+These checks guarantee that every inheritance relation keeps its **semantic meaning** intact while preserving full **freedom of interpretation** for the developer.
+Forcing annotations exist precisely to indicate **deliberate choices** that go beyond standard consistency.
 
----
-
-##### Summary of the Semantic Rules for Inheritance
-
-The guiding principle is simple: the rules reflect the programmer’s intuitive sense of coherence when using Clprolf. They are applied only to the **direct inheritance level** (not transitive inheritance), which makes them easier to learn and apply.
-
-1. **Class inheritance contradictions**
-
-   * A class must inherit from a parent of the **same declension**.
-   * Example: an `agent` must inherit from an `agent`; a `worker_agent` must inherit from another `worker_agent`.
-
-2. **Contracts contradictions**
-
-   * A class may implement **only one** `compat_interf_version` (a class represents one version only).
-   * A class **cannot** implement a `compat_interf_capacity` (or `capacity_inh`).
-
-3. **Interface inheritance contradictions**
-
-   * An interface may inherit only **capacities**.
-   * Interface inheritance with features is an exception, but by default a `compat_interf_version` cannot extend another `compat_interf_version`, nor can a `compat_interf_capacity` be composed of a version.
-   * If a capacity extends another capacity, they must share the same advice (e.g., both `@Agent_like_advice`).
-
-4. **System abstraction usage contradictions**
-
-   * System abstractions (`File`, `Socket`, etc.) can be used only by `worker_agent` or `abstraction` classes.
-   * The only exception is when an `agent` uses `@Forced_pract_code` for small amounts of technical code.
+> ⚙️ For the complete and formal list of semantic inheritance rules, see the **Architectural Annexes** (sections [ARCH_CB] and [ARCH_BC]).
 
 ---
 
-##### Sub-role Inheritance Rules
-
-Sub-roles also follow consistency checks:
-
-* `@Human_expert`, `@Expert_component` are equivalent.
-* `@Human_expert_static` and `@Expert_component_static` are equivalent.
-* `@Static` is not equivalent to other static roles. A purely static role cannot inherit from a non-static role, and vice versa (except if both are `abstraction` roles).
-
-Each class or interface must declare its role explicitly, even if it inherits, because the author is responsible for indicating their perspective. Declaring sub-roles is recommended to avoid future inheritance issues.
-
----
-
-##### Inheriting from Java Classes or Interfaces
-
-Direct inheritance from Java classes or interfaces is not allowed, **except with `@Forced` annotations**.
-
----
-
-##### Ignoring Inheritance Checks
-
-Inheritance checks can be bypassed using `@Forced_inh` (for classes) and `@Forced_int_inh` (for interfaces). These can be applied either at the class/interface level, or directly before the inherited type.
-
-Example:
-
-```java
-/* All inherited classes are accepted in inheritance, even if inconsistent */
-@Forced_inh
-@Agent
-public class Car extends CarRealization {
-   //(...)
-}
-```
-
-or
-
-```java
-@Agent
-public class Car extends @Forced_inh CarRealization {
-   //(...)
-}
-```
-
-with
-
-```java
-/* CarRealization handles displays and input for the Car simulation */
-@Worker_agent
-public class CarRealization {
-   //(...)
-}
-```
-
----
-
-### II.16.d) ⚙️ THE CLPROLF COMPILER
+### II.17.d) ⚙️ THE CLPROLF COMPILER
 
 A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on the official **Java 8 grammar** (from the `antlr4-grammars` repository).
 
@@ -2044,7 +2019,7 @@ A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on
 
 ---
 
-#### II.16.e) 🧩 Compiler Implementation
+#### II.17.e) 🧩 Compiler Implementation
 
 The **Clprolf compiler** itself is **written in Clprolf**, using the **Clprolf framework** as its structural backbone.
 This makes Clprolf not only a **language** and a **methodology**, but also a **self-hosted system** — its own compiler is built with the same principles it enforces.
@@ -2059,7 +2034,7 @@ This self-reference demonstrates Clprolf’s maturity and internal coherence:
 
 ---
 
-#### II.16.f) Current State and Ongoing Development
+#### II.17.f) Current State and Ongoing Development
 
 The **Clprolf compiler**, written in **Clprolf itself** using the **Clprolf framework**, has now entered its **semantic phase**.
 It already **implements several semantic rules (4 as of now)**, which are gradually being added and refined.
@@ -2084,7 +2059,7 @@ ensuring semantic consistency across the entire Clprolf ecosystem.
 
 ---
 
-#### II.16.g) Example from the Clprolf Compiler
+#### II.17.g) Example from the Clprolf Compiler
 
 Below is a short excerpt from the **Clprolf compiler**, written with the **Clprolf framework**.
 It shows how semantic verification is organized — using clear roles, coherent structure, and object responsibility, all defined in Clprolf style.
@@ -2136,7 +2111,7 @@ public class SemanticCheckerImpl {
 
 ---
 
-#### II.16.h) CLPROLF CODE EDITORS
+#### II.17.h) CLPROLF CODE EDITORS
 
 Clprolf source files can be edited with common tools:
 
@@ -2151,7 +2126,7 @@ The **Clprolf framework for Java** integrates fully with the Java ecosystem:
 
 ---
 
-### II.17) CLPROLF AND JAVA LIBRARIES
+### II.18) CLPROLF AND JAVA LIBRARIES
 
 To make it easier for developers to use existing Java libraries within Clprolf, a classification of common Java libraries is proposed and will continue to grow.
 
@@ -3655,7 +3630,7 @@ import java_class agent java.util.Timer;   // ❌ Advice not allowed on class im
 
 ---
 
-**ARCH-A5 (Classes – Synonym Continuity in Class Inheritance)**
+##### **ARCH-A5 (Classes – Synonym Continuity in Class Inheritance)**
 
 When a class inherits from another of the same nature,
 their **synonyms** should normally remain identical.
@@ -3669,10 +3644,13 @@ If they differ, this may indicate:
 The compiler emits a **warning** in such cases,
 but inheritance remains **allowed**.
 
-> This rule ensures **semantic continuity** between parent and child classes, without restricting creative freedom.
+> The developer may explicitly **force** this situation using `@Forc_inh`,
+> to indicate that the change of synonym is **intentional**.
+
+This rule ensures **semantic continuity** between parent and child classes,
+while maintaining the freedom to express **deliberate conceptual shifts**.
 
 ---
-
 
 #### **ARCH B — Interfaces and Usage**
 
@@ -4029,17 +4007,38 @@ The same rule applies to capacity interfaces (`capacity_inh` vs `compat_interf_c
 
 ---
 
-**ARCH-BB15 (Interfaces – Synonym Alignment for Target Roles)**
+### **ARCH-BB15 (Interfaces – Synonym Alignment for Target Roles)**
 
-When version interfaces declare a **target class role**,
-the target role should keep the **same synonym** across the inheritance chain.
+When a version interface declares a **target class role**,
+the target role should normally keep the **same synonym** across the inheritance chain.
 
-If a synonym change is detected, a **warning** is raised to signal either:
+If a synonym change is detected, this may indicate:
 
 * a **perspective shift**, or
 * a **potential violation of nature**.
 
-However, the situation remains **authorized**.
+The compiler emits a **warning** in such cases,
+but the inheritance remains **authorized**.
+
+> The developer may explicitly **force** this situation using `@Forc_int_inh`,
+> to indicate that the synonym change is **intentional**.
+
+This rule ensures **semantic alignment** of target roles across version interfaces,
+while preserving the freedom to express **deliberate conceptual variations**.
+
+---
+
+### **ARCH-BB16 (Interfaces – Advice Neutrality of Capacities)**
+
+A `compat_interf_capacity` is **advice-neutral** by default.
+It defines a **shared functional ability** between multiple version interfaces,
+and carries no `@Advice` on its own.
+
+However, when a capacity is used **together with a semantic `compat_interf_version`**,
+it must declare an **appropriate advice**, consistent with the role of that version
+(as usual in Clprolf’s semantic coherence rules).
+
+> A capacity remains neutral unless it collaborates with a version interface that defines a role-based advice.
 
 ---
 
@@ -4094,9 +4093,13 @@ Only the plain `@Static` gender (no expert variant) is allowed on `worker_agent`
 `model` and `information` classes may contain no methods except constructors and those marked with `@Forc_pract_code`.
 Such methods are considered small practical helpers, not domain logic.
 
+---
+
 **ARCH CB7 (genders, static):**
-Declaring `@Static` is optional, but if used, the class must comply with static rules.
-No compiler check enforces the presence of `@Static`.
+
+Declaring a **static gender** — whether `@Static`, `@Expert_component_static`, or `@Human_expert_static` — is optional.
+However, when any of these genders is used, the class must fully comply with **all static rules** (`ARCH_CB1` to `ARCH_CB4`).
+No compiler check enforces the presence of a static gender; it remains a semantic choice by the developer.
 
 ---
 
@@ -4184,6 +4187,31 @@ ensuring that no implicit compatibility contract is assumed.
 
 ---
 
+### **ARCH-EA8 (Forcing – Synonym Warning in Class Inheritance)**
+
+When two classes share the **same declension** but use **different synonyms**,
+the compiler normally emits a **warning** to indicate a possible semantic drift.
+
+This warning can be **explicitly forced** using the `@Forc_inh` annotation.
+The annotation may be applied either at the **class declaration level**,
+or directly before the **inherited type**, for greater precision.
+
+Example in pure Clprolf:
+
+```clprolf
+public agent Car nature @Forc_inh AbstractionVehicle {
+   (...)
+}
+```
+
+> The use of `@Forc_inh` indicates that the synonym difference is **intentional**,
+> and that the inheritance is **consciously accepted** by the developer.
+
+This forcing rule ensures that all synonym differences remain **visible yet flexible**,
+preserving both **semantic awareness** and **creative freedom** in class hierarchies.
+
+---
+
 ##### **ARCH EB — Forced Interface Inheritance and Contracts**
 
 **ARCH EB1:**
@@ -4248,6 +4276,37 @@ unless explicitly forced using `@Forc_inh`.
 
 > Note: `@Forc_inh` is used here instead of `@Forc_int_inh`,
 > because this constraint applies to **class role inheritance**, not to interface inheritance itself.
+
+---
+
+### **ARCH-EB11 (Forcing – Synonym Warning in Interface Inheritance)**
+
+When two **version interfaces** share the **same declension**
+but use **different synonyms** (for example, `compat_interf_version` and `version_inh`),
+the compiler emits a **warning** to highlight the semantic difference.
+
+This warning can be **explicitly forced** using the `@Forc_int_inh` annotation.
+The annotation may be applied either at the **interface declaration level**,
+or directly before the **inherited interface**, for precise control.
+
+Example in pure Clprolf:
+
+```clprolf
+public compat_interf_version agent Connection nature @Forc_int_inh VersionConnection {
+   (...)
+}
+```
+
+> The use of `@Forc_int_inh` indicates that the synonym difference is **intentional**
+> and that the inheritance is **deliberately accepted** by the developer.
+
+If the mismatch concerns **target roles** (for example, `agent` vs `worker_agent`),
+the forcing must instead be performed with **`@Forc_inh`**,
+as for target-role or declension errors.
+
+This rule ensures that **synonym differences between interface declensions**
+remain **visible, explicit, and controllable**,
+while preserving the developer’s full **freedom of perspective**.
 
 ---
 
@@ -4821,4 +4880,3 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
-
