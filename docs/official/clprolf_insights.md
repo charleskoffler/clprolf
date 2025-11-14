@@ -76,13 +76,48 @@ It supports both:
 Programming is the weaving together of **design** and **algorithmic concerns**.
 Clprolf was built to support both.
 
+### I.6 — The SRP, Completed: What “One Reason to Change” Really Implies
 
-### I.6) Clprolf Language and Framework — GitHub Repository
+If a class must have only **one** reason to change,
+then this reason must be **shared by all its methods**.
+Such a reason can only be the class’s **responsibility**,
+and since the SRP speaks of *single* responsibility,
+this responsibility must be **unique**.
+In other words, it corresponds to the **duty** of the class.
+
+A responsibility is simply the **work** the class performs.
+For example, the responsibility of a `Doctor` class is
+*maintaining the patient’s health*.
+And this responsibility directly follows from the **nature** of the class.
+Therefore, the nature must also be **unique**.
+
+From the SRP itself, we can therefore conclude that:
+
+* we must separate **business work** from **technical work**,
+  since they are different responsibilities;
+* a class cannot have several natures or identities,
+  since that would create several reasons to change.
+
+This is exactly the model adopted by Clprolf:
+every class has **one nature**, which gives it **one responsibility**,
+which all methods collectively express.
+
+
+> **Clprolf naturally carries out the SRP:
+> the unique nature of a class emerges from its declension,
+> its consistency is echoed by the synonym,
+> and the compiler quietly ensures that this unity is preserved.
+> The SRP becomes automatic — applied even without thinking about it.
+> This is precisely why Clprolf could finish what the SRP had only started.**
+
+---
+
+### I.7) Clprolf Language and Framework — GitHub Repository
 
 A dedicated **GitHub repository** has been created for Clprolf.
 The project is **open source** and distributed under the **MIT license**.
 
-### I.7) Clprolf — A Designer of Design
+### I.8) Clprolf — A Designer of Design
 
 Clprolf was not created to *enforce* design principles, but to make good design emerge by itself.
 It works the same way **Bison** builds parsers without requiring you to think about grammar theory — Clprolf helps you design without realizing you are doing so.
@@ -115,7 +150,7 @@ It’s not about following design rules — it’s about designing so clearly th
 
 ---
 
-### I.8) ⚙️ A Controlled and Coherent System
+### I.9) ⚙️ A Controlled and Coherent System
 
 With **Clprolf**, you obtain a system that remains fully **masterable**.
 The mechanics of the objects are intuitive,
@@ -137,7 +172,7 @@ and that every decision stays connected to meaning.
 
 ---
 
-### I.9) A Methodology for Effective Object-Oriented Programming
+### I.10) A Methodology for Effective Object-Oriented Programming
 
 Most existing object-oriented languages are **neutral**:
 they provide mechanisms such as classes, objects, and inheritance, but they do not indicate *how* objects should be designed or coded.
@@ -192,7 +227,7 @@ Principles like SOLID or design patterns are valuable, but hard to constantly ke
 * General rules such as the **Single Responsibility Principle** often remain too vague and open to interpretation.
 * Clprolf removes this ambiguity by embedding clear definitions of **responsibility** directly into the language.
 
-### I.10) A New Perspective, Still 100% OOP
+### I.11) A New Perspective, Still 100% OOP
 
 Clprolf changes the way you approach design:
 you build **agents**, **worker agents**, and other specialized components, rather than starting from generic objects.
@@ -206,7 +241,7 @@ Its features for interface inheritance and its semantic checks on class and inte
 
 ---
 
-### I.11) ☕ Java-Compatible Language
+### I.12) ☕ Java-Compatible Language
 
 Clprolf is a **Java-compatible language**.
 It redefines some Java keywords such as `class`, `interface`, `extends`, and `implements`,
