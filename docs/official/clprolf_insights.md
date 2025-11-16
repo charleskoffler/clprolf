@@ -110,14 +110,180 @@ which all methods collectively express.
 > The SRP becomes automatic — applied even without thinking about it.
 > This is precisely why Clprolf could finish what the SRP had only started.**
 
+#### I.6.b — The SRP Misinterpretation: “One Method per Class”
+
+Some people interpret the SRP in an extreme way and conclude that a class should contain only one method.
+This interpretation contradicts the very definition of an object in object-oriented programming.
+
+An object is not defined by a single action, but by a **set of related behaviors** that all belong to the same domain — the class’s responsibility.
+
+Therefore, *one method per class* is not SRP.
+And more importantly, **it is not object-oriented programming at all**.
+Classes in OOP have always contained several methods; this is normal and expected.
+
+A class may have many methods and still have **one** responsibility,
+as long as they all belong to the same domain (nature).
+
+Clprolf preserves this logic:
+**the nature defines the responsibility — not the number of methods.**
+
 ---
 
-### I.7) Clprolf Language and Framework — GitHub Repository
+### I.7) SRP at the Method Level (Complete Section)
+
+The Single Responsibility Principle (SRP) is traditionally defined at the **class level**:
+a class should have **one single reason to change**, which corresponds to its **conceptual nature** or **domain role**.
+
+However, SRP also has a **valid expression at the method level**, provided we understand clearly what it means — and what it does *not* mean.
+
+This section clarifies method-level SRP, resolves the ambiguities found in traditional OOP, and explains why Clprolf guarantees both class-level and method-level SRP naturally and structurally.
+
+---
+
+#### I.7.a) What SRP *really* means for methods
+
+A method expresses a **single intention**, a **specific operation** within the domain of its class.
+Therefore:
+
+ ✔ A method must not perform more than its functional purpose.
+
+ ✔ A business method must not contain technical code.
+
+ ✔ A technical method must not contain business logic.
+
+If a method crosses domain boundaries, it introduces a **second conceptual reason to change**, which is a violation of SRP — not at the class level, but at the *method* level.
+
+This is the *true* SRP for methods:
+**keep the method within the domain of the class’s nature.**
+
+---
+
+#### I.7.b) Algorithmic steps are not multiple responsibilities
+
+Many developers interpret several steps inside a method as “multiple responsibilities”.
+In reality, most of the time, this is simply **algorithmic decomposition**.
+
+Example:
+
+```text
+drink():
+    takeGlass()
+    pourWater()
+    swallow()
+```
+
+These are not three responsibilities.
+They are **three steps of one single algorithm**: *drinking*.
+
+Whether these steps are written inline or split into sub-methods does **not** change the responsibility of the method.
+
+* A long method is not a violation of SRP by itself.
+* Several sub-steps do not imply several responsibilities.
+* The presence or absence of sub-methods is an algorithmic choice.
+
+The confusion arises from mixing *readability* concerns with *responsibility* concerns.
+
+---
+
+#### I.7.c) When SRP *does* apply at the method level
+
+There is a specific — and important — case where developers are correct to say that a method violates SRP:
+
+### ✔ When the internal sub-steps may evolve independently.
+
+If several parts of a method can change for **different reasons**, then the method now contains **multiple reasons to change**, and therefore violates SRP at the method level.
+
+In this case, extracting the sub-steps into dedicated methods is **the correct application of SRP**, because the evolution of each part must be isolated.
+
+This has nothing to do with the number of instructions.
+It has everything to do with **independent evolution paths**.
+
+---
+
+#### I.7.d) Why this is confusing in traditional OOP
+
+Languages like Java, C#, or PHP do not define the **nature** or **role** of classes.
+Therefore:
+
+* Business logic and technical logic can accidentally mix.
+* A long method may hide cross-domain operations.
+* Developers fear “doing too much” without clear criteria.
+* Some believe every sub-step is a responsibility.
+* Others over-fragment methods without architectural benefit.
+
+The result is decades of confusion between:
+
+• algorithmic decomposition
+
+and
+
+• true responsibility boundaries
+
+SRP becomes subjective because the language does not give structural guidance.
+
+---
+
+#### I.7.e) How Clprolf solves this structurally
+
+Clprolf resolves this ambiguity by defining the **nature** of each class:
+
+* **agent** → business logic
+* **worker_agent** → technical/infrastructure logic
+* **model** → data and state
+* **abstraction** → general structures and reusable rules
+
+This strict separation provides a *structural guarantee*:
+
+✔ A business method cannot contain technical code.
+
+✔ A technical method cannot introduce business rules.
+
+✔ Sub-steps of an algorithm remain inside the same domain.
+
+✔ Method-level SRP is respected naturally.
+
+✔ Class-level SRP is protected at the same time.
+
+Because the class has a single nature,
+a method cannot accidentally acquire a second domain.
+
+Thus:
+
+* Stable algorithmic steps may remain inline.
+* Evolving algorithmic steps should be extracted.
+* Domain boundaries prevent conceptual drift.
+* SRP becomes clear, objective, and structural.
+
+Clprolf encourages clean algorithms *without imposing rigid micro-rules*.
+It supports good engineering while eliminating the confusion between algorithmic complexity and architectural responsibility.
+
+---
+
+#### I.7.f) Summary
+
+* A method has a single responsibility when it stays within the class’s domain.
+* Algorithmic steps do not create new responsibilities.
+* SRP applies to methods **only** when sub-parts evolve independently.
+* Mixing business and technical code is the real violation.
+* Traditional OOP struggles because it lacks class natures.
+* Clprolf solves this by defining class natures and enforcing domain purity.
+* Therefore, SRP is guaranteed both at the class level and the method level.
+
+---
+
+#### I.7.g) Conclusion
+
+Clprolf provides the first model where method-level SRP and class-level SRP coexist without contradiction.
+By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf eliminates the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
+
+---
+
+### I.8) Clprolf Language and Framework — GitHub Repository
 
 A dedicated **GitHub repository** has been created for Clprolf.
 The project is **open source** and distributed under the **MIT license**.
 
-### I.8) Clprolf — A Designer of Design
+### I.9) Clprolf — A Designer of Design
 
 Clprolf was not created to *enforce* design principles, but to make good design emerge by itself.
 It works the same way **Bison** builds parsers without requiring you to think about grammar theory — Clprolf helps you design without realizing you are doing so.
@@ -150,7 +316,7 @@ It’s not about following design rules — it’s about designing so clearly th
 
 ---
 
-### I.9) ⚙️ A Controlled and Coherent System
+### I.10) ⚙️ A Controlled and Coherent System
 
 With **Clprolf**, you obtain a system that remains fully **masterable**.
 The mechanics of the objects are intuitive,
@@ -172,7 +338,7 @@ and that every decision stays connected to meaning.
 
 ---
 
-### I.10) A Methodology for Effective Object-Oriented Programming
+### I.11) A Methodology for Effective Object-Oriented Programming
 
 Most existing object-oriented languages are **neutral**:
 they provide mechanisms such as classes, objects, and inheritance, but they do not indicate *how* objects should be designed or coded.
@@ -227,7 +393,7 @@ Principles like SOLID or design patterns are valuable, but hard to constantly ke
 * General rules such as the **Single Responsibility Principle** often remain too vague and open to interpretation.
 * Clprolf removes this ambiguity by embedding clear definitions of **responsibility** directly into the language.
 
-### I.11) A New Perspective, Still 100% OOP
+### I.12) A New Perspective, Still 100% OOP
 
 Clprolf changes the way you approach design:
 you build **agents**, **worker agents**, and other specialized components, rather than starting from generic objects.
@@ -241,7 +407,7 @@ Its features for interface inheritance and its semantic checks on class and inte
 
 ---
 
-### I.12) ☕ Java-Compatible Language
+### I.13) ☕ Java-Compatible Language
 
 Clprolf is a **Java-compatible language**.
 It redefines some Java keywords such as `class`, `interface`, `extends`, and `implements`,
