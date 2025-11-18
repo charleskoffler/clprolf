@@ -1563,7 +1563,7 @@ you are a teacher *during the lesson*, a student *during the training*, a singer
 
 Clprolf introduces a powerful and elegant mechanism:
 
-## ⭐ **Multiple Inheritance Through Ubiquity**
+##### ⭐ **Multiple Inheritance Through Ubiquity**
 
 This mechanism allows one real entity to appear under *multiple natures*,
 **without** requiring static multiple inheritance,
@@ -1573,7 +1573,7 @@ It is a dynamic, object-level form of multi-nature identity.
 
 ---
 
-## **1. Principle**
+###### **1. Principle**
 
 * Each nature (`StudentClass`, `TeacherClass`, `SingerClass`) is a normal `agent` class.
 * These objects share the same **identity base** (`PersonProperties`).
@@ -1593,7 +1593,7 @@ All three objects represent **the same person**, but expressed through different
 
 ---
 
-## **2. Why “ubiquity”?**
+###### **2. Why “ubiquity”?**
 
 Because the same individual exists in **several places** in the model:
 
@@ -1608,11 +1608,11 @@ It is **multi-nature coexistence**.
 
 ---
 
-## **3. Construction Rules**
+###### **3. Construction Rules**
 
 Each nature provides two constructors:
 
-### ✔ **1) Initial constructor**
+✔ **1) Initial constructor**
 
 Used only for the *first* projection of a person.
 
@@ -1626,7 +1626,7 @@ It creates:
 * the `naturesMonitor` (for thread-safety),
 * the base identity.
 
-### ✔ **2) Projection constructor**
+✔ **2) Projection constructor**
 
 Used to add another nature to the same person.
 
@@ -1644,7 +1644,7 @@ You just use the correct constructor once, and Clprolf guarantees that every nat
 
 ---
 
-## **4. Thread-Safety Included**
+**3. Thread-Safety Included**
 
 All natures share the **same monitor** (`naturesMonitor`).
 Thus:
@@ -1657,7 +1657,7 @@ It is a unified, clean, simple concurrency model.
 
 ---
 
-## **5. Static Multiple Inheritance (rare but legitimate)**
+**4. Static Multiple Inheritance (rare but legitimate)**
 
 There are situations where a type *is defined* as a combination of two other types.
 These are not dynamic combinations — they are **static domain concepts**.
@@ -1683,16 +1683,16 @@ But for practical documentation, we keep the distinction:
 
 ---
 
-# **Conclusion**
+##### **Conclusion**
 
 Clprolf distinguishes perfectly between:
 
-### ✔ **Dynamic multi-nature identity (ubiquity)**
+✔ **Dynamic multi-nature identity (ubiquity)**
 
 Frequent, realistic, clean.
 One person → several roles → synchronized identity.
 
-### ✔ **Static multiple inheritance (rare)**
+✔ **Static multiple inheritance (rare)**
 
 Only when the domain defines a combined nature at compile time.
 
@@ -5251,3 +5251,4 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
+
