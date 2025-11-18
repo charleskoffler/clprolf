@@ -1573,7 +1573,7 @@ It is a dynamic, object-level form of multi-nature identity.
 
 ---
 
-###### **1. Principle**
+##### **1. Principle**
 
 * Each nature (`StudentClass`, `TeacherClass`, `SingerClass`) is a normal `agent` class.
 * These objects share the same **identity base** (`PersonProperties`).
@@ -1593,7 +1593,7 @@ All three objects represent **the same person**, but expressed through different
 
 ---
 
-###### **2. Why “ubiquity”?**
+##### **2. Why “ubiquity”?**
 
 Because the same individual exists in **several places** in the model:
 
@@ -1608,7 +1608,7 @@ It is **multi-nature coexistence**.
 
 ---
 
-###### **3. Construction Rules**
+##### **3. Construction Rules**
 
 Each nature provides two constructors:
 
@@ -1644,7 +1644,7 @@ You just use the correct constructor once, and Clprolf guarantees that every nat
 
 ---
 
-###### **4. Thread-Safety Included**
+##### **4. Thread-Safety Included**
 
 All natures share the **same monitor** (`naturesMonitor`).
 Thus:
@@ -1657,7 +1657,7 @@ It is a unified, clean, simple concurrency model.
 
 ---
 
-###### **5. Static Multiple Inheritance (rare but legitimate)**
+##### **5. Static Multiple Inheritance (rare but legitimate)**
 
 There are situations where a type *is defined* as a combination of two other types.
 These are not dynamic combinations — they are **static domain concepts**.
