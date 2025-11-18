@@ -1644,7 +1644,7 @@ You just use the correct constructor once, and Clprolf guarantees that every nat
 
 ---
 
-**3. Thread-Safety Included**
+###### **4. Thread-Safety Included**
 
 All natures share the **same monitor** (`naturesMonitor`).
 Thus:
@@ -1657,7 +1657,7 @@ It is a unified, clean, simple concurrency model.
 
 ---
 
-**4. Static Multiple Inheritance (rare but legitimate)**
+###### **5. Static Multiple Inheritance (rare but legitimate)**
 
 There are situations where a type *is defined* as a combination of two other types.
 These are not dynamic combinations — they are **static domain concepts**.
