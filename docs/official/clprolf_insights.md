@@ -259,7 +259,51 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.7.f) Summary
+#### I.7.f) SRP and Classical Multiple Inheritance
+
+Multiple inheritance is often criticized in traditional OOP because it can violate the **Single Responsibility Principle (SRP)**:
+a class may end up inheriting **two unrelated responsibilities**, creating an identity that makes no conceptual sense.
+
+For example:
+
+* `Horse extends Vehicle`
+* `Car extends Animal`
+
+These combinations are incoherent because the resulting class would have **two incompatible natures**, and therefore **two independent reasons to change** — exactly what SRP forbids.
+
+In Clprolf, this becomes explicit:
+
+##### ✔ A class must have **one nature**
+
+A nature defines the **essence** of the object — what it is.
+If a class inherits from two unrelated parent natures, it no longer has a single, unified identity.
+
+##### ✔ Classical multiple inheritance is valid only when the combination forms a **new, coherent nature**
+
+Examples:
+
+* `Assistant = Student + Teacher`
+* `Mule = Horse + Donkey`
+* `AmphibiousVehicle = Car + Boat`
+
+In such cases, the resulting object does **not** have “two responsibilities”:
+
+> **It has one composite nature, and therefore one composite responsibility.**
+
+This is fully SRP-compatible:
+
+**One class → One nature → One responsibility.**
+
+##### ✔ When the combination is *not* a true nature
+
+(“Horse + Car”, “Human + Oven”, etc.)
+the model becomes invalid, because it gives the object *two independent reasons to change*.
+
+Clprolf makes this explicit through its nature system and prevents such incoherent designs.
+
+---
+
+#### I.7.g) Summary
 
 * A method has a single responsibility when it stays within the class’s domain.
 * Algorithmic steps do not create new responsibilities.
@@ -271,7 +315,7 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.7.g) Conclusion
+#### I.7.h) Conclusion
 
 Clprolf provides the first model where method-level SRP and class-level SRP coexist without contradiction.
 By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf eliminates the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
@@ -1220,42 +1264,17 @@ The **`nature`** keyword (or `@Nature` in the framework) indicates an **inherita
 
 ---
 
-#### II.8.e) Framework vs. Language
-
-* When a role annotation (e.g., `@Agent`) is present on an interface, `@Version_inh` (or `@Compat_interf_version`) is **not mandatory**.
-* When a role annotation is present on both an interface and its parent, `@Forced_int_inh` is **not mandatory**.
-
-In the **language syntax**, however, the keyword must always be explicit:
-
-```java
-public version_inh agent Teacher { ... }
-```
-
-By contrast, in the **framework**, annotations are sufficient and the explicit keyword is not required.
-
----
-
-#### II.8.f) Perspective and Use
+#### II.8.e) Perspective and Use
 
 The features for interface inheritance allow developers to treat **interfaces like classes**, except without direct access to implementations.
 
 * It establishes an **inheritance perspective**, not just an “extends” perspective.
 * Both perspectives remain interchangeable.
 * This is especially useful for **loose coupling**, where interfaces are preferred over concrete classes.
-* Single inheritance is recommended for agent-like interfaces; multiple inheritance should be avoided, except for capacity interfaces.
 
 ---
 
-#### II.8.g) Conclusion
-
-In Clprolf, developers may choose to apply **class roles to interfaces** if they prefer an inheritance perspective.
-`@Version_inh` and `@Capacity_inh` exist specifically for this vision.
-Their use is **optional**, and multiple inheritance (other than capacity inheritance) is **not recommended**.
-
-Interface inheritance features are therefore best applied for **loose coupling with single inheritance** in agent hierarchies.
-
-
-#### II.8.h) Features for Interface Inheritance: Simple Inheritance with a Class Role
+#### II.8.f) Features for Interface Inheritance: Simple Inheritance with a Class Role
 
 The following example shows a **basic and recommended use** of interface inheritance in Clprolf.
 It demonstrates how a simple interface hierarchy works when interfaces are tied to a **class role** (here, `agent`).
@@ -1286,8 +1305,8 @@ package org.clprolf.patterns.optfeaturesinterf.simpleintinh;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.impl.DogImpl;
 import org.clprolf.patterns.optfeaturesinterf.simpleintinh.interfaces.Dog;
 
-import org.simol.simolframework.java.With_compat;
-import org.simol.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.With_compat;
+import org.clprolf.framework.java.Worker_agent;
 
 /**
  * Output:
@@ -1343,22 +1362,40 @@ This **Dog/Animal** example demonstrates how simple interface inheritance works 
 This is the **recommended way** to use interface inheritance in Clprolf, in contrast to **multiple inheritance patterns**, which are possible but discouraged.
 
 
-#### II.8.i) Features for Interface Inheritance: A Design Pattern for Multiple Inheritance (Not Recommended)
+#### **II.8.g) Features for Interface Inheritance: A Design Pattern for Multiple Inheritance**
 
-Clprolf normally enforces **single nature per object**.
-However, the language also makes it possible to model **multiple inheritance through interfaces**.
-This chapter presents a **design pattern** that demonstrates how such hierarchies could be built.
+Clprolf normally enforces **one nature per object**, which is the foundation of clarity and SRP coherence.
 
-⚠️ **Important**: Multiple inheritance is **not recommended** in Clprolf.
-Objects should normally have only **one nature**.
-This example is provided mainly for illustration.
+However, the language also provides the structural tools needed to model **multiple inheritance through interfaces**, for the rare cases where an entity genuinely carries **several fixed natures**.
+This chapter presents a **design pattern** showing how such hierarchies can be constructed cleanly.
+
+---
+
+#### ⚠️ **Important — Use With Great Care**
+
+Multiple inheritance is **possible**, but it should remain **exceptional**.
+
+Although Clprolf supports it technically, multiple natures must only be used when they **truly correspond to distinct conceptual identities** that coexist **for the same object**.
+
+In practice:
+
+* most entities only require **one nature at a time**,
+* many scenarios that look like “multiple inheritance” are actually **rotating natures** (handled through *ubiquity*),
+* and it is very easy to confuse “two roles of the same person” with “two natures”.
+
+Therefore:
+
+👉 **Use multiple inheritance only when the entity genuinely embodies several permanent natures.**
+👉 Such cases exist, but they are **rare** and must be justified by the domain, not by convenience.
+
+This pattern is provided mainly to illustrate how Clprolf can support these uncommon designs, not as a recommendation for everyday architecture.
 
 ---
 
 ##### Example: Multiple Inheritance via Interfaces
 
 ```java
-@Agent // Optional on interfaces
+@Agent
 @Version_inh
 public interface Assistant extends @Nature Teacher, Student { 
     
@@ -1377,14 +1414,12 @@ public interface Person {
 }
 
 @Agent
-@Forced_int_inh
 @Version_inh
 public interface Student extends @Nature Person {
     void learn();
 }
 
 @Agent
-@Forced_int_inh
 @Version_inh
 public interface Teacher extends @Nature Person {
     void teach();
@@ -1400,7 +1435,7 @@ This approach also enables **code reuse**, though the focus here is on demonstra
 
 ```java
 @Agent // Must match the role of the interface
-public class AssistantClass implements @Contracts Assistant, Teacher, Student {
+public class AssistantClass implements @Contracts Assistant {
     protected TeacherClass teacher;
     protected StudentClass student;
     protected PersonClass person;
@@ -1432,7 +1467,7 @@ public class AssistantClass implements @Contracts Assistant, Teacher, Student {
 
 ```java
 @Agent
-public class PersonClass {
+public class PersonClass implements @Contracts Person {
     protected class PersonProperties {
         private String name;
         private int age;
@@ -1516,7 +1551,164 @@ This design pattern shows how Clprolf can technically support **multiple inherit
 
 ---
 
-#### II.8.j) Using Class Roles on Interfaces for Collaborative Projects
+
+#### II.8.h) Multiple Inheritance Through Ubiquity (dynamic multi-nature modeling)
+
+In real life — and in most business domains — a single entity can have several **natures**.
+A person can be a *Student*, a *Teacher*, a *Singer*, a *Developer*…
+but never all these natures **at the same time in one single existence**.
+
+A nature is always **contextual**:
+you are a teacher *during the lesson*, a student *during the training*, a singer *on stage*, etc.
+
+Clprolf introduces a powerful and elegant mechanism:
+
+## ⭐ **Multiple Inheritance Through Ubiquity**
+
+This mechanism allows one real entity to appear under *multiple natures*,
+**without** requiring static multiple inheritance,
+and **without** creating one giant class per combination of roles.
+
+It is a dynamic, object-level form of multi-nature identity.
+
+---
+
+## **1. Principle**
+
+* Each nature (`StudentClass`, `TeacherClass`, `SingerClass`) is a normal `agent` class.
+* These objects share the same **identity base** (`PersonProperties`).
+* No nature is “primary”:
+  each object is simply a **projection of the same person** seen under a different nature.
+* Identity is unique. Behaviors are separate.
+
+Example:
+
+```java
+StudentClass  s = new StudentClass("Leo", 19);   // first projection
+TeacherClass  t = new TeacherClass(s);           // another nature
+SingerClass   g = new SingerClass(s);            // another nature
+```
+
+All three objects represent **the same person**, but expressed through different natures.
+
+---
+
+## **2. Why “ubiquity”?**
+
+Because the same individual exists in **several places** in the model:
+
+* as a Student,
+* as a Teacher,
+* as a Singer,
+
+while keeping one single shared identity through an internal synchronized structure.
+
+It is not traditional multiple inheritance.
+It is **multi-nature coexistence**.
+
+---
+
+## **3. Construction Rules**
+
+Each nature provides two constructors:
+
+### ✔ **1) Initial constructor**
+
+Used only for the *first* projection of a person.
+
+```java
+new StudentClass("Leo", 19);
+```
+
+It creates:
+
+* the shared `PersonProperties`,
+* the `naturesMonitor` (for thread-safety),
+* the base identity.
+
+### ✔ **2) Projection constructor**
+
+Used to add another nature to the same person.
+
+```java
+new TeacherClass(studentObject);
+```
+
+It shares:
+
+* the identity,
+* the monitor,
+* thread-safe getters/setters.
+
+You just use the correct constructor once, and Clprolf guarantees that every nature is properly synchronized.
+
+---
+
+## **4. Thread-Safety Included**
+
+All natures share the **same monitor** (`naturesMonitor`).
+Thus:
+
+* `setAge()` and `getAge()` synchronize on it,
+* guaranteeing atomicity, visibility, and consistency,
+* even with multiple threads modifying different natures.
+
+It is a unified, clean, simple concurrency model.
+
+---
+
+## **5. Static Multiple Inheritance (rare but legitimate)**
+
+There are situations where a type *is defined* as a combination of two other types.
+These are not dynamic combinations — they are **static domain concepts**.
+
+Examples:
+
+* `Assistant = Student + Teacher`
+* `Mule = Horse + Donkey`
+* `FlyingCar = Car + Airplane`
+
+Clprolf supports these rare cases via:
+
+* **multiple inheritance of interfaces** (`@Version_inh`),
+* a clean implementation class using **delegation** (not simultaneous multi-nature).
+
+Even here, most of the time there is an **implicit ubiquity behind the scenes**,
+because each nature remains conceptually separate — the implementation simply aggregates them.
+
+But for practical documentation, we keep the distinction:
+
+* **Ubiquity** → dynamic per-object multi-nature
+* **Static MI** → rare domain concepts with fixed combined natures
+
+---
+
+# **Conclusion**
+
+Clprolf distinguishes perfectly between:
+
+### ✔ **Dynamic multi-nature identity (ubiquity)**
+
+Frequent, realistic, clean.
+One person → several roles → synchronized identity.
+
+### ✔ **Static multiple inheritance (rare)**
+
+Only when the domain defines a combined nature at compile time.
+
+This model:
+
+* avoids the traps of C++-style multiple inheritance,
+* respects SRP and clear responsibilities,
+* matches real-world modeling,
+* keeps code clean, modular, and thread-safe.
+
+It is one of the most elegant structural advantages of Clprolf.
+
+---
+
+
+#### II.8.i) Using Class Roles on Interfaces for Collaborative Projects
 
 
 For collaborative projects — such as public APIs or large teams — it can be useful to assign **class roles to interfaces**, in order to make their purpose explicit and to enforce coherence.
@@ -1557,7 +1749,7 @@ not just an equivalent or related role.
 
 ---
 
-#### II.8.k) Role-Bound `compat_interf_version` — Between Compatibility and Features
+#### II.8.j) Role-Bound `compat_interf_version` — Between Compatibility and Features
 
 
 Clprolf allows a `compat_interf_version` to declare a **target class role**
@@ -1610,7 +1802,7 @@ offering a flexible way to handle APIs that mix both semantics.
 
 ---
 
-#### II.8.l) Synonym Requalification Between Features and Compatibility Interfaces
+#### II.8.k) Synonym Requalification Between Features and Compatibility Interfaces
 
 Clprolf provides two equivalent syntactic forms for defining interfaces:
 the *feature-oriented* form (with the `_inh` suffix)
@@ -1640,7 +1832,7 @@ The parent’s form has no impact on that nature.
 ```java
 // The defined interface is a version interface (feature-oriented),
 // even though it inherits from a compatibility form.
-public version_inh MyFeatureVersion extends compat_interf_version BaseInterface { }
+public version_inh MyFeatureVersion extends BaseInterface { }
 ```
 
 Here, `MyFeatureVersion` remains a **feature-oriented interface**,
@@ -1650,11 +1842,11 @@ because the current definition (`version_inh`) defines its identity.
 
 ```java
 // The defined interface is compatibility-oriented,
-// but it inherits from a version interface.
+// but it inherits from a version_inh interface.
 // This normally breaks the rule that versions cannot be chained,
 // so a semantic forcing is required.
 @Forc_int_inh
-public compat_interf_version MyCompatVersion extends version_inh LegacyVersion { }
+public compat_interf_version MyCompatVersion extends LegacyVersion { }
 ```
 
 In this case, `MyCompatVersion` is **compatibility-oriented**,
@@ -1980,7 +2172,7 @@ public class OneMessageMailBox {
     private String message;
 
     @For_every_thread // Highlights its use in parallelism
-    private boolean full;
+    private volatile boolean full;
 
     @Turn_monitor
     private final Object mailBoxMonitor;
@@ -2156,23 +2348,9 @@ During compilation, **Clprolf keywords and annotations** are translated into sta
 
 ---
 
-* **Annotations**
-  Clprolf annotations are preserved in generated Java code **except** when applied to `import` declarations (since Java does not allow them).
-  They have no technical impact but serve as semantic documentation.
-
-  Ignored or preserved annotations include:
-  `@Human_expert`, `@Expert_component`,
-  `@Human_expert_static`, `@Expert_component_static`,
-  `@Static`,
-  `@Long_action`, `@Forc_inh`, `@Forc_int_inh`,
-  `@Forc_pract_code`, `@Agent_like_advice`, `@Worker_like_advice`.
-
----
-
 ✅ **Summary**
 
 * Clprolf-specific keywords are **removed or translated** into valid Java equivalents.
-* **Annotations are kept**, except on `import` lines.
 * The resulting code is **100% valid Java**, identical in structure but enriched with semantic clarity.
 
 ---
@@ -2213,10 +2391,24 @@ Forcing annotations exist precisely to indicate **deliberate choices** that go b
 
 A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on the official **Java 8 grammar** (from the `antlr4-grammars` repository).
 
-* It parses Clprolf source files (`.simo`) as well as embedded Java 8 code.
-* Parsing stops immediately upon encountering a syntax error, whether the error is in Clprolf syntax or in embedded Java segments.
-* If parsing succeeds, the compiler generates equivalent and fully valid Java code.
+* It parses Clprolf source files (`.clp`) as well as embedded Java 8 code.
+
+* Parsing stops immediately upon encountering a syntax error, whether in Clprolf syntax or embedded Java segments.
+
+* After parsing, the compiler performs **initial semantic checks** based on the Clprolf rule families (ARCH, BA, BB, EB, G).
+  For now, only **a subset** of these checks is active, but the **entire structure** of the semantic engine is already in place, ready to be expanded.
+  These first checks verify fundamental elements such as:
+  – declension coherence,
+  – some inheritance constraints,
+  – basic interface structure and compatibility usage,
+  – early role/synonym consistency.
+
+* When both parsing and the current semantic checks succeed, the compiler generates equivalent and valid Java code.
   Developers can then compile these generated sources with **`javac`**, producing standard Java bytecode executables.
+
+> **In short:** even if semantic checking is still partial,
+> the **full architecture** of the Clprolf semantic analyzer is already implemented —
+> the foundations are solid, and the rule engine is ready to be expanded.
 
 ---
 
@@ -2266,7 +2458,7 @@ Below is a short excerpt from the **Clprolf compiler**, written with the **Clpro
 It shows how semantic verification is organized — using clear roles, coherent structure, and object responsibility, all defined in Clprolf style.
 
 ```java
-@Agent
+
 package org.clprolf.compiler.semantic.agents.impl;
 
 import java.util.Map;
@@ -2280,12 +2472,13 @@ import org.clprolf.compiler.semantic.enums.Declension;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticInterfaceSymbol;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticClassSymbol;
 
+@Agent
 public class SemanticCheckerImpl {
 
-    private final Map<String, SemanticSymbol> symbols;
-    private final List<String> errors = new ArrayList<>();
+    private final @With_compat Map<String, SemanticSymbol> symbols;
+    private final @With_compat List<String> errors = new ArrayList<>();
 
-    public SemanticCheckerImpl(Map<String, SemanticSymbol> symbols) {
+    public SemanticCheckerImpl(@With_compat Map<String, @With_compat SemanticSymbol> symbols) {
         this.symbols = symbols;
     }
 
@@ -2326,29 +2519,6 @@ The **Clprolf framework for Java** integrates fully with the Java ecosystem:
 * In Eclipse and IntelliJ IDEA, hovering over classes and interfaces displays tooltips showing Clprolf annotations, making them visible at a glance.
 
 ---
-
-### II.18) CLPROLF AND JAVA LIBRARIES
-
-To make it easier for developers to use existing Java libraries within Clprolf, a classification of common Java libraries is proposed and will continue to grow.
-
-For example:
-
-```java
-@Abstraction
-public class JPanel extends JComponent 
-    implements java.awt.ImageObserver, java.awt.MenuContainer { ... }
-```
-
-or
-
-```java
-@Compat_interf_capacity
-public interface MenuContainer { ... }
-```
-
-Here, `JPanel` is expressed as an **abstraction**, while `MenuContainer` is treated as a **capacity interface**, since it represents a cross-family capability that different UI components can implement.
-
-These annotations illustrate how existing Java code can be expressed in Clprolf terms. The goal is not to cover every library exhaustively, but to provide guidance that helps Clprolf users integrate familiar Java components into their projects.
 
 ## III) The framework
 ### III.1) Helping Java (and C# or PHP) Development
@@ -2401,7 +2571,7 @@ For example, the Java framework could be described as **“Java with agents.”*
 
 ### III.5) Available Annotations (Java Package Example)
 
-The package **`org.clprolf.simolframework.java`** provides the following annotations:
+The package **`org.clprolf.framework.java`** provides the following annotations:
 
 * **Class roles**:
   `@Agent`, `@Abstraction`, `@Simu_real_obj`,
@@ -3116,9 +3286,9 @@ Both examples implement the insertion sort algorithm, but with different perspec
 ```java
 package org.clprolf.examples.miscellaneous.insertionsort;
 
-import org.clprolf.simolframework.java.Role;
-import org.clprolf.simolframework.java.Worker_agent;
-import org.clprolf.simolframework.java.Agent;
+import org.clprolf.framework.java.Role;
+import org.clprolf.framework.java.Worker_agent;
+import org.clprolf.framework.java.Agent;
 
 @Worker_agent
 public class InsertionSorterWorker {
@@ -3172,9 +3342,9 @@ public class InsertionSorterWorker {
 ```java
 package org.clprolf.examples.miscellaneous.insertionsort;
 
-import org.clprolf.simolframework.java.Role;
-import org.clprolf.simolframework.java.Agent;
-import org.clprolf.simolframework.java.Underst;
+import org.clprolf.framework.java.Role;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Underst;
 
 @Agent(Gender.HUMAN_EXPERT)
 public class InsertionSorter {
@@ -3275,7 +3445,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import org.clprolf.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.Worker_agent;
 
 /**
  * clprolf simple example for network programming, here with sockets.
@@ -3324,7 +3494,7 @@ package org.clprolf.simple_examples.network;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import org.clprolf.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.Worker_agent;
 
 /**
  * The client application. They are talking together, in the two directions.
@@ -3352,8 +3522,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.clprolf.simolframework.java.Nature;
-import org.clprolf.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.Worker_agent;
 
 @Worker_agent
 public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {
@@ -3385,9 +3555,9 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.clprolf.simolframework.java.Role;
-import org.clprolf.simolframework.java.Agent;
-import org.clprolf.simolframework.java.With_compat;
+import org.clprolf.framework.java.Role;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.With_compat;
 
 /**
  * A talker who could discuss with someone, threw a network. Here, it is seen as a human talker!
@@ -3507,7 +3677,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import org.clprolf.simolframework.java.Worker_agent;
+import org.clprolf.framework.java.Worker_agent;
 import org.clprolf.simple_examples.network.NetworkTalker.MSG_DIRECTION;
 import org.clprolf.simple_examples.network.NetworkTalker.Message;
 
@@ -3593,7 +3763,7 @@ public class NetworkTalkerRealiz {
 ```java
 package org.clprolf.simple_examples.network;
 
-import org.clprolf.simolframework.java.Abstraction;
+import org.clprolf.framework.java.Abstraction;
 
 /**
  * The configuration object of our server of sockets.
