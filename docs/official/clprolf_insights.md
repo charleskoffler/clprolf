@@ -129,6 +129,51 @@ Clprolf preserves this logic:
 
 ---
 
+#### I.6.c) SRP and Classical Multiple Inheritance
+
+Multiple inheritance is often criticized in traditional OOP because it can violate the **Single Responsibility Principle (SRP)**:
+a class may end up inheriting **two unrelated responsibilities**, creating an identity that makes no conceptual sense.
+
+For example:
+
+* `Horse extends Vehicle`
+* `Car extends Animal`
+
+These combinations are incoherent because the resulting class would have **two incompatible natures**, and therefore **two independent reasons to change** — exactly what SRP forbids.
+
+In Clprolf, this becomes explicit:
+
+##### ✔ A class must have **one nature**
+
+A nature defines the **essence** of the object — what it is.
+If a class inherits from two unrelated parent natures, it no longer has a single, unified identity.
+
+##### ✔ Classical multiple inheritance is valid only when the combination forms a **new, coherent nature**
+
+Examples:
+
+* `Assistant = Student + Teacher`
+* `Mule = Horse + Donkey`
+* `AmphibiousVehicle = Car + Boat`
+
+In such cases, the resulting object does **not** have “two responsibilities”:
+
+> **It has one composite nature, and therefore one composite responsibility.**
+
+This is fully SRP-compatible:
+
+**One class → One nature → One responsibility.**
+
+##### ✔ When the combination is *not* a true nature
+
+(“Horse + Car”, “Human + Oven”, etc.)
+the model becomes invalid, because it gives the object *two independent reasons to change*.
+
+Clprolf makes this explicit through its nature system and prevents such incoherent designs.
+
+---
+
+
 ### I.7) SRP at the Method Level (Complete Section)
 
 The Single Responsibility Principle (SRP) is traditionally defined at the **class level**:
@@ -259,51 +304,7 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.7.f) SRP and Classical Multiple Inheritance
-
-Multiple inheritance is often criticized in traditional OOP because it can violate the **Single Responsibility Principle (SRP)**:
-a class may end up inheriting **two unrelated responsibilities**, creating an identity that makes no conceptual sense.
-
-For example:
-
-* `Horse extends Vehicle`
-* `Car extends Animal`
-
-These combinations are incoherent because the resulting class would have **two incompatible natures**, and therefore **two independent reasons to change** — exactly what SRP forbids.
-
-In Clprolf, this becomes explicit:
-
-##### ✔ A class must have **one nature**
-
-A nature defines the **essence** of the object — what it is.
-If a class inherits from two unrelated parent natures, it no longer has a single, unified identity.
-
-##### ✔ Classical multiple inheritance is valid only when the combination forms a **new, coherent nature**
-
-Examples:
-
-* `Assistant = Student + Teacher`
-* `Mule = Horse + Donkey`
-* `AmphibiousVehicle = Car + Boat`
-
-In such cases, the resulting object does **not** have “two responsibilities”:
-
-> **It has one composite nature, and therefore one composite responsibility.**
-
-This is fully SRP-compatible:
-
-**One class → One nature → One responsibility.**
-
-##### ✔ When the combination is *not* a true nature
-
-(“Horse + Car”, “Human + Oven”, etc.)
-the model becomes invalid, because it gives the object *two independent reasons to change*.
-
-Clprolf makes this explicit through its nature system and prevents such incoherent designs.
-
----
-
-#### I.7.g) Summary
+#### I.7.f) Summary
 
 * A method has a single responsibility when it stays within the class’s domain.
 * Algorithmic steps do not create new responsibilities.
@@ -315,7 +316,7 @@ Clprolf makes this explicit through its nature system and prevents such incohere
 
 ---
 
-#### I.7.h) Conclusion
+#### I.7.g) Conclusion
 
 Clprolf provides the first model where method-level SRP and class-level SRP coexist without contradiction.
 By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf eliminates the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
@@ -1552,161 +1553,299 @@ This design pattern shows how Clprolf can technically support **multiple inherit
 ---
 
 
-#### II.8.h) Multiple Inheritance Through Ubiquity (dynamic multi-nature modeling)
+#### II.8.h) Multiple Natures Through Ubiquity (The Ubiquity Pattern)
 
-In real life — and in most business domains — a single entity can have several **natures**.
-A person can be a *Student*, a *Teacher*, a *Singer*, a *Developer*…
-but never all these natures **at the same time in one single existence**.
+##### *A practical and safe alternative to classical multiple inheritance*
 
-A nature is always **contextual**:
-you are a teacher *during the lesson*, a student *during the training*, a singer *on stage*, etc.
+Multiple inheritance traditionally creates conceptual chaos: a class inherits **two identities at once**, often violating the Single Responsibility Principle (SRP) and mixing incompatible natures.
 
-Clprolf introduces a powerful and elegant mechanism:
+Clprolf offers a radically clearer solution:
 
-##### ⭐ **Multiple Inheritance Through Ubiquity**
+> **Ubiquity** — instead of making *one* object with *two* natures,
+> we allow *two* objects with *one nature each*,
+> **sharing the same underlying state**.
 
-This mechanism allows one real entity to appear under *multiple natures*,
-**without** requiring static multiple inheritance,
-and **without** creating one giant class per combination of roles.
+This preserves:
 
-It is a dynamic, object-level form of multi-nature identity.
+* **single nature per object**
+* **pure SRP**
+* **safe polymorphism**
+* **thread safety**
+* **simple conceptual integrity**
 
----
-
-##### **1. Principle**
-
-* Each nature (`StudentClass`, `TeacherClass`, `SingerClass`) is a normal `agent` class.
-* These objects share the same **identity base** (`PersonProperties`).
-* No nature is “primary”:
-  each object is simply a **projection of the same person** seen under a different nature.
-* Identity is unique. Behaviors are separate.
-
-Example:
-
-```java
-StudentClass  s = new StudentClass("Leo", 19);   // first projection
-TeacherClass  t = new TeacherClass(s);           // another nature
-SingerClass   g = new SingerClass(s);            // another nature
-```
-
-All three objects represent **the same person**, but expressed through different natures.
+And yet, the two objects behave *as if* they were “multiple inheritance of the same person”.
 
 ---
 
-##### **2. Why “ubiquity”?**
+##### **1) Concept: One Real Person, Multiple Natures**
 
-Because the same individual exists in **several places** in the model:
+Sometimes a single real entity can have multiple natures:
 
-* as a Student,
-* as a Teacher,
-* as a Singer,
+* A person can be **Student** and **Teacher** (but not at the exact same moment).
+* A person can be **Singer** and **Actor**.
+* A mule is **Horse + Donkey**.
+* An employee may occasionally act as **Manager**.
 
-while keeping one single shared identity through an internal synchronized structure.
+But in real life :
 
-It is not traditional multiple inheritance.
-It is **multi-nature coexistence**.
+✔ We do not *simultaneously* activate both natures.
 
----
+✔ We switch roles depending on context.
 
-##### **3. Construction Rules**
+✔ Each role has its own logic and behavior.
 
-Each nature provides two constructors:
+Clprolf models this perfectly:
 
-✔ **1) Initial constructor**
+* One **shared underlying state** (`PersonProperties`)
+* One **monitor** shared by all natures
+* Several **objects**, each with *one* nature
+* No conceptual conflict
+* Full SRP compatibility
 
-Used only for the *first* projection of a person.
+This is **ubiquity**.
 
-```java
-new StudentClass("Leo", 19);
-```
-
-It creates:
-
-* the shared `PersonProperties`,
-* the `naturesMonitor` (for thread-safety),
-* the base identity.
-
-✔ **2) Projection constructor**
-
-Used to add another nature to the same person.
-
-```java
-new TeacherClass(studentObject);
-```
-
-It shares:
-
-* the identity,
-* the monitor,
-* thread-safe getters/setters.
-
-You just use the correct constructor once, and Clprolf guarantees that every nature is properly synchronized.
+It feels like multiple inheritance, but without any of the conceptual or technical dangers.
 
 ---
 
-##### **4. Thread-Safety Included**
+##### 2) Why Ubiquity Solves Multiple Inheritance
 
-All natures share the **same monitor** (`naturesMonitor`).
-Thus:
+Traditional multiple inheritance does this:
 
-* `setAge()` and `getAge()` synchronize on it,
-* guaranteeing atomicity, visibility, and consistency,
-* even with multiple threads modifying different natures.
+> “Give me *one* class with *two* incompatible natures.”
 
-It is a unified, clean, simple concurrency model.
+Clprolf’s ubiquity does this instead:
+
+> “Give me *two* objects, each with *one* nature,
+> but sharing the same state and synchronized.”
+
+This is superior because:
+
+* There is **no identity crisis**
+* Each object has **one responsibility**
+* Behaviors remain cleanly separated
+* Polymorphism on `Person` works naturally
+* Synchronization keeps the whole entity coherent
+* It is intuitive and mirrors the real world
+
+And most importantly:
+
+**SRP stays intact.**
 
 ---
 
-##### **5. Static Multiple Inheritance (rare but legitimate)**
+##### 3) When to Use Ubiquity
 
-There are situations where a type *is defined* as a combination of two other types.
-These are not dynamic combinations — they are **static domain concepts**.
+Use ubiquity when:
+
+✔ A real-world entity may have **several roles or natures**
+✔ But **not all active at the same time**
+✔ And you do not want to create a giant composite class
 
 Examples:
 
-* `Assistant = Student + Teacher`
-* `Mule = Horse + Donkey`
-* `FlyingCar = Car + Airplane`
+* A person is Student in one context, Teacher in another
+* A user has a “Reader” nature and an “Editor” nature
+* A game character can be “Trader” or “Warrior” depending on state
 
-Clprolf supports these rare cases via:
-
-* **multiple inheritance of interfaces** (`@Version_inh`),
-* a clean implementation class using **delegation** (not simultaneous multi-nature).
-
-Even here, most of the time there is an **implicit ubiquity behind the scenes**,
-because each nature remains conceptually separate — the implementation simply aggregates them.
-
-But for practical documentation, we keep the distinction:
-
-* **Ubiquity** → dynamic per-object multi-nature
-* **Static MI** → rare domain concepts with fixed combined natures
+Ubiquity is **dynamic**, **flexible**, and **conceptually clean**.
 
 ---
 
-##### **Conclusion**
+##### 4) Thread-Safety Requirements
 
-Clprolf distinguishes perfectly between:
+Because several objects share the same underlying state, thread safety is essential.
 
-✔ **Dynamic multi-nature identity (ubiquity)**
+The rule is simple:
 
-Frequent, realistic, clean.
-One person → several roles → synchronized identity.
+✔ All shared state must be synchronized using **one common monitor**.
 
-✔ **Static multiple inheritance (rare)**
-
-Only when the domain defines a combined nature at compile time.
-
-This model:
-
-* avoids the traps of C++-style multiple inheritance,
-* respects SRP and clear responsibilities,
-* matches real-world modeling,
-* keeps code clean, modular, and thread-safe.
-
-It is one of the most elegant structural advantages of Clprolf.
+The first nature creates it.
+All other natures reuse it automatically through the shared properties.
 
 ---
 
+##### 5) Implementation Pattern (Synchronized Version)
+
+
+
+**PersonClass (base class with shared properties)**
+
+```java
+public agent PersonClass {
+
+// NOTE: PersonProperties is implemented as an inner class.
+// This is intentional: the internal state of the person belongs
+// conceptually to PersonClass, and the inner structure naturally
+// models the shared core used across multiple natures.
+
+    protected abstraction PersonProperties {
+        private String name;
+        private int age;
+
+        /* One monitor for all natures (Student, Teacher, etc.) */
+        private final turn_monitor Object naturesMonitor;
+
+        public PersonProperties(String name, int age, Object naturesMonitor) {
+            this.naturesMonitor = naturesMonitor;
+            setAge(age);
+            setName(name);
+        }
+
+        public one_at_a_time void setAge(int age) {
+            synchronized(naturesMonitor) {
+                this.age = age;
+            }
+        }
+
+        public one_at_a_time int getAge() {
+            synchronized(naturesMonitor) {
+                return age;
+            }
+        }
+
+        // Same synchronized logic for name…
+    }
+
+    private PersonProperties sharedProperties;
+
+    /* No need to synchronize this setter/getter:
+       It is used only during construction (before any concurrency). */
+    public void setSharedProperties(PersonProperties sharedProperties) {
+        // intentionally unsynchronized
+        // because this happens before threads exist
+        this.sharedProperties = sharedProperties;
+    }
+
+    public PersonProperties getSharedProperties() {
+        return this.sharedProperties;
+    }
+
+    public PersonClass(String name, int age, Object monitor) {
+        this.sharedProperties = new PersonProperties(name, age, monitor);
+    }
+
+    public String getName() { return sharedProperties.getName(); }
+    public int getAge() { return sharedProperties.getAge(); }
+    public void setName(String name) { sharedProperties.setName(name); }
+    public void setAge(int age) { sharedProperties.setAge(age); }
+
+    public void walk() {
+        System.out.println(getName() + " is walking.");
+    }
+}
+```
+
+---
+
+**StudentClass (one nature)**
+
+```java
+public agent StudentClass nature PersonClass contracts Student {
+
+    // Constructor for the first nature created
+    public StudentClass(String name, int age) {
+        super(name, age, new Object()); // monitor shared by all natures
+    }
+
+    // Ubiquity constructor
+    public StudentClass(PersonClass twin) {
+        super(null, 0, null);
+        this.setSharedProperties(twin.getSharedProperties());
+    }
+
+    public void learn() {
+        System.out.println(getName() + " is learning.");
+    }
+}
+```
+
+---
+
+**TeacherClass (another nature)**
+
+```java
+public agent TeacherClass nature PersonClass contracts Teacher {
+
+    // Constructor for the first nature created
+    public TeacherClass(String name, int age) {
+        super(name, age, new Object()); // monitor shared by all natures
+    }
+
+    // Ubiquity constructor
+    public TeacherClass(PersonClass twin) {
+        super(null, 0, null);
+        this.setSharedProperties(twin.getSharedProperties());
+    }
+
+    public void teach() {
+        System.out.println(getName() + " is teaching.");
+    }
+}
+```
+
+---
+
+##### 6) Choosing the Monitor (Why the First Nature Creates It)
+
+Clprolf never forces which nature must be created first.
+
+So the simplest rule applies:
+
+✔ The first nature creates the monitor.
+
+✔ All other natures reuse it via sharedProperties.
+
+This ensures:
+
+* one and only one monitor
+* guaranteed memory visibility
+* consistent state across all roles
+* easy mental model for developers
+
+The developer cannot misuse this pattern unless they intentionally break the ubiquity idea—which means they didn’t want ubiquity in the first place.
+
+---
+
+##### 7) Classical Multiple Inheritance (Static)
+
+*Rare, but valid when the composite nature is real*
+
+Sometimes, natures are known *statically* and form a **composite**:
+
+* Assistant = Student + Teacher
+* Mule = Horse + Donkey
+* AmphibiousVehicle = Car + Boat
+
+In such cases:
+
+✔ The composite nature is genuine
+
+✔ The class has **one composite responsibility**
+
+✔ This is SRP-compatible
+
+✔ Use `features for interface inheritance`
+
+Even here, behind the scenes, ubiquity usually plays a conceptual role.
+
+---
+
+##### 8) Conclusion
+
+Ubiquity is one of Clprolf’s most elegant design patterns:
+
+* It solves multiple inheritance
+* It respects SRP
+* It mirrors the real world
+* It is thread-safe
+* It is simple to implement
+* It avoids identity conflicts
+* It keeps natures pure and separate
+
+No other language provides a model this clean.
+
+---
 
 #### II.8.i) Using Class Roles on Interfaces for Collaborative Projects
 
@@ -5251,4 +5390,3 @@ With only 34 keywords, Clprolf remains minimal and approachable, while still cov
 > This annex completes the formal specification of Clprolf.
 > It connects grammar, semantics, and keywords into a single consistent vision —
 > turning clarity from philosophy into verifiable structure.
-
