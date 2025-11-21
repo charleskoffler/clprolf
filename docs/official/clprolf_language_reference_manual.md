@@ -239,7 +239,7 @@ The confusion arises from mixing *readability* concerns with *responsibility* co
 
 There is a specific — and important — case where developers are correct to say that a method violates SRP:
 
-### ✔ When the internal sub-steps may evolve independently.
+##### ✔ When the internal sub-steps may evolve independently.
 
 If several parts of a method can change for **different reasons**, then the method now contains **multiple reasons to change**, and therefore violates SRP at the method level.
 
@@ -2711,7 +2711,7 @@ For example, the Java framework could be described as **“Java with agents.”*
 
 ---
 
-### ⭐ **III.5) Available Framework Annotations (Java)**
+### III.5) Available Framework Annotations (Java)
 
 The package **`org.clprolf.framework.java`** provides the following **annotations**, **modifiers**, and **enums** used when writing Clprolf code manually in Java.
 
