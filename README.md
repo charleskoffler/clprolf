@@ -54,10 +54,10 @@ agent OrderService {
 
 ---
 
-## 📚 Documentation — Learn, Understand, and Master Clprolf
+## 📚 Documentation — Official Clprolf Materials
 
-Explore the complete documentation set, from foundational concepts to advanced insights.
-Each document is designed to make Clprolf progressively clearer — conceptually, semantically, and philosophically.
+Explore the complete set of official Clprolf documents.
+From the **Language Reference Manual** to focused thematic guides and conceptual insights, each resource is designed to help you understand and master the language with clarity and precision.
 
 ---
 
