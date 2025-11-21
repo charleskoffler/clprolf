@@ -1,11 +1,16 @@
-# Insights About Clprolf — For Experienced and Thoughtful Readers
+# **Clprolf Language — Reference Manual**
 
-This section provides in-depth perspectives and the design rationale behind Clprolf.
-It is not intended as a quick introduction to the language, but rather as a **comprehensive and reflective guide** for those who want to *understand* Clprolf deeply — both in its structure and its philosophy.
+This document is the **official reference manual** of the Clprolf programming language.
+It defines the concepts, roles, rules, and structures that form the core of the language.
+All keywords, mechanisms, and architectural principles described here constitute the authoritative definition of Clprolf.
 
-While primarily written for readers already familiar with Clprolf, this chapter can also serve as a **learning document** for those who wish to explore the language in a more profound way — discovering not only *how* it works, but *why* it was designed that way.
+The manual is suitable for any developer with basic knowledge of object-oriented programming, although such familiarity is not strictly required.
 
-It reveals the principles, intentions, and conceptual architecture that make Clprolf unique: a language that was built to make **clarity and coherence** the natural outcome of programming.
+It can be read progressively or used as a reference when needed.
+Its purpose is to give a clear and coherent understanding of how the language works, how its concepts fit together, and why it was designed this way.
+
+Clprolf was created to make clarity and structure emerge naturally from programming.
+This manual presents the ideas that support this vision.
 
 ---
 
@@ -727,20 +732,18 @@ It remains the developer’s responsibility to ensure that the semantic continui
 
 #### II.5.f) The `class_for` Modifier
 
-In pure Clprolf, there is an optional modifier **`class_for`** that can be used instead of `class`.
-It appears before the role keyword, explicitly tying the class to its declension.
+In pure Clprolf, there is an optional modifier **`class_for`** that may be used instead of `class`.
+It appears before the role keyword and simply expresses that this is “a class for” the agent or worker.
 
-This construct is not available in the Clprolf frameworks, since the standard `class` keyword already exists there.
+This construct is rarely needed in practice.  
+It mainly exists as a stylistic option showing that Clprolf does not hide the notion of class.
+
+Note: this modifier is not available in the Clprolf frameworks, since the standard `class` keyword already exists there.
 
 Examples:
 
-```java
+```clprolf
 public class_for agent Car { ... }
-```
-
-```java
-public class_for worker_agent Launcher { ... }
-```
 
 ---
 
@@ -965,7 +968,7 @@ public class Controller { /* (...) */ }
 ```
 
 The available genders are:
-`Gender.HUMAN_EXPERT, Gender.EXPERT_COMPONENT, Gender.STATIC, Gender.HUMAN_EXPERT_STATIC, Gender.EXPERT_COMPONENT_STATIC`.
+`Gender.HUMAN_EXPERT, Gender.EXPERT_COMPONENT, Gender.STATIC, Gender.HUMAN_EXPERT_STATIC, Gender.EXPERT_COMPONENT_STATIC, Gender.ACTIVE_AGENT`.
 
 ---
 
@@ -2509,14 +2512,14 @@ In this sense, Clprolf brings to compilation what automated tests bring to runti
 #### II.17.c) RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
 Clprolf performs several **semantic inheritance checks** to ensure coherence between classes and interfaces.
-These checks are based on **declensions**, **synonyms**, and **sub-roles**, and are applied automatically by the compiler.
+These checks are based on **declensions**, **synonyms**, and **genders**, and are applied automatically by the compiler.
 
 The detailed definitions of these rules are provided in the **Architectural Annexes**.
 This section only summarizes their general principles.
 
 * Inheritance between **different declensions** (for example, `agent` and `worker_agent`) produces a **compiler error**.
 * Inheritance between **identical declensions** but with **different synonyms** (for example, `agent` and `abstraction`) produces a **compiler warning**.
-* Sub-role and static checks (such as `@Static` vs non-static) are also verified automatically.
+* Genders and static checks (such as `@Static` vs non-static) are also verified automatically.
 * All these controls can be **explicitly forced** using `@Forc_inh` (for classes) or `@Forc_int_inh` (for interfaces).
 
 These checks guarantee that every inheritance relation keeps its **semantic meaning** intact while preserving full **freedom of interpretation** for the developer.
@@ -2699,35 +2702,128 @@ For example, the Java framework could be described as **“Java with agents.”*
 
 ### III.4) Nature of the Framework
 
-* The C# framework remains **C#**, not Clprolf itself, but enriched with a frame for working.
-* It supplies annotations rather than code libraries, yet it still acts as a **framework** by providing a structural frame.
-* These annotations are designed to be paired with an **executable** that performs checks for coherence — similar to a compiler.
+* The C# framework remains **C#**, not Clprolf itself, but enriched with a structural frame for working.
+* It provides annotations rather than code libraries, yet it still acts as a **framework** by supplying the structural concepts required by Clprolf.
+* These annotations are designed to be paired with an **executable tool** that performs checks for coherence — similar to a compiler.
 
-  * This executable does not yet exist, but could be developed by the community.
-  * Its role would be to perform syntactic and semantic analysis of the annotated source code (Java, C#, PHP) without generating code.
+  * This tool performs syntactic and semantic analysis of the annotated source code (Java, C#, PHP) without generating code.
+  * It validates the architecture, roles, inheritance, and structural consistency according to the Clprolf semantics.
 
 ---
 
-### III.5) Available Annotations (Java Package Example)
+### ⭐ **III.5) Available Framework Annotations (Java)**
 
-The package **`org.clprolf.framework.java`** provides the following annotations:
+*(Version finale, v242-ready)*
 
-* **Class roles**:
-  `@Agent`, `@Abstraction`, `@Simu_real_obj`,
-  `@Worker_agent`, `@Comp_as_worker`,
-  `@Model`, `@Information`, `@Indef_obj`.
+The package **`org.clprolf.framework.java`** provides the following **annotations**, **modifiers**, and **enums** used when writing Clprolf code manually in Java.
 
-* **Interface roles**:
-  `@Compat_interf_capacity`, `@Compat_interf_version`, `@Compat_interf`.
+---
 
-* **Modifiers and constraints**:
-  `@With_compat`, `@Nature`, `@Contracts`,
-  `@Forced_inh`, `@Forced_int_inh`, `@Forced_pract_code`,
-  `@Version_inh`, `@Capacity_inh`.
+#### **1. Class roles**
 
-* **Behavioral annotations**:
-  `@Underst`, `@Long_action`, `@Prevent_missing_collision`,
-  `@One_at_a_time`, `@For_every_thread`, `@Turn_monitor`, `@Dependent_activity`.
+Used to express the semantic role of a class:
+
+`@Agent`,
+`@Abstraction`,
+`@Simu_real_obj`,
+`@Worker_agent`,
+`@Comp_as_worker`,
+`@Model`,
+`@Information`.
+
+*(Removed: `@Indef_obj` — not part of the framework.)*
+
+---
+
+#### **2. Interface roles**
+
+Annotations used to express the structural role of an interface:
+
+`@Compat_interf_capacity`,
+`@Compat_interf_version`.
+
+*(Removed: `@Compat_interf` — obsolete.)*
+
+---
+
+#### **3. Modifiers and inheritance constraints**
+
+**These annotations specify semantic modifiers and structural inheritance constraints.
+`@Nature` is primarily used for inheritance between normal classes
+(Agent, Worker_agent, Model, Information, etc.).
+`@Version_inh` and `@Capacity_inh` are used only when organizing inheritance
+between versions or capacities.**
+
+`@With_compat`,
+`@Nature`,
+`@Contracts`,
+`@Forced_inh`,
+`@Forced_int_inh`,
+`@Forced_pract_code`,
+`@Version_inh`,
+`@Capacity_inh`.
+
+**Example :**
+
+```java
+@Capacity_inh(Advice.FOR_AGENT_LIKE)
+```
+
+> *`@Version_inh` and `@Capacity_inh` are architectural features:
+> they are required only when a capacity/version hierarchy is used.*
+
+---
+
+#### **4. Behavioral annotations (concurrency & intention)**
+
+These annotations express **behavioral** or **concurrency-related** intentions:
+
+`@Underst`,
+`@Long_action`,
+`@Prevent_missing_collision`,
+`@One_at_a_time`,
+`@For_every_thread`,
+`@Turn_monitor`,
+`@Dependent_activity`.
+
+---
+
+#### **5. Advice Enum**
+
+The **Advice** enum provides semantic hints for annotations such as `@Capacity_inh` and `@Version_inh`.
+
+Available values:
+
+* `Advice.FOR_AGENT_LIKE`
+* `Advice.FOR_WORKER_LIKE`
+
+**Example :**
+
+```java
+@Capacity_inh(Advice.FOR_AGENT_LIKE)
+```
+
+---
+
+#### **6. Gender Enum**
+
+The **Gender** enum is used mainly with class-role annotations, such as `@Agent(gender = …)` and `@Abstraction(gender = …)`.
+
+Available genders:
+
+* `Gender.HUMAN_EXPERT`
+* `Gender.EXPERT_COMPONENT`
+* `Gender.STATIC`
+* `Gender.HUMAN_EXPERT_STATIC`
+* `Gender.EXPERT_COMPONENT_STATIC`
+* `Gender.ACTIVE_AGENT`  // optional MAS-aligned refinement
+
+**Example :**
+
+```java
+@Agent(gender = Gender.ACTIVE_AGENT)
+public class SomeAgent { }
+```
 
 ---
 
@@ -2793,14 +2889,17 @@ The resulting code remains concise, practical, and free of unnecessary boilerpla
 
 ---
 
-### III.8) Annotation Categories in the Clprolf Framework (Java Example)
+### III.8) Annotation Categories in the Clprolf Framework (Java)
 
-| **Category**                | **Annotations**                                                                                                                                                                                                                   |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Class Roles**             | `@Agent`, `@Simu_real_obj`, `@Abstraction`, `@Worker_agent`, `@Comp_as_worker`, `@Model`, `@Information`, `@Indef_obj` |
-| **Interface Roles**         | `@Compat_interf_capacity`, `@Compat_interf_version`, `@Compat_interf`, `@Version_inh`, `@Capacity_inh`                                                                                                                            |
-| **Modifiers & Constraints** | `@With_compat`, `@Nature`, `@Contracts`, `@Forced_inh`, `@Forced_int_inh`, `@Forced_pract_code`                                                                                                                                   |
-| **Behavioral Annotations**  | `@Underst`, `@Long_action`, `@Prevent_missing_collision`, `@One_at_a_time`, `@For_every_thread`, `@Turn_monitor`, `@Dependent_activity`                                                                                           |
+| **Category**                        | **Annotations / Enums**                                                                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **Class Roles**                     | `@Agent`, `@Abstraction`, `@Simu_real_obj`, `@Worker_agent`, `@Comp_as_worker`, `@Model`, `@Information`                                |
+| **Interface Roles**                 | `@Compat_interf_capacity`, `@Compat_interf_version`                                                                                     |
+| **Semantic & Structural Modifiers** | `@Nature`, `@With_compat`, `@Contracts`, `@Forced_inh`, `@Forced_int_inh`, `@Forced_pract_code`, `@Version_inh`, `@Capacity_inh`        |
+| **Behavioral Annotations**          | `@Underst`, `@Long_action`, `@Prevent_missing_collision`, `@One_at_a_time`, `@For_every_thread`, `@Turn_monitor`, `@Dependent_activity` |
+| **Enums**                           | `Gender`, `Advice`                                                                                                                      |
+
+---
 
 
 ### III.9) CLPROLF FRAMEWORK FOR C# DEVELOPERS
@@ -2932,10 +3031,10 @@ There are no additional object categories in the language.
 
 #### IV.5.c) Optional MAS Alignment
 
-For those who want to stay closer to MAS conventions, Clprolf provides the optional sub-role **`Gender.ACTIVE_AGENT`**.
+For those who want to stay closer to MAS conventions, Clprolf provides the optional gender **`@Active_agent`**.
 This can be used to mark an agent explicitly as “active” in MAS terms.
 
-* Expert sub-roles are implicitly MAS-active.
+* Expert genders are implicitly MAS-active.
 * Developers may choose `@Agent` or any equivalent qualifier, and restrict `@Agent` to active agents if desired.
 
 ---
@@ -3178,7 +3277,7 @@ This flexibility allows Clprolf to accommodate different design sensibilities wh
 
 ### IV.17) GOD OBJECTS OR GOD-OBJECT–LIKE PREVENTION
 
-In Clprolf, a traditional OOP class corresponds to a `class_for` object. This generic form can easily lead to *God objects* — classes that try to handle everything at once.
+In Clprolf, a traditional OOP class corresponds to a `indef_obj` object. This generic form can easily lead to *God objects* — classes that try to handle everything at once.
 To prevent this, Clprolf provides more specific class roles, guiding developers toward clear, focused responsibilities and reducing the risk of oversized, monolithic classes.
 
 ---
@@ -3259,7 +3358,7 @@ Clprolf, with its **`worker_agent`** declension (simulation of the computer as a
 
 Teaching advanced programming concepts to children is challenging, especially with Java. Clprolf — or the Clprolf framework — can serve as an easier entry point to Java.
 
-By introducing declensions such as **agent**, **human expert**, **machine tool**, or **computer as worker**, Clprolf provides intuitive metaphors that make it easier to explain complex topics. These perspectives can help make object-oriented programming more accessible, even for young learners.
+By introducing declensions such as **agent**, **human expert**, **abstraction**, or **computer as worker**, Clprolf provides intuitive metaphors that make it easier to explain complex topics. These perspectives can help make object-oriented programming more accessible, even for young learners.
 
 ---
 

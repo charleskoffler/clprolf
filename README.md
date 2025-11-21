@@ -63,6 +63,10 @@ Each document is designed to make Clprolf progressively clearer — conceptually
 
 ### 🧠 Main Documentation
 
+* 📘 [**Clprolf Language Reference Manual**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_language_reference_manual.md)
+  The complete, authoritative specification of the Clprolf language.
+  Includes roles, declensions, inheritance, semantics, frameworks, examples, and annexes.
+
 * [**Explaining Declensions**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
   Understand the five declensions (`agent`, `worker_agent`, `model`, `information`, `indef_obj`) and how they shape your system’s architecture.
 
@@ -80,9 +84,6 @@ Each document is designed to make Clprolf progressively clearer — conceptually
 
 * [**The `underst` Method Modifier**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
   Explore the `underst` keyword — marking non-trivial algorithms or methods requiring computer “understanding”.
-
-* [**Insights About Clprolf — For Experienced and Thoughtful Readers**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_insights.md)
-  A reflective document revealing the language’s design philosophy and conceptual depth.
 
 * [**AI Insights**](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
   A collection of genuine AI feedback and reflections that accompanied Clprolf’s evolution.
