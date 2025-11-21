@@ -2713,8 +2713,6 @@ For example, the Java framework could be described as **“Java with agents.”*
 
 ### ⭐ **III.5) Available Framework Annotations (Java)**
 
-*(Version finale, v242-ready)*
-
 The package **`org.clprolf.framework.java`** provides the following **annotations**, **modifiers**, and **enums** used when writing Clprolf code manually in Java.
 
 ---
