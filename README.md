@@ -7,6 +7,8 @@ Clprolf adds a **conceptual layer** on top of Java/C#/PHP:
 roles, contracts, and design rules are **first-class keywords**.
 You model systems with **agents, worker agents, versions, and capacities**, while the compiler enforces clarity.
 
+> **If you clone the repository and find value in the project, please consider giving it a ⭐.**
+
 ---
 
 ### 🚀 Why Clprolf?
@@ -66,6 +68,9 @@ From the **Language Reference Manual** to focused thematic guides and conceptual
 * 📘 [**Clprolf Language Reference Manual**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_language_reference_manual.md)
   The complete, authoritative specification of the Clprolf language.
   Includes roles, declensions, inheritance, semantics, frameworks, examples, and annexes.
+  
+* [**AI Technical Review**](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_technical_review.md)  
+  A detailed AI technical review offering analysis and architectural perspective on the language’s design.
 
 * [**Explaining Declensions**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
   Understand the five declensions (`agent`, `worker_agent`, `model`, `information`, `indef_obj`) and how they shape your system’s architecture.
@@ -84,9 +89,6 @@ From the **Language Reference Manual** to focused thematic guides and conceptual
 
 * [**The `underst` Method Modifier**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_6_underst.md)
   Explore the `underst` keyword — marking non-trivial algorithms or methods requiring computer “understanding”.
-
-* [**AI Insights**](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_insights.md)
-  A collection of genuine AI feedback and reflections that accompanied Clprolf’s evolution.
 
 * [🌐 **Official Website**](https://www.clprolf-lang.org/)
   The central hub for Clprolf resources, news, and releases.
