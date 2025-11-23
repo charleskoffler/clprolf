@@ -136,7 +136,9 @@ ONE_AT_A_TIME: 'one_at_a_time';
 TURN_MONITOR: 'turn_monitor';
 FOR_EVERY_THREAD: 'for_every_thread';
 DEPENDENT_ACTIVITY: 'dependent_activity';
-
+O_CARD: 'o';
+F_CARD: 'f';
+M_CARD: 'm';
 
 // §3.10.1 Integer Literals
 

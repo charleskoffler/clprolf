@@ -375,8 +375,13 @@ fieldDeclaration
 	:	fieldModifier* unannType variableDeclaratorList ';'
 	;
 
+turnMonitorModifier
+    : 'turn_monitor' bracketSync?
+    ;
+
 fieldModifier
 	:	annotation
+	|   turnMonitorModifier
 	|	'public'
 	|	'protected'
 	|	'private'
@@ -385,7 +390,6 @@ fieldModifier
 	|	'transient'
 	|	'volatile'
 	|	'with_compat'
-	|	'turn_monitor'
 	|	'for_every_thread'
 	;
 
@@ -469,9 +473,26 @@ unannArrayType
 methodDeclaration
 	:	methodModifier* methodHeader methodBody
 	;
+	
+bracketSync
+    : '[' syncCard ',' methodCard ']'
+    ;
+
+syncCard
+    : 'o' | 'f' | 'm'
+    ;
+
+methodCard
+    : 'o' | 'm'
+    ;
+	
+oneAtATimeModifier
+: 'one_at_a_time' bracketSync?
+;
 
 methodModifier
 	:	annotation
+	|   oneAtATimeModifier
 	|	'public'
 	|	'protected'
 	|	'private'
@@ -484,7 +505,6 @@ methodModifier
 	|	'underst'
 	|	'long_action'
 	|	'prevent_missing_collision'
-	|	'one_at_a_time'
 	|	'dependent_activity'
 	;
 

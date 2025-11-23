@@ -2380,6 +2380,161 @@ These notions are compatible with existing Java mechanisms like `synchronized` a
 
 Finally, problems that are purely parallel — especially those involving **dependent activities** — can be implemented directly with multiple threads.
 
+### II.14.d) Integration of Advanced Synchronization Features
+
+Clprolf already defines a set of semantic rules governing basic synchronization:
+`one_at_a_time` on methods, `turn_monitor` declarations, and the guarantees they provide in single- and multi-thread scenarios.
+These rules remain fully valid and continue to apply in their simple form.
+
+However, Clprolf introduces a structured extension called **Advanced Synchronization Features**, which refine synchronization semantics through optional bracket arguments on both methods and monitors:
+
+```
+one_at_a_time[X, Y]
+turn_monitor[X, Y]
+```
+
+These bracket arguments give explicit declarative control over caller cardinality (`X ∈ {o,f,m}`) and method-group cardinality (`Y ∈ {o,m}`).
+They do not replace the existing basic rules; instead, they *extend* them by enabling the compiler to build and verify synchronization groups, detect inconsistencies, and better model complex concurrency patterns such as producer–consumer relations.
+
+The advanced mode is optional.
+A class may use either the simple form (no brackets) or the advanced form (brackets everywhere), but not a mixture of both.
+When the advanced mode is used, additional semantic checks apply, ensuring structural coherence between methods and their associated turn monitors.
+
+This preserves backward compatibility while enabling a far more expressive, analyzable, and teachable model of parallel execution.
+
+---
+
+#### **One-at-a-Time With Optional Bracket Arguments**
+
+The modifier `one_at_a_time` declares that a method executes within an exclusive critical space.
+Bracket arguments are optional refinements that make this intention explicit:
+
+```
+one_at_a_time[X, Y]
+```
+
+* **`X` – Caller Cardinality:**
+  how many callers may enter this critical space (`o` = one, `f` = few, `m` = many).
+
+* **`Y` – Method Cardinality:**
+  how many methods share the same critical space (`o` = one, `m` = many).
+
+Bracket arguments are optional.
+A class may use the refined form everywhere, or omit the brackets entirely. Mixing both within the same class is not allowed.
+
+**Turn monitors can also declare bracket arguments using the exact same syntax:**
+
+```
+turn_monitor[X, Y] groupMon;
+```
+
+This ensures a *structural match* between a method’s declared cardinality and the monitor that governs its critical space.
+When brackets are used, the compiler can verify that methods and monitors belong to the same concurrency group and that their cardinalities are coherent.
+Without brackets, the classic simple mode applies, with no advanced checks.
+
+This dual system preserves the simplicity of the original form while enabling precise, verifiable concurrency semantics for users who need them.
+
+---
+
+### 🟦 II.14.e) Example — A Cashier With a Turn Monitor (Rewritten Example)
+
+Below is a fully rewritten example demonstrating the semantics of advanced synchronization features in the most intuitive possible way:
+
+*Several customers attempt to pass through the same cashier.*
+*The cashier exposes a `checkout()` method that belongs to a bracketed concurrency group.*
+*All customers share the same cashier object — therefore, they naturally share the same turn monitor.*
+
+This captures the conceptual truth behind the model:
+
+> **The customer does not synchronize himself.
+> He simply asks the cashier to serve him.
+> The cashier’s turn monitor decides who may pass.**
+
+---
+
+#### **Full Example**
+
+```clprolf
+public agent Cashier {
+
+    // Turn monitor for the checkout line.
+    // All customers using this cashier share this monitor.
+    private turn_monitor[m,o] Object checkoutMonitor;
+
+    public one_at_a_time[m,o] void checkout(Customer c) {
+        synchronized(checkoutMonitor) {
+            System.out.println(c.getName() + " is now being served...");
+            try { Thread.sleep(2000); } catch (InterruptedException e) {}
+            System.out.println(c.getName() + " has finished checkout!");
+        }
+    }
+}
+
+@Forc_int_inh
+public agent Customer contracts Runnable {
+
+    private String name;
+    private Cashier cashier;
+    private for_every_thread volatile boolean running;
+
+    public Customer(String name, Cashier cashier) {
+        this.name = name;
+        this.cashier = cashier;
+    }
+
+    public String getName() { return name; }
+
+    public void run() {
+        running = true;
+        while (running) {
+            cashier.checkout(this); // Customer simply requests service
+        }
+    }
+}
+```
+
+---
+
+#### 🟦 **Explanation**
+
+1. **All customers use the same Cashier instance.**
+   Therefore, they all use **the same `checkoutMonitor`**.
+
+2. The method `checkout()` is declared:
+
+```
+one_at_a_time[m,o]
+```
+
+This means:
+
+* **many callers** (`m`) can request service, but
+* **only one method** (`o`) represents this critical space.
+
+3. Because the cashier defines:
+
+```
+turn_monitor[m,o] checkoutMonitor;
+```
+
+the compiler sees a **perfect structural match**:
+
+* method cardinality → matches
+* monitor cardinality → matches
+* group cardinality → matches
+
+4. All customers are serialized naturally:
+   **the cashier decides who may pass**, exactly like a real queue.
+
+---
+
+#### 🟦 **Key Insight (to keep just beneath the example)**
+
+> **Whether the waiting logic sits inside the Customer or inside the Cashier does not change the synchronization semantics.
+> The defining element is the shared turn monitor.
+> All customers calling the same bracketed method on the same object naturally share the same concurrency group.**
+
+---
 
 ### II.15) Ignoring Inheritance Checks
 
@@ -4083,8 +4238,25 @@ clprolfInterfaceDeclension:
 	'capacity_inh'
 	;
 
+bracketSync
+    : '[' syncCard ',' methodCard ']'
+    ;
+
+syncCard
+    : 'o' | 'f' | 'm'
+    ;
+
+methodCard
+    : 'o' | 'm'
+    ;
+	
+oneAtATimeModifier
+: 'one_at_a_time' bracketSync?
+;
+
 methodModifier
 	:	annotation
+	|   oneAtATimeModifier
 	|	'public'
 	|	'protected'
 	|	'private'
@@ -4097,12 +4269,17 @@ methodModifier
 	|	'underst'
 	|	'long_action'
 	|	'prevent_missing_collision'
-	|	'one_at_a_time'
 	|	'dependent_activity'
 	;
 
+
+turnMonitorModifier
+    : 'turn_monitor' bracketSync?
+    ;
+
 fieldModifier
 	:	annotation
+	|   turnMonitorModifier
 	|	'public'
 	|	'protected'
 	|	'private'
@@ -4111,7 +4288,6 @@ fieldModifier
 	|	'transient'
 	|	'volatile'
 	|	'with_compat'
-	|	'turn_monitor'
 	|	'for_every_thread'
 	;
 
@@ -4722,10 +4898,6 @@ Other synchronization mechanisms are not yet analyzed.
 Warning if a `dependent_activity` method is not marked as `one_at_a_time`.
 
 **ARCH DA3:**
-Warning if the number of `turn_monitor` fields does not match the number of `one_at_a_time` methods.
-Only counts are compared, not pairings.
-
-**ARCH DA4:**
 Warning if a field marked `for_every_thread` lacks the `volatile` modifier.
 
 **ARCH DB1:**
@@ -4739,6 +4911,75 @@ Example: six methods → two boolean fields expected.
 **ARCH DC1:**
 Warning if `underst` appears on a method within a `worker_agent` class
 (indicates misplaced or non-intuitive business logic).
+
+### ARCH-DD — Advanced Synchronization Features
+
+The following rules apply only when the optional bracket form
+`one_at_a_time[X, Y]` or `turn_monitor[X, Y]` is used.
+These advanced synchronization features extend (but do not replace)
+the basic concurrency semantics defined in ARCH DA–DC.
+They enable structural analysis, group reconstruction,
+and explicit modeling of complex concurrency patterns.
+
+---
+
+**Bracketed Synchronization Coherence (General Rule)**
+
+**When the bracketed form `one_at_a_time[X, Y]` or `turn_monitor[X, Y]` is used,
+the system must ensure global coherence between method declarations and their associated monitors.
+This rule defines the structural consistency of bracketed synchronization without mandating specific micro-cases.**
+
+This principle guarantees that:
+
+* bracketed methods and monitors use matching `[X,Y]` signatures,
+* concurrency groups remain structurally well-formed,
+* and the system preserves the intended semantics of declarative synchronization.
+
+**The detailed checks performed by implementations may vary,
+but the structural coherence of bracketed synchronization is mandatory.**
+
+---
+
+#### **Group Extraction Rule**
+
+**For every method declared with `one_at_a_time[X, m] using M`,
+the compiler must identify all methods in the same class that reference the same turn_monitor `M`
+and are also declared using the same `[X,m]` cardinalities.
+These methods form the synchronization group of monitor `M`.**
+
+If no other method matches this pattern,
+the group is incomplete and the compiler may emit an error or warning
+(depending on the implementation’s strictness).
+
+---
+
+**Example Rule — Group Identification**
+
+A method declared as `one_at_a_time[X, m] using M`
+belongs to the synchronization group of monitor `M`.
+All methods using the same monitor `M` with the same `[X,m]` cardinality
+form this group.
+A group `[X,m]` must contain at least two methods.
+
+---
+#### **Dependent Activity Derivation**
+
+A `dependent_activity` is meaningful only when the involved methods participate in a multi-method synchronization group.
+Therefore, every method taking part in a dependency must declare:
+
+```
+one_at_a_time[X, m]
+```
+
+Because `[X,m]` groups are structurally defined by shared turn monitors,
+a compiler can infer potential `dependent_activity` relations
+by observing methods that:
+
+* use the same turn_monitor, and
+* share the same `[X,m]` cardinality.
+
+Explicit `dependent_activity` declarations simply annotate
+a relationship that is already structurally valid.
 
 ---
 
