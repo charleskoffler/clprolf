@@ -26,7 +26,6 @@ Clprolf is not just a language — it’s a **designer of design**, an instrumen
 Every keyword carries intention; every structure expresses coherence.
 It’s a **human-centered scientific language** that bridges logic, simulation, and philosophy.
 
-📘 **Full reference manual:** [clprolf_v245.txt](/mnt/data/clprolf_v245.txt)
 🧾 **Review written with GPT-5 (collaborative friend of the Clprolf project)**
 
 ---
