@@ -759,6 +759,10 @@ This includes access modifiers and other familiar constructs, which can be used 
 #### II.5.h) Synonyms and Aspects
 
 Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
+However, within each declension, **one synonym is considered the “principal synonym”**,
+the one that best represents the nature of the declension.
+
+This principal synonym defines the **default perspective** of the class.
 
 * **Agent declension** → `agent` (agent aspect), `abstraction` (object aspect), `simu_real_obj` (simulation aspect)
 * **Worker_agent declension** → `worker_agent` (agent aspect), `comp_as_worker` (simulation aspect)
@@ -768,6 +772,25 @@ Each declension keeps only a minimal set of synonyms, and every synonym reflects
 
 This structure makes the system both easy to memorize and easy to teach.
 Synonyms are no longer arbitrary alternatives but clearly justified by the perspective they express.
+
+---
+
+##### **The role of principal synonyms**
+
+For `agent` and `worker_agent`, the **principal synonym** is:
+
+* the most neutral
+* the most general
+* the most stable
+* the one that represents the declension in the clearest way
+
+Thus:
+
+* `agent` is the **principal synonym** of the entire agent family (`agent`, `abstraction`, `simu_real_obj`)
+* `worker_agent` is the **principal synonym** of its family (`worker_agent`, `comp_as_worker`)
+
+These synonym families are not “extra declensions”:
+they are simply **different perspectives** on the same nature.
 
 ---
 
@@ -826,31 +849,166 @@ Here, `Animal` is an `agent` that simulates the real-world entity.
 
 #### II.5.k) Agent, Abstraction, and Simu_real_obj
 
-In Clprolf, the qualifiers **`agent`**, **`abstraction`**, and **`simu_real_obj`** are equivalent.
-They all designate the same declension, but with slightly different emphases.
+In Clprolf, the qualifiers **`agent`**, **`abstraction`**, and **`simu_real_obj`** belong to the same declension,
+but they reflect **three different roles** with clearly distinct intentions.
 
-* **`abstraction`** highlights the idea of a **black box** that hides details while providing functionality.
-  For example, a coffee machine is an abstraction, even outside computer science.
-  In Clprolf, abstractions are always abstractions of something in the real world.
+These synonyms are now verified strictly by the compiler,
+so each term must be used with the correct meaning.
 
-* **`simu_real_obj`** emphasizes the idea of a **simulation object**, emulating a real-world entity.
-  The notion of “real-world object” is broad and may include abstract concepts, such as a socket or a connection.
-  Here, the real-world object is understood as a concept.
+---
+
+##### **1. `agent` — an active role, but *not* a simulation object**
+
+`agent` represents an **active component** that performs logic connected to its own domain responsibility.
+
+An agent:
+
+* is not part of a simulation environment,
+* is not tied to a real-world entity being simulated,
+* represents a domain actor or domain component,
+* contains only code related to its own responsibility.
+
+Examples:
+
+* `OrderProcessor`
+* `AuthenticationAgent`
+* `ChatAgent`
+* `SensorReader`
+
+Agents execute business logic — they do **not** model real-world objects inside a simulated world.
+
+---
+
+##### **2. `abstraction` — abstract domain concepts or structural abstractions**
+
+`abstraction` designates a **conceptual object** that belongs to the domain
+and is represented as a *pure abstraction* in code.
+
+It models a concept, a structure, or a logical entity —
+not an active component and not a simulated object.
+
+An abstraction:
+
+* represents a concept, not an actor,
+* stays within its conceptual responsibility,
+* is typically manipulated by worker_agents,
+* belongs fully to the business/domain logic (not to simulation).
+
+### **Examples (clean and representative):**
+
+* `Document`
+* `List` / `HashMap` (collections)
+* `Rectangle`, `Circle`
+* `Image`
+* `Color`
+* `Connection`
+* `Button`
+* `Socket`
+* `CompilationUnit`
+* `Statement`
+* `Expression`
+
+An abstraction stays 100% in its conceptual domain;
+it is neither an `agent` nor a `simu_real_obj`.
+
+---
+
+##### **3. `simu_real_obj` — components used inside a simulation**
+
+`simu_real_obj` identifies a component that is part of a **simulation universe**,
+whether the simulated entity is:
+
+* physical
+* virtual
+* conceptual
+* abstract but evolving in discrete steps
+
+A `simu_real_obj`:
+
+* behaves like an agent,
+* but exists **inside a simulated world**,
+* typically represents something concrete or acting concretely *inside the simulation*,
+* is subject to simulation rules such as collision checks, discrete updates, etc.
+
+Examples:
+
+* `Vehicle`
+* `Player`
+* `Projectile`
+* `DroneAI`
+* `SimulatedNode`
+* `EconomicAgent` (in a simulation)
+* `Particle`
+
+These are **true simulation components**, not business abstractions.
 
 ---
 
 #### II.5.l) Usage Recommendations
 
-* Use **`abstraction`** when representing **abstract ideas** or **system abstractions** (e.g., a `Connection` class).
-  These abstractions are typically consumed by **worker\_agent** classes.
+Clprolf does not force any term —
+but with synonym verification enabled,
+the correct intention is now important.
 
-* Use **`simu_real_obj`** when representing more **concrete real-world entities** (e.g., a `Vehicle` class).
+**Use `agent`** when representing:
 
-There is no strict rule — it is a matter of **developer preference and sensibility**.
-Both terms are fully valid and interchangeable.
+* a domain actor,
+* a module with active behavior,
+* code tied to a responsibility **outside of a simulation**.
 
+---
 
-#### II.5.m) NOTICE ON WORKER\_AGENT — COMPUTER AS A WORKER
+**Use `abstraction`** when representing:
+
+* a pure concept,
+* a system or GUI abstraction,
+* a domain object with no simulation behavior,
+* something consumed by worker_agents.
+
+These are conceptual components representing ideas or real-world notions,
+but **not** simulation entities.
+
+---
+
+**Use `simu_real_obj`** when representing:
+
+* an entity that lives *inside a simulated environment*,
+* something that evolves in simulation time,
+* something that can interact, collide, or conflict inside a simulation step,
+* any concrete or semi-concrete component used in simulation logic.
+
+These components are “simulation agents,”
+but rooted in a real or conceptual world being simulated.
+
+---
+
+#### II.5.m) The `simu_real_obj` synonym
+
+A `simu_real_obj` represents an entity that exists inside a **simulation universe**, whether physical or abstract.
+It is not limited to physical objects.
+Any entity that:
+
+* evolves over simulation steps
+* interacts with an environment
+* can interfere, overlap, or conflict with others
+* has a location, state, or presence in a simulated world
+
+…belongs naturally to this declension.
+
+Typical examples:
+
+* physical objects (Vehicle, Ball, Projectile)
+* virtual characters or agents (Player, NPC)
+* non-physical simulation entities (EconomicNode, SocialAgent)
+* abstract simulation elements evolving in discrete steps
+
+Every `simu_real_obj` must declare **at least one** method responsible for collision-handling or collision-declaration, via the `prevent_missing_collision` modifier.
+
+This prevents **missed collisions**, a classical simulation pitfall where entities “cross” each other between two discrete updates.
+
+---
+
+#### II.5.n) NOTICE ON WORKER\_AGENT — COMPUTER AS A WORKER
 
 The **`worker_agent`** declension is not only about separating `agent` code from pure computer tasks — it is about treating the **computer as a worker**. The “simu” prefix highlights this metaphor: as if the computer were a real-world worker. Its job is to manage peripherals, handle resources, and perform tasks that are inherently technical.
 
@@ -871,7 +1029,7 @@ Finally, some design patterns reinforce this distinction: for example, the **Vie
 
 ---
 
-#### II.5.n) System Abstractions
+#### II.5.o) System Abstractions
 
 System abstractions such as `File` or `Connection` should generally appear **only in worker\_agent classes**.
 Exceptions may be made for practical reasons or for thread-like abstractions.
@@ -881,7 +1039,7 @@ This rule follows naturally from the third-person perspective:
 * Only a **worker** should perform such method calls,
 * not an **agent** (or `simu_real_obj`).
 
-#### II.5.o) Flexibility with `indef_obj`
+#### II.5.p) Flexibility with `indef_obj`
 
 For situations where a role is not desirable or not yet determined, Clprolf provides the **`indef_obj`** (indefinite object) declension.
 It behaves like a traditional OOP object and keeps the system flexible.
@@ -2273,14 +2431,131 @@ This design preserves an **action-oriented perspective**, while internally emula
 
 In the framework, a single `@Long_action` annotation covers all use cases, keeping the approach simple and consistent.
 
+---
 
-### II.13) THE `prevent_missing_collision` MODIFIER
+### ⭐ II.13) THE `prevent_missing_collision` MODIFIER
 
-The `prevent_missing_collision` modifier (or `@Prevent_missing_collision` annotation in the Java framework) is primarily used in `agent` classes.
+The `prevent_missing_collision` modifier is **a Clprolf method modifier**,
+and it is used **exclusively inside `simu_real_obj` classes**.
 
-Its purpose is to simplify **concurrency** (especially when combined with `long_action`) and **parallelism** (multi-threading) in real-time simulations. When applied, it ensures that interactions or collisions are never lost, even if methods run in parallel threads.
+Its purpose is to mark **the method that performs collision detection**,
+so the compiler knows that collisions are intentionally handled **inside the simulation step**.
 
-For example, a `setPosition()` method in a video game could be marked with `prevent_missing_collision`. To guarantee consistency, all related methods — such as `getPosition()` — should also be marked the same way. The framework then synchronizes these methods automatically, preventing missed collisions or desynchronized states between players, enemies, or other simulated entities.
+This avoids a classic simulation issue:
+
+> **If collisions are checked too late, objects may cross each other between two updates.
+> The collision never appears and is considered “missed.”**
+
+This problem does **not** come from thread synchronization.
+It comes from time-stepped simulation:
+
+* update position
+* then detect collision
+
+If two updates happen before the detection step,
+the collision is lost forever.
+
+`prevent_missing_collision` forces the developer to declare explicitly:
+
+> **“This method handles collision detection for this simu_real_obj.”**
+
+If *no* method is marked, the compiler warns that this object may “ghost through” others.
+
+---
+
+#### ⭐ **1) Typical Example: `setPosition()` with collision detection**
+
+In most engines, collision detection happens during movement:
+
+```clprolf
+public simu_real_obj Player {
+
+    private int x;
+    private int y;
+
+    public prevent_missing_collision void setPosition(int wantedX, int wantedY) {
+
+        // Check collision BEFORE moving
+        if (wantedX != enemy.getPos().x) {
+            this.x = wantedX;
+            this.y = wantedY;
+        } else {
+            // Collision detected → no movement
+            handleCollision(enemy);
+        }
+    }
+}
+```
+
+Here:
+
+* The detection is done **in the same method** that updates the position.
+* That method is the natural place where a “missed collision” could happen if forgotten.
+
+So **that** method must carry the modifier.
+
+---
+
+#### ⭐ **2) Meaning of the modifier**
+
+`prevent_missing_collision` does **not** synchronize threads.
+It does **not** lock anything.
+It does **not** force parallel correctness.
+
+It means:
+
+* “This method is responsible for collision detection.”
+* “No collision will be accidentally missed in this simulation.”
+* “If the object moves, collision is checked before applying movement.”
+
+It is a **semantic guarantee**, not a runtime mechanism.
+
+---
+
+#### ⭐ **3) If no such method is found**
+
+If a `simu_real_obj` has **no method** declared with `prevent_missing_collision`,
+the compiler warns:
+
+> *Warning: This simu_real_obj has no collision-detection entry point.
+> Collisions might be missed if this object moves.*
+
+This protects developers from forgetting the most common simulation rule:
+
+➡ all movements must check collisions **before** applying them.
+
+---
+
+#### ⭐ **4) Abstract / non-physical simulations**
+
+Even in abstract models (economic, social, symbolic),
+entities may “interfere” or “overlap” in logical ways.
+
+If the simulation **does not** involve collision checks,
+the developer simply marks the method that updates state:
+
+```clprolf
+@prevent_missing_collision
+public void updateState(...) { ... }
+```
+
+This means:
+
+> “I confirm that no collision is expected in this simulation universe.”
+
+It’s an **intention marker**.
+
+---
+
+#### ⭐ **5) Summary (perfectly aligned with your vision)**
+
+* `prevent_missing_collision` is a **method modifier**, not a class modifier.
+* It is used **only** in `simu_real_obj`.
+* It marks **the method that performs collision detection**.
+* It prevents “missed collisions” due to discrete-time updates.
+* It does **not** manage threads or parallelism.
+* If no method is marked, the compiler warns.
+* Works for physical and abstract simulations.
 
 ---
 
@@ -2583,26 +2858,75 @@ The explicit presence of `@Forc_inh` or `@Forc_int_inh` always signals a **delib
 
 ### II.16) THE `underst` MODIFIER
 
-The `underst` modifier (short for *understanding*) can be applied to methods in `agent` or `worker_agent` classes. It marks methods that involve some form of *computer understanding* — for example, recognizing objects in an image.
+The `underst` modifier (short for *understanding*) is used **exclusively inside `agent` classes**.
 
-It can also be used to highlight code that is **non-intuitive** or difficult to follow, such as complex sorting algorithms. Even well-known algorithms can be annotated with `underst` if their implementation is considered non-trivial.
+It marks methods where the developer provides the computer with
+**the logic it needs to “understand” something that is obvious for humans,
+but not obvious for machines.**
 
-Syntactically, `underst` is placed before the return type in a method declaration. It cannot be used on methods within compatibility interfaces.
+This distinction exists because:
 
-**Example:**
+> **Humans and computers do not share the same cognitive abilities.**
+> What is trivial for us (recognizing a pattern, interpreting a shape,
+> identifying a condition, applying intuitive logic)
+> must be explicitly coded for the machine.
+
+Typical examples include:
+
+* image or pattern recognition
+* semantic or symbolic understanding
+* rules that the human brain infers naturally
+* sorting or decision-making that relies on intuition for humans
+* any logic where “the human sees the result instantly”,
+  but the machine needs explicit steps
+
+`underst` highlights the fact that the method
+**is teaching the computer how to understand something**
+that humans find intuitive.
+
+All other methods in an `agent` class are expected to contain
+**intuitive business code**, which aligns with the purpose of the declension.
+
+---
+
+#### ⭐ **Compilation Reporting**
+
+For every `agent` class, the compiler generates an *underst report*:
+
+* If an `agent` contains one or more `underst` methods →
+  It is listed as requiring **machine understanding support**.
+
+* If an `agent` contains **no `underst` methods** →
+  The compiler confirms that the class contains only intuitive business logic.
+
+* If `underst` is used in any other declension (worker_agent, abstraction, simu_real_obj, etc.) →
+
+> **Warning:** `underst` is only valid inside `agent` classes.
+
+This report helps developers quickly see which components
+**translate human intuition into machine logic**.
+
+---
+
+#### ⭐ **Example**
 
 ```java
 public agent ImageAnalyzer {
 
-    // Method marked as 'underst' because it performs recognition
+    // Humans instantly know what the object is; the machine needs help
     public underst boolean recognizeObject(Image img) {
-        // Complex recognition logic here...
+        // Recognition algorithm (machine understanding)
         return true;
     }
 
-    // Another example: a non-trivial sort
+    // Humans instantly know how to sort visually; machine needs explicit steps
     public underst void optimizedSort(List<Integer> values) {
-        // Advanced sorting algorithm...
+        // Algorithm teaching the machine the logic
+    }
+
+    // Pure intuitive business logic → no 'underst'
+    public void showResult(String result) {
+        System.out.println(result);
     }
 }
 ```
@@ -4908,11 +5232,56 @@ two public (the starter and `endLongActions()`), and one non-public continuation
 Warning if no boolean field annotated `@Long_action` exists for each trio of `long_action` methods.
 Example: six methods → two boolean fields expected.
 
-**ARCH DC1:**
-Warning if `underst` appears on a method within a `worker_agent` class
-(indicates misplaced or non-intuitive business logic).
+----
 
-### ARCH-DD — Advanced Synchronization Features
+##### **ARCH-DC — Rules for the `underst` Modifier**
+
+---
+
+###### **ARCH-DC1 — Invalid Context for `underst`**
+
+`underst` is only allowed in the **declension `agent`**,
+including all of its **synonyms**:
+
+* `agent`
+* `abstraction`
+* `simu_real_obj`
+
+If `underst` appears anywhere else:
+
+> **Warning:** `underst` is only allowed in `agent` (or its synonyms `abstraction` and `simu_real_obj`).
+
+Forbidden contexts:
+
+* `worker_agent`
+* *(`model` and `information` have no methods and require no rule)*
+
+---
+
+###### **ARCH-DC2 — `underst` Forbidden in Compatibility Interfaces**
+
+`underst` cannot appear in any compatibility interface.
+
+> **Error:** `underst` is not allowed in compatibility interfaces.
+
+---
+
+###### **ARCH-DC3 — Class-Level Reporting**
+
+For every class of the `agent` declension (including synonyms),
+the compiler performs an *underst presence check*:
+
+* If the class contains at least one `underst` method →
+  It is included in the global *underst report*.
+
+* If the class contains **no** `underst` methods →
+  The compiler may note:
+  *“This component contains only intuitive logic.”*
+  (This is positive and never produces a warning.)
+
+---
+
+##### ARCH-DD — Advanced Synchronization Features
 
 The following rules apply only when the optional bracket form
 `one_at_a_time[X, Y]` or `turn_monitor[X, Y]` is used.
@@ -4940,7 +5309,7 @@ but the structural coherence of bracketed synchronization is mandatory.**
 
 ---
 
-#### **Group Extraction Rule**
+###### **Group Extraction Rule**
 
 **For every method declared with `one_at_a_time[X, m] using M`,
 the compiler must identify all methods in the same class that reference the same turn_monitor `M`
@@ -4962,7 +5331,7 @@ form this group.
 A group `[X,m]` must contain at least two methods.
 
 ---
-#### **Dependent Activity Derivation**
+###### **Dependent Activity Derivation**
 
 A `dependent_activity` is meaningful only when the involved methods participate in a multi-method synchronization group.
 Therefore, every method taking part in a dependency must declare:
@@ -4980,6 +5349,49 @@ by observing methods that:
 
 Explicit `dependent_activity` declarations simply annotate
 a relationship that is already structurally valid.
+
+---
+
+##### ⭐ ARCH-DE — `prevent_missing_collision` Semantic Rules
+
+---
+
+###### **ARCH-DE1 — Presence Rule (Required in every `simu_real_obj`)**
+
+Every `simu_real_obj` **must contain at least one method** annotated with
+`prevent_missing_collision`.
+
+If none is present:
+
+> **Warning ARCH-DE1:** This `simu_real_obj` has no `prevent_missing_collision` method.
+> A collision-handling entry point may be missing.
+
+---
+
+###### **ARCH-DE2 — Exclusivity Rule (Only valid inside `simu_real_obj`)**
+
+The `prevent_missing_collision` modifier **may only be used inside `simu_real_obj` classes**.
+
+If used elsewhere:
+
+> **Warning ARCH-DE2:** The `prevent_missing_collision` modifier is only valid inside `simu_real_obj` classes.
+
+---
+
+###### ARCH-DE3 — Collision-Related Logic Rule
+
+A method annotated with `prevent_missing_collision` is expected to contain
+**at least one conditional structure** (`if`, `switch`, or equivalent),
+as collision detection normally involves evaluating a condition before updating state.
+
+If no conditional structure is detected:
+
+> **Warning ARCH-DE3:** This `prevent_missing_collision` method contains no conditional test.
+> Collision detection may be missing.
+
+This rule is heuristic:
+the compiler does not enforce collision patterns,
+but warns when the method does not resemble a typical collision-checking routine.
 
 ---
 
