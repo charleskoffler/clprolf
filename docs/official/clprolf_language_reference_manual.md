@@ -4508,21 +4508,6 @@ But in reality, it already carries a **business role**: “choosing a behavior.�
 
 ---
 
-
-## 🧩 **Annex — Grammar and Semantic Rules**
-
-This annex gathers the **formal components** of the Clprolf specification:
-the full **grammar (ANTLR4)** and the **semantic and architectural rules** (`ARCH_*`).
-
-These rules define how the compiler interprets declensions, inheritance,
-contracts, genders, concurrency annotations, and forced exceptions.
-Each rule has a unique identifier for traceability and automated testing.
-
-> 💡 *The Annex serves as a reference for both compiler developers and framework contributors.
-> It ensures that every semantic behavior in Clprolf can be tested, extended, and justified.*
-
----
-
 ### V.4) WeatherApp MVC — When Clprolf Meets Spring MVC Philosophy (Clprolf Framework example)
 
 Everyone knows the **MVC pattern**.
@@ -4939,8 +4924,19 @@ You see the architecture *as you read the code.*
 
 ---
 
-
 ## VI) Annex — Grammar and Semantic Rules
+
+This annex gathers the **formal components** of the Clprolf specification:
+the full **grammar (ANTLR4)** and the **semantic and architectural rules** (`ARCH_*`).
+
+These rules define how the compiler interprets declensions, inheritance,
+contracts, genders, concurrency annotations, and forced exceptions.
+Each rule has a unique identifier for traceability and automated testing.
+
+> 💡 *The Annex serves as a reference for both compiler developers and framework contributors.
+> It ensures that every semantic behavior in Clprolf can be tested, extended, and justified.*
+
+---
 
 ### VI.1) 🧩 **ANNEX A — GRAMMAR (ANTLR4)**
 
