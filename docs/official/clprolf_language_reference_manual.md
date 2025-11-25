@@ -1202,7 +1202,42 @@ Typical usages include local variables and method arguments.
 * `with_compat` is valid for **all Clprolf interface types**: version, capacity, or generic compatibility.
   This allows capacity interfaces to be used directly in variables, even though a class cannot directly inherit from them.
 
-### II.7.e) Capacity Interfaces and Advice
+#### II.7.e) Which interfaces may be used with `with_compat`
+
+The `with_compat` modifier applies **only to Clprolf interfaces**.
+It cannot be used with classes or with raw Java interfaces.
+
+`with_compat` is valid in the following cases:
+
+##### ✅ 1) Pure Clprolf interfaces
+
+(version, capacity, or neutral)
+
+##### ✅ 2) Java interfaces imported using `import java_interface` **with a declension**
+
+(e.g. `version_inh agent`, `capacity_inh`, etc.)
+
+Such imports make the Java interface **enter the Clprolf interface system**
+and therefore they are treated as **true Clprolf interfaces**.
+They are fully eligible for `with_compat`.
+
+`with_compat` is **not allowed** when:
+
+##### ⛔ the imported Java interface has **no declension**
+
+In that case, it remains a raw Java interface
+and therefore cannot be referenced using `with_compat`.
+
+---
+
+##### Final clarification
+
+> `with_compat` never accepts raw Java interfaces.
+> Only Clprolf interfaces — whether declared in Clprolf or imported with a declension — may be used with it.
+
+---
+
+#### II.7.f) Capacity Interfaces and Advice
 
 Capacity interfaces are only meant to extend **compat\_interf\_version** interfaces. They express functionality that is common across different families of version interfaces, and thus across the classes that implement them.
 Think of **versions** as *alternatives*, and **capacities** as *common traits shared across those alternatives*.
@@ -1211,7 +1246,7 @@ A capacity interface can never be implemented directly by a class. This restrict
 
 ---
 
-#### II.7.f) The Role of Advice
+#### II.7.g) The Role of Advice
 
 Capacity interfaces can have a **gender called an Advice**, which specifies their **target class role** —
 that is, the nature of the classes or versions that are meant to use or implement the capacity.
@@ -1318,7 +1353,7 @@ and reinforces the structural discipline of Clprolf’s two worlds — *agents* 
 
 ---
 
-#### II.7.g) Special Note: Enforcing a Capacity Across Declensions
+#### II.7.h) Special Note: Enforcing a Capacity Across Declensions
 
 Capacities in Clprolf are always **normal capacities**, with a clear advice:
 they are either **agent-like** or **worker-like**, never both.
@@ -1335,7 +1370,7 @@ An `agent` interface can still extend it, but must declare it with `@Forc_int_in
 
 ---
 
-#### II.7.h) Neutral Capacity Interfaces
+#### II.7.i) Neutral Capacity Interfaces
 
 A `compat_interf_capacity` can be declared **without any advice annotation**
 (`@Agent_like_advice`, `@Worker_like_advice`, etc.).
@@ -3253,6 +3288,37 @@ between versions or capacities.**
 
 ---
 
+##### 🔹 **Important Note About `@With_compat` in the Java Framework**
+
+In pure Clprolf, `with_compat` may only be applied to **Clprolf interfaces**, or to Java interfaces imported *with a declension*, which makes them equivalent to Clprolf interfaces.
+
+However, in the **Java Framework**, there is **no semantic `import java_interface` mechanism**.
+Therefore:
+
+##### ✅ `@With_compat` is allowed on **normal Java interfaces**
+
+because the framework cannot distinguish whether the interface belongs to the Clprolf interface system or not.
+
+This means that, in the Java Framework:
+
+* `@With_compat` may be placed on:
+
+  * Clprolf version interfaces
+  * Clprolf capacity interfaces
+  * **standard Java interfaces**
+
+* `@With_compat` still **cannot** be used with:
+
+  * classes
+  * primitives
+  * enums
+  * arrays
+  * parameterized types without interface semantics
+
+This preserves the practical usability of the framework while keeping conceptual continuity with pure Clprolf.
+
+---
+
 #### **4. Behavioral annotations (concurrency & intention)**
 
 These annotations express **behavioral** or **concurrency-related** intentions:
@@ -3330,6 +3396,7 @@ public interface MySortable { }
 Annotations are placed in the **same locations as in pure Clprolf** — before class declarations, interface definitions, methods, or types (e.g., `@With_compat` on variables, with the exception of method return types).
 
 ---
+
 
 ### III.7) Framework Usage Modes — Strict and Flexible
 
@@ -3940,562 +4007,507 @@ The principles of Clprolf are simple, easy to understand, and verifiable. They a
 
 ---
 
-## V) Examples and Comparisons
+## V) Examples
 
-### V.1) A COMPARISON OF CLPROLF AND THE CLASSICAL OOP VISION OF DESIGN PATTERNS — EXAMPLE: THE PROXY PATTERN
+### V.1) Clprolf Directory Explorer — When Breadth-First Becomes Intuitive
 
-Let’s compare how the **Proxy pattern** appears in classical OOP and in Clprolf. This is not a criticism of design patterns or of classical languages — Clprolf is itself an OO language — but a way to see how Clprolf may provide clarity and simplicity.
+Everyone knows that exploring directories can quickly turn into a messy technical exercise:
+loops, recursion, stacks, file filters… and code that loses all readability.
 
-#### 1. The proxy in Clprolf
-
-* By declaring both the proxy and the real subject as `agent` declensions, we immediately capture that the proxy is meant to carry the **same meaning** as the original object. A concrete example is an **Image** object, where the proxy adds security or deferred loading.
-* The interface between them is naturally a **version**, making it clear that the proxy and the subject are interchangeable implementations. Using `with_compat` highlights weak coupling directly in the code.
-* If the proxy systematically instantiates the real subject, **inheritance** may suffice. In that case, polymorphism and reuse already solve the problem, and the explicit “pattern” becomes unnecessary.
-* If the proxy uses composition, the code may resemble the **Adapter pattern**. But in Clprolf, the semantics are clearer, making the distinction less critical. Often the code can be written **intuitively and directly**, yet still remain well-structured and readable.
-
-#### 2. The proxy in classical OOP
-
-In classical OOP, the Proxy pattern is remembered as *proxy object + interface + real subject*. But with many patterns having overlapping structures, it is easy to confuse them — even for experienced programmers. The distinction between Proxy and Adapter, for example, may seem like a minor technical detail.
-
-Clprolf, by contrast, provides **semantics** that sharpen critical thinking: patterns feel more memorable, and often less necessary, because the design emerges naturally from declensions and roles.
-
-#### 3. Special cases with `worker_agent`
-
-Clprolf also allows us to ask whether the **real subject** is an `agent` or a `worker_agent`. If the subject is a `worker_agent`, we might wonder why it does not already embed the security provided by the proxy. In such cases, inheritance could often be the better choice, since the proxy and subject would naturally share methods.
-
-This perspective is not available in classical OO languages like Java or C++, where such distinctions are absent.
-
-#### 4. Clarity and pedagogy
-
-With Clprolf, the **Proxy pattern becomes simple enough to explain to a child**: a proxy is “just another version of the same thing.” This level of clarity is hard to achieve with the classical approach, where the vocabulary of patterns can obscure the core idea.
-
-In short, Clprolf not only makes the Proxy pattern easier to master, but also shows that, in many cases, the pattern may not even be needed: the language itself already guides the design toward the right structure.
+With **Clprolf**, clarity is built-in.
+You don’t just write *code* — you design **agents**, **workers**, and **models** that reflect what really happens.
+Let’s see how a simple *directory explorer* can become a beautifully structured program.
 
 ---
 
-### V.2) Agent–Worker Cooperation Example (Insertion Sort)
+#### V.1.a) The Concept
 
-To illustrate, let’s implement the insertion sort algorithm in two ways:
+We want to:
 
-1. **As a `worker_agent`** (`InsertionSorterWorker`):
+* explore all subdirectories of a given folder,
+* in **breadth-first** order (level by level),
+* assign each directory a hierarchical ID,
+* and display the results cleanly.
 
-   * The computer executes the sorting job directly.
-   * The algorithm is procedural and straightforward: browse elements, find the insertion index, shift elements, and place the value.
+Instead of mixing logic, display, and data handling,
+Clprolf invites us to split them into **roles**.
 
-2. **As an `agent` with a `HUMAN_EXPERT` role** (`InsertionSorter`):
-
-   * The class mimics how a human expert would think about sorting.
-   * The algorithm is seen as “placing elements one by one into the final array,” with strategies like checking the last element first, or starting the search from the end.
-   * The `@Underst` modifier can be used for steps that appear unintuitive but are in fact necessary — for instance, shifting values from the end of the array.
-
-Both approaches produce the same result, but the **perspectives differ**:
-
-* The `worker_agent` solution is closer to the machine’s mindset.
-* The `agent` solution reflects human reasoning, making it perhaps more intuitive for communication.
-
----
-
-
-Example: insertion sort with worker_agent and agent
-
-Both examples implement the insertion sort algorithm, but with different perspectives.
-
-```java
-package org.clprolf.examples.miscellaneous.insertionsort;
-
-import org.clprolf.framework.java.Role;
-import org.clprolf.framework.java.Worker_agent;
-import org.clprolf.framework.java.Agent;
-
-@Worker_agent
-public class InsertionSorterWorker {
-	private int array[]; 
-	private int workingArray[];
-	private int virtualLengthWorkingArr;
-	
-	public InsertionSorterWorker(int theArray[]) {
-		this.array = theArray;
-	}
-	
-	public int[] sort(){
-		this.workingArray = new int[this.array.length];
-		this.virtualLengthWorkingArr = 0;
-		
-		//Browse each element of the original array
-		for(int i = 0;i<this.array.length;i++) {
-			this.insertElement(array[i]);
-		}
-		return this.workingArray;
-	}
-	
-	private void insertElement(int value) {
-		int place;
-		place = this.findInsertionIndex(value);
-		this.insertAndShift(value, place);
-	}
-	
-	private int findInsertionIndex(int valeur) {
-		if (this.virtualLengthWorkingArr == 0) return 0;
-		for(int i=0;i<this.virtualLengthWorkingArr;i++) {
-			if (valeur <= this.workingArray[i]) {
-				return i;
-			}
-		}
-		return this.virtualLengthWorkingArr;
-	}
-	
-	private void insertAndShift( int value, int place) {
-		//I virtually enlarge my final array
-		this.virtualLengthWorkingArr++;
-		for (int i=this.virtualLengthWorkingArr-1;i>place;i--) {
-			this.workingArray[i] = this.workingArray[i-1];
-		}
-		//Adding the new value.
-		this.workingArray[place] = value;
-	}
-}
-```
-
-```java
-package org.clprolf.examples.miscellaneous.insertionsort;
-
-import org.clprolf.framework.java.Role;
-import org.clprolf.framework.java.Agent;
-import org.clprolf.framework.java.Underst;
-
-@Agent(Gender.HUMAN_EXPERT)
-public class InsertionSorter {
-	public int[] array;
-	public int[] sortedArray;
-	public int finalArrayLength;
-	
-	public InsertionSorter(int[] arrayToSort) {
-		this.array = arrayToSort;
-		this.sortedArray = new int[arrayToSort.length];
-		this.finalArrayLength = 0;
-	}
-	
-	public int[] sort() {
-		//We look at each of the input values. We don't have to do it in sequence. Here, we start at the end!
-		for (int i=this.array.length-1;i>=0;i--) {
-			this.putInFinalArray(this.array[i]);
-		}
-		return this.sortedArray;
-	}
-	
-	private void putInFinalArray(int valeur) {
-		if (this.finalArrayLength == 0) {
-			this.sortedArray[0] = valeur;
-			this.finalArrayLength++;
-			return;
-		}
-		int indice = findWhereToPut(valeur);
-		//We have to resize the array, because we're going to insert
-		this.finalArrayLength++;
-		//
-		makePlaceAtTheRight(indice);
-		this.sortedArray[indice] = valeur;
-	}
-	
-	// Search in a NON EMPTY array.
-	// this.finalArrayLength must be > 0. Don't bother the expert for nothing.
-	// Example: 2 5 7 10 => We're putting the 6 at index 2.
-	// Case 2 5 7 9 => The 7 has to be in index 3, not at 2, if possible, to minimize the moves.
-	private int findWhereToPut(int value) {
-	//The expert may find it necessary to search by dichotomy, if he likes!
-	// Here, the expert is starting from the end
-		int lastPlaceIndex = this.finalArrayLength-1;
-		//The expert gets rid of the case where the element is the last.
-		if (this.sortedArray[lastPlaceIndex] < value) {
-			return lastPlaceIndex+1;
-		}
-		//Now, we are sure to find. Our value is compulsorily <= all the elements.
-		int indice = lastPlaceIndex;
-		while (indice>=0 &&  this.sortedArray[indice] > value) indice--;
-		return indice+1;
-	}
-	
-	//We move all elements to the right, from the given index.
-	// Don't forget that the sorted array has been enlarged.
-	// Example 8/10/12, and we want to insert 9 à l'indice 1. We're moving the value at 1 to the end of the array.
-	// We're starting from the end, to not crushing the values. It could first seem "@Underst",
-	// but even in real-world, we have to approximatively do that.
-	@Underst
-	private void makePlaceAtTheRight(int index) {
-		//The array has been increased
-		int lastIndex = this.finalArrayLength - 1;
-		//It should not be intuitive starting from the end, that's why the @Underst.
-		for (int i = lastIndex-1; i>=index; i--) {
-			this.sortedArray[i+1] = this.sortedArray[i];
-		}
-	}
-}
-```
-
-### V.3) AN EXAMPLE OF CLPROLF IN ACTION WITH EXISTING JAVA LIBRARIES
-
-This example demonstrates how Clprolf can be applied on top of existing Java libraries.
-
-We implement a simple chat system between a client and a server:
-
-* Two `NetworkTalker` classes, modeled as **`agent` declensions with the HUMAN\_EXPERT role**, represent the participants in the conversation. Each talker is able to remember what was said.
-* The technical realization is handled by **`worker_agent` declensions** (`NetworkTalkerRealiz`, `ClientSideNetworkTalkerRealiz`), which manage sockets and streams.
-* A `SocketServerConfig` class (an `agent`) provides a real-world configuration object with static fields.
-
-In this model:
-
-* The **simulation** (human-like talkers exchanging sentences) is separated from the **technical realization** (socket creation, reading, writing).
-* We can reinterpret existing Java classes in Clprolf terms. For example, `ServerSocket` can be seen as a **SocketServer**, delivering sockets once a connection is established.
-* Only `worker_agent` classes interact with low-level technical details like sockets and streams.
-
-This separation simplifies the system compared to a traditional Java version: in Clprolf, the focus stays on the **real-world metaphor** of two people chatting, while technical socket handling is isolated in realization classes.
+| Component                                       | Declension      | Responsibility                 |
+| ----------------------------------------------- | --------------- | ------------------------------ |
+| `Launcher`                                      | `worker_agent` | Starts the exploration         |
+| `DirectoryExplorerImpl`                         | `agent`        | Performs the exploration       |
+| `DirectoryExplorerWorkerImpl`                   | `worker_agent` | Displays results               |
+| `Directory`                                     | `model`        | Represents one directory node  |
+| `DirectoryExplorer` / `DirectoryExplorerWorker` | `version_inh`  | Define contracts between roles |
 
 ---
 
+#### V.1.b) The Launcher
 
-```java
+The entry point is as simple as it looks.
+It prepares the environment and delegates the job to the proper agent.
 
-package org.clprolf.simple_examples.network;
+```clprolf
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Scanner;
+import java_interface java.nio.file.Path;
+import java_class abstraction java.lang.System;
+import java_class abstraction java.nio.file.Files;
+@Static
+import java_class agent java.nio.file.Paths;
+import java_class abstraction java.nio.file.LinkOption;
 
-import org.clprolf.framework.java.Worker_agent;
+public worker_agent Launcher {
 
-/**
- * clprolf simple example for network programming, here with sockets.
- * Example of a single chat between two applications, and a server waiting for a single connection.
- * 
- * v1.1	2024/02/09
- * @author Charles Koffler.
- *
- */
-@Worker_agent
-public class NetworkExampleServerLauncher {
-	
-	public static void main(String[] args) throws IOException {
-		/* We could see the Java class ServerSocket as a server of sockets ! */
-		ServerSocket socketServer = new ServerSocket(SocketServerConfig.PORT);
-		
-		System.out.println("Server started, waiting for a demand of connection");
-		//The server is doing his job, he is waiting for a request of connection.
-		Socket serverSocket = socketServer.accept();
-		
-		System.out.println("A connection has been established, sockets are plugged in");
-		
-		//We now need one of the talker, in this chat. Two sockets have been plugged in.
-		NetworkTalker serverSideTalker = new NetworkTalker("The server", serverSocket);
-		
-		Scanner scanner = new Scanner(System.in);
-		String wantedSentence;
-		
-		do {
-			System.out.println("Enter a sentence, 'q' to stop");
-			wantedSentence = scanner.nextLine();
-			serverSideTalker.saySentence(wantedSentence);
-			serverSideTalker.hearSentence();
-		}while ( !wantedSentence.equals("q"));
-		
-		serverSideTalker.stopTalking();
-		scanner.close();
-	}
-}
+    public static void main(String[] args) {
+        with_compat Path path = Paths.get(args.length > 0 ? args[0] : System.getProperty("user.home"));
+        try { path = path.toRealPath(LinkOption.NOFOLLOW_LINKS); } catch (Exception ignored) {}
 
-```
+        if (!Files.isDirectory(path)) {
+            System.err.println("Not a directory: " + path);
+            System.exit(1);
+        }
 
-```java
-package org.clprolf.simple_examples.network;
-
-import java.io.IOException;
-import java.net.UnknownHostException;
-
-import org.clprolf.framework.java.Worker_agent;
-
-/**
- * The client application. They are talking together, in the two directions.
- * @author Charles Koffler
- *
- */
-@Worker_agent
-public class NetworkExampleClientLauncher {
-	public static void main(String[] args) throws UnknownHostException, IOException {
-		NetworkTalker clientTalker = new NetworkTalker("The client");
-		
-		while (!(clientTalker.hearSentence().equals("q"))) {
-			clientTalker.saySentence("Well done!");
-		}
-		clientTalker.saySentence("Good bye!"); //Just for answer.
-		clientTalker.stopTalking();
-	}
+        with_compat DirectoryExplorer explorer = new DirectoryExplorerImpl();
+        explorer.breadthFirstFolders(path);
+    }
 }
 ```
 
-```java
-package org.clprolf.simple_examples.network;
+It’s clear who does what:
+this worker doesn’t explore — it simply *launches the agent*.
 
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
+---
 
-import org.clprolf.framework.java.Nature;
-import org.clprolf.framework.java.Worker_agent;
+#### V.1.c) The Agent — `DirectoryExplorerImpl`
 
-@Worker_agent
-public class ClientSideNetworkTalkerRealiz extends @Nature NetworkTalkerRealiz {
+Here lies the real exploration logic.
+The agent collaborates with a worker, manipulates a model, and manages a queue.
 
-	public ClientSideNetworkTalkerRealiz(NetworkTalker theOwner) throws UnknownHostException, IOException  {
-		super(theOwner);
-		this.createSocket();
-	}
-	
-	/**
-	 * A method for create a client-side socket!
-	 * @throws UnknownHostException
-	 * @throws IOException
-	 */
-	private void createSocket() throws UnknownHostException, IOException {
-		Socket clientSideSocket = new Socket(SocketServerConfig.HOST, SocketServerConfig.PORT);
-		this.setSocket(clientSideSocket);
-	}
+```clprolf
+
+import java_interface version_inh abstraction java.util.List<E>;
+import java_class abstraction java.util.ArrayList;
+import java_class abstraction java.util.LinkedList;
+import java_interface java.util.Queue<E>;
+import java_class java.io.File;
+
+public agent DirectoryExplorerImpl contracts DirectoryExplorer {
+
+    private with_compat DirectoryExplorerWorker worker;
+
+    public DirectoryExplorerImpl() {
+        this.worker = new DirectoryExplorerWorkerImpl();
+    }
+
+    public void breadthFirstFolders(with_compat Path directoryPath) {
+        directoryPath = directoryPath.normalize().toAbsolutePath();
+
+        with_compat List<Directory> foldersList = new ArrayList<>();
+        with_compat Queue<Directory> directoryToExplore = new LinkedList<>();
+
+        directoryToExplore.add(new Directory(directoryPath, List.of(0)));
+
+        while (!directoryToExplore.isEmpty()) {
+            Directory current = directoryToExplore.poll();
+            foldersList.add(current);
+
+            File[] files = current.getPath().toFile().listFiles();
+            if (files != null) {
+                int index = 0;
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        List<Integer> newId = new ArrayList<>(current.getHierarchicalId());
+                        newId.add(index);
+                        directoryToExplore.add(new Directory(file.toPath().normalize().toAbsolutePath(), newId));
+                        index++;
+                    }
+                }
+            }
+        }
+
+        worker.displayResult(foldersList);
+    }
 }
 ```
 
-```java
+Every part is crystal clear:
 
-package org.clprolf.simple_examples.network;
+* The queue defines a **breadth-first traversal**.
+* Each directory receives its own **hierarchical ID**.
+* The **worker** takes care of presentation.
 
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
+No recursion, no confusion.
 
-import org.clprolf.framework.java.Role;
-import org.clprolf.framework.java.Agent;
-import org.clprolf.framework.java.With_compat;
+---
 
-/**
- * A talker who could discuss with someone, threw a network. Here, it is seen as a human talker!
- * @author Charles Koffler
- *
- */
-@Agent(Gender.HUMAN_EXPERT)
-public class NetworkTalker {
-	public static enum MSG_DIRECTION {
-		SAID, HEARD
-	}
-	public static class Message {
-		public String sentence;
-		public MSG_DIRECTION direction;
-		
-		public Message(String theMsg, MSG_DIRECTION theDirect) {
-			this.sentence = theMsg;
-			this.direction = theDirect;
-		}
-	}
-	
-	private String name;
-	private @With_compat List<Message> conversation; 
-	
-	/* Our talker has a state. He keeps his conversation. */
-	public List<Message> getConversation() {
-		return conversation;
-	}
+#### V.1.d) The Worker Agent
 
-	public String getName() {
-		return name;
-	}
+Responsible for showing the result, not for computing it.
+Again, we separate *doing* from *showing*.
 
-	//Associated realization worker.
-	protected NetworkTalkerRealiz realiz;
-	
-	private void commonInits(String theName) {
-		this.name = theName;
-		this.conversation = new ArrayList<Message>();
-	}
-	/**
-	 * Constructor for a client-side network talker. Creates a client socket.
-	 * @param theName
-	 * @throws UnknownHostException
-	 * @throws IOException
-	 */
-	public NetworkTalker(String theName) throws UnknownHostException, IOException {
-		this.realiz = new ClientSideNetworkTalkerRealiz(this);
-		this.commonInits(theName);
-	}
-	
-	/**
-	 * Used for the case of a server-side socket, so it is created by the server of sockets.
-	 * @param theName
-	 * @param givenSocket
-	 * @throws IOException
-	 */
-	public NetworkTalker(String theName, Socket givenSocket) throws IOException {
-		this.commonInits(theName);
-		this.realiz = new NetworkTalkerRealiz(this);
-		this.realiz.setSocket(givenSocket);
-	}
-	
-	/**
-	 * The talker is talking!
-	 * @param sentence
-	 */
-	public void saySentence(String sentence) {
-		try {
-			Message msg = new Message(sentence, MSG_DIRECTION.SAID);
-			this.conversation.add(msg);
-			
-			this.realiz.display("Message said: " + sentence); //This server sends lines, terminated by "\n".
-			this.realiz.writeLine(sentence);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * The talker listen to a sentence from the other talker.
-	 * @return
-	 */
-	public String hearSentence() {
-		try {
-			String sentence =  this.realiz.readLine();
-			this.realiz.display("Message heard: " + sentence);
-			
-			Message msg = new Message(sentence, MSG_DIRECTION.HEARD);
-			this.conversation.add(msg);
-			
-			return sentence;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-	
-	public void stopTalking() throws IOException {
-		this.realiz.display("Stop talking");
-		this.realiz.close();
-		
-		this.realiz.displayConversation();
-	}
+```clprolf
+
+import java_interface version_inh abstraction java.util.List<E>;
+import java_class abstraction java.lang.String;
+import java_class abstraction java.lang.System;
+
+public worker_agent DirectoryExplorerWorkerImpl contracts DirectoryExplorerWorker {
+
+    public void displayResult(List<Directory> foldersList) {
+        for (Directory dir : foldersList) {
+            String display = formatId(dir.getHierarchicalId()) + " : " + dir.getPath();
+            System.out.println(display);
+        }
+    }
+
+    private String formatId(List<Integer> id) {
+        return "(" + String.join(", ", id.stream().map(String::valueOf).toArray(String[]::new)) + ")";
+    }
 }
-
 ```
 
-```java
+Simple, explicit, human-readable.
 
-package org.clprolf.simple_examples.network;
+---
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.Socket;
+#### V.1.e) The Model
 
-import org.clprolf.framework.java.Worker_agent;
-import org.clprolf.simple_examples.network.NetworkTalker.MSG_DIRECTION;
-import org.clprolf.simple_examples.network.NetworkTalker.Message;
+A `model` in Clprolf is always clear:
+it represents data, and nothing more.
 
-/**
- * The worker for handling computer lower level tasks, associated with a NetworkTalker!
- * @author Charles Koffler
- *
- */
-@Worker_agent
-public class NetworkTalkerRealiz {
-	/**
-	 * In some cases, owner could be useful, especially to access fields to display, and this kind of stuff.
-	 */
-	protected NetworkTalker owner;
+```clprolf
 
-	private Socket theSocket;
-	private PrintWriter writer;
-	private BufferedReader reader;
-	
-	/**
-	 * The socket dependency have to be injected later, with setSocket().
-	 * @param theOwner
-	 */
-	public NetworkTalkerRealiz(NetworkTalker theOwner) {
-		this.owner = theOwner;
-	}
-	
-	/**
-	 * The way to inject this dependency.
-	 * @param socket
-	 * @throws IOException
-	 */
-	public void setSocket(Socket socket) throws IOException {
-		this.theSocket = socket;
-		//the writer
-		//First we obtain a stream. A stream could be viewed as a real-world stream.
-		OutputStream theOutputStream = this.theSocket.getOutputStream();
-		//A writer could be viewed as a @Simu_real_obj(Gender.HUMAN_EXPERT), a real-world writer.
-		writer = new PrintWriter(theOutputStream);
-		
-		//The reader
-		reader = new BufferedReader(new InputStreamReader(this.theSocket.getInputStream()));
-	}
-	
-	public void writeLine(String message) throws IOException {
-		writer.println(message);
-		writer.flush();
-	}
-	
-	public String readLine() throws IOException {
-		return reader.readLine();
-	}
-	
-	public void display(String theString) {
-		System.out.println(this.owner.getName() + ": " + theString); //Here, an example of the need to have the owner in the technical class.
-	}
-	
-	/**
-	 * Display the history of the conversation
-	 */
-	public void displayConversation() {
-		System.out.println("History of the conversation: ");
-		System.out.println();
-		for (Message currentMsg: this.owner.getConversation()) {
-			System.out.println("Message: ");
-			if (currentMsg.direction == MSG_DIRECTION.SAID) {
-				System.out.print("Said;-");
-			}
-			else {
-				System.out.print("Heard;-");
-			}
-			System.out.println(currentMsg.sentence + "-");
-		}
-	}
-	
-	public void close() throws IOException {
-		theSocket.close();
-	}
+import java_interface version_inh abstraction java.util.List<E>;
+import java_interface java.nio.file.Path;
+
+public model Directory {
+    private Path path;
+    private List<Integer> hierarchicalId;
+
+    public Directory(Path path, List<Integer> id) {
+        this.path = path;
+        this.hierarchicalId = id;
+    }
+
+    public Path getPath() { return path; }
+    public List<Integer> getHierarchicalId() { return hierarchicalId; }
 }
-
 ```
 
-```java
-package org.clprolf.simple_examples.network;
+No logic, no side effects. Just structure.
 
-import org.clprolf.framework.java.Abstraction;
+---
 
-/**
- * The configuration object of our server of sockets.
- * @author Charles Koffler
- *
- */
-@Abstraction
-public class SocketServerConfig {
-	public static String HOST = "localhost";
-	
-	public static int PORT = 8080;
+#### V.1.f) The Contracts
+
+```clprolf
+
+public version_inh agent DirectoryExplorer {
+    void breadthFirstFolders(Path directoryPath);
+}
+
+
+public version_inh worker_agent DirectoryExplorerWorker {
+    void displayResult(List<Directory> foldersList);
+}
+```
+
+Contracts make the collaboration explicit.
+No hidden dependencies, no tight coupling — just clear communication.
+
+---
+
+#### V.1.g) Why it matters
+
+Breadth-first exploration is only the example.
+What matters here is **how naturally the architecture expresses itself**:
+
+* The launcher launches.
+* The agent explores.
+* The worker displays.
+* The model represents.
+* The contract binds.
+
+Clprolf doesn’t just help you code — it helps you **think**.
+The structure emerges from the intention.
+
+---
+
+#### V.1.h) Final Thoughts
+
+> In classical Java, you might have written a single class doing everything.
+>
+> In Clprolf, each role finds its natural place.
+> The result is simple, explicit, and readable — even for someone who never wrote Java before.
+
+Clprolf brings **clarity back into architecture**,
+and even the smallest utilities become examples of well-designed software.
+
+---
+
+### V.2) Adapter Pattern in Clprolf
+
+Design patterns are a classic way to solve recurring software design problems.
+We’ll revisit the **Adapter pattern**, but written in **Clprolf** — a language that makes object-oriented roles and contracts explicit.
+
+Even if you don’t know Clprolf yet, don’t worry:
+
+* the **use case** is familiar,
+* the **solution** is the same pattern you already know,
+* and you’ll see how Clprolf makes both sides clearer.
+
+---
+
+#### V.2.a) The Problem
+
+Imagine you have an existing class that implements an **old interface**, but your application now expects the **modern version** of that interface.
+
+* You cannot change the old class (it’s legacy code, or external).
+* You need a way to reuse it, but expose it through the **newer contract**.
+
+That’s where the **Adapter** comes in.
+
+---
+
+#### V.2.b) The Clprolf Solution
+
+In Clprolf, the rule is simple:
+
+* A concrete **agent** can contract **only one** `version_inh`.
+* So you **cannot make the same class both an “old” and a “modern” implementation**.
+* Instead, you **create a new agent — the Adapter — which contracts the modern version, and internally uses the old one via `with_compat`.**
+
+---
+
+#### V.2.c) Example: Enumeration → Iterator
+
+Old Java APIs used `Enumeration`, but modern code expects `Iterator`. We want to reuse existing `Enumeration` implementations without rewriting them.
+
+
+```clprolf
+// 1. Old contract (an abstraction)
+public version_inh abstraction Enumeration<E> {
+    boolean hasMoreElements();
+    E nextElement();
+}
+
+// 2. Modern contract (an agent)
+public version_inh agent Iterator<E> {
+    boolean hasNext();
+    E next();
+}
+
+// 3. Adapter agent: contracts the modern version
+public agent EnumToIterAdapter<E> contracts Iterator<E> {
+    private with_compat Enumeration<E> enumeration;
+
+    public EnumToIterAdapter(with_compat Enumeration<E> enumeration) {
+        this.enumeration = enumeration;
+    }
+
+    public boolean hasNext() {
+        return enumeration.hasMoreElements();
+    }
+
+    public E next() {
+        return enumeration.nextElement();
+    }
 }
 ```
 
 ---
+
+#### V.2.d) Why this is clear in Clprolf
+
+* `version_inh` makes it explicit: these are **role contracts meant to be implemented** by agents.
+* `contracts` shows clearly: the Adapter **is a modern `Iterator`**.
+* `with_compat` highlights the dependency on the old `Enumeration`.
+* No hidden tricks: we see immediately that the Adapter is **a new agent** created for translation.
+
+And here’s an important detail:
+
+* **`Enumeration` is an abstraction** (a very minimal contract, part of the `agent` declension in Clprolf).
+* **`Iterator` is a full agent**, representing the modern iteration model.
+* So the Adapter not only bridges old to new, but also shows a **shift in philosophy**: from abstraction to agent.
+
+---
+
+#### V.2.e) Key takeaway
+
+In Clprolf, the Adapter is never a “magical disguise.”
+It’s simply:
+
+> **A new agent that contracts the modern interface, and delegates to an old implementation through `with_compat`.**
+
+This removes confusion and makes the intent crystal clear.
+
+---
+
+#### V.2.f) Bonus: Using the Adapter in a Demo
+
+For completeness, here’s how a client would actually use the Adapter.
+Even if the old API gives you an `Enumeration`, the Adapter lets you treat it as a modern `Iterator`:
+
+```clprolf
+public worker_agent AdapterDemo {
+    public static void main(String[] args) {
+        Vector<String> legacyVector = new Vector<>();
+        legacyVector.add("one");
+        legacyVector.add("two");
+        with_compat Enumeration<String> enumeration = legacyVector.elements();
+
+        with_compat Iterator<String> iterator = new EnumToIterAdapter<>(enumeration);
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+```
+
+---
+
+### V.3) Strategy Pattern in Clprolf: Clear Roles for Swappable Behavior
+
+Design patterns are a classic way to solve recurring problems in software design.
+We’ll revisit the **Strategy pattern**—written in **Clprolf**, a language that makes object-oriented roles and contracts explicit.
+
+Even if you don’t know Clprolf yet, don’t worry:
+
+* the **use case** is familiar,
+* the **solution** is the same pattern you already know,
+* and you’ll see how Clprolf makes both sides clearer.
+
+---
+
+#### V.3.a) The Problem
+
+You have a **behavior** that should be easy to **swap** (at runtime or configuration time).
+Example: apply different **discount** policies without changing the checkout code.
+
+---
+
+#### V.3.b) The Clprolf Solution
+
+In Clprolf:
+
+* a strategy is modeled as a **`version_inh abstraction`** (a simple, swappable rule),
+* each concrete strategy is also an **`abstraction`** that **contracts** the base one,
+* the context declares its dependency with `with_compat`.
+
+Result: the strategy’s role, implementations, and dependency are **explicit**.
+
+---
+
+#### V.3.c) Example: Discount strategies
+
+We’ll define a `Discount` and two implementations:
+
+* `NoDiscount` (does nothing)
+* `PercentageDiscount` (e.g., 15% off)
+
+Then a `Checkout` context that uses whichever discount it’s given.
+
+#### V.3.d) Clprolf Code
+
+```clprolf
+// 1) Strategy contract (a generic rule for discounts)
+public version_inh abstraction Discount {
+    int apply(int price);
+}
+
+// 2) Concrete strategies
+public abstraction NoDiscount contracts Discount {
+    public int apply(int price) { return price; }
+}
+
+public abstraction PercentageDiscount contracts Discount {
+    private int percent;
+
+    public PercentageDiscount(int percent) { this.percent = percent; }
+
+    public int apply(int price) {
+        return price - (price * percent / 100);
+    }
+}
+
+// 3) Context depending on a strategy
+public agent Checkout {
+    private with_compat Discount strategy;
+
+    public Checkout(with_compat Discount strategy) {
+        this.strategy = strategy;
+    }
+
+    public int total(int[] prices) {
+        int sum = 0;
+        for (int p : prices) sum += p;
+        return strategy.apply(sum);
+    }
+}
+```
+
+---
+
+#### V.3.e) Bonus: Demo with swappable discounts
+
+```clprolf
+public worker_agent StrategyDemo {
+    public static void main(String[] args) {
+        int[] cart = new int[] { 4000, 2000, 1500 }; // total = 7500
+
+        // No discount
+        with_compat Discount none = new NoDiscount();
+        Checkout checkoutNone = new Checkout(none);
+        System.out.println(checkoutNone.total(cart)); // 7500
+
+        // 15% discount
+        with_compat Discount promo15 = new PercentageDiscount(15);
+        Checkout checkout15 = new Checkout(promo15);
+        System.out.println(checkout15.total(cart)); // 6375
+    }
+}
+```
+
+---
+
+#### V.3.f) Why this is clear in Clprolf
+
+* `version_inh abstraction` shows immediately that a discount is a **generic, swappable rule**, not a central agent.
+* `contracts` makes each concrete discount a true implementation of that rule.
+* `with_compat` declares the dependency directly: the checkout expects “a discount,” no hidden wiring.
+* Swapping is just supplying a different **abstraction** — the context stays untouched.
+
+---
+
+#### V.3.g) Key takeaway
+
+In Clprolf, Strategy is not a trick — it’s simply:
+
+> **Declare a rule (`abstraction`), provide implementations, and swap them with `with_compat`.**
+
+Behavior becomes interchangeable, and the intent is visible in the syntax.
+
+---
+
+#### V.3.h) Innovation Note: Patterns reveal roles
+
+In traditional OOP, Strategy is often shown as a purely technical structure.
+But in reality, it already carries a **business role**: “choosing a behavior.”
+
+👉 Clprolf makes this dimension explicit.
+
+* Here, the role is `abstraction` → a discount is a rule, not an agent.
+* In another case, a Strategy could be an `agent` (e.g., choosing a routing algorithm).
+* For technical variations, it might be a `worker_agent` (like multiple DAO implementations).
+
+**This is where Clprolf innovates:**
+
+> Design patterns don’t just solve problems — they map naturally to roles (`agent`, `abstraction`, `worker_agent`).
+> And when the role is explicit, the pattern’s intent becomes crystal clear.
+
+---
+
 
 ## 🧩 **Annex — Grammar and Semantic Rules**
 
@@ -4510,6 +4522,423 @@ Each rule has a unique identifier for traceability and automated testing.
 > It ensures that every semantic behavior in Clprolf can be tested, extended, and justified.*
 
 ---
+
+### V.4) WeatherApp MVC — When Clprolf Meets Spring MVC Philosophy (Clprolf Framework example)
+
+Everyone knows the **MVC pattern**.
+But what if you could make it **even clearer**, more **structurally explicit**, and **compatible** with both *desktop* and *web* architectures?
+
+That’s what **Clprolf** does —
+it turns the philosophy of **clarity-oriented programming** into real, verifiable structure.
+
+Let’s look at a simple example:
+a *WeatherApp* written in Java + Clprolf annotations —
+which behaves like a **Spring MVC** application,
+but runs locally in Swing.
+
+---
+
+#### V.4.a) The Idea Behind It
+
+In Spring MVC, a `Controller` receives a request,
+calls a `Repository` or `Service`,
+and returns a `View`.
+
+In **Clprolf**, we do exactly the same —
+but we **explicitly declare the roles** of each component.
+
+| Component           | Clprolf Role                   | Description                                 |
+| ------------------- | ------------------------------ | ------------------------------------------- |
+| `WeatherApp`        | `@Worker_agent(Gender.STATIC)` | The system launcher (like Spring Boot main) |
+| `WeatherController` | `@Agent`                       | The “brain” that coordinates the logic      |
+| `WeatherRepository` | `@Worker_agent`                | Technical layer fetching data               |
+| `WeatherRenderer`   | `@Worker_agent`                | The View layer (UI and user input)          |
+
+---
+
+#### V.4.b) The Complete Code
+
+```java
+package org.clprolf.examples.design_patterns.mvc;
+
+import org.clprolf.framework.java.Gender;
+import org.clprolf.framework.java.Worker_agent;
+
+@Worker_agent(Gender.STATIC)
+public class WeatherApp {
+    public static void main(String[] args) {
+        WeatherController controller = new WeatherController();
+    }
+}
+```
+
+---
+
+##### Controller (Agent Layer)
+
+```java
+package org.clprolf.examples.design_patterns.mvc;
+
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Gender;
+
+@Agent(Gender.EXPERT_COMPONENT)
+public class WeatherController {
+    private WeatherRepository model;
+    private WeatherRenderer view;
+
+    public WeatherController() {
+        model = new WeatherRepository();
+        view = new WeatherRenderer(this);
+    }
+
+    public void giveTheWeather(String location){
+        model.setLocation(location);
+        model.fetchWeather();
+        String forecast = model.getForecast();
+        view.displayForecast(forecast);
+    }
+}
+```
+
+This class acts like a **Spring `@Controller`**:
+it receives a request (`giveTheWeather`),
+calls the **repository**,
+and updates the **view**.
+
+---
+
+##### View (Worker Layer)
+
+```java
+package org.clprolf.examples.design_patterns.mvc;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Contracts;
+import org.clprolf.framework.java.Nature;
+import org.clprolf.framework.java.Worker_agent;
+import org.clprolf.framework.java.Advice;
+
+@Worker_agent
+public class WeatherRenderer {
+
+    private JFrame frame;
+    private JTextField locationField;
+    private JTextArea forecastArea;
+    private WeatherController expert;
+
+    @Agent
+    @Version_inh
+    private static interface WindowObserver extends @Nature ActionListener { }
+
+    @Agent
+    private class WindowObserverImpl implements @Contracts WindowObserver {
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String location = getLocationInput();
+            this.expert.giveTheWeather(location);
+        }
+    }
+
+    public WeatherRenderer(WeatherController expert) {
+        this.expert = expert;
+        prepareViewObjects();
+    }
+
+    protected void prepareViewObjects() {
+        frame = new JFrame("Weather Forecast");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        JLabel locationLabel = new JLabel("Enter Location:");
+        locationField = new JTextField(20);
+        locationField.addActionListener(new WindowObserverImpl());
+
+        forecastArea = new JTextArea(5, 30);
+        forecastArea.setEditable(false);
+
+        panel.add(locationLabel, BorderLayout.NORTH);
+        panel.add(locationField, BorderLayout.CENTER);
+        panel.add(new JScrollPane(forecastArea), BorderLayout.SOUTH);
+
+        frame.getContentPane().add(panel);
+        frame.setVisible(true);
+    }
+
+    public String getLocationInput() {
+        return locationField.getText();
+    }
+
+    public void displayForecast(String forecast) {
+        forecastArea.setText(forecast);
+    }
+}
+```
+
+Here, the **view** acts like a web frontend.
+It observes user input (capacity-inherited `ActionListener`)
+and sends the event to the **controller agent**.
+
+You could almost replace Swing with HTML/JavaScript
+and it would behave the same way!
+
+---
+
+##### Repository (Technical Worker)
+
+```java
+package org.clprolf.examples.design_patterns.mvc;
+
+import org.clprolf.framework.java.Worker_agent;
+
+@Worker_agent
+class WeatherRepository {
+    private String location;
+    private String forecast;
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void fetchWeather() {
+        this.forecast = "Sunny with a chance of clouds";
+    }
+
+    public String getForecast() {
+        return forecast;
+    }
+}
+```
+
+A pure worker: no intelligence, no UI — just technical work.
+That’s exactly what a `Repository` or `Service` does in Spring MVC.
+
+---
+
+#### V.4.c) The MVC Flow
+
+```
+User (View) → WeatherRenderer (worker_agent)
+             → WeatherController (agent)
+             → WeatherRepository (worker_agent)
+             → back to WeatherRenderer
+```
+
+The **same logical flow** as Spring MVC —
+but here, everything runs locally and instantly.
+
+---
+
+#### V.4.d) Why It Matters
+
+This example shows that **Clprolf integrates seamlessly** with existing patterns.
+It doesn’t replace MVC, Spring, or OOP —
+it simply **clarifies and strengthens** them.
+
+In a Spring app, you’d just change the way communication happens
+(HTTP + `@GetMapping` instead of direct calls) —
+but your *roles*, *responsibilities*, and *architecture* remain identical.
+
+---
+
+#### V.4.e) Final Thoughts
+
+Clprolf makes **architecture visible**.
+You no longer guess what a class *is supposed to be*:
+you *declare it* — explicitly.
+
+> A `Controller` is an **Agent**.
+> A `Repository` is a **Worker_agent**.
+> A `Launcher` is a **Static Worker_agent**.
+> A `View` is also a **Worker_agent** — the interface between human and machine.
+
+In short:
+Clprolf doesn’t reinvent MVC — it **makes it self-explanatory**.
+
+---
+
+##### V.4.f) Summary
+
+| Traditional Role | Clprolf Equivalent             | Layer            |
+| ---------------- | ------------------------------ | ---------------- |
+| Controller       | `@Agent`                       | Logic / Domain   |
+| Repository       | `@Worker_agent`                | Data / Technical |
+| View             | `@Worker_agent`                | Presentation     |
+| Launcher         | `@Worker_agent(Gender.STATIC)` | System entry     |
+
+---
+
+> 🌤️ *“It acts as a living interface between human and machine —
+> the very essence of the worker_agent.”*
+
+---
+
+### V.5) Revisiting Snake in Java with Clprolf — From Clear Code to Clear Game (Clprolf Framework)
+
+What if writing a small game could prove that architecture can be both **clean** and **alive**?
+Let’s revisit the classic **Snake** game — but built with **Clprolf**,
+a paradigm that turns *clarity* into a coding language.
+
+---
+
+#### V.5.a) From OOP to Clarity-Oriented Programming
+
+Clprolf isn’t a framework. It’s a **language layer + methodology**
+that builds **architectural meaning** into Java itself.
+
+| Annotation      | Role                                              |
+| --------------- | ------------------------------------------------- |
+| `@Agent`        | Domain logic — active and autonomous components   |
+| `@Worker_agent` | Technical performer (I/O, UI, OS, rendering)      |
+| `@Abstraction`  | Conceptual contract or system-level interface     |
+| `@Model`        | Passive structure, pure data                      |
+| `@Underst`      | A “thinking” method — where reasoning matters     |
+| `@Long_action`  | A time-based or continuous process                |
+| `@With_compat`  | Declares a safe compatibility link between agents |
+
+When you read Clprolf code, you see **intent**, not just syntax.
+
+---
+
+#### V.5.b) The Architecture of the Snake Game
+
+The game has five layers — all explicit:
+
+```
+SnakeGameScene (Abstraction)
+ ├── SnakeImpl (Agent)
+ ├── FoodExpertImpl (Agent)
+ ├── SnakeGameSceneRendererImpl (Worker_agent)
+ ├── SnakeWindowImpl (Abstraction)
+ └── SnakeGamePanelImpl (Abstraction + Swing Nature)
+```
+
+Each one knows **exactly what it should know**, and **nothing more**.
+
+For instance, the `FoodExpert` agent handles food positions —
+but knows nothing about the UI, keyboard, or rendering:
+
+```java
+@Agent(Gender.EXPERT_COMPONENT)
+public class FoodExpertImpl implements @Contracts FoodExpert {
+    private @With_compat SnakeGameScene scene;
+
+    public void positionFood() {
+        Random random = new Random();
+        ...
+        food.setType(random.nextBoolean() ? FoodType.APPLE : FoodType.ORANGE);
+        foodList.add(food);
+    }
+}
+```
+
+Meanwhile, the **Worker Agent** handles technical events and visual updates:
+
+```java
+@Worker_agent
+public class SnakeGameSceneRendererImpl implements @Contracts SnakeGameSceneRenderer {
+    private @With_compat SnakeGameScene scene;
+
+    public SnakeGameSceneRendererImpl(@With_compat SnakeGameScene scene) {
+        this.scene = scene;
+        EventQueue.invokeLater(this); // Executed in AWT thread
+    }
+
+    @Override
+    public void run() {
+        window = new SnakeWindowImpl(this); // creates and starts rendering
+    }
+}
+```
+
+---
+
+#### V.5.c) Understanding the Flow of Life — The Snake Logic
+
+The magic happens in `SnakeImpl`.
+It shows how **Clprolf models living behavior**:
+sliding, growing, interacting — without spaghetti code.
+
+```java
+@Underst
+@Long_action
+protected void continueSliding() {
+    if (this.lastSlidingType == SlidingType.STOPPED) return;
+
+    SnakeLink newHeadLink = computeHeadLink(this.links.get(0));
+    checkCollisionsForNewHead(newHeadLink);
+
+    Food foodAtNewHeadPlace = this.scene.getFoodExpert().getFoodAt(newHeadLink.x, newHeadLink.y);
+    updateBodyForSliding(foodAtNewHeadPlace != null, newHeadLink);
+}
+```
+
+The `@Underst` annotation reminds that the logic involves **reasoning** —
+not just a trivial mechanical step.
+Each call represents an *intention* (“continue sliding”, “handle food”, “grow body”).
+The structure itself communicates **meaning**.
+
+---
+
+#### V.5.d) Rendering Without Losing the Model
+
+The UI never controls the game directly.
+The window only refreshes every 20 ms —
+and triggers the next logic step **inside the paint cycle**.
+
+```java
+@Override
+public void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    drawSnakes(g);
+    drawFood(g);
+
+    // End of long actions — one physics step every few frames
+    this.gameWindow.getReal().getScene().getSnake().endLongActions();
+    this.gameWindow.getReal().getScene().getSnake_two().endLongActions();
+}
+```
+
+So the **render loop and game loop are naturally synchronized** —
+without timers, threads, or complicated scheduling.
+
+---
+
+#### V.5.e) Loose Coupling by Design — Not by Effort
+
+With `@With_compat`, compatibility is both explicit and enforced:
+
+```java
+public class SnakeImpl implements @Contracts Snake {
+    protected @With_compat SnakeGameScene scene;
+}
+```
+
+If a component tries to depend on something it shouldn’t —
+Clprolf makes it visible, conceptually and syntactically.
+You see the architecture *as you read the code.*
+
+---
+
+#### V.5.f) What We Learn from This Example
+
+* You can build a **complete game architecture** without losing clarity.
+* **Long actions** and **reasoning methods** bring life-like modeling.
+* **Workers** act as true performers, keeping the domain clean.
+* **Compatibility links** replace DI frameworks and reflection.
+* The **render loop** stays synchronous, transparent, and elegant.
+
+> The result? A Snake that’s both fun and architecturally flawless.
+
+---
+
 
 ## VI) Annex — Grammar and Semantic Rules
 
@@ -4822,24 +5251,7 @@ are explicitly marked as compatibility views.
 
 ---
 
-**ARCH BA9 — Interface Validation for `with_compat` (Interfaces, Usage)**
-
-The compiler must ensure that every type used with `with_compat`
-is a valid **interface type** —
-either a Clprolf interface or a Java interface imported using `import java_interface`.
-
-Classes and non-imported Java interfaces are strictly prohibited.
-
-> ❌ `with_compat java.util.ArrayList list;` — class type
-> ❌ `with_compat java.sql.Connection c;` — raw Java interface (not imported)
-> ✅ `import java_interface compat_interf_version abstraction Connection;` → `with_compat Connection c;`
-
-This rule enforces architectural discipline
-by ensuring that `with_compat` is used only with pure interface contracts.
-
----
-
-**ARCH BA10 — Supported Interface Forms for `with_compat`**
+**ARCH BA9 — Supported Interface Forms for `with_compat`**
 
 `with_compat` can be used with **all Clprolf interface forms**, including:
 
@@ -4867,7 +5279,7 @@ This preserves full technical interoperability while maintaining semantic safety
 
 ---
 
-****ARCH BA11 — Meaning of `with_compat`**
+****ARCH BA10 — Meaning of `with_compat`**
 
 The `with_compat` keyword expresses **loose coupling** —
 it clearly indicates that the variable or parameter is typed
