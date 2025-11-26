@@ -1449,7 +1449,8 @@ In Java, this is often called **simulated multiple inheritance**:
 
 * Class roles on interfaces are checked in the same way as for classes.
 * `@Forced_inh` (not `@Forced_int_inh`) must be used to enforce role coherence.
-* `@Nature` is allowed on `extends` clauses of interfaces — even with multiple inheritance.
+* On **`version_inh` and `capacity_inh` interfaces**, `nature` is **mandatory** on `extends` clauses — even in case of multiple inheritance.
+* On **`compat_interf_version` and `compat_interf_capacity` interfaces**, `nature` is **not allowed**: compatibility interfaces never carry a nature.
 
 This means:
 
@@ -1457,9 +1458,8 @@ This means:
 * Worker-agent-like interfaces must extend other worker-agent-like interfaces.
 * Capacity interfaces can always be inherited, since they do not carry roles.
 
-⚠️ Multiple inheritance of natures is **allowed but not recommended**.
-
 The **`nature`** keyword (or `@Nature` in the framework) indicates an **inheritance perspective** for the interface, rather than a simple extension.
+It is **reserved for inheritance features** and is **never applied to compatibility interfaces**.
 
 ---
 
@@ -1737,19 +1737,6 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 ```
 
 ---
-
-##### Conclusion
-
-This design pattern shows how Clprolf can technically support **multiple inheritance through interfaces**, while still allowing for **code reuse via delegation**.
-
-⚠️ However, in real-world Clprolf development:
-
-* prefer **single inheritance**,
-* assign only **one nature per object**,
-* and avoid multiple interface hierarchies except for **capacity interfaces**.
-
----
-
 
 #### II.8.h) Multiple Natures Through Ubiquity (The Ubiquity Pattern)
 
@@ -4088,8 +4075,8 @@ The agent collaborates with a worker, manipulates a model, and manages a queue.
 import java_interface version_inh abstraction java.util.List<E>;
 import java_class abstraction java.util.ArrayList;
 import java_class abstraction java.util.LinkedList;
-import java_interface java.util.Queue<E>;
-import java_class java.io.File;
+import java_interface version_inh abstraction java.util.Queue<E>;
+import java_class abstraction java.io.File;
 
 public agent DirectoryExplorerImpl contracts DirectoryExplorer {
 
@@ -5350,7 +5337,7 @@ When it does, the interface behaves as a **role-bound compatibility interface**,
 
 **ARCH BB5 (interfaces):**
 An interface that inherits must use `nature` if it is a `version_inh` or `capacity_inh`.
-It may use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
+It must use `extends` if it is a `compat_interf_version` or `compat_interf_capacity`.
 
 **ARCH BB6 (interfaces):**
 
