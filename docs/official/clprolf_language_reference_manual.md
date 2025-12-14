@@ -6751,9 +6751,9 @@ These symbols form a tiny formal language, just like in logic.
 
 #### **2️⃣ Axioms (the things we accept without proof)**
 
-##### **Axiom 1 — Human Purpose**
+##### **Axiom 1 — Scope**
 
-Every real application serves a human goal (directly or indirectly).
+Clprolf applies to applications whose intended usage serves a human purpose, directly or indirectly.
 We write:
 
 > **HumanGoal(G) ⇒ ∃A**
@@ -6895,7 +6895,6 @@ Like any formal system:
 
 * challenge an axiom, or
 * exhibit an application derivable in this system that cannot be expressed in Clprolf
-  (good luck to them 😄).
 
 ---
 
