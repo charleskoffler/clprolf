@@ -1,8 +1,8 @@
 package org.simol.examples.algorithms.sort.insertion;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
+import org.clprolf.framework.java.Worker_agent;
 
-@Simu_comp_as_worker
+@Worker_agent
 public class InsertionSorterLauncher {
 
 	public static void main(String[] args) {

@@ -1,10 +1,9 @@
 package org.simol.examples.algorithms.sort.insertion;
 
-import org.simol.simolframework.java.Role;
-import org.simol.simolframework.java.Simu_real_world_obj;
-import org.simol.simolframework.java.Underst;
+import org.clprolf.framework.java.Agent;
+import org.clprolf.framework.java.Underst;
 
-@Simu_real_world_obj(Role.HUMAN_EXPERT)
+@Agent
 public class InsertionSorter {
 	public int[] array;
 	public int[] sortedArray;

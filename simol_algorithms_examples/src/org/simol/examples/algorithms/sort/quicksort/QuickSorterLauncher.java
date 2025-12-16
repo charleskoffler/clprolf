@@ -1,10 +1,10 @@
 package org.simol.examples.algorithms.sort.quicksort;
 
-import org.simol.simolframework.java.Simu_comp_as_worker;
+import org.clprolf.framework.java.Worker_agent;
 
-@Simu_comp_as_worker
+@Worker_agent
 public class QuickSorterLauncher {
-
+	/* Here, the low-level, non-intuitive operation is placed in a worker */
 	public static void main(String[] args) {
 		int[] array = {56, 34, 87, 15, 52, 9};
 		

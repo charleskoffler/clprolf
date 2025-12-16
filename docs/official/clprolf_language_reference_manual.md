@@ -6906,6 +6906,296 @@ This proof demonstrates that **Clprolf is not only expressive in the computation
 
 ---
 
+### Annex F - Agent and Worker: From Concept to Architecture, with Random and QuickSort
+
+#### F.1) The Random Case Study
+
+Why Agent Classification Is Not a Matter of Vision, but of Necessity
+This annex presents a concrete, technical case study based on java.util.Random. Its goal is to demonstrate that the agent / worker separation is not a stylistic choice, but a structural necessity once we are honest about what the code actually does.
+
+---
+
+##### F.1.a) Why Random is an Excellent Test Case
+
+Random is often perceived as a simple utility class. In reality, it is:
+
+not business-domain code,
+not a pure low-level primitive,
+but a system capability abstraction.
+
+This makes it an ideal stress test for architectural classifications. If the model works here, it works everywhere.
+
+---
+
+##### F.1.b) What Random Factually Does
+
+Observation of the Java implementation reveals two radically different responsibilities:
+
+###### A Mechanical Responsibility
+
+Production of pseudo-random bits
+Management of internal state (seed)
+Deterministic calculation
+Use of system-level abstractions (AtomicLong, volatile, static state)
+
+This responsibility:
+
+produces raw matter (bits),
+has no meaning by itself,
+does not expose any public contract.
+
+This is worker behavior.
+
+---
+
+###### A Contractual / Service Responsibility
+
+Public methods such as:
+
+nextInt()
+nextInt(bound)
+nextLong()
+nextDouble()
+
+perform the following actions:
+
+define what is delivered (type, bounds, invariants),
+compose raw bits into meaningful values,
+guarantee usage rules and contracts.
+
+
+This responsibility:
+
+constructs meaning,
+exposes a public API,
+orchestrates the use of a lower-level mechanism.
+
+This is agent behavior.
+
+---
+
+##### F.1.c) Why a Single-Class Model Fails Structurally
+
+If Random is classified as a worker:
+
+it should expose raw mechanisms directly,
+it should not define usage contracts,
+it should not interpret or compose results.
+
+
+This contradicts reality.
+
+If Random is classified as an agent without a worker:
+
+it must perform mechanical calculations itself,
+it mixes contract and execution,
+its code becomes complex and opaque.
+
+In both cases, the model breaks.
+
+---
+
+##### F.1.d) The Logical Consequence: Two Roles, Two Classes
+
+Once we accept the following facts:
+
+the mechanical part is necessary,
+the contractual part is necessary,
+the two have different natures,
+
+then the conclusion is unavoidable:
+
+> A single class cannot honestly represent both roles.
+
+
+Clprolf does not impose this separation. It reveals it.
+
+---
+
+##### F.1.e) Why This Proves the Necessity of Agents
+
+The agent is not introduced by preference. It is introduced because:
+
+a worker cannot define meaning or contracts,
+raw execution cannot stand alone,
+someone must decide how mechanical results are used.
+
+
+Therefore:
+
+> If there is an agent, there must be a worker.
+
+This is not a vision. It is a dependency.
+
+---
+
+##### F.1.f) Relation to Existing Java Design
+
+Java already acknowledges this separation implicitly:
+
+protected next(int bits) → mechanical core
+public nextX() methods → service construction
+
+Clprolf makes this separation:
+
+explicit,
+structural,
+and verifiable.
+
+
+---
+
+##### F.1.g) Conclusion
+
+The Random case demonstrates that:
+
+agent classification is not optional,
+worker-only models collapse under real APIs,
+architectural clarity emerges from necessity, not ideology.
+
+This case transforms agent classification from a conceptual choice into a structural proof.
+
+#### F.2) QuickSort Example (Agent vs Worker)
+
+This annex illustrates, with a concrete and well-known algorithm, how the agent / worker distinction leads to a clearer and more faithful architecture.
+
+Context
+
+QuickSort is often perceived as a complex algorithm because its intuitive strategy and its low-level execution mechanics are usually mixed together. When everything is placed at the same level, readers are implicitly asked to interpret and mentally separate what is conceptual from what is mechanical — an unrealistic requirement in practice.
+Clprolf makes this separation explicit.
+
+Key observation
+
+In QuickSort, there exists a root operation that does not depend on the global sorting strategy:
+
+> sortOneElement places one element at its correct position and returns its index.
+
+This operation:
+
+does not perform a full sort,
+does not rely on recursion,
+exposes a complete local contract,
+can be used without knowing how it is implemented.
+
+The global algorithm (sortArray, recursive calls) is built on top of this operation, not the other way around.
+
+Architectural consequence
+
+Because sortOneElement is:
+
+low-level,
+non-intuitive,
+purely computational,
+
+it is legitimate to place it in a worker.
+
+> Here, the low-level, non-intuitive operation is placed in a worker.
+
+The remaining logic — splitting the array, recursively applying the same idea to sub-arrays — belongs naturally to the agent, where the human-readable strategy is expressed.
+
+Important clarification
+
+This separation is not mandatory. The same operation may legitimately remain inside the agent when marked with "underst":
+
+> A method that could be placed in a worker is equally valid inside an agent when declared as "underst".
+
+
+"underst" signals that the method contains machine-oriented, non-contractual logic, without forcing any architectural extraction.
+
+Why this matters
+
+If everything is kept in the agent, the agent tends to be interpreted as a worker, and the intuitive nature of QuickSort is lost.
+By separating (or at least clearly identifying) the low-level operation, the algorithm’s simplicity becomes evident.
+This does not rely on interpretation: the structure itself enforces the correct reading.
+
+
+Conclusion
+
+The QuickSort example demonstrates that the agent / worker distinction is not a matter of vision or style. It leads to concrete architectural differences, improves mastery, and prevents algorithms from appearing more complex than they truly are.
+The separation exists, is demonstrable, and remains optional — which is precisely what makes it robust.
+
+```java
+
+package org.simol.examples.algorithms.sort.quicksort;
+import org.clprolf.framework.java.Worker_agent;
+
+@Worker_agent
+public class QuickSorterWorker {
+	/**
+	 * Place one element, the pivot, at the correct place.
+	 * Once placed, the element is greater than all elements on the left, and
+	 * smaller than all elements on the right.
+	 * 
+	 * @param arrElements
+	 * @param startIndex Beginning index
+	 * @param endIndex	Ending index
+	 * @return Return the index of the pivot.
+	 */
+	public int sortOneElement(int[] arrElements, int startIndex, int endIndex) {
+		int writer; /* The writer always points to the next index to write a value. The 
+						writer moves forward each time a value is written.
+                    */
+		int reader; //The reader loops on each element of the given array.
+		int pivotValue;
+		
+		writer = startIndex;
+		pivotValue = arrElements[endIndex]; //We decide arbitrarily to take the last value.
+		
+		for (reader = startIndex; reader <= endIndex-1; reader++) {
+			if (arrElements[reader] < pivotValue) {
+				swapElements(arrElements, writer, reader);
+				writer++;
+			}
+		}
+		//Treatment of the pivot
+		//We swap the pivot, because the writer is pointed to the next place to be written
+		swapElements(arrElements, writer, reader);
+		return writer;
+	}
+	
+	private void swapElements(int[] arrElements, int firstIndex, int secondIndex) {
+		int lowerValue;
+		
+		lowerValue = arrElements[firstIndex];
+		arrElements[firstIndex] = arrElements[secondIndex];
+		arrElements[secondIndex] = lowerValue;
+	}
+}
+```
+
+```java
+
+package org.simol.examples.algorithms.sort.quicksort;
+
+import org.clprolf.framework.java.Agent;
+
+@Agent
+public class QuickSorter {
+	protected QuickSorterWorker worker;
+	
+	public QuickSorter() {
+		worker = new QuickSorterWorker();
+	}
+	
+	public void sort(int[] arrElements) {
+		this.sortSubArray(arrElements, 0, arrElements.length-1);
+	}
+	
+	private void sortSubArray(int[] arrElements, int startIndex, int endIndex) {
+		if (startIndex < endIndex) {
+			int pivotIndex;
+			//To sort an array, we are first placing an element.
+			pivotIndex = worker.sortOneElement(arrElements, startIndex, endIndex);
+			//Sort the elements on the left.
+			sortSubArray(arrElements, 0, pivotIndex - 1);
+			//Sort the other elements, on the right.
+			sortSubArray(arrElements, pivotIndex + 1, endIndex);
+		}
+	}
+}
+
+```
+
 ### 🧭 **End of Annex — Clprolf**
 
 > This annex completes the formal specification of Clprolf.
