@@ -7109,10 +7109,50 @@ By separating (or at least clearly identifying) the low-level operation, the alg
 This does not rely on interpretation: the structure itself enforces the correct reading.
 
 
-Conclusion
+#### Conclusion
 
 The QuickSort example demonstrates that the agent / worker distinction is not a matter of vision or style. It leads to concrete architectural differences, improves mastery, and prevents algorithms from appearing more complex than they truly are.
 The separation exists, is demonstrable, and remains optional — which is precisely what makes it robust.
+
+#### **Complementary Clarification — Agents Without Explicit Workers**
+
+In some cases, an `agent` may appear to exist **without an explicit worker**.
+This typically happens when the agent is used *only by other agents* and performs no visible technical interaction — for example, a **sorting agent** or a **Random-like agent**.
+
+However, this situation is only **apparent**.
+
+In reality, such an agent **implicitly relies on a computation worker**.
+
+This worker is responsible for:
+
+* executing the algorithm,
+* maintaining **calculation-specific state** (indices, cursors, seeds, temporary values, recursion data, etc.),
+* and performing all technical steps required by the computation.
+
+Crucially:
+
+* this worker **does not own the agent’s domain state**,
+* it only manages **its own internal, technical state**, strictly related to the computation.
+
+The agent remains the **owner of the domain meaning and domain state**.
+The worker merely executes *how* the work is done.
+
+In Clprolf terms, the methods that may be delegated to such a computation worker are **`underst` methods** of the agent:
+they are legitimate technical realizations of an otherwise intuitive domain behavior.
+
+Without this implicit or explicit worker:
+
+* the agent would be forced to perform technical simulation itself,
+* mixing domain intent with algorithmic mechanics,
+* which contradicts the very purpose of the agent declension.
+
+Therefore, an agent that truly has **no worker at all** would necessarily contain **only intuitive, domain-level methods** and no technical simulation — a situation that, in practice, should not occur for algorithmic agents.
+
+This clarification completes the model:
+**even when the worker is not visible, it is conceptually present**.
+Clprolf simply gives the tools to make this reality explicit whenever clarity requires it.
+
+---
 
 ```java
 
