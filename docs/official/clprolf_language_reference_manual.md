@@ -7236,6 +7236,231 @@ public class QuickSorter {
 
 ```
 
+### Annex G - Refactoring Your Classes with Clprolf and indef_obj
+
+Purpose of this Annex
+
+This annex explains how Clprolf can be used as a refactoring tool to clarify responsibilities after code has been written, without requiring early architectural decisions.
+
+The approach follows common development practice:
+
+1. write working code,
+2. understand responsibilities through usage,
+3. refactor when needed.
+
+---
+
+#### G.1. Starting Point: A Typical Object-Oriented Class
+
+Consider a common object-oriented class that mixes several concerns.
+
+```java
+public class OrderManager {
+
+    public void processOrder(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        saveToDatabase(order);
+        logOrder(order);
+
+        String message = formatConfirmation(order);
+        sendEmail(message);
+    }
+
+    private void saveToDatabase(Order order) {
+        System.out.println("Saving order " + order.getId());
+    }
+
+    private void logOrder(Order order) {
+        System.out.println("Order processed: " + order.getId());
+    }
+
+    private String formatConfirmation(Order order) {
+        return "Order #" + order.getId() + " confirmed";
+    }
+
+    private void sendEmail(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+```
+
+This class:
+
+performs business checks,
+handles persistence,
+logs execution,
+formats messages,
+performs I/O.
+
+
+Such a class is typical and perfectly acceptable as a starting point.
+
+---
+
+#### G.2. Introducing indef_obj Without Changing Behavior
+
+In Clprolf, the same class can first be expressed as an indefinite object, indicating that its architectural role is not yet fixed.
+
+```clprolf
+public indef_obj OrderManager {
+
+    public void processOrder(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        saveToDatabase(order);
+        logOrder(order);
+
+        String message = formatConfirmation(order);
+        sendEmail(message);
+    }
+
+    private void saveToDatabase(Order order) { }
+    private void logOrder(Order order) { }
+    private String formatConfirmation(Order order) { return ""; }
+    private void sendEmail(String message) { }
+}
+```
+
+At this stage:
+
+no architectural role is asserted,
+no refactoring is required,
+no decision is forced.
+
+
+indef_obj represents a temporary and legitimate state during development.
+
+---
+
+#### G.3. Identifying Responsibilities During Refactoring
+
+After some time, responsibilities become clearer.
+The class mixes two main kinds of concerns:
+
+Responsibility Nature
+
+Business validation and orchestration Business
+Persistence, logging, formatting, I/O Technical
+
+This is the typical moment where SRP is applied in practice.
+
+---
+
+#### G.4. Refactoring into Explicit Clprolf Roles
+
+##### G.4.a Business Responsibility — Agent
+
+```clprolf
+public agent OrderProcessor {
+
+    private final OrderRepository repository;
+    private final OrderNotifier notifier;
+
+    public OrderProcessor(OrderRepository repository,
+                          OrderNotifier notifier) {
+        this.repository = repository;
+        this.notifier = notifier;
+    }
+
+    public void process(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        repository.save(order);
+        notifier.notify(order);
+    }
+}
+```
+
+The agent:
+
+expresses business intent,
+coordinates execution,
+contains no technical implementation.
+
+---
+
+##### G.4.b Technical Responsibilities — Worker Agents
+
+```clprolf
+public worker_agent OrderRepository {
+
+    public void save(Order order) {
+        System.out.println("Saving order " + order.getId());
+    }
+}
+
+public worker_agent OrderNotifier {
+
+    public void notify(Order order) {
+        log(order);
+        String message = format(order);
+        send(message);
+    }
+
+    private void log(Order order) {
+        System.out.println("Order processed: " + order.getId());
+    }
+
+    private String format(Order order) {
+        return "Order #" + order.getId() + " confirmed";
+    }
+
+    private void send(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+```
+
+Worker agents may legitimately mix technical concerns such as:
+
+logging,
+persistence,
+formatting,
+I/O.
+
+This is acceptable because business meaning remains exclusively in the agent.
+
+---
+
+#### G.5 What This Refactoring Achieves
+
+What remains unchanged:
+
+behavior,
+algorithms,
+execution flow.
+
+
+What becomes explicit:
+
+responsibility boundaries,
+architectural intent,
+future refactoring paths.
+
+This is SRP applied structurally, not dogmatically.
+
+---
+
+Conclusion
+
+Clprolf does not require architectural clarity upfront.
+It allows developers to reach clarity through refactoring, using indef_obj as a transitional state.
+
+In this sense, Clprolf acts as:
+
+a structural support for SRP,
+a neutral refactoring tool,
+a framework that respects real development workflows.
+
+---
+
 ### 🧭 **End of Annex — Clprolf**
 
 > This annex completes the formal specification of Clprolf.
