@@ -7342,16 +7342,40 @@ indef_obj represents a temporary and legitimate state during development.
 After some time, responsibilities become clearer.
 The class mixes two main kinds of concerns:
 
-Responsibility Nature
+| Responsibility                        | Nature    |
+| ------------------------------------- | --------- |
+| Business validation and orchestration | Business  |
+| Persistence, logging, formatting, I/O | Technical |
 
-Business validation and orchestration Business
-Persistence, logging, formatting, I/O Technical
 
 This is the typical moment where SRP is applied in practice.
 
 ---
 
 #### G.4. Refactoring into Explicit Clprolf Roles
+
+```
+Before (indef_obj)
+
+OrderManager
+ ├─ business rule
+ ├─ persistence
+ ├─ logging
+ └─ notification
+
+
+After (SRP made explicit)
+
+OrderProcessor (agent)
+ ├─ business decision
+
+OrderRepository (worker_agent)
+ └─ persistence
+
+OrderNotifier (worker_agent)
+ ├─ logging
+ └─ messaging
+```
 
 ##### G.4.a Business Responsibility — Agent
 
