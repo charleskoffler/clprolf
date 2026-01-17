@@ -95,7 +95,37 @@ From the **Language Reference Manual** to focused thematic guides and conceptual
 
 ---
 
-### 🔬 Extended Documentation
+## ⚙️ Clprolf Compiler and Frameworks
+
+Clprolf comes with both a full compiler and lightweight annotation-based frameworks, allowing you to use the language concepts directly in Java, C#, or PHP.
+
+---
+
+### 🧩 Clprolf Compiler
+
+* [**Clprolf Compiler Directory**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler)
+  The official compiler of the Clprolf language — built in Java 8 using ANTLR grammar.
+  It translates `.clp` source files into pure Java, enforcing semantic rules and role coherence.
+
+---
+
+### 🧱 Clprolf Frameworks
+
+Framework versions let developers use Clprolf concepts as annotations inside host languages.
+They bring the same clarity and role enforcement — without leaving your familiar environment.
+
+* [☕ **Clprolf Java Framework**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_compiler/src/main/java/org/clprolf/framework/java)
+  Implemented directly within the compiler module — supports all annotations such as `@Agent`, `@Worker_agent`, and concurrency modifiers.
+
+* [🧩 **Clprolf C# Framework**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/ClprolfCsharpFramework)
+  A full C# adaptation of the Clprolf annotations and structural rules.
+
+* [🌐 **Clprolf PHP Framework**](https://github.com/charleskoffler/clprolf/tree/main/clprolf_framework/simol_php_framework)
+  Lightweight framework compatible with PHP 8+, bringing agents and workers to web environments.
+
+---
+
+## 🔬 Extended Documentation
 
 * [**Using Clprolf for Complex Object-Oriented Designs**](https://github.com/charleskoffler/clprolf/tree/main/docs/extended/clprolf_advanced_doc_1_exempl_assistant.md)
   Practical and advanced examples showing how Clprolf simplifies large-scale OOP architectures.
