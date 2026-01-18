@@ -3,7 +3,7 @@ package org.clprolf.compiler.semantic.enums;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum CompatInterfaceDeclSynonym {
+public enum InterfaceDeclension {
     COMPAT_INTERF_VERSION("compat_interf_version"),
     COMPAT_INTERF_CAPACITY("compat_interf_capacity"),
     VERSION_INH("version_inh"),
@@ -12,7 +12,7 @@ public enum CompatInterfaceDeclSynonym {
 
     private final String keyword;
 
-    CompatInterfaceDeclSynonym(String keyword) {
+    InterfaceDeclension(String keyword) {
         this.keyword = keyword;
     }
 
@@ -21,16 +21,16 @@ public enum CompatInterfaceDeclSynonym {
     }
     
     public boolean isCapacity() {
-    	return this == CompatInterfaceDeclSynonym.CAPACITY_INH ||
-    				this == CompatInterfaceDeclSynonym.COMPAT_INTERF_CAPACITY;
+    	return this == InterfaceDeclension.CAPACITY_INH ||
+    				this == InterfaceDeclension.COMPAT_INTERF_CAPACITY;
     }
     
     public boolean isVersion() {
-    	return this == CompatInterfaceDeclSynonym.VERSION_INH ||
-    				this == CompatInterfaceDeclSynonym.COMPAT_INTERF_VERSION;
+    	return this == InterfaceDeclension.VERSION_INH ||
+    				this == InterfaceDeclension.COMPAT_INTERF_VERSION;
     }
 
-    public static Optional<CompatInterfaceDeclSynonym> fromKeyword(String text) {
+    public static Optional<InterfaceDeclension> fromKeyword(String text) {
         return Arrays.stream(values())
                      .filter(c -> c.keyword.equals(text))
                      .findFirst();

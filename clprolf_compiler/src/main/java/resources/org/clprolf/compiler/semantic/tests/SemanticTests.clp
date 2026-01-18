@@ -10,6 +10,10 @@ public compat_interf_version agent Vehicule {
 	public boolean start();
 }
 
+public compat_interf_version CompatIntWithoutDecl {
+	public boolean theMeth();
+}
+
 public capacity_inh Eatable {
 	public void eat(int quantity);
 }
@@ -20,10 +24,9 @@ public agent AnimalImpl {
 
 // BB1
 /* **ARCH BB1 (interfaces):**
-A `compat_interf_version` interface cannot inherit multiple `version` interfaces.
-A `version_inh` may do so.*/
+By default, a `compat_interf_version` cannot inherit from another `compat_interf_version`.*/
 
-public compat_interf_version agent BB1Car extends Vehicule, Animal {
+public compat_interf_version agent BB1Car extends Vehicule {
 }
 
 // No problem.
@@ -65,6 +68,14 @@ A class cannot `contracts` multiple `version` interfaces simultaneously. */
 public agent BA4Animal contracts Animal, Vehicule {
 }
 
+// ARCH-BA5
+// error (BA5Animal declension does not match Animal target declension)
+public simu_real_obj BA5Animal contracts Animal {
+}
+
+public simu_real_obj BA5_2Animal contracts CompatIntWithoutDecl {
+}
+
 //
 /* **ARCH BA2 (interfaces, usage):**
 If a class uses `contracts`, the referenced type must be a `version` interface. */
@@ -76,13 +87,15 @@ public agent BA2Animal contracts AnimalImpl {
 	}
 }
 
+
+
 //
 /***ARCH BA1 (interfaces, usage):**
 The `contracts` keyword is mandatory for all implementations. */
 
 //issue
-public agent BA1Animal implements AnimalImpl {
+/*public agent BA1Animal implements AnimalImpl {
 	public void jump() {
 	
 	}
-}
+}*/

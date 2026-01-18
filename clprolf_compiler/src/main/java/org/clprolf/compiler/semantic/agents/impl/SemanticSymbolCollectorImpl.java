@@ -10,7 +10,7 @@ import org.clprolf.compiler.ClprolfJava8ParserBaseVisitor;
 
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticSymbol;
 import org.clprolf.compiler.semantic.enums.AgentLikeAdviceKind;
-import org.clprolf.compiler.semantic.enums.CompatInterfaceDeclSynonym;
+import org.clprolf.compiler.semantic.enums.InterfaceDeclension;
 import org.clprolf.compiler.semantic.enums.Declension;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticClassSymbol;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticInterfaceSymbol;
@@ -67,7 +67,7 @@ public class SemanticSymbolCollectorImpl extends ClprolfJava8ParserBaseVisitor<V
         String packageName = currentPackage;
 
         String compatText = ctx.clprolfInterfaceDeclension().getText();
-        CompatInterfaceDeclSynonym compatRole = CompatInterfaceDeclSynonym.fromKeyword(compatText)
+        InterfaceDeclension compatRole = InterfaceDeclension.fromKeyword(compatText)
             .orElseThrow(() -> new IllegalArgumentException("Unknown compat role: " + compatText));
 
         Declension declension = null;

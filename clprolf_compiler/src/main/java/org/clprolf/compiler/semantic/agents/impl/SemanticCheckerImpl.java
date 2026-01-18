@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.clprolf.framework.java.Agent;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticSymbol;
-import org.clprolf.compiler.semantic.enums.CompatInterfaceDeclSynonym;
+import org.clprolf.compiler.semantic.enums.InterfaceDeclension;
 import org.clprolf.compiler.semantic.enums.Declension;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticInterfaceSymbol;
 import org.clprolf.compiler.semantic.abstractions.impl.SemanticClassSymbol;
@@ -84,6 +84,29 @@ public class SemanticCheckerImpl {
                     + " contracts multiple version_inh interfaces (forbidden).");
         }
         
+        if (versionContracts == 1  ) {
+        	SemanticInterfaceSymbol contractedInterface = 
+        			(SemanticInterfaceSymbol) c.getContracts().stream().map(symbols::get).filter(sym -> sym instanceof SemanticInterfaceSymbol
+        				&& ((SemanticInterfaceSymbol) sym).getCompatRole().isVersion()).findFirst().get();
+        	// A declension is mandatory for the version_inh, we do the test in case of semantic error.
+        	if ( (contractedInterface.getCompatRole() == InterfaceDeclension.VERSION_INH && contractedInterface.getDeclension() != null ) ||
+        			(contractedInterface.getCompatRole() == InterfaceDeclension.COMPAT_INTERF_VERSION && contractedInterface.getDeclension() != null)) {
+        		/***ARCH BA5 (interfaces, usage):**
+When a class `contracts` a `version_inh`, it must have the **same declension and synonym** as that `version_inh`.
+For a `compat_interf_version`, if a class role is defined, the implementing class must **match it exactly** —
+reflecting a **stricter compatibility contract rather than a natural hierarchy**.
+
+> 💡 *This rule ensures structural coherence between classes and their version interfaces,
+> whether the relationship is hierarchical (`version_inh`) or strictly contractual (`compat_interf_version`).*
+
+---*/
+        		if (contractedInterface.getDeclension() != c.getDeclension()) {
+        			errors.add("ARCH BA5 (interfaces, usage): " + c.getName() + " (" + c.getDeclension() + ") does not match the target declension of " + contractedInterface.getName() +" ( " + contractedInterface.getDeclension()+ " )"+ " \r\n");
+        			
+        		}
+        	}
+        }
+        		
       /*  **ARCH BA2 (interfaces, usage):**
         A class using `contracts` must refer to a `version` interface, not to a class */
         
@@ -98,20 +121,16 @@ public class SemanticCheckerImpl {
         }
         
     }
-    
-    private long countVersionExtensions(SemanticInterfaceSymbol i) {
-	    return i.getExtendedInterfaces().stream()
-	    .map(symbols::get)
-	    .filter(sym -> sym instanceof SemanticInterfaceSymbol
-	            && ((SemanticInterfaceSymbol) sym).getCompatRole().isVersion())
-	    .count();
-    }
    
     private void verifyInterfaceRules(SemanticInterfaceSymbol i) {
         String name = i.getName();
-        CompatInterfaceDeclSynonym role = i.getCompatRole();
+        InterfaceDeclension role = i.getCompatRole();
 
-        long versionExtends = this.countVersionExtensions(i);
+        long versionExtends = i.getExtendedInterfaces().stream()
+        	    .map(symbols::get)
+        	    .filter(sym -> sym instanceof SemanticInterfaceSymbol
+        	            && ((SemanticInterfaceSymbol) sym).getCompatRole().isVersion())
+        	    .count();
         
         // ARCH-BB2 : A `capacity` interface cannot inherit (`nature`) from a `version`.
         //`capacity_inh` and `compat_interf_capacity` are treated identically in all semantic checks.
@@ -122,17 +141,16 @@ public class SemanticCheckerImpl {
             }
         }
 
-        //**ARCH BB1 (interfaces):A `compat_interf_version` interface cannot inherit multiple `version` interfaces.
-        //A `version_inh` may do so.
-        if (role == CompatInterfaceDeclSynonym.COMPAT_INTERF_VERSION) {
-        	if (versionExtends > 1) {
+        //**ARCH BB1 (interfaces):By default, a `compat_interf_version` **cannot inherit from another `compat_interf_version`**.
+        if (role == InterfaceDeclension.COMPAT_INTERF_VERSION) {
+        	if (versionExtends > 0) {
                 errors.add("ARCH-BB1: " + name
-                        + " A `compat_interf_version` interface cannot inherit multiple `version` interfaces. A `version_inh` may do so.");
+                        + " By default, a `compat_interf_version` cannot inherit from another `compat_interf_version`.");
             }
         }
 
         /* TODO 
-        if (interfaceSymbol.getCompatRole() == CompatInterfaceDeclSynonym.CAPACITY_INH) {
+        if (interfaceSymbol.getCompatRole() == InterfaceDeclension.CAPACITY_INH) {
             for (String extendedName : interfaceSymbol.getExtendedInterfaces()) {
                 SemanticSymbol extended = symbols.get(extendedName);
                 if (extended instanceof SemanticInterfaceSymbol) {

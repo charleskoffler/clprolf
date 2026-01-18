@@ -9,8 +9,9 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 5.1.0 (20251110)
- Changelog Grammar correction for import java_class and import java_interface.
+ 5.2.0 (20260118)
+ 
+ Ajout BA5. Correction BB1. Renamed InterfaceDeclension enum.
  
  BA1: done by grammar.
  
