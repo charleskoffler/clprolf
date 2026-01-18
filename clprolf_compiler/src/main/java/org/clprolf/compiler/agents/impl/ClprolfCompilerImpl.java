@@ -10,6 +10,10 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -89,63 +93,31 @@ public class ClprolfCompilerImpl {
 	
 	/**
 	 * Just read a simol source file, and put it in a string
-	 * @param simolResourceName
+	 * @param filePath
 	 * @return The string containing the source code of the file.
 	 * @throws IOException
 	 * @throws URISyntaxException 
 	 */
-	private String readClprolfSourceAsString(String simolResourceName) throws IOException, URISyntaxException {
-		String strInputSourceLine;
+	private String readClprolfSourceAsString(String filePath) throws IOException {
 	
-		StringBuffer totalSourceCode = new StringBuffer();
+		Path path = Paths.get(filePath);
+		byte[] bytes = Files.readAllBytes(path);
+		String content = new String(bytes, StandardCharsets.UTF_8);
+		return content;
 		
-	
-	   File inputFile;
-
-	   BufferedReader sourceReader;
-	   
-		/*String input = "public compat_interf_capacity ClientDAOFile {"
-		+ "Client getClient(int id);"
-	+ "}";*/
-		   
-		// get the file url
-	   URL resourceUrl = getClass().getClassLoader().getResource(simolResourceName);
-	   if (resourceUrl == null) {
-	       throw new IllegalArgumentException("file not found!");
-	   } else {
-		   inputFile = new File(resourceUrl.toURI());
-	   }
-	   sourceReader = new BufferedReader(new FileReader(inputFile));
-	   
-	   strInputSourceLine = sourceReader.readLine();
-	   while (strInputSourceLine != null) {
-		   totalSourceCode.append(strInputSourceLine+"\n"); //Don't forget to add the "\n"!!
-		   
-		   strInputSourceLine = sourceReader.readLine();
-	   }
-	   sourceReader.close();
-	   
-	   return totalSourceCode.toString();
 	}
 	
-	private void writeClprolfAsStringToSourceFile(String simolResourceName, String totalSimolSourceString) throws URISyntaxException, IOException {
-		
-		File outputFile;
-		
-		BufferedWriter writer;
-		String path, newPath;
-		
-		URL resourceUrl = getClass().getClassLoader().getResource(simolResourceName);
-		
-		//Change of the extension name.
-		path = resourceUrl.getPath();
-		newPath = path.replaceAll("\\.clp$", ".java");
+	private void writeClprolfAsStringToSourceFile(
+	        String filePath,
+	        String totalClprolfSourceString
+	) throws IOException {
 
-		outputFile = new File(newPath);
-		writer = new BufferedWriter(new FileWriter(outputFile));
-		
-		writer.write(totalSimolSourceString);
-		
-		writer.close();
+	    Path inputPath = Paths.get(filePath);
+	    String fileName = inputPath.getFileName().toString();
+
+	    String javaFileName = fileName.replaceFirst("\\.clp$", ".java");
+
+	    Path outputPath = inputPath.resolveSibling(javaFileName);
+	    Files.write(outputPath, totalClprolfSourceString.getBytes(StandardCharsets.UTF_8));
 	}
 }

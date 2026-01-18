@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.clprolf</groupId>
-  <artifactId>compiler</artifactId>
-  <version>5.1</version>
+  <artifactId>clprolfcompiler</artifactId>
+  <version>5.3</version>
 
   <name>compiler</name>
   <!-- FIXME change it to the project's website -->
@@ -40,7 +40,6 @@
 			<directory>src/main/java/resources</directory>
 		</resource>
 	</resources>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
@@ -87,10 +86,28 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
         </plugin>
+        
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-shade-plugin</artifactId>
+		  <version>3.5.0</version>
+		  <executions>
+		    <execution>
+		      <phase>package</phase>
+		      <goals>
+		        <goal>shade</goal>
+		      </goals>
+		      <configuration>
+		        <createDependencyReducedPom>false</createDependencyReducedPom>
+		        <transformers>
+		          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+		            <mainClass>org.clprolf.compiler.workers.impl.Main</mainClass>
+		          </transformer>
+		        </transformers>
+		      </configuration>
+		    </execution>
+		  </executions>
+		</plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
@@ -150,6 +167,6 @@
             </configuration>
         </plugin>
       </plugins>
-    </pluginManagement>
+   
   </build>
 </project>

@@ -9,43 +9,33 @@
 
 * Command-line **Clprolf compiler**, based on **ANTLR4**.
 * Accepts `.clp` source files (Clprolf code).
-* Generates equivalent `.java` files, which can then be compiled with `javac`.
-* Compatible with Java 8 syntax (grammar based on [ANTLR4 Java 8 grammar](https://github.com/antlr/grammars-v4/tree/master/java/java8)).
+* Generates a `.java` file next to each `.clp` source file, in the same directory.
+* Compatible with Java 8 syntax (grammar based on the
+  [ANTLR4 Java 8 grammar](https://github.com/antlr/grammars-v4/tree/master/java/java8)).
 
 ---
 
 #### Usage
 
-To run the compiler:
+To run the compiler (**the JAR can be used standalone**):
 
 ```bash
-mvn exec:java -Dexec.args="org/clprolf/examples/concurrency/DonkeyForLongAction.clp"
+java -jar clprolfcompiler-5.3.jar "clprolfsources/org/clprolf/compiler/semantic/tests/SemanticTests.clp"
 ```
 
-Or use the batch file (Windows):
+Or, using Maven:
 
 ```bash
-clprolfCompiler.bat MyFile.clp
+mvn exec:java \
+  -Dexec.mainClass="org.clprolf.compiler.workers.impl.Main" \
+  -Dexec.args="target/classes/org/clprolf/compiler/semantic/tests/SemanticTests.clp"
 ```
-
-For Linux and other OS, you can use the Java command inside the batch file.
-
-Source placement:
-
-* Put `.clp` files in `target/classes`, or in `src/main/java/resources` if you run `mvn resources:resources`.
-* Example:
-
-  ```bash
-  clprolfCompiler Car.clp
-  ```
-
-  This will generate `Car.java` in the same directory.
 
 ---
 
 #### Source Editing
 
-* Clprolf sources (`.clp`) can be opened in Eclipse (choose *Open with Java Editor*), Notepad++ (*Language → Java*), or similar editors.
+* Clprolf source files (`.clp`) can be opened in Eclipse (choose *Open With → Java Editor*), Notepad++ (*Language → Java*), or any similar editor.
 * Generated Java code can be formatted in Eclipse (*Right-click → Source → Format*).
 
 ---
@@ -53,15 +43,13 @@ Source placement:
 #### Maven Project
 
 * Project: `org.clprolf.compiler`
-* Purpose: generate the ANTLR4 Clprolf grammar compiler.
-* Key custom files:
+* Purpose: generate and build the ANTLR4-based Clprolf compiler.
+* Key package: `org.clprolf.compiler`
 
-  * `ClprolfCompiler`
-  * `ClprolfJava8CustomListener`
-* Grammar files:
+**Grammar files:**
 
-  * `src/main/antlr4/org/clprolf/compiler/ClprolfJava8Lexer.g4`
-  * `src/main/antlr4/org/clprolf/compiler/ClprolfJava8Parser.g4`
+* `src/main/antlr4/org/clprolf/compiler/ClprolfJava8Lexer.g4`
+* `src/main/antlr4/org/clprolf/compiler/ClprolfJava8Parser.g4`
 
 To regenerate the parser:
 
@@ -69,28 +57,25 @@ To regenerate the parser:
 mvn antlr4:antlr4
 ```
 
-To compile generated sources (not handled by `mvn compile`):
-
-```bash
-compileGeneratedSources.bat   # Windows
-# or use the javac command inside for Linux/other OS
-```
-
-Then you can run:
+To compile the generated sources and the Clprolf compiler:
 
 ```bash
 mvn compile
+```
+
+Or, to regenerate the parser and compile everything:
+
+```bash
+mvn clean package
 ```
 
 ---
 
 #### Compiler Behavior
 
-* Parses **Clprolf code** (`.clp` sources) and included **Java code** (Java 8).
+* Parses **Clprolf code** (`.clp` files) as well as embedded **Java code** (Java 8).
 * Stops at the first syntax error (Clprolf or Java).
-* Currently, **no semantic analysis** is performed (for either Clprolf or Java).
 
-If parsing succeeds, the compiler generates Java code.
-You then run `javac` on the generated Java to produce executable bytecode.
+If parsing succeeds, the compiler generates Java source code.
 
 ---

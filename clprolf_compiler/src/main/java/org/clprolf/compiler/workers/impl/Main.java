@@ -9,15 +9,19 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 5.2.0 (20260118)
+ 5.3.0 (20260118)
  
- Ajout BA5. Correction BB1. Renamed InterfaceDeclension enum.
+ mvn clean package compile all the sources. Execution works with java -jar, and the .clp path is a file system path.
  
  BA1: done by grammar.
  
- Already done: BB2, BB1, BA3, BA4, BA2
+ Already done: BB2, BB1, BA3, BA4, BA2, BA5
  
- Usage example: mvn exec:java -Dexec.mainClass="org.clprolf.compiler.workers.impl.Main" -Dexec.args="org/clprolf/compiler/semantic/tests/SemanticTests.clp"
+ Usage example: 
+ 
+ java -jar clprolfcompiler-5.3.jar "clprolfsources/org/clprolf/compiler/semantic/tests/SemanticTests.clp"
+ or
+ mvn exec:java -Dexec.mainClass="org.clprolf.compiler.workers.impl.Main" -Dexec.args="target/classes/org/clprolf/compiler/semantic/tests/SemanticTests.clp"
  
 	Clprolf compiler
 	Author Charles Koffler, M.I.T License. 2023/10/16
