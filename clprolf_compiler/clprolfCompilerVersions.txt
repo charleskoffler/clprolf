@@ -24,4 +24,6 @@ Clprolf compiler versions
 5.1.0 2025/11/10	Grammar correction for import java_class and import java_interface.
 5.2.0 2026/01/26	Ajout BA5. Correction BB1. Renamed InterfaceDeclension enum.
 5.3.0 2026/01/18	mvn clean package compile all the sources. Execution works with java -jar, and the .clp path is a file system path.
- 
+5.4.0 (20260123) Rules: ARCH A1. No semantic checking if syntax error. Better display of the output.
+				 BA1: done by grammar.
+				 Rules done: BB2, BB1, BA3, BA4, BA2, BA5, A1

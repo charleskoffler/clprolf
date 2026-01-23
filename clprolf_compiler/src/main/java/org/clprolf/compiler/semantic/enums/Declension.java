@@ -29,4 +29,12 @@ public enum Declension {
                      .findFirst();
     }
     
+    public boolean isAgent() {
+    	return this == Declension.AGENT || this == Declension.ABSTRACTION ||
+    			this == Declension.SIMU_REAL_OBJ;
+    }
+    
+    public boolean isWorkerAgent() {
+    	return this == Declension.WORKER_AGENT || this == Declension.COMP_AS_WORKER;
+    }
 }

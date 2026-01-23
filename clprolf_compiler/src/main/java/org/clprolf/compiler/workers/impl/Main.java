@@ -9,13 +9,13 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 5.3.0 (20260118)
+ 5.4.0 (20260123)
  
- mvn clean package compile all the sources. Execution works with java -jar, and the .clp path is a file system path.
+ Rules: ARCH A1. No semantic checking if syntax error. Better display of the output.
  
  BA1: done by grammar.
  
- Already done: BB2, BB1, BA3, BA4, BA2, BA5
+ Rules done: BB2, BB1, BA3, BA4, BA2, BA5, A1
  
  Usage example: 
  

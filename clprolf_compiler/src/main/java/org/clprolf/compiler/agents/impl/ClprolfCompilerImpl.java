@@ -48,7 +48,7 @@ public class ClprolfCompilerImpl {
 	    CommonTokenStream tokensStream = new CommonTokenStream(tokenSource);
 	    ClprolfJava8Parser inputParser = new ClprolfJava8Parser(tokensStream);
 	
-	    /* ClprolfJava8Parser.CompilationUnitContext context = parser.compilationUnit(); */
+	    //ClprolfJava8Parser.CompilationUnitContext context = inputParser.compilationUnit();
 			
 		// Calling the parsor while keeping the standard errors output.
 		// Create a ByteArrayOutputStream to capture error output
@@ -61,7 +61,6 @@ public class ClprolfCompilerImpl {
         //produces error output
         //ParseTree of the input text
     	@With_compat ParseTree parseTree = inputParser.compilationUnit();
-    	System.out.println(parseTree.toStringTree(inputParser));
     	
         // Restore the original error stream
         System.setErr(originalErrorStream);
@@ -69,24 +68,28 @@ public class ClprolfCompilerImpl {
         // Get the captured error output as a string
         String errorOutput = errorStream.toString();
         
-        SemanticSymbolCollectorImpl collector = new SemanticSymbolCollectorImpl();
-        collector.visit(parseTree);
-
-        SemanticCheckerImpl checker = new SemanticCheckerImpl(collector.getSymbols());
-        checker.verify();
-
-        SemanticReporterImpl reporter = new SemanticReporterImpl(checker);
-        reporter.printReport();
-        
-        ClprolfCodeGeneratorImpl generator = new ClprolfCodeGeneratorImpl(tokensStream);
-        generator.visit(parseTree);
-        
         if (errorOutput.isEmpty()) {
+        	System.err.println("No syntax errors.");
+        			
+        	SemanticSymbolCollectorImpl collector = new SemanticSymbolCollectorImpl();
+            collector.visit(parseTree);
+
+            SemanticCheckerImpl checker = new SemanticCheckerImpl(collector.getSymbols());
+            checker.verify();
+
+            SemanticReporterImpl reporter = new SemanticReporterImpl(checker);
+            reporter.printReport();
+            
+            ClprolfCodeGeneratorImpl generator = new ClprolfCodeGeneratorImpl(tokensStream);
+            generator.visit(parseTree);
+            
+        	System.out.println("The CST is: \n\n" + parseTree.toStringTree(inputParser) + "\n");
+        	System.out.println("Generated code: " + "\n");
 			System.out.println(generator.getGeneratedCode());
 			this.writeClprolfAsStringToSourceFile(fileName, generator.getGeneratedCode());
 		}
 		else {
-			System.err.print(errorOutput);
+			System.err.println("Syntax error: \n\n" + errorOutput);
 		}
 		
 	}

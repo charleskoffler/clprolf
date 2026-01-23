@@ -57,6 +57,40 @@ public class SemanticCheckerImpl {
     private void verifyClassRules(SemanticClassSymbol c) {
         String name = c.getName();
         Declension decl = c.getDeclension();
+        
+       /* **ARCH A1 (classes):**
+        Declensions must match between parent and child classes.
+        Synonyms are considered equivalent. */
+        
+        SemanticClassSymbol motherClass = null;
+        if (c.getParentName() != null) {
+        	String beginningOfError = "ARCH-A1: Class " + c.getName() + ": ";
+        	String endOfError = "(" + c.getParentName() + ")";
+    		
+        	if (symbols.get(c.getParentName()) instanceof SemanticClassSymbol){
+        				
+        		SemanticClassSymbol parentClass = (SemanticClassSymbol)symbols.get(c.getParentName());
+        		if (c.getDeclension().isAgent() && !parentClass.getDeclension().isAgent()) {
+        			errors.add(beginningOfError + " the mother Class should be an agent " + endOfError);
+        		}
+        		else if (c.getDeclension().isWorkerAgent() && !parentClass.getDeclension().isWorkerAgent()) {
+        			errors.add(beginningOfError + " the mother Class should be a worker agent " + endOfError);
+        		}
+        		else if (c.getDeclension() == Declension.MODEL && parentClass.getDeclension() != Declension.MODEL) {
+        			errors.add(beginningOfError + " the mother Class should be a model " + endOfError);
+        		}
+        		else if (c.getDeclension() == Declension.INFORMATION && parentClass.getDeclension() != Declension.INFORMATION) {
+        			errors.add(beginningOfError + " the mother Class should be an information " + endOfError);
+        		}
+        		else if (c.getDeclension() == Declension.INDEF_OBJ) {
+        			// All inheritance is allowed in the case of Indef_obj, even Java class inheritance.
+        		}
+        	}
+        	else {
+        		errors.add(beginningOfError + " the mother class of " + c.getName() + " doesn't exist (" + c.getParentName() + ")");
+        	}
+        }
+        
        /*  **ARCH BA3 (interfaces, usage):**
         A class cannot `contracts` a `capacity`. */
         

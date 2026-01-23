@@ -1,6 +1,7 @@
 // For all tests
 @Static
 import java_interface version_inh abstraction java.util.List;
+import java_class abstraction java.lang.ArithmeticException;
 
 public version_inh agent Animal {
 	public void run();
@@ -20,6 +21,12 @@ public capacity_inh Eatable {
 
 public agent AnimalImpl {
 	
+}
+
+public worker_agent AnimalWorker {
+	public void display(){
+		System.out.println("The animal!");
+	}
 }
 
 // BB1
@@ -99,3 +106,69 @@ The `contracts` keyword is mandatory for all implementations. */
 	
 	}
 }*/
+
+//
+/* **ARCH A1 (classes):**
+Declensions must match between parent and child classes.
+Synonyms are considered equivalent. */
+
+//error
+public agent A1AnimalImpl nature AnimalWorker {
+
+	public void eat(){
+	}
+
+}
+
+public simu_real_obj A1AnimalImplTwo nature AnimalWorker {
+
+	public void eat(){
+	}
+
+}
+
+public abstraction A1AnimalImplThree nature AnimalWorker {
+
+	public void eat(){
+	}
+
+}
+
+//error
+public worker_agent A1AnimalWorker nature AnimalImpl {
+
+	public void eat(){
+	}
+
+}
+
+//error
+public comp_as_worker A1AnimalWorkerTwo nature AnimalImpl {
+
+	public void eat(){
+	}
+
+}
+
+//error
+
+public model A1Model nature AnimalWorker {
+
+	public int age;
+}
+
+public information A1Information nature AnimalWorker {
+
+	public int data;
+}
+
+//It is ok.
+//All kind of inheritance is allowed, for an indef_obj
+public indef_obj A1IndefObj nature AnimalWorker {
+}
+
+//error, mother class does not exist
+public agent A1InheritDoesntExist nature Ghost {
+	
+}
+
