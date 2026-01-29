@@ -18,7 +18,7 @@ import org.clprolf.framework.java.Contracts;
 
 /* The real drawing container. */
 
-@Abstraction
+@Abstraction // Inherit from a system abstraction
 public class SnakeGamePanelImpl extends @Nature JPanel implements @Contracts SnakeGamePanel {
 
 	private @With_compat SnakeWindow gameWindow;

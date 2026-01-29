@@ -15,7 +15,7 @@ import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 import org.clprolf.framework.java.Abstraction;
 
 @Forced_inh // extends a Java class
-@Abstraction
+@Abstraction // System abstraction
 public class SnakeWindowImpl extends @Nature JFrame implements @Contracts SnakeWindow {
 	//The thread abstraction
 	private Thread cyclesThread;

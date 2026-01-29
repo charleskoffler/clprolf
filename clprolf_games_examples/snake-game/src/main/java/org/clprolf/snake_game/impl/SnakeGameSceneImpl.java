@@ -5,6 +5,7 @@ import java.util.Random;
 import org.clprolf.framework.java.Abstraction;
 import org.clprolf.framework.java.Contracts;
 import org.clprolf.framework.java.Model;
+import org.clprolf.framework.java.Simu_real_obj;
 import org.clprolf.framework.java.With_compat;
 import org.clprolf.snake_game.interfaces.FoodExpert;
 import org.clprolf.snake_game.interfaces.Snake;
@@ -13,7 +14,7 @@ import org.clprolf.snake_game.workers.impl.SnakeGameSceneRendererImpl;
 import org.clprolf.snake_game.workers.interfaces.SnakeGameSceneRenderer;
 
 
-@Abstraction
+@Simu_real_obj //Not a pure abstraction, because it has a worker.
 public class SnakeGameSceneImpl implements @Contracts SnakeGameScene {
 	
 	private @With_compat SnakeGameSceneRenderer renderer;

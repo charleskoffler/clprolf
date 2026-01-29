@@ -19,7 +19,7 @@ import org.clprolf.snake_game.interfaces.SnakeGameScene;
  *  - Add a scoring system and display it on the screen.
  *  - The winner is the one who doesn’t lose — unless all the food is eaten.
  *
- * Version: 20251005, 1.0.1
+ * Version: 20260129, 1.0.2
  * 
  * @author Charles Koffler
  *
