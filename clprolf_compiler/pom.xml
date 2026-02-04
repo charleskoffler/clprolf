@@ -6,7 +6,7 @@
 
   <groupId>org.clprolf</groupId>
   <artifactId>clprolfcompiler</artifactId>
-  <version>5.4</version>
+  <version>5.5</version>
 
   <name>compiler</name>
   <!-- FIXME change it to the project's website -->
@@ -14,8 +14,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
 	<antlr.version>4.13.1</antlr.version>
   </properties>
 
@@ -78,7 +77,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.1</version>
           <configuration>
-			  <release>8</release>
+			  <release>17</release>
           	<verbose>true</verbose>
           </configuration>
         </plugin>
