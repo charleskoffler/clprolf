@@ -65,7 +65,7 @@ From the **Language Reference Manual** to focused thematic guides and conceptual
 
 ### 🧭 Start Here
 
-* 🚀 [**Getting Started with Clprolf**](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_getting_started.md)
+* 🚀 [**Getting Started with Clprolf**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_getting_started.md)
   A practical introduction showing how Clprolf makes architectural intent explicit — with real examples and enforced structural rules.
 
 ---
