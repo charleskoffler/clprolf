@@ -44,8 +44,8 @@ public class ClprolfCompilerImpl {
 		
 		totalSourceCode = this.readClprolfSourceAsString(fileName);
 	   
-	    @With_compat TokenSource tokenSource = new ClprolfJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
-	    CommonTokenStream tokensStream = new CommonTokenStream(tokenSource);
+	    @With_compat TokenSource tokenSourceAgent = new ClprolfJava8Lexer(CharStreams.fromString(totalSourceCode.toString()));
+	    CommonTokenStream tokensStream = new CommonTokenStream(tokenSourceAgent);
 	    ClprolfJava8Parser inputParser = new ClprolfJava8Parser(tokensStream);
 	
 	    //ClprolfJava8Parser.CompilationUnitContext context = inputParser.compilationUnit();

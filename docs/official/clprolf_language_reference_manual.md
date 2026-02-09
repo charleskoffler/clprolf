@@ -7570,7 +7570,3 @@ public class QuickSorter {
 ```
 
 ### 🧭 **End of Annex — Clprolf**
-
-> This annex completes the formal specification of Clprolf.
-> It connects grammar, semantics, and keywords into a single consistent vision —
-> turning clarity from philosophy into verifiable structure.

@@ -9,7 +9,9 @@ import org.clprolf.framework.java.Worker_agent;
  * Actually the clprolf antlr4 compiler is based on java 8 grammer of antlr4-grammars-v4
  * (https://github.com/antlr/grammars-v4/tree/master/java/java8) 
  
- 5.4.0 (20260123)
+ 5.5.0 (EN COURS)
+ 
+ Correction of error messages
  
  Rules: ARCH A1. No semantic checking if syntax error. Better display of the output.
  
