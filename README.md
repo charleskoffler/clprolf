@@ -11,6 +11,26 @@ You model systems with **agents, worker agents, versions, and capacities**, whil
 
 ---
 
+### Scope and Positioning
+
+Clprolf is not intended as a mainstream replacement for Java or other general-purpose languages.
+
+It is designed for:
+
+* educational contexts focused on architectural clarity,
+* complex systems,
+* simulation and MAS-like applications,
+* systems requiring strong predictability and structural discipline.
+
+Clprolf introduces explicit structural constraints through predefined roles and natures.
+These constraints are intentional and form part of the language’s philosophy.
+
+Developers who prefer unrestricted class modeling and complete architectural freedom may find traditional object-oriented languages more suitable.
+
+Clprolf is intended for contexts where early architectural control and long-term coherence are primary objectives.
+
+---
+
 ### 🚀 Why Clprolf?
 
 * **Safer architecture**: compile-time errors prevent invalid dependencies
@@ -46,9 +66,9 @@ agent OrderService {
 
 ### 🎯 Perfect For
 
+* Teaching OOP and architectural thinking through structural guarantees
 * Large simulations & multi-agent systems
 * Scientific prototypes with interacting “actors”
-* Teaching OOP/design patterns with minimal overhead
 
 ---
 

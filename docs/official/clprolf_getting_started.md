@@ -119,7 +119,7 @@ Result:
 
 ```
 ARCH-A1 => Class A1AnimalImpl:
-the mother Class should be an agent (AnimalWorker)
+the parent class should be an agent (AnimalWorker)
 ```
 
 The equivalent Java code would compile:
@@ -142,7 +142,7 @@ Clprolf also distinguishes between:
 Example of forbidden usage:
 
 ```clprolf
-public agent BA4Animal contracts Animal, Vehicule { }
+public agent BA4Animal contracts Animal, Vehicle { }
 ```
 
 Error:

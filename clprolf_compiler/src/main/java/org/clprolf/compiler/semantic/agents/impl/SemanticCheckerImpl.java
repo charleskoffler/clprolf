@@ -71,23 +71,23 @@ public class SemanticCheckerImpl {
         				
         		SemanticClassSymbol parentClass = (SemanticClassSymbol)symbols.get(c.getParentName());
         		if (c.getDeclension().isAgent() && !parentClass.getDeclension().isAgent()) {
-        			errors.add(beginningOfError + " the mother Class should be an agent " + endOfError);
+        			errors.add(beginningOfError + " the parent class should be an agent " + endOfError);
         		}
         		else if (c.getDeclension().isWorkerAgent() && !parentClass.getDeclension().isWorkerAgent()) {
-        			errors.add(beginningOfError + " the mother Class should be a worker agent " + endOfError);
+        			errors.add(beginningOfError + " the parent class should be a worker agent " + endOfError);
         		}
         		else if (c.getDeclension() == Declension.MODEL && parentClass.getDeclension() != Declension.MODEL) {
-        			errors.add(beginningOfError + " the mother Class should be a model " + endOfError);
+        			errors.add(beginningOfError + " the parent class should be a model " + endOfError);
         		}
         		else if (c.getDeclension() == Declension.INFORMATION && parentClass.getDeclension() != Declension.INFORMATION) {
-        			errors.add(beginningOfError + " the mother Class should be an information " + endOfError);
+        			errors.add(beginningOfError + " the parent class should be an information " + endOfError);
         		}
         		else if (c.getDeclension() == Declension.INDEF_OBJ) {
         			// All inheritance is allowed in the case of Indef_obj, even Java class inheritance.
         		}
         	}
         	else {
-        		errors.add(beginningOfError + " the mother class of " + c.getName() + " doesn't exist (" + c.getParentName() + ")");
+        		errors.add(beginningOfError + " the parent class of " + c.getName() + " doesn't exist (" + c.getParentName() + ")");
         	}
         }
         

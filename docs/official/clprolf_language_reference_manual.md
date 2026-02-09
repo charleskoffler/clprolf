@@ -30,9 +30,29 @@ It defines predefined components and enforces strict rules for inheritance and i
 
 It is particularly suited for:
 
-* complex systems,
-* simulation and MAS-like applications,
-* and educational purposes.
+* educational purposes
+* complex systems
+* and simulation and MAS-like applications
+
+---
+
+#### I.1.b) Scope and Positioning
+
+Clprolf is not intended as a mainstream replacement for Java or other general-purpose languages.
+
+It is designed for:
+
+* architectural education and training
+* large-scale or structurally complex systems
+* simulation and multi-agent systems
+* environments requiring strong predictability and discipline
+
+Clprolf introduces explicit structural constraints through predefined roles and natures.
+These constraints are intentional and form part of the language’s philosophy.
+
+Developers who prefer unrestricted class modeling and complete architectural freedom may find traditional object-oriented languages more suitable.
+
+Clprolf is intended for contexts where early architectural control and long-term coherence are primary objectives.
 
 ---
 
@@ -891,7 +911,6 @@ An abstraction:
 
 * represents a concept, not an actor,
 * stays within its conceptual responsibility,
-* is typically manipulated by worker_agents,
 * belongs fully to the business/domain logic (not to simulation).
 
 ### **Examples (clean and representative):**
@@ -941,6 +960,37 @@ Examples:
 * `Particle`
 
 These are **true simulation components**, not business abstractions.
+
+---
+
+#### II.5.k.b) Abstractions and Workers
+
+An `abstraction` does not have an associated `worker_agent`.
+
+Unlike an `agent`, which may require a `worker_agent` for technical realization, an abstraction remains entirely within its conceptual domain.
+
+Even when an abstraction manipulates memory structures — such as collections (`List`, `HashMap`, etc.) — this does not make it a worker.
+Working on memory is not equivalent to performing technical infrastructure tasks.
+
+Collections and similar structures are **pure abstractions**:
+they represent conceptual data organizations and remain fully within the abstraction world.
+They do not require any associated `worker_agent`.
+
+A distinction must be made for **system-level abstractions** provided by low-level or graphical libraries.
+
+System abstractions are not part of the application’s conceptual model.
+They belong to the platform ecosystem and interact with system resources.
+
+Such abstractions implicitly rely on technical execution and therefore operate within the worker world.
+In practice, their technical behavior corresponds to a `worker_agent` role, even if this role is provided by the underlying system rather than by the application.
+
+Thus:
+
+* Pure abstractions (including collections) → no associated worker.
+* System abstractions → rely on technical execution in the worker world.
+* Worker_agents → explicit technical execution roles defined in the application.
+
+This preserves the conceptual clarity between domain structures and technical workers.
 
 ---
 
@@ -1010,7 +1060,7 @@ This prevents **missed collisions**, a classical simulation pitfall where entiti
 
 #### II.5.n) NOTICE ON WORKER\_AGENT — COMPUTER AS A WORKER
 
-The **`worker_agent`** declension is not only about separating `agent` code from pure computer tasks — it is about treating the **computer as a worker**. The “simu” prefix highlights this metaphor: as if the computer were a real-world worker. Its job is to manage peripherals, handle resources, and perform tasks that are inherently technical.
+The **`worker_agent`** declension is not only about separating `agent` code from pure computer tasks — it is about treating the **computer as a worker**. It is as if the computer was a real-world worker. Its job is to manage peripherals, handle resources, and perform tasks that are inherently technical.
 
 The idea is algorithmic: an algorithm is executed *for a worker*, and here the worker happens to be a computer. In principle, a human could also play the role of a worker — the distinction lies only in the nature of the task. This perspective connects to ALGOL 60’s vision of algorithms: abstracting the worker, and seeing the computer as an executor in human-like terms.
 
@@ -1059,7 +1109,256 @@ They define *what* a class represents, *how* it behaves, and *for whom* it was d
 
 ---
 
-### II.6) Gender Annotations
+### II.6 - Refactoring Your Classes with Clprolf and indef_obj
+
+Purpose of this Annex
+
+This annex explains how Clprolf can be used as a refactoring tool to clarify responsibilities after code has been written, without requiring early architectural decisions.
+
+The approach follows common development practice:
+
+1. write working code,
+2. understand responsibilities through usage,
+3. refactor when needed.
+
+---
+
+#### II.6.a) Starting Point: A Typical Object-Oriented Class
+
+Consider a common object-oriented class that mixes several concerns.
+
+```java
+public class OrderManager {
+
+    public void processOrder(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        saveToDatabase(order);
+        logOrder(order);
+
+        String message = formatConfirmation(order);
+        sendEmail(message);
+    }
+
+    private void saveToDatabase(Order order) {
+        System.out.println("Saving order " + order.getId());
+    }
+
+    private void logOrder(Order order) {
+        System.out.println("Order processed: " + order.getId());
+    }
+
+    private String formatConfirmation(Order order) {
+        return "Order #" + order.getId() + " confirmed";
+    }
+
+    private void sendEmail(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+```
+
+This class:
+
+performs business checks,
+handles persistence,
+logs execution,
+formats messages,
+performs I/O.
+
+
+Such a class is typical and perfectly acceptable as a starting point.
+
+---
+
+#### II.6.b) Introducing indef_obj Without Changing Behavior
+
+In Clprolf, the same class can first be expressed as an indefinite object, indicating that its architectural role is not yet fixed.
+
+```clprolf
+public indef_obj OrderManager {
+
+    public void processOrder(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        saveToDatabase(order);
+        logOrder(order);
+
+        String message = formatConfirmation(order);
+        sendEmail(message);
+    }
+
+    private void saveToDatabase(Order order) { }
+    private void logOrder(Order order) { }
+    private String formatConfirmation(Order order) { return ""; }
+    private void sendEmail(String message) { }
+}
+```
+
+At this stage:
+
+no architectural role is asserted,
+no refactoring is required,
+no decision is forced.
+
+
+indef_obj represents a temporary and legitimate state during development.
+
+---
+
+#### II.6.c) Identifying Responsibilities During Refactoring
+
+After some time, responsibilities become clearer.
+The class mixes two main kinds of concerns:
+
+| Responsibility                        | Nature    |
+| ------------------------------------- | --------- |
+| Business validation and orchestration | Business  |
+| Persistence, logging, formatting, I/O | Technical |
+
+
+This is the typical moment where SRP is applied in practice.
+
+---
+
+#### II.6.d) Refactoring into Explicit Clprolf Roles
+
+```
+Before (indef_obj)
+
+OrderManager
+ ├─ business rule
+ ├─ persistence
+ ├─ logging
+ └─ notification
+
+
+After (SRP made explicit)
+
+OrderProcessor (agent)
+ ├─ business decision
+
+OrderRepository (worker_agent)
+ └─ persistence
+
+OrderNotifier (worker_agent)
+ ├─ logging
+ └─ messaging
+```
+
+##### II.6.d.1) Business Responsibility — Agent
+
+```clprolf
+public agent OrderProcessor {
+
+    private final OrderRepository repository;
+    private final OrderNotifier notifier;
+
+    public OrderProcessor(OrderRepository repository,
+                          OrderNotifier notifier) {
+        this.repository = repository;
+        this.notifier = notifier;
+    }
+
+    public void process(Order order) {
+        if (order.getTotal() <= 0) {
+            throw new IllegalArgumentException("Invalid order");
+        }
+
+        repository.save(order);
+        notifier.notify(order);
+    }
+}
+```
+
+The agent:
+
+expresses business intent,
+coordinates execution,
+contains no technical implementation.
+
+---
+
+##### II.6.d.2) Technical Responsibilities — Worker Agents
+
+```clprolf
+public worker_agent OrderRepository {
+
+    public void save(Order order) {
+        System.out.println("Saving order " + order.getId());
+    }
+}
+
+public worker_agent OrderNotifier {
+
+    public void notify(Order order) {
+        log(order);
+        String message = format(order);
+        send(message);
+    }
+
+    private void log(Order order) {
+        System.out.println("Order processed: " + order.getId());
+    }
+
+    private String format(Order order) {
+        return "Order #" + order.getId() + " confirmed";
+    }
+
+    private void send(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+```
+
+Worker agents may legitimately mix technical concerns such as:
+
+logging,
+persistence,
+formatting,
+I/O.
+
+This is acceptable because business meaning remains exclusively in the agent.
+
+---
+
+#### II.6.e) What This Refactoring Achieves
+
+What remains unchanged:
+
+behavior,
+algorithms,
+execution flow.
+
+
+What becomes explicit:
+
+responsibility boundaries,
+architectural intent,
+future refactoring paths.
+
+This is SRP applied structurally, not dogmatically.
+
+---
+
+Conclusion
+
+Clprolf does not require architectural clarity upfront.
+It allows developers to reach clarity through refactoring, using indef_obj as a transitional state.
+
+In this sense, Clprolf acts as:
+
+a structural support for SRP,
+a neutral refactoring tool,
+a framework that respects real development workflows.
+
+---
+
+### II.7) Gender Annotations
 
 In Clprolf, **genders** are optional markers that refine the interpretation of an **agent declension**.
 They do not change the role of the object — it remains an *agent* — but they express a particular **attitude or posture** of that agent within the system.
@@ -1073,7 +1372,7 @@ They are **optional**, never enforced, and serve only to enrich the meaning of d
 
 ---
 
-#### II.6.b) Available Genders
+#### II.7.b) Available Genders
 
 * **@Human_expert** – represents a simulation of a human expert in a given domain.
 * **@Expert_component** – similar to `@Human_expert`, but with a more technical interpretation — the class is an “expert component” specialized in its task.
@@ -1089,7 +1388,7 @@ They are **optional**, never enforced, and serve only to enrich the meaning of d
 
 ---
 
-#### II.6.c) Examples
+#### II.7.c) Examples
 
 ```java
 @Human_expert   // or @Expert_component
@@ -1098,7 +1397,7 @@ public agent MeteoExpert { /* (...) */ }
 
 ---
 
-#### II.6.d) Compatibility Between Genders
+#### II.7.d) Compatibility Between Genders
 
 * **@Expert_component ↔ @Human_expert**
   These genders overlap strongly. A human expert can also be viewed as a component.
@@ -1117,7 +1416,7 @@ public agent MeteoExpert { /* (...) */ }
 
 ---
 
-#### II.6.e) In the Framework
+#### II.7.e) In the Framework
 
 In the Java framework, genders are available for **agent-like roles** through an optional `gender` attribute.
 For example:
@@ -1133,7 +1432,7 @@ The available genders are:
 ---
 
 
-### II.7) Interfaces in Clprolf
+### II.8) Interfaces in Clprolf
 
 In Clprolf, interfaces are organized into three categories. Collectively, they are called **compatibility interfaces**.
 
@@ -1162,7 +1461,7 @@ Outside of these scenarios, interfaces are not used in Clprolf. However, the fea
 ---
 
 
-#### II.7.b) Interface Declensions
+#### II.8.b) Interface Declensions
 
 
 Interfaces also have declensions, divided into two main types:
@@ -1176,7 +1475,7 @@ This keeps the terminology consistent between class and interface hierarchies.
 
 ---
 
-#### II.7.c) The `with_compat` Modifier
+#### II.8.c) The `with_compat` Modifier
 
 A key difference in Clprolf is that every use of an interface must be preceded by the keyword **`with_compat`** (with compatibility).
 
@@ -1192,7 +1491,7 @@ Typical usages include local variables and method arguments.
 
 ---
 
-#### II.7.d) Notes
+#### II.8.d) Notes
 
 * There is **no `with_compat` indication for a method’s return type**. This is the exception to the rule, because the return type is not a variable declaration. In practice:
 
@@ -1202,7 +1501,7 @@ Typical usages include local variables and method arguments.
 * `with_compat` is valid for **all Clprolf interface types**: version, capacity, or generic compatibility.
   This allows capacity interfaces to be used directly in variables, even though a class cannot directly inherit from them.
 
-#### II.7.e) Which interfaces may be used with `with_compat`
+#### II.8.e) Which interfaces may be used with `with_compat`
 
 The `with_compat` modifier applies **only to Clprolf interfaces**.
 It cannot be used with classes or with raw Java interfaces.
@@ -1237,7 +1536,7 @@ and therefore cannot be referenced using `with_compat`.
 
 ---
 
-#### II.7.f) Capacity Interfaces and Advice
+#### II.8.f) Capacity Interfaces and Advice
 
 Capacity interfaces are only meant to extend **compat\_interf\_version** interfaces. They express functionality that is common across different families of version interfaces, and thus across the classes that implement them.
 Think of **versions** as *alternatives*, and **capacities** as *common traits shared across those alternatives*.
@@ -1246,7 +1545,7 @@ A capacity interface can never be implemented directly by a class. This restrict
 
 ---
 
-#### II.7.g) The Role of Advice
+#### II.8.g) The Role of Advice
 
 Capacity interfaces can have a **gender called an Advice**, which specifies their **target class role** —
 that is, the nature of the classes or versions that are meant to use or implement the capacity.
@@ -1353,7 +1652,7 @@ and reinforces the structural discipline of Clprolf’s two worlds — *agents* 
 
 ---
 
-#### II.7.h) Special Note: Enforcing a Capacity Across Declensions
+#### II.8.h) Special Note: Enforcing a Capacity Across Declensions
 
 Capacities in Clprolf are always **normal capacities**, with a clear advice:
 they are either **agent-like** or **worker-like**, never both.
@@ -1370,7 +1669,7 @@ An `agent` interface can still extend it, but must declare it with `@Forc_int_in
 
 ---
 
-#### II.7.i) Neutral Capacity Interfaces
+#### II.8.i) Neutral Capacity Interfaces
 
 A `compat_interf_capacity` can be declared **without any advice annotation**
 (`@Agent_like_advice`, `@Worker_like_advice`, etc.).
@@ -1399,14 +1698,14 @@ but they do not carry any advice or semantic constraint by default.
 
 ---
 
-### II.8) Features for Interface Inheritance
+### II.9) Features for Interface Inheritance
 
 Clprolf provides **features for developers who prefer to think in terms of inheritance for interfaces**, treating them as if they were *pure abstract classes*.
 These features become **mandatory whenever a version interface inherits from another version interface**.
 
 ---
 
-#### II.8.b) Interfaces as an Implementation-Less World
+#### II.9.b) Interfaces as an Implementation-Less World
 
 When `with_compat` is used, it is as if the API of the class were replaced by the implemented interface.
 The object now belongs to the hierarchy of the interface, rather than the class — entering an **implementation-less world** where only interfaces define structure.
@@ -1425,7 +1724,7 @@ For this vision:
 
 ---
 
-#### II.8.c) Inheritance Perspective
+#### II.9.c) Inheritance Perspective
 
 Interfaces and concrete classes share the **same inheritance hierarchy** (or equivalent).
 This is why it is correct to say that a class *inherits* from an interface:
@@ -1445,7 +1744,7 @@ In Java, this is often called **simulated multiple inheritance**:
 
 ---
 
-#### II.8.d) Role Checking and Nature in Interfaces
+#### II.9.d) Role Checking and Nature in Interfaces
 
 * Class roles on interfaces are checked in the same way as for classes.
 * `@Forced_inh` (not `@Forced_int_inh`) must be used to enforce role coherence.
@@ -1463,7 +1762,7 @@ It is **reserved for inheritance features** and is **never applied to compatibil
 
 ---
 
-#### II.8.e) Perspective and Use
+#### II.9.e) Perspective and Use
 
 The features for interface inheritance allow developers to treat **interfaces like classes**, except without direct access to implementations.
 
@@ -1473,7 +1772,7 @@ The features for interface inheritance allow developers to treat **interfaces li
 
 ---
 
-#### II.8.f) Features for Interface Inheritance: Simple Inheritance with a Class Role
+#### II.9.f) Features for Interface Inheritance: Simple Inheritance with a Class Role
 
 The following example shows a **basic and recommended use** of interface inheritance in Clprolf.
 It demonstrates how a simple interface hierarchy works when interfaces are tied to a **class role** (here, `agent`).
@@ -1561,7 +1860,7 @@ This **Dog/Animal** example demonstrates how simple interface inheritance works 
 This is the **recommended way** to use interface inheritance in Clprolf, in contrast to **multiple inheritance patterns**, which are possible but discouraged.
 
 
-#### **II.8.g) Features for Interface Inheritance: A Design Pattern for Multiple Inheritance**
+#### **II.9.g) Features for Interface Inheritance: A Design Pattern for Multiple Inheritance**
 
 Clprolf normally enforces **one nature per object**, which is the foundation of clarity and SRP coherence.
 
@@ -1738,7 +2037,7 @@ public class TeacherClass extends @Nature PersonClass implements @Contracts Teac
 
 ---
 
-#### II.8.h) Multiple Natures Through Ubiquity (The Ubiquity Pattern)
+#### II.9.h) Multiple Natures Through Ubiquity (The Ubiquity Pattern)
 
 ##### *A practical and safe alternative to classical multiple inheritance*
 
@@ -2032,7 +2331,7 @@ No other language provides a model this clean.
 
 ---
 
-#### II.8.i) Using Class Roles on Interfaces for Collaborative Projects
+#### II.9.i) Using Class Roles on Interfaces for Collaborative Projects
 
 
 For collaborative projects — such as public APIs or large teams — it can be useful to assign **class roles to interfaces**, in order to make their purpose explicit and to enforce coherence.
@@ -2073,7 +2372,7 @@ not just an equivalent or related role.
 
 ---
 
-#### II.8.j) Role-Bound `compat_interf_version` — Between Compatibility and Features
+#### II.9.j) Role-Bound `compat_interf_version` — Between Compatibility and Features
 
 
 Clprolf allows a `compat_interf_version` to declare a **target class role**
@@ -2126,7 +2425,7 @@ offering a flexible way to handle APIs that mix both semantics.
 
 ---
 
-#### II.8.k) Synonym Requalification Between Features and Compatibility Interfaces
+#### II.9.k) Synonym Requalification Between Features and Compatibility Interfaces
 
 Clprolf provides two equivalent syntactic forms for defining interfaces:
 the *feature-oriented* form (with the `_inh` suffix)
@@ -2191,7 +2490,7 @@ the use of `@Forc_int_inh` explicitly authorizes this exception.
 ---
 
 
-### II.9) ✳️ Language-Integrated Annotations — A New Step Toward Purity
+### II.10) ✳️ Language-Integrated Annotations — A New Step Toward Purity
 
 Clprolf now introduces a refined and mature approach to **language annotations** —
 a model that eliminates mechanical redundancy while keeping full expressive clarity.
@@ -2199,7 +2498,7 @@ These annotations are no longer external metadata: they are **words of the langu
 
 ---
 
-#### II.9.b) 🌿 Simple by Nature
+#### II.10.b) 🌿 Simple by Nature
 
 Clprolf annotations are **marker annotations only** —
 lightweight, structural tags understood directly by the compiler.
@@ -2218,7 +2517,7 @@ The compiler knows exactly what they mean — because they belong to the languag
 
 ---
 
-#### II.9.c) ⚙️ Clean Generation
+#### II.10.c) ⚙️ Clean Generation
 
 During Java code generation, all Clprolf annotations are **removed**.
 They are used only to guide semantic understanding,
@@ -2235,7 +2534,7 @@ not in the mechanical result.
 
 ---
 
-#### II.9.d) 🧭 Freedom with Awareness
+#### II.10.d) 🧭 Freedom with Awareness
 
 Clprolf allows developers to use any type name —
 even one that matches a reserved annotation name —
@@ -2261,7 +2560,7 @@ you can use any name you want — unless it already has a role in the Clprolf wo
 
 ---
 
-#### II.9.e) 🌱 Synonyms for Harmony
+#### II.10.e) 🌱 Synonyms for Harmony
 
 For each built-in annotation, a synonym exists with the prefix `Clp_`,
 for example `@Clp_Static`, `@Clp_Expert_component`, etc.
@@ -2273,7 +2572,7 @@ who need to use a similar name without clashing with Clprolf’s built-ins.
 
 ---
 
-#### II.9.f) 💎 A Living Language
+#### II.10.f) 💎 A Living Language
 
 Clprolf no longer relies on annotation source files,
 nor on Java imports to understand its own vocabulary.
@@ -2290,7 +2589,7 @@ Clprolf raises an error. Otherwise, it stays silent.
 
 ---
 
-#### II.9.g) 🪶 **Philosophy**
+#### II.10.g) 🪶 **Philosophy**
 
 This evolution reflects Clprolf’s deeper truth:
 to be clear without being heavy,
@@ -2308,7 +2607,7 @@ Only understanding — pure and precise.
 ---
 
 
-### II.10) ☕ **Interoperability with Java**
+### II.11) ☕ **Interoperability with Java**
 
 Clprolf is fully interoperable with Java.
 It relies on **Java 8 syntax and semantics** for all code embedded in `.clp` files,
@@ -2340,7 +2639,7 @@ subject to the same architectural rules as native components.
 
 ---
 
-### II.11) A Language Focused on Algorithms Too — Algorithmic Enhancements
+### II.12) A Language Focused on Algorithms Too — Algorithmic Enhancements
 
 Clprolf is not only about object-oriented design — it is also **algorithm-centric**.
 Its roles and structures are designed to make writing implementations easier and more intuitive.
@@ -2355,7 +2654,7 @@ The goal is to make **algorithm writing** as natural as possible, so programmers
 
 ---
 
-#### II.11.b) Example: The Hypermarket Queue
+#### II.12.b) Example: The Hypermarket Queue
 
 Imagine a hypermarket with a single main queue that dispatches customers to several checkouts.
 Each customer must read the screen to know which checkout is free — but only **one at a time**.
@@ -2420,7 +2719,7 @@ public class Customer implements @Contracts Runnable {
 
 ---
 
-#### II.11.c) Conclusion
+#### II.12.c) Conclusion
 
 With these enhancements, Clprolf makes concurrency and parallelism **visible and understandable** directly in the code.
 It becomes immediately clear that:
@@ -2434,7 +2733,7 @@ This demonstrates Clprolf’s philosophy: **bringing clarity and human-like read
 ---
 
 
-### II.12) THE `long_action` MODIFIER
+### II.13) THE `long_action` MODIFIER
 
 Alongside `underst`, Clprolf introduces another method modifier: `long_action`.
 This modifier marks methods — especially in `agent` classes — that represent actions unfolding over time. A typical example would be the movement of a video game enemy, implemented as a loop.
@@ -2455,7 +2754,7 @@ In the framework, a single `@Long_action` annotation covers all use cases, keepi
 
 ---
 
-### ⭐ II.13) THE `prevent_missing_collision` MODIFIER
+### ⭐ II.14) THE `prevent_missing_collision` MODIFIER
 
 The `prevent_missing_collision` modifier is **a Clprolf method modifier**,
 and it is used **exclusively inside `simu_real_obj` classes**.
@@ -2581,7 +2880,7 @@ It’s an **intention marker**.
 
 ---
 
-### II.14) PARALLELISM AID
+### II.15) PARALLELISM AID
 
 To simplify the management of parallelism, Clprolf introduces four modifiers (with equivalent annotations in the Java framework):
 
@@ -2590,7 +2889,7 @@ To simplify the management of parallelism, Clprolf introduces four modifiers (wi
 * **`for_every_thread`** (attribute modifier): applied to volatile attributes, highlighting their importance in parallel execution.
 * **`dependent_activity`** (method modifier): marks methods that call `wait()` on a monitor object, identifying them as dependent on other threads.
 
-#### II.14.b) Dependent activity in detail
+#### II.15.b) Dependent activity in detail
 
 A method annotated as `dependent_activity` explicitly depends on the activity of another thread. This is similar to the producer–consumer pattern, but Clprolf emphasizes an **algorithmic perspective** rather than a purely technical one.
 
@@ -2658,7 +2957,7 @@ public class OneMessageMailBox {
 }
 ```
 
-### II.14.c) A NOTE ON CONCURRENCY AND PARALLELISM IN CLPROLF
+### II.15.c) A NOTE ON CONCURRENCY AND PARALLELISM IN CLPROLF
 
 In Clprolf, the recommended approach is to start with **pure concurrency in a single thread** before introducing parallelism. Many simulation actions take time to run and are not just instantaneous state changes.
 
@@ -2677,7 +2976,7 @@ These notions are compatible with existing Java mechanisms like `synchronized` a
 
 Finally, problems that are purely parallel — especially those involving **dependent activities** — can be implemented directly with multiple threads.
 
-### II.14.d) Integration of Advanced Synchronization Features
+### II.15.d) Integration of Advanced Synchronization Features
 
 Clprolf already defines a set of semantic rules governing basic synchronization:
 `one_at_a_time` on methods, `turn_monitor` declarations, and the guarantees they provide in single- and multi-thread scenarios.
@@ -2733,7 +3032,7 @@ This dual system preserves the simplicity of the original form while enabling pr
 
 ---
 
-### 🟦 II.14.e) Example — A Cashier With a Turn Monitor (Rewritten Example)
+### 🟦 II.15.e) Example — A Cashier With a Turn Monitor (Rewritten Example)
 
 Below is a fully rewritten example demonstrating the semantics of advanced synchronization features in the most intuitive possible way:
 
@@ -2833,7 +3132,7 @@ the compiler sees a **perfect structural match**:
 
 ---
 
-### II.15) Ignoring Inheritance Checks
+### II.16) Ignoring Inheritance Checks
 
 Inheritance checks can be bypassed using **`@Forc_inh`** (for classes) and **`@Forc_int_inh`** (for interfaces).
 These annotations apply both to **errors** (when declensions differ) and to **warnings** (when synonyms differ).
@@ -2878,7 +3177,7 @@ The explicit presence of `@Forc_inh` or `@Forc_int_inh` always signals a **delib
 
 ---
 
-### II.16) THE `underst` MODIFIER
+### II.17) THE `underst` MODIFIER
 
 The `underst` modifier (short for *understanding*) is used **exclusively inside `agent` classes**.
 
@@ -2955,7 +3254,7 @@ public agent ImageAnalyzer {
 
 ---
 
-### II.17) 🧩 **TO COMPILE**
+### II.18) 🧩 **TO COMPILE**
 
 The **Clprolf compiler** is the most direct way to use the language.
 However, a **Clprolf framework** also exists for Java developers.
@@ -3000,7 +3299,7 @@ During compilation, **Clprolf keywords and annotations** are translated into sta
 
 ---
 
-#### II.17.b) Compiler as an Architecture Guardian
+#### II.18.b) Compiler as an Architecture Guardian
 
 Clprolf’s compiler does not merely translate keywords into Java code; its semantic rules act like **continuous architecture tests**.
 Each build validates that classes, interfaces, and capacities still respect their declared roles and relationships.
@@ -3012,7 +3311,7 @@ In this sense, Clprolf brings to compilation what automated tests bring to runti
 
 ---
 
-#### II.17.c) RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
+#### II.18.c) RULES FOR INHERITANCE CHECKING OF CLASSES AND INTERFACES
 
 Clprolf performs several **semantic inheritance checks** to ensure coherence between classes and interfaces.
 These checks are based on **declensions**, **synonyms**, and **genders**, and are applied automatically by the compiler.
@@ -3032,7 +3331,7 @@ Forcing annotations exist precisely to indicate **deliberate choices** that go b
 
 ---
 
-### II.17.d) ⚙️ THE CLPROLF COMPILER
+### II.18.d) ⚙️ THE CLPROLF COMPILER
 
 A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on the official **Java 8 grammar** (from the `antlr4-grammars` repository).
 
@@ -3057,7 +3356,7 @@ A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on
 
 ---
 
-#### II.17.e) 🧩 Compiler Implementation
+#### II.18.e) 🧩 Compiler Implementation
 
 The **Clprolf compiler** itself is **written in Clprolf**, using the **Clprolf framework** as its structural backbone.
 This makes Clprolf not only a **language** and a **methodology**, but also a **self-hosted system** — its own compiler is built with the same principles it enforces.
@@ -3072,19 +3371,16 @@ This self-reference demonstrates Clprolf’s maturity and internal coherence:
 
 ---
 
-#### II.17.f) Current State and Ongoing Development
+#### II.18.f) Current State and Ongoing Development
 
 The **Clprolf compiler**, written in **Clprolf itself** using the **Clprolf framework**, has now entered its **semantic phase**.
-It already **implements several semantic rules (4 as of now)**, which are gradually being added and refined.
 
-The current compiler version still focuses primarily on **syntax analysis** and **code generation**,
-but **semantic checking** has become an integral part of its ongoing evolution.
+> The semantic phase is now active and already enforces the most critical architectural rules of the language, including declension integrity, role coherence, contract consistency, and inheritance validation.
+> Additional semantic rules are being progressively integrated to extend coverage, but the core structural guarantees are already operational.
 
-* The **Clprolf Semantic Checker** is active and growing.
-  It performs rule-based analysis on **declensions**, **contracts**, **genders**, and **inheritance coherence**,
-  operating directly on the **symbol table** generated during parsing.
+The compiler now includes a structured pipeline: parsing, semantic checking, and code generation.
 
-* In parallel, a dedicated **Framework Checker** is also being developed.
+* In parallel, a dedicated **Framework Checker** is being developed.
   It reuses the same **semantic engine**, but with a specialized **symbol table visitor**.
   This enables it to validate framework-level structures (wrappers, capacities, version interfaces, and practical components)
   without duplicating compiler logic.
@@ -3095,9 +3391,46 @@ ensuring semantic consistency across the entire Clprolf ecosystem.
 > 💡 *In short, Clprolf is no longer just a parser — it is becoming a **self-hosted semantic environment**,
 > where its compiler, framework, and rule engine all evolve together within the same language.*
 
+Examples:
+
+```clprolf
+public agent A1AnimalImpl nature AnimalWorker { }
+```
+
+This attempts to inherit a `worker_agent` from an `agent`.
+
+Result:
+
+```
+ARCH-A1 => Class A1AnimalImpl:
+the parent class should be an agent (AnimalWorker)
+```
+
+The equivalent Java code would compile:
+
+```java
+public class A1AnimalImpl extends AnimalWorker { }
+```
+
+Clprolf rejects it as architecturally inconsistent.
+
 ---
 
-#### II.17.g) Example from the Clprolf Compiler
+Example of forbidden usage:
+
+```clprolf
+public agent BA4Animal contracts Animal, Vehicle { }
+```
+
+Error:
+
+```
+ARCH-BA4 => contracts multiple version_inh interfaces (forbidden)
+```
+
+---
+
+#### II.18.g) Example from the Clprolf Compiler Source Code
 
 Below is a short excerpt from the **Clprolf compiler**, written with the **Clprolf framework**.
 It shows how semantic verification is organized — using clear roles, coherent structure, and object responsibility, all defined in Clprolf style.
@@ -3150,7 +3483,7 @@ public class SemanticCheckerImpl {
 
 ---
 
-#### II.17.h) CLPROLF CODE EDITORS
+#### II.18.h) CLPROLF CODE EDITORS
 
 Clprolf source files can be edited with common tools:
 
@@ -7235,255 +7568,6 @@ public class QuickSorter {
 }
 
 ```
-
-### Annex G - Refactoring Your Classes with Clprolf and indef_obj
-
-Purpose of this Annex
-
-This annex explains how Clprolf can be used as a refactoring tool to clarify responsibilities after code has been written, without requiring early architectural decisions.
-
-The approach follows common development practice:
-
-1. write working code,
-2. understand responsibilities through usage,
-3. refactor when needed.
-
----
-
-#### G.1. Starting Point: A Typical Object-Oriented Class
-
-Consider a common object-oriented class that mixes several concerns.
-
-```java
-public class OrderManager {
-
-    public void processOrder(Order order) {
-        if (order.getTotal() <= 0) {
-            throw new IllegalArgumentException("Invalid order");
-        }
-
-        saveToDatabase(order);
-        logOrder(order);
-
-        String message = formatConfirmation(order);
-        sendEmail(message);
-    }
-
-    private void saveToDatabase(Order order) {
-        System.out.println("Saving order " + order.getId());
-    }
-
-    private void logOrder(Order order) {
-        System.out.println("Order processed: " + order.getId());
-    }
-
-    private String formatConfirmation(Order order) {
-        return "Order #" + order.getId() + " confirmed";
-    }
-
-    private void sendEmail(String message) {
-        System.out.println("Sending email: " + message);
-    }
-}
-```
-
-This class:
-
-performs business checks,
-handles persistence,
-logs execution,
-formats messages,
-performs I/O.
-
-
-Such a class is typical and perfectly acceptable as a starting point.
-
----
-
-#### G.2. Introducing indef_obj Without Changing Behavior
-
-In Clprolf, the same class can first be expressed as an indefinite object, indicating that its architectural role is not yet fixed.
-
-```clprolf
-public indef_obj OrderManager {
-
-    public void processOrder(Order order) {
-        if (order.getTotal() <= 0) {
-            throw new IllegalArgumentException("Invalid order");
-        }
-
-        saveToDatabase(order);
-        logOrder(order);
-
-        String message = formatConfirmation(order);
-        sendEmail(message);
-    }
-
-    private void saveToDatabase(Order order) { }
-    private void logOrder(Order order) { }
-    private String formatConfirmation(Order order) { return ""; }
-    private void sendEmail(String message) { }
-}
-```
-
-At this stage:
-
-no architectural role is asserted,
-no refactoring is required,
-no decision is forced.
-
-
-indef_obj represents a temporary and legitimate state during development.
-
----
-
-#### G.3. Identifying Responsibilities During Refactoring
-
-After some time, responsibilities become clearer.
-The class mixes two main kinds of concerns:
-
-| Responsibility                        | Nature    |
-| ------------------------------------- | --------- |
-| Business validation and orchestration | Business  |
-| Persistence, logging, formatting, I/O | Technical |
-
-
-This is the typical moment where SRP is applied in practice.
-
----
-
-#### G.4. Refactoring into Explicit Clprolf Roles
-
-```
-Before (indef_obj)
-
-OrderManager
- ├─ business rule
- ├─ persistence
- ├─ logging
- └─ notification
-
-
-After (SRP made explicit)
-
-OrderProcessor (agent)
- ├─ business decision
-
-OrderRepository (worker_agent)
- └─ persistence
-
-OrderNotifier (worker_agent)
- ├─ logging
- └─ messaging
-```
-
-##### G.4.a Business Responsibility — Agent
-
-```clprolf
-public agent OrderProcessor {
-
-    private final OrderRepository repository;
-    private final OrderNotifier notifier;
-
-    public OrderProcessor(OrderRepository repository,
-                          OrderNotifier notifier) {
-        this.repository = repository;
-        this.notifier = notifier;
-    }
-
-    public void process(Order order) {
-        if (order.getTotal() <= 0) {
-            throw new IllegalArgumentException("Invalid order");
-        }
-
-        repository.save(order);
-        notifier.notify(order);
-    }
-}
-```
-
-The agent:
-
-expresses business intent,
-coordinates execution,
-contains no technical implementation.
-
----
-
-##### G.4.b Technical Responsibilities — Worker Agents
-
-```clprolf
-public worker_agent OrderRepository {
-
-    public void save(Order order) {
-        System.out.println("Saving order " + order.getId());
-    }
-}
-
-public worker_agent OrderNotifier {
-
-    public void notify(Order order) {
-        log(order);
-        String message = format(order);
-        send(message);
-    }
-
-    private void log(Order order) {
-        System.out.println("Order processed: " + order.getId());
-    }
-
-    private String format(Order order) {
-        return "Order #" + order.getId() + " confirmed";
-    }
-
-    private void send(String message) {
-        System.out.println("Sending email: " + message);
-    }
-}
-```
-
-Worker agents may legitimately mix technical concerns such as:
-
-logging,
-persistence,
-formatting,
-I/O.
-
-This is acceptable because business meaning remains exclusively in the agent.
-
----
-
-#### G.5 What This Refactoring Achieves
-
-What remains unchanged:
-
-behavior,
-algorithms,
-execution flow.
-
-
-What becomes explicit:
-
-responsibility boundaries,
-architectural intent,
-future refactoring paths.
-
-This is SRP applied structurally, not dogmatically.
-
----
-
-Conclusion
-
-Clprolf does not require architectural clarity upfront.
-It allows developers to reach clarity through refactoring, using indef_obj as a transitional state.
-
-In this sense, Clprolf acts as:
-
-a structural support for SRP,
-a neutral refactoring tool,
-a framework that respects real development workflows.
-
----
 
 ### 🧭 **End of Annex — Clprolf**
 

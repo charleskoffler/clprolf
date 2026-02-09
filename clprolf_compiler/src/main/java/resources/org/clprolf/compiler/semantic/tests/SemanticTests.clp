@@ -7,7 +7,7 @@ public version_inh agent Animal {
 	public void run();
 }
 
-public compat_interf_version agent Vehicule {
+public compat_interf_version agent Vehicle {
 	public boolean start();
 }
 
@@ -33,11 +33,11 @@ public worker_agent AnimalWorker {
 /* **ARCH BB1 (interfaces):**
 By default, a `compat_interf_version` cannot inherit from another `compat_interf_version`.*/
 
-public compat_interf_version agent BB1Car extends Vehicule {
+public compat_interf_version agent BB1Car extends Vehicle {
 }
 
 // No problem.
-public version_inh agent BB1Dog extends Animal, Vehicule {
+public version_inh agent BB1Dog extends Animal, Vehicle {
 }
 
 // FIN BB1
@@ -53,7 +53,7 @@ public capacity_inh BB2EatableOne nature Animal {
 }
 
 // Problem
-public compat_interf_capacity BB2EatableTwo extends Vehicule {
+public compat_interf_capacity BB2EatableTwo extends Vehicle {
 	public void eat(int quantity);
 }
 
@@ -72,7 +72,7 @@ public agent BA3Dog contracts Eatable {
 A class cannot `contracts` multiple `version` interfaces simultaneously. */
 
 //problem
-public agent BA4Animal contracts Animal, Vehicule {
+public agent BA4Animal contracts Animal, Vehicle {
 }
 
 // ARCH-BA5
@@ -167,7 +167,7 @@ public information A1Information nature AnimalWorker {
 public indef_obj A1IndefObj nature AnimalWorker {
 }
 
-//error, mother class does not exist
+//error, parent class does not exist
 public agent A1InheritDoesntExist nature Ghost {
 	
 }
