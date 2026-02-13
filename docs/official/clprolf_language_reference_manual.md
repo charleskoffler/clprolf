@@ -1,10 +1,10 @@
 # **Clprolf Language — Reference Manual**
 
+### I) Introduction
+
 This document is the **official reference manual** of the Clprolf programming language.
 It defines the concepts, roles, rules, and structures that form the core of the language.
 All keywords, mechanisms, and architectural principles described here constitute the authoritative definition of Clprolf.
-
-The manual is suitable for any developer with basic knowledge of object-oriented programming, although such familiarity is not strictly required.
 
 It can be read progressively or used as a reference when needed.
 Its purpose is to give a clear and coherent understanding of how the language works, how its concepts fit together, and why it was designed this way.
@@ -14,16 +14,22 @@ This manual presents the ideas that support this vision.
 
 ---
 
-## I) Introduction
+#### Prerequisites
 
-**CLear PROgramming Language and Framework (Clprolf)**
+Clprolf builds upon classical Object-Oriented Programming.
 
-Clprolf is a niche programming language designed to help build systems with a **mindful and coherent structure**.
-It provides a clear framework for creating software with consistency, purpose, and long-term stability.
+To fully benefit from this guide, readers should already be familiar with:
 
----
+* the fundamentals of OOP,
+* inheritance and composition,
+* basic design principles and common patterns.
+
+Clprolf does not replace these foundations.
+It makes certain structural distinctions explicit.
 
 ### I.1) Nature of the Language
+
+**CLear PROgramming Language and Framework (Clprolf)**
 
 Clprolf is a **specialized, guided language**.
 It defines predefined components and enforces strict rules for inheritance and interfaces, with a strong focus on algorithmic programming.
@@ -101,7 +107,297 @@ It supports both:
 Programming is the weaving together of **design** and **algorithmic concerns**.
 Clprolf was built to support both.
 
-### I.6 — The SRP, Completed: What “One Reason to Change” Really Implies
+### I.6) What the InputStream Hierarchy Reveals About Abstraction
+
+> Classical OOP works well.
+> However, because abstraction and realization share the same inheritance axis, certain structural distinctions remain implicit.
+> Clprolf does not reject OOP.
+> It makes ontology explicit.
+> This explicit positioning can reveal alternative designs that were previously hidden.
+
+The Java `InputStream` hierarchy is often presented as a clean example of abstraction and polymorphism:
+
+* `InputStream` defines the abstract contract.
+* `FileInputStream` implements the concrete behavior.
+* `BufferedInputStream` decorates another `InputStream`.
+
+Everything compiles. Everything works.
+
+But if we look more closely, something subtle happens.
+
+---
+
+####  I.6.1) What Do These Classes *Actually* Represent?
+
+Let’s examine the roles:
+
+* `InputStream` — an abstract definition of a readable stream.
+* `FileInputStream` — a concrete implementation reading from the filesystem.
+* `BufferedInputStream` — a performance decorator that takes an `InputStream` in its constructor.
+
+```java
+InputStream in =
+    new BufferedInputStream(
+        new FileInputStream("file.txt"));
+```
+
+At first glance, this is textbook OOP.
+
+But ontologically, what are these classes?
+
+* `InputStream` is a concept.
+* `FileInputStream` interacts with the operating system.
+* `BufferedInputStream` enhances another stream.
+
+Already we are mixing conceptual abstraction and system mechanism inside the same inheritance chain.
+
+---
+
+#### I.6.2) The Key Observation
+
+Concrete subclasses like `FileInputStream` do not redefine the concept of a stream.
+
+They simply implement the abstract technical methods — mainly `read()`.
+
+They are not conceptual specializations.
+
+They are technical realizations.
+
+Yet in Java they appear as subclasses:
+
+```
+FileInputStream extends InputStream
+```
+
+So the implementation mechanism becomes a subtype of the abstraction.
+
+Identity and realization collapse into the same axis: `extends`.
+
+---
+
+#### I.6.3) The Ontological Flattening of Classical OOP
+
+Classical OOP does not distinguish between:
+
+* conceptual identity,
+* system-level realization.
+
+Inheritance is used for both.
+
+So we cannot tell, structurally:
+
+* whether something is an idea,
+* or a mechanism,
+* or a specialization,
+* or just a technical backend.
+
+Everything becomes “is-a”.
+
+That is convenient — but it flattens ontology.
+
+---
+
+#### I.6.4) How a Clprolf Approach Would Separate the Planes
+
+In a Clprolf-like design, we would be forced to answer:
+
+> What is this?
+
+Clean separation:
+
+* `InputStream` → system abstraction (Agent).
+* `BufferedInputStream` → system abstraction (Agent).
+* `FileInputStreamWorker` → system-level realization (Worker).
+
+Here:
+
+* `InputStream` represents the idea of a readable stream.
+* `BufferedInputStream` represents the idea of a buffered stream.
+* The Worker performs the low-level interaction with the operating system.
+
+Abstractions remain in the conceptual plane.
+Workers remain in the execution plane.
+
+`BufferedInputStream` does not become a Worker.
+It manipulates another abstraction.
+
+The Agent contains or delegates to a Worker.
+
+No inheritance crosses ontological planes.
+
+If, exceptionally, we needed a specialized conceptual stream, we could create:
+
+* `FileInputStream` (Agent specialization),
+
+but it would still delegate the technical work to a Worker.
+
+The implementation never becomes the abstraction.
+
+It serves it.
+
+---
+
+#### I.6.5) The BufferedInputStream Test
+
+The fact that `BufferedInputStream` requires an `InputStream` in its constructor is revealing.
+
+It asks for the abstraction.
+
+It wraps a concept.
+
+It operates at the same ontological level.
+
+`BufferedInputStream` is not a low-level mechanism.
+It is a higher-level abstraction that enhances another abstraction.
+
+And yet, in classical OOP, both:
+
+* conceptual specialization,
+* and technical realization
+
+are expressed through the same inheritance axis.
+
+This forces mental reconstruction:
+
+* Which subclasses are abstractions?
+* Which subclasses are implementations?
+* Which ones talk to the OS?
+* Which ones manipulate other abstractions?
+
+The hierarchy does not tell you.
+
+With explicit roles:
+
+* Abstractions manipulate abstractions.
+* Workers implement mechanisms.
+* Composition expresses realization.
+* Inheritance expresses conceptual specialization.
+
+The planes remain clean.
+
+---
+
+#### I.6.6) Why This Matters
+
+This is not about syntax.
+
+It is about clarity.
+
+In classical OOP, abstraction and realization share the same inheritance axis.
+
+`FileInputStream` implements the technical `read()` method.
+`BufferedInputStream` wraps another `InputStream`.
+All of them sit in the same subtype hierarchy.
+
+Yet ontologically, they are not the same kind of thing.
+
+* `InputStream` is a system abstraction.
+* `BufferedInputStream` is also a system abstraction.
+* `FileInputStream` is a technical mechanism implementing low-level behavior.
+
+But the hierarchy does not distinguish these levels.
+
+Inheritance expresses both:
+
+* conceptual specialization,
+* and technical realization.
+
+So when reading the code:
+
+* roles must be inferred,
+* levels must be mentally reconstructed,
+* and the hierarchy does not tell you which layer you are in.
+
+---
+
+##### What Explicit Roles Would Change
+
+If we separate identity from mechanism:
+
+* `InputStream` → system abstraction (Agent)
+* `BufferedInputStream` → system abstraction (Agent)
+* `FileInputStreamWorker` → technical realization (Worker)
+
+Now:
+
+* `BufferedInputStream` manipulates an `InputStream`.
+* It operates at the abstraction level.
+* It remains in the conceptual plane.
+* It delegates technical behavior to a Worker.
+
+This keeps ontological levels clean:
+
+Abstractions interact with abstractions.
+Mechanisms implement details.
+
+No inheritance crosses planes.
+
+---
+
+##### Why This Is Structurally Clearer
+
+When abstraction and realization share the same inheritance axis:
+
+* reading requires mental reconstruction,
+* roles are inferred rather than declared,
+* hierarchy does not express ontological level.
+
+When roles are explicit:
+
+* the design becomes explainable,
+* the architecture becomes stable,
+* team discussions become objective,
+* pedagogy becomes simple.
+
+You can explain it to a teenager:
+
+> There is the idea of a stream.
+> There is another idea that improves a stream (buffering).
+> There is a worker that talks to the system.
+> The ideas use workers to do the real work.
+
+That is structurally clearer than:
+
+> There is an abstract class with abstract methods,
+> concrete subclasses override them,
+> and some subclasses also wrap other subclasses.
+
+---
+
+#### I.6.7) Conclusion
+
+The `InputStream` example is not broken.
+
+It works perfectly.
+
+But it reveals a limitation of classical OOP:
+
+It does not force us to declare what something *is*.
+
+It allows:
+
+* conceptual abstraction,
+* conceptual specialization,
+* and technical realization
+
+to share the same inheritance axis.
+
+A design that separates identity from mechanism through explicit roles and composition does not add complexity.
+
+It removes ambiguity.
+
+And that difference, while subtle, can fundamentally change:
+
+* how easily we write code,
+* how easily we read it,
+* how easily we teach it,
+* and how confidently teams evolve it.
+
+> Classical OOP works.
+> But its abstraction model may hide certain structural distinctions.
+> Making ontology explicit can reveal alternative designs.
+
+### I.7 — Toward a Practicable SRP: What “One Reason to Change” Really Implies
 
 If a class must have only **one** reason to change,
 then this reason must be **shared by all its methods**.
@@ -110,7 +406,7 @@ and since the SRP speaks of *single* responsibility,
 this responsibility must be **unique**.
 In other words, it corresponds to the **duty** of the class.
 
-A responsibility is simply the **work** the class performs.
+A responsibility is the **work** the class performs.
 For example, the responsibility of a `Doctor` class is
 *maintaining the patient’s health*.
 And this responsibility directly follows from the **nature** of the class.
@@ -132,10 +428,8 @@ which all methods collectively express.
 > the unique nature of a class emerges from its declension,
 > its consistency is echoed by the synonym,
 > and the compiler quietly ensures that this unity is preserved.
-> The SRP becomes automatic — applied even without thinking about it.
-> This is precisely why Clprolf could finish what the SRP had only started.**
 
-#### I.6.b — The SRP Misinterpretation: “One Method per Class”
+#### I.7.b — The SRP Misinterpretation: “One Method per Class”
 
 Some people interpret the SRP in an extreme way and conclude that a class should contain only one method.
 This interpretation contradicts the very definition of an object in object-oriented programming.
@@ -154,7 +448,7 @@ Clprolf preserves this logic:
 
 ---
 
-#### I.6.c) SRP and Classical Multiple Inheritance
+#### I.7.c) SRP and Classical Multiple Inheritance
 
 Multiple inheritance is often criticized in traditional OOP because it can violate the **Single Responsibility Principle (SRP)**:
 a class may end up inheriting **two unrelated responsibilities**, creating an identity that makes no conceptual sense.
@@ -199,7 +493,7 @@ Clprolf makes this explicit through its nature system and prevents such incohere
 ---
 
 
-### I.7) SRP at the Method Level (Complete Section)
+### I.8) SRP at the Method Level (Complete Section)
 
 The Single Responsibility Principle (SRP) is traditionally defined at the **class level**:
 a class should have **one single reason to change**, which corresponds to its **conceptual nature** or **domain role**.
@@ -210,7 +504,7 @@ This section clarifies method-level SRP, resolves the ambiguities found in tradi
 
 ---
 
-#### I.7.a) What SRP *really* means for methods
+#### I.8.a) What SRP *really* means for methods
 
 A method expresses a **single intention**, a **specific operation** within the domain of its class.
 Therefore:
@@ -228,7 +522,7 @@ This is the *true* SRP for methods:
 
 ---
 
-#### I.7.b) Algorithmic steps are not multiple responsibilities
+#### I.8.b) Algorithmic steps are not multiple responsibilities
 
 Many developers interpret several steps inside a method as “multiple responsibilities”.
 In reality, most of the time, this is simply **algorithmic decomposition**.
@@ -255,7 +549,7 @@ The confusion arises from mixing *readability* concerns with *responsibility* co
 
 ---
 
-#### I.7.c) When SRP *does* apply at the method level
+#### I.8.c) When SRP *does* apply at the method level
 
 There is a specific — and important — case where developers are correct to say that a method violates SRP:
 
@@ -270,7 +564,7 @@ It has everything to do with **independent evolution paths**.
 
 ---
 
-#### I.7.d) Why this is confusing in traditional OOP
+#### I.8.d) Why this is confusing in traditional OOP
 
 Languages like Java, C#, or PHP do not define the **nature** or **role** of classes.
 Therefore:
@@ -293,7 +587,7 @@ SRP becomes subjective because the language does not give structural guidance.
 
 ---
 
-#### I.7.e) How Clprolf solves this structurally
+#### I.8.e) How Clprolf solves this structurally
 
 Clprolf resolves this ambiguity by defining the **nature** of each class:
 
@@ -329,7 +623,7 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.7.f) Summary
+#### I.8.f) Summary
 
 * A method has a single responsibility when it stays within the class’s domain.
 * Algorithmic steps do not create new responsibilities.
@@ -341,25 +635,25 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.7.g) Conclusion
+#### I.8.g) Conclusion
 
-Clprolf provides the first model where method-level SRP and class-level SRP coexist without contradiction.
-By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf eliminates the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
+Clprolf provides a model where method-level SRP and class-level SRP coexist without contradiction.
+By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf reduces the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
 
 ---
 
-### I.8) Clprolf Language and Framework — GitHub Repository
+### I.9) Clprolf Language and Framework — GitHub Repository
 
 A dedicated **GitHub repository** has been created for Clprolf.
 The project is **open source** and distributed under the **MIT license**.
 
-### I.9) Clprolf — A Designer of Design
+### I.10) Clprolf — A Language for Structured Design
 
 Clprolf was not created to *enforce* design principles, but to make good design emerge by itself.
 It works the same way **Bison** builds parsers without requiring you to think about grammar theory — Clprolf helps you design without realizing you are doing so.
 
 Traditional principles such as the **Single Responsibility Principle (SRP)** or the **SOLID** guidelines describe *what* a good design should look like, but not *how* to achieve it.
-They are abstract goals — useful, but mostly negative in nature: they tell you what **not** to do, without showing how to design meaningfully.
+They describe desirable outcomes, but leave the structural path to the developer.
 
 Clprolf brings the *how* directly into the language.
 By simply choosing a role — `agent`, `worker_agent`, `model`, or `information` — you already make a design decision.
@@ -374,19 +668,18 @@ It **guides you toward a design that makes sense** — a design that is *coheren
 Instead of producing abstract compliance, Clprolf produces *meaningful architecture*.
 
 Whereas classical principles restrict you by saying what must not be done,
-Clprolf expands your freedom by making structure *visible* and *intuitive*.
-It is not a dictatorial language enforcing rules; it simply makes incoherent design structurally impossible.
+Clprolf reduces architectural ambiguity by making structure explicit.
+It is not a dictatorial language enforcing rules; it structurally constrains incoherent design.
 
 That’s why the **SRP becomes a consequence, not a rule**.
 A well-formed Clprolf program naturally respects it, because the act of choosing a nature already fixes the class’s scope and purpose.
 
-Clprolf, therefore, is **a designer of design** — a language that doesn’t apply methodology,
-but **turns clear thought into structure**.
+Clprolf, therefore, is a language that embeds structure directly into design.
 It’s not about following design rules — it’s about designing so clearly that the rules follow you.
 
 ---
 
-### I.10) ⚙️ A Controlled and Coherent System
+### I.11) ⚙️ A Controlled and Coherent System
 
 With **Clprolf**, you obtain a system that remains fully **masterable**.
 The mechanics of the objects are intuitive,
@@ -408,7 +701,7 @@ and that every decision stays connected to meaning.
 
 ---
 
-### I.11) A Methodology for Effective Object-Oriented Programming
+### I.12) A Methodology for Effective Object-Oriented Programming
 
 Most existing object-oriented languages are **neutral**:
 they provide mechanisms such as classes, objects, and inheritance, but they do not indicate *how* objects should be designed or coded.
@@ -463,7 +756,7 @@ Principles like SOLID or design patterns are valuable, but hard to constantly ke
 * General rules such as the **Single Responsibility Principle** often remain too vague and open to interpretation.
 * Clprolf removes this ambiguity by embedding clear definitions of **responsibility** directly into the language.
 
-### I.12) A New Perspective, Still 100% OOP
+### I.13) A New Perspective, Still 100% OOP
 
 Clprolf changes the way you approach design:
 you build **agents**, **worker agents**, and other specialized components, rather than starting from generic objects.
@@ -477,7 +770,7 @@ Its features for interface inheritance and its semantic checks on class and inte
 
 ---
 
-### I.13) ☕ Java-Compatible Language
+### I.14) ☕ Java-Compatible Language
 
 Clprolf is a **Java-compatible language**.
 It redefines some Java keywords such as `class`, `interface`, `extends`, and `implements`,
@@ -507,6 +800,7 @@ on top of existing object-oriented concepts.
 > while Clprolf brings its own semantic layer and conceptual clarity on top of it.
 
 ---
+
 ## II) The language
 
 ### II.1) The Language Itself
@@ -2601,11 +2895,7 @@ No source files.
 No redundant mechanics.
 Only understanding — pure and precise.
 
-> Clprolf does not imitate Java.
-> It finishes what Java began. 💫
-
 ---
-
 
 ### II.11) ☕ **Interoperability with Java**
 
