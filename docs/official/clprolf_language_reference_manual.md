@@ -90,7 +90,111 @@ For technical concerns, it specifies **what a worker must do**, not how the work
 
 ---
 
-### I.5) Embedded Principles
+### I.5) Preventing Architectural Drift in Object-Oriented Systems
+
+#### A Structural Locking Approach
+
+Most large object-oriented systems do not collapse because of lack of expressiveness.
+
+They collapse because of **architectural drift**.
+
+Classes are created with clear intentions.
+Over time, responsibilities expand.
+Boundaries blur.
+Layers mix.
+
+The name remains.
+The nature changes.
+
+This is not a failure of developers.
+It is a structural weakness of unconstrained class design.
+
+---
+
+#### Locking the Nature at Creation Time
+
+What if the nature of a component had to be declared — and respected — from the start?
+
+Clprolf enforces a simple but powerful rule:
+
+Every component must explicitly belong to one of two ontological categories:
+
+* **Domain (agent / model / abstraction)**
+* **Technical (worker_agent / infrastructure layer)**
+
+This is not a naming convention.
+It is a structural constraint.
+
+Once declared, a component cannot silently migrate across layers.
+Inheritance must respect ontological boundaries.
+
+Responsibility is not only described.
+It is positioned.
+
+---
+
+#### From Description to Commitment
+
+Traditional OOP:
+
+```java
+class Sorter
+```
+
+Clprolf:
+
+```clprolf
+public class_for agent Sorter
+```
+
+The keyword `for` changes the mindset.
+
+A class is no longer just a named container.
+It is a construct **for** a declared ontological role.
+
+This small syntactic shift forces a conceptual commitment.
+
+---
+
+#### Structural Discipline, Not Convention
+
+Many architectural principles exist as guidelines:
+
+* separate concerns
+* avoid God Objects
+* respect layers
+* apply SOLID
+
+Clprolf encodes part of this discipline directly into the language.
+
+It does not rely only on human vigilance.
+
+It reduces the surface for structural drift.
+
+---
+
+#### Why This Matters
+
+In small systems, discipline is enough.
+
+In large, long-lived systems, discipline erodes.
+
+Clprolf introduces a structural locking mechanism that:
+
+* stabilizes ontological boundaries,
+* constrains illegitimate inheritance,
+* clarifies the meaning of a class from the start.
+
+It does not reduce what can be built.
+
+It changes how responsibility evolves.
+
+And that difference can be decisive.
+
+---
+
+
+### I.6) Embedded Principles
 
 Clprolf is designed for **clarity, simplicity, and ease of use**.
 It naturally embeds object-oriented principles and significant design patterns — a rare feature for a programming language.
@@ -107,7 +211,7 @@ It supports both:
 Programming is the weaving together of **design** and **algorithmic concerns**.
 Clprolf was built to support both.
 
-### I.6) What the InputStream Hierarchy Reveals About Abstraction
+### I.7) What the InputStream Hierarchy Reveals About Abstraction
 
 > Classical OOP works well.
 > However, because abstraction and realization share the same inheritance axis, certain structural distinctions remain implicit.
@@ -127,7 +231,7 @@ But if we look more closely, something subtle happens.
 
 ---
 
-####  I.6.1) What Do These Classes *Actually* Represent?
+####  I.7.1) What Do These Classes *Actually* Represent?
 
 Let’s examine the roles:
 
@@ -153,7 +257,7 @@ Already we are mixing conceptual abstraction and system mechanism inside the sam
 
 ---
 
-#### I.6.2) The Key Observation
+#### I.7.2) The Key Observation
 
 Concrete subclasses like `FileInputStream` do not redefine the concept of a stream.
 
@@ -175,7 +279,7 @@ Identity and realization collapse into the same axis: `extends`.
 
 ---
 
-#### I.6.3) The Ontological Flattening of Classical OOP
+#### I.7.3) The Ontological Flattening of Classical OOP
 
 Classical OOP does not distinguish between:
 
@@ -197,7 +301,7 @@ That is convenient — but it flattens ontology.
 
 ---
 
-#### I.6.4) How a Clprolf Approach Would Separate the Planes
+#### I.7.4) How a Clprolf Approach Would Separate the Planes
 
 In a Clprolf-like design, we would be forced to answer:
 
@@ -237,7 +341,7 @@ It serves it.
 
 ---
 
-#### I.6.5) The BufferedInputStream Test
+#### I.7.5) The BufferedInputStream Test
 
 The fact that `BufferedInputStream` requires an `InputStream` in its constructor is revealing.
 
@@ -277,7 +381,7 @@ The planes remain clean.
 
 ---
 
-#### I.6.6) Why This Matters
+#### I.7.6) Why This Matters
 
 This is not about syntax.
 
@@ -364,7 +468,7 @@ That is structurally clearer than:
 
 ---
 
-#### I.6.7) Conclusion
+#### I.7.7) Conclusion
 
 The `InputStream` example is not broken.
 
@@ -397,7 +501,7 @@ And that difference, while subtle, can fundamentally change:
 > But its abstraction model may hide certain structural distinctions.
 > Making ontology explicit can reveal alternative designs.
 
-### I.7 — Toward a Practicable SRP: What “One Reason to Change” Really Implies
+### I.8 — Toward a Practicable SRP: What “One Reason to Change” Really Implies
 
 If a class must have only **one** reason to change,
 then this reason must be **shared by all its methods**.
@@ -429,7 +533,7 @@ which all methods collectively express.
 > its consistency is echoed by the synonym,
 > and the compiler quietly ensures that this unity is preserved.
 
-#### I.7.b — The SRP Misinterpretation: “One Method per Class”
+#### I.8.b — The SRP Misinterpretation: “One Method per Class”
 
 Some people interpret the SRP in an extreme way and conclude that a class should contain only one method.
 This interpretation contradicts the very definition of an object in object-oriented programming.
@@ -448,7 +552,7 @@ Clprolf preserves this logic:
 
 ---
 
-#### I.7.c) SRP and Classical Multiple Inheritance
+#### I.8.c) SRP and Classical Multiple Inheritance
 
 Multiple inheritance is often criticized in traditional OOP because it can violate the **Single Responsibility Principle (SRP)**:
 a class may end up inheriting **two unrelated responsibilities**, creating an identity that makes no conceptual sense.
@@ -493,7 +597,7 @@ Clprolf makes this explicit through its nature system and prevents such incohere
 ---
 
 
-### I.8) SRP at the Method Level (Complete Section)
+### I.9) SRP at the Method Level (Complete Section)
 
 The Single Responsibility Principle (SRP) is traditionally defined at the **class level**:
 a class should have **one single reason to change**, which corresponds to its **conceptual nature** or **domain role**.
@@ -504,7 +608,7 @@ This section clarifies method-level SRP, resolves the ambiguities found in tradi
 
 ---
 
-#### I.8.a) What SRP *really* means for methods
+#### I.9.a) What SRP *really* means for methods
 
 A method expresses a **single intention**, a **specific operation** within the domain of its class.
 Therefore:
@@ -522,7 +626,7 @@ This is the *true* SRP for methods:
 
 ---
 
-#### I.8.b) Algorithmic steps are not multiple responsibilities
+#### I.9.b) Algorithmic steps are not multiple responsibilities
 
 Many developers interpret several steps inside a method as “multiple responsibilities”.
 In reality, most of the time, this is simply **algorithmic decomposition**.
@@ -549,7 +653,7 @@ The confusion arises from mixing *readability* concerns with *responsibility* co
 
 ---
 
-#### I.8.c) When SRP *does* apply at the method level
+#### I.9.c) When SRP *does* apply at the method level
 
 There is a specific — and important — case where developers are correct to say that a method violates SRP:
 
@@ -564,7 +668,7 @@ It has everything to do with **independent evolution paths**.
 
 ---
 
-#### I.8.d) Why this is confusing in traditional OOP
+#### I.9.d) Why this is confusing in traditional OOP
 
 Languages like Java, C#, or PHP do not define the **nature** or **role** of classes.
 Therefore:
@@ -587,7 +691,7 @@ SRP becomes subjective because the language does not give structural guidance.
 
 ---
 
-#### I.8.e) How Clprolf solves this structurally
+#### I.9.e) How Clprolf solves this structurally
 
 Clprolf resolves this ambiguity by defining the **nature** of each class:
 
@@ -623,7 +727,7 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.8.f) Summary
+#### I.9.f) Summary
 
 * A method has a single responsibility when it stays within the class’s domain.
 * Algorithmic steps do not create new responsibilities.
@@ -635,19 +739,19 @@ It supports good engineering while eliminating the confusion between algorithmic
 
 ---
 
-#### I.8.g) Conclusion
+#### I.9.g) Conclusion
 
 Clprolf provides a model where method-level SRP and class-level SRP coexist without contradiction.
 By defining clear natures for classes and separating business, technical, data, and structural roles, Clprolf reduces the typical ambiguities of traditional OOP and allows developers to reason cleanly about responsibilities and evolution.
 
 ---
 
-### I.9) Clprolf Language and Framework — GitHub Repository
+### I.10) Clprolf Language and Framework — GitHub Repository
 
 A dedicated **GitHub repository** has been created for Clprolf.
 The project is **open source** and distributed under the **MIT license**.
 
-### I.10) Clprolf — A Language for Structured Design
+### I.11) Clprolf — A Language for Structured Design
 
 Clprolf was not created to *enforce* design principles, but to make good design emerge by itself.
 It works the same way **Bison** builds parsers without requiring you to think about grammar theory — Clprolf helps you design without realizing you are doing so.
@@ -679,7 +783,7 @@ It’s not about following design rules — it’s about designing so clearly th
 
 ---
 
-### I.11) ⚙️ A Controlled and Coherent System
+### I.12) ⚙️ A Controlled and Coherent System
 
 With **Clprolf**, you obtain a system that remains fully **masterable**.
 The mechanics of the objects are intuitive,
@@ -701,7 +805,7 @@ and that every decision stays connected to meaning.
 
 ---
 
-### I.12) A Methodology for Effective Object-Oriented Programming
+### I.13) A Methodology for Effective Object-Oriented Programming
 
 Most existing object-oriented languages are **neutral**:
 they provide mechanisms such as classes, objects, and inheritance, but they do not indicate *how* objects should be designed or coded.
@@ -756,7 +860,7 @@ Principles like SOLID or design patterns are valuable, but hard to constantly ke
 * General rules such as the **Single Responsibility Principle** often remain too vague and open to interpretation.
 * Clprolf removes this ambiguity by embedding clear definitions of **responsibility** directly into the language.
 
-### I.13) A New Perspective, Still 100% OOP
+### I.14) A New Perspective, Still 100% OOP
 
 Clprolf changes the way you approach design:
 you build **agents**, **worker agents**, and other specialized components, rather than starting from generic objects.
@@ -770,7 +874,7 @@ Its features for interface inheritance and its semantic checks on class and inte
 
 ---
 
-### I.14) ☕ Java-Compatible Language
+### I.15) ☕ Java-Compatible Language
 
 Clprolf is a **Java-compatible language**.
 It redefines some Java keywords such as `class`, `interface`, `extends`, and `implements`,
@@ -1046,20 +1150,24 @@ It remains the developer’s responsibility to ensure that the semantic continui
 
 #### II.5.f) The `class_for` Modifier
 
-In pure Clprolf, there is an optional modifier **`class_for`** that may be used instead of `class`.
-It appears before the role keyword and simply expresses that this is “a class for” the agent or worker.
+The modifier **`class_for`** may be used in a class declaration to make the architectural role of the component explicit.
 
-This construct is rarely needed in practice.  
-It mainly exists as a stylistic option showing that Clprolf does not hide the notion of class.
+It appears before the role keyword and expresses that the class is declared *for* a specific ontological role (agent or worker).
 
-Note: this modifier is not available in the Clprolf frameworks, since the standard `class` keyword already exists there.
-
-Examples:
+Example:
 
 ```clprolf
 public class_for agent Car { ... }
-
 ```
+
+> The keyword `for` introduces an explicit architectural commitment.
+> A component is not only named. It is declared for a precise ontological role.
+> This declaration constrains its evolution.
+
+The use of `class_for` is optional.
+It provides a more explicit form of declaration but does not change the underlying semantics.
+
+In framework-based environments (e.g., Java), the standard `class` keyword remains in use.
 
 ---
 
@@ -1839,15 +1947,15 @@ A capacity interface can never be implemented directly by a class. This restrict
 
 ---
 
-#### II.8.g) The Role of Advice
+#### II.8.g) The Advice
 
-Capacity interfaces can have a **gender called an Advice**, which specifies their **target class role** —
+Capacity interfaces can declare an Advice, which specifies the **target class role** —
 that is, the nature of the classes or versions that are meant to use or implement the capacity.
 
 * `@Agent_like_advice` advice
 * `@Worker_like_advice` advice
 
-This **advice** works like a sub-role.
+The **Advice** specifies which class roles are allowed to implement the capacity.
 It indicates whether the capacity applies to **agent-like** roles or to **worker-like** roles.
 When a version interface implements a capacity, it must declare a **class role**,
 and the compiler will check that this role is consistent with the advice (the target class role of the capacity).
@@ -1881,10 +1989,10 @@ public version_inh agent Animal extends Eatable { ... }
 // Must declare a class role, because it has a capacity
 public version_inh agent Person extends Eatable { ... }
 
-public agent AnimalClass contracts Animal { ... }
-public agent PersonClass contracts Person { ... }
+public class_for agent AnimalClass contracts Animal { ... }
+public class_for agent PersonClass contracts Person { ... }
 
-public worker_agent Launcher {
+public class_for worker_agent Launcher {
  public static void test(with_compat Eatable eatableAgent) {
 	 System.out.println("The agent will eat");
 	 eatableAgent.eat();
@@ -1941,8 +2049,7 @@ public interface Launcher {
 
 The **advice** therefore acts as a **target class role** for capacities,
 providing a semantic contract similar to the one used for version interfaces.
-It guarantees clarity, prevents ambiguous capacities,
-and reinforces the structural discipline of Clprolf’s two worlds — *agents* and *workers*.
+It prevents cross-world ambiguities and maintains the separation between **agents** and **workers.**
 
 ---
 
@@ -2080,13 +2187,13 @@ public version_inh agent Animal {
     public void eat(String foodName);
 }
 
-public agent DogImpl nature AnimalImpl contracts Dog {
+public class_for agent DogImpl nature AnimalImpl contracts Dog {
     public void bark(int duration){
         System.out.println("The dog is barking for " + duration + "s");
     }
 }
 
-public agent AnimalImpl contracts Animal {
+public class_for agent AnimalImpl contracts Animal {
     public void eat(String foodName){
         System.out.println("The animal is eating " + foodName);
     }
@@ -2109,7 +2216,7 @@ import org.clprolf.framework.java.Worker_agent;
  * The dog is barking for 100s
  * The animal is eating meat
  */
-public worker_agent Launcher {
+public class_for worker_agent Launcher {
     public static void main(String[] args) {
         // We can either use a dog with or without direct implementation
         with_compat Dog myFreeImplDog = new DogImpl();
@@ -4666,7 +4773,7 @@ import java_class abstraction java.nio.file.Files;
 import java_class agent java.nio.file.Paths;
 import java_class abstraction java.nio.file.LinkOption;
 
-public worker_agent Launcher {
+public class_for worker_agent Launcher {
 
     public static void main(String[] args) {
         with_compat Path path = Paths.get(args.length > 0 ? args[0] : System.getProperty("user.home"));
@@ -4701,7 +4808,7 @@ import java_class abstraction java.util.LinkedList;
 import java_interface version_inh abstraction java.util.Queue<E>;
 import java_class abstraction java.io.File;
 
-public agent DirectoryExplorerImpl contracts DirectoryExplorer {
+public class_for agent DirectoryExplorerImpl contracts DirectoryExplorer {
 
     private with_compat DirectoryExplorerWorker worker;
 
@@ -4761,7 +4868,7 @@ import java_interface version_inh abstraction java.util.List<E>;
 import java_class abstraction java.lang.String;
 import java_class abstraction java.lang.System;
 
-public worker_agent DirectoryExplorerWorkerImpl contracts DirectoryExplorerWorker {
+public class_for worker_agent DirectoryExplorerWorkerImpl contracts DirectoryExplorerWorker {
 
     public void displayResult(List<Directory> foldersList) {
         for (Directory dir : foldersList) {
@@ -4790,7 +4897,7 @@ it represents data, and nothing more.
 import java_interface version_inh abstraction java.util.List<E>;
 import java_interface java.nio.file.Path;
 
-public model Directory {
+public class_for model Directory {
     private Path path;
     private List<Integer> hierarchicalId;
 
