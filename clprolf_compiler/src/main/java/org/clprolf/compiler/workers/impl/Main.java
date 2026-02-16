@@ -11,7 +11,7 @@ import org.clprolf.framework.java.Worker_agent;
  
  5.5.0 (EN COURS)
  
- Correction of error messages
+ Correction of error messages, and of the .clp example.
  
  Rules: ARCH A1. No semantic checking if syntax error. Better display of the output.
  

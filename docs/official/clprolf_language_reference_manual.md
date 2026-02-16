@@ -1281,7 +1281,7 @@ so each term must be used with the correct meaning.
 
 ##### **1. `agent` — an active role, but *not* a simulation object**
 
-`agent` represents an **active component** that performs logic connected to its own domain responsibility.
+`agent` represents an **active domain component** that performs logic connected to its own domain responsibility.
 
 An agent:
 
@@ -1297,7 +1297,19 @@ Examples:
 * `ChatAgent`
 * `SensorReader`
 
-Agents execute business logic — they do **not** model real-world objects inside a simulated world.
+Agents execute domain logic — they do **not** model real-world objects inside a simulated world.
+
+---
+
+###### Remark on Low-Level Agents
+
+Not all agents operate at a high application level. Some agents may exist at a relatively low level of the software stack while still embodying a clear and autonomous responsibility.
+
+For example, `java.util.Timer` can be modeled as an agent. Although it relies internally on lower-level system mechanisms (such as threads and task queues), its responsibility—planning and triggering tasks over time—is conceptually unified and identifiable.
+
+Such agents should not be confused with system abstractions. A system abstraction primarily exposes a fundamental low-level mechanism in a stable and generic form. By contrast, a low-level agent may use system abstractions internally while remaining responsible for a coherent behavioral role.
+
+The distinction is not about technical depth, but about conceptual responsibility.
 
 ---
 
@@ -1490,6 +1502,29 @@ This rule follows naturally from the third-person perspective:
 
 * Only a **worker** should perform such method calls,
 * not an **agent** (or `simu_real_obj`).
+
+##### Structural Requirement of System Abstractions
+
+A system abstraction must encapsulate a low-level mechanism through a dedicated worker. Alternatively, it may delegate exclusively to other system abstractions belonging to the same functional domain.
+In Clprolf, a system abstraction is not merely a conceptual structure. It exists to expose a fundamental low-level mechanism in a stable and high-level form. This implies the presence of a worker responsible for the actual technical realization.
+If no worker is involved, and no other system abstractions of the same domain is called, the class is not a system abstraction. It is either a pure abstraction (algorithmic or structural only) or an agent.
+
+For example:
+
+* `java.lang.Thread` encapsulates operating system thread management through the JVM. The low-level execution mechanism is handled beneath the abstraction. Therefore, it qualifies as a system abstraction.
+* A database `Connection` abstraction encapsulates low-level network and protocol operations through internal workers. It is a system abstraction.
+
+By contrast:
+
+* A `TaskQueue` implemented purely as an in-memory priority structure is a pure abstraction, not a system abstraction, because it does not encapsulate any low-level mechanism via a worker.
+* `java.util.Timer`, although it relies on threads internally, represents a scheduling responsibility rather than a direct exposure of a low-level mechanism. It is therefore better modeled as a low-level agent, not a system abstraction.
+
+#### Note on Thread Usage
+
+Although `Thread` is a system abstraction, it is a special case in Clprolf. Because it represents an execution life rather than a domain-specific responsibility, it may be used directly within agents when necessary. This exception does not change its nature as a system abstraction; it reflects its foundational role in the execution model.
+The presence of a worker remains a structural condition for system abstractions.
+
+---
 
 #### II.5.p) Flexibility with `indef_obj`
 
@@ -7300,7 +7335,7 @@ and indicate where exceptions must be explicitly acknowledged through `@Forc_pra
                                              ▼
          ┌────────────────────────────────────────────────────────────────┐
          │                        SYSTEM ABSTRACTION                      │
-         │      (agent-like, system domain; may call workers or           │
+         │      (agent declension, system domain; must call workers or           │
          │       other system abstractions; uses @Forc_pract_code as      │
          │       declaration when needed)                                 │
          └────────────────────────────────┬───────────────────────────────┘
@@ -7325,7 +7360,7 @@ It carries intention, behavior, and domain responsibility.
 * An Agent **may call its Worker** (its technical realization).
 * An Agent **may call other Agents**.
 * An Agent **may use pure Abstractions**.
-* An Agent **must not directly use System Abstractions**.
+* An Agent **must not directly use System Abstractions** (except Thread-like abstractions).
   If a domain object needs access to a system feature, **its Worker handles it**.
 
 ---
@@ -7387,8 +7422,7 @@ These objects have conceptual methods (e.g., read, write, open) but **their inte
 
 ##### **System Abstraction rules**
 
-* A System Abstraction **may use its Worker** for technical realization.
-* A System Abstraction **may call other System Abstractions** only when they belong to the same underlying domain of functionality.
+* A System Abstraction **must use its Worker ** for technical realization or else **call other System Abstractions** only when they belong to the same underlying domain of functionality.
 * A System Abstraction **may not call Agents**.
 * Any usage of external system abstractions or utilities must be annotated with `@Forc_pract_code`.
 
