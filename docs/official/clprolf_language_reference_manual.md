@@ -915,9 +915,9 @@ The **Clprolf language** can be seen as a **Java clone with specific changes and
 
 ### II.2) LEARNING CURVE
 
-For an experienced Java programmer, becoming proficient in Clprolf may take several weeks on average. The language remains close to Java, and its concepts are relatively easy to grasp for developers already accustomed to abstraction and design. Moreover, the limited number of new keywords helps ease the learning process.
+For an experienced Java developer, understanding the core principles of Clprolf can typically be achieved within a few days of focused training. Since Clprolf remains close to Java and builds upon familiar object-oriented concepts, its structure is accessible to developers already accustomed to abstraction and architectural thinking.
 
-This makes the transition smoother than learning a completely new paradigm.
+Becoming fully comfortable with consistently applying its discipline in real-world projects may require additional practice, but the transition is significantly smoother than adopting a completely new programming paradigm.
 
 ---
 
@@ -989,7 +989,15 @@ clarity through Autonomy, life through interaction.
 
 ### II.4) Classes Grouped in Layers — Clprolf and the Three-Tier Architecture
 
-In Clprolf, classes are naturally organized into **layers** that align with the principles of the three-tier architecture.
+In Clprolf, classes can be organized into **layers** in a way that aligns with the principles of the Three-tier architecture.
+
+---
+
+#### Domain (Clprolf Definition)
+
+In Clprolf, a *Domain* is the subject of a class — the specific conceptual topic the class is about. The Domain does not organize code by itself; the class is the organizing abstraction. By clearly identifying its Domain, a class structures code around a single, well-defined subject. This simplifies programming by separating subjects into distinct abstractions, rather than structuring code only around data structures or machine-level concerns. It keeps the focus on conceptual meaning instead of mere technical implementation.
+
+This approach is not new. Object-oriented programming already tends to structure classes around subjects. Similar organizing subjects can be observed even in system-level programming, where code is structured around concepts such as sockets or files. These are not merely data structures, but conceptual focuses around which code is organized.
 
 ---
 
@@ -1000,32 +1008,33 @@ The top layer is composed of:
 * **`agent`** classes (synonyms: `abstraction`, `simu_real_obj`),
 * **`model`** classes.
 
-This is where we find the **business logic** of the application, but not exclusively.
-Every agent, representing a real-world abstraction, is considered business-level code.
+This is where we find the **core conceptual logic** of the application, including business logic when applicable.
+Every agent, representing a real-world or simulated abstraction, is considered part of this conceptual layer.
 
 ---
 
 #### The Technical Layer
 
-The second layer is composed of **technical classes**, where the computer is seen as a **worker** abstraction.
+The second layer is composed of **technical classes**, where the computer is viewed as a **worker** abstraction.
 These are the **`worker_agent`** classes (synonyms: `comp_as_worker`).
 
-This layer typically corresponds to the **Data Access Layer (DAL)** and **Presentation Layer** in a traditional three-tier architecture.
+This layer typically corresponds to the Data Access Layer (DAL) and the Presentation Layer in a traditional three-tier architecture.
 
 In Clprolf, we make a clear separation:
 
-* **Agents** represent the business or simulation logic.
-* **Worker agents** handle everything else: display code, persistence, and any infrastructure logic.
+* **Agents** represent the conceptual, business, or simulation logic.
+* **Worker agents** handle display code, persistence, infrastructure concerns, and any machine-level execution responsibilities.
 
-Anything that is not part of an agent’s role must be placed in a worker agent.
+Anything that does not belong to the conceptual role of an agent must be placed in a worker agent.
 
 ---
 
 #### Special Cases
 
-Some types of software — such as parts of an **operating system** — are composed almost entirely of the technical layer.
+Some types of software — such as parts of an operating system like Linux — may be composed predominantly of technical abstractions.
 In these cases, the worker agent layer may directly invoke elements of the agent layer.
 
+---
 
 ### II.5) Declensions and Class Responsibilities
 
@@ -1405,6 +1414,24 @@ Thus:
 * Worker_agents → explicit technical execution roles defined in the application.
 
 This preserves the conceptual clarity between domain structures and technical workers.
+
+##### Note on Pure Abstractions and Agent Dependencies
+
+In Clprolf, a pure abstraction must not contain a worker.
+
+As a general architectural guideline, a pure abstraction should also avoid depending on agents that rely on technical workers (such as threads, network I/O, or system-level execution), since this would implicitly introduce external execution concerns.
+
+However, two cases remain acceptable:
+
+* Agents that operate purely in memory (e.g., deterministic algorithms such as complex sorting), where no external execution mechanism is involved.
+* Agents that do not rely on any worker at all, and therefore do not introduce execution semantics beyond structured delegation.
+
+A pure abstraction represents a concept.
+It should not implicitly orchestrate technical execution or control system-level processes.
+
+This distinction mainly concerns advanced architectural design and is rarely an issue for beginners. Most common design problems arise from mixing responsibilities rather than from this subtle dependency pattern.
+
+The objective is not rigidity, but preservation of ontological clarity and responsibility boundaries.
 
 ---
 
@@ -7354,6 +7381,7 @@ and indicate where exceptions must be explicitly acknowledged through `@Forc_pra
 
 An **Agent** represents a meaningful domain object.
 It carries intention, behavior, and domain responsibility.
+In Clprolf, a *Domain* is the subject of a class — the specific conceptual topic the class is about.
 
 ##### **Agent rules**
 
@@ -7380,7 +7408,8 @@ Typical examples include:
 * A Worker **may call other Workers**.
 * A Worker **may use System Abstractions**.
 * A Worker **may use pure Abstractions**.
-* A Worker **may call its Agent** to trigger domain operations (UI events, callbacks, etc.).
+* A Worker **may access (read) the state of its Agent** in order to fulfill its technical responsibility. However, it must not alter the Agent’s conceptual role, inject domain logic, or take business-level decisions.
+* A Worker **may call its Agent** only to notify or trigger domain-level reactions (UI events, callbacks, etc.).
 * A Worker **must not expose domain intelligence**: its responsibility is purely technical.
 
 Workers are the only declension allowed to bridge the domain world and system-level operations.
@@ -7401,6 +7430,7 @@ Examples: collections, geometry, colors, numeric models, conceptual structures.
 * It **must not use System Abstractions**.
 * It **must not use Workers**.
 * It normally **does not have a Worker**: memory itself provides the “technical realization”.
+* A pure abstraction must not depend on agents that introduce technical execution (e.g., I/O); only memory-bound or workerless agents are acceptable, in order to preserve clear separation between conceptual modeling and external execution.
 
 Pure Abstractions represent stable logic that does not depend on the environment.
 
@@ -7422,7 +7452,7 @@ These objects have conceptual methods (e.g., read, write, open) but **their inte
 
 ##### **System Abstraction rules**
 
-* A System Abstraction **must use its Worker ** for technical realization or else **call other System Abstractions** only when they belong to the same underlying domain of functionality.
+* A System Abstraction **must use its Worker ** for technical realization. Or else it can **call other System Abstractions** only when they belong to the same underlying domain of functionality.
 * A System Abstraction **may not call Agents**.
 * Any usage of external system abstractions or utilities must be annotated with `@Forc_pract_code`.
 
