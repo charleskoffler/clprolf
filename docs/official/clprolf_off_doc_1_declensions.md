@@ -6,6 +6,14 @@ Objects become **components**, and this clarity remains intact even with inherit
 
 ---
 
+### Domain (Clprolf Definition)
+
+In Clprolf, a *Domain* is the subject of a class — the specific conceptual topic the class is about. The Domain does not organize code by itself; the class is the organizing abstraction. By clearly identifying its Domain, a class structures code around a single, well-defined subject. This simplifies programming by separating subjects into distinct abstractions, rather than structuring code only around data structures or machine-level concerns. It keeps the focus on conceptual meaning instead of mere technical implementation.
+
+This approach is not new. Object-oriented programming already tends to structure classes around subjects. Similar organizing subjects can be observed even in system-level programming, where code is structured around concepts such as sockets or files. These are not merely data structures, but conceptual focuses around which code is organized.
+
+---
+
 ## What Is a Declension?
 
 A **declension** expresses the *nature* of a class — its fundamental role in the system.
@@ -45,7 +53,7 @@ Synonyms are no longer arbitrary alternatives but clearly justified by the persp
 
 ---
 
-## Business-Like Objects
+## Domain Objects
 
 These objects represent **real-world abstractions** or domain concepts.
 
@@ -80,41 +88,6 @@ Examples: system utilities, DAOs, repositories, low-level services, or MVC *view
 
 ---
 
-## Declensions and Genders
-
-Declensions can be refined with **genders** (optional sub-roles).
-They may also have synonyms:
-
-* `@Expert_component` = `@Human_expert`
-* `@Active_agent` (no synonym)
-* `@Static` = `@Expert_component_static` = `@Human_expert_static`
-* `@Static` for `worker_agent` (no synonym)
-
-⚠️ Genders apply only to **agents**, except `@Static`, which may also apply to **worker\_agent**.
-
----
-
-## Interrelationships Between Declensions
-
-* **Agents and Workers**
-  Every agent can also act as a worker (computers execute agents as workers).
-  But explicit workers should be minimized for clarity.
-
-* **Models and Information**
-  A model can be represented as information (stored as data),
-  but information should not replace a model.
-
-* **Unidirectional Substitutions**
-
-  * Agent → Worker ✅
-  * Worker → Agent ❌
-  * Model → Information ✅
-  * Information → Model ❌
-
-These reversals usually reveal a **design flaw** or a deliberate reinterpretation.
-
----
-
 ## Interfaces and Declensions
 
 Interfaces also have declensions:
@@ -123,21 +96,14 @@ Interfaces also have declensions:
 * **`compat_interf_capacity`** = `capacity_inh`
 * **`compat_interf`** (no synonym)
 
-Declensions on interfaces specify which classes are allowed to implement them.
-
-Capacity interfaces can also have a **gender called Advice**:
-
-* `@For_agent_like`
-* `@For_worker_like`
-
 ---
 
 ## Inheritance Consistency
 
 Clprolf enforces that inheritance stays **role-consistent**:
 
-* Business and technical objects cannot be mixed in the same hierarchy.
-* Synonyms of a declension are accepted.
+* Domain and technical objects cannot be mixed in the same hierarchy.
+* Synonyms of a declension are accepted with a warning.
 * Exceptions may be forced with `@Forced_inh`.
 
 ---
@@ -148,6 +114,10 @@ In pure Clprolf, the declension **replaces the `class` keyword**.
 In the framework, it appears as an annotation above the class.
 
 Example:
+
+```clprolf
+public class_for agent Animal { ... }
+```
 
 ```java
 @Agent
@@ -165,22 +135,10 @@ Every class must declare a role.
 * Yes → it is **active** → choose `@Agent` or `@Worker_agent`.
 * No → it is **passive** → use `@Model` (entity) or `@Information` (technical container).
 
-**Step 2 – Is the responsibility business-related or technical?**
+**Step 2 – Is the responsibility domain or technical?**
 
-* Business logic or expert knowledge → `@Agent`.
+* Business/Domain logic or expert knowledge → `@Agent`.
 * Technical or support layer → `@Worker_agent`.
-
----
-
-## Example: System Class in Java
-
-At first sight: `@Worker_agent` (low-level, technical).
-
-But Clprolf favors `@Agent` whenever possible.
-System could also be seen as:
-
-* `@Abstraction` — since “the system” is a conceptual entity.
-* `@Agent(Gender.EXPERT_COMPONENT)` — as an expert component representing the environment.
 
 ---
 
@@ -199,7 +157,7 @@ Result: a simpler, more maintainable system, where every object is clearly posit
 If the class already fits one of the well-known architectural categories, you can directly assign a matching role:
 
 * A service → `@Agent`
-* A helper → `@Agent` or `@Worker_agent` (often with `Gender.STATIC`)
+* A helper → `@Agent` or `@Worker_agent`
 * A DAO or repository → `@Worker_agent`
 * A controller → `@Agent`
 
