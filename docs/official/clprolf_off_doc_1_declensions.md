@@ -6,11 +6,29 @@ Objects become **components**, and this clarity remains intact even with inherit
 
 ---
 
-### Domain (Clprolf Definition)
+## Foundational Principles of Clprolf
 
-In Clprolf, a *Domain* is the subject of a class — the specific conceptual topic the class is about. The Domain does not organize code by itself; the class is the organizing abstraction. By clearly identifying its Domain, a class structures code around a single, well-defined subject. This simplifies programming by separating subjects into distinct abstractions, rather than structuring code only around data structures or machine-level concerns. It keeps the focus on conceptual meaning instead of mere technical implementation.
+Clprolf is based on two core principles:
 
-This approach is not new. Object-oriented programming already tends to structure classes around subjects. Similar organizing subjects can be observed even in system-level programming, where code is structured around concepts such as sockets or files. These are not merely data structures, but conceptual focuses around which code is organized.
+1. A class is either technical or organized around a well-defined class domain.
+2. Inheritance must preserve the class domain; if it does not, composition is used instead.
+
+These principles define how Clprolf structures components and relationships.
+
+---
+
+The class domain is the central subject around which a class is organized.
+It defines what the class fundamentally represents and what it is responsible for.
+
+For example:
+
+* A `File` class has a class domain related to file handling.
+* A `Random` class has a class domain related to random generation.
+* A `Connection` class has a class domain related to connection management.
+* A `PdfGenerator` class has a class domain related to PDF generation.
+
+A technical class, by contrast, does not represent a conceptual domain.
+It provides technical support (e.g., logging, parsing, low-level utilities).
 
 ---
 
