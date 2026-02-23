@@ -1,5 +1,15 @@
 # 📘 Getting Started with Clprolf
 
+## Prerequisites
+
+Clprolf builds upon classical Object-Oriented Programming.
+
+To fully benefit from this guide, readers should already be familiar with:
+
+* the fundamentals of OOP,
+* inheritance and composition,
+* basic design principles and common patterns.
+
 ## Making Responsibilities Explicit
 
 Clprolf is a language and framework designed to make architectural roles explicit.
@@ -9,6 +19,27 @@ In most object-oriented systems, separation of responsibilities relies on discip
 Clprolf encodes that discipline structurally.
 
 Every class declares what it is.
+
+---
+
+## Foundational Principles of Clprolf
+
+Clprolf is based on two core principles:
+
+1. A class is either technical or organized around a well-defined class domain.
+2. Inheritance must preserve the class domain; if it does not, composition is used instead.
+
+These principles define how Clprolf structures components and relationships.
+
+---
+
+The class domain is the central subject around which a class is organized.
+It defines what the class fundamentally represents and what it is responsible for.
+
+* A `File` class has a class domain related to file handling.
+
+A technical class, by contrast, does not represent a conceptual domain.
+It provides technical support (e.g., logging, parsing, low-level utilities).
 
 ---
 
@@ -23,13 +54,13 @@ public class OrderManager { }
 In Clprolf you declare the role:
 
 ```clprolf
-public agent OrderProcessor { }
+public class_for agent OrderProcessor { }
 ```
 
 or
 
 ```clprolf
-public worker_agent OrderRepository { }
+public class_for worker_agent OrderRepository { }
 ```
 
 Each class has a **declension** (its architectural nature).
@@ -51,7 +82,7 @@ Clprolf does not require architectural clarity upfront.
 You can begin with:
 
 ```clprolf
-public indef_obj OrderManager {
+public class_for indef_obj OrderManager {
     public void process(Order order) {
         validate(order);
         save(order);
@@ -79,7 +110,7 @@ After identifying responsibilities:
 You refactor:
 
 ```clprolf
-public agent OrderProcessor {
+public class_for agent OrderProcessor {
     private OrderRepository repository;
     private OrderNotifier notifier;
 
@@ -92,8 +123,8 @@ public agent OrderProcessor {
 ```
 
 ```clprolf
-public worker_agent OrderRepository { ... }
-public worker_agent OrderNotifier { ... }
+public class_for worker_agent OrderRepository { ... }
+public class_for worker_agent OrderNotifier { ... }
 ```
 
 The behavior is unchanged.
@@ -110,7 +141,7 @@ It enforces structural coherence.
 Example:
 
 ```clprolf
-public agent A1AnimalImpl nature AnimalWorker { }
+public class_for agent A1AnimalImpl nature AnimalWorker { }
 ```
 
 This attempts to inherit a `worker_agent` from an `agent`.
@@ -129,29 +160,6 @@ public class A1AnimalImpl extends AnimalWorker { }
 ```
 
 Clprolf rejects it as architecturally inconsistent.
-
----
-
-## 5️⃣ Interface Discipline
-
-Clprolf also distinguishes between:
-
-* `version_inh` (alternative implementations)
-* `capacity_inh` (shared capabilities)
-
-Example of forbidden usage:
-
-```clprolf
-public agent BA4Animal contracts Animal, Vehicle { }
-```
-
-Error:
-
-```
-ARCH-BA4 => contracts multiple version_inh interfaces (forbidden)
-```
-
-The rule prevents ambiguous role inheritance.
 
 ---
 

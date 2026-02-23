@@ -42,7 +42,7 @@ Clprolf is intended for contexts where early architectural control and long-term
 ### 📝 Quick Example
 
 ```java
-agent OrderService {
+public class_for agent OrderService {
     with_compat OrderRepository repo;
     void checkout(Order o) { repo.save(o); }
 }
@@ -73,6 +73,32 @@ agent OrderService {
 ---
 
 👉 With Clprolf, your code doesn’t just run — **it explains itself.**
+
+---
+
+## Foundational Principles of Clprolf
+
+Clprolf is based on two core principles:
+
+1. A class is either technical or organized around a well-defined class domain.
+2. Inheritance must preserve the class domain; if it does not, composition is used instead.
+
+These principles define how Clprolf structures components and relationships.
+
+---
+
+The class domain is the central subject around which a class is organized.
+It defines what the class fundamentally represents and what it is responsible for.
+
+For example:
+
+* A `File` class has a class domain related to file handling.
+* A `Random` class has a class domain related to random generation.
+* A `Connection` class has a class domain related to connection management.
+* A `PdfGenerator` class has a class domain related to PDF generation.
+
+A technical class, by contrast, does not represent a conceptual domain.
+It provides technical support (e.g., logging, parsing, low-level utilities).
 
 ---
 
