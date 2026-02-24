@@ -125,6 +125,9 @@ From the **Language Reference Manual** to focused thematic guides and conceptual
 * [**AI Technical Review**](https://github.com/charleskoffler/clprolf/tree/main/docs/ai_technical_review.md)  
   A detailed AI technical review offering analysis and architectural perspective on the language’s design.
 
+* [**Design Principles in Clprolf**](https://github.com/charleskoffler/clprolf/tree/main/docs/clprolf_off_doc_0_found_principles.md)  
+  Introduces the two foundational principles and the notion of class domain that structure the Clprolf language.
+
 * [**Explaining Declensions**](https://github.com/charleskoffler/clprolf/tree/main/docs/official/clprolf_off_doc_1_declensions.md)
   Understand the five declensions (`agent`, `worker_agent`, `model`, `information`, `indef_obj`) and how they shape your system’s architecture.
 
