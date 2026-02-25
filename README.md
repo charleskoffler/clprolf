@@ -1,10 +1,11 @@
 # Clprolf — Clear Programming Language & Framework
 
-> **A methodology turned into a language.**
-> Good OOP becomes natural, not accidental.
+> **A structured approach to object-oriented programming.**
+> Roles and responsibilities become explicit.
 
-Clprolf adds a **conceptual layer** on top of Java/C#/PHP:
-roles, contracts, and design rules are **first-class keywords**.
+> Clprolf is a **structured object-oriented language and framework** that adds a conceptual layer on top of Java/C#/PHP.
+
+> Roles, contracts, and structural rules are **first-class language elements**.
 You model systems with **agents, worker agents, versions, and capacities**, while the compiler enforces clarity.
 
 > **If you clone the repository and find value in the project, please consider giving it a ⭐.**
@@ -48,9 +49,8 @@ public class_for agent OrderService {
 }
 ```
 
-* In plain OOP: architecture drifts, concurrency bugs, endless onboarding.
-* With Clprolf: contracts explicit, roles clear, design rules enforced.
-
+> In plain OOP: architectural intent often remains implicit.
+> With Clprolf: contracts explicit, roles clear, design rules enforced.
 ---
 
 ### ✨ Key Ideas

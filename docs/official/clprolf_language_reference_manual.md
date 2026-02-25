@@ -31,8 +31,8 @@ It makes certain structural distinctions explicit.
 
 **CLear PROgramming Language and Framework (Clprolf)**
 
-Clprolf is a **specialized, guided language**.
-It defines predefined components and enforces strict rules for inheritance and interfaces, with a strong focus on algorithmic programming.
+> **Clprolf is a specialized, structured object-oriented language.
+> It defines predefined roles and enforces strict rules for inheritance and interfaces, with a strong focus on algorithmic programming.**
 
 It is particularly suited for:
 
@@ -67,6 +67,7 @@ A technical class, by contrast, does not represent a conceptual domain.
 It provides technical support (e.g., logging, parsing, low-level utilities).
 
 ---
+> **In Clprolf, domain classes correspond to the `agent`, `abstraction`, `simu_real_obj`, and `model`, while technical classes correspond to the `worker_agent` and `information`.**
 
 #### I.1.b) Scope and Positioning
 
@@ -88,7 +89,7 @@ Clprolf is intended for contexts where early architectural control and long-term
 
 ---
 
-### I.2) Beyond Programming
+### I.2) Additional Uses of Clprolf
 
 Clprolf can also serve as a tool for **memory and comprehension**.
 It works much like a mnemonic or *memory palace*, helping developers who struggle to retain large, abstract architectures.
@@ -831,60 +832,103 @@ and that every decision stays connected to meaning.
 
 ---
 
-### I.13) A Methodology for Effective Object-Oriented Programming
-
-Most existing object-oriented languages are **neutral**:
-they provide mechanisms such as classes, objects, and inheritance, but they do not indicate *how* objects should be designed or coded.
-As a result, programmers rely on external guidelines, principles, or patterns.
-
-Clprolf is different. It is not only a language, but also a **methodology** — designed to make object-oriented programming as effective as possible.
-It embeds a set of practical guidelines directly into its structure.
+### I.13) A Principle-Based Structure for Object-Oriented Programming
 
 ---
 
-#### Core Guidelines
+**Most object-oriented languages are structurally neutral.**
 
-* **Give meaning to classes**
-  Every class should have a clear and unique responsibility.
+They provide mechanisms such as classes, objects, and inheritance,
+but they do not require developers to explicitly state what a class fundamentally represents.
 
-* **Use inheritance rigorously**
-  Inheritance must remain coherent and should never be driven by technical convenience.
+As a result:
 
-* **Separate layers**
-  Clearly distinguish simulation or business logic from technical layers such as DAOs, persistence, or infrastructure code.
-
-* **Interfaces for versions**
-  Interfaces are primarily intended to provide alternative implementations (*versions*).
-  Capacity interfaces are the exception: they express shared functionality across versions.
-
-* **Interface inheritance**
-  The inheritance of interfaces should mirror the hierarchy of their corresponding classes, ensuring consistency.
-
-* **Favor composition over inheritance**
-  When possible, prefer composition to deep hierarchies, improving flexibility and maintainability.
+* responsibilities may drift,
+* inheritance may become technical rather than conceptual,
+* architectural intent often remains implicit.
 
 ---
 
-#### Alignment with Established Principles
+**Clprolf takes a different approach.**
 
-This methodology is fully compatible with:
+It is a **structured object-oriented language based on explicit principles.**
 
-* **SOLID principles**,
-* and the main **design patterns**.
+Two foundational principles define its structure:
 
-It reflects both practical experience in object-oriented programming and the synthesis of widely accepted principles, offering a rigorous yet intuitive approach to building robust systems.
+• A class is either technical or organized around a well-defined class domain.
+• Inheritance must preserve the class domain; otherwise composition is used instead.
 
-However, if you already follow your own methodology, or if you master programming well with existing principles and patterns, you may not need Clprolf.
+From these principles emerge the structural rules of Clprolf.
+
+They are not external guidelines.
+They are consequences of the model.
 
 ---
 
-#### Embedded Methodology
+#### Structural Consequences
 
-Applying methodology becomes far easier when it is **built into the language**.
-Principles like SOLID or design patterns are valuable, but hard to constantly keep in mind while coding.
+These principles naturally lead to a number of design properties:
 
-* General rules such as the **Single Responsibility Principle** often remain too vague and open to interpretation.
-* Clprolf removes this ambiguity by embedding clear definitions of **responsibility** directly into the language.
+* **Classes have explicit meaning**
+  Each class is organized around a single domain or technical role.
+
+* **Inheritance becomes conceptual**
+  Inheritance expresses continuity of domain rather than technical reuse.
+
+* **Technical and domain concerns separate naturally**
+  Workers and domain classes belong to different ontological categories.
+
+* **Responsibilities become explicit**
+  A class domain defines what a class is responsible for.
+
+* **Synonyms express perspective**
+
+  Synonyms such as `agent`, `abstraction`, and `simu_real_obj`
+  express different perspectives on the same nature.
+
+  They help indicate whether a component is:
+
+  * an acting component,
+  * a conceptual structure,
+  * or a simulation entity.
+
+  This second semantic layer helps preserve domain continuity
+  and makes class roles easier to understand.
+
+---
+
+#### Relationship with Existing Principles
+
+Clprolf is compatible with established object-oriented principles such as:
+
+* SOLID
+* classical design patterns
+
+However, Clprolf does not start from these principles.
+
+Instead, many of them emerge naturally from the explicit notion of class nature and class domain.
+
+For example:
+
+• A single class nature implies a single responsibility.
+• Domain-preserving inheritance avoids incoherent hierarchies.
+• Separation between domain and technical classes clarifies architecture.
+
+---
+
+#### A Structural Language, Not a Methodology
+
+Clprolf does not prescribe a development methodology.
+
+It defines a **structural model** for object-oriented programming.
+
+Developers remain free to design their systems as they wish,
+but the language requires them to make the nature of each class explicit.
+
+This explicit positioning reduces ambiguity
+and helps systems remain coherent over time.
+
+---
 
 ### I.14) A New Perspective, Still 100% OOP
 
@@ -1005,11 +1049,6 @@ In **Clprolf**, the idea is reborn in a clearer form.
 Each `agent` or `worker_agent` behaves like a **cell**, with its own nature and purpose.
 Their relations and communications are **explicitly designed** by the programmer,
 so that interaction becomes part of the model itself, not a side-effect of code.
-
-Together, these cells form a **coherent organism** —
-a system where roles, flows, and responsibilities maintain balance and meaning.
-Clprolf does not imitate biology; it **shares its logic**:
-clarity through Autonomy, life through interaction.
 
 ---
 
@@ -1255,6 +1294,9 @@ This principal synonym defines the **default perspective** of the class.
 
 This structure makes the system both easy to memorize and easy to teach.
 Synonyms are no longer arbitrary alternatives but clearly justified by the perspective they express.
+
+> Synonyms provide a second semantic level that helps the compiler verify that inheritance preserves the class domain. Declensions ensure ontological compatibility; synonyms help ensure domain continuity.
+> **Without synonyms, this second principle could only rely on developer judgment.**
 
 ---
 
