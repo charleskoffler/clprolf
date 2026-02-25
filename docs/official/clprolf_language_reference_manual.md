@@ -1215,13 +1215,39 @@ This includes access modifiers and other familiar constructs, which can be used 
 
 #### II.5.h) Synonyms and Aspects
 
+##### Introduction to Synonyms
+
+Clprolf synonyms help clarify the nature of class domains.
+
+In practice, domain classes often appear either as **components that act in the system** or as **spectator components mainly used by others.**
+
+Some domains correspond to components that take initiative in the system.
+These are typically declared using:
+
+* `agent`
+* `simu_real_obj`
+
+Other domains correspond to **spectator components**, which are mainly used by actors and do not take initiative.
+These are typically declared using:
+
+* `abstraction`
+* system abstractions
+
+Technical execution is performed by:
+
+* `worker_agent`
+
+Synonyms help indicate these aspects and clarify the context of a class domain.
+
+---
+
 Each declension keeps only a minimal set of synonyms, and every synonym reflects a specific aspect:
 However, within each declension, **one synonym is considered the “principal synonym”**,
 the one that best represents the nature of the declension.
 
 This principal synonym defines the **default perspective** of the class.
 
-* **Agent declension** → `agent` (agent aspect), `abstraction` (object aspect), `simu_real_obj` (simulation aspect)
+* **Agent declension** → `agent` (agent aspect), `abstraction` (spectator aspect), `simu_real_obj` (simulation aspect)
 * **Worker_agent declension** → `worker_agent` (agent aspect), `comp_as_worker` (simulation aspect)
 * **Model declension** → `model`
 * **Information declension** → `information`
