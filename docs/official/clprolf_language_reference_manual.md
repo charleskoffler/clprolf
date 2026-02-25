@@ -3912,13 +3912,13 @@ A compiler for **Clprolf** is implemented in Java, using **ANTLR4** and based on
 #### II.18.e) 🧩 Compiler Implementation
 
 The **Clprolf compiler** itself is **written in Clprolf**, using the **Clprolf framework** as its structural backbone.
-This makes Clprolf not only a **language** and a **methodology**, but also a **self-hosted system** — its own compiler is built with the same principles it enforces.
+This makes Clprolf not only a **language** and a **structured design model**, but also a **self-hosted system** — its own compiler is built with the same principles it enforces.
 
 This self-reference demonstrates Clprolf’s maturity and internal coherence:
 
 * The compiler uses **Clprolf annotations and declensions** to define its own components.
 * The **framework layer** (implemented over Java) ensures interoperability with the host language while keeping the compiler’s logic entirely Clprolf-driven.
-* This architecture guarantees that Clprolf is **self-descriptive**, **self-validating**, and **consistent** with its own methodology.
+* This architecture guarantees that Clprolf is **self-descriptive**, **self-validating**, and **consistent with its own structural principles**.
 
 > In short: **Clprolf compiles Clprolf** — powered by its own framework.
 
@@ -4323,7 +4323,7 @@ The resulting code remains concise, practical, and free of unnecessary boilerpla
 
 ### III.9) CLPROLF FRAMEWORK FOR C# DEVELOPERS
 
-Since C# is close to Java, a Clprolf framework is also available for C#. It provides **attributes** similar to Java annotations, allowing C# developers to benefit from Clprolf’s methodology.
+Since C# is close to Java, a Clprolf framework is also available for C#. It provides **attributes** similar to Java annotations, allowing C# developers to benefit from Clprolf’s structured design approach.
 
 * Class and interface attributes are supported, with explicit targeting.
 * However, **`nature`** and **`contracts`** are not included, due to C# attribute limitations. This is not critical, since C# already uses `:` for inheritance and implementation, and once developers understand Clprolf’s philosophy, the intent remains clear.
@@ -4656,7 +4656,7 @@ From the beginning, Clprolf aimed to:
 
 At its origin, the motivation was simple: to create an **easier and better way to practice object-oriented programming**, while keeping it interesting.
 This vision was always balanced with a strong determination to **integrate established paradigms and principles**, rather than reinvent what already exists.
-👉 **Clprolf can thus be seen as a programming paradigm in itself, one that integrates methodology directly into the language while staying fully compatible with object-oriented programming.**
+👉 **Clprolf can thus be seen as a structured approach to object-oriented programming, making certain architectural principles explicit while remaining fully compatible with classical OOP.**
 
 ---
 
@@ -5648,8 +5648,8 @@ a paradigm that turns *clarity* into a coding language.
 
 #### V.5.a) From OOP to Clarity-Oriented Programming
 
-Clprolf isn’t a framework. It’s a **language layer + methodology**
-that builds **architectural meaning** into Java itself.
+Clprolf isn’t just a framework. It is a **structured language layer**
+that builds **architectural meaning** into Java.
 
 | Annotation      | Role                                              |
 | --------------- | ------------------------------------------------- |
